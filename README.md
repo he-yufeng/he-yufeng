@@ -14,6 +14,7 @@ Previously competed in ACM-ICPC (silver medals, BUPT). These days I mostly think
 | [Arxiv Paper Coding Agent](https://github.com/universeplayer/Arxiv_Paper_Coding_Agent--HKU_COMP7103C_Data_mining_Assignment) | 31+ | Multi-LLM crew that reads a paper and produces a working implementation |
 | [ContractGuard](https://github.com/universeplayer/ContractGuard) | new | AI agent that reviews contracts for red flags before you sign |
 | [TokenTracker](https://github.com/universeplayer/TokenTracker) | new | Drop-in LLM cost tracker — change one import line, see where your money goes |
+| [GitSense](https://github.com/universeplayer/GitSense) | new | AI-powered open source contribution finder — tell it your skills, it finds issues |
 
 <!-- When PRs get merged, add an "Open Source Contributions" section here -->
 
@@ -44,6 +45,7 @@ Python, C++, Go. Comfortable with CUDA kernels, MLIR, reinforcement learning, an
 | [Arxiv Paper Coding Agent](https://github.com/universeplayer/Arxiv_Paper_Coding_Agent--HKU_COMP7103C_Data_mining_Assignment) | 31+ | 多 LLM 协作 Agent，读论文自动生成可运行代码 |
 | [ContractGuard](https://github.com/universeplayer/ContractGuard) | new | AI 合同审查 Agent，签字前帮你找出霸王条款 |
 | [TokenTracker](https://github.com/universeplayer/TokenTracker) | new | LLM 开销追踪，改一行 import 就能用 |
+| [GitSense](https://github.com/universeplayer/GitSense) | new | AI 驱动的开源贡献发现器，输入技能自动找 issue |
 
 ### 技术栈
 
