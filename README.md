@@ -55,6 +55,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [SGLang](https://github.com/sgl-project/sglang) (28.8k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | Fix hybrid_linear_attn_backend crash when used with ngram speculative decoding |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (5.7k★) | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) | Fix autotuner crash when input tensor is `None`: proper None-checking for optional inputs (fixes #2749) |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (5.7k★) | [#2772](https://github.com/flashinfer-ai/flashinfer/pull/2772) | Fix compilation error: add missing `<optional>` header for `std::optional` usage in CUTLASS headers |
+| [LMCache](https://github.com/LMCache/LMCache) (8.4k★) | [#3245](https://github.com/LMCache/LMCache/pull/3245) | Retain producer-side CUDA IPC events during MP store/retrieve requests so daemon IPC handles do not point at collected events |
 | [LMCache](https://github.com/LMCache/LMCache) (8.4k★) | [#3282](https://github.com/LMCache/LMCache/pull/3282) | Support HND GPU KV formats in MP KV transfer so alternate KV tensor layouts are handled correctly |
 
 #### Agent frameworks / protocols / evals
@@ -221,6 +222,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [SGLang](https://github.com/sgl-project/sglang) (28.8k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | 修复 hybrid_linear_attn_backend 与 ngram 投机采样同时使用时崩溃 |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (5.7k★) | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) | 修复 autotuner 在输入 tensor 为 `None` 时崩溃（fixes #2749） |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (5.7k★) | [#2772](https://github.com/flashinfer-ai/flashinfer/pull/2772) | 修复编译错误：CUTLASS 头文件缺少 `<optional>` include 导致 `std::optional` 未定义 |
+| [LMCache](https://github.com/LMCache/LMCache) (8.4k★) | [#3245](https://github.com/LMCache/LMCache/pull/3245) | 在 MP store/retrieve 请求期间保留 producer 侧 CUDA IPC event，避免 daemon 通过已回收 event handle 恢复时报 invalid argument |
 | [LMCache](https://github.com/LMCache/LMCache) (8.4k★) | [#3282](https://github.com/LMCache/LMCache/pull/3282) | 支持 MP KV transfer 中的 HND GPU KV 格式，让不同 KV tensor layout 能被正确处理 |
 
 #### Agent 框架 / 协议 / 评测
