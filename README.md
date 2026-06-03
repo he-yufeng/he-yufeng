@@ -3,13 +3,14 @@
 Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
 - 110+ merged upstream PRs, including fixes in vLLM, Qwen Code, Cline, AgentScope, GitHub MCP Server, Hugging Face Transformers, Microsoft Agent Framework, AstrBot, Mooncake, Inspect AI, LiteLLM, and Triton.
-- 18 public projects, led by CoreCoder, RepoWiki, FindJobs-Agent, ContractGuard, AgentProbe, GitSense, and MTSIR3-GAN.
+- 19 public projects, led by CoreCoder, IssueBenchKit, RepoWiki, FindJobs-Agent, ContractGuard, AgentProbe, GitSense, and MTSIR3-GAN.
 
 ### Projects
 
 | Area | Project | Stars | Notes |
 |------|---------|:-----:|-------|
 | Coding agents / evals | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1,081+ | 512K lines of Claude Code → 1,400 lines of Python. Every key architectural pattern, runnable. Any LLM. 7 architecture deep-dive articles. |
+| Coding agents / evals | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | 0+ | Turn real GitHub issues and local bugs into small, reproducible coding-agent benchmark tasks with before/after scoring and HTML reports. |
 | Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 167+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, reading guides. |
 | Applied agents | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 223+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization. |
 | Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 149+ | AI agent that reviews contracts for red flags before you sign. |
@@ -174,13 +175,14 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 [Moonshot AI](https://www.moonshot.cn/) (Kimi) AI Agent 研究员 | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
 - 110+ 个上游 PR 已 merged，包括 vLLM、Qwen Code、Cline、AgentScope、GitHub MCP Server、Hugging Face Transformers、Microsoft Agent Framework、AstrBot、Mooncake、Inspect AI、LiteLLM、Triton 等项目里的生产级 bug / 行为修复。
-- 18 个公开项目，代表项目包括 CoreCoder、RepoWiki、FindJobs-Agent、ContractGuard、AgentProbe、GitSense、MTSIR3-GAN。
+- 19 个公开项目，代表项目包括 CoreCoder、IssueBenchKit、RepoWiki、FindJobs-Agent、ContractGuard、AgentProbe、GitSense、MTSIR3-GAN。
 
 ### 项目
 
 | 方向 | 项目 | Stars | 简介 |
 |------|------|:-----:|------|
 | Coding agents / 评测 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1,081+ | Claude Code 51万行源码 → 1400行 Python 核心重写，支持任意大模型，附 7 篇架构导读。 |
+| Coding agents / 评测 | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | 0+ | 把真实 GitHub issue 和本地 bug 打包成可复现、可评分、可分享的 coding-agent benchmark 任务。 |
 | 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 167+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
 | 应用型 Agent | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 223+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化。 |
 | 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 149+ | AI 合同审查 Agent，签字前帮你找出霸王条款。 |
