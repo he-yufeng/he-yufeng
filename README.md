@@ -2,31 +2,31 @@
 
 Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 100+ merged upstream PRs, including fixes in vLLM, Qwen Code, Cline, AgentScope, GitHub MCP Server, Hugging Face Transformers, Microsoft Agent Framework, AstrBot, Mooncake, Inspect AI, LiteLLM, and Triton.
+- 110+ merged upstream PRs, including fixes in vLLM, Qwen Code, Cline, AgentScope, GitHub MCP Server, Hugging Face Transformers, Microsoft Agent Framework, AstrBot, Mooncake, Inspect AI, LiteLLM, and Triton.
 - 18 public projects, led by CoreCoder, RepoWiki, FindJobs-Agent, ContractGuard, AgentProbe, GitSense, and MTSIR3-GAN.
 
 ### Projects
 
 | Area | Project | Stars | Notes |
 |------|---------|:-----:|-------|
-| Coding agents / evals | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1,043+ | 512K lines of Claude Code → 1,400 lines of Python. Every key architectural pattern, runnable. Any LLM. 7 architecture deep-dive articles. |
-| Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 155+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, reading guides. |
+| Coding agents / evals | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1,081+ | 512K lines of Claude Code → 1,400 lines of Python. Every key architectural pattern, runnable. Any LLM. 7 architecture deep-dive articles. |
+| Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 167+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, reading guides. |
 | Applied agents | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 223+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization. |
-| Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 147+ | AI agent that reviews contracts for red flags before you sign. |
+| Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 149+ | AI agent that reviews contracts for red flags before you sign. |
+| Codebase maps | [RuleForge](https://github.com/he-yufeng/RuleForge) | 114+ | Auto-generate AI assistant rules (CLAUDE.md, .cursorrules) from codebase analysis. |
+| Codebase maps | [GitSense](https://github.com/he-yufeng/GitSense) | 96+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals. |
+| Codebase maps | [CodeABC](https://github.com/he-yufeng/CodeABC) | 82+ | AI code reader for non-programmers: drag in a project, get plain-language explanations with hover annotations. |
+| LLM tooling | [TokenTracker](https://github.com/he-yufeng/TokenTracker) | 71+ | Drop-in LLM cost tracker: change one import line and see where the money goes. |
 | Coding agents / evals | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | 39+ | Pytest plugin for regression-testing AI agents: snapshot baselines, semantic comparison, mock LLMs. |
-| Coding agents / evals | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | 6+ | CLI arena for AI coding agents: isolated `git worktree` runs, test/cost/diff/time scoring, `pip install codejoust`. |
-| Coding agents / evals | [LiteBench](https://github.com/he-yufeng/LiteBench) | 3+ | Pip-installable LLM/agent benchmark CLI + web dashboard, with agent mode, custom YAML, LLM-as-judge, and 100+ litellm models. |
 | Coding agents / evals | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | 21+ | AI coding agent CLI supporting 100+ LLMs via litellm. ~1,450 lines Python, dangerous command blocking, parallel tool execution, session persistence. |
-| Codebase maps | [GitSense](https://github.com/he-yufeng/GitSense) | 94+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals. |
-| Codebase maps | [RuleForge](https://github.com/he-yufeng/RuleForge) | 106+ | Auto-generate AI assistant rules (CLAUDE.md, .cursorrules) from codebase analysis. |
-| Codebase maps | [CodeABC](https://github.com/he-yufeng/CodeABC) | 76+ | AI code reader for non-programmers: drag in a project, get plain-language explanations with hover annotations. |
-| LLM tooling | [MCPReady](https://github.com/he-yufeng/MCPReady) | 1+ | CI gate for MCP servers: handshake, tools/list, schema checks, secret-leak scan, reports, GitHub Action. |
-| LLM tooling | [TokenTracker](https://github.com/he-yufeng/TokenTracker) | 63+ | Drop-in LLM cost tracker: change one import line and see where the money goes. |
-| LLM tooling | [PromptDiff](https://github.com/he-yufeng/PromptDiff) | 25+ | Semantic diff for LLM prompts, compare prompt versions like git diff. |
 | LLM tooling | [BatchLLM](https://github.com/he-yufeng/BatchLLM) | 26+ | Batch LLM processing: CSV in, processed CSV out, with retries and cost tracking. |
+| LLM tooling | [PromptDiff](https://github.com/he-yufeng/PromptDiff) | 25+ | Semantic diff for LLM prompts, compare prompt versions like git diff. |
 | Research / quant | [MTSIR3-GAN](https://github.com/he-yufeng/MTSIR3-GAN) | 135+ | Adapting R3GAN (NeurIPS 2024) to multivariate time series imputation + adversarial refinement study. |
 | Research / quant | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | 75+ | Deep RL trading strategies with Double DQN and multi-factor alpha signals. |
 | Research / quant | [Arxiv Paper Coding Agent](https://github.com/he-yufeng/Arxiv_Paper_Coding_Agent--HKU_COMP7103C_Data_mining_Assignment) | 40+ | Multi-LLM crew that reads a paper and produces a working implementation. |
+| Coding agents / evals | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | 6+ | CLI arena for AI coding agents: isolated `git worktree` runs, test/cost/diff/time scoring, `pip install codejoust`. |
+| Coding agents / evals | [LiteBench](https://github.com/he-yufeng/LiteBench) | 3+ | Pip-installable LLM/agent benchmark CLI + web dashboard, with agent mode, custom YAML, LLM-as-judge, and 100+ litellm models. |
+| LLM tooling | [MCPReady](https://github.com/he-yufeng/MCPReady) | 1+ | CI gate for MCP servers: handshake, tools/list, schema checks, secret-leak scan, reports, GitHub Action. |
 
 ### Open Source Contributions
 
@@ -65,12 +65,14 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [OpenClaw](https://github.com/openclaw/openclaw) (376k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | Propagate memory directory creation failures instead of continuing after a failed `ensureDir` |
 | [OpenClaw](https://github.com/openclaw/openclaw) (376k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | Log auth profile resolution failures instead of swallowing silently |
 | [Cline](https://github.com/cline/cline) (62.6k★) | [#11166](https://github.com/cline/cline/pull/11166) | Keep file search alive when the open-tabs host RPC is unavailable, falling back to system ripgrep instead of killing search |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.8k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | Keep assistant tool calls adjacent to their tool results so OpenAI-compatible providers stop rejecting repaired message histories |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.8k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | Harden context-error text collection so nested/non-string error payloads surface useful messages instead of disappearing |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.8k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | Drop the discontinued Qwen OAuth path from ACP login so users are not routed into a dead authentication method |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.8k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | Fix IDE proxy requests by keeping `fetch` and `EnvHttpProxyAgent` on the same bundled `undici` module path |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.8k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | Apply the requested output language to side queries so auxiliary answers follow the same language contract as the main response |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.8k★) | [#4635](https://github.com/QwenLM/qwen-code/pull/4635) | Hide completed sticky todos from the active CLI todo view so persistent task hints stay focused on remaining work |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | Keep assistant tool calls adjacent to their tool results so OpenAI-compatible providers stop rejecting repaired message histories |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4673](https://github.com/QwenLM/qwen-code/pull/4673) | Restore top-level `--list-extensions` / `-l` so it prints installed extensions and exits before sandbox, auth, or TUI startup |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | Fix IDE proxy requests by keeping `fetch` and `EnvHttpProxyAgent` on the same bundled `undici` module path |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4600](https://github.com/QwenLM/qwen-code/pull/4600) | Distinguish AUTO from AUTO_EDIT approval-mode indicators in the TUI, including shared styling, i18n keys, and visual evidence |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | Harden context-error text collection so nested/non-string error payloads surface useful messages instead of disappearing |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | Drop the discontinued Qwen OAuth path from ACP login so users are not routed into a dead authentication method |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | Apply the requested output language to side queries so auxiliary answers follow the same language contract as the main response |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4635](https://github.com/QwenLM/qwen-code/pull/4635) | Hide completed sticky todos from the active CLI todo view so persistent task hints stay focused on remaining work |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (10.9k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | Fix `background=True` + tools infinite-retrieve loop: clear completed continuation state so tool results get posted |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (10.9k★) | [#5861](https://github.com/microsoft/agent-framework/pull/5861) | Preserve structured Foundry handoff arguments so delegated agent calls survive response conversion |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (10.9k★) | [#5974](https://github.com/microsoft/agent-framework/pull/5974) | Include Foundry agent tool definitions in eval mappings so evaluator runs can call code-defined tools |
@@ -116,9 +118,9 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [Google ADK](https://github.com/google/adk-python) (19.9k★) | [#5698](https://github.com/google/adk-python/pull/5698) | Include intermediate responses in `final_response_match_v2` judging when the criterion opts in |
 | [EvalScope](https://github.com/modelscope/evalscope) (2.9k★) | [#1381](https://github.com/modelscope/evalscope/pull/1381) | Read SciCode assistant answers from OpenAI-style text content blocks so scorer prompts receive the generated answer instead of an empty field |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (17.4k★) | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) | Accept `providerExecuted` and `title` on Vercel AI dynamic-tool message parts so strict validation preserves provider metadata |
-| [Strands Agents SDK](https://github.com/strands-agents/sdk-python) (6.0k★) | [#2340](https://github.com/strands-agents/sdk-python/pull/2340) | Keep concurrent tool results in request order so parallel tool execution does not scramble model-visible outputs |
-| [Strands Agents SDK](https://github.com/strands-agents/sdk-python) (6.0k★) | [#2354](https://github.com/strands-agents/sdk-python/pull/2354) | Read vLLM `delta.reasoning` chunks in OpenAI-compatible streams so reasoning output survives provider conversion |
-| [Strands Agents SDK](https://github.com/strands-agents/sdk-python) (6.0k★) | [#2353](https://github.com/strands-agents/sdk-python/pull/2353) | Handle Gemini safety-blocked metadata by defaulting missing usage counts and mapping safety stops to guardrail intervention |
+| [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.0k★) | [#2340](https://github.com/strands-agents/harness-sdk/pull/2340) | Keep concurrent tool results in request order so parallel tool execution does not scramble model-visible outputs |
+| [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.0k★) | [#2354](https://github.com/strands-agents/harness-sdk/pull/2354) | Read vLLM `delta.reasoning` chunks in OpenAI-compatible streams so reasoning output survives provider conversion |
+| [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.0k★) | [#2353](https://github.com/strands-agents/harness-sdk/pull/2353) | Handle Gemini safety-blocked metadata by defaulting missing usage counts and mapping safety stops to guardrail intervention |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5820](https://github.com/livekit/agents/pull/5820) | Recreate Anthropic streaming requests on retry so transient stream creation failures do not re-await the same coroutine |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5864](https://github.com/livekit/agents/pull/5864) | Surface Soniox STT server errors instead of treating failed streams as empty transcripts |
 | [Pipecat](https://github.com/pipecat-ai/pipecat) (12.6k★) | [#4553](https://github.com/pipecat-ai/pipecat/pull/4553) | Serialize interruption frames through protobuf transports so realtime voice-agent interruptions survive transport hops |
@@ -169,31 +171,31 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 
 [Moonshot AI](https://www.moonshot.cn/) (Kimi) AI Agent 研究员 | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 100+ 个上游 PR 已 merged，包括 vLLM、Qwen Code、Cline、AgentScope、GitHub MCP Server、Hugging Face Transformers、Microsoft Agent Framework、AstrBot、Mooncake、Inspect AI、LiteLLM、Triton 等项目里的生产级 bug / 行为修复。
+- 110+ 个上游 PR 已 merged，包括 vLLM、Qwen Code、Cline、AgentScope、GitHub MCP Server、Hugging Face Transformers、Microsoft Agent Framework、AstrBot、Mooncake、Inspect AI、LiteLLM、Triton 等项目里的生产级 bug / 行为修复。
 - 18 个公开项目，代表项目包括 CoreCoder、RepoWiki、FindJobs-Agent、ContractGuard、AgentProbe、GitSense、MTSIR3-GAN。
 
 ### 项目
 
 | 方向 | 项目 | Stars | 简介 |
 |------|------|:-----:|------|
-| Coding agents / 评测 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1,043+ | Claude Code 51万行源码 → 1400行 Python 核心重写，支持任意大模型，附 7 篇架构导读。 |
-| 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 155+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
+| Coding agents / 评测 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1,081+ | Claude Code 51万行源码 → 1400行 Python 核心重写，支持任意大模型，附 7 篇架构导读。 |
+| 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 167+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
 | 应用型 Agent | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 223+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化。 |
-| 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 147+ | AI 合同审查 Agent，签字前帮你找出霸王条款。 |
+| 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 149+ | AI 合同审查 Agent，签字前帮你找出霸王条款。 |
+| 代码库地图 | [RuleForge](https://github.com/he-yufeng/RuleForge) | 114+ | 从代码库自动生成 AI 助手规则（CLAUDE.md、.cursorrules）。 |
+| 代码库地图 | [GitSense](https://github.com/he-yufeng/GitSense) | 96+ | AI 开源贡献发现器 + 仓库雷达：找匹配 issue，也评估 PR 合入友好度。 |
+| 代码库地图 | [CodeABC](https://github.com/he-yufeng/CodeABC) | 82+ | 面向非程序员的 AI 代码阅读器：拖入项目，生成大白话解释和悬浮批注。 |
+| LLM 工具链 | [TokenTracker](https://github.com/he-yufeng/TokenTracker) | 71+ | LLM 开销追踪，改一行 import 就能看到钱花在哪里。 |
 | Coding agents / 评测 | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | 39+ | AI Agent 回归测试 pytest 插件：快照基线、语义比较、Mock LLM。 |
-| Coding agents / 评测 | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | 6+ | AI 编程 Agent 擂台：独立 `git worktree` 运行，按测试通过率、成本、diff 大小、耗时打分。 |
-| Coding agents / 评测 | [LiteBench](https://github.com/he-yufeng/LiteBench) | 3+ | LLM / Agent benchmark 轻量 CLI + Web 面板：agent 模式、自定义 YAML、LLM judge、100+ litellm 模型。 |
 | Coding agents / 评测 | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | 21+ | 终端 AI 编程 Agent，通过 litellm 支持 100+ 大模型，~1450 行 Python，危险命令拦截、并行执行、会话持久化。 |
-| 代码库地图 | [GitSense](https://github.com/he-yufeng/GitSense) | 94+ | AI 开源贡献发现器 + 仓库雷达：找匹配 issue，也评估 PR 合入友好度。 |
-| 代码库地图 | [RuleForge](https://github.com/he-yufeng/RuleForge) | 106+ | 从代码库自动生成 AI 助手规则（CLAUDE.md、.cursorrules）。 |
-| 代码库地图 | [CodeABC](https://github.com/he-yufeng/CodeABC) | 76+ | 面向非程序员的 AI 代码阅读器：拖入项目，生成大白话解释和悬浮批注。 |
-| LLM 工具链 | [MCPReady](https://github.com/he-yufeng/MCPReady) | 1+ | MCP Server CI 质量门禁：握手、tools/list、schema 检查、明显 token 泄露扫描、报告和 GitHub Action。 |
-| LLM 工具链 | [TokenTracker](https://github.com/he-yufeng/TokenTracker) | 63+ | LLM 开销追踪，改一行 import 就能看到钱花在哪里。 |
-| LLM 工具链 | [PromptDiff](https://github.com/he-yufeng/PromptDiff) | 25+ | LLM prompt 语义 diff 工具，像 git diff 一样对比 prompt 版本。 |
 | LLM 工具链 | [BatchLLM](https://github.com/he-yufeng/BatchLLM) | 26+ | LLM 批量处理：CSV 进 CSV 出，自动重试 + 费用追踪。 |
+| LLM 工具链 | [PromptDiff](https://github.com/he-yufeng/PromptDiff) | 25+ | LLM prompt 语义 diff 工具，像 git diff 一样对比 prompt 版本。 |
 | 研究 / 量化 | [MTSIR3-GAN](https://github.com/he-yufeng/MTSIR3-GAN) | 135+ | 将 R3GAN (NeurIPS 2024) 适配到多变量时序插补 + 对抗精炼实证研究。 |
 | 研究 / 量化 | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | 75+ | 深度强化学习量化交易，Double DQN + 多因子 Alpha。 |
 | 研究 / 量化 | [Arxiv Paper Coding Agent](https://github.com/he-yufeng/Arxiv_Paper_Coding_Agent--HKU_COMP7103C_Data_mining_Assignment) | 40+ | 多 LLM 协作 Agent，读论文自动生成可运行代码。 |
+| Coding agents / 评测 | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | 6+ | AI 编程 Agent 擂台：独立 `git worktree` 运行，按测试通过率、成本、diff 大小、耗时打分。 |
+| Coding agents / 评测 | [LiteBench](https://github.com/he-yufeng/LiteBench) | 3+ | LLM / Agent benchmark 轻量 CLI + Web 面板：agent 模式、自定义 YAML、LLM judge、100+ litellm 模型。 |
+| LLM 工具链 | [MCPReady](https://github.com/he-yufeng/MCPReady) | 1+ | MCP Server CI 质量门禁：握手、tools/list、schema 检查、明显 token 泄露扫描、报告和 GitHub Action。 |
 
 ### 开源贡献
 
@@ -232,12 +234,14 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [OpenClaw](https://github.com/openclaw/openclaw) (376k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | 目录创建失败时向上传递错误，避免 memory `ensureDir` 静默失败后继续执行 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (376k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | 认证配置解析失败时记录日志而非静默吞掉 |
 | [Cline](https://github.com/cline/cline) (62.6k★) | [#11166](https://github.com/cline/cline/pull/11166) | open-tabs host RPC 不可用时仍保持文件搜索可用，并回退到系统 `rg`，避免搜索链路直接失效 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.8k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | 保持 assistant tool calls 和 tool results 相邻，避免修复后的消息历史被 OpenAI-compatible provider 拒绝 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.8k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | 强化 context error 文本抽取，让嵌套或非字符串错误 payload 也能暴露有用诊断信息 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.8k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | 移除已停用的 Qwen OAuth ACP 登录路径，避免用户被引导到失效认证方式 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.8k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | 修复 IDE proxy 请求：让 `fetch` 和 `EnvHttpProxyAgent` 保持在同一个 bundled `undici` 模块路径上 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.8k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | 将用户指定的输出语言同步到 side queries，让辅助回答也遵守主响应的语言约束 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.8k★) | [#4635](https://github.com/QwenLM/qwen-code/pull/4635) | 在 CLI todo 视图中隐藏已完成 sticky todos，让持久任务提示只聚焦剩余工作 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | 保持 assistant tool calls 和 tool results 相邻，避免修复后的消息历史被 OpenAI-compatible provider 拒绝 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4673](https://github.com/QwenLM/qwen-code/pull/4673) | 修复顶层 `--list-extensions` / `-l`：按文档打印扩展列表，并在 sandbox、auth、TUI 启动前退出 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | 修复 IDE proxy 请求：让 `fetch` 和 `EnvHttpProxyAgent` 保持在同一个 bundled `undici` 模块路径上 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4600](https://github.com/QwenLM/qwen-code/pull/4600) | 区分 TUI 中 AUTO 与 AUTO_EDIT approval-mode 指示器：共享样式、本地化 key 和可视化证据一起补齐 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | 强化 context error 文本抽取，让嵌套或非字符串错误 payload 也能暴露有用诊断信息 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | 移除已停用的 Qwen OAuth ACP 登录路径，避免用户被引导到失效认证方式 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | 将用户指定的输出语言同步到 side queries，让辅助回答也遵守主响应的语言约束 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4635](https://github.com/QwenLM/qwen-code/pull/4635) | 在 CLI todo 视图中隐藏已完成 sticky todos，让持久任务提示只聚焦剩余工作 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (10.9k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | 修复 `background=True` + tools 无限 retrieve loop：清掉已完成的 continuation 状态，让 tool results 正常提交 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (10.9k★) | [#5861](https://github.com/microsoft/agent-framework/pull/5861) | 修复 Foundry handoff 参数序列化，delegated agent 调用不再丢失结构化参数 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (10.9k★) | [#5974](https://github.com/microsoft/agent-framework/pull/5974) | 让 Foundry agent eval 映射保留工具定义，评测运行能正常调用代码定义的 tools |
@@ -283,9 +287,9 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [Google ADK](https://github.com/google/adk-python) (19.9k★) | [#5698](https://github.com/google/adk-python/pull/5698) | 让 `final_response_match_v2` 在 criterion 选择开启时把 intermediate responses 纳入最终回答评判 |
 | [EvalScope](https://github.com/modelscope/evalscope) (2.9k★) | [#1381](https://github.com/modelscope/evalscope/pull/1381) | 读取 SciCode 评测中的 OpenAI-style text content blocks，让 scorer prompt 拿到真实 assistant 答案而不是空字段 |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (17.4k★) | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) | 兼容 Vercel AI dynamic-tool 消息里的 `providerExecuted` 和 `title` 字段，保留 provider 元数据而不是被严格校验拒绝 |
-| [Strands Agents SDK](https://github.com/strands-agents/sdk-python) (6.0k★) | [#2340](https://github.com/strands-agents/sdk-python/pull/2340) | 保持并发 tool results 按请求顺序回填，避免并行工具执行把模型可见结果顺序打乱 |
-| [Strands Agents SDK](https://github.com/strands-agents/sdk-python) (6.0k★) | [#2354](https://github.com/strands-agents/sdk-python/pull/2354) | 读取 OpenAI-compatible vLLM stream 里的 `delta.reasoning`，让 reasoning 输出经过 provider conversion 后不丢失 |
-| [Strands Agents SDK](https://github.com/strands-agents/sdk-python) (6.0k★) | [#2353](https://github.com/strands-agents/sdk-python/pull/2353) | 处理 Gemini safety-blocked metadata：缺失 token 计数时安全归零，并把 safety stop 映射为 guardrail intervention |
+| [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.0k★) | [#2340](https://github.com/strands-agents/harness-sdk/pull/2340) | 保持并发 tool results 按请求顺序回填，避免并行工具执行把模型可见结果顺序打乱 |
+| [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.0k★) | [#2354](https://github.com/strands-agents/harness-sdk/pull/2354) | 读取 OpenAI-compatible vLLM stream 里的 `delta.reasoning`，让 reasoning 输出经过 provider conversion 后不丢失 |
+| [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.0k★) | [#2353](https://github.com/strands-agents/harness-sdk/pull/2353) | 处理 Gemini safety-blocked metadata：缺失 token 计数时安全归零，并把 safety stop 映射为 guardrail intervention |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5820](https://github.com/livekit/agents/pull/5820) | 修复 Anthropic streaming retry：瞬时建流失败后重新创建 stream，不再重复 await 同一个 coroutine |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5864](https://github.com/livekit/agents/pull/5864) | 暴露 Soniox STT server error：流式识别失败时返回明确错误，不再被当成空 transcript |
 | [Pipecat](https://github.com/pipecat-ai/pipecat) (12.6k★) | [#4553](https://github.com/pipecat-ai/pipecat/pull/4553) | 修复 protobuf transport 丢失 interruption frame：实时语音 agent 的打断事件跨传输后仍能保留 |
