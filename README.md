@@ -154,6 +154,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [RAGFlow](https://github.com/infiniflow/ragflow) (81.9k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Fall back when Docling native parsing returns no chunks so documents still produce usable content instead of empty parse results |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13245](https://github.com/Arize-ai/phoenix/pull/13245) | Keep the generative model fetch cursor monotonic so lower-id updates cannot make later polling skip newer model changes |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13210](https://github.com/Arize-ai/phoenix/pull/13210) | Return NotFound-style errors for invalid GraphQL node ids instead of leaking decoder failures to clients |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13139](https://github.com/Arize-ai/phoenix/pull/13139) | Surface playground validation errors instead of returning empty subscription payloads |
@@ -330,6 +331,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [RAGFlow](https://github.com/infiniflow/ragflow) (81.9k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Docling native 解析没有产出 chunks 时自动降级，避免文档解析结果变成空内容 |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13245](https://github.com/Arize-ai/phoenix/pull/13245) | 修复 generative model fetch 游标回退：低 id 更新不会让后续轮询跳过更新的模型变更 |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13210](https://github.com/Arize-ai/phoenix/pull/13210) | 修复非法 GraphQL node id 的错误处理：返回 NotFound 风格错误，而不是把 decoder failure 泄漏给客户端 |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13139](https://github.com/Arize-ai/phoenix/pull/13139) | 修复 Playground 校验错误被吞掉的问题：失败时返回明确错误，而不是空 subscription payload |
