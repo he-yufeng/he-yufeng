@@ -163,9 +163,12 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13139](https://github.com/Arize-ai/phoenix/pull/13139) | Surface playground validation errors instead of returning empty subscription payloads |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13261](https://github.com/Arize-ai/phoenix/pull/13261) | Refresh span annotation notes after create so the UI shows newly added notes without a manual reload |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13614](https://github.com/Arize-ai/phoenix/pull/13614) | Refresh the prompts table while users stay on the page so newly created or updated prompts appear without a manual reload |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13636](https://github.com/Arize-ai/phoenix/pull/13636) | Update PXI system prompt guidance to point at the current server-side Jinja templates and capability wiring instead of stale browser-side paths |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.1k★) | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) | Extract Docling async markdown results from the response envelope so RAG chunks contain clean document text |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (36.2k★) | [#3206](https://github.com/HKUDS/LightRAG/pull/3206) | Honor PostgreSQL `search_path` in table-existence checks so non-public schemas are detected before migrations or table creation |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.1k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | Fix `None` file_path propagating as `unknown_source`: fill gaps left by #2793 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.1k★) | [#3123](https://github.com/HKUDS/LightRAG/pull/3123) | Sync API documentation colors with the dark theme so endpoint examples stay readable in dark mode |
+| [Graphiti](https://github.com/getzep/graphiti) (27.0k★) | [#1531](https://github.com/getzep/graphiti/pull/1531) | Strip embedded NUL bytes from FalkorDB query parameters so one malformed document string cannot crash bulk graph writes |
 
 #### Recommender systems
 
@@ -343,9 +346,12 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13139](https://github.com/Arize-ai/phoenix/pull/13139) | 修复 Playground 校验错误被吞掉的问题：失败时返回明确错误，而不是空 subscription payload |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13261](https://github.com/Arize-ai/phoenix/pull/13261) | 修复 span annotation note 新建后的刷新问题：创建成功后立即重新拉取列表，前端不再需要手动刷新才能看到新 note |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13614](https://github.com/Arize-ai/phoenix/pull/13614) | 修复 Prompts 表格停留页面时不会自动刷新的问题：新建或更新的 prompt 不再需要手动刷新才能出现 |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13636](https://github.com/Arize-ai/phoenix/pull/13636) | 更新 PXI system prompt 指南，指向当前 server-side Jinja 模板和 capability wiring，不再引用过期的 browser-side 路径 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.1k★) | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) | 从 Docling 异步结果 envelope 中抽取 Markdown 正文，避免 RAG chunk 混入 JSON/base64 噪声 |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (36.2k★) | [#3206](https://github.com/HKUDS/LightRAG/pull/3206) | 让 PostgreSQL 表存在性检查尊重当前 `search_path`，避免非 public schema 下迁移或建表判断失真 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.1k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | 修复 `None` file_path 传播为 `unknown_source`：补 #2793 遗漏的处理层 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.1k★) | [#3123](https://github.com/HKUDS/LightRAG/pull/3123) | 同步 API 文档暗色主题配色，避免 endpoint 示例在 dark mode 下变得不可读 |
+| [Graphiti](https://github.com/getzep/graphiti) (27.0k★) | [#1531](https://github.com/getzep/graphiti/pull/1531) | 递归清理 FalkorDB 查询参数里的 NUL 字节，避免单个异常文档字符串打断批量图写入 |
 
 #### 推荐系统
 
