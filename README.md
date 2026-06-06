@@ -2,7 +2,7 @@
 
 Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 110+ merged upstream PRs, including fixes in vLLM, Qwen Code, Cline, AgentScope, GitHub MCP Server, Hugging Face Transformers, Microsoft Agent Framework, AstrBot, Mooncake, Inspect AI, LiteLLM, and Triton.
+- 120+ merged upstream PRs, including fixes in vLLM, Qwen Code, Cline, AgentScope, GitHub MCP Server, Hugging Face Transformers, Microsoft Agent Framework, AstrBot, Mooncake, Inspect AI, LiteLLM, and Triton.
 - 21 public projects, led by CoreCoder, Agent ToolFence, IssueBenchKit, PatchContext, RepoWiki, FindJobs-Agent, ContractGuard, AgentProbe, GitSense, and MTSIR3-GAN.
 
 ### Projects
@@ -52,6 +52,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin for eviction-protected objects: model weights never get evicted, const field + BatchEvict skip + backward-compat serialization |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | Add `ObjectDataType` metadata classification for KV cache, weights, tensors, and snapshots, with backward-compatible serialization and Python bindings |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1825](https://github.com/kvcache-ai/Mooncake/pull/1825) | Fix `P2PClientService::Put` silently swallowing write errors: propagate actual error codes for non-idempotent failures |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | Make duplicate `rpc_meta` re-publish idempotent when the HTTP metadata body is unchanged, while still rejecting changed values |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1626](https://github.com/kvcache-ai/Mooncake/pull/1626) | Silenced error log spam for non-memory replicas in metadata store |
 | [LiteLLM](https://github.com/BerriAI/litellm) (49.1k★) | [#26401](https://github.com/BerriAI/litellm/pull/26401) | Fix `LITELLM_LOG=INFO` missing `verbose_logger`: proxy INFO logs now include all verbose logger sources |
 | [Triton](https://github.com/triton-lang/triton) (19.3k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | Fix AxisInfo correctness: signed constants, unknown shift divisibility, and shift UB guards |
@@ -81,6 +82,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | Fix `background=True` + tools infinite-retrieve loop: clear completed continuation state so tool results get posted |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5773](https://github.com/microsoft/agent-framework/pull/5773) | Run synchronous Python tools off the event loop so blocking tool calls no longer freeze concurrent agent work |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | Drop hosted MCP tool-call history when reasoning payloads are stripped so stateless OpenAI replay does not send orphan MCP calls |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#6208](https://github.com/microsoft/agent-framework/pull/6208) | Preserve full PowerFx record values in declarative `Foreach` loops so multi-field table rows do not collapse during iteration |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5861](https://github.com/microsoft/agent-framework/pull/5861) | Preserve structured Foundry handoff arguments so delegated agent calls survive response conversion |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5974](https://github.com/microsoft/agent-framework/pull/5974) | Include Foundry agent tool definitions in eval mappings so evaluator runs can call code-defined tools |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5815](https://github.com/microsoft/agent-framework/pull/5815) | Forward MCP tool-call metadata from `tools/list` into `call_tool` instrumentation so traces keep tool annotations |
@@ -93,6 +95,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5800](https://github.com/microsoft/agent-framework/pull/5800) | Avoid AG-UI tool result message id collisions when providers omit update ids |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5799](https://github.com/microsoft/agent-framework/pull/5799) | Add handoff workflow naming metadata so names and descriptions flow through builder and hosting registration |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5976](https://github.com/microsoft/agent-framework/pull/5976) | Fix sequential workflow sample output so all participant responses are shown from non-streaming results |
+| [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1732](https://github.com/agentscope-ai/agentscope/pull/1732) | Include skills from every active tool group so prompt instructions and the Skill viewer stay aligned with enabled tools |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1734](https://github.com/agentscope-ai/agentscope/pull/1734) | Expire Redis message lists by refreshing TTL on append and streaming replace writes, so configured storage TTL actually bounds chat history |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6596](https://github.com/AstrBotDevs/AstrBot/pull/6596) | Multimodal token counting: images, audio, chain-of-thought were invisible to context compression |
@@ -120,6 +123,8 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6551](https://github.com/AstrBotDevs/AstrBot/pull/6551) | Fix empty content causing Grok 400: set content to None when empty |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6313](https://github.com/AstrBotDevs/AstrBot/pull/6313) | Null choices guard: OpenAI API returning `None` instead of empty list |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6527](https://github.com/AstrBotDevs/AstrBot/pull/6527) | Fix LLM tool selection: rewrote ambiguous Upload/Download descriptions |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.0k★) | [#1829](https://github.com/ag-ui-protocol/ag-ui/pull/1829) | Close LangGraph text messages before tool-call chunks so text-to-tool transitions keep both message and tool events |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.0k★) | [#1832](https://github.com/ag-ui-protocol/ag-ui/pull/1832) | Preserve AG-UI input metadata when LangGraph converts text and media blocks into LangChain multimodal content |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.0k★) | [#1735](https://github.com/ag-ui-protocol/ag-ui/pull/1735) | Avoid stale ADK session writes after human-in-the-loop tool calls |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.0k★) | [#1769](https://github.com/ag-ui-protocol/ag-ui/pull/1769) | Make proto generation cross-platform: replace Unix-only `mkdir -p` with a Node script and Windows `.CMD` plugin shim |
 | [Google ADK](https://github.com/google/adk-python) (20.0k★) | [#5698](https://github.com/google/adk-python/pull/5698) | Include intermediate responses in `final_response_match_v2` judging when the criterion opts in |
@@ -186,7 +191,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 
 [Moonshot AI](https://www.moonshot.cn/) (Kimi) AI Agent 研究员 | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 110+ 个上游 PR 已 merged，包括 vLLM、Qwen Code、Cline、AgentScope、GitHub MCP Server、Hugging Face Transformers、Microsoft Agent Framework、AstrBot、Mooncake、Inspect AI、LiteLLM、Triton 等项目里的生产级 bug / 行为修复。
+- 120+ 个上游 PR 已 merged，包括 vLLM、Qwen Code、Cline、AgentScope、GitHub MCP Server、Hugging Face Transformers、Microsoft Agent Framework、AstrBot、Mooncake、Inspect AI、LiteLLM、Triton 等项目里的生产级 bug / 行为修复。
 - 21 个公开项目，代表项目包括 CoreCoder、Agent ToolFence、IssueBenchKit、PatchContext、RepoWiki、FindJobs-Agent、ContractGuard、AgentProbe、GitSense、MTSIR3-GAN。
 
 ### 项目
@@ -236,6 +241,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin 驱逐保护：模型权重永不被驱逐，const 字段 + BatchEvict 跳过 + 向后兼容序列化 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | 新增 `ObjectDataType` 元数据分类：KV cache、weights、tensors 等对象类型可在 metadata、snapshot 和 Python binding 中稳定传递 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1825](https://github.com/kvcache-ai/Mooncake/pull/1825) | 修复 `P2PClientService::Put` 静默吞掉写入错误：传播实际错误码给调用方 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | 让 HTTP metadata server 对相同 `rpc_meta` 重复发布保持幂等，同时继续拒绝内容变化的重复写入 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1626](https://github.com/kvcache-ai/Mooncake/pull/1626) | 修复非内存副本的错误日志刷屏 |
 | [LiteLLM](https://github.com/BerriAI/litellm) (49.1k★) | [#26401](https://github.com/BerriAI/litellm/pull/26401) | 修复 `LITELLM_LOG=INFO` 漏设 `verbose_logger`：proxy INFO 日志不再静默丢失 |
 | [Triton](https://github.com/triton-lang/triton) (19.3k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | 修复 AxisInfo 正确性：有符号常量、未知 shift 和 shift UB 都保守处理 |
@@ -265,6 +271,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | 修复 `background=True` + tools 无限 retrieve loop：清掉已完成的 continuation 状态，让 tool results 正常提交 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5773](https://github.com/microsoft/agent-framework/pull/5773) | 把同步 Python 工具调用移出事件循环执行，避免阻塞型工具冻结并发 agent 任务 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | reasoning payload 被剥离时同步丢弃 hosted MCP tool-call 历史，避免 stateless OpenAI replay 发送孤立 MCP 调用 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#6208](https://github.com/microsoft/agent-framework/pull/6208) | 修复声明式 `Foreach` 对 PowerFx record 行的取值，避免多字段 table row 在循环中被折叠 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5861](https://github.com/microsoft/agent-framework/pull/5861) | 修复 Foundry handoff 参数序列化，delegated agent 调用不再丢失结构化参数 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5974](https://github.com/microsoft/agent-framework/pull/5974) | 让 Foundry agent eval 映射保留工具定义，评测运行能正常调用代码定义的 tools |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5815](https://github.com/microsoft/agent-framework/pull/5815) | 转发 MCP `tools/list` 元数据到 `call_tool` instrumentation，让 trace 保留工具注解 |
@@ -277,6 +284,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5800](https://github.com/microsoft/agent-framework/pull/5800) | 修复 AG-UI tool result message id 冲突：provider 省略 update id 时仍能生成独立 fallback id |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5799](https://github.com/microsoft/agent-framework/pull/5799) | 补齐 Handoff workflow 的 name/description 元数据传递，让 builder 和 hosting 注册都能命名工作流 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5976](https://github.com/microsoft/agent-framework/pull/5976) | 修复 sequential workflow 示例输出，让非 streaming 结果展示所有参与 agent 的回复 |
+| [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1732](https://github.com/agentscope-ai/agentscope/pull/1732) | 汇总所有已启用 tool group 的 skills，让 prompt instructions 和 Skill viewer 与当前启用工具保持一致 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1734](https://github.com/agentscope-ai/agentscope/pull/1734) | Redis message list 写入和 streaming replace 时刷新 TTL，让配置的 storage TTL 真正约束聊天历史保留时间 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6596](https://github.com/AstrBotDevs/AstrBot/pull/6596) | 多模态 token 计数：图片/音频/思考链对 context 压缩不可见的问题 |
@@ -304,6 +312,8 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6551](https://github.com/AstrBotDevs/AstrBot/pull/6551) | 修复空 content 导致 Grok 400：content 为空时设为 None |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6313](https://github.com/AstrBotDevs/AstrBot/pull/6313) | 修复 OpenAI API 返回 `None` choices 导致崩溃 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6527](https://github.com/AstrBotDevs/AstrBot/pull/6527) | 修复 LLM 工具选择：重写模糊的 Upload/Download 描述 |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.0k★) | [#1829](https://github.com/ag-ui-protocol/ag-ui/pull/1829) | LangGraph 流从文本切到 tool call 时先关闭当前文本消息，避免工具调用事件被前一段文本吞掉 |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.0k★) | [#1832](https://github.com/ag-ui-protocol/ag-ui/pull/1832) | LangGraph 转换文本和媒体 block 时保留 AG-UI `InputContent.metadata` |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.0k★) | [#1735](https://github.com/ag-ui-protocol/ag-ui/pull/1735) | 修复 HITL tool call 后 ADK session 可能被旧状态回写的问题 |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.0k★) | [#1769](https://github.com/ag-ui-protocol/ag-ui/pull/1769) | 将 proto generation 从 Unix-only `mkdir -p` 改为跨平台 Node 脚本，兼容 Windows `.CMD` plugin shim |
 | [Google ADK](https://github.com/google/adk-python) (20.0k★) | [#5698](https://github.com/google/adk-python/pull/5698) | 让 `final_response_match_v2` 在 criterion 选择开启时把 intermediate responses 纳入最终回答评判 |
