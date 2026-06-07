@@ -3,7 +3,7 @@
 Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
 - 120+ merged upstream PRs, including fixes in vLLM, Qwen Code, Cline, AgentScope, GitHub MCP Server, Hugging Face Transformers, Microsoft Agent Framework, AstrBot, Mooncake, Inspect AI, LiteLLM, and Triton.
-- 22 public projects, led by CoreCoder, Agent ToolFence, IssueBenchKit, PatchContext, ActionRepro, RepoWiki, FindJobs-Agent, ContractGuard, AgentProbe, GitSense, and MTSIR3-GAN.
+- 23 public projects, led by CoreCoder, Agent ToolFence, IssueBenchKit, PatchContext, ActionRepro, MCPReplay, RepoWiki, FindJobs-Agent, ContractGuard, AgentProbe, GitSense, and MTSIR3-GAN.
 
 ### Projects
 
@@ -14,6 +14,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | Coding agents / evals | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | 0+ | Turn real GitHub issues and local bugs into small, reproducible coding-agent benchmark tasks with before/after scoring and HTML reports. |
 | Coding agents / evals | [PatchContext](https://github.com/he-yufeng/PatchContext) | 0+ | Generate issue-specific context packs for coding agents from issue text, failure logs, diffs, and lightweight import signals. |
 | CI / PR tooling | [ActionRepro](https://github.com/he-yufeng/ActionRepro) | 0+ | Turn GitHub Actions failures into local repro plans and PR evidence packs: classify CI gates, extract repro commands, and draft maintainer-ready comments. |
+| MCP / protocol tooling | [MCPReplay](https://github.com/he-yufeng/MCPReplay) | 0+ | Record, redact, and replay MCP JSON-RPC transcripts so protocol bugs become safe, shareable fixtures. |
 | Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 167+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, reading guides. |
 | Applied agents | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 223+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization. |
 | Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 149+ | AI agent that reviews contracts for red flags before you sign. |
@@ -193,7 +194,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 [Moonshot AI](https://www.moonshot.cn/) (Kimi) AI Agent 研究员 | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
 - 120+ 个上游 PR 已 merged，包括 vLLM、Qwen Code、Cline、AgentScope、GitHub MCP Server、Hugging Face Transformers、Microsoft Agent Framework、AstrBot、Mooncake、Inspect AI、LiteLLM、Triton 等项目里的生产级 bug / 行为修复。
-- 22 个公开项目，代表项目包括 CoreCoder、Agent ToolFence、IssueBenchKit、PatchContext、ActionRepro、RepoWiki、FindJobs-Agent、ContractGuard、AgentProbe、GitSense、MTSIR3-GAN。
+- 23 个公开项目，代表项目包括 CoreCoder、Agent ToolFence、IssueBenchKit、PatchContext、ActionRepro、MCPReplay、RepoWiki、FindJobs-Agent、ContractGuard、AgentProbe、GitSense、MTSIR3-GAN。
 
 ### 项目
 
@@ -204,6 +205,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | Coding agents / 评测 | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | 0+ | 把真实 GitHub issue 和本地 bug 打包成可复现、可评分、可分享的 coding-agent benchmark 任务。 |
 | Coding agents / 评测 | [PatchContext](https://github.com/he-yufeng/PatchContext) | 0+ | 根据 issue、失败日志、diff 和轻量 import 信号，给 coding agent 生成可解释的任务上下文包。 |
 | CI / PR 工具 | [ActionRepro](https://github.com/he-yufeng/ActionRepro) | 0+ | 把 GitHub Actions 失败日志转成本地复现计划和 PR 证据包：分类 CI gate、提取复现命令、生成可给 maintainer 的说明。 |
+| MCP / 协议工具 | [MCPReplay](https://github.com/he-yufeng/MCPReplay) | 0+ | 录制、脱敏并回放 MCP JSON-RPC transcript，把协议 bug 变成可分享、可复现的 fixture。 |
 | 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 167+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
 | 应用型 Agent | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 223+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化。 |
 | 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 149+ | AI 合同审查 Agent，签字前帮你找出霸王条款。 |
