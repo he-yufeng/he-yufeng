@@ -3,7 +3,7 @@
 Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
 - 120+ merged upstream PRs, including fixes in vLLM, Qwen Code, Cline, AgentScope, GitHub MCP Server, Hugging Face Transformers, Microsoft Agent Framework, AstrBot, Mooncake, Inspect AI, LiteLLM, and Triton.
-- 21 public projects, led by CoreCoder, Agent ToolFence, IssueBenchKit, PatchContext, RepoWiki, FindJobs-Agent, ContractGuard, AgentProbe, GitSense, and MTSIR3-GAN.
+- 22 public projects, led by CoreCoder, Agent ToolFence, IssueBenchKit, PatchContext, ActionRepro, RepoWiki, FindJobs-Agent, ContractGuard, AgentProbe, GitSense, and MTSIR3-GAN.
 
 ### Projects
 
@@ -13,6 +13,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | Coding agents / evals | [Agent ToolFence](https://github.com/he-yufeng/Agent-ToolFence) | 0+ | Deterministic CI tests for agent tool-call safety: fixture-based checks for denied tools, confirmations, and high-risk calls after untrusted tool output. |
 | Coding agents / evals | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | 0+ | Turn real GitHub issues and local bugs into small, reproducible coding-agent benchmark tasks with before/after scoring and HTML reports. |
 | Coding agents / evals | [PatchContext](https://github.com/he-yufeng/PatchContext) | 0+ | Generate issue-specific context packs for coding agents from issue text, failure logs, diffs, and lightweight import signals. |
+| CI / PR tooling | [ActionRepro](https://github.com/he-yufeng/ActionRepro) | 0+ | Turn GitHub Actions failures into local repro plans and PR evidence packs: classify CI gates, extract repro commands, and draft maintainer-ready comments. |
 | Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 167+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, reading guides. |
 | Applied agents | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 223+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization. |
 | Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 149+ | AI agent that reviews contracts for red flags before you sign. |
