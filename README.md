@@ -26,7 +26,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | Coding agents / evals | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | 21+ | AI coding agent CLI supporting 100+ LLMs via litellm. ~1,450 lines Python, dangerous command blocking, parallel tool execution, session persistence. |
 | LLM tooling | [BatchLLM](https://github.com/he-yufeng/BatchLLM) | 26+ | Batch LLM processing: CSV in, processed CSV out, with retries and cost tracking. |
 | LLM tooling | [PromptDiff](https://github.com/he-yufeng/PromptDiff) | 25+ | Semantic diff for LLM prompts, compare prompt versions like git diff. |
-| Research / quant | [MTSIR3-GAN](https://github.com/he-yufeng/MTSIR3-GAN) | 135+ | Adapting R3GAN (NeurIPS 2024) to multivariate time series imputation + adversarial refinement study. |
+| Research / quant | [MTSIR3-GAN](https://github.com/he-yufeng/MTSIR3-GAN) | 0+ | Adapting R3GAN (NeurIPS 2024) to multivariate time series imputation + adversarial refinement study. |
 | Research / quant | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | 75+ | Deep RL trading strategies with Double DQN and multi-factor alpha signals. |
 | Research / quant | [Arxiv Paper Coding Agent](https://github.com/he-yufeng/Arxiv_Paper_Coding_Agent--HKU_COMP7103C_Data_mining_Assignment) | 40+ | Multi-LLM crew that reads a paper and produces a working implementation. |
 | Coding agents / evals | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | 6+ | CLI arena for AI coding agents: isolated `git worktree` runs, test/cost/diff/time scoring, `pip install codejoust`. |
@@ -222,7 +222,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | Coding agents / 评测 | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | 21+ | 终端 AI 编程 Agent，通过 litellm 支持 100+ 大模型，~1450 行 Python，危险命令拦截、并行执行、会话持久化。 |
 | LLM 工具链 | [BatchLLM](https://github.com/he-yufeng/BatchLLM) | 26+ | LLM 批量处理：CSV 进 CSV 出，自动重试 + 费用追踪。 |
 | LLM 工具链 | [PromptDiff](https://github.com/he-yufeng/PromptDiff) | 25+ | LLM prompt 语义 diff 工具，像 git diff 一样对比 prompt 版本。 |
-| 研究 / 量化 | [MTSIR3-GAN](https://github.com/he-yufeng/MTSIR3-GAN) | 135+ | 将 R3GAN (NeurIPS 2024) 适配到多变量时序插补 + 对抗精炼实证研究。 |
+| 研究 / 量化 | [MTSIR3-GAN](https://github.com/he-yufeng/MTSIR3-GAN) | 0+ | 将 R3GAN (NeurIPS 2024) 适配到多变量时序插补 + 对抗精炼实证研究。 |
 | 研究 / 量化 | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | 75+ | 深度强化学习量化交易，Double DQN + 多因子 Alpha。 |
 | 研究 / 量化 | [Arxiv Paper Coding Agent](https://github.com/he-yufeng/Arxiv_Paper_Coding_Agent--HKU_COMP7103C_Data_mining_Assignment) | 40+ | 多 LLM 协作 Agent，读论文自动生成可运行代码。 |
 | Coding agents / 评测 | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | 6+ | AI 编程 Agent 擂台：独立 `git worktree` 运行，按测试通过率、成本、diff 大小、耗时打分。 |
