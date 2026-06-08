@@ -3,7 +3,7 @@
 Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
 - 120+ merged upstream PRs, including fixes in vLLM, Qwen Code, Cline, AgentScope, GitHub MCP Server, Hugging Face Transformers, Microsoft Agent Framework, AstrBot, Mooncake, Inspect AI, LiteLLM, and Triton.
-- 23 public projects, led by CoreCoder, Agent ToolFence, IssueBenchKit, PatchContext, ActionRepro, MCPReplay, RepoWiki, FindJobs-Agent, ContractGuard, AgentProbe, GitSense, and MTSIR3-GAN.
+- 23 public projects, led by CoreCoder, Agent ToolFence, IssueBenchKit, PatchContext, ActionRepro, MCPReplay, RepoWiki, FindJobs-Agent, ContractGuard, AgentProbe, GitSense.
 
 ### Projects
 
