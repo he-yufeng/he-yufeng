@@ -2,36 +2,29 @@
 
 Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 120+ merged upstream PRs, including fixes in vLLM, Qwen Code, Cline, AgentScope, GitHub MCP Server, Hugging Face Transformers, Microsoft Agent Framework, AstrBot, Mooncake, Inspect AI, LiteLLM, and Triton.
-- 23 public projects, led by CoreCoder, Agent ToolFence, IssueBenchKit, PatchContext, ActionRepro, MCPReplay, RepoWiki, FindJobs-Agent, ContractGuard, AgentProbe, GitSense.
+- 140+ merged upstream PRs, including fixes in vLLM, Qwen Code, Google Gen AI SDK, Cline, AgentScope, GitHub MCP Server, Hugging Face Transformers, Microsoft Agent Framework, AG-UI, AstrBot, Mooncake, Inspect AI, LiteLLM, and Triton.
+- Selected public projects led by CoreCoder, RepoWiki, FindJobs-Agent, ContractGuard, GitSense, AgentProbe, Agent ToolFence, IssueBenchKit, PatchContext, ActionRepro, MCPReplay, and FlightBox.
 
 ### Projects
 
 | Area | Project | Stars | Notes |
 |------|---------|:-----:|-------|
-| Coding agents / evals | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1,081+ | 512K lines of Claude Code → 1,400 lines of Python. Every key architectural pattern, runnable. Any LLM. 7 architecture deep-dive articles. |
-| Coding agents / evals | [Agent ToolFence](https://github.com/he-yufeng/Agent-ToolFence) | 0+ | Deterministic CI tests for agent tool-call safety: fixture-based checks for denied tools, confirmations, and high-risk calls after untrusted tool output. |
-| Coding agents / evals | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | 0+ | Turn real GitHub issues and local bugs into small, reproducible coding-agent benchmark tasks with before/after scoring and HTML reports. |
-| Coding agents / evals | [PatchContext](https://github.com/he-yufeng/PatchContext) | 0+ | Generate issue-specific context packs for coding agents from issue text, failure logs, diffs, and lightweight import signals. |
-| CI / PR tooling | [ActionRepro](https://github.com/he-yufeng/ActionRepro) | 0+ | Turn GitHub Actions failures into local repro plans and PR evidence packs: classify CI gates, extract repro commands, and draft maintainer-ready comments. |
-| MCP / protocol tooling | [MCPReplay](https://github.com/he-yufeng/MCPReplay) | 0+ | Record, redact, and replay MCP JSON-RPC transcripts so protocol bugs become safe, shareable fixtures. |
-| Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 167+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, reading guides. |
-| Applied agents | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 223+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization. |
-| Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 149+ | AI agent that reviews contracts for red flags before you sign. |
-| Codebase maps | [RuleForge](https://github.com/he-yufeng/RuleForge) | 114+ | Auto-generate AI assistant rules (CLAUDE.md, .cursorrules) from codebase analysis. |
-| Codebase maps | [GitSense](https://github.com/he-yufeng/GitSense) | 96+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals. |
-| Codebase maps | [CodeABC](https://github.com/he-yufeng/CodeABC) | 82+ | AI code reader for non-programmers: drag in a project, get plain-language explanations with hover annotations. |
-| LLM tooling | [TokenTracker](https://github.com/he-yufeng/TokenTracker) | 71+ | Drop-in LLM cost tracker: change one import line and see where the money goes. |
-| Coding agents / evals | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | 39+ | Pytest plugin for regression-testing AI agents: snapshot baselines, semantic comparison, mock LLMs. |
-| Coding agents / evals | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | 21+ | AI coding agent CLI supporting 100+ LLMs via litellm. ~1,450 lines Python, dangerous command blocking, parallel tool execution, session persistence. |
-| LLM tooling | [BatchLLM](https://github.com/he-yufeng/BatchLLM) | 26+ | Batch LLM processing: CSV in, processed CSV out, with retries and cost tracking. |
-| LLM tooling | [PromptDiff](https://github.com/he-yufeng/PromptDiff) | 25+ | Semantic diff for LLM prompts, compare prompt versions like git diff. |
-| Research / quant | [MTSIR3-GAN](https://github.com/he-yufeng/MTSIR3-GAN) | 0+ | Adapting R3GAN (NeurIPS 2024) to multivariate time series imputation + adversarial refinement study. |
-| Research / quant | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | 75+ | Deep RL trading strategies with Double DQN and multi-factor alpha signals. |
-| Research / quant | [Arxiv Paper Coding Agent](https://github.com/he-yufeng/Arxiv_Paper_Coding_Agent--HKU_COMP7103C_Data_mining_Assignment) | 40+ | Multi-LLM crew that reads a paper and produces a working implementation. |
-| Coding agents / evals | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | 6+ | CLI arena for AI coding agents: isolated `git worktree` runs, test/cost/diff/time scoring, `pip install codejoust`. |
-| Coding agents / evals | [LiteBench](https://github.com/he-yufeng/LiteBench) | 3+ | Pip-installable LLM/agent benchmark CLI + web dashboard, with agent mode, custom YAML, LLM-as-judge, and 100+ litellm models. |
-| LLM tooling | [MCPReady](https://github.com/he-yufeng/MCPReady) | 1+ | CI gate for MCP servers: handshake, tools/list, schema checks, secret-leak scan, reports, GitHub Action. |
+| Coding agents / evals | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.1k+ | 512K lines of Claude Code → 1,400 lines of Python. Every key architectural pattern, runnable. Any LLM. 7 architecture deep-dive articles. |
+| Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 175+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, and reading guides. |
+| Applied agents | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 225+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
+| Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 160+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, and plain-English explanations. |
+| Codebase maps | [GitSense](https://github.com/he-yufeng/GitSense) | 95+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
+| Coding agents / evals | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | 39+ | Pytest plugin for regression-testing AI agents: snapshot baselines, semantic comparison, and mock LLMs. |
+| Coding agents / evals | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | 20+ | AI coding agent CLI supporting 100+ LLMs via litellm, with dangerous command blocking, parallel tools, and session persistence. |
+| Coding agents / evals | [Agent ToolFence](https://github.com/he-yufeng/Agent-ToolFence) | new | Deterministic CI tests for agent tool-call safety: denied tools, confirmations, and high-risk calls after untrusted tool output. |
+| Coding agents / evals | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | new | Turn real GitHub issues and local bugs into small, reproducible coding-agent benchmark tasks with before/after scoring and HTML reports. |
+| Coding agents / evals | [PatchContext](https://github.com/he-yufeng/PatchContext) | new | Generate issue-specific context packs for coding agents from issue text, failure logs, diffs, and lightweight import signals. |
+| CI / PR tooling | [ActionRepro](https://github.com/he-yufeng/ActionRepro) | new | Turn GitHub Actions failures into local repro plans and PR evidence packs: classify CI gates and extract maintainer-ready commands. |
+| Agent observability | [FlightBox](https://github.com/he-yufeng/FlightBox) | new | Black-box flight recorder for AI agents: record, redact, replay, and diff local agent sessions. |
+| MCP / protocol tooling | [MCPReplay](https://github.com/he-yufeng/MCPReplay) | new | Record, redact, and replay MCP JSON-RPC transcripts so protocol bugs become safe, shareable fixtures. |
+| MCP / protocol tooling | [MCPReady](https://github.com/he-yufeng/MCPReady) | new | CI gate for MCP servers: handshake, tools/list, schema checks, secret-leak scan, reports, and GitHub Action. |
+| Coding agents / evals | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | 7+ | CLI arena for AI coding agents: isolated `git worktree` runs, test/cost/diff/time scoring, and `pip install codejoust`. |
+| Coding agents / evals | [LiteBench](https://github.com/he-yufeng/LiteBench) | new | Pip-installable LLM/agent benchmark CLI + web dashboard, with agent mode, custom YAML, LLM-as-judge, and 100+ litellm models. |
 
 ### Open Source Contributions
 
@@ -39,15 +32,16 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
-| [vLLM](https://github.com/vllm-project/vllm) (81.8k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | Support tuple model outputs in the V1 ubatch wrapper so DBO and speculative decoding stop crashing on tuple-returning models |
-| [vLLM](https://github.com/vllm-project/vllm) (81.8k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Parse Qwen3 XML tool-call parameters as JSON first so `null` / `false` survive streaming tool parsing instead of being rejected by Python literal parsing |
-| [vLLM](https://github.com/vllm-project/vllm) (81.8k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa position_ids in-place accumulation on CUDA graph padding: BGE-M3 crash after ~4000 requests |
-| [vLLM](https://github.com/vllm-project/vllm) (81.8k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Fix Responses API `instructions` leaking across turns via `previous_response_id` chain |
-| [vLLM](https://github.com/vllm-project/vllm) (81.8k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | Fix weight offloading ignoring `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` in prefetch offloader |
-| [vLLM](https://github.com/vllm-project/vllm) (81.8k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | Base64 JPEG video frames returning empty metadata: populate frame count, fps, duration |
-| [vLLM](https://github.com/vllm-project/vllm) (81.8k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | Fix bench_serve UTF-8 decode crash on split multi-byte chars in streaming chunks |
-| [vLLM](https://github.com/vllm-project/vllm) (81.8k★) | [#40749](https://github.com/vllm-project/vllm/pull/40749) | Helped unblock async PP fix with independent repro evidence for the last-rank sampled-token receive assertion |
-| [Transformers](https://github.com/huggingface/transformers) (161k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | Fix `AutoProcessor.from_pretrained` silently dropping hub kwargs (`revision`, `token`, etc.) |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | Support tuple model outputs in the V1 ubatch wrapper so DBO and speculative decoding stop crashing on tuple-returning models |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Parse Qwen3 XML tool-call parameters as JSON first so `null` / `false` survive streaming tool parsing instead of being rejected by Python literal parsing |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa position_ids in-place accumulation on CUDA graph padding: BGE-M3 crash after ~4000 requests |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Fix Responses API `instructions` leaking across turns via `previous_response_id` chain |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | Fix weight offloading ignoring `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` in prefetch offloader |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | Base64 JPEG video frames returning empty metadata: populate frame count, fps, duration |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | Fix bench_serve UTF-8 decode crash on split multi-byte chars in streaming chunks |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#40749](https://github.com/vllm-project/vllm/pull/40749) | Helped unblock async PP fix with independent repro evidence for the last-rank sampled-token receive assertion |
+| [Transformers](https://github.com/huggingface/transformers) (161.4k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | Fix `AutoProcessor.from_pretrained` silently dropping hub kwargs (`revision`, `token`, etc.) |
+| [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.8k★) | [#2564](https://github.com/googleapis/python-genai/pull/2564) | Keep Live Music API keys out of websocket URLs by relying on request headers instead of duplicating secrets in query strings |
 | [verl](https://github.com/verl-project/verl) (21.8k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | Derive colocated vLLM weight-sync ZMQ socket ranks from data-parallel and tensor-parallel ranks so DP workers do not collide on the same receiver |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1831](https://github.com/kvcache-ai/Mooncake/pull/1831) | TENT NVLink IPC fix: use base pointer for sub-allocated GPU tensors, porting #1622 fix to TENT path |
@@ -72,34 +66,36 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | Propagate memory directory creation failures instead of continuing after a failed `ensureDir` |
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | Log auth profile resolution failures instead of swallowing silently |
 | [Cline](https://github.com/cline/cline) (62.7k★) | [#11166](https://github.com/cline/cline/pull/11166) | Keep file search alive when the open-tabs host RPC is unavailable, falling back to system ripgrep instead of killing search |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | Keep assistant tool calls adjacent to their tool results so OpenAI-compatible providers stop rejecting repaired message histories |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | Recurse into tracked Git submodules during repository crawling so coding-agent context includes files inside submodules |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4715](https://github.com/QwenLM/qwen-code/pull/4715) | Honor the configured runtime output directory for managed auto-memory while preserving the explicit memory-directory override |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4717](https://github.com/QwenLM/qwen-code/pull/4717) | Replace exit-time deep history clones with shallow read paths across copy, arena, and ACP snapshot flows while keeping restore-time cloning defensive |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4738](https://github.com/QwenLM/qwen-code/pull/4738) | Skip hidden thought parts when copying visible CLI output so clipboard exports match what users actually see |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4673](https://github.com/QwenLM/qwen-code/pull/4673) | Restore top-level `--list-extensions` / `-l` so it prints installed extensions and exits before sandbox, auth, or TUI startup |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | Fix IDE proxy requests by keeping `fetch` and `EnvHttpProxyAgent` on the same bundled `undici` module path |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4600](https://github.com/QwenLM/qwen-code/pull/4600) | Distinguish AUTO from AUTO_EDIT approval-mode indicators in the TUI, including shared styling, i18n keys, and visual evidence |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | Harden context-error text collection so nested/non-string error payloads surface useful messages instead of disappearing |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | Drop the discontinued Qwen OAuth path from ACP login so users are not routed into a dead authentication method |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | Apply the requested output language to side queries so auxiliary answers follow the same language contract as the main response |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4635](https://github.com/QwenLM/qwen-code/pull/4635) | Hide completed sticky todos from the active CLI todo view so persistent task hints stay focused on remaining work |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | Fix `background=True` + tools infinite-retrieve loop: clear completed continuation state so tool results get posted |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5773](https://github.com/microsoft/agent-framework/pull/5773) | Run synchronous Python tools off the event loop so blocking tool calls no longer freeze concurrent agent work |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | Drop hosted MCP tool-call history when reasoning payloads are stripped so stateless OpenAI replay does not send orphan MCP calls |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#6208](https://github.com/microsoft/agent-framework/pull/6208) | Preserve full PowerFx record values in declarative `Foreach` loops so multi-field table rows do not collapse during iteration |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5861](https://github.com/microsoft/agent-framework/pull/5861) | Preserve structured Foundry handoff arguments so delegated agent calls survive response conversion |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5974](https://github.com/microsoft/agent-framework/pull/5974) | Include Foundry agent tool definitions in eval mappings so evaluator runs can call code-defined tools |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5815](https://github.com/microsoft/agent-framework/pull/5815) | Forward MCP tool-call metadata from `tools/list` into `call_tool` instrumentation so traces keep tool annotations |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5801](https://github.com/microsoft/agent-framework/pull/5801) | Coalesce streamed code interpreter history chunks by call id so final stored history keeps complete code/results without duplicate deltas |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5784](https://github.com/microsoft/agent-framework/pull/5784) | Skip orphan Anthropic thinking signatures when converting history so replayed messages do not carry invalid standalone signatures |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#6037](https://github.com/microsoft/agent-framework/pull/6037) | Keep Foundry citation `get_url` metadata through response conversion so source links survive in chat responses |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#6040](https://github.com/microsoft/agent-framework/pull/6040) | Forward Foundry agent `default_headers` into OpenAI client creation so custom auth and routing headers survive agent setup |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5778](https://github.com/microsoft/agent-framework/pull/5778) | Declare Magentic protocol messages so orchestrator chat/reset signals deserialize instead of failing on unknown types |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5808](https://github.com/microsoft/agent-framework/pull/5808) | Fix handoff message role mutation so retries reuse sanitized messages without leaking role changes |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5800](https://github.com/microsoft/agent-framework/pull/5800) | Avoid AG-UI tool result message id collisions when providers omit update ids |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5799](https://github.com/microsoft/agent-framework/pull/5799) | Add handoff workflow naming metadata so names and descriptions flow through builder and hosting registration |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5976](https://github.com/microsoft/agent-framework/pull/5976) | Fix sequential workflow sample output so all participant responses are shown from non-streaming results |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | Keep assistant tool calls adjacent to their tool results so OpenAI-compatible providers stop rejecting repaired message histories |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4828](https://github.com/QwenLM/qwen-code/pull/4828) | Preserve a user-provided shared `baseUrl` after auth refresh so same-model refreshes do not fall back to a provider default endpoint |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | Recurse into tracked Git submodules during repository crawling so coding-agent context includes files inside submodules |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4715](https://github.com/QwenLM/qwen-code/pull/4715) | Honor the configured runtime output directory for managed auto-memory while preserving the explicit memory-directory override |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4717](https://github.com/QwenLM/qwen-code/pull/4717) | Replace exit-time deep history clones with shallow read paths across copy, arena, and ACP snapshot flows while keeping restore-time cloning defensive |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4738](https://github.com/QwenLM/qwen-code/pull/4738) | Skip hidden thought parts when copying visible CLI output so clipboard exports match what users actually see |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4673](https://github.com/QwenLM/qwen-code/pull/4673) | Restore top-level `--list-extensions` / `-l` so it prints installed extensions and exits before sandbox, auth, or TUI startup |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | Fix IDE proxy requests by keeping `fetch` and `EnvHttpProxyAgent` on the same bundled `undici` module path |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4600](https://github.com/QwenLM/qwen-code/pull/4600) | Distinguish AUTO from AUTO_EDIT approval-mode indicators in the TUI, including shared styling, i18n keys, and visual evidence |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | Harden context-error text collection so nested/non-string error payloads surface useful messages instead of disappearing |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | Drop the discontinued Qwen OAuth path from ACP login so users are not routed into a dead authentication method |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | Apply the requested output language to side queries so auxiliary answers follow the same language contract as the main response |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4635](https://github.com/QwenLM/qwen-code/pull/4635) | Hide completed sticky todos from the active CLI todo view so persistent task hints stay focused on remaining work |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | Fix `background=True` + tools infinite-retrieve loop: clear completed continuation state so tool results get posted |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5773](https://github.com/microsoft/agent-framework/pull/5773) | Run synchronous Python tools off the event loop so blocking tool calls no longer freeze concurrent agent work |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | Drop hosted MCP tool-call history when reasoning payloads are stripped so stateless OpenAI replay does not send orphan MCP calls |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#6208](https://github.com/microsoft/agent-framework/pull/6208) | Preserve full PowerFx record values in declarative `Foreach` loops so multi-field table rows do not collapse during iteration |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5904](https://github.com/microsoft/agent-framework/pull/5904) | Keep ChatClientAgent's local history provider active for AG-UI thread ids so session history is not mistaken for service-managed model history |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5861](https://github.com/microsoft/agent-framework/pull/5861) | Preserve structured Foundry handoff arguments so delegated agent calls survive response conversion |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5974](https://github.com/microsoft/agent-framework/pull/5974) | Include Foundry agent tool definitions in eval mappings so evaluator runs can call code-defined tools |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5815](https://github.com/microsoft/agent-framework/pull/5815) | Forward MCP tool-call metadata from `tools/list` into `call_tool` instrumentation so traces keep tool annotations |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5801](https://github.com/microsoft/agent-framework/pull/5801) | Coalesce streamed code interpreter history chunks by call id so final stored history keeps complete code/results without duplicate deltas |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5784](https://github.com/microsoft/agent-framework/pull/5784) | Skip orphan Anthropic thinking signatures when converting history so replayed messages do not carry invalid standalone signatures |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#6037](https://github.com/microsoft/agent-framework/pull/6037) | Keep Foundry citation `get_url` metadata through response conversion so source links survive in chat responses |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#6040](https://github.com/microsoft/agent-framework/pull/6040) | Forward Foundry agent `default_headers` into OpenAI client creation so custom auth and routing headers survive agent setup |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5778](https://github.com/microsoft/agent-framework/pull/5778) | Declare Magentic protocol messages so orchestrator chat/reset signals deserialize instead of failing on unknown types |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5808](https://github.com/microsoft/agent-framework/pull/5808) | Fix handoff message role mutation so retries reuse sanitized messages without leaking role changes |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5800](https://github.com/microsoft/agent-framework/pull/5800) | Avoid AG-UI tool result message id collisions when providers omit update ids |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5799](https://github.com/microsoft/agent-framework/pull/5799) | Add handoff workflow naming metadata so names and descriptions flow through builder and hosting registration |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5976](https://github.com/microsoft/agent-framework/pull/5976) | Fix sequential workflow sample output so all participant responses are shown from non-streaming results |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1732](https://github.com/agentscope-ai/agentscope/pull/1732) | Include skills from every active tool group so prompt instructions and the Skill viewer stay aligned with enabled tools |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1734](https://github.com/agentscope-ai/agentscope/pull/1734) | Expire Redis message lists by refreshing TTL on append and streaming replace writes, so configured storage TTL actually bounds chat history |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
@@ -128,10 +124,11 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6551](https://github.com/AstrBotDevs/AstrBot/pull/6551) | Fix empty content causing Grok 400: set content to None when empty |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6313](https://github.com/AstrBotDevs/AstrBot/pull/6313) | Null choices guard: OpenAI API returning `None` instead of empty list |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6527](https://github.com/AstrBotDevs/AstrBot/pull/6527) | Fix LLM tool selection: rewrote ambiguous Upload/Download descriptions |
-| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.0k★) | [#1829](https://github.com/ag-ui-protocol/ag-ui/pull/1829) | Close LangGraph text messages before tool-call chunks so text-to-tool transitions keep both message and tool events |
-| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.0k★) | [#1832](https://github.com/ag-ui-protocol/ag-ui/pull/1832) | Preserve AG-UI input metadata when LangGraph converts text and media blocks into LangChain multimodal content |
-| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.0k★) | [#1735](https://github.com/ag-ui-protocol/ag-ui/pull/1735) | Avoid stale ADK session writes after human-in-the-loop tool calls |
-| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.0k★) | [#1769](https://github.com/ag-ui-protocol/ag-ui/pull/1769) | Make proto generation cross-platform: replace Unix-only `mkdir -p` with a Node script and Windows `.CMD` plugin shim |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1828](https://github.com/ag-ui-protocol/ag-ui/pull/1828) | Detect Strands' private session manager so AG-UI history replay respects active sessions instead of duplicating prior turns |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1829](https://github.com/ag-ui-protocol/ag-ui/pull/1829) | Close LangGraph text messages before tool-call chunks so text-to-tool transitions keep both message and tool events |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1832](https://github.com/ag-ui-protocol/ag-ui/pull/1832) | Preserve AG-UI input metadata when LangGraph converts text and media blocks into LangChain multimodal content |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1735](https://github.com/ag-ui-protocol/ag-ui/pull/1735) | Avoid stale ADK session writes after human-in-the-loop tool calls |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1769](https://github.com/ag-ui-protocol/ag-ui/pull/1769) | Make proto generation cross-platform: replace Unix-only `mkdir -p` with a Node script and Windows `.CMD` plugin shim |
 | [Google ADK](https://github.com/google/adk-python) (20.0k★) | [#5698](https://github.com/google/adk-python/pull/5698) | Include intermediate responses in `final_response_match_v2` judging when the criterion opts in |
 | [Google ADK](https://github.com/google/adk-python) (20.0k★) | [#5918](https://github.com/google/adk-python/pull/5918) | Allow the builder assistant's internal app name through CLI runner validation so `adk web` can open the special agent |
 | [EvalScope](https://github.com/modelscope/evalscope) (2.9k★) | [#1381](https://github.com/modelscope/evalscope/pull/1381) | Read SciCode assistant answers from OpenAI-style text content blocks so scorer prompts receive the generated answer instead of an empty field |
@@ -198,36 +195,29 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 
 [Moonshot AI](https://www.moonshot.cn/) (Kimi) AI Agent 研究员 | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 120+ 个上游 PR 已 merged，包括 vLLM、Qwen Code、Cline、AgentScope、GitHub MCP Server、Hugging Face Transformers、Microsoft Agent Framework、AstrBot、Mooncake、Inspect AI、LiteLLM、Triton 等项目里的生产级 bug / 行为修复。
-- 23 个公开项目，代表项目包括 CoreCoder、Agent ToolFence、IssueBenchKit、PatchContext、ActionRepro、MCPReplay、RepoWiki、FindJobs-Agent、ContractGuard、AgentProbe、GitSense、MTSIR3-GAN。
+- 140+ 个上游 PR 已 merged，包括 vLLM、Qwen Code、Google Gen AI SDK、Cline、AgentScope、GitHub MCP Server、Hugging Face Transformers、Microsoft Agent Framework、AG-UI、AstrBot、Mooncake、Inspect AI、LiteLLM、Triton 等项目里的生产级 bug / 行为修复。
+- 代表性公开项目包括 CoreCoder、RepoWiki、FindJobs-Agent、ContractGuard、GitSense、AgentProbe、Agent ToolFence、IssueBenchKit、PatchContext、ActionRepro、MCPReplay、FlightBox。
 
 ### 项目
 
 | 方向 | 项目 | Stars | 简介 |
 |------|------|:-----:|------|
-| Coding agents / 评测 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1,081+ | Claude Code 51万行源码 → 1400行 Python 核心重写，支持任意大模型，附 7 篇架构导读。 |
-| Coding agents / 评测 | [Agent ToolFence](https://github.com/he-yufeng/Agent-ToolFence) | 0+ | AI Agent 工具调用安全回归测试：用确定性 fixture 检查 denied tools、确认门槛和不可信工具输出后的高风险调用。 |
-| Coding agents / 评测 | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | 0+ | 把真实 GitHub issue 和本地 bug 打包成可复现、可评分、可分享的 coding-agent benchmark 任务。 |
-| Coding agents / 评测 | [PatchContext](https://github.com/he-yufeng/PatchContext) | 0+ | 根据 issue、失败日志、diff 和轻量 import 信号，给 coding agent 生成可解释的任务上下文包。 |
-| CI / PR 工具 | [ActionRepro](https://github.com/he-yufeng/ActionRepro) | 0+ | 把 GitHub Actions 失败日志转成本地复现计划和 PR 证据包：分类 CI gate、提取复现命令、生成可给 maintainer 的说明。 |
-| MCP / 协议工具 | [MCPReplay](https://github.com/he-yufeng/MCPReplay) | 0+ | 录制、脱敏并回放 MCP JSON-RPC transcript，把协议 bug 变成可分享、可复现的 fixture。 |
-| 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 167+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
-| 应用型 Agent | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 223+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化。 |
-| 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 149+ | AI 合同审查 Agent，签字前帮你找出霸王条款。 |
-| 代码库地图 | [RuleForge](https://github.com/he-yufeng/RuleForge) | 114+ | 从代码库自动生成 AI 助手规则（CLAUDE.md、.cursorrules）。 |
-| 代码库地图 | [GitSense](https://github.com/he-yufeng/GitSense) | 96+ | AI 开源贡献发现器 + 仓库雷达：找匹配 issue，也评估 PR 合入友好度。 |
-| 代码库地图 | [CodeABC](https://github.com/he-yufeng/CodeABC) | 82+ | 面向非程序员的 AI 代码阅读器：拖入项目，生成大白话解释和悬浮批注。 |
-| LLM 工具链 | [TokenTracker](https://github.com/he-yufeng/TokenTracker) | 71+ | LLM 开销追踪，改一行 import 就能看到钱花在哪里。 |
+| Coding agents / 评测 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.1k+ | Claude Code 51万行源码 → 1400行 Python 核心重写，支持任意大模型，附 7 篇架构导读。 |
+| 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 175+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
+| 应用型 Agent | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 225+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化和岗位结构化。 |
+| 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 160+ | AI 合同审查 Agent，签字前帮你找红旗条款、不公平约定和缺失保护。 |
+| 代码库地图 | [GitSense](https://github.com/he-yufeng/GitSense) | 95+ | AI 开源贡献发现器 + 仓库雷达：找匹配 issue，也评估 PR 合入友好度。 |
 | Coding agents / 评测 | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | 39+ | AI Agent 回归测试 pytest 插件：快照基线、语义比较、Mock LLM。 |
-| Coding agents / 评测 | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | 21+ | 终端 AI 编程 Agent，通过 litellm 支持 100+ 大模型，~1450 行 Python，危险命令拦截、并行执行、会话持久化。 |
-| LLM 工具链 | [BatchLLM](https://github.com/he-yufeng/BatchLLM) | 26+ | LLM 批量处理：CSV 进 CSV 出，自动重试 + 费用追踪。 |
-| LLM 工具链 | [PromptDiff](https://github.com/he-yufeng/PromptDiff) | 25+ | LLM prompt 语义 diff 工具，像 git diff 一样对比 prompt 版本。 |
-| 研究 / 量化 | [MTSIR3-GAN](https://github.com/he-yufeng/MTSIR3-GAN) | 0+ | 将 R3GAN (NeurIPS 2024) 适配到多变量时序插补 + 对抗精炼实证研究。 |
-| 研究 / 量化 | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | 75+ | 深度强化学习量化交易，Double DQN + 多因子 Alpha。 |
-| 研究 / 量化 | [Arxiv Paper Coding Agent](https://github.com/he-yufeng/Arxiv_Paper_Coding_Agent--HKU_COMP7103C_Data_mining_Assignment) | 40+ | 多 LLM 协作 Agent，读论文自动生成可运行代码。 |
-| Coding agents / 评测 | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | 6+ | AI 编程 Agent 擂台：独立 `git worktree` 运行，按测试通过率、成本、diff 大小、耗时打分。 |
-| Coding agents / 评测 | [LiteBench](https://github.com/he-yufeng/LiteBench) | 3+ | LLM / Agent benchmark 轻量 CLI + Web 面板：agent 模式、自定义 YAML、LLM judge、100+ litellm 模型。 |
-| LLM 工具链 | [MCPReady](https://github.com/he-yufeng/MCPReady) | 1+ | MCP Server CI 质量门禁：握手、tools/list、schema 检查、明显 token 泄露扫描、报告和 GitHub Action。 |
+| Coding agents / 评测 | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | 20+ | 终端 AI 编程 Agent，通过 litellm 支持 100+ 大模型，危险命令拦截、并行执行、会话持久化。 |
+| Coding agents / 评测 | [Agent ToolFence](https://github.com/he-yufeng/Agent-ToolFence) | new | AI Agent 工具调用安全回归测试：用确定性 fixture 检查 denied tools、确认门槛和不可信工具输出后的高风险调用。 |
+| Coding agents / 评测 | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | new | 把真实 GitHub issue 和本地 bug 打包成可复现、可评分、可分享的 coding-agent benchmark 任务。 |
+| Coding agents / 评测 | [PatchContext](https://github.com/he-yufeng/PatchContext) | new | 根据 issue、失败日志、diff 和轻量 import 信号，给 coding agent 生成可解释的任务上下文包。 |
+| CI / PR 工具 | [ActionRepro](https://github.com/he-yufeng/ActionRepro) | new | 把 GitHub Actions 失败日志转成本地复现计划和 PR 证据包：分类 CI gate、提取复现命令、生成 maintainer-ready 说明。 |
+| Agent 可观测性 | [FlightBox](https://github.com/he-yufeng/FlightBox) | new | AI Agent 黑盒飞行记录器：录制、脱敏、回放并 diff 本地 agent session。 |
+| MCP / 协议工具 | [MCPReplay](https://github.com/he-yufeng/MCPReplay) | new | 录制、脱敏并回放 MCP JSON-RPC transcript，把协议 bug 变成可分享、可复现的 fixture。 |
+| MCP / 协议工具 | [MCPReady](https://github.com/he-yufeng/MCPReady) | new | MCP Server CI 质量门禁：握手、tools/list、schema 检查、明显 token 泄露扫描、报告和 GitHub Action。 |
+| Coding agents / 评测 | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | 7+ | AI 编程 Agent 擂台：独立 `git worktree` 运行，按测试通过率、成本、diff 大小、耗时打分。 |
+| Coding agents / 评测 | [LiteBench](https://github.com/he-yufeng/LiteBench) | new | LLM / Agent benchmark 轻量 CLI + Web 面板：agent 模式、自定义 YAML、LLM judge、100+ litellm 模型。 |
 
 ### 开源贡献
 
@@ -235,15 +225,16 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
-| [vLLM](https://github.com/vllm-project/vllm) (81.8k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | 修复 V1 ubatch wrapper 不支持 tuple model outputs：DBO / speculative decoding 不再因 tuple 返回值崩溃 |
-| [vLLM](https://github.com/vllm-project/vllm) (81.8k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | 先按 JSON 解析 Qwen3 XML tool-call 参数，让 `null` / `false` 等 JSON literal 在 streaming tool parser 中稳定保留 |
-| [vLLM](https://github.com/vllm-project/vllm) (81.8k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | 修复 RoBERTa position_ids 原地累积溢出：BGE-M3 约 4000 请求后 CUDA graph padding crash |
-| [vLLM](https://github.com/vllm-project/vllm) (81.8k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | 修复 Responses API 的 `instructions` 通过 `previous_response_id` 链泄漏到后续轮次 |
-| [vLLM](https://github.com/vllm-project/vllm) (81.8k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | 修复 weight offloading 忽略 `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` 环境变量 |
-| [vLLM](https://github.com/vllm-project/vllm) (81.8k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | 修复 base64 JPEG 视频帧返回空 metadata：补充帧数、fps、时长 |
-| [vLLM](https://github.com/vllm-project/vllm) (81.8k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | 修复 bench_serve 流式响应拆分多字节 UTF-8 字符导致 decode 崩溃 |
-| [vLLM](https://github.com/vllm-project/vllm) (81.8k★) | [#40749](https://github.com/vllm-project/vllm/pull/40749) | 补充独立复现证据，帮助确认 async PP last-rank sampled-token receive assertion 的真实可达路径 |
-| [Transformers](https://github.com/huggingface/transformers) (161k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | 修复 `AutoProcessor.from_pretrained` 静默丢弃 hub kwargs（`revision`、`token` 等） |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | 修复 V1 ubatch wrapper 不支持 tuple model outputs：DBO / speculative decoding 不再因 tuple 返回值崩溃 |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | 先按 JSON 解析 Qwen3 XML tool-call 参数，让 `null` / `false` 等 JSON literal 在 streaming tool parser 中稳定保留 |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | 修复 RoBERTa position_ids 原地累积溢出：BGE-M3 约 4000 请求后 CUDA graph padding crash |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | 修复 Responses API 的 `instructions` 通过 `previous_response_id` 链泄漏到后续轮次 |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | 修复 weight offloading 忽略 `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` 环境变量 |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | 修复 base64 JPEG 视频帧返回空 metadata：补充帧数、fps、时长 |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | 修复 bench_serve 流式响应拆分多字节 UTF-8 字符导致 decode 崩溃 |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#40749](https://github.com/vllm-project/vllm/pull/40749) | 补充独立复现证据，帮助确认 async PP last-rank sampled-token receive assertion 的真实可达路径 |
+| [Transformers](https://github.com/huggingface/transformers) (161.4k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | 修复 `AutoProcessor.from_pretrained` 静默丢弃 hub kwargs（`revision`、`token` 等） |
+| [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.8k★) | [#2564](https://github.com/googleapis/python-genai/pull/2564) | 让 Live Music API key 不再进入 websocket URL query，改由请求 header 承载，避免密钥出现在日志和代理路径里 |
 | [verl](https://github.com/verl-project/verl) (21.8k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | 按 data-parallel 和 tensor-parallel rank 计算 colocated vLLM 权重同步 ZMQ socket rank，避免多个 DP worker 连接到同一 receiver |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1831](https://github.com/kvcache-ai/Mooncake/pull/1831) | TENT NVLink IPC 修复：sub-allocated GPU tensor 使用 base pointer，将 #1622 修复移植到 TENT 路径 |
@@ -268,34 +259,36 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | 目录创建失败时向上传递错误，避免 memory `ensureDir` 静默失败后继续执行 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | 认证配置解析失败时记录日志而非静默吞掉 |
 | [Cline](https://github.com/cline/cline) (62.7k★) | [#11166](https://github.com/cline/cline/pull/11166) | open-tabs host RPC 不可用时仍保持文件搜索可用，并回退到系统 `rg`，避免搜索链路直接失效 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | 保持 assistant tool calls 和 tool results 相邻，避免修复后的消息历史被 OpenAI-compatible provider 拒绝 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | 仓库爬取时递归读取已跟踪 Git submodule，让 coding agent 上下文包含子模块内部文件 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4715](https://github.com/QwenLM/qwen-code/pull/4715) | 让 managed auto-memory 遵守运行时输出目录，同时保留显式 memory 目录覆盖的优先级 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4717](https://github.com/QwenLM/qwen-code/pull/4717) | 将 copy、arena、ACP snapshot 等退出路径的深拷贝改成浅层只读历史访问，同时保留 restore 写回路径的防御性克隆 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4738](https://github.com/QwenLM/qwen-code/pull/4738) | 复制 CLI 可见输出时跳过隐藏 thought 片段，让剪贴板内容和用户实际看到的一致 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4673](https://github.com/QwenLM/qwen-code/pull/4673) | 修复顶层 `--list-extensions` / `-l`：按文档打印扩展列表，并在 sandbox、auth、TUI 启动前退出 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | 修复 IDE proxy 请求：让 `fetch` 和 `EnvHttpProxyAgent` 保持在同一个 bundled `undici` 模块路径上 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4600](https://github.com/QwenLM/qwen-code/pull/4600) | 区分 TUI 中 AUTO 与 AUTO_EDIT approval-mode 指示器：共享样式、本地化 key 和可视化证据一起补齐 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | 强化 context error 文本抽取，让嵌套或非字符串错误 payload 也能暴露有用诊断信息 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | 移除已停用的 Qwen OAuth ACP 登录路径，避免用户被引导到失效认证方式 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | 将用户指定的输出语言同步到 side queries，让辅助回答也遵守主响应的语言约束 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (24.9k★) | [#4635](https://github.com/QwenLM/qwen-code/pull/4635) | 在 CLI todo 视图中隐藏已完成 sticky todos，让持久任务提示只聚焦剩余工作 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | 修复 `background=True` + tools 无限 retrieve loop：清掉已完成的 continuation 状态，让 tool results 正常提交 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5773](https://github.com/microsoft/agent-framework/pull/5773) | 把同步 Python 工具调用移出事件循环执行，避免阻塞型工具冻结并发 agent 任务 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | reasoning payload 被剥离时同步丢弃 hosted MCP tool-call 历史，避免 stateless OpenAI replay 发送孤立 MCP 调用 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#6208](https://github.com/microsoft/agent-framework/pull/6208) | 修复声明式 `Foreach` 对 PowerFx record 行的取值，避免多字段 table row 在循环中被折叠 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5861](https://github.com/microsoft/agent-framework/pull/5861) | 修复 Foundry handoff 参数序列化，delegated agent 调用不再丢失结构化参数 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5974](https://github.com/microsoft/agent-framework/pull/5974) | 让 Foundry agent eval 映射保留工具定义，评测运行能正常调用代码定义的 tools |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5815](https://github.com/microsoft/agent-framework/pull/5815) | 转发 MCP `tools/list` 元数据到 `call_tool` instrumentation，让 trace 保留工具注解 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5801](https://github.com/microsoft/agent-framework/pull/5801) | 按 call id 合并 code interpreter streaming 历史片段，让最终存储的代码和结果完整保留且不重复记录 delta |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5784](https://github.com/microsoft/agent-framework/pull/5784) | 转换历史消息时跳过孤立的 Anthropic thinking signature，避免 replay 时携带无效的 standalone signature |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#6037](https://github.com/microsoft/agent-framework/pull/6037) | 保留 Foundry citation `get_url` 元数据，让检索引用链接经过 response conversion 后仍能出现在 chat response 中 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#6040](https://github.com/microsoft/agent-framework/pull/6040) | 转发 Foundry agent `default_headers` 到 OpenAI client 创建路径，让自定义认证和路由 headers 在 agent 初始化后仍然保留 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5778](https://github.com/microsoft/agent-framework/pull/5778) | 补齐 Magentic protocol 的 chat/reset message 声明，避免 orchestrator 反序列化未知类型失败 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5808](https://github.com/microsoft/agent-framework/pull/5808) | 修复 handoff message role 原地修改：重试复用消息时不再把角色变更泄漏到后续流程 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5800](https://github.com/microsoft/agent-framework/pull/5800) | 修复 AG-UI tool result message id 冲突：provider 省略 update id 时仍能生成独立 fallback id |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5799](https://github.com/microsoft/agent-framework/pull/5799) | 补齐 Handoff workflow 的 name/description 元数据传递，让 builder 和 hosting 注册都能命名工作流 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.0k★) | [#5976](https://github.com/microsoft/agent-framework/pull/5976) | 修复 sequential workflow 示例输出，让非 streaming 结果展示所有参与 agent 的回复 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | 保持 assistant tool calls 和 tool results 相邻，避免修复后的消息历史被 OpenAI-compatible provider 拒绝 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4828](https://github.com/QwenLM/qwen-code/pull/4828) | 认证刷新后保留用户配置的共享 `baseUrl`，避免同模型刷新把 endpoint 回退成 provider 默认值 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | 仓库爬取时递归读取已跟踪 Git submodule，让 coding agent 上下文包含子模块内部文件 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4715](https://github.com/QwenLM/qwen-code/pull/4715) | 让 managed auto-memory 遵守运行时输出目录，同时保留显式 memory 目录覆盖的优先级 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4717](https://github.com/QwenLM/qwen-code/pull/4717) | 将 copy、arena、ACP snapshot 等退出路径的深拷贝改成浅层只读历史访问，同时保留 restore 写回路径的防御性克隆 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4738](https://github.com/QwenLM/qwen-code/pull/4738) | 复制 CLI 可见输出时跳过隐藏 thought 片段，让剪贴板内容和用户实际看到的一致 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4673](https://github.com/QwenLM/qwen-code/pull/4673) | 修复顶层 `--list-extensions` / `-l`：按文档打印扩展列表，并在 sandbox、auth、TUI 启动前退出 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | 修复 IDE proxy 请求：让 `fetch` 和 `EnvHttpProxyAgent` 保持在同一个 bundled `undici` 模块路径上 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4600](https://github.com/QwenLM/qwen-code/pull/4600) | 区分 TUI 中 AUTO 与 AUTO_EDIT approval-mode 指示器：共享样式、本地化 key 和可视化证据一起补齐 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | 强化 context error 文本抽取，让嵌套或非字符串错误 payload 也能暴露有用诊断信息 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | 移除已停用的 Qwen OAuth ACP 登录路径，避免用户被引导到失效认证方式 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | 将用户指定的输出语言同步到 side queries，让辅助回答也遵守主响应的语言约束 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4635](https://github.com/QwenLM/qwen-code/pull/4635) | 在 CLI todo 视图中隐藏已完成 sticky todos，让持久任务提示只聚焦剩余工作 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | 修复 `background=True` + tools 无限 retrieve loop：清掉已完成的 continuation 状态，让 tool results 正常提交 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5773](https://github.com/microsoft/agent-framework/pull/5773) | 把同步 Python 工具调用移出事件循环执行，避免阻塞型工具冻结并发 agent 任务 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | reasoning payload 被剥离时同步丢弃 hosted MCP tool-call 历史，避免 stateless OpenAI replay 发送孤立 MCP 调用 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#6208](https://github.com/microsoft/agent-framework/pull/6208) | 修复声明式 `Foreach` 对 PowerFx record 行的取值，避免多字段 table row 在循环中被折叠 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5904](https://github.com/microsoft/agent-framework/pull/5904) | AG-UI thread id 下继续使用 ChatClientAgent 本地历史 provider，避免把 session history 误判为服务端模型历史 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5861](https://github.com/microsoft/agent-framework/pull/5861) | 修复 Foundry handoff 参数序列化，delegated agent 调用不再丢失结构化参数 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5974](https://github.com/microsoft/agent-framework/pull/5974) | 让 Foundry agent eval 映射保留工具定义，评测运行能正常调用代码定义的 tools |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5815](https://github.com/microsoft/agent-framework/pull/5815) | 转发 MCP `tools/list` 元数据到 `call_tool` instrumentation，让 trace 保留工具注解 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5801](https://github.com/microsoft/agent-framework/pull/5801) | 按 call id 合并 code interpreter streaming 历史片段，让最终存储的代码和结果完整保留且不重复记录 delta |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5784](https://github.com/microsoft/agent-framework/pull/5784) | 转换历史消息时跳过孤立的 Anthropic thinking signature，避免 replay 时携带无效的 standalone signature |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#6037](https://github.com/microsoft/agent-framework/pull/6037) | 保留 Foundry citation `get_url` 元数据，让检索引用链接经过 response conversion 后仍能出现在 chat response 中 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#6040](https://github.com/microsoft/agent-framework/pull/6040) | 转发 Foundry agent `default_headers` 到 OpenAI client 创建路径，让自定义认证和路由 headers 在 agent 初始化后仍然保留 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5778](https://github.com/microsoft/agent-framework/pull/5778) | 补齐 Magentic protocol 的 chat/reset message 声明，避免 orchestrator 反序列化未知类型失败 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5808](https://github.com/microsoft/agent-framework/pull/5808) | 修复 handoff message role 原地修改：重试复用消息时不再把角色变更泄漏到后续流程 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5800](https://github.com/microsoft/agent-framework/pull/5800) | 修复 AG-UI tool result message id 冲突：provider 省略 update id 时仍能生成独立 fallback id |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5799](https://github.com/microsoft/agent-framework/pull/5799) | 补齐 Handoff workflow 的 name/description 元数据传递，让 builder 和 hosting 注册都能命名工作流 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5976](https://github.com/microsoft/agent-framework/pull/5976) | 修复 sequential workflow 示例输出，让非 streaming 结果展示所有参与 agent 的回复 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1732](https://github.com/agentscope-ai/agentscope/pull/1732) | 汇总所有已启用 tool group 的 skills，让 prompt instructions 和 Skill viewer 与当前启用工具保持一致 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1734](https://github.com/agentscope-ai/agentscope/pull/1734) | Redis message list 写入和 streaming replace 时刷新 TTL，让配置的 storage TTL 真正约束聊天历史保留时间 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
@@ -324,10 +317,11 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6551](https://github.com/AstrBotDevs/AstrBot/pull/6551) | 修复空 content 导致 Grok 400：content 为空时设为 None |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6313](https://github.com/AstrBotDevs/AstrBot/pull/6313) | 修复 OpenAI API 返回 `None` choices 导致崩溃 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6527](https://github.com/AstrBotDevs/AstrBot/pull/6527) | 修复 LLM 工具选择：重写模糊的 Upload/Download 描述 |
-| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.0k★) | [#1829](https://github.com/ag-ui-protocol/ag-ui/pull/1829) | LangGraph 流从文本切到 tool call 时先关闭当前文本消息，避免工具调用事件被前一段文本吞掉 |
-| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.0k★) | [#1832](https://github.com/ag-ui-protocol/ag-ui/pull/1832) | LangGraph 转换文本和媒体 block 时保留 AG-UI `InputContent.metadata` |
-| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.0k★) | [#1735](https://github.com/ag-ui-protocol/ag-ui/pull/1735) | 修复 HITL tool call 后 ADK session 可能被旧状态回写的问题 |
-| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.0k★) | [#1769](https://github.com/ag-ui-protocol/ag-ui/pull/1769) | 将 proto generation 从 Unix-only `mkdir -p` 改为跨平台 Node 脚本，兼容 Windows `.CMD` plugin shim |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1828](https://github.com/ag-ui-protocol/ag-ui/pull/1828) | 识别 Strands 私有 `_session_manager`，让 AG-UI history replay 尊重活跃 session，避免重复回放旧轮次 |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1829](https://github.com/ag-ui-protocol/ag-ui/pull/1829) | LangGraph 流从文本切到 tool call 时先关闭当前文本消息，避免工具调用事件被前一段文本吞掉 |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1832](https://github.com/ag-ui-protocol/ag-ui/pull/1832) | LangGraph 转换文本和媒体 block 时保留 AG-UI `InputContent.metadata` |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1735](https://github.com/ag-ui-protocol/ag-ui/pull/1735) | 修复 HITL tool call 后 ADK session 可能被旧状态回写的问题 |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1769](https://github.com/ag-ui-protocol/ag-ui/pull/1769) | 将 proto generation 从 Unix-only `mkdir -p` 改为跨平台 Node 脚本，兼容 Windows `.CMD` plugin shim |
 | [Google ADK](https://github.com/google/adk-python) (20.0k★) | [#5698](https://github.com/google/adk-python/pull/5698) | 让 `final_response_match_v2` 在 criterion 选择开启时把 intermediate responses 纳入最终回答评判 |
 | [Google ADK](https://github.com/google/adk-python) (20.0k★) | [#5918](https://github.com/google/adk-python/pull/5918) | 允许 builder assistant 内部特殊 app name 通过 CLI runner 校验，让 `adk web` 能打开该特殊 agent |
 | [EvalScope](https://github.com/modelscope/evalscope) (2.9k★) | [#1381](https://github.com/modelscope/evalscope/pull/1381) | 读取 SciCode 评测中的 OpenAI-style text content blocks，让 scorer prompt 拿到真实 assistant 答案而不是空字段 |
