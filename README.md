@@ -14,8 +14,8 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | Applied agents | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 225+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
 | Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 160+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, and plain-English explanations. |
 | Codebase maps | [GitSense](https://github.com/he-yufeng/GitSense) | 95+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
-| Coding agents / evals | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | 39+ | Pytest plugin for regression-testing AI agents: snapshot baselines, semantic comparison, and mock LLMs. |
-| Coding agents / evals | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | 20+ | AI coding agent CLI supporting 100+ LLMs via litellm, with dangerous command blocking, parallel tools, and session persistence. |
+| Coding agents / evals | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | new | Pytest plugin for regression-testing AI agents: snapshot baselines, semantic comparison, and mock LLMs. |
+| Coding agents / evals | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | new | AI coding agent CLI supporting 100+ LLMs via litellm, with dangerous command blocking, parallel tools, and session persistence. |
 | Coding agents / evals | [Agent ToolFence](https://github.com/he-yufeng/Agent-ToolFence) | new | Deterministic CI tests for agent tool-call safety: denied tools, confirmations, and high-risk calls after untrusted tool output. |
 | Coding agents / evals | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | new | Turn real GitHub issues and local bugs into small, reproducible coding-agent benchmark tasks with before/after scoring and HTML reports. |
 | Coding agents / evals | [PatchContext](https://github.com/he-yufeng/PatchContext) | new | Generate issue-specific context packs for coding agents from issue text, failure logs, diffs, and lightweight import signals. |
@@ -207,8 +207,8 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | 应用型 Agent | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 225+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化和岗位结构化。 |
 | 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 160+ | AI 合同审查 Agent，签字前帮你找红旗条款、不公平约定和缺失保护。 |
 | 代码库地图 | [GitSense](https://github.com/he-yufeng/GitSense) | 95+ | AI 开源贡献发现器 + 仓库雷达：找匹配 issue，也评估 PR 合入友好度。 |
-| Coding agents / 评测 | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | 39+ | AI Agent 回归测试 pytest 插件：快照基线、语义比较、Mock LLM。 |
-| Coding agents / 评测 | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | 20+ | 终端 AI 编程 Agent，通过 litellm 支持 100+ 大模型，危险命令拦截、并行执行、会话持久化。 |
+| Coding agents / 评测 | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | new | AI Agent 回归测试 pytest 插件：快照基线、语义比较、Mock LLM。 |
+| Coding agents / 评测 | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | new | 终端 AI 编程 Agent，通过 litellm 支持 100+ 大模型，危险命令拦截、并行执行、会话持久化。 |
 | Coding agents / 评测 | [Agent ToolFence](https://github.com/he-yufeng/Agent-ToolFence) | new | AI Agent 工具调用安全回归测试：用确定性 fixture 检查 denied tools、确认门槛和不可信工具输出后的高风险调用。 |
 | Coding agents / 评测 | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | new | 把真实 GitHub issue 和本地 bug 打包成可复现、可评分、可分享的 coding-agent benchmark 任务。 |
 | Coding agents / 评测 | [PatchContext](https://github.com/he-yufeng/PatchContext) | new | 根据 issue、失败日志、diff 和轻量 import 信号，给 coding agent 生成可解释的任务上下文包。 |
