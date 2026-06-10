@@ -34,6 +34,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 |---------|:--:|-------------|
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | Support tuple model outputs in the V1 ubatch wrapper so DBO and speculative decoding stop crashing on tuple-returning models |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Parse Qwen3 XML tool-call parameters as JSON first so `null` / `false` survive streaming tool parsing instead of being rejected by Python literal parsing |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | Prefix DeepSeek V4 MTP projection layers so compressed-tensors can match artifact-side target and ignore rules during draft model loading |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa position_ids in-place accumulation on CUDA graph padding: BGE-M3 crash after ~4000 requests |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Fix Responses API `instructions` leaking across turns via `previous_response_id` chain |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | Fix weight offloading ignoring `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` in prefetch offloader |
@@ -151,6 +152,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (17.5k★) | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) | Accept `providerExecuted` and `title` on Vercel AI dynamic-tool message parts so strict validation preserves provider metadata |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5820](https://github.com/livekit/agents/pull/5820) | Recreate Anthropic streaming requests on retry so transient stream creation failures do not re-await the same coroutine |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5864](https://github.com/livekit/agents/pull/5864) | Surface Soniox STT server errors instead of treating failed streams as empty transcripts |
+| [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5872](https://github.com/livekit/agents/pull/5872) | Map ElevenLabs server-VAD committed transcripts to `END_OF_SPEECH` so realtime turns close without requiring manual empty commits |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5976](https://github.com/livekit/agents/pull/5976) | Preserve request timeouts when callers provide custom Google HTTP options, without mutating the caller-owned options object |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5994](https://github.com/livekit/agents/pull/5994) | Handle OpenAI-compatible realtime status details returned as strings so incomplete responses do not crash logging |
 | [Pipecat](https://github.com/pipecat-ai/pipecat) (12.6k★) | [#4553](https://github.com/pipecat-ai/pipecat/pull/4553) | Serialize interruption frames through protobuf transports so realtime voice-agent interruptions survive transport hops |
@@ -232,6 +234,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 |------|:--:|--------|
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | 修复 V1 ubatch wrapper 不支持 tuple model outputs：DBO / speculative decoding 不再因 tuple 返回值崩溃 |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | 先按 JSON 解析 Qwen3 XML tool-call 参数，让 `null` / `false` 等 JSON literal 在 streaming tool parser 中稳定保留 |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | 给 DeepSeek V4 MTP projection layers 补 prefix，让 compressed-tensors 加载 draft model 时能匹配 artifact 侧 target / ignore 规则 |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | 修复 RoBERTa position_ids 原地累积溢出：BGE-M3 约 4000 请求后 CUDA graph padding crash |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | 修复 Responses API 的 `instructions` 通过 `previous_response_id` 链泄漏到后续轮次 |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | 修复 weight offloading 忽略 `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` 环境变量 |
@@ -349,6 +352,7 @@ Agentic AI Researcher @ [Moonshot AI](https://www.moonshot.cn/) (Kimi) | MS CS @
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (17.5k★) | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) | 兼容 Vercel AI dynamic-tool 消息里的 `providerExecuted` 和 `title` 字段，保留 provider 元数据而不是被严格校验拒绝 |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5820](https://github.com/livekit/agents/pull/5820) | 修复 Anthropic streaming retry：瞬时建流失败后重新创建 stream，不再重复 await 同一个 coroutine |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5864](https://github.com/livekit/agents/pull/5864) | 暴露 Soniox STT server error：流式识别失败时返回明确错误，不再被当成空 transcript |
+| [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5872](https://github.com/livekit/agents/pull/5872) | 将 ElevenLabs server-VAD committed transcript 映射为 `END_OF_SPEECH`，让 realtime turn 不再依赖手动空 commit 才结束 |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5976](https://github.com/livekit/agents/pull/5976) | 调用方传入自定义 Google HTTP options 时仍保留请求 timeout，并避免原地修改调用方对象 |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5994](https://github.com/livekit/agents/pull/5994) | 兼容 OpenAI-compatible realtime 返回字符串 status details，避免 incomplete response 在日志路径崩溃 |
 | [Pipecat](https://github.com/pipecat-ai/pipecat) (12.6k★) | [#4553](https://github.com/pipecat-ai/pipecat/pull/4553) | 修复 protobuf transport 丢失 interruption frame：实时语音 agent 的打断事件跨传输后仍能保留 |
