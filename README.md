@@ -35,6 +35,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | Support tuple model outputs in the V1 ubatch wrapper so DBO and speculative decoding stop crashing on tuple-returning models |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Parse Qwen3 XML tool-call parameters as JSON first so `null` / `false` survive streaming tool parsing instead of being rejected by Python literal parsing |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | Prefix DeepSeek V4 MTP projection layers so compressed-tensors can match artifact-side target and ignore rules during draft model loading |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | Guard flash-attn rotary imports so FA4 environments fall back cleanly when `flash_attn.ops.triton.rotary` is absent |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa position_ids in-place accumulation on CUDA graph padding: BGE-M3 crash after ~4000 requests |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Fix Responses API `instructions` leaking across turns via `previous_response_id` chain |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | Fix weight offloading ignoring `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` in prefetch offloader |
@@ -99,6 +100,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5976](https://github.com/microsoft/agent-framework/pull/5976) | Fix sequential workflow sample output so all participant responses are shown from non-streaming results |
 | [Cline](https://github.com/cline/cline) (62.7k★) | [#11166](https://github.com/cline/cline/pull/11166) | Keep file search alive when the open-tabs host RPC is unavailable, falling back to system ripgrep instead of killing search |
 | [GitHub MCP Server](https://github.com/github/github-mcp-server) (30.4k★) | [#2514](https://github.com/github/github-mcp-server/pull/2514) | Support team reviewers in pull-request review requests by resolving team slugs into GitHub review subjects instead of dropping them |
+| [GitHub MCP Server](https://github.com/github/github-mcp-server) (30.4k★) | [#2612](https://github.com/github/github-mcp-server/pull/2612) | Hide write-side UI resources when the MCP server runs read-only, while keeping safe read-only resources registered |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (4.6k★) | [#962](https://github.com/modelcontextprotocol/go-sdk/pull/962) | Reject duplicate `initialize` requests so MCP sessions keep protocol state consistent after initialization |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (4.6k★) | [#981](https://github.com/modelcontextprotocol/go-sdk/pull/981) | Add `Implementation.description` metadata while keeping empty descriptions out of serialized MCP payloads |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1786](https://github.com/agentscope-ai/agentscope/pull/1786) | Preserve caller-provided Redis session ids on create so later get, update, and list operations address the same session instead of a generated UUID |
@@ -108,6 +110,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1734](https://github.com/agentscope-ai/agentscope/pull/1734) | Expire Redis message lists by refreshing TTL on append and streaming replace writes, so configured storage TTL actually bounds chat history |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
 | [Agno](https://github.com/agno-agi/agno) (40.6k★) | [#8131](https://github.com/agno-agi/agno/pull/8131) | Preserve non-sentinel tool argument whitespace while keeping string-to-None/True/False normalization for exact sentinels |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1890](https://github.com/ag-ui-protocol/ag-ui/pull/1890) | Cache ADK session reads within one execution so remote session services are not fetched repeatedly before each agent run |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1829](https://github.com/ag-ui-protocol/ag-ui/pull/1829) | Close LangGraph text messages before tool-call chunks so text-to-tool transitions keep both message and tool events |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1832](https://github.com/ag-ui-protocol/ag-ui/pull/1832) | Preserve AG-UI input metadata when LangGraph converts text and media blocks into LangChain multimodal content |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1828](https://github.com/ag-ui-protocol/ag-ui/pull/1828) | Detect Strands' private session manager so AG-UI history replay respects active sessions instead of duplicating prior turns |
@@ -175,6 +178,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 |---------|:--:|-------------|
 | [RAGFlow](https://github.com/infiniflow/ragflow) (81.9k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Fall back when Docling native parsing returns no chunks so documents still produce usable content instead of empty parse results |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (81.9k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | Skip empty agent switch conditions so blank branch guards do not crash or block valid downstream agent flows |
+| [RAGFlow](https://github.com/infiniflow/ragflow) (81.9k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | Keep the strongest PageRank score for repeated n-hop GraphRAG edges instead of letting path order overwrite ranking |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.1k★) | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) | Extract Docling async markdown results from the response envelope so RAG chunks contain clean document text |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.2k★) | [#3206](https://github.com/HKUDS/LightRAG/pull/3206) | Honor PostgreSQL `search_path` in table-existence checks so non-public schemas are detected before migrations or table creation |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.1k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | Fix `None` file_path propagating as `unknown_source`: fill gaps left by #2793 |
@@ -235,6 +239,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | 修复 V1 ubatch wrapper 不支持 tuple model outputs：DBO / speculative decoding 不再因 tuple 返回值崩溃 |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | 先按 JSON 解析 Qwen3 XML tool-call 参数，让 `null` / `false` 等 JSON literal 在 streaming tool parser 中稳定保留 |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | 给 DeepSeek V4 MTP projection layers 补 prefix，让 compressed-tensors 加载 draft model 时能匹配 artifact 侧 target / ignore 规则 |
+| [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | 保护 flash-attn rotary 导入路径，让 FA4 环境缺少 `flash_attn.ops.triton.rotary` 时稳定回退而不是构造 rotary 层时崩溃 |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | 修复 RoBERTa position_ids 原地累积溢出：BGE-M3 约 4000 请求后 CUDA graph padding crash |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | 修复 Responses API 的 `instructions` 通过 `previous_response_id` 链泄漏到后续轮次 |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | 修复 weight offloading 忽略 `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` 环境变量 |
@@ -299,6 +304,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (11.2k★) | [#5976](https://github.com/microsoft/agent-framework/pull/5976) | 修复 sequential workflow 示例输出，让非 streaming 结果展示所有参与 agent 的回复 |
 | [Cline](https://github.com/cline/cline) (62.7k★) | [#11166](https://github.com/cline/cline/pull/11166) | open-tabs host RPC 不可用时仍保持文件搜索可用，并回退到系统 `rg`，避免搜索链路直接失效 |
 | [GitHub MCP Server](https://github.com/github/github-mcp-server) (30.4k★) | [#2514](https://github.com/github/github-mcp-server/pull/2514) | 支持 PR review 请求里的 team reviewer，把 team slug 解析为 GitHub review subject，不再丢失团队 reviewer |
+| [GitHub MCP Server](https://github.com/github/github-mcp-server) (30.4k★) | [#2612](https://github.com/github/github-mcp-server/pull/2612) | read-only 模式下隐藏会写入 GitHub 的 UI resources，同时保留安全的只读资源注册 |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (4.6k★) | [#962](https://github.com/modelcontextprotocol/go-sdk/pull/962) | 拒绝重复 `initialize` 请求，让 MCP session 初始化后的协议状态保持一致 |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (4.6k★) | [#981](https://github.com/modelcontextprotocol/go-sdk/pull/981) | 补齐 `Implementation.description` 元数据，同时让空描述继续不进入序列化后的 MCP payload |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1786](https://github.com/agentscope-ai/agentscope/pull/1786) | 创建 Redis session 时保留调用方提供的 session id，让后续 get、update 和 list 操作继续命中同一 session，而不是生成的新 UUID |
@@ -308,6 +314,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1734](https://github.com/agentscope-ai/agentscope/pull/1734) | Redis message list 写入和 streaming replace 时刷新 TTL，让配置的 storage TTL 真正约束聊天历史保留时间 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
 | [Agno](https://github.com/agno-agi/agno) (40.6k★) | [#8131](https://github.com/agno-agi/agno/pull/8131) | 保留非哨兵工具参数字符串里的空白，同时继续只对精确的 None / True / False 哨兵做归一化 |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1890](https://github.com/ag-ui-protocol/ag-ui/pull/1890) | 在一次 ADK execution 内缓存 session 读取，避免远端 session service 在 agent 运行前被重复拉取完整历史 |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1829](https://github.com/ag-ui-protocol/ag-ui/pull/1829) | LangGraph 流从文本切到 tool call 时先关闭当前文本消息，避免工具调用事件被前一段文本吞掉 |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1832](https://github.com/ag-ui-protocol/ag-ui/pull/1832) | LangGraph 转换文本和媒体 block 时保留 AG-UI `InputContent.metadata` |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1828](https://github.com/ag-ui-protocol/ag-ui/pull/1828) | 识别 Strands 私有 `_session_manager`，让 AG-UI history replay 尊重活跃 session，避免重复回放旧轮次 |
@@ -375,6 +382,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 |------|:--:|--------|
 | [RAGFlow](https://github.com/infiniflow/ragflow) (81.9k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Docling native 解析没有产出 chunks 时自动降级，避免文档解析结果变成空内容 |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (81.9k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | 跳过空的 agent switch 条件，避免空分支判断让有效后续 agent 流程崩溃或卡住 |
+| [RAGFlow](https://github.com/infiniflow/ragflow) (81.9k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | repeated n-hop GraphRAG edges 保留最强 PageRank 分数，避免路径顺序覆盖排序结果 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.1k★) | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) | 从 Docling 异步结果 envelope 中抽取 Markdown 正文，避免 RAG chunk 混入 JSON/base64 噪声 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.2k★) | [#3206](https://github.com/HKUDS/LightRAG/pull/3206) | 让 PostgreSQL 表存在性检查尊重当前 `search_path`，避免非 public schema 下迁移或建表判断失真 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.1k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | 修复 `None` file_path 传播为 `unknown_source`：补 #2793 遗漏的处理层 |
