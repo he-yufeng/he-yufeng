@@ -1,6 +1,6 @@
 ## Hey, I'm Yufeng He 👋
 
-AI Agents & LLM Systems Research Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
+AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
 - 140+ merged upstream PRs, including fixes in vLLM, Qwen Code, Google Gen AI SDK, Cline, AgentScope, GitHub MCP Server, Hugging Face Transformers, Microsoft Agent Framework, AG-UI, AstrBot, Mooncake, Inspect AI, LiteLLM, and Triton.
 - Selected public projects led by CoreCoder, RepoWiki, FindJobs-Agent, ContractGuard, GitSense, AgentProbe, Agent ToolFence, IssueBenchKit, PatchContext, ActionRepro, MCPReplay, and FlightBox.
