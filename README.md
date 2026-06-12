@@ -50,6 +50,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang: skip redundant handshake for fabric-connected nodes |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | Make duplicate `rpc_meta` re-publish idempotent when the HTTP metadata body is unchanged, while still rejecting changed values |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#2402](https://github.com/kvcache-ai/Mooncake/pull/2402) | Reject failed Python buddy-allocator backing buffers instead of inserting null raw buffers into managed slabs |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | Clean up failed io_uring sub-batch initialization so partially prepared transfer batches do not leak failed state into later setup |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1825](https://github.com/kvcache-ai/Mooncake/pull/1825) | Fix `P2PClientService::Put` silently swallowing write errors: propagate actual error codes for non-idempotent failures |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1626](https://github.com/kvcache-ai/Mooncake/pull/1626) | Silenced error log spam for non-memory replicas in metadata store |
 | [Triton](https://github.com/triton-lang/triton) (19.3k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | Fix AxisInfo correctness: signed constants, unknown shift divisibility, and shift UB guards |
@@ -70,7 +71,9 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | Log auth profile resolution failures instead of swallowing silently |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | Keep assistant tool calls adjacent to their tool results so OpenAI-compatible providers stop rejecting repaired message histories |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | Recurse into tracked Git submodules during repository crawling so coding-agent context includes files inside submodules |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4970](https://github.com/QwenLM/qwen-code/pull/4970) | Stabilize truncated tool retry keys so repaired tool calls keep deterministic retry identity instead of drifting across retries |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4828](https://github.com/QwenLM/qwen-code/pull/4828) | Preserve a user-provided shared `baseUrl` after auth refresh so same-model refreshes do not fall back to a provider default endpoint |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | Time out Qwen OAuth refresh requests so auth recovery does not hang the CLI indefinitely on a stalled refresh endpoint |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4717](https://github.com/QwenLM/qwen-code/pull/4717) | Replace exit-time deep history clones with shallow read paths across copy, arena, and ACP snapshot flows while keeping restore-time cloning defensive |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | Fix IDE proxy requests by keeping `fetch` and `EnvHttpProxyAgent` on the same bundled `undici` module path |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4715](https://github.com/QwenLM/qwen-code/pull/4715) | Honor the configured runtime output directory for managed auto-memory while preserving the explicit memory-directory override |
@@ -106,6 +109,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1786](https://github.com/agentscope-ai/agentscope/pull/1786) | Preserve caller-provided Redis session ids on create so later get, update, and list operations address the same session instead of a generated UUID |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1823](https://github.com/agentscope-ai/agentscope/pull/1823) | Add workspace roots to permission context so chat runs authorize files against the actual agent-visible workspace |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1822](https://github.com/agentscope-ai/agentscope/pull/1822) | Add a cwd option to the built-in Bash tool so shell commands can run in the intended workspace directory |
+| [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) | Inherit leader permission rules in team runs so delegated agents keep the same workspace and file access constraints as the leader |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1732](https://github.com/agentscope-ai/agentscope/pull/1732) | Include skills from every active tool group so prompt instructions and the Skill viewer stay aligned with enabled tools |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1734](https://github.com/agentscope-ai/agentscope/pull/1734) | Expire Redis message lists by refreshing TTL on append and streaming replace writes, so configured storage TTL actually bounds chat history |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
@@ -189,6 +193,8 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13261](https://github.com/Arize-ai/phoenix/pull/13261) | Refresh span annotation notes after create so the UI shows newly added notes without a manual reload |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13614](https://github.com/Arize-ai/phoenix/pull/13614) | Refresh the prompts table while users stay on the page so newly created or updated prompts appear without a manual reload |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13636](https://github.com/Arize-ai/phoenix/pull/13636) | Update PXI system prompt guidance to point at the current server-side Jinja templates and capability wiring instead of stale browser-side paths |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13637](https://github.com/Arize-ai/phoenix/pull/13637) | Wait for in-memory SQLite schema initialization before serving Phoenix so startup races do not hit missing tables |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13653](https://github.com/Arize-ai/phoenix/pull/13653) | Focus the PXI input when the agent panel opens so keyboard-first agent workflows can start without an extra click |
 | [Graphiti](https://github.com/getzep/graphiti) (27.0k★) | [#1531](https://github.com/getzep/graphiti/pull/1531) | Strip embedded NUL bytes from FalkorDB query parameters so one malformed document string cannot crash bulk graph writes |
 
 #### Recommender systems
@@ -254,6 +260,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang：跳过 fabric 连接节点的冗余握手 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | 让 HTTP metadata server 对相同 `rpc_meta` 重复发布保持幂等，同时继续拒绝内容变化的重复写入 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#2402](https://github.com/kvcache-ai/Mooncake/pull/2402) | Python buddy allocator backing buffer 分配失败时直接拒绝，避免把 null raw buffer 放进 managed slab |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | 清理失败的 io_uring sub-batch 初始化状态，避免部分初始化失败的 transfer batch 把坏状态带入后续 setup |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1825](https://github.com/kvcache-ai/Mooncake/pull/1825) | 修复 `P2PClientService::Put` 静默吞掉写入错误：传播实际错误码给调用方 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1626](https://github.com/kvcache-ai/Mooncake/pull/1626) | 修复非内存副本的错误日志刷屏 |
 | [Triton](https://github.com/triton-lang/triton) (19.3k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | 修复 AxisInfo 正确性：有符号常量、未知 shift 和 shift UB 都保守处理 |
@@ -274,7 +281,9 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | 认证配置解析失败时记录日志而非静默吞掉 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | 保持 assistant tool calls 和 tool results 相邻，避免修复后的消息历史被 OpenAI-compatible provider 拒绝 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | 仓库爬取时递归读取已跟踪 Git submodule，让 coding agent 上下文包含子模块内部文件 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4970](https://github.com/QwenLM/qwen-code/pull/4970) | 稳定 truncated tool retry key，让修复后的 tool call 在重试时保持确定性身份，不再因 key 漂移重复或错配 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4828](https://github.com/QwenLM/qwen-code/pull/4828) | 认证刷新后保留用户配置的共享 `baseUrl`，避免同模型刷新把 endpoint 回退成 provider 默认值 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | 给 Qwen OAuth refresh 增加超时，避免刷新端点卡住时 CLI 一直挂在认证恢复路径 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4717](https://github.com/QwenLM/qwen-code/pull/4717) | 将 copy、arena、ACP snapshot 等退出路径的深拷贝改成浅层只读历史访问，同时保留 restore 写回路径的防御性克隆 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | 修复 IDE proxy 请求：让 `fetch` 和 `EnvHttpProxyAgent` 保持在同一个 bundled `undici` 模块路径上 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4715](https://github.com/QwenLM/qwen-code/pull/4715) | 让 managed auto-memory 遵守运行时输出目录，同时保留显式 memory 目录覆盖的优先级 |
@@ -310,6 +319,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1786](https://github.com/agentscope-ai/agentscope/pull/1786) | 创建 Redis session 时保留调用方提供的 session id，让后续 get、update 和 list 操作继续命中同一 session，而不是生成的新 UUID |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1823](https://github.com/agentscope-ai/agentscope/pull/1823) | 把 workspace root 加入 permission context，让 chat run 按 agent 实际可见的 workspace 做文件授权 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1822](https://github.com/agentscope-ai/agentscope/pull/1822) | 给内置 Bash tool 增加 cwd 选项，让 shell 命令能在指定 workspace 目录执行 |
+| [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) | team run 中继承 leader permission rules，让 delegated agents 继续遵守同一套 workspace / file access 约束 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1732](https://github.com/agentscope-ai/agentscope/pull/1732) | 汇总所有已启用 tool group 的 skills，让 prompt instructions 和 Skill viewer 与当前启用工具保持一致 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1734](https://github.com/agentscope-ai/agentscope/pull/1734) | Redis message list 写入和 streaming replace 时刷新 TTL，让配置的 storage TTL 真正约束聊天历史保留时间 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
@@ -393,6 +403,8 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13261](https://github.com/Arize-ai/phoenix/pull/13261) | 修复 span annotation note 新建后的刷新问题：创建成功后立即重新拉取列表，前端不再需要手动刷新才能看到新 note |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13614](https://github.com/Arize-ai/phoenix/pull/13614) | 修复 Prompts 表格停留页面时不会自动刷新的问题：新建或更新的 prompt 不再需要手动刷新才能出现 |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13636](https://github.com/Arize-ai/phoenix/pull/13636) | 更新 PXI system prompt 指南，指向当前 server-side Jinja 模板和 capability wiring，不再引用过期的 browser-side 路径 |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13637](https://github.com/Arize-ai/phoenix/pull/13637) | 等待 in-memory SQLite schema 初始化完成再服务 Phoenix，避免启动竞态导致 missing table |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13653](https://github.com/Arize-ai/phoenix/pull/13653) | PXI agent 面板打开时自动聚焦输入框，让键盘优先的 agent workflow 不再多一次点击 |
 | [Graphiti](https://github.com/getzep/graphiti) (27.0k★) | [#1531](https://github.com/getzep/graphiti/pull/1531) | 递归清理 FalkorDB 查询参数里的 NUL 字节，避免单个异常文档字符串打断批量图写入 |
 
 #### 推荐系统
