@@ -70,6 +70,11 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | Propagate memory directory creation failures instead of continuing after a failed `ensureDir` |
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | Log auth profile resolution failures instead of swallowing silently |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | Keep assistant tool calls adjacent to their tool results so OpenAI-compatible providers stop rejecting repaired message histories |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | Avoid stale tool-schema recall so memory warnings do not reintroduce outdated tool names into later planning turns |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5043](https://github.com/QwenLM/qwen-code/pull/5043) | Let grep results satisfy prior-read checks so file edits can proceed after verified search context instead of forcing redundant reads |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5061](https://github.com/QwenLM/qwen-code/pull/5061) | Preserve background-agent launch flags so delegated CLI runs keep the intended execution mode |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5077](https://github.com/QwenLM/qwen-code/pull/5077) | Show the full plan when permission gates fail so users can inspect blocked agent intent instead of losing the generated plan |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4963](https://github.com/QwenLM/qwen-code/pull/4963) | Enable fork subagents by default so delegated work can run in isolated branches without manual opt-in |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | Recurse into tracked Git submodules during repository crawling so coding-agent context includes files inside submodules |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4970](https://github.com/QwenLM/qwen-code/pull/4970) | Stabilize truncated tool retry keys so repaired tool calls keep deterministic retry identity instead of drifting across retries |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4828](https://github.com/QwenLM/qwen-code/pull/4828) | Preserve a user-provided shared `baseUrl` after auth refresh so same-model refreshes do not fall back to a provider default endpoint |
@@ -122,6 +127,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
 | [Agno](https://github.com/agno-agi/agno) (40.6k★) | [#8131](https://github.com/agno-agi/agno/pull/8131) | Preserve non-sentinel tool argument whitespace while keeping string-to-None/True/False normalization for exact sentinels |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1890](https://github.com/ag-ui-protocol/ag-ui/pull/1890) | Cache ADK session reads within one execution so remote session services are not fetched repeatedly before each agent run |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1889](https://github.com/ag-ui-protocol/ag-ui/pull/1889) | Collect output-schema agents when building ADK workflow graphs so structured-output agent nodes are not dropped |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1826](https://github.com/ag-ui-protocol/ag-ui/pull/1826) | Forward LangGraph runtime context through tool kwargs so graph tools keep caller-supplied execution context |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1829](https://github.com/ag-ui-protocol/ag-ui/pull/1829) | Close LangGraph text messages before tool-call chunks so text-to-tool transitions keep both message and tool events |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1832](https://github.com/ag-ui-protocol/ag-ui/pull/1832) | Preserve AG-UI input metadata when LangGraph converts text and media blocks into LangChain multimodal content |
@@ -138,6 +144,9 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.2k★) | [#3895](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3895) | Honor `COLUMNS` for `TERM=dumb`: log output no longer hard-wraps at Rich's default 80 columns |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.2k★) | [#4090](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4090) | Clarify model-graded history prompts so `include_history=True` and final-answer placement match the actual scorer behavior |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6596](https://github.com/AstrBotDevs/AstrBot/pull/6596) | Multimodal token counting: images, audio, chain-of-thought were invisible to context compression |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8736](https://github.com/AstrBotDevs/AstrBot/pull/8736) | Preserve embedding API version suffixes so versioned provider endpoints do not get normalized into the wrong path |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8750](https://github.com/AstrBotDevs/AstrBot/pull/8750) | Resolve changelog anchor links so dashboard release notes navigate to the intended section instead of broken anchors |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8718](https://github.com/AstrBotDevs/AstrBot/pull/8718) | Avoid duplicate quoted image captions when multimodal replies include both quoted text and image metadata |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8089](https://github.com/AstrBotDevs/AstrBot/pull/8089) | Route image requests to a vision-capable fallback provider when the primary provider cannot accept image input |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) | Apply empty-assistant message filter to streaming OpenAI path: strict providers no longer 400 on reasoning-only turns |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8195](https://github.com/AstrBotDevs/AstrBot/pull/8195) | Skip empty LLM summaries so context compression keeps the original history instead of inserting blank placeholders |
@@ -165,6 +174,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Google ADK](https://github.com/google/adk-python) (20.0k★) | [#5698](https://github.com/google/adk-python/pull/5698) | Include intermediate responses in `final_response_match_v2` judging when the criterion opts in |
 | [Google ADK](https://github.com/google/adk-python) (20.0k★) | [#5918](https://github.com/google/adk-python/pull/5918) | Allow the builder assistant's internal app name through CLI runner validation so `adk web` can open the special agent |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (17.5k★) | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) | Accept `providerExecuted` and `title` on Vercel AI dynamic-tool message parts so strict validation preserves provider metadata |
+| [Pydantic AI](https://github.com/pydantic/pydantic-ai) (17.5k★) | [#5694](https://github.com/pydantic/pydantic-ai/pull/5694) | Fix `MCPToolset(http_client=...)` with FastMCP by keeping `follow_redirects` out of caller-provided HTTP client factories |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5820](https://github.com/livekit/agents/pull/5820) | Recreate Anthropic streaming requests on retry so transient stream creation failures do not re-await the same coroutine |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5864](https://github.com/livekit/agents/pull/5864) | Surface Soniox STT server errors instead of treating failed streams as empty transcripts |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5872](https://github.com/livekit/agents/pull/5872) | Map ElevenLabs server-VAD committed transcripts to `END_OF_SPEECH` so realtime turns close without requiring manual empty commits |
@@ -196,6 +206,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.1k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | Fix `None` file_path propagating as `unknown_source`: fill gaps left by #2793 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.1k★) | [#3123](https://github.com/HKUDS/LightRAG/pull/3123) | Sync API documentation colors with the dark theme so endpoint examples stay readable in dark mode |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13245](https://github.com/Arize-ai/phoenix/pull/13245) | Keep the generative model fetch cursor monotonic so lower-id updates cannot make later polling skip newer model changes |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) | Expire prompt tool diffs on provider change so PXI prompt editing does not carry stale tool-change state across providers |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13210](https://github.com/Arize-ai/phoenix/pull/13210) | Return NotFound-style errors for invalid GraphQL node ids instead of leaking decoder failures to clients |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13139](https://github.com/Arize-ai/phoenix/pull/13139) | Surface playground validation errors instead of returning empty subscription payloads |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13261](https://github.com/Arize-ai/phoenix/pull/13261) | Refresh span annotation notes after create so the UI shows newly added notes without a manual reload |
@@ -289,6 +300,11 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | 目录创建失败时向上传递错误，避免 memory `ensureDir` 静默失败后继续执行 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | 认证配置解析失败时记录日志而非静默吞掉 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | 保持 assistant tool calls 和 tool results 相邻，避免修复后的消息历史被 OpenAI-compatible provider 拒绝 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | 避免 stale tool schema recall，让 memory warning 不再把过期工具名带回后续规划轮次 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5043](https://github.com/QwenLM/qwen-code/pull/5043) | 让 grep 结果满足 prior-read 检查，已验证的搜索上下文不再被迫重复读取文件 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5061](https://github.com/QwenLM/qwen-code/pull/5061) | 保留 background agent 启动参数，让 delegated CLI run 继续使用用户指定的执行模式 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5077](https://github.com/QwenLM/qwen-code/pull/5077) | permission gate 失败时展示完整计划，让用户能检查被拦截的 agent 意图 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4963](https://github.com/QwenLM/qwen-code/pull/4963) | 默认启用 fork subagents，让 delegated work 能在隔离分支中运行而不用手动开启 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | 仓库爬取时递归读取已跟踪 Git submodule，让 coding agent 上下文包含子模块内部文件 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4970](https://github.com/QwenLM/qwen-code/pull/4970) | 稳定 truncated tool retry key，让修复后的 tool call 在重试时保持确定性身份，不再因 key 漂移重复或错配 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4828](https://github.com/QwenLM/qwen-code/pull/4828) | 认证刷新后保留用户配置的共享 `baseUrl`，避免同模型刷新把 endpoint 回退成 provider 默认值 |
@@ -341,6 +357,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (26.0k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
 | [Agno](https://github.com/agno-agi/agno) (40.6k★) | [#8131](https://github.com/agno-agi/agno/pull/8131) | 保留非哨兵工具参数字符串里的空白，同时继续只对精确的 None / True / False 哨兵做归一化 |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1890](https://github.com/ag-ui-protocol/ag-ui/pull/1890) | 在一次 ADK execution 内缓存 session 读取，避免远端 session service 在 agent 运行前被重复拉取完整历史 |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1889](https://github.com/ag-ui-protocol/ag-ui/pull/1889) | 构建 ADK workflow graph 时收集 output_schema agents，避免结构化输出 agent 节点被遗漏 |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1826](https://github.com/ag-ui-protocol/ag-ui/pull/1826) | 将 LangGraph runtime context 透传到 tool kwargs，让 graph tools 保留调用方传入的执行上下文 |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1829](https://github.com/ag-ui-protocol/ag-ui/pull/1829) | LangGraph 流从文本切到 tool call 时先关闭当前文本消息，避免工具调用事件被前一段文本吞掉 |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.2k★) | [#1832](https://github.com/ag-ui-protocol/ag-ui/pull/1832) | LangGraph 转换文本和媒体 block 时保留 AG-UI `InputContent.metadata` |
@@ -357,6 +374,9 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.2k★) | [#3895](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3895) | 修复 `TERM=dumb` 下终端宽度：尊重 `COLUMNS`，日志输出不再固定按 Rich 默认 80 列硬换行 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.2k★) | [#4090](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4090) | 澄清 model-graded history prompt：`include_history=True` 和最终答案字段的位置与实际 scorer 行为保持一致 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6596](https://github.com/AstrBotDevs/AstrBot/pull/6596) | 多模态 token 计数：图片/音频/思考链对 context 压缩不可见的问题 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8736](https://github.com/AstrBotDevs/AstrBot/pull/8736) | 保留 embedding API version suffix，避免带版本的 provider endpoint 被归一化成错误路径 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8750](https://github.com/AstrBotDevs/AstrBot/pull/8750) | 修复 changelog anchor 链接，dashboard release notes 能跳转到正确小节 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8718](https://github.com/AstrBotDevs/AstrBot/pull/8718) | 避免多模态回复在引用文本和图片 metadata 同时存在时重复显示 quoted image caption |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8089](https://github.com/AstrBotDevs/AstrBot/pull/8089) | 图片请求在主 provider 不支持视觉输入时自动切到 vision fallback provider |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) | 修复 OpenAI streaming 路径复用 empty-assistant 过滤：reasoning-only 历史不再让严格 provider 返回 400 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8195](https://github.com/AstrBotDevs/AstrBot/pull/8195) | 修复空 LLM summary：压缩器在模型返回空摘要时保留原始历史，不再插入空 summary 占位 |
@@ -384,6 +404,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Google ADK](https://github.com/google/adk-python) (20.0k★) | [#5698](https://github.com/google/adk-python/pull/5698) | 让 `final_response_match_v2` 在 criterion 选择开启时把 intermediate responses 纳入最终回答评判 |
 | [Google ADK](https://github.com/google/adk-python) (20.0k★) | [#5918](https://github.com/google/adk-python/pull/5918) | 允许 builder assistant 内部特殊 app name 通过 CLI runner 校验，让 `adk web` 能打开该特殊 agent |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (17.5k★) | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) | 兼容 Vercel AI dynamic-tool 消息里的 `providerExecuted` 和 `title` 字段，保留 provider 元数据而不是被严格校验拒绝 |
+| [Pydantic AI](https://github.com/pydantic/pydantic-ai) (17.5k★) | [#5694](https://github.com/pydantic/pydantic-ai/pull/5694) | 修复 `MCPToolset(http_client=...)` 与 FastMCP 的兼容问题，避免把 `follow_redirects` 泄漏给调用方提供的 HTTP client factory |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5820](https://github.com/livekit/agents/pull/5820) | 修复 Anthropic streaming retry：瞬时建流失败后重新创建 stream，不再重复 await 同一个 coroutine |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5864](https://github.com/livekit/agents/pull/5864) | 暴露 Soniox STT server error：流式识别失败时返回明确错误，不再被当成空 transcript |
 | [LiveKit Agents](https://github.com/livekit/agents) (10.8k★) | [#5872](https://github.com/livekit/agents/pull/5872) | 将 ElevenLabs server-VAD committed transcript 映射为 `END_OF_SPEECH`，让 realtime turn 不再依赖手动空 commit 才结束 |
@@ -415,6 +436,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.1k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | 修复 `None` file_path 传播为 `unknown_source`：补 #2793 遗漏的处理层 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.1k★) | [#3123](https://github.com/HKUDS/LightRAG/pull/3123) | 同步 API 文档暗色主题配色，避免 endpoint 示例在 dark mode 下变得不可读 |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13245](https://github.com/Arize-ai/phoenix/pull/13245) | 修复 generative model fetch 游标回退：低 id 更新不会让后续轮询跳过更新的模型变更 |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) | provider 变化时让 prompt tool diff 过期，避免 PXI prompt 编辑跨 provider 携带旧工具差异状态 |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13210](https://github.com/Arize-ai/phoenix/pull/13210) | 修复非法 GraphQL node id 的错误处理：返回 NotFound 风格错误，而不是把 decoder failure 泄漏给客户端 |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13139](https://github.com/Arize-ai/phoenix/pull/13139) | 修复 Playground 校验错误被吞掉的问题：失败时返回明确错误，而不是空 subscription payload |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.0k★) | [#13261](https://github.com/Arize-ai/phoenix/pull/13261) | 修复 span annotation note 新建后的刷新问题：创建成功后立即重新拉取列表，前端不再需要手动刷新才能看到新 note |
