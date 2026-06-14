@@ -70,6 +70,9 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | Propagate memory directory creation failures instead of continuing after a failed `ensureDir` |
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | Log auth profile resolution failures instead of swallowing silently |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | Keep assistant tool calls adjacent to their tool results so OpenAI-compatible providers stop rejecting repaired message histories |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5020](https://github.com/QwenLM/qwen-code/pull/5020) | Drop tool calls after cancellation so aborted turns do not leak stale tool requests into the next provider payload |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5071](https://github.com/QwenLM/qwen-code/pull/5071) | Submit fast tool results after stream end so completed calls do not get stranded by a race at the end of model streaming |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5070](https://github.com/QwenLM/qwen-code/pull/5070) | Ignore expired live agents in focus navigation so stale background-agent rows cannot steal keyboard focus |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | Avoid stale tool-schema recall so memory warnings do not reintroduce outdated tool names into later planning turns |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5043](https://github.com/QwenLM/qwen-code/pull/5043) | Let grep results satisfy prior-read checks so file edits can proceed after verified search context instead of forcing redundant reads |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5061](https://github.com/QwenLM/qwen-code/pull/5061) | Preserve background-agent launch flags so delegated CLI runs keep the intended execution mode |
@@ -144,6 +147,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.2k★) | [#3895](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3895) | Honor `COLUMNS` for `TERM=dumb`: log output no longer hard-wraps at Rich's default 80 columns |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.2k★) | [#4090](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4090) | Clarify model-graded history prompts so `include_history=True` and final-answer placement match the actual scorer behavior |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6596](https://github.com/AstrBotDevs/AstrBot/pull/6596) | Multimodal token counting: images, audio, chain-of-thought were invisible to context compression |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8768](https://github.com/AstrBotDevs/AstrBot/pull/8768) | Sanitize Lark platform id suffixes so invisible whitespace in configured ids does not break platform matching |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8736](https://github.com/AstrBotDevs/AstrBot/pull/8736) | Preserve embedding API version suffixes so versioned provider endpoints do not get normalized into the wrong path |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8750](https://github.com/AstrBotDevs/AstrBot/pull/8750) | Resolve changelog anchor links so dashboard release notes navigate to the intended section instead of broken anchors |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8718](https://github.com/AstrBotDevs/AstrBot/pull/8718) | Avoid duplicate quoted image captions when multimodal replies include both quoted text and image metadata |
@@ -300,6 +304,9 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | 目录创建失败时向上传递错误，避免 memory `ensureDir` 静默失败后继续执行 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | 认证配置解析失败时记录日志而非静默吞掉 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | 保持 assistant tool calls 和 tool results 相邻，避免修复后的消息历史被 OpenAI-compatible provider 拒绝 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5020](https://github.com/QwenLM/qwen-code/pull/5020) | 取消请求后丢弃残留 tool calls，避免中止轮次把过期工具调用泄漏到下一次 provider payload |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5071](https://github.com/QwenLM/qwen-code/pull/5071) | 流式输出结束后仍提交已完成的快速 tool results，避免模型流尾部竞态把工具结果留在本地队列 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5070](https://github.com/QwenLM/qwen-code/pull/5070) | 焦点导航时忽略已过期 live agents，避免 stale background-agent 行抢走键盘焦点 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | 避免 stale tool schema recall，让 memory warning 不再把过期工具名带回后续规划轮次 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5043](https://github.com/QwenLM/qwen-code/pull/5043) | 让 grep 结果满足 prior-read 检查，已验证的搜索上下文不再被迫重复读取文件 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5061](https://github.com/QwenLM/qwen-code/pull/5061) | 保留 background agent 启动参数，让 delegated CLI run 继续使用用户指定的执行模式 |
@@ -374,6 +381,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.2k★) | [#3895](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3895) | 修复 `TERM=dumb` 下终端宽度：尊重 `COLUMNS`，日志输出不再固定按 Rich 默认 80 列硬换行 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.2k★) | [#4090](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4090) | 澄清 model-graded history prompt：`include_history=True` 和最终答案字段的位置与实际 scorer 行为保持一致 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#6596](https://github.com/AstrBotDevs/AstrBot/pull/6596) | 多模态 token 计数：图片/音频/思考链对 context 压缩不可见的问题 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8768](https://github.com/AstrBotDevs/AstrBot/pull/8768) | 清理 Lark platform id 后缀中的不可见空白，避免配置里的尾部空格破坏平台匹配 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8736](https://github.com/AstrBotDevs/AstrBot/pull/8736) | 保留 embedding API version suffix，避免带版本的 provider endpoint 被归一化成错误路径 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8750](https://github.com/AstrBotDevs/AstrBot/pull/8750) | 修复 changelog anchor 链接，dashboard release notes 能跳转到正确小节 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (33.7k★) | [#8718](https://github.com/AstrBotDevs/AstrBot/pull/8718) | 避免多模态回复在引用文本和图片 metadata 同时存在时重复显示 quoted image caption |
