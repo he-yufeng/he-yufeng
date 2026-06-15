@@ -71,6 +71,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | Log auth profile resolution failures instead of swallowing silently |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | Keep assistant tool calls adjacent to their tool results so OpenAI-compatible providers stop rejecting repaired message histories |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5020](https://github.com/QwenLM/qwen-code/pull/5020) | Drop tool calls after cancellation so aborted turns do not leak stale tool requests into the next provider payload |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5115](https://github.com/QwenLM/qwen-code/pull/5115) | Hide teammate-only agent names when teams are disabled and fall back to one-shot subagents if an old prompt still sends one |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5071](https://github.com/QwenLM/qwen-code/pull/5071) | Submit fast tool results after stream end so completed calls do not get stranded by a race at the end of model streaming |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5070](https://github.com/QwenLM/qwen-code/pull/5070) | Ignore expired live agents in focus navigation so stale background-agent rows cannot steal keyboard focus |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | Avoid stale tool-schema recall so memory warnings do not reintroduce outdated tool names into later planning turns |
@@ -305,6 +306,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | 认证配置解析失败时记录日志而非静默吞掉 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | 保持 assistant tool calls 和 tool results 相邻，避免修复后的消息历史被 OpenAI-compatible provider 拒绝 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5020](https://github.com/QwenLM/qwen-code/pull/5020) | 取消请求后丢弃残留 tool calls，避免中止轮次把过期工具调用泄漏到下一次 provider payload |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5115](https://github.com/QwenLM/qwen-code/pull/5115) | team 功能关闭时隐藏 teammate 专属的 agent 名称参数；旧 prompt 仍传入名称时回退到 one-shot subagent，而不是直接失败 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5071](https://github.com/QwenLM/qwen-code/pull/5071) | 流式输出结束后仍提交已完成的快速 tool results，避免模型流尾部竞态把工具结果留在本地队列 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5070](https://github.com/QwenLM/qwen-code/pull/5070) | 焦点导航时忽略已过期 live agents，避免 stale background-agent 行抢走键盘焦点 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | 避免 stale tool schema recall，让 memory warning 不再把过期工具名带回后续规划轮次 |
