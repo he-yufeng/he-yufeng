@@ -71,13 +71,16 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | Log auth profile resolution failures instead of swallowing silently |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | Keep assistant tool calls adjacent to their tool results so OpenAI-compatible providers stop rejecting repaired message histories |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5020](https://github.com/QwenLM/qwen-code/pull/5020) | Drop tool calls after cancellation so aborted turns do not leak stale tool requests into the next provider payload |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5036](https://github.com/QwenLM/qwen-code/pull/5036) | Hard-stop repeated identical tool calls so an agent cannot keep executing the same stalled action after loop detection fires |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5115](https://github.com/QwenLM/qwen-code/pull/5115) | Hide teammate-only agent names when teams are disabled and fall back to one-shot subagents if an old prompt still sends one |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5071](https://github.com/QwenLM/qwen-code/pull/5071) | Submit fast tool results after stream end so completed calls do not get stranded by a race at the end of model streaming |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5070](https://github.com/QwenLM/qwen-code/pull/5070) | Ignore expired live agents in focus navigation so stale background-agent rows cannot steal keyboard focus |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | Avoid stale tool-schema recall so memory warnings do not reintroduce outdated tool names into later planning turns |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5062](https://github.com/QwenLM/qwen-code/pull/5062) | Preserve token-escalation context across agent rounds so delegated runs do not repeatedly restart from an under-provisioned model |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5043](https://github.com/QwenLM/qwen-code/pull/5043) | Let grep results satisfy prior-read checks so file edits can proceed after verified search context instead of forcing redundant reads |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5061](https://github.com/QwenLM/qwen-code/pull/5061) | Preserve background-agent launch flags so delegated CLI runs keep the intended execution mode |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5077](https://github.com/QwenLM/qwen-code/pull/5077) | Show the full plan when permission gates fail so users can inspect blocked agent intent instead of losing the generated plan |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5073](https://github.com/QwenLM/qwen-code/pull/5073) | Warn when context instruction files exceed the configured budget so oversized repository guidance is visible before it silently crowds out task context |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4963](https://github.com/QwenLM/qwen-code/pull/4963) | Enable fork subagents by default so delegated work can run in isolated branches without manual opt-in |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | Recurse into tracked Git submodules during repository crawling so coding-agent context includes files inside submodules |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4970](https://github.com/QwenLM/qwen-code/pull/4970) | Stabilize truncated tool retry keys so repaired tool calls keep deterministic retry identity instead of drifting across retries |
@@ -94,6 +97,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | Drop the discontinued Qwen OAuth path from ACP login so users are not routed into a dead authentication method |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | Apply the requested output language to side queries so auxiliary answers follow the same language contract as the main response |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4635](https://github.com/QwenLM/qwen-code/pull/4635) | Hide completed sticky todos from the active CLI todo view so persistent task hints stay focused on remaining work |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5072](https://github.com/QwenLM/qwen-code/pull/5072) | Stabilize the simple MCP integration check so transient server readiness timing no longer makes the cross-process contract test flaky |
 | [Mem0](https://github.com/mem0ai/mem0) (58.4k★) | [#5416](https://github.com/mem0ai/mem0/pull/5416) | Use valid S3 Vectors entity index names so agent memory writes no longer hit AWS index-name validation failures |
 | [Mem0](https://github.com/mem0ai/mem0) (58.4k★) | [#5380](https://github.com/mem0ai/mem0/pull/5380) | Expose Qdrant's `https` option so self-hosted HTTP clusters can use API-key auth without forcing TLS client mode |
 | [Mem0](https://github.com/mem0ai/mem0) (58.4k★) | [#5383](https://github.com/mem0ai/mem0/pull/5383) | Skip OpenClaw runtime setup during CLI metadata registration so plugin discovery does not double-register runtime side effects |
@@ -306,13 +310,16 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenClaw](https://github.com/openclaw/openclaw) (376.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | 认证配置解析失败时记录日志而非静默吞掉 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | 保持 assistant tool calls 和 tool results 相邻，避免修复后的消息历史被 OpenAI-compatible provider 拒绝 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5020](https://github.com/QwenLM/qwen-code/pull/5020) | 取消请求后丢弃残留 tool calls，避免中止轮次把过期工具调用泄漏到下一次 provider payload |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5036](https://github.com/QwenLM/qwen-code/pull/5036) | 检测到重复工具调用循环后真正硬停止，避免 agent 继续执行同一个已卡住的动作 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5115](https://github.com/QwenLM/qwen-code/pull/5115) | team 功能关闭时隐藏 teammate 专属的 agent 名称参数；旧 prompt 仍传入名称时回退到 one-shot subagent，而不是直接失败 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5071](https://github.com/QwenLM/qwen-code/pull/5071) | 流式输出结束后仍提交已完成的快速 tool results，避免模型流尾部竞态把工具结果留在本地队列 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5070](https://github.com/QwenLM/qwen-code/pull/5070) | 焦点导航时忽略已过期 live agents，避免 stale background-agent 行抢走键盘焦点 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | 避免 stale tool schema recall，让 memory warning 不再把过期工具名带回后续规划轮次 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5062](https://github.com/QwenLM/qwen-code/pull/5062) | 跨 agent 轮次保留 token escalation 上下文，避免 delegated run 每轮都从容量不足的模型重新开始 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5043](https://github.com/QwenLM/qwen-code/pull/5043) | 让 grep 结果满足 prior-read 检查，已验证的搜索上下文不再被迫重复读取文件 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5061](https://github.com/QwenLM/qwen-code/pull/5061) | 保留 background agent 启动参数，让 delegated CLI run 继续使用用户指定的执行模式 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5077](https://github.com/QwenLM/qwen-code/pull/5077) | permission gate 失败时展示完整计划，让用户能检查被拦截的 agent 意图 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5073](https://github.com/QwenLM/qwen-code/pull/5073) | 上下文指令文件超过预算时主动告警，避免仓库级 guidance 静默挤占任务上下文 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4963](https://github.com/QwenLM/qwen-code/pull/4963) | 默认启用 fork subagents，让 delegated work 能在隔离分支中运行而不用手动开启 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | 仓库爬取时递归读取已跟踪 Git submodule，让 coding agent 上下文包含子模块内部文件 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4970](https://github.com/QwenLM/qwen-code/pull/4970) | 稳定 truncated tool retry key，让修复后的 tool call 在重试时保持确定性身份，不再因 key 漂移重复或错配 |
@@ -329,6 +336,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | 移除已停用的 Qwen OAuth ACP 登录路径，避免用户被引导到失效认证方式 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | 将用户指定的输出语言同步到 side queries，让辅助回答也遵守主响应的语言约束 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#4635](https://github.com/QwenLM/qwen-code/pull/4635) | 在 CLI todo 视图中隐藏已完成 sticky todos，让持久任务提示只聚焦剩余工作 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.0k★) | [#5072](https://github.com/QwenLM/qwen-code/pull/5072) | 稳定 simple MCP 集成检查，避免服务就绪时序让跨进程协议测试偶发失败 |
 | [Mem0](https://github.com/mem0ai/mem0) (58.4k★) | [#5416](https://github.com/mem0ai/mem0/pull/5416) | 修复 S3 Vectors entity index 命名，避免 agent memory 写入因 AWS index-name 校验失败 |
 | [Mem0](https://github.com/mem0ai/mem0) (58.4k★) | [#5380](https://github.com/mem0ai/mem0/pull/5380) | 暴露 Qdrant `https` 配置，让自托管 HTTP Qdrant + API key 场景不再被迫走 TLS client 模式 |
 | [Mem0](https://github.com/mem0ai/mem0) (58.4k★) | [#5383](https://github.com/mem0ai/mem0/pull/5383) | OpenClaw CLI metadata 注册时跳过 runtime setup，避免插件发现阶段重复注册运行时副作用 |
