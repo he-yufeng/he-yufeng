@@ -55,6 +55,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1626](https://github.com/kvcache-ai/Mooncake/pull/1626) | Silenced error log spam for non-memory replicas in metadata store |
 | [Triton](https://github.com/triton-lang/triton) (19.3k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | Fix AxisInfo correctness: signed constants, unknown shift divisibility, and shift UB guards |
 | [verl](https://github.com/verl-project/verl) (21.8k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | Derive colocated vLLM weight-sync ZMQ socket ranks from data-parallel and tensor-parallel ranks so DP workers do not collide on the same receiver |
+| [TRL](https://github.com/huggingface/trl) (18.6k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | Reject already-transformed datasets during SFT preparation so misconfigured runs fail fast instead of silently producing wrong training batches |
 | [SGLang](https://github.com/sgl-project/sglang) (28.9k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | Fix hybrid_linear_attn_backend crash when used with ngram speculative decoding |
 | [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.8k★) | [#2564](https://github.com/googleapis/python-genai/pull/2564) | Keep Live Music API keys out of websocket URLs by relying on request headers instead of duplicating secrets in query strings |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (5.7k★) | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) | Fix autotuner crash when input tensor is `None`: proper None-checking for optional inputs (fixes #2749) |
@@ -294,6 +295,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1626](https://github.com/kvcache-ai/Mooncake/pull/1626) | 修复非内存副本的错误日志刷屏 |
 | [Triton](https://github.com/triton-lang/triton) (19.3k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | 修复 AxisInfo 正确性：有符号常量、未知 shift 和 shift UB 都保守处理 |
 | [verl](https://github.com/verl-project/verl) (21.8k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | 按 data-parallel 和 tensor-parallel rank 计算 colocated vLLM 权重同步 ZMQ socket rank，避免多个 DP worker 连接到同一 receiver |
+| [TRL](https://github.com/huggingface/trl) (18.6k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | SFT 准备阶段拒绝已转换过的数据集，让配置错误的训练快速失败，而不是静默产出错误的训练 batch |
 | [SGLang](https://github.com/sgl-project/sglang) (28.9k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | 修复 hybrid_linear_attn_backend 与 ngram 投机采样同时使用时崩溃 |
 | [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.8k★) | [#2564](https://github.com/googleapis/python-genai/pull/2564) | 让 Live Music API key 不再进入 websocket URL query，改由请求 header 承载，避免密钥出现在日志和代理路径里 |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (5.7k★) | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) | 修复 autotuner 在输入 tensor 为 `None` 时崩溃（fixes #2749） |
