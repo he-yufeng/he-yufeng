@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 190+ merged upstream PRs, including fixes in vLLM, Qwen Code, Google Gen AI SDK, Cline, AgentScope, GitHub MCP Server, Hugging Face Transformers, Microsoft Agent Framework, AG-UI, AstrBot, Mooncake, Inspect AI, LiteLLM, and Triton.
+- 200+ merged upstream PRs, including fixes in vLLM, Qwen Code, Google Gen AI SDK, Cline, AgentScope, GitHub MCP Server, Hugging Face Transformers, Microsoft Agent Framework, AG-UI, AstrBot, Mooncake, Inspect AI, LiteLLM, and Triton.
 - Selected public projects led by CoreCoder, RepoWiki, FindJobs-Agent, ContractGuard, GitSense, AgentProbe, Agent ToolFence, IssueBenchKit, PatchContext, ActionRepro, MCPReplay, and FlightBox.
 
 ### Projects
@@ -242,7 +242,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 190+ 个上游 PR 已 merged，包括 vLLM、Qwen Code、Google Gen AI SDK、Cline、AgentScope、GitHub MCP Server、Hugging Face Transformers、Microsoft Agent Framework、AG-UI、AstrBot、Mooncake、Inspect AI、LiteLLM、Triton 等项目里的生产级 bug / 行为修复。
+- 200+ 个上游 PR 已 merged，包括 vLLM、Qwen Code、Google Gen AI SDK、Cline、AgentScope、GitHub MCP Server、Hugging Face Transformers、Microsoft Agent Framework、AG-UI、AstrBot、Mooncake、Inspect AI、LiteLLM、Triton 等项目里的生产级 bug / 行为修复。
 - 代表性公开项目包括 CoreCoder、RepoWiki、FindJobs-Agent、ContractGuard、GitSense、AgentProbe、Agent ToolFence、IssueBenchKit、PatchContext、ActionRepro、MCPReplay、FlightBox。
 
 ### 项目
