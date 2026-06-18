@@ -245,7 +245,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 200+ 个上游 PR 已 merged，包括 vLLM、Qwen Code、Google Gen AI SDK、Cline、AgentScope、GitHub MCP Server、Hugging Face Transformers、Microsoft Agent Framework、AG-UI、AstrBot、Mooncake、Inspect AI、LiteLLM、Triton 等项目里的生产级 bug / 行为修复。
+- 200+ 个上游 PR 已 merged，包括 vLLM、PyTorch、Qwen Code、GitHub MCP Server、Hugging Face Transformers、Microsoft Agent Framework、AstrBot、Mooncake、Inspect AI 等项目里的生产级 bug / 行为修复。
 - 代表性公开项目包括 CoreCoder、RepoWiki、FindJobs-Agent、ContractGuard、GitSense、AgentProbe、Agent ToolFence、IssueBenchKit、PatchContext、ActionRepro、MCPReplay、FlightBox。
 
 ### 项目
@@ -285,6 +285,9 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | 修复 base64 JPEG 视频帧返回空 metadata：补充帧数、fps、时长 |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | 修复 bench_serve 流式响应拆分多字节 UTF-8 字符导致 decode 崩溃 |
 | [vLLM](https://github.com/vllm-project/vllm) (82.3k★) | [#40749](https://github.com/vllm-project/vllm/pull/40749) | 补充独立复现证据，帮助确认 async PP last-rank sampled-token receive assertion 的真实可达路径 |
+| [PyTorch](https://github.com/pytorch/pytorch) (100.9k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | 修复 Inductor codegen 中用户自定义 Triton kernel 的名称修饰，避免不同 kernel 在生成代码里命名冲突（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (100.9k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | 修复 `stale_issues` workflow 的 `parse_older_than` 在非闰年崩溃：朴素的 2 月 29 日偏移会抛 `ValueError`（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (100.9k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | 移除过时的 `setuptools` 版本上限，让构建解析到当前工具链而不是被钉在旧版本（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [Transformers](https://github.com/huggingface/transformers) (161.4k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | 修复 `AutoProcessor.from_pretrained` 静默丢弃 hub kwargs（`revision`、`token` 等） |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.5k★) | [#1831](https://github.com/kvcache-ai/Mooncake/pull/1831) | TENT NVLink IPC 修复：sub-allocated GPU tensor 使用 base pointer，将 #1622 修复移植到 TENT 路径 |
