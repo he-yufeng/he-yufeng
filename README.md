@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 200+ merged upstream PRs, including fixes in vLLM, Qwen Code, Google Gen AI SDK, Cline, AgentScope, GitHub MCP Server, Hugging Face Transformers, Microsoft Agent Framework, AG-UI, AstrBot, Mooncake, Inspect AI, LiteLLM, and Triton.
+- 200+ merged upstream PRs, including fixes in vLLM, PyTorch, Qwen Code, GitHub MCP Server, Hugging Face Transformers, Microsoft Agent Framework, AstrBot, Mooncake, and Inspect AI.
 - Selected public projects led by CoreCoder, RepoWiki, FindJobs-Agent, ContractGuard, GitSense, AgentProbe, Agent ToolFence, IssueBenchKit, PatchContext, ActionRepro, MCPReplay, and FlightBox.
 
 ### Projects
