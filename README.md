@@ -32,7 +32,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | Agent observability | [FlightBox](https://github.com/he-yufeng/FlightBox) | new | Black-box flight recorder for AI agents: record, redact, replay, and diff local agent sessions. |
 | Quant / RL | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | new | Deep-RL trading: Double DQN with Transformer attention over a Fama-French-style multi-factor model, plus adaptive risk and volatility targeting. |
 | Research | [adversarial-refinement-imputation](https://github.com/he-yufeng/adversarial-refinement-imputation) | new | Companion code for the MiLeTS 2026 paper adapting R3GAN to multivariate time-series imputation — a clearly-scoped negative result. |
-| Agent evals | [TrajBias](https://github.com/he-yufeng/TrajBias) | new | A study of structural biases in LLM-as-judge evaluation of agent trajectories. |
+| Research | [TrajBias](https://github.com/he-yufeng/TrajBias) | new | A study of structural biases in LLM-as-judge evaluation of agent trajectories. |
 
 ### Open Source Contributions
 
@@ -282,7 +282,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | Agent 可观测性 | [FlightBox](https://github.com/he-yufeng/FlightBox) | new | AI Agent 黑盒飞行记录器：录制、脱敏、回放并 diff 本地 agent session。 |
 | 量化 / 强化学习 | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | new | 深度强化学习交易：Double DQN + Transformer attention 叠加 Fama-French 式多因子模型，含自适应风控和波动率目标。 |
 | 研究 | [adversarial-refinement-imputation](https://github.com/he-yufeng/adversarial-refinement-imputation) | new | MiLeTS 2026 论文配套代码：把 R3GAN 适配到多元时间序列填补，一个范围清晰的负结果。 |
-| Agent 评测 | [TrajBias](https://github.com/he-yufeng/TrajBias) | new | 研究 LLM-as-judge 评估 agent 轨迹时的结构性偏差。 |
+| 研究 | [TrajBias](https://github.com/he-yufeng/TrajBias) | new | 研究 LLM-as-judge 评估 agent 轨迹时的结构性偏差。 |
 
 ### 开源贡献
 
