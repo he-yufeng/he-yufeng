@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 200+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (12 merged), PyTorch (3 merged), Qwen Code (30 merged), Microsoft Agent Framework (19 merged), AstrBot (30 merged), Inspect AI (10 merged), and Hugging Face Transformers (1 merged).
+- 200+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (12 merged), Qwen Code (30 merged), Microsoft Agent Framework (19 merged), AstrBot (30 merged), Inspect AI (10 merged), Hugging Face Transformers (1 merged), and PyTorch (3 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 ### Projects
@@ -10,26 +10,26 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | Area | Project | Stars | Notes |
 |------|---------|:-----:|-------|
 | Coding agents / evals | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.1k+ | 512K lines of Claude Code → 1,400 lines of Python. Every key architectural pattern, runnable. Any LLM. 7 architecture deep-dive articles. |
-| Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 100+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, and reading guides. |
 | Applied agents | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
+| Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 100+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, and reading guides. |
 | Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, and plain-English explanations. |
 | Codebase maps | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
 | Coding agents / evals | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | new | Pytest plugin for regression-testing AI agents: snapshot baselines, semantic comparison, and mock LLMs. |
 | Coding agents / evals | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | new | AI coding agent CLI supporting 100+ LLMs via litellm, with dangerous command blocking, parallel tools, and session persistence. |
-| Coding agents / evals | [Agent ToolFence](https://github.com/he-yufeng/Agent-ToolFence) | new | Deterministic CI tests for agent tool-call safety: denied tools, confirmations, and high-risk calls after untrusted tool output. |
-| Coding agents / evals | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | new | Turn real GitHub issues and local bugs into small, reproducible coding-agent benchmark tasks with before/after scoring and HTML reports. |
-| Coding agents / evals | [PatchContext](https://github.com/he-yufeng/PatchContext) | new | Generate issue-specific context packs for coding agents from issue text, failure logs, diffs, and lightweight import signals. |
-| CI / PR tooling | [ActionRepro](https://github.com/he-yufeng/ActionRepro) | new | Turn GitHub Actions failures into local repro plans and PR evidence packs: classify CI gates and extract maintainer-ready commands. |
-| Agent observability | [FlightBox](https://github.com/he-yufeng/FlightBox) | new | Black-box flight recorder for AI agents: record, redact, replay, and diff local agent sessions. |
-| MCP / protocol tooling | [MCPReplay](https://github.com/he-yufeng/MCPReplay) | new | Record, redact, and replay MCP JSON-RPC transcripts so protocol bugs become safe, shareable fixtures. |
-| MCP / protocol tooling | [MCPReady](https://github.com/he-yufeng/MCPReady) | new | CI gate for MCP servers: handshake, tools/list, schema checks, secret-leak scan, reports, and GitHub Action. |
+| Code understanding | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | AI code reader for non-programmers: plain-language file guides, hover annotations, a terminology dictionary, Q&A, and natural-language edits. |
 | Coding agents / evals | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | new | CLI arena for AI coding agents: isolated `git worktree` runs, test/cost/diff/time scoring, and `pip install codejoust`. |
 | Coding agents / evals | [LiteBench](https://github.com/he-yufeng/LiteBench) | new | Pip-installable LLM/agent benchmark CLI + web dashboard, with agent mode, custom YAML, LLM-as-judge, and 100+ litellm models. |
-| Code understanding | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | AI code reader for non-programmers: plain-language file guides, hover annotations, a terminology dictionary, Q&A, and natural-language edits. |
 | Agent tooling | [RuleForge](https://github.com/he-yufeng/RuleForge) | new | Auto-generate AI assistant rules (CLAUDE.md, .cursorrules, copilot-instructions) from codebase analysis. |
 | LLM tooling | [PromptDiff](https://github.com/he-yufeng/PromptDiff) | new | Semantic diff for LLM prompts: compare prompt versions like `git diff`. |
 | LLM tooling | [TokenTracker](https://github.com/he-yufeng/TokenTracker) | new | Drop-in LLM cost tracker: change one import line and see where the money goes. OpenAI, OpenRouter, Azure, Ollama. |
 | LLM tooling | [BatchLLM](https://github.com/he-yufeng/BatchLLM) | new | Batch processing for LLM APIs: CSV/JSONL in, results out, with concurrency, retries, checkpointing, and cost tracking. |
+| MCP / protocol tooling | [MCPReady](https://github.com/he-yufeng/MCPReady) | new | CI gate for MCP servers: handshake, tools/list, schema checks, secret-leak scan, reports, and GitHub Action. |
+| MCP / protocol tooling | [MCPReplay](https://github.com/he-yufeng/MCPReplay) | new | Record, redact, and replay MCP JSON-RPC transcripts so protocol bugs become safe, shareable fixtures. |
+| Coding agents / evals | [Agent ToolFence](https://github.com/he-yufeng/Agent-ToolFence) | new | Deterministic CI tests for agent tool-call safety: denied tools, confirmations, and high-risk calls after untrusted tool output. |
+| CI / PR tooling | [ActionRepro](https://github.com/he-yufeng/ActionRepro) | new | Turn GitHub Actions failures into local repro plans and PR evidence packs: classify CI gates and extract maintainer-ready commands. |
+| Coding agents / evals | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | new | Turn real GitHub issues and local bugs into small, reproducible coding-agent benchmark tasks with before/after scoring and HTML reports. |
+| Coding agents / evals | [PatchContext](https://github.com/he-yufeng/PatchContext) | new | Generate issue-specific context packs for coding agents from issue text, failure logs, diffs, and lightweight import signals. |
+| Agent observability | [FlightBox](https://github.com/he-yufeng/FlightBox) | new | Black-box flight recorder for AI agents: record, redact, replay, and diff local agent sessions. |
 | Quant / RL | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | new | Deep-RL trading: Double DQN with Transformer attention over a Fama-French-style multi-factor model, plus adaptive risk and volatility targeting. |
 | Research | [adversarial-refinement-imputation](https://github.com/he-yufeng/adversarial-refinement-imputation) | new | Companion code for the MiLeTS 2026 paper adapting R3GAN to multivariate time-series imputation — a clearly-scoped negative result. |
 | Agent evals | [TrajBias](https://github.com/he-yufeng/TrajBias) | new | A study of structural biases in LLM-as-judge evaluation of agent trajectories. |
@@ -253,7 +253,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 200+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（12 个）、PyTorch（3 个）、Qwen Code（30 个）、Microsoft Agent Framework（19 个）、AstrBot（30 个）、Inspect AI（10 个）、Hugging Face Transformers（1 个）。
+- 200+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（12 个）、Qwen Code（30 个）、Microsoft Agent Framework（19 个）、AstrBot（30 个）、Inspect AI（10 个）、Hugging Face Transformers（1 个）、PyTorch（3 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -261,26 +261,26 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | 方向 | 项目 | Stars | 简介 |
 |------|------|:-----:|------|
 | Coding agents / 评测 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.1k+ | Claude Code 51万行源码 → 1400行 Python 核心重写，支持任意大模型，附 7 篇架构导读。 |
-| 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 100+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
 | 应用型 Agent | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化和岗位结构化。 |
+| 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 100+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
 | 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI 合同审查 Agent，签字前帮你找红旗条款、不公平约定和缺失保护。 |
 | 代码库地图 | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI 开源贡献发现器 + 仓库雷达：找匹配 issue，也评估 PR 合入友好度。 |
 | Coding agents / 评测 | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | new | AI Agent 回归测试 pytest 插件：快照基线、语义比较、Mock LLM。 |
 | Coding agents / 评测 | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | new | 终端 AI 编程 Agent，通过 litellm 支持 100+ 大模型，危险命令拦截、并行执行、会话持久化。 |
-| Coding agents / 评测 | [Agent ToolFence](https://github.com/he-yufeng/Agent-ToolFence) | new | AI Agent 工具调用安全回归测试：用确定性 fixture 检查 denied tools、确认门槛和不可信工具输出后的高风险调用。 |
-| Coding agents / 评测 | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | new | 把真实 GitHub issue 和本地 bug 打包成可复现、可评分、可分享的 coding-agent benchmark 任务。 |
-| Coding agents / 评测 | [PatchContext](https://github.com/he-yufeng/PatchContext) | new | 根据 issue、失败日志、diff 和轻量 import 信号，给 coding agent 生成可解释的任务上下文包。 |
-| CI / PR 工具 | [ActionRepro](https://github.com/he-yufeng/ActionRepro) | new | 把 GitHub Actions 失败日志转成本地复现计划和 PR 证据包：分类 CI gate、提取复现命令、生成 maintainer-ready 说明。 |
-| Agent 可观测性 | [FlightBox](https://github.com/he-yufeng/FlightBox) | new | AI Agent 黑盒飞行记录器：录制、脱敏、回放并 diff 本地 agent session。 |
-| MCP / 协议工具 | [MCPReplay](https://github.com/he-yufeng/MCPReplay) | new | 录制、脱敏并回放 MCP JSON-RPC transcript，把协议 bug 变成可分享、可复现的 fixture。 |
-| MCP / 协议工具 | [MCPReady](https://github.com/he-yufeng/MCPReady) | new | MCP Server CI 质量门禁：握手、tools/list、schema 检查、明显 token 泄露扫描、报告和 GitHub Action。 |
+| 代码理解 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | 面向非程序员的 AI 代码阅读器：大白话文件导读、悬浮批注、术语词典、问答、自然语言改写。 |
 | Coding agents / 评测 | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | new | AI 编程 Agent 擂台：独立 `git worktree` 运行，按测试通过率、成本、diff 大小、耗时打分。 |
 | Coding agents / 评测 | [LiteBench](https://github.com/he-yufeng/LiteBench) | new | LLM / Agent benchmark 轻量 CLI + Web 面板：agent 模式、自定义 YAML、LLM judge、100+ litellm 模型。 |
-| 代码理解 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | 面向非程序员的 AI 代码阅读器：大白话文件导读、悬浮批注、术语词典、问答、自然语言改写。 |
 | Agent 工具 | [RuleForge](https://github.com/he-yufeng/RuleForge) | new | 从代码库分析自动生成 AI 助手规则文件（CLAUDE.md、.cursorrules、copilot-instructions）。 |
 | LLM 工具 | [PromptDiff](https://github.com/he-yufeng/PromptDiff) | new | LLM prompt 语义 diff：像 `git diff` 一样比较 prompt 版本。 |
 | LLM 工具 | [TokenTracker](https://github.com/he-yufeng/TokenTracker) | new | 即插即用的 LLM 成本追踪：改一行 import 就能看清钱花在哪。支持 OpenAI、OpenRouter、Azure、Ollama。 |
 | LLM 工具 | [BatchLLM](https://github.com/he-yufeng/BatchLLM) | new | LLM API 批处理：CSV/JSONL 进、结果出，支持并发、重试、断点续跑和成本追踪。 |
+| MCP / 协议工具 | [MCPReady](https://github.com/he-yufeng/MCPReady) | new | MCP Server CI 质量门禁：握手、tools/list、schema 检查、明显 token 泄露扫描、报告和 GitHub Action。 |
+| MCP / 协议工具 | [MCPReplay](https://github.com/he-yufeng/MCPReplay) | new | 录制、脱敏并回放 MCP JSON-RPC transcript，把协议 bug 变成可分享、可复现的 fixture。 |
+| Coding agents / 评测 | [Agent ToolFence](https://github.com/he-yufeng/Agent-ToolFence) | new | AI Agent 工具调用安全回归测试：用确定性 fixture 检查 denied tools、确认门槛和不可信工具输出后的高风险调用。 |
+| CI / PR 工具 | [ActionRepro](https://github.com/he-yufeng/ActionRepro) | new | 把 GitHub Actions 失败日志转成本地复现计划和 PR 证据包：分类 CI gate、提取复现命令、生成 maintainer-ready 说明。 |
+| Coding agents / 评测 | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | new | 把真实 GitHub issue 和本地 bug 打包成可复现、可评分、可分享的 coding-agent benchmark 任务。 |
+| Coding agents / 评测 | [PatchContext](https://github.com/he-yufeng/PatchContext) | new | 根据 issue、失败日志、diff 和轻量 import 信号，给 coding agent 生成可解释的任务上下文包。 |
+| Agent 可观测性 | [FlightBox](https://github.com/he-yufeng/FlightBox) | new | AI Agent 黑盒飞行记录器：录制、脱敏、回放并 diff 本地 agent session。 |
 | 量化 / 强化学习 | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | new | 深度强化学习交易：Double DQN + Transformer attention 叠加 Fama-French 式多因子模型，含自适应风控和波动率目标。 |
 | 研究 | [adversarial-refinement-imputation](https://github.com/he-yufeng/adversarial-refinement-imputation) | new | MiLeTS 2026 论文配套代码：把 R3GAN 适配到多元时间序列填补，一个范围清晰的负结果。 |
 | Agent 评测 | [TrajBias](https://github.com/he-yufeng/TrajBias) | new | 研究 LLM-as-judge 评估 agent 轨迹时的结构性偏差。 |
