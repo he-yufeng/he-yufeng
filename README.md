@@ -14,6 +14,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 100+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, and reading guides. |
 | Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, and plain-English explanations. |
 | Codebase maps | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
+| Applied agents | [IslandEscape](https://github.com/he-yufeng/IslandEscape) | new | 2D pixel-art survival game where four LLM agents play the islanders — each with a personality, negotiating trades in natural language and forming alliances; race them to 100 coins to escape. |
 | Coding agents / evals | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | new | Pytest plugin for regression-testing AI agents: snapshot baselines, semantic comparison, and mock LLMs. |
 | Coding agents / evals | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | new | AI coding agent CLI supporting 100+ LLMs via litellm, with dangerous command blocking, parallel tools, and session persistence. |
 | Code understanding | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | AI code reader for non-programmers: plain-language file guides, hover annotations, a terminology dictionary, Q&A, and natural-language edits. |
@@ -264,6 +265,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 100+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
 | 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI 合同审查 Agent，签字前帮你找红旗条款、不公平约定和缺失保护。 |
 | 代码库地图 | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI 开源贡献发现器 + 仓库雷达：找匹配 issue，也评估 PR 合入友好度。 |
+| 应用型 Agent | [IslandEscape](https://github.com/he-yufeng/IslandEscape) | new | 2D 像素风生存交易游戏：四个 LLM agent 扮演岛民，各有性格、用自然语言谈判交易、结盟博弈；和他们赛跑攒到 100 金币逃离孤岛。 |
 | Coding agents / 评测 | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | new | AI Agent 回归测试 pytest 插件：快照基线、语义比较、Mock LLM。 |
 | Coding agents / 评测 | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | new | 终端 AI 编程 Agent，通过 litellm 支持 100+ 大模型，危险命令拦截、并行执行、会话持久化。 |
 | 代码理解 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | 面向非程序员的 AI 代码阅读器：大白话文件导读、悬浮批注、术语词典、问答、自然语言改写。 |
