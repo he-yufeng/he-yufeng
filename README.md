@@ -2,8 +2,8 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 200+ merged upstream PRs, including fixes in vLLM, PyTorch, Qwen Code, GitHub MCP Server, Hugging Face Transformers, Microsoft Agent Framework, AstrBot, Mooncake, and Inspect AI.
-- Selected public projects led by CoreCoder, RepoWiki, FindJobs-Agent, ContractGuard, GitSense, AgentProbe, Agent ToolFence, IssueBenchKit, PatchContext, ActionRepro, MCPReplay, and FlightBox.
+- 200+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (12 merged), PyTorch (3 merged), Qwen Code (30 merged), Microsoft Agent Framework (19 merged), AstrBot (30 merged), Inspect AI (10 merged), and Hugging Face Transformers (1 merged).
+- Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 ### Projects
 
@@ -25,6 +25,14 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | MCP / protocol tooling | [MCPReady](https://github.com/he-yufeng/MCPReady) | new | CI gate for MCP servers: handshake, tools/list, schema checks, secret-leak scan, reports, and GitHub Action. |
 | Coding agents / evals | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | new | CLI arena for AI coding agents: isolated `git worktree` runs, test/cost/diff/time scoring, and `pip install codejoust`. |
 | Coding agents / evals | [LiteBench](https://github.com/he-yufeng/LiteBench) | new | Pip-installable LLM/agent benchmark CLI + web dashboard, with agent mode, custom YAML, LLM-as-judge, and 100+ litellm models. |
+| Code understanding | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | AI code reader for non-programmers: plain-language file guides, hover annotations, a terminology dictionary, Q&A, and natural-language edits. |
+| Agent tooling | [RuleForge](https://github.com/he-yufeng/RuleForge) | new | Auto-generate AI assistant rules (CLAUDE.md, .cursorrules, copilot-instructions) from codebase analysis. |
+| LLM tooling | [PromptDiff](https://github.com/he-yufeng/PromptDiff) | new | Semantic diff for LLM prompts: compare prompt versions like `git diff`. |
+| LLM tooling | [TokenTracker](https://github.com/he-yufeng/TokenTracker) | new | Drop-in LLM cost tracker: change one import line and see where the money goes. OpenAI, OpenRouter, Azure, Ollama. |
+| LLM tooling | [BatchLLM](https://github.com/he-yufeng/BatchLLM) | new | Batch processing for LLM APIs: CSV/JSONL in, results out, with concurrency, retries, checkpointing, and cost tracking. |
+| Quant / RL | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | new | Deep-RL trading: Double DQN with Transformer attention over a Fama-French-style multi-factor model, plus adaptive risk and volatility targeting. |
+| Research | [adversarial-refinement-imputation](https://github.com/he-yufeng/adversarial-refinement-imputation) | new | Companion code for the MiLeTS 2026 paper adapting R3GAN to multivariate time-series imputation — a clearly-scoped negative result. |
+| Agent evals | [TrajBias](https://github.com/he-yufeng/TrajBias) | new | A study of structural biases in LLM-as-judge evaluation of agent trajectories. |
 
 ### Open Source Contributions
 
@@ -245,8 +253,8 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 200+ 个上游 PR 已 merged，包括 vLLM、PyTorch、Qwen Code、GitHub MCP Server、Hugging Face Transformers、Microsoft Agent Framework、AstrBot、Mooncake、Inspect AI 等项目里的生产级 bug / 行为修复。
-- 代表性公开项目包括 CoreCoder、RepoWiki、FindJobs-Agent、ContractGuard、GitSense、AgentProbe、Agent ToolFence、IssueBenchKit、PatchContext、ActionRepro、MCPReplay、FlightBox。
+- 200+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（12 个）、PyTorch（3 个）、Qwen Code（30 个）、Microsoft Agent Framework（19 个）、AstrBot（30 个）、Inspect AI（10 个）、Hugging Face Transformers（1 个）。
+- 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
 
@@ -268,6 +276,14 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | MCP / 协议工具 | [MCPReady](https://github.com/he-yufeng/MCPReady) | new | MCP Server CI 质量门禁：握手、tools/list、schema 检查、明显 token 泄露扫描、报告和 GitHub Action。 |
 | Coding agents / 评测 | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | new | AI 编程 Agent 擂台：独立 `git worktree` 运行，按测试通过率、成本、diff 大小、耗时打分。 |
 | Coding agents / 评测 | [LiteBench](https://github.com/he-yufeng/LiteBench) | new | LLM / Agent benchmark 轻量 CLI + Web 面板：agent 模式、自定义 YAML、LLM judge、100+ litellm 模型。 |
+| 代码理解 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | 面向非程序员的 AI 代码阅读器：大白话文件导读、悬浮批注、术语词典、问答、自然语言改写。 |
+| Agent 工具 | [RuleForge](https://github.com/he-yufeng/RuleForge) | new | 从代码库分析自动生成 AI 助手规则文件（CLAUDE.md、.cursorrules、copilot-instructions）。 |
+| LLM 工具 | [PromptDiff](https://github.com/he-yufeng/PromptDiff) | new | LLM prompt 语义 diff：像 `git diff` 一样比较 prompt 版本。 |
+| LLM 工具 | [TokenTracker](https://github.com/he-yufeng/TokenTracker) | new | 即插即用的 LLM 成本追踪：改一行 import 就能看清钱花在哪。支持 OpenAI、OpenRouter、Azure、Ollama。 |
+| LLM 工具 | [BatchLLM](https://github.com/he-yufeng/BatchLLM) | new | LLM API 批处理：CSV/JSONL 进、结果出，支持并发、重试、断点续跑和成本追踪。 |
+| 量化 / 强化学习 | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | new | 深度强化学习交易：Double DQN + Transformer attention 叠加 Fama-French 式多因子模型，含自适应风控和波动率目标。 |
+| 研究 | [adversarial-refinement-imputation](https://github.com/he-yufeng/adversarial-refinement-imputation) | new | MiLeTS 2026 论文配套代码：把 R3GAN 适配到多元时间序列填补，一个范围清晰的负结果。 |
+| Agent 评测 | [TrajBias](https://github.com/he-yufeng/TrajBias) | new | 研究 LLM-as-judge 评估 agent 轨迹时的结构性偏差。 |
 
 ### 开源贡献
 
