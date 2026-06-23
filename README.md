@@ -24,12 +24,8 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | LLM tooling | [TokenTracker](https://github.com/he-yufeng/TokenTracker) | new | Drop-in LLM cost tracker: change one import line and see where the money goes. OpenAI, OpenRouter, Azure, Ollama. |
 | LLM tooling | [BatchLLM](https://github.com/he-yufeng/BatchLLM) | new | Batch processing for LLM APIs: CSV/JSONL in, results out, with concurrency, retries, checkpointing, and cost tracking. |
 | Applied agents | [IslandEscape](https://github.com/he-yufeng/IslandEscape) | new | 2D pixel-art survival game where four LLM agents play the islanders — each with a personality, negotiating trades in natural language and forming alliances; race them to 100 coins to escape. |
-| MCP / protocol tooling | [MCPReady](https://github.com/he-yufeng/MCPReady) | new | CI gate for MCP servers: handshake, tools/list, schema checks, secret-leak scan, reports, and GitHub Action. |
-| MCP / protocol tooling | [MCPReplay](https://github.com/he-yufeng/MCPReplay) | new | Record, redact, and replay MCP JSON-RPC transcripts so protocol bugs become safe, shareable fixtures. |
-| Coding agents / evals | [Agent ToolFence](https://github.com/he-yufeng/Agent-ToolFence) | new | Deterministic CI tests for agent tool-call safety: denied tools, confirmations, and high-risk calls after untrusted tool output. |
-| CI / PR tooling | [ActionRepro](https://github.com/he-yufeng/ActionRepro) | new | Turn GitHub Actions failures into local repro plans and PR evidence packs: classify CI gates and extract maintainer-ready commands. |
+| Agent / MCP / CI tooling | [agentcikit](https://github.com/he-yufeng/agentcikit) | new | One CLI for AI-agent, MCP, and open-source work: diagnose CI failures into repro plans, pack issue-specific context for coding agents, gate and replay MCP servers, and test tool-call safety. Bundles `ci-repro`, `patch-context`, `mcp-gate`, `mcp-replay`, and `tool-fence`. |
 | Coding agents / evals | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | new | Turn real GitHub issues and local bugs into small, reproducible coding-agent benchmark tasks with before/after scoring and HTML reports. |
-| Coding agents / evals | [PatchContext](https://github.com/he-yufeng/PatchContext) | new | Generate issue-specific context packs for coding agents from issue text, failure logs, diffs, and lightweight import signals. |
 | Agent observability | [FlightBox](https://github.com/he-yufeng/FlightBox) | new | Black-box flight recorder for AI agents: record, redact, replay, and diff local agent sessions. |
 | Quant / RL | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | new | Deep-RL trading: Double DQN with Transformer attention over a Fama-French-style multi-factor model, plus adaptive risk and volatility targeting. |
 | Research | [adversarial-refinement-imputation](https://github.com/he-yufeng/adversarial-refinement-imputation) | new | Companion code for the MiLeTS 2026 paper adapting R3GAN to multivariate time-series imputation — a clearly-scoped negative result. |
@@ -275,12 +271,8 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | LLM 工具 | [TokenTracker](https://github.com/he-yufeng/TokenTracker) | new | 即插即用的 LLM 成本追踪：改一行 import 就能看清钱花在哪。支持 OpenAI、OpenRouter、Azure、Ollama。 |
 | LLM 工具 | [BatchLLM](https://github.com/he-yufeng/BatchLLM) | new | LLM API 批处理：CSV/JSONL 进、结果出，支持并发、重试、断点续跑和成本追踪。 |
 | 应用型 Agent | [IslandEscape](https://github.com/he-yufeng/IslandEscape) | new | 2D 像素风生存交易游戏：四个 LLM agent 扮演岛民，各有性格、用自然语言谈判交易、结盟博弈；和他们赛跑攒到 100 金币逃离孤岛。 |
-| MCP / 协议工具 | [MCPReady](https://github.com/he-yufeng/MCPReady) | new | MCP Server CI 质量门禁：握手、tools/list、schema 检查、明显 token 泄露扫描、报告和 GitHub Action。 |
-| MCP / 协议工具 | [MCPReplay](https://github.com/he-yufeng/MCPReplay) | new | 录制、脱敏并回放 MCP JSON-RPC transcript，把协议 bug 变成可分享、可复现的 fixture。 |
-| Coding agents / 评测 | [Agent ToolFence](https://github.com/he-yufeng/Agent-ToolFence) | new | AI Agent 工具调用安全回归测试：用确定性 fixture 检查 denied tools、确认门槛和不可信工具输出后的高风险调用。 |
-| CI / PR 工具 | [ActionRepro](https://github.com/he-yufeng/ActionRepro) | new | 把 GitHub Actions 失败日志转成本地复现计划和 PR 证据包：分类 CI gate、提取复现命令、生成 maintainer-ready 说明。 |
+| Agent / MCP / CI 工具 | [agentcikit](https://github.com/he-yufeng/agentcikit) | new | 一个 CLI 覆盖 AI agent、MCP 和开源贡献工作：把 CI 失败转成复现计划、给 coding agent 打包任务上下文、给 MCP server 做门禁和回放、测试工具调用安全。内含 `ci-repro`、`patch-context`、`mcp-gate`、`mcp-replay`、`tool-fence`。 |
 | Coding agents / 评测 | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | new | 把真实 GitHub issue 和本地 bug 打包成可复现、可评分、可分享的 coding-agent benchmark 任务。 |
-| Coding agents / 评测 | [PatchContext](https://github.com/he-yufeng/PatchContext) | new | 根据 issue、失败日志、diff 和轻量 import 信号，给 coding agent 生成可解释的任务上下文包。 |
 | Agent 可观测性 | [FlightBox](https://github.com/he-yufeng/FlightBox) | new | AI Agent 黑盒飞行记录器：录制、脱敏、回放并 diff 本地 agent session。 |
 | 量化 / 强化学习 | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | new | 深度强化学习交易：Double DQN + Transformer attention 叠加 Fama-French 式多因子模型，含自适应风控和波动率目标。 |
 | 研究 | [adversarial-refinement-imputation](https://github.com/he-yufeng/adversarial-refinement-imputation) | new | MiLeTS 2026 论文配套代码：把 R3GAN 适配到多元时间序列填补，一个范围清晰的负结果。 |
