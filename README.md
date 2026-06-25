@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 200+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (14 merged), Qwen Code (49 merged), Microsoft Agent Framework (20 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (16 merged), Hugging Face Transformers (1 merged), and PyTorch (3 merged).
+- 200+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (15 merged), Qwen Code (49 merged), Microsoft Agent Framework (20 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (16 merged), Hugging Face Transformers (1 merged), and PyTorch (3 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 ### Projects
@@ -52,6 +52,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Transformers](https://github.com/huggingface/transformers) (161.9k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | Fix `AutoProcessor.from_pretrained` silently dropping hub kwargs (`revision`, `token`, etc.) |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#2570](https://github.com/kvcache-ai/Mooncake/pull/2570) | Integer overflow in `BatchOffload` for >4 GiB objects: sum slice sizes in `uint64_t` and reject objects exceeding the `uint32_t` record `value_len`, instead of silently truncating |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#2610](https://github.com/kvcache-ai/Mooncake/pull/2610) | Restore the `task.request` association in `RdmaTransport::submitTransfer`: a refactor dropped the per-task `request` pointer, leaving every downstream task with null and breaking status/retry/accounting reads |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1831](https://github.com/kvcache-ai/Mooncake/pull/1831) | TENT NVLink IPC fix: use base pointer for sub-allocated GPU tensors, porting #1622 fix to TENT path |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin for eviction-protected objects: model weights never get evicted, const field + BatchEvict skip + backward-compat serialization |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | Add `ObjectDataType` metadata classification for KV cache, weights, tensors, and snapshots, with backward-compatible serialization and Python bindings |
@@ -250,7 +251,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 200+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（14 个）、Qwen Code（49 个）、Microsoft Agent Framework（20 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（16 个）、Hugging Face Transformers（1 个）、PyTorch（3 个）。
+- 200+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（15 个）、Qwen Code（49 个）、Microsoft Agent Framework（20 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（16 个）、Hugging Face Transformers（1 个）、PyTorch（3 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -299,6 +300,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [PyTorch](https://github.com/pytorch/pytorch) (101.1k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | 移除过时的 `setuptools` 版本上限，让构建解析到当前工具链而不是被钉在旧版本（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [Transformers](https://github.com/huggingface/transformers) (161.9k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | 修复 `AutoProcessor.from_pretrained` 静默丢弃 hub kwargs（`revision`、`token` 等） |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#2610](https://github.com/kvcache-ai/Mooncake/pull/2610) | 恢复 `RdmaTransport::submitTransfer` 里的 `task.request` 关联：重构时漏掉了每个 task 的 `request` 指针赋值，导致下游拿到 null，status/重试/计费回读全部失效 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1831](https://github.com/kvcache-ai/Mooncake/pull/1831) | TENT NVLink IPC 修复：sub-allocated GPU tensor 使用 base pointer，将 #1622 修复移植到 TENT 路径 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin 驱逐保护：模型权重永不被驱逐，const 字段 + BatchEvict 跳过 + 向后兼容序列化 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | 新增 `ObjectDataType` 元数据分类：KV cache、weights、tensors 等对象类型可在 metadata、snapshot 和 Python binding 中稳定传递 |
