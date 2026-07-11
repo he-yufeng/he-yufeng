@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 200+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (20 merged), Qwen Code (49 merged), Microsoft Agent Framework (20 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (16 merged), Hugging Face Transformers (1 merged), and PyTorch (3 merged).
+- 200+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (24 merged), Qwen Code (49 merged), Microsoft Agent Framework (20 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (16 merged), Hugging Face Transformers (1 merged), and PyTorch (3 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 ### Projects
@@ -251,7 +251,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 200+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（20 个）、Qwen Code（49 个）、Microsoft Agent Framework（20 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（16 个）、Hugging Face Transformers（1 个）、PyTorch（3 个）。
+- 200+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（24 个）、Qwen Code（49 个）、Microsoft Agent Framework（20 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（16 个）、Hugging Face Transformers（1 个）、PyTorch（3 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
