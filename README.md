@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 200+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (24 merged), Qwen Code (51 merged), Microsoft Agent Framework (20 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (18 merged), Hugging Face Transformers (1 merged), and PyTorch (3 merged).
+- 280+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (24 merged), Qwen Code (51 merged), Microsoft Agent Framework (20 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (18 merged), Hugging Face Transformers (1 merged), and PyTorch (3 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 ### Projects
@@ -75,6 +75,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | Fix user-defined Triton kernel name mangling in the Inductor codegen so distinct kernels stop colliding in generated code (shows as Closed; landed via pytorchmergebot) |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | Remove the obsolete `setuptools` upper bound so builds resolve a current toolchain instead of pinning a stale one (shows as Closed; landed via pytorchmergebot) |
 | [LiteLLM](https://github.com/BerriAI/litellm) (51.4k★) | [#26401](https://github.com/BerriAI/litellm/pull/26401) | Fix `LITELLM_LOG=INFO` missing `verbose_logger`: proxy INFO logs now include all verbose logger sources |
+| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.7k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | Log eigenvalue monitor values so they are actually recorded instead of silently dropped |
 | [SGLang](https://github.com/sgl-project/sglang) (30.2k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | Fix hybrid_linear_attn_backend crash when used with ngram speculative decoding |
 | [SGLang](https://github.com/sgl-project/sglang) (30.2k★) | [#21472](https://github.com/sgl-project/sglang/pull/21472) | Fix PicklingError with --backend diffusers on non-T2I models |
 | [verl](https://github.com/verl-project/verl) (22.4k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | Derive colocated vLLM weight-sync ZMQ socket ranks from data-parallel and tensor-parallel ranks so DP workers do not collide on the same receiver |
@@ -221,6 +222,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | Propagate memory directory creation failures instead of continuing after a failed `ensureDir` |
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#96456](https://github.com/openclaw/openclaw/pull/96456) | Clip progress text on code-point boundaries to avoid lone surrogates |
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | Keep sibling dirs that share the home prefix unshortened in tool path display |
+| [opencode](https://github.com/anomalyco/opencode) (185.4k★) | [#30022](https://github.com/anomalyco/opencode/pull/30022) | Bind the MCP OAuth callback server to the IPv4 loopback so the browser redirect connects reliably instead of racing IPv6 |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (78.3k★) | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) | Preserve custom LLM base URLs when editing basic model settings so saved profiles do not silently fall back to provider defaults |
 | [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | HTML-escape `SOUL.md` before it enters the `<soul>` system-prompt block so an agent-editable personality cannot forge framework tags and break out of its trust zone |
 | [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#3797](https://github.com/bytedance/deer-flow/pull/3797) | Synchronize the MCP session-pool singleton lifecycle so concurrent first-use cannot create duplicate pools |
@@ -235,9 +237,13 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Mem0](https://github.com/mem0ai/mem0) (59.4k★) | [#5383](https://github.com/mem0ai/mem0/pull/5383) | Skip OpenClaw runtime setup during CLI metadata registration so plugin discovery does not double-register runtime side effects |
 | [Mem0](https://github.com/mem0ai/mem0) (59.4k★) | [#5416](https://github.com/mem0ai/mem0/pull/5416) | Use valid S3 Vectors entity index names so agent memory writes no longer hit AWS index-name validation failures |
 | [Mem0](https://github.com/mem0ai/mem0) (59.4k★) | [#5380](https://github.com/mem0ai/mem0/pull/5380) | Expose Qdrant's `https` option so self-hosted HTTP clusters can use API-key auth without forcing TLS client mode |
+| [goose](https://github.com/aaif-goose/goose) (51.2k★) | [#9599](https://github.com/aaif-goose/goose/pull/9599) | Use a blocking OTLP HTTP exporter so telemetry is not lost when the process exits |
+| [goose](https://github.com/aaif-goose/goose) (51.2k★) | [#9584](https://github.com/aaif-goose/goose/pull/9584) | Show resolved skill supporting-file paths instead of unresolved placeholders |
+| [goose](https://github.com/aaif-goose/goose) (51.2k★) | [#9528](https://github.com/aaif-goose/goose/pull/9528) | Restore new-chat keyboard shortcut navigation in the desktop app |
 | [Agno](https://github.com/agno-agi/agno) (40.8k★) | [#8131](https://github.com/agno-agi/agno/pull/8131) | Preserve non-sentinel tool argument whitespace while keeping string-to-None/True/False normalization for exact sentinels |
 | [GitHub MCP Server](https://github.com/github/github-mcp-server) (31.0k★) | [#2514](https://github.com/github/github-mcp-server/pull/2514) | Support team reviewers in pull-request review requests by resolving team slugs into GitHub review subjects instead of dropping them |
 | [GitHub MCP Server](https://github.com/github/github-mcp-server) (31.0k★) | [#2612](https://github.com/github/github-mcp-server/pull/2612) | Hide write-side UI resources when the MCP server runs read-only, while keeping safe read-only resources registered |
+| [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (27.9k★) | [#3643](https://github.com/openai/openai-agents-python/pull/3643) | Report the effective Blaxel timeouts instead of the unconfigured defaults |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1786](https://github.com/agentscope-ai/agentscope/pull/1786) | Preserve caller-provided Redis session ids on create so later get, update, and list operations address the same session instead of a generated UUID |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) | Inherit leader permission rules in team runs so delegated agents keep the same workspace and file access constraints as the leader |
@@ -247,6 +253,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1734](https://github.com/agentscope-ai/agentscope/pull/1734) | Expire Redis message lists by refreshing TTL on append and streaming replace writes, so configured storage TTL actually bounds chat history |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1822](https://github.com/agentscope-ai/agentscope/pull/1822) | Add a cwd option to the built-in Bash tool so shell commands can run in the intended workspace directory |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1732](https://github.com/agentscope-ai/agentscope/pull/1732) | Include skills from every active tool group so prompt instructions and the Skill viewer stay aligned with enabled tools |
+| [FastMCP](https://github.com/PrefectHQ/fastmcp) (26.2k★) | [#4297](https://github.com/PrefectHQ/fastmcp/pull/4297) | Preserve required discriminator tags when building tool schemas so union arguments stay valid |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9815](https://github.com/promptfoo/promptfoo/pull/9815) | Reject a malformed `__expected0` CSV header instead of silently dropping its assertion |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9897](https://github.com/promptfoo/promptfoo/pull/9897) | Guard array access in the Bedrock Titan and Cohere providers so an empty response array no longer crashes generation |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9867](https://github.com/promptfoo/promptfoo/pull/9867) | Avoid crashing on an empty `choices` array when reading Azure logprobs |
@@ -258,6 +265,10 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (18.0k★) | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) | Accept `providerExecuted` and `title` on Vercel AI dynamic-tool message parts so strict validation preserves provider metadata |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (18.0k★) | [#5694](https://github.com/pydantic/pydantic-ai/pull/5694) | Fix `MCPToolset(http_client=...)` with FastMCP by keeping `follow_redirects` out of caller-provided HTTP client factories |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (18.0k★) | [#5695](https://github.com/pydantic/pydantic-ai/pull/5695) | Forward penalties in completions |
+| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (15.9k★) | [#3531](https://github.com/googleapis/mcp-toolbox/pull/3531) | Validate the Looker explore_references shape instead of panicking on malformed input |
+| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (15.9k★) | [#3516](https://github.com/googleapis/mcp-toolbox/pull/3516) | Return an error instead of panicking when a parameter type field is not a string |
+| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (15.9k★) | [#3512](https://github.com/googleapis/mcp-toolbox/pull/3512) | Report the offending value in array/map parameter type errors |
+| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (15.9k★) | [#3416](https://github.com/googleapis/mcp-toolbox/pull/3416) | Document execute_sql least-privilege setup |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.4k★) | [#1735](https://github.com/ag-ui-protocol/ag-ui/pull/1735) | Avoid stale ADK session writes after human-in-the-loop tool calls |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.4k★) | [#1832](https://github.com/ag-ui-protocol/ag-ui/pull/1832) | Preserve AG-UI input metadata when LangGraph converts text and media blocks into LangChain multimodal content |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.4k★) | [#1826](https://github.com/ag-ui-protocol/ag-ui/pull/1826) | Forward LangGraph runtime context through tool kwargs so graph tools keep caller-supplied execution context |
@@ -269,6 +280,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.4k★) | [#1730](https://github.com/ag-ui-protocol/ag-ui/pull/1730) | Allow CopilotKit 1.x runtime peer |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.4k★) | [#1848](https://github.com/ag-ui-protocol/ag-ui/pull/1848) | Bundle replayed tool results |
 | [OpenHarness](https://github.com/HKUDS/OpenHarness) (14.1k★) | [#185](https://github.com/HKUDS/OpenHarness/pull/185) | TUI tab-completion: fix cursor jump, strip trailing space, accept `/quit` alias |
+| [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.3k★) | [#3822](https://github.com/EleutherAI/lm-evaluation-harness/pull/3822) | Keep Anthropic stop sequences non-empty so requests are not rejected |
 | [Pipecat](https://github.com/pipecat-ai/pipecat) (13.0k★) | [#4553](https://github.com/pipecat-ai/pipecat/pull/4553) | Serialize interruption frames through protobuf transports so realtime voice-agent interruptions survive transport hops |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5994](https://github.com/livekit/agents/pull/5994) | Handle OpenAI-compatible realtime status details returned as strings so incomplete responses do not crash logging |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5976](https://github.com/livekit/agents/pull/5976) | Preserve request timeouts when callers provide custom Google HTTP options, without mutating the caller-owned options object |
@@ -277,6 +289,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5887](https://github.com/livekit/agents/pull/5887) | Delete trimmed empty audio items |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5820](https://github.com/livekit/agents/pull/5820) | Recreate Anthropic streaming requests on retry so transient stream creation failures do not re-await the same coroutine |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#6124](https://github.com/livekit/agents/pull/6124) | Normalize two-digit years in GetDOBTask |
+| [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.0k★) | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) | Reject mangled publisher metadata instead of accepting malformed entries |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.3k★) | [#2353](https://github.com/strands-agents/harness-sdk/pull/2353) | Handle Gemini safety-blocked metadata by defaulting missing usage counts and mapping safety stops to guardrail intervention |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.3k★) | [#2656](https://github.com/strands-agents/harness-sdk/pull/2656) | Handle empty Bedrock content blocks |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.3k★) | [#2823](https://github.com/strands-agents/harness-sdk/pull/2823) | Avoid UnboundLocalError on empty model stream |
@@ -305,6 +318,9 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [dify](https://github.com/langgenius/dify) (148.7k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | Keep watercrawl request timeouts bounded instead of disabling them with `timeout=None` |
 | [dify](https://github.com/langgenius/dify) (148.7k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | Skip empty tool entries in legacy dataset config extraction |
 | [dify](https://github.com/langgenius/dify) (148.7k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | Eagerly validate the conversation on the service-api and explore endpoints so a bad `conversation_id` returns 404 instead of streaming into a late failure |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (150.3k★) | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) | Reject self-hosted scrape interact actions with a clear error instead of failing opaquely |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (150.3k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | Keep the auth chunk in the self-host bypass path so authenticated self-hosted scrapes are not dropped |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (150.3k★) | [#3713](https://github.com/firecrawl/firecrawl/pull/3713) | Handle the async v1 batch-scrape response returned as a dict in the Python SDK |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | Skip empty agent switch conditions so blank branch guards do not crash or block valid downstream agent flows |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Fall back when Docling native parsing returns no chunks so documents still produce usable content instead of empty parse results |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | Keep the strongest PageRank score for repeated n-hop GraphRAG edges instead of letting path order overwrite ranking |
@@ -317,6 +333,8 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | Fix `None` file_path propagating as `unknown_source`: fill gaps left by #2793 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3123](https://github.com/HKUDS/LightRAG/pull/3123) | Sync API documentation colors with the dark theme so endpoint examples stay readable in dark mode |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) | Extract Docling async markdown results from the response envelope so RAG chunks contain clean document text |
+| [yfinance](https://github.com/ranaroussi/yfinance) (24.7k★) | [#2867](https://github.com/ranaroussi/yfinance/pull/2867) | Add a missing comma that was merging two equity-screener EPS fields into one |
+| [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.5k★) | [#3092](https://github.com/eosphoros-ai/DB-GPT/pull/3092) | Require explicit opt-in before the sandbox executes on the local runtime |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13245](https://github.com/Arize-ai/phoenix/pull/13245) | Keep the generative model fetch cursor monotonic so lower-id updates cannot make later polling skip newer model changes |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) | Expire prompt tool diffs on provider change so PXI prompt editing does not carry stale tool-change state across providers |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13637](https://github.com/Arize-ai/phoenix/pull/13637) | Wait for in-memory SQLite schema initialization before serving Phoenix so startup races do not hit missing tables |
@@ -347,7 +365,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 200+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（24 个）、Qwen Code（51 个）、Microsoft Agent Framework（20 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（18 个）、Hugging Face Transformers（1 个）、PyTorch（3 个）。
+- 280+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（24 个）、Qwen Code（51 个）、Microsoft Agent Framework（20 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（18 个）、Hugging Face Transformers（1 个）、PyTorch（3 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -419,6 +437,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | 修复 Inductor codegen 中用户自定义 Triton kernel 的名称修饰，避免不同 kernel 在生成代码里命名冲突（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | 移除过时的 `setuptools` 版本上限，让构建解析到当前工具链而不是被钉在旧版本（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [LiteLLM](https://github.com/BerriAI/litellm) (51.4k★) | [#26401](https://github.com/BerriAI/litellm/pull/26401) | 修复 `LITELLM_LOG=INFO` 漏设 `verbose_logger`：proxy INFO 日志不再静默丢失 |
+| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.7k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | 记录 eigenvalue monitor 的值，让它们真正写入日志而不是被静默丢弃 |
 | [SGLang](https://github.com/sgl-project/sglang) (30.2k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | 修复 hybrid_linear_attn_backend 与 ngram 投机采样同时使用时崩溃 |
 | [SGLang](https://github.com/sgl-project/sglang) (30.2k★) | [#21472](https://github.com/sgl-project/sglang/pull/21472) | 修复 `--backend diffusers` 在非 T2I 模型上的 `PicklingError` |
 | [verl](https://github.com/verl-project/verl) (22.4k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | 按 data-parallel 和 tensor-parallel rank 计算 colocated vLLM 权重同步 ZMQ socket rank，避免多个 DP worker 连接到同一 receiver |
@@ -564,6 +583,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | 目录创建失败时向上传递错误，避免 memory `ensureDir` 静默失败后继续执行 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#96456](https://github.com/openclaw/openclaw/pull/96456) | 按码点边界裁剪进度文本，避免落单的 surrogate |
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | 工具路径显示里，共享 home 前缀的同级目录不再被误缩写 |
+| [opencode](https://github.com/anomalyco/opencode) (185.4k★) | [#30022](https://github.com/anomalyco/opencode/pull/30022) | 把 MCP OAuth 回调服务绑到 IPv4 loopback，让浏览器回跳稳定连上、不再和 IPv6 抢地址 |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (78.3k★) | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) | 编辑 basic model 设置时保留自定义 LLM base URL，避免保存 profile 后静默回退到 provider 默认 endpoint |
 | [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | 在 `SOUL.md` 进入 `<soul>` system-prompt 块前 HTML 转义,让可被 agent 编辑的 personality 无法伪造框架标签、越出信任边界 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#3797](https://github.com/bytedance/deer-flow/pull/3797) | 同步 MCP session-pool 单例生命周期,避免并发首次使用创建重复池 |
@@ -578,9 +598,13 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Mem0](https://github.com/mem0ai/mem0) (59.4k★) | [#5383](https://github.com/mem0ai/mem0/pull/5383) | OpenClaw CLI metadata 注册时跳过 runtime setup，避免插件发现阶段重复注册运行时副作用 |
 | [Mem0](https://github.com/mem0ai/mem0) (59.4k★) | [#5416](https://github.com/mem0ai/mem0/pull/5416) | 修复 S3 Vectors entity index 命名，避免 agent memory 写入因 AWS index-name 校验失败 |
 | [Mem0](https://github.com/mem0ai/mem0) (59.4k★) | [#5380](https://github.com/mem0ai/mem0/pull/5380) | 暴露 Qdrant `https` 配置，让自托管 HTTP Qdrant + API key 场景不再被迫走 TLS client 模式 |
+| [goose](https://github.com/aaif-goose/goose) (51.2k★) | [#9599](https://github.com/aaif-goose/goose/pull/9599) | 改用阻塞式 OTLP HTTP exporter，避免进程退出时丢掉遥测数据 |
+| [goose](https://github.com/aaif-goose/goose) (51.2k★) | [#9584](https://github.com/aaif-goose/goose/pull/9584) | 显示 skill 支持文件解析后的真实路径，而不是未解析的占位符 |
+| [goose](https://github.com/aaif-goose/goose) (51.2k★) | [#9528](https://github.com/aaif-goose/goose/pull/9528) | 恢复 desktop 应用里 new chat 快捷键的导航 |
 | [Agno](https://github.com/agno-agi/agno) (40.8k★) | [#8131](https://github.com/agno-agi/agno/pull/8131) | 保留非哨兵工具参数字符串里的空白，同时继续只对精确的 None / True / False 哨兵做归一化 |
 | [GitHub MCP Server](https://github.com/github/github-mcp-server) (31.0k★) | [#2514](https://github.com/github/github-mcp-server/pull/2514) | 支持 PR review 请求里的 team reviewer，把 team slug 解析为 GitHub review subject，不再丢失团队 reviewer |
 | [GitHub MCP Server](https://github.com/github/github-mcp-server) (31.0k★) | [#2612](https://github.com/github/github-mcp-server/pull/2612) | read-only 模式下隐藏会写入 GitHub 的 UI resources，同时保留安全的只读资源注册 |
+| [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (27.9k★) | [#3643](https://github.com/openai/openai-agents-python/pull/3643) | 上报实际生效的 Blaxel 超时值，而不是未配置的默认值 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1786](https://github.com/agentscope-ai/agentscope/pull/1786) | 创建 Redis session 时保留调用方提供的 session id，让后续 get、update 和 list 操作继续命中同一 session，而不是生成的新 UUID |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) | team run 中继承 leader permission rules，让 delegated agents 继续遵守同一套 workspace / file access 约束 |
@@ -590,6 +614,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1734](https://github.com/agentscope-ai/agentscope/pull/1734) | Redis message list 写入和 streaming replace 时刷新 TTL，让配置的 storage TTL 真正约束聊天历史保留时间 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1822](https://github.com/agentscope-ai/agentscope/pull/1822) | 给内置 Bash tool 增加 cwd 选项，让 shell 命令能在指定 workspace 目录执行 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1732](https://github.com/agentscope-ai/agentscope/pull/1732) | 汇总所有已启用 tool group 的 skills，让 prompt instructions 和 Skill viewer 与当前启用工具保持一致 |
+| [FastMCP](https://github.com/PrefectHQ/fastmcp) (26.2k★) | [#4297](https://github.com/PrefectHQ/fastmcp/pull/4297) | 构建工具 schema 时保留必需的 discriminator tag，让 union 参数仍然有效 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9815](https://github.com/promptfoo/promptfoo/pull/9815) | 拒绝畸形的 `__expected0` CSV 表头,而不是静默丢弃它的断言 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9897](https://github.com/promptfoo/promptfoo/pull/9897) | 给 Bedrock Titan 和 Cohere provider 的数组访问加守卫,空响应数组不再崩溃生成 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9867](https://github.com/promptfoo/promptfoo/pull/9867) | 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
@@ -601,6 +626,10 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (18.0k★) | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) | 兼容 Vercel AI dynamic-tool 消息里的 `providerExecuted` 和 `title` 字段，保留 provider 元数据而不是被严格校验拒绝 |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (18.0k★) | [#5694](https://github.com/pydantic/pydantic-ai/pull/5694) | 修复 `MCPToolset(http_client=...)` 与 FastMCP 的兼容问题，避免把 `follow_redirects` 泄漏给调用方提供的 HTTP client factory |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (18.0k★) | [#5695](https://github.com/pydantic/pydantic-ai/pull/5695) | 在 completions 里转发 penalties 参数 |
+| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (15.9k★) | [#3531](https://github.com/googleapis/mcp-toolbox/pull/3531) | 校验 Looker explore_references 的结构，非法输入不再 panic |
+| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (15.9k★) | [#3516](https://github.com/googleapis/mcp-toolbox/pull/3516) | 参数 type 字段不是字符串时返回错误，而不是 panic |
+| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (15.9k★) | [#3512](https://github.com/googleapis/mcp-toolbox/pull/3512) | array/map 参数类型报错时带上导致出错的具体值 |
+| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (15.9k★) | [#3416](https://github.com/googleapis/mcp-toolbox/pull/3416) | 补充 execute_sql 最小权限配置的文档 |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.4k★) | [#1735](https://github.com/ag-ui-protocol/ag-ui/pull/1735) | 修复 HITL tool call 后 ADK session 可能被旧状态回写的问题 |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.4k★) | [#1832](https://github.com/ag-ui-protocol/ag-ui/pull/1832) | LangGraph 转换文本和媒体 block 时保留 AG-UI `InputContent.metadata` |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.4k★) | [#1826](https://github.com/ag-ui-protocol/ag-ui/pull/1826) | 将 LangGraph runtime context 透传到 tool kwargs，让 graph tools 保留调用方传入的执行上下文 |
@@ -612,6 +641,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.4k★) | [#1730](https://github.com/ag-ui-protocol/ag-ui/pull/1730) | 允许 CopilotKit 1.x 的 runtime peer 依赖 |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.4k★) | [#1848](https://github.com/ag-ui-protocol/ag-ui/pull/1848) | 打包回放的 tool results |
 | [OpenHarness](https://github.com/HKUDS/OpenHarness) (14.1k★) | [#185](https://github.com/HKUDS/OpenHarness/pull/185) | TUI tab 补全三合一修复：光标跳回、去除尾部空格、接受 `/quit` 别名 |
+| [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.3k★) | [#3822](https://github.com/EleutherAI/lm-evaluation-harness/pull/3822) | 保证传给 Anthropic 的 stop sequence 非空，避免请求被拒 |
 | [Pipecat](https://github.com/pipecat-ai/pipecat) (13.0k★) | [#4553](https://github.com/pipecat-ai/pipecat/pull/4553) | 修复 protobuf transport 丢失 interruption frame：实时语音 agent 的打断事件跨传输后仍能保留 |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5994](https://github.com/livekit/agents/pull/5994) | 兼容 OpenAI-compatible realtime 返回字符串 status details，避免 incomplete response 在日志路径崩溃 |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5976](https://github.com/livekit/agents/pull/5976) | 调用方传入自定义 Google HTTP options 时仍保留请求 timeout，并避免原地修改调用方对象 |
@@ -620,6 +650,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5887](https://github.com/livekit/agents/pull/5887) | 删除裁剪后为空的 audio item |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5820](https://github.com/livekit/agents/pull/5820) | 修复 Anthropic streaming retry：瞬时建流失败后重新创建 stream，不再重复 await 同一个 coroutine |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#6124](https://github.com/livekit/agents/pull/6124) | `GetDOBTask` 里规范化两位数年份 |
+| [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.0k★) | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) | 拒绝损坏的 publisher 元数据，而不是接收畸形条目 |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.3k★) | [#2353](https://github.com/strands-agents/harness-sdk/pull/2353) | 处理 Gemini safety-blocked metadata：缺失 token 计数时安全归零，并把 safety stop 映射为 guardrail intervention |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.3k★) | [#2656](https://github.com/strands-agents/harness-sdk/pull/2656) | 处理空的 Bedrock content block |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.3k★) | [#2823](https://github.com/strands-agents/harness-sdk/pull/2823) | 空 model stream 时避免 `UnboundLocalError` |
@@ -647,6 +678,9 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [dify](https://github.com/langgenius/dify) (148.7k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | watercrawl 请求超时保持有界,而不是用 `timeout=None` 禁用 |
 | [dify](https://github.com/langgenius/dify) (148.7k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | legacy dataset 配置提取时跳过空的 tool entry |
 | [dify](https://github.com/langgenius/dify) (148.7k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | 在 service-api 和 explore 端点提前校验 conversation,坏 `conversation_id` 直接返回 404,而不是流式跑到后期才失败 |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (150.3k★) | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) | self-host 抓取的 interact 动作明确报错拒绝，而不是隐晦地失败 |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (150.3k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | self-host bypass 路径保留 auth chunk，避免已认证的 self-host 抓取被丢弃 |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (150.3k★) | [#3713](https://github.com/firecrawl/firecrawl/pull/3713) | Python SDK 正确处理 async v1 batch scrape 以 dict 形式返回的响应 |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | 跳过空的 agent switch 条件，避免空分支判断让有效后续 agent 流程崩溃或卡住 |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Docling native 解析没有产出 chunks 时自动降级，避免文档解析结果变成空内容 |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | repeated n-hop GraphRAG edges 保留最强 PageRank 分数，避免路径顺序覆盖排序结果 |
@@ -659,6 +693,8 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | 修复 `None` file_path 传播为 `unknown_source`：补 #2793 遗漏的处理层 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3123](https://github.com/HKUDS/LightRAG/pull/3123) | 同步 API 文档暗色主题配色，避免 endpoint 示例在 dark mode 下变得不可读 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) | 从 Docling 异步结果 envelope 中抽取 Markdown 正文，避免 RAG chunk 混入 JSON/base64 噪声 |
+| [yfinance](https://github.com/ranaroussi/yfinance) (24.7k★) | [#2867](https://github.com/ranaroussi/yfinance/pull/2867) | 补上漏掉的逗号，避免 equity screener 的两个 EPS 字段被并成一个 |
+| [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.5k★) | [#3092](https://github.com/eosphoros-ai/DB-GPT/pull/3092) | sandbox 用本地 runtime 执行前要求显式 opt-in |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13245](https://github.com/Arize-ai/phoenix/pull/13245) | 修复 generative model fetch 游标回退：低 id 更新不会让后续轮询跳过更新的模型变更 |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) | provider 变化时让 prompt tool diff 过期，避免 PXI prompt 编辑跨 provider 携带旧工具差异状态 |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13637](https://github.com/Arize-ai/phoenix/pull/13637) | 等待 in-memory SQLite schema 初始化完成再服务 Phoenix，避免启动竞态导致 missing table |
