@@ -36,11 +36,11 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 #### AI infrastructure / model systems
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa position_ids in-place accumulation on CUDA graph padding: BGE-M3 crash after ~4000 requests |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | Fix bench_serve UTF-8 decode crash on split multi-byte chars in streaming chunks |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | Support tuple model outputs in the V1 ubatch wrapper so DBO and speculative decoding stop crashing on tuple-returning models |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Fix Responses API `instructions` leaking across turns via `previous_response_id` chain |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Parse Qwen3 XML tool-call parameters as JSON first so `null` / `false` survive streaming tool parsing instead of being rejected by Python literal parsing |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | Taught the V1 ubatch wrapper to unwrap tuple model outputs, unblocking DBO and speculative decoding on tuple-returning models. |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Responses API `instructions` were leaking across turns through the `previous_response_id` chain. |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals. |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | Fix weight offloading ignoring `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` in prefetch offloader |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | Prefix DeepSeek V4 MTP projection layers so compressed-tensors can match artifact-side target and ignore rules during draft model loading |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | Guard flash-attn rotary imports so FA4 environments fall back cleanly when `flash_attn.ops.triton.rotary` is absent |
@@ -48,14 +48,14 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang: skip redundant handshake for fabric-connected nodes |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2570](https://github.com/kvcache-ai/Mooncake/pull/2570) | Integer overflow in `BatchOffload` for >4 GiB objects: sum slice sizes in `uint64_t` and reject objects exceeding the `uint32_t` record `value_len`, instead of silently truncating |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | Make duplicate `rpc_meta` re-publish idempotent when the HTTP metadata body is unchanged, while still rejecting changed values |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | Duplicate `rpc_meta` re-publishes are idempotent when the HTTP body is unchanged, and still rejected when a value actually changes. |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1825](https://github.com/kvcache-ai/Mooncake/pull/1825) | Fix `P2PClientService::Put` silently swallowing write errors: propagate actual error codes for non-idempotent failures |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2651](https://github.com/kvcache-ai/Mooncake/pull/2651) | Skip bucket files with non-numeric names instead of aborting Init |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2629](https://github.com/kvcache-ai/Mooncake/pull/2629) | Don't abort client init on a malformed MC_MS_AUTO_DISC value |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin for eviction-protected objects: model weights never get evicted, const field + BatchEvict skip + backward-compat serialization |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | Clean up failed io_uring sub-batch initialization so partially prepared transfer batches do not leak failed state into later setup |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | Clean up a failed io_uring sub-batch init so a half-prepared transfer batch can't carry broken state into later setup. |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | Add `ObjectDataType` metadata classification for KV cache, weights, tensors, and snapshots, with backward-compatible serialization and Python bindings |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2610](https://github.com/kvcache-ai/Mooncake/pull/2610) | Restore the `task.request` association in `RdmaTransport::submitTransfer`: a refactor dropped the per-task `request` pointer, leaving every downstream task with null and breaking status/retry/accounting reads |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2610](https://github.com/kvcache-ai/Mooncake/pull/2610) | A refactor had dropped the per-task `request` pointer in `RdmaTransport::submitTransfer`, leaving every downstream task null and breaking status, retry, and accounting reads. Traced it back and restored the association. |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2402](https://github.com/kvcache-ai/Mooncake/pull/2402) | Reject failed Python buddy-allocator backing buffers instead of inserting null raw buffers into managed slabs |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2628](https://github.com/kvcache-ai/Mooncake/pull/2628) | Fix source refcnt leak in CopyEnd/MoveEnd on invalid source |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2500](https://github.com/kvcache-ai/Mooncake/pull/2500) | Don't fail bundle cleanup when per-key remove retry succeeds |
@@ -74,25 +74,25 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | Guard the CuTeDSL topk override against a non-current CUDA device so it stops dispatching on the wrong device (shows as Closed; landed via pytorchmergebot) |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | Remove the obsolete `setuptools` upper bound so builds resolve a current toolchain instead of pinning a stale one (shows as Closed; landed via pytorchmergebot) |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | Fix user-defined Triton kernel name mangling in the Inductor codegen so distinct kernels stop colliding in generated code (shows as Closed; landed via pytorchmergebot) |
-| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.7k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | Log eigenvalue monitor values so they are actually recorded instead of silently dropped |
-| [Transformers](https://github.com/huggingface/transformers) (162.5k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | Fix `AutoProcessor.from_pretrained` silently dropping hub kwargs (`revision`, `token`, etc.) |
-| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | Skip empty `rejected_messages` during dataset prep so DPO runs fail fast on malformed preference rows instead of crashing mid-training |
-| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | Preserve non-string prefix elements in `_replace_system` so templated system prompts keep their structured content |
-| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | Include image mode and size in the temp image cache key so different-format images stop colliding in the cache |
+| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.7k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | Eigenvalue monitor values were computed but never logged; wired them through so they actually land in the record. |
+| [Transformers](https://github.com/huggingface/transformers) (162.5k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | `AutoProcessor.from_pretrained` was silently dropping hub kwargs like `revision` and `token`. |
+| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | Empty `rejected_messages` now fail fast in dataset prep instead of crashing DPO mid-training. |
+| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | `_replace_system` was flattening non-string prefix elements, stripping the structured content out of templated system prompts. |
+| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | Different-format images collided in the temp image cache; folded mode and size into the key. |
 | [SGLang](https://github.com/sgl-project/sglang) (30.2k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | Fix hybrid_linear_attn_backend crash when used with ngram speculative decoding |
 | [SGLang](https://github.com/sgl-project/sglang) (30.2k★) | [#21472](https://github.com/sgl-project/sglang/pull/21472) | Fix PicklingError with --backend diffusers on non-T2I models |
-| [TRL](https://github.com/huggingface/trl) (18.8k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | Reject already-transformed datasets during SFT preparation so misconfigured runs fail fast instead of silently producing wrong training batches |
+| [TRL](https://github.com/huggingface/trl) (18.8k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | An already-transformed dataset in SFT prep now fails fast, instead of silently producing wrong training batches. |
 | [TRL](https://github.com/huggingface/trl) (18.8k★) | [#6063](https://github.com/huggingface/trl/pull/6063) | Preserve vllm prompt special tokens |
 | [Triton](https://github.com/triton-lang/triton) (19.7k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | Fix AxisInfo correctness: signed constants, unknown shift divisibility, and shift UB guards |
 | [Triton](https://github.com/triton-lang/triton) (19.7k★) | [#10689](https://github.com/triton-lang/triton/pull/10689) | Keep at least one config when a fractional top_k rounds to zero |
-| [Triton](https://github.com/triton-lang/triton) (19.7k★) | [#10687](https://github.com/triton-lang/triton/pull/10687) | Is_power_of_two returns True for 0 |
+| [Triton](https://github.com/triton-lang/triton) (19.7k★) | [#10687](https://github.com/triton-lang/triton/pull/10687) | `is_power_of_two(0)` was returning True. |
 | [LiteLLM](https://github.com/BerriAI/litellm) (51.4k★) | [#26401](https://github.com/BerriAI/litellm/pull/26401) | Fix `LITELLM_LOG=INFO` missing `verbose_logger`: proxy INFO logs now include all verbose logger sources |
-| [LMCache](https://github.com/LMCache/LMCache) (9.8k★) | [#3245](https://github.com/LMCache/LMCache/pull/3245) | Retain producer-side CUDA IPC events during MP store/retrieve requests so daemon IPC handles do not point at collected events |
-| [LMCache](https://github.com/LMCache/LMCache) (9.8k★) | [#3282](https://github.com/LMCache/LMCache/pull/3282) | Support HND GPU KV formats in MP KV transfer so alternate KV tensor layouts are handled correctly |
+| [LMCache](https://github.com/LMCache/LMCache) (9.8k★) | [#3245](https://github.com/LMCache/LMCache/pull/3245) | Retain producer-side CUDA IPC events across MP store/retrieve so daemon IPC handles don't dereference collected events. |
+| [LMCache](https://github.com/LMCache/LMCache) (9.8k★) | [#3282](https://github.com/LMCache/LMCache/pull/3282) | Handle HND GPU KV layouts in MP KV transfer, which previously mishandled that tensor format. |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (5.9k★) | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) | Fix autotuner crash when input tensor is `None`: proper None-checking for optional inputs (fixes #2749) |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (5.9k★) | [#2772](https://github.com/flashinfer-ai/flashinfer/pull/2772) | Fix compilation error: add missing `<optional>` header for `std::optional` usage in CUTLASS headers |
 | [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.8k★) | [#2564](https://github.com/googleapis/python-genai/pull/2564) | Keep Live Music API keys out of websocket URLs by relying on request headers instead of duplicating secrets in query strings |
-| [verl](https://github.com/verl-project/verl) (22.4k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | Derive colocated vLLM weight-sync ZMQ socket ranks from data-parallel and tensor-parallel ranks so DP workers do not collide on the same receiver |
+| [verl](https://github.com/verl-project/verl) (22.4k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | Derived the colocated vLLM weight-sync ZMQ socket rank from the DP and TP ranks, so DP workers stop colliding on one receiver. |
 #### Agent frameworks / protocols / evals
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -394,11 +394,11 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 #### AI infra / 模型系统
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | 修复 RoBERTa position_ids 原地累积溢出：BGE-M3 约 4000 请求后 CUDA graph padding crash |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | 修复 bench_serve 流式响应拆分多字节 UTF-8 字符导致 decode 崩溃 |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | 修复 V1 ubatch wrapper 不支持 tuple model outputs：DBO / speculative decoding 不再因 tuple 返回值崩溃 |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | 修复 Responses API 的 `instructions` 通过 `previous_response_id` 链泄漏到后续轮次 |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | 先按 JSON 解析 Qwen3 XML tool-call 参数，让 `null` / `false` 等 JSON literal 在 streaming tool parser 中稳定保留 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | 让 V1 ubatch wrapper 认得 tuple model outputs，解开 DBO 和投机解码在 tuple 返回值上的崩溃。 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。 |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | 修复 weight offloading 忽略 `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` 环境变量 |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | 给 DeepSeek V4 MTP projection layers 补 prefix，让 compressed-tensors 加载 draft model 时能匹配 artifact 侧 target / ignore 规则 |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | 保护 flash-attn rotary 导入路径，让 FA4 环境缺少 `flash_attn.ops.triton.rotary` 时稳定回退而不是构造 rotary 层时崩溃 |
@@ -406,14 +406,14 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang：跳过 fabric 连接节点的冗余握手 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2570](https://github.com/kvcache-ai/Mooncake/pull/2570) | 修复 `BatchOffload` 处理 >4 GiB 对象时的整数溢出：用 `uint64_t` 累加各 slice 大小，并拒绝超过 `uint32_t` 记录 `value_len` 的对象，而不是静默截断 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | 让 HTTP metadata server 对相同 `rpc_meta` 重复发布保持幂等，同时继续拒绝内容变化的重复写入 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | `rpc_meta` 内容没变时重复发布保持幂等，真正改了值才拒绝。 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1825](https://github.com/kvcache-ai/Mooncake/pull/1825) | 修复 `P2PClientService::Put` 静默吞掉写入错误：传播实际错误码给调用方 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2651](https://github.com/kvcache-ai/Mooncake/pull/2651) | Init 遇到非数字命名的 bucket 文件时跳过，而不是直接 abort |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2629](https://github.com/kvcache-ai/Mooncake/pull/2629) | `MC_MS_AUTO_DISC` 值非法时不再中断 client 初始化 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin 驱逐保护：模型权重永不被驱逐，const 字段 + BatchEvict 跳过 + 向后兼容序列化 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | 清理失败的 io_uring sub-batch 初始化状态，避免部分初始化失败的 transfer batch 把坏状态带入后续 setup |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | 清掉失败的 io_uring sub-batch 初始化状态，别让半成品 transfer batch 把坏状态带进后续 setup。 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | 新增 `ObjectDataType` 元数据分类：KV cache、weights、tensors 等对象类型可在 metadata、snapshot 和 Python binding 中稳定传递 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2610](https://github.com/kvcache-ai/Mooncake/pull/2610) | 恢复 `RdmaTransport::submitTransfer` 里的 `task.request` 关联：重构时漏掉了每个 task 的 `request` 指针赋值，导致下游拿到 null，status/重试/计费回读全部失效 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2610](https://github.com/kvcache-ai/Mooncake/pull/2610) | 重构时漏掉了 `RdmaTransport::submitTransfer` 里每个 task 的 `request` 指针赋值，下游全拿到 null，status、重试、计费回读全废。追回来补上了这个关联。 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2402](https://github.com/kvcache-ai/Mooncake/pull/2402) | Python buddy allocator backing buffer 分配失败时直接拒绝，避免把 null raw buffer 放进 managed slab |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2628](https://github.com/kvcache-ai/Mooncake/pull/2628) | 修复 `CopyEnd`/`MoveEnd` 在 source 非法时的 source 引用计数泄漏 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2500](https://github.com/kvcache-ai/Mooncake/pull/2500) | 单 key remove 重试成功后，不再把整个 bundle cleanup 判为失败 |
@@ -432,25 +432,25 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | 让 CuTeDSL 的 topk override 守住非当前 CUDA 设备，避免把工作分发到错误设备（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | 移除过时的 `setuptools` 版本上限，让构建解析到当前工具链而不是被钉在旧版本（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | 修复 Inductor codegen 中用户自定义 Triton kernel 的名称修饰，避免不同 kernel 在生成代码里命名冲突（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.7k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | 记录 eigenvalue monitor 的值，让它们真正写入日志而不是被静默丢弃 |
-| [Transformers](https://github.com/huggingface/transformers) (162.5k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | 修复 `AutoProcessor.from_pretrained` 静默丢弃 hub kwargs（`revision`、`token` 等） |
-| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | DPO 数据准备阶段跳过空 `rejected_messages`,让畸形偏好行快速失败而不是训练中途崩溃 |
-| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | 保留 `_replace_system` 里的非字符串 prefix 元素,让模板化 system prompt 保持结构化内容 |
-| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | 把图片 mode 和 size 纳入临时图片缓存 key,避免不同格式图片在缓存里撞键 |
+| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.7k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | eigenvalue monitor 的值算了却没写日志，接上后才真正落进记录。 |
+| [Transformers](https://github.com/huggingface/transformers) (162.5k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | `AutoProcessor.from_pretrained` 静默丢掉了 `revision`、`token` 这些 hub kwargs。 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | DPO 数据准备阶段遇到空 `rejected_messages` 直接快速失败，不用等训练跑到一半才崩。 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | `_replace_system` 把非字符串的 prefix 元素压平了，模板化 system prompt 的结构化内容被抹掉。 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | 不同格式的图片在临时缓存里撞了键，把 mode 和 size 也纳入 key 才分开。 |
 | [SGLang](https://github.com/sgl-project/sglang) (30.2k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | 修复 hybrid_linear_attn_backend 与 ngram 投机采样同时使用时崩溃 |
 | [SGLang](https://github.com/sgl-project/sglang) (30.2k★) | [#21472](https://github.com/sgl-project/sglang/pull/21472) | 修复 `--backend diffusers` 在非 T2I 模型上的 `PicklingError` |
-| [TRL](https://github.com/huggingface/trl) (18.8k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | SFT 准备阶段拒绝已转换过的数据集，让配置错误的训练快速失败，而不是静默产出错误的训练 batch |
+| [TRL](https://github.com/huggingface/trl) (18.8k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | SFT 准备阶段遇到已经转换过的数据集直接报错，别静默产出错的训练 batch。 |
 | [TRL](https://github.com/huggingface/trl) (18.8k★) | [#6063](https://github.com/huggingface/trl/pull/6063) | 保留 vLLM prompt 的 special tokens |
 | [Triton](https://github.com/triton-lang/triton) (19.7k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | 修复 AxisInfo 正确性：有符号常量、未知 shift 和 shift UB 都保守处理 |
 | [Triton](https://github.com/triton-lang/triton) (19.7k★) | [#10689](https://github.com/triton-lang/triton/pull/10689) | 分数 `top_k` 向下取整为 0 时至少保留一个 config |
-| [Triton](https://github.com/triton-lang/triton) (19.7k★) | [#10687](https://github.com/triton-lang/triton/pull/10687) | 修复 `is_power_of_two(0)` 误返回 True |
+| [Triton](https://github.com/triton-lang/triton) (19.7k★) | [#10687](https://github.com/triton-lang/triton/pull/10687) | `is_power_of_two(0)` 误返回了 True。 |
 | [LiteLLM](https://github.com/BerriAI/litellm) (51.4k★) | [#26401](https://github.com/BerriAI/litellm/pull/26401) | 修复 `LITELLM_LOG=INFO` 漏设 `verbose_logger`：proxy INFO 日志不再静默丢失 |
-| [LMCache](https://github.com/LMCache/LMCache) (9.8k★) | [#3245](https://github.com/LMCache/LMCache/pull/3245) | 在 MP store/retrieve 请求期间保留 producer 侧 CUDA IPC event，避免 daemon 通过已回收 event handle 恢复时报 invalid argument |
-| [LMCache](https://github.com/LMCache/LMCache) (9.8k★) | [#3282](https://github.com/LMCache/LMCache/pull/3282) | 支持 MP KV transfer 中的 HND GPU KV 格式，让不同 KV tensor layout 能被正确处理 |
+| [LMCache](https://github.com/LMCache/LMCache) (9.8k★) | [#3245](https://github.com/LMCache/LMCache/pull/3245) | MP store/retrieve 期间留住 producer 侧的 CUDA IPC event，别让 daemon 拿着已回收的 handle 去恢复。 |
+| [LMCache](https://github.com/LMCache/LMCache) (9.8k★) | [#3282](https://github.com/LMCache/LMCache/pull/3282) | MP KV transfer 处理 HND 这种 GPU KV layout，之前这种排布会被算错。 |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (5.9k★) | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) | 修复 autotuner 在输入 tensor 为 `None` 时崩溃（fixes #2749） |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (5.9k★) | [#2772](https://github.com/flashinfer-ai/flashinfer/pull/2772) | 修复编译错误：CUTLASS 头文件缺少 `<optional>` include 导致 `std::optional` 未定义 |
 | [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.8k★) | [#2564](https://github.com/googleapis/python-genai/pull/2564) | 让 Live Music API key 不再进入 websocket URL query，改由请求 header 承载，避免密钥出现在日志和代理路径里 |
-| [verl](https://github.com/verl-project/verl) (22.4k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | 按 data-parallel 和 tensor-parallel rank 计算 colocated vLLM 权重同步 ZMQ socket rank，避免多个 DP worker 连接到同一 receiver |
+| [verl](https://github.com/verl-project/verl) (22.4k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | 按 DP 和 TP rank 算 colocated vLLM 权重同步的 ZMQ socket rank，多个 DP worker 不再挤到同一个 receiver。 |
 #### Agent 框架 / 协议 / 评测
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
