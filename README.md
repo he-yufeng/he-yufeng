@@ -36,15 +36,6 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 #### AI infrastructure / model systems
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa position_ids in-place accumulation on CUDA graph padding: BGE-M3 crash after ~4000 requests |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | Fix bench_serve UTF-8 decode crash on split multi-byte chars in streaming chunks |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | Support tuple model outputs in the V1 ubatch wrapper so DBO and speculative decoding stop crashing on tuple-returning models |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Fix Responses API `instructions` leaking across turns via `previous_response_id` chain |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Parse Qwen3 XML tool-call parameters as JSON first so `null` / `false` survive streaming tool parsing instead of being rejected by Python literal parsing |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | Fix weight offloading ignoring `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` in prefetch offloader |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | Prefix DeepSeek V4 MTP projection layers so compressed-tensors can match artifact-side target and ignore rules during draft model loading |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | Guard flash-attn rotary imports so FA4 environments fall back cleanly when `flash_attn.ops.triton.rotary` is absent |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | Base64 JPEG video frames returning empty metadata: populate frame count, fps, duration |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang: skip redundant handshake for fabric-connected nodes |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2570](https://github.com/kvcache-ai/Mooncake/pull/2570) | Integer overflow in `BatchOffload` for >4 GiB objects: sum slice sizes in `uint64_t` and reject objects exceeding the `uint32_t` record `value_len`, instead of silently truncating |
@@ -69,6 +60,15 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2617](https://github.com/kvcache-ai/Mooncake/pull/2617) | Associate task.request in EFA/Kunpeng submitTransfer |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2619](https://github.com/kvcache-ai/Mooncake/pull/2619) | Fix signed-char isxdigit UB in EFA smaps page-size parsing (follow-up to #2504) |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2460](https://github.com/kvcache-ai/Mooncake/pull/2460) | Support EulerOS in dependencies installer |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa position_ids in-place accumulation on CUDA graph padding: BGE-M3 crash after ~4000 requests |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | Fix bench_serve UTF-8 decode crash on split multi-byte chars in streaming chunks |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | Support tuple model outputs in the V1 ubatch wrapper so DBO and speculative decoding stop crashing on tuple-returning models |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Fix Responses API `instructions` leaking across turns via `previous_response_id` chain |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Parse Qwen3 XML tool-call parameters as JSON first so `null` / `false` survive streaming tool parsing instead of being rejected by Python literal parsing |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | Fix weight offloading ignoring `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` in prefetch offloader |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | Prefix DeepSeek V4 MTP projection layers so compressed-tensors can match artifact-side target and ignore rules during draft model loading |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | Guard flash-attn rotary imports so FA4 environments fall back cleanly when `flash_attn.ops.triton.rotary` is absent |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | Base64 JPEG video frames returning empty metadata: populate frame count, fps, duration |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#188027](https://github.com/pytorch/pytorch/pull/188027) | Initialize `r` in the Laguerre and Legendre polynomial helpers so they stop returning uninitialized memory on the boundary path (shows as Closed; landed via pytorchmergebot) |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | Fix a `ValueError` in the `stale_issues` workflow's `parse_older_than` on non-leap years, where a naive Feb 29 offset crashed the run (shows as Closed; landed via pytorchmergebot) |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | Guard the CuTeDSL topk override against a non-current CUDA device so it stops dispatching on the wrong device (shows as Closed; landed via pytorchmergebot) |
@@ -394,15 +394,6 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 #### AI infra / 模型系统
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | 修复 RoBERTa position_ids 原地累积溢出：BGE-M3 约 4000 请求后 CUDA graph padding crash |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | 修复 bench_serve 流式响应拆分多字节 UTF-8 字符导致 decode 崩溃 |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | 修复 V1 ubatch wrapper 不支持 tuple model outputs：DBO / speculative decoding 不再因 tuple 返回值崩溃 |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | 修复 Responses API 的 `instructions` 通过 `previous_response_id` 链泄漏到后续轮次 |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | 先按 JSON 解析 Qwen3 XML tool-call 参数，让 `null` / `false` 等 JSON literal 在 streaming tool parser 中稳定保留 |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | 修复 weight offloading 忽略 `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` 环境变量 |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | 给 DeepSeek V4 MTP projection layers 补 prefix，让 compressed-tensors 加载 draft model 时能匹配 artifact 侧 target / ignore 规则 |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | 保护 flash-attn rotary 导入路径，让 FA4 环境缺少 `flash_attn.ops.triton.rotary` 时稳定回退而不是构造 rotary 层时崩溃 |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | 修复 base64 JPEG 视频帧返回空 metadata：补充帧数、fps、时长 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang：跳过 fabric 连接节点的冗余握手 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2570](https://github.com/kvcache-ai/Mooncake/pull/2570) | 修复 `BatchOffload` 处理 >4 GiB 对象时的整数溢出：用 `uint64_t` 累加各 slice 大小，并拒绝超过 `uint32_t` 记录 `value_len` 的对象，而不是静默截断 |
@@ -427,6 +418,15 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2617](https://github.com/kvcache-ai/Mooncake/pull/2617) | 在 EFA/鲲鹏 `submitTransfer` 里补回 `task.request` 关联（与 RDMA 路径同类漏赋值） |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2619](https://github.com/kvcache-ai/Mooncake/pull/2619) | 修复 EFA smaps page-size 解析里 signed char 传 `isxdigit` 的 UB（#2504 的后续） |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2460](https://github.com/kvcache-ai/Mooncake/pull/2460) | 依赖安装脚本支持 EulerOS |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | 修复 RoBERTa position_ids 原地累积溢出：BGE-M3 约 4000 请求后 CUDA graph padding crash |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | 修复 bench_serve 流式响应拆分多字节 UTF-8 字符导致 decode 崩溃 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | 修复 V1 ubatch wrapper 不支持 tuple model outputs：DBO / speculative decoding 不再因 tuple 返回值崩溃 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | 修复 Responses API 的 `instructions` 通过 `previous_response_id` 链泄漏到后续轮次 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | 先按 JSON 解析 Qwen3 XML tool-call 参数，让 `null` / `false` 等 JSON literal 在 streaming tool parser 中稳定保留 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | 修复 weight offloading 忽略 `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` 环境变量 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | 给 DeepSeek V4 MTP projection layers 补 prefix，让 compressed-tensors 加载 draft model 时能匹配 artifact 侧 target / ignore 规则 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | 保护 flash-attn rotary 导入路径，让 FA4 环境缺少 `flash_attn.ops.triton.rotary` 时稳定回退而不是构造 rotary 层时崩溃 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | 修复 base64 JPEG 视频帧返回空 metadata：补充帧数、fps、时长 |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#188027](https://github.com/pytorch/pytorch/pull/188027) | 在 Laguerre / Legendre 多项式的辅助函数里初始化 `r`，避免边界路径返回未初始化内存（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | 修复 `stale_issues` workflow 的 `parse_older_than` 在非闰年崩溃：朴素的 2 月 29 日偏移会抛 `ValueError`（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | 让 CuTeDSL 的 topk override 守住非当前 CUDA 设备，避免把工作分发到错误设备（PR 显示 Closed，经 pytorchmergebot 合入） |
