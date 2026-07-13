@@ -9,11 +9,11 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 | Area | Project | Stars | Notes |
 |------|---------|:-----:|-------|
-| Coding agents / evals | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.2k+ | 512K lines of Claude Code → 1,400 lines of Python. Every key architectural pattern, runnable. Any LLM. 7 architecture deep-dive articles. |
+| Coding agents / evals | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.5k+ | 512K lines of Claude Code → 1,400 lines of Python. Every key architectural pattern, runnable. Any LLM. 7 architecture deep-dive articles. |
 | Applied agents | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
-| Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 100+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, and reading guides. |
+| Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, and reading guides. |
 | Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, and plain-English explanations. |
-| Codebase maps | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
+| Codebase maps | [GitSense](https://github.com/he-yufeng/GitSense) | 100+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
 | Code understanding | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | AI code reader for non-programmers: plain-language file guides, hover annotations, a terminology dictionary, Q&A, and natural-language edits. |
 | Coding agents / evals | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | new | Pytest plugin for regression-testing AI agents: snapshot baselines, semantic comparison, and mock LLMs. |
 | Coding agents / evals | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | new | AI coding agent CLI supporting 100+ LLMs via litellm, with dangerous command blocking, parallel tools, and session persistence. |
@@ -37,35 +37,35 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | Support tuple model outputs in the V1 ubatch wrapper so DBO and speculative decoding stop crashing on tuple-returning models |
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Parse Qwen3 XML tool-call parameters as JSON first so `null` / `false` survive streaming tool parsing instead of being rejected by Python literal parsing |
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | Prefix DeepSeek V4 MTP projection layers so compressed-tensors can match artifact-side target and ignore rules during draft model loading |
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | Guard flash-attn rotary imports so FA4 environments fall back cleanly when `flash_attn.ops.triton.rotary` is absent |
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa position_ids in-place accumulation on CUDA graph padding: BGE-M3 crash after ~4000 requests |
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Fix Responses API `instructions` leaking across turns via `previous_response_id` chain |
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | Fix weight offloading ignoring `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` in prefetch offloader |
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | Base64 JPEG video frames returning empty metadata: populate frame count, fps, duration |
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | Fix bench_serve UTF-8 decode crash on split multi-byte chars in streaming chunks |
-| [PyTorch](https://github.com/pytorch/pytorch) (101.1k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | Fix user-defined Triton kernel name mangling in the Inductor codegen so distinct kernels stop colliding in generated code (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (101.1k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | Fix a `ValueError` in the `stale_issues` workflow's `parse_older_than` on non-leap years, where a naive Feb 29 offset crashed the run (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (101.1k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | Remove the obsolete `setuptools` upper bound so builds resolve a current toolchain instead of pinning a stale one (shows as Closed; landed via pytorchmergebot) |
-| [Transformers](https://github.com/huggingface/transformers) (161.9k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | Fix `AutoProcessor.from_pretrained` silently dropping hub kwargs (`revision`, `token`, etc.) |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#2570](https://github.com/kvcache-ai/Mooncake/pull/2570) | Integer overflow in `BatchOffload` for >4 GiB objects: sum slice sizes in `uint64_t` and reject objects exceeding the `uint32_t` record `value_len`, instead of silently truncating |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#2610](https://github.com/kvcache-ai/Mooncake/pull/2610) | Restore the `task.request` association in `RdmaTransport::submitTransfer`: a refactor dropped the per-task `request` pointer, leaving every downstream task with null and breaking status/retry/accounting reads |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1831](https://github.com/kvcache-ai/Mooncake/pull/1831) | TENT NVLink IPC fix: use base pointer for sub-allocated GPU tensors, porting #1622 fix to TENT path |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin for eviction-protected objects: model weights never get evicted, const field + BatchEvict skip + backward-compat serialization |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | Add `ObjectDataType` metadata classification for KV cache, weights, tensors, and snapshots, with backward-compatible serialization and Python bindings |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang: skip redundant handshake for fabric-connected nodes |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | Make duplicate `rpc_meta` re-publish idempotent when the HTTP metadata body is unchanged, while still rejecting changed values |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#2402](https://github.com/kvcache-ai/Mooncake/pull/2402) | Reject failed Python buddy-allocator backing buffers instead of inserting null raw buffers into managed slabs |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | Clean up failed io_uring sub-batch initialization so partially prepared transfer batches do not leak failed state into later setup |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1825](https://github.com/kvcache-ai/Mooncake/pull/1825) | Fix `P2PClientService::Put` silently swallowing write errors: propagate actual error codes for non-idempotent failures |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1626](https://github.com/kvcache-ai/Mooncake/pull/1626) | Silenced error log spam for non-memory replicas in metadata store |
-| [Triton](https://github.com/triton-lang/triton) (19.5k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | Fix AxisInfo correctness: signed constants, unknown shift divisibility, and shift UB guards |
-| [verl](https://github.com/verl-project/verl) (22.1k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | Derive colocated vLLM weight-sync ZMQ socket ranks from data-parallel and tensor-parallel ranks so DP workers do not collide on the same receiver |
-| [TRL](https://github.com/huggingface/trl) (18.7k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | Reject already-transformed datasets during SFT preparation so misconfigured runs fail fast instead of silently producing wrong training batches |
-| [SGLang](https://github.com/sgl-project/sglang) (29.6k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | Fix hybrid_linear_attn_backend crash when used with ngram speculative decoding |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | Support tuple model outputs in the V1 ubatch wrapper so DBO and speculative decoding stop crashing on tuple-returning models |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Parse Qwen3 XML tool-call parameters as JSON first so `null` / `false` survive streaming tool parsing instead of being rejected by Python literal parsing |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | Prefix DeepSeek V4 MTP projection layers so compressed-tensors can match artifact-side target and ignore rules during draft model loading |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | Guard flash-attn rotary imports so FA4 environments fall back cleanly when `flash_attn.ops.triton.rotary` is absent |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa position_ids in-place accumulation on CUDA graph padding: BGE-M3 crash after ~4000 requests |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Fix Responses API `instructions` leaking across turns via `previous_response_id` chain |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | Fix weight offloading ignoring `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` in prefetch offloader |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | Base64 JPEG video frames returning empty metadata: populate frame count, fps, duration |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | Fix bench_serve UTF-8 decode crash on split multi-byte chars in streaming chunks |
+| [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | Fix user-defined Triton kernel name mangling in the Inductor codegen so distinct kernels stop colliding in generated code (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | Fix a `ValueError` in the `stale_issues` workflow's `parse_older_than` on non-leap years, where a naive Feb 29 offset crashed the run (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | Remove the obsolete `setuptools` upper bound so builds resolve a current toolchain instead of pinning a stale one (shows as Closed; landed via pytorchmergebot) |
+| [Transformers](https://github.com/huggingface/transformers) (162.5k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | Fix `AutoProcessor.from_pretrained` silently dropping hub kwargs (`revision`, `token`, etc.) |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2570](https://github.com/kvcache-ai/Mooncake/pull/2570) | Integer overflow in `BatchOffload` for >4 GiB objects: sum slice sizes in `uint64_t` and reject objects exceeding the `uint32_t` record `value_len`, instead of silently truncating |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2610](https://github.com/kvcache-ai/Mooncake/pull/2610) | Restore the `task.request` association in `RdmaTransport::submitTransfer`: a refactor dropped the per-task `request` pointer, leaving every downstream task with null and breaking status/retry/accounting reads |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1831](https://github.com/kvcache-ai/Mooncake/pull/1831) | TENT NVLink IPC fix: use base pointer for sub-allocated GPU tensors, porting #1622 fix to TENT path |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin for eviction-protected objects: model weights never get evicted, const field + BatchEvict skip + backward-compat serialization |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | Add `ObjectDataType` metadata classification for KV cache, weights, tensors, and snapshots, with backward-compatible serialization and Python bindings |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang: skip redundant handshake for fabric-connected nodes |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | Make duplicate `rpc_meta` re-publish idempotent when the HTTP metadata body is unchanged, while still rejecting changed values |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2402](https://github.com/kvcache-ai/Mooncake/pull/2402) | Reject failed Python buddy-allocator backing buffers instead of inserting null raw buffers into managed slabs |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | Clean up failed io_uring sub-batch initialization so partially prepared transfer batches do not leak failed state into later setup |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1825](https://github.com/kvcache-ai/Mooncake/pull/1825) | Fix `P2PClientService::Put` silently swallowing write errors: propagate actual error codes for non-idempotent failures |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1626](https://github.com/kvcache-ai/Mooncake/pull/1626) | Silenced error log spam for non-memory replicas in metadata store |
+| [Triton](https://github.com/triton-lang/triton) (19.7k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | Fix AxisInfo correctness: signed constants, unknown shift divisibility, and shift UB guards |
+| [verl](https://github.com/verl-project/verl) (22.4k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | Derive colocated vLLM weight-sync ZMQ socket ranks from data-parallel and tensor-parallel ranks so DP workers do not collide on the same receiver |
+| [TRL](https://github.com/huggingface/trl) (18.8k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | Reject already-transformed datasets during SFT preparation so misconfigured runs fail fast instead of silently producing wrong training batches |
+| [SGLang](https://github.com/sgl-project/sglang) (30.2k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | Fix hybrid_linear_attn_backend crash when used with ngram speculative decoding |
 | [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.8k★) | [#2564](https://github.com/googleapis/python-genai/pull/2564) | Keep Live Music API keys out of websocket URLs by relying on request headers instead of duplicating secrets in query strings |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (5.9k★) | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) | Fix autotuner crash when input tensor is `None`: proper None-checking for optional inputs (fixes #2749) |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (5.9k★) | [#2772](https://github.com/flashinfer-ai/flashinfer/pull/2772) | Fix compilation error: add missing `<optional>` header for `std::optional` usage in CUTLASS headers |
@@ -258,11 +258,11 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 | 方向 | 项目 | Stars | 简介 |
 |------|------|:-----:|------|
-| Coding agents / 评测 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.2k+ | Claude Code 51万行源码 → 1400行 Python 核心重写，支持任意大模型，附 7 篇架构导读。 |
+| Coding agents / 评测 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.5k+ | Claude Code 51万行源码 → 1400行 Python 核心重写，支持任意大模型，附 7 篇架构导读。 |
 | 应用型 Agent | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化和岗位结构化。 |
-| 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 100+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
+| 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
 | 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI 合同审查 Agent，签字前帮你找红旗条款、不公平约定和缺失保护。 |
-| 代码库地图 | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI 开源贡献发现器 + 仓库雷达：找匹配 issue，也评估 PR 合入友好度。 |
+| 代码库地图 | [GitSense](https://github.com/he-yufeng/GitSense) | 100+ | AI 开源贡献发现器 + 仓库雷达：找匹配 issue，也评估 PR 合入友好度。 |
 | 代码理解 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | 面向非程序员的 AI 代码阅读器：大白话文件导读、悬浮批注、术语词典、问答、自然语言改写。 |
 | Coding agents / 评测 | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | new | AI Agent 回归测试 pytest 插件：快照基线、语义比较、Mock LLM。 |
 | Coding agents / 评测 | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | new | 终端 AI 编程 Agent，通过 litellm 支持 100+ 大模型，危险命令拦截、并行执行、会话持久化。 |
@@ -286,34 +286,34 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | 修复 V1 ubatch wrapper 不支持 tuple model outputs：DBO / speculative decoding 不再因 tuple 返回值崩溃 |
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | 先按 JSON 解析 Qwen3 XML tool-call 参数，让 `null` / `false` 等 JSON literal 在 streaming tool parser 中稳定保留 |
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | 给 DeepSeek V4 MTP projection layers 补 prefix，让 compressed-tensors 加载 draft model 时能匹配 artifact 侧 target / ignore 规则 |
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | 保护 flash-attn rotary 导入路径，让 FA4 环境缺少 `flash_attn.ops.triton.rotary` 时稳定回退而不是构造 rotary 层时崩溃 |
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | 修复 RoBERTa position_ids 原地累积溢出：BGE-M3 约 4000 请求后 CUDA graph padding crash |
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | 修复 Responses API 的 `instructions` 通过 `previous_response_id` 链泄漏到后续轮次 |
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | 修复 weight offloading 忽略 `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` 环境变量 |
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | 修复 base64 JPEG 视频帧返回空 metadata：补充帧数、fps、时长 |
-| [vLLM](https://github.com/vllm-project/vllm) (84.1k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | 修复 bench_serve 流式响应拆分多字节 UTF-8 字符导致 decode 崩溃 |
-| [PyTorch](https://github.com/pytorch/pytorch) (101.1k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | 修复 Inductor codegen 中用户自定义 Triton kernel 的名称修饰，避免不同 kernel 在生成代码里命名冲突（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (101.1k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | 修复 `stale_issues` workflow 的 `parse_older_than` 在非闰年崩溃：朴素的 2 月 29 日偏移会抛 `ValueError`（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (101.1k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | 移除过时的 `setuptools` 版本上限，让构建解析到当前工具链而不是被钉在旧版本（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [Transformers](https://github.com/huggingface/transformers) (161.9k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | 修复 `AutoProcessor.from_pretrained` 静默丢弃 hub kwargs（`revision`、`token` 等） |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#2610](https://github.com/kvcache-ai/Mooncake/pull/2610) | 恢复 `RdmaTransport::submitTransfer` 里的 `task.request` 关联：重构时漏掉了每个 task 的 `request` 指针赋值，导致下游拿到 null，status/重试/计费回读全部失效 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1831](https://github.com/kvcache-ai/Mooncake/pull/1831) | TENT NVLink IPC 修复：sub-allocated GPU tensor 使用 base pointer，将 #1622 修复移植到 TENT 路径 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin 驱逐保护：模型权重永不被驱逐，const 字段 + BatchEvict 跳过 + 向后兼容序列化 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | 新增 `ObjectDataType` 元数据分类：KV cache、weights、tensors 等对象类型可在 metadata、snapshot 和 Python binding 中稳定传递 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang：跳过 fabric 连接节点的冗余握手 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | 让 HTTP metadata server 对相同 `rpc_meta` 重复发布保持幂等，同时继续拒绝内容变化的重复写入 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#2402](https://github.com/kvcache-ai/Mooncake/pull/2402) | Python buddy allocator backing buffer 分配失败时直接拒绝，避免把 null raw buffer 放进 managed slab |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | 清理失败的 io_uring sub-batch 初始化状态，避免部分初始化失败的 transfer batch 把坏状态带入后续 setup |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1825](https://github.com/kvcache-ai/Mooncake/pull/1825) | 修复 `P2PClientService::Put` 静默吞掉写入错误：传播实际错误码给调用方 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.7k★) | [#1626](https://github.com/kvcache-ai/Mooncake/pull/1626) | 修复非内存副本的错误日志刷屏 |
-| [Triton](https://github.com/triton-lang/triton) (19.5k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | 修复 AxisInfo 正确性：有符号常量、未知 shift 和 shift UB 都保守处理 |
-| [verl](https://github.com/verl-project/verl) (22.1k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | 按 data-parallel 和 tensor-parallel rank 计算 colocated vLLM 权重同步 ZMQ socket rank，避免多个 DP worker 连接到同一 receiver |
-| [TRL](https://github.com/huggingface/trl) (18.7k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | SFT 准备阶段拒绝已转换过的数据集，让配置错误的训练快速失败，而不是静默产出错误的训练 batch |
-| [SGLang](https://github.com/sgl-project/sglang) (29.6k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | 修复 hybrid_linear_attn_backend 与 ngram 投机采样同时使用时崩溃 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | 修复 V1 ubatch wrapper 不支持 tuple model outputs：DBO / speculative decoding 不再因 tuple 返回值崩溃 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | 先按 JSON 解析 Qwen3 XML tool-call 参数，让 `null` / `false` 等 JSON literal 在 streaming tool parser 中稳定保留 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | 给 DeepSeek V4 MTP projection layers 补 prefix，让 compressed-tensors 加载 draft model 时能匹配 artifact 侧 target / ignore 规则 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | 保护 flash-attn rotary 导入路径，让 FA4 环境缺少 `flash_attn.ops.triton.rotary` 时稳定回退而不是构造 rotary 层时崩溃 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | 修复 RoBERTa position_ids 原地累积溢出：BGE-M3 约 4000 请求后 CUDA graph padding crash |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | 修复 Responses API 的 `instructions` 通过 `previous_response_id` 链泄漏到后续轮次 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | 修复 weight offloading 忽略 `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` 环境变量 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | 修复 base64 JPEG 视频帧返回空 metadata：补充帧数、fps、时长 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | 修复 bench_serve 流式响应拆分多字节 UTF-8 字符导致 decode 崩溃 |
+| [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | 修复 Inductor codegen 中用户自定义 Triton kernel 的名称修饰，避免不同 kernel 在生成代码里命名冲突（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | 修复 `stale_issues` workflow 的 `parse_older_than` 在非闰年崩溃：朴素的 2 月 29 日偏移会抛 `ValueError`（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | 移除过时的 `setuptools` 版本上限，让构建解析到当前工具链而不是被钉在旧版本（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [Transformers](https://github.com/huggingface/transformers) (162.5k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | 修复 `AutoProcessor.from_pretrained` 静默丢弃 hub kwargs（`revision`、`token` 等） |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2610](https://github.com/kvcache-ai/Mooncake/pull/2610) | 恢复 `RdmaTransport::submitTransfer` 里的 `task.request` 关联：重构时漏掉了每个 task 的 `request` 指针赋值，导致下游拿到 null，status/重试/计费回读全部失效 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1831](https://github.com/kvcache-ai/Mooncake/pull/1831) | TENT NVLink IPC 修复：sub-allocated GPU tensor 使用 base pointer，将 #1622 修复移植到 TENT 路径 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin 驱逐保护：模型权重永不被驱逐，const 字段 + BatchEvict 跳过 + 向后兼容序列化 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | 新增 `ObjectDataType` 元数据分类：KV cache、weights、tensors 等对象类型可在 metadata、snapshot 和 Python binding 中稳定传递 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang：跳过 fabric 连接节点的冗余握手 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | 让 HTTP metadata server 对相同 `rpc_meta` 重复发布保持幂等，同时继续拒绝内容变化的重复写入 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2402](https://github.com/kvcache-ai/Mooncake/pull/2402) | Python buddy allocator backing buffer 分配失败时直接拒绝，避免把 null raw buffer 放进 managed slab |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | 清理失败的 io_uring sub-batch 初始化状态，避免部分初始化失败的 transfer batch 把坏状态带入后续 setup |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1825](https://github.com/kvcache-ai/Mooncake/pull/1825) | 修复 `P2PClientService::Put` 静默吞掉写入错误：传播实际错误码给调用方 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1626](https://github.com/kvcache-ai/Mooncake/pull/1626) | 修复非内存副本的错误日志刷屏 |
+| [Triton](https://github.com/triton-lang/triton) (19.7k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | 修复 AxisInfo 正确性：有符号常量、未知 shift 和 shift UB 都保守处理 |
+| [verl](https://github.com/verl-project/verl) (22.4k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | 按 data-parallel 和 tensor-parallel rank 计算 colocated vLLM 权重同步 ZMQ socket rank，避免多个 DP worker 连接到同一 receiver |
+| [TRL](https://github.com/huggingface/trl) (18.8k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | SFT 准备阶段拒绝已转换过的数据集，让配置错误的训练快速失败，而不是静默产出错误的训练 batch |
+| [SGLang](https://github.com/sgl-project/sglang) (30.2k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | 修复 hybrid_linear_attn_backend 与 ngram 投机采样同时使用时崩溃 |
 | [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.8k★) | [#2564](https://github.com/googleapis/python-genai/pull/2564) | 让 Live Music API key 不再进入 websocket URL query，改由请求 header 承载，避免密钥出现在日志和代理路径里 |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (5.9k★) | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) | 修复 autotuner 在输入 tensor 为 `None` 时崩溃（fixes #2749） |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (5.9k★) | [#2772](https://github.com/flashinfer-ai/flashinfer/pull/2772) | 修复编译错误：CUTLASS 头文件缺少 `<optional>` include 导致 `std::optional` 未定义 |
