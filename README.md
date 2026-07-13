@@ -312,35 +312,35 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (150.3k★) | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) | Reject self-hosted scrape interact actions with a clear error instead of failing opaquely |
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (150.3k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | Keep the auth chunk in the self-host bypass path so authenticated self-hosted scrapes are not dropped |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (150.3k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | Keep the auth chunk in the self-host bypass path so authenticated self-hosted scrapes don't get dropped. |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (150.3k★) | [#3713](https://github.com/firecrawl/firecrawl/pull/3713) | Handle the async v1 batch-scrape response returned as a dict in the Python SDK |
-| [dify](https://github.com/langgenius/dify) (148.7k★) | [#37425](https://github.com/langgenius/dify/pull/37425) | Bound OperationService billing requests so a slow billing endpoint cannot hang the request |
-| [dify](https://github.com/langgenius/dify) (148.7k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | Eagerly validate the conversation on the service-api and explore endpoints so a bad `conversation_id` returns 404 instead of streaming into a late failure |
+| [dify](https://github.com/langgenius/dify) (148.7k★) | [#37425](https://github.com/langgenius/dify/pull/37425) | Bound OperationService billing requests so a slow billing endpoint can't hang the request. |
+| [dify](https://github.com/langgenius/dify) (148.7k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | Validate the conversation up front on the service-api and explore endpoints, so a bad `conversation_id` returns 404 instead of streaming into a late failure. |
 | [dify](https://github.com/langgenius/dify) (148.7k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | Keep watercrawl request timeouts bounded instead of disabling them with `timeout=None` |
 | [dify](https://github.com/langgenius/dify) (148.7k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | Skip empty tool entries in legacy dataset config extraction |
-| [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | Skip empty agent switch conditions so blank branch guards do not crash or block valid downstream agent flows |
-| [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Fall back when Docling native parsing returns no chunks so documents still produce usable content instead of empty parse results |
-| [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | Keep the strongest PageRank score for repeated n-hop GraphRAG edges instead of letting path order overwrite ranking |
-| [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) | Extract Docling async markdown results from the response envelope so RAG chunks contain clean document text |
-| [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3206](https://github.com/HKUDS/LightRAG/pull/3206) | Honor PostgreSQL `search_path` in table-existence checks so non-public schemas are detected before migrations or table creation |
-| [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3123](https://github.com/HKUDS/LightRAG/pull/3123) | Sync API documentation colors with the dark theme so endpoint examples stay readable in dark mode |
+| [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | Skip empty agent-switch conditions so a blank branch guard can't crash or block valid downstream flows. |
+| [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Fall back when Docling native parsing returns no chunks, so a document still produces usable content instead of an empty parse. |
+| [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | Keep the strongest PageRank score for repeated n-hop GraphRAG edges, so path order can't overwrite the ranking. |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) | Extract Docling async markdown from the response envelope so RAG chunks carry clean document text, not JSON/base64 noise. |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3206](https://github.com/HKUDS/LightRAG/pull/3206) | Honor PostgreSQL `search_path` in table-existence checks so a non-public schema is detected before migration or table creation. |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3123](https://github.com/HKUDS/LightRAG/pull/3123) | Sync the API docs colors with the dark theme so endpoint examples stay readable in dark mode. |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | Fix `None` file_path propagating as `unknown_source`: fill gaps left by #2793 |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) | Preserve surrogate pairs at truncation boundaries so multi-byte characters are not split into invalid halves |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) | Preserve surrogate pairs at truncation boundaries so a multi-byte character isn't split into invalid halves. |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16454](https://github.com/CherryHQ/cherry-studio/pull/16454) | Keep bare-URL markdown reference lines in citations instead of dropping them |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16217](https://github.com/CherryHQ/cherry-studio/pull/16217) | Roll relative time up at the unit boundary |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16361](https://github.com/CherryHQ/cherry-studio/pull/16361) | Resolve the .d.ts icon for uppercase extensions |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16358](https://github.com/CherryHQ/cherry-studio/pull/16358) | Drop Ideogram `data[]` items without a usable URL in the aihubmix path instead of rendering broken images |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) | Expire prompt tool diffs on provider change so PXI prompt editing does not carry stale tool-change state across providers |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13637](https://github.com/Arize-ai/phoenix/pull/13637) | Wait for in-memory SQLite schema initialization before serving Phoenix so startup races do not hit missing tables |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) | Expire prompt tool diffs on provider change, so PXI prompt editing stops carrying stale tool-change state across providers. |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13637](https://github.com/Arize-ai/phoenix/pull/13637) | Wait for in-memory SQLite schema init before serving Phoenix, so a startup race can't hit a missing table. |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13245](https://github.com/Arize-ai/phoenix/pull/13245) | Keep the generative model fetch cursor monotonic so lower-id updates cannot make later polling skip newer model changes |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13210](https://github.com/Arize-ai/phoenix/pull/13210) | Return NotFound-style errors for invalid GraphQL node ids instead of leaking decoder failures to clients |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13636](https://github.com/Arize-ai/phoenix/pull/13636) | Update PXI system prompt guidance to point at the current server-side Jinja templates and capability wiring instead of stale browser-side paths |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13242](https://github.com/Arize-ai/phoenix/pull/13242) | Pass Anthropic computer-use beta headers for raw computer tool definitions in playground streaming and non-streaming calls |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13653](https://github.com/Arize-ai/phoenix/pull/13653) | Focus the PXI input when the agent panel opens so keyboard-first agent workflows can start without an extra click |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13653](https://github.com/Arize-ai/phoenix/pull/13653) | Focus the PXI input when the agent panel opens, so keyboard-first workflows start without an extra click. |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13139](https://github.com/Arize-ai/phoenix/pull/13139) | Surface playground validation errors instead of returning empty subscription payloads |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13614](https://github.com/Arize-ai/phoenix/pull/13614) | Refresh the prompts table while users stay on the page so newly created or updated prompts appear without a manual reload |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13261](https://github.com/Arize-ai/phoenix/pull/13261) | Refresh span annotation notes after create so the UI shows newly added notes without a manual reload |
-| [Graphiti](https://github.com/getzep/graphiti) (27.8k★) | [#1531](https://github.com/getzep/graphiti/pull/1531) | Strip embedded NUL bytes from FalkorDB query parameters so one malformed document string cannot crash bulk graph writes |
+| [Graphiti](https://github.com/getzep/graphiti) (27.8k★) | [#1531](https://github.com/getzep/graphiti/pull/1531) | Strip embedded NUL bytes from FalkorDB query params, so one malformed document string can't crash a bulk graph write. |
 | [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.5k★) | [#3092](https://github.com/eosphoros-ai/DB-GPT/pull/3092) | Require explicit opt-in before the sandbox executes on the local runtime |
 | [yfinance](https://github.com/ranaroussi/yfinance) (24.7k★) | [#2867](https://github.com/ranaroussi/yfinance/pull/2867) | Add a missing comma that was merging two equity-screener EPS fields into one |
 #### Recommender systems
@@ -348,8 +348,8 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 |---------|:--:|-------------|
 | [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2349](https://github.com/recommenders-team/recommenders/pull/2349) | Query GPU memory with torch first |
 | [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2351](https://github.com/recommenders-team/recommenders/pull/2351) | Fail fast when TensorFlow GPU is unavailable |
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2345](https://github.com/recommenders-team/recommenders/pull/2345) | Query GPU memory through PyTorch first and keep numba as a fallback so GPU discovery does not fail on unavailable CUDA contexts |
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2322](https://github.com/recommenders-team/recommenders/pull/2322) | Honor benchmark recommendation-count args so evaluation scripts generate the requested top-k results |
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2345](https://github.com/recommenders-team/recommenders/pull/2345) | Query GPU memory through PyTorch first with numba as fallback, so GPU discovery doesn't fail when a CUDA context is unavailable. |
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2322](https://github.com/recommenders-team/recommenders/pull/2322) | Honor the benchmark recommendation-count arg so eval scripts actually generate the requested top-k. |
 | [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2350](https://github.com/recommenders-team/recommenders/pull/2350) | Label MAP@k notebook outputs consistently |
 
 ### LinkedIn: https://www.linkedin.com/in/yufenghe
@@ -670,35 +670,35 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (150.3k★) | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) | self-host 抓取的 interact 动作明确报错拒绝，而不是隐晦地失败 |
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (150.3k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | self-host bypass 路径保留 auth chunk，避免已认证的 self-host 抓取被丢弃 |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (150.3k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | self-host bypass 路径保留 auth chunk，已认证的 self-host 抓取不再被丢掉。 |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (150.3k★) | [#3713](https://github.com/firecrawl/firecrawl/pull/3713) | Python SDK 正确处理 async v1 batch scrape 以 dict 形式返回的响应 |
-| [dify](https://github.com/langgenius/dify) (148.7k★) | [#37425](https://github.com/langgenius/dify/pull/37425) | 给 OperationService 计费请求加超时,慢计费端点不再挂住请求 |
-| [dify](https://github.com/langgenius/dify) (148.7k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | 在 service-api 和 explore 端点提前校验 conversation,坏 `conversation_id` 直接返回 404,而不是流式跑到后期才失败 |
+| [dify](https://github.com/langgenius/dify) (148.7k★) | [#37425](https://github.com/langgenius/dify/pull/37425) | 给 OperationService 计费请求加超时，慢计费端点挂不住请求。 |
+| [dify](https://github.com/langgenius/dify) (148.7k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | 在 service-api 和 explore 端点提前校验 conversation，坏的 `conversation_id` 直接 404，而不是流式跑到后期才失败。 |
 | [dify](https://github.com/langgenius/dify) (148.7k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | watercrawl 请求超时保持有界,而不是用 `timeout=None` 禁用 |
 | [dify](https://github.com/langgenius/dify) (148.7k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | legacy dataset 配置提取时跳过空的 tool entry |
-| [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | 跳过空的 agent switch 条件，避免空分支判断让有效后续 agent 流程崩溃或卡住 |
-| [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Docling native 解析没有产出 chunks 时自动降级，避免文档解析结果变成空内容 |
-| [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | repeated n-hop GraphRAG edges 保留最强 PageRank 分数，避免路径顺序覆盖排序结果 |
-| [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) | 从 Docling 异步结果 envelope 中抽取 Markdown 正文，避免 RAG chunk 混入 JSON/base64 噪声 |
-| [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3206](https://github.com/HKUDS/LightRAG/pull/3206) | 让 PostgreSQL 表存在性检查尊重当前 `search_path`，避免非 public schema 下迁移或建表判断失真 |
-| [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3123](https://github.com/HKUDS/LightRAG/pull/3123) | 同步 API 文档暗色主题配色，避免 endpoint 示例在 dark mode 下变得不可读 |
+| [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | 跳过空的 agent switch 条件，空分支判断不会让有效的后续 agent 流程崩掉或卡住。 |
+| [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Docling native 解析没产出 chunk 时降级，文档还能出可用内容，而不是空解析。 |
+| [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | 重复的 n-hop GraphRAG 边保留最强的 PageRank 分，路径顺序覆盖不了排序。 |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) | 从 Docling 异步结果 envelope 里抽出 Markdown 正文，RAG chunk 拿到干净文本，不混 JSON/base64 噪声。 |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3206](https://github.com/HKUDS/LightRAG/pull/3206) | PostgreSQL 表存在性检查尊重 `search_path`，非 public schema 在迁移、建表前就能识别对。 |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3123](https://github.com/HKUDS/LightRAG/pull/3123) | 把 API 文档配色和暗色主题同步，endpoint 示例在 dark mode 下也读得清。 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | 修复 `None` file_path 传播为 `unknown_source`：补 #2793 遗漏的处理层 |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) | 在截断边界保留 surrogate pair,避免多字节字符被切成非法半个 |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) | 在截断边界保住 surrogate pair，多字节字符不会被切成半个非法字符。 |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16454](https://github.com/CherryHQ/cherry-studio/pull/16454) | 保留 citations 里的纯 URL markdown 引用行,不再丢弃 |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16217](https://github.com/CherryHQ/cherry-studio/pull/16217) | 相对时间在单位边界正确进位 |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16361](https://github.com/CherryHQ/cherry-studio/pull/16361) | 为大写扩展名正确解析 `.d.ts` 图标 |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16358](https://github.com/CherryHQ/cherry-studio/pull/16358) | aihubmix 路径丢弃 Ideogram 里没有可用 URL 的 `data[]` 项,不再渲染坏图 |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) | provider 变化时让 prompt tool diff 过期，避免 PXI prompt 编辑跨 provider 携带旧工具差异状态 |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13637](https://github.com/Arize-ai/phoenix/pull/13637) | 等待 in-memory SQLite schema 初始化完成再服务 Phoenix，避免启动竞态导致 missing table |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) | provider 变化时让 prompt tool diff 过期，PXI 编辑不再把旧的工具差异状态带到别的 provider。 |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13637](https://github.com/Arize-ai/phoenix/pull/13637) | in-memory SQLite schema 初始化完再对外服务 Phoenix，启动竞态撞不上缺表。 |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13245](https://github.com/Arize-ai/phoenix/pull/13245) | 修复 generative model fetch 游标回退：低 id 更新不会让后续轮询跳过更新的模型变更 |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13210](https://github.com/Arize-ai/phoenix/pull/13210) | 修复非法 GraphQL node id 的错误处理：返回 NotFound 风格错误，而不是把 decoder failure 泄漏给客户端 |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13636](https://github.com/Arize-ai/phoenix/pull/13636) | 更新 PXI system prompt 指南，指向当前 server-side Jinja 模板和 capability wiring，不再引用过期的 browser-side 路径 |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13242](https://github.com/Arize-ai/phoenix/pull/13242) | 为 raw computer tool definitions 传递 Anthropic computer-use beta headers，覆盖 playground streaming 和非 streaming 调用 |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13653](https://github.com/Arize-ai/phoenix/pull/13653) | PXI agent 面板打开时自动聚焦输入框，让键盘优先的 agent workflow 不再多一次点击 |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13653](https://github.com/Arize-ai/phoenix/pull/13653) | PXI agent 面板一打开就聚焦输入框，键盘优先的流程少点一下。 |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13139](https://github.com/Arize-ai/phoenix/pull/13139) | 修复 Playground 校验错误被吞掉的问题：失败时返回明确错误，而不是空 subscription payload |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13614](https://github.com/Arize-ai/phoenix/pull/13614) | 修复 Prompts 表格停留页面时不会自动刷新的问题：新建或更新的 prompt 不再需要手动刷新才能出现 |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (10.3k★) | [#13261](https://github.com/Arize-ai/phoenix/pull/13261) | 修复 span annotation note 新建后的刷新问题：创建成功后立即重新拉取列表，前端不再需要手动刷新才能看到新 note |
-| [Graphiti](https://github.com/getzep/graphiti) (27.8k★) | [#1531](https://github.com/getzep/graphiti/pull/1531) | 递归清理 FalkorDB 查询参数里的 NUL 字节，避免单个异常文档字符串打断批量图写入 |
+| [Graphiti](https://github.com/getzep/graphiti) (27.8k★) | [#1531](https://github.com/getzep/graphiti/pull/1531) | 递归清掉 FalkorDB 查询参数里的 NUL 字节，单个异常文档字符串打断不了批量图写入。 |
 | [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.5k★) | [#3092](https://github.com/eosphoros-ai/DB-GPT/pull/3092) | sandbox 用本地 runtime 执行前要求显式 opt-in |
 | [yfinance](https://github.com/ranaroussi/yfinance) (24.7k★) | [#2867](https://github.com/ranaroussi/yfinance/pull/2867) | 补上漏掉的逗号，避免 equity screener 的两个 EPS 字段被并成一个 |
 #### 推荐系统
@@ -706,8 +706,8 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 |------|:--:|--------|
 | [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2349](https://github.com/recommenders-team/recommenders/pull/2349) | 优先用 torch 查询 GPU 显存 |
 | [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2351](https://github.com/recommenders-team/recommenders/pull/2351) | TensorFlow GPU 不可用时 fail fast |
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2345](https://github.com/recommenders-team/recommenders/pull/2345) | 优先通过 PyTorch 查询 GPU 显存，并保留 numba fallback，避免 CUDA context 不可用时 GPU discovery 直接失败 |
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2322](https://github.com/recommenders-team/recommenders/pull/2322) | 修复 benchmark 推荐数量参数不生效，让评测脚本按请求生成 top-k 结果 |
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2345](https://github.com/recommenders-team/recommenders/pull/2345) | 先用 PyTorch 查 GPU 显存，numba 兜底，CUDA context 不可用时 GPU discovery 不至于直接失败。 |
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2322](https://github.com/recommenders-team/recommenders/pull/2322) | 让 benchmark 的推荐数量参数生效，评测脚本按要求生成 top-k。 |
 | [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2350](https://github.com/recommenders-team/recommenders/pull/2350) | 统一标注 MAP@k notebook 的输出 |
 
 ### 领英LinkedIn: https://www.linkedin.com/in/yufenghe
