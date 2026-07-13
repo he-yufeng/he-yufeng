@@ -67,6 +67,9 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [verl](https://github.com/verl-project/verl) (22.4k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | Derive colocated vLLM weight-sync ZMQ socket ranks from data-parallel and tensor-parallel ranks so DP workers do not collide on the same receiver |
 | [Triton](https://github.com/triton-lang/triton) (19.7k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | Fix AxisInfo correctness: signed constants, unknown shift divisibility, and shift UB guards |
 | [TRL](https://github.com/huggingface/trl) (18.8k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | Reject already-transformed datasets during SFT preparation so misconfigured runs fail fast instead of silently producing wrong training batches |
+| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | Skip empty `rejected_messages` during dataset prep so DPO runs fail fast on malformed preference rows instead of crashing mid-training |
+| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | Preserve non-string prefix elements in `_replace_system` so templated system prompts keep their structured content |
+| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | Include image mode and size in the temp image cache key so different-format images stop colliding in the cache |
 | [LMCache](https://github.com/LMCache/LMCache) (9.8k★) | [#3245](https://github.com/LMCache/LMCache/pull/3245) | Retain producer-side CUDA IPC events during MP store/retrieve requests so daemon IPC handles do not point at collected events |
 | [LMCache](https://github.com/LMCache/LMCache) (9.8k★) | [#3282](https://github.com/LMCache/LMCache/pull/3282) | Support HND GPU KV formats in MP KV transfer so alternate KV tensor layouts are handled correctly |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (5.9k★) | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) | Fix autotuner crash when input tensor is `None`: proper None-checking for optional inputs (fixes #2749) |
@@ -167,6 +170,10 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | Propagate memory directory creation failures instead of continuing after a failed `ensureDir` |
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | Log auth profile resolution failures instead of swallowing silently |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (78.3k★) | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) | Preserve custom LLM base URLs when editing basic model settings so saved profiles do not silently fall back to provider defaults |
+| [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | HTML-escape `SOUL.md` before it enters the `<soul>` system-prompt block so an agent-editable personality cannot forge framework tags and break out of its trust zone |
+| [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#3797](https://github.com/bytedance/deer-flow/pull/3797) | Synchronize the MCP session-pool singleton lifecycle so concurrent first-use cannot create duplicate pools |
+| [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#3799](https://github.com/bytedance/deer-flow/pull/3799) | Serialize per-chat thread creation so concurrent messages stop creating duplicate threads for one chat |
+| [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#3719](https://github.com/bytedance/deer-flow/pull/3719) | Skip whitespace-only facts in `_apply_updates` so blank memory entries do not accumulate |
 | [Cline](https://github.com/cline/cline) (63.9k★) | [#11166](https://github.com/cline/cline/pull/11166) | Keep file search alive when the open-tabs host RPC is unavailable, falling back to system ripgrep instead of killing search |
 | [Mem0](https://github.com/mem0ai/mem0) (59.4k★) | [#5416](https://github.com/mem0ai/mem0/pull/5416) | Use valid S3 Vectors entity index names so agent memory writes no longer hit AWS index-name validation failures |
 | [Mem0](https://github.com/mem0ai/mem0) (59.4k★) | [#5380](https://github.com/mem0ai/mem0/pull/5380) | Expose Qdrant's `https` option so self-hosted HTTP clusters can use API-key auth without forcing TLS client mode |
@@ -182,6 +189,9 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1822](https://github.com/agentscope-ai/agentscope/pull/1822) | Add a cwd option to the built-in Bash tool so shell commands can run in the intended workspace directory |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1732](https://github.com/agentscope-ai/agentscope/pull/1732) | Include skills from every active tool group so prompt instructions and the Skill viewer stay aligned with enabled tools |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9897](https://github.com/promptfoo/promptfoo/pull/9897) | Guard array access in the Bedrock Titan and Cohere providers so an empty response array no longer crashes generation |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9867](https://github.com/promptfoo/promptfoo/pull/9867) | Avoid crashing on an empty `choices` array when reading Azure logprobs |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9815](https://github.com/promptfoo/promptfoo/pull/9815) | Reject a malformed `__expected0` CSV header instead of silently dropping its assertion |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (18.0k★) | [#5694](https://github.com/pydantic/pydantic-ai/pull/5694) | Fix `MCPToolset(http_client=...)` with FastMCP by keeping `follow_redirects` out of caller-provided HTTP client factories |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (18.0k★) | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) | Accept `providerExecuted` and `title` on Vercel AI dynamic-tool message parts so strict validation preserves provider metadata |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.4k★) | [#1735](https://github.com/ag-ui-protocol/ag-ui/pull/1735) | Avoid stale ADK session writes after human-in-the-loop tool calls |
@@ -217,9 +227,15 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [dify](https://github.com/langgenius/dify) (148.7k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | Eagerly validate the conversation on the service-api and explore endpoints so a bad `conversation_id` returns 404 instead of streaming into a late failure |
+| [dify](https://github.com/langgenius/dify) (148.7k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | Keep watercrawl request timeouts bounded instead of disabling them with `timeout=None` |
+| [dify](https://github.com/langgenius/dify) (148.7k★) | [#37425](https://github.com/langgenius/dify/pull/37425) | Bound OperationService billing requests so a slow billing endpoint cannot hang the request |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | Skip empty agent switch conditions so blank branch guards do not crash or block valid downstream agent flows |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | Keep the strongest PageRank score for repeated n-hop GraphRAG edges instead of letting path order overwrite ranking |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Fall back when Docling native parsing returns no chunks so documents still produce usable content instead of empty parse results |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16454](https://github.com/CherryHQ/cherry-studio/pull/16454) | Keep bare-URL markdown reference lines in citations instead of dropping them |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) | Preserve surrogate pairs at truncation boundaries so multi-byte characters are not split into invalid halves |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16358](https://github.com/CherryHQ/cherry-studio/pull/16358) | Drop Ideogram `data[]` items without a usable URL in the aihubmix path instead of rendering broken images |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | Fix `None` file_path propagating as `unknown_source`: fill gaps left by #2793 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3206](https://github.com/HKUDS/LightRAG/pull/3206) | Honor PostgreSQL `search_path` in table-existence checks so non-public schemas are detected before migrations or table creation |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) | Extract Docling async markdown results from the response envelope so RAG chunks contain clean document text |
@@ -316,6 +332,9 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [verl](https://github.com/verl-project/verl) (22.4k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | 按 data-parallel 和 tensor-parallel rank 计算 colocated vLLM 权重同步 ZMQ socket rank，避免多个 DP worker 连接到同一 receiver |
 | [Triton](https://github.com/triton-lang/triton) (19.7k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | 修复 AxisInfo 正确性：有符号常量、未知 shift 和 shift UB 都保守处理 |
 | [TRL](https://github.com/huggingface/trl) (18.8k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | SFT 准备阶段拒绝已转换过的数据集，让配置错误的训练快速失败，而不是静默产出错误的训练 batch |
+| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | DPO 数据准备阶段跳过空 `rejected_messages`,让畸形偏好行快速失败而不是训练中途崩溃 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | 保留 `_replace_system` 里的非字符串 prefix 元素,让模板化 system prompt 保持结构化内容 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | 把图片 mode 和 size 纳入临时图片缓存 key,避免不同格式图片在缓存里撞键 |
 | [LMCache](https://github.com/LMCache/LMCache) (9.8k★) | [#3245](https://github.com/LMCache/LMCache/pull/3245) | 在 MP store/retrieve 请求期间保留 producer 侧 CUDA IPC event，避免 daemon 通过已回收 event handle 恢复时报 invalid argument |
 | [LMCache](https://github.com/LMCache/LMCache) (9.8k★) | [#3282](https://github.com/LMCache/LMCache/pull/3282) | 支持 MP KV transfer 中的 HND GPU KV 格式，让不同 KV tensor layout 能被正确处理 |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (5.9k★) | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) | 修复 autotuner 在输入 tensor 为 `None` 时崩溃（fixes #2749） |
@@ -416,6 +435,10 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | 目录创建失败时向上传递错误，避免 memory `ensureDir` 静默失败后继续执行 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | 认证配置解析失败时记录日志而非静默吞掉 |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (78.3k★) | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) | 编辑 basic model 设置时保留自定义 LLM base URL，避免保存 profile 后静默回退到 provider 默认 endpoint |
+| [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | 在 `SOUL.md` 进入 `<soul>` system-prompt 块前 HTML 转义,让可被 agent 编辑的 personality 无法伪造框架标签、越出信任边界 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#3797](https://github.com/bytedance/deer-flow/pull/3797) | 同步 MCP session-pool 单例生命周期,避免并发首次使用创建重复池 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#3799](https://github.com/bytedance/deer-flow/pull/3799) | 串行化单聊天的线程创建,避免并发消息给一个聊天建重复线程 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#3719](https://github.com/bytedance/deer-flow/pull/3719) | `_apply_updates` 跳过纯空白 facts,避免空白记忆条目堆积 |
 | [Cline](https://github.com/cline/cline) (63.9k★) | [#11166](https://github.com/cline/cline/pull/11166) | open-tabs host RPC 不可用时仍保持文件搜索可用，并回退到系统 `rg`，避免搜索链路直接失效 |
 | [Mem0](https://github.com/mem0ai/mem0) (59.4k★) | [#5416](https://github.com/mem0ai/mem0/pull/5416) | 修复 S3 Vectors entity index 命名，避免 agent memory 写入因 AWS index-name 校验失败 |
 | [Mem0](https://github.com/mem0ai/mem0) (59.4k★) | [#5380](https://github.com/mem0ai/mem0/pull/5380) | 暴露 Qdrant `https` 配置，让自托管 HTTP Qdrant + API key 场景不再被迫走 TLS client 模式 |
@@ -431,6 +454,9 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1822](https://github.com/agentscope-ai/agentscope/pull/1822) | 给内置 Bash tool 增加 cwd 选项，让 shell 命令能在指定 workspace 目录执行 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1732](https://github.com/agentscope-ai/agentscope/pull/1732) | 汇总所有已启用 tool group 的 skills，让 prompt instructions 和 Skill viewer 与当前启用工具保持一致 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9897](https://github.com/promptfoo/promptfoo/pull/9897) | 给 Bedrock Titan 和 Cohere provider 的数组访问加守卫,空响应数组不再崩溃生成 |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9867](https://github.com/promptfoo/promptfoo/pull/9867) | 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9815](https://github.com/promptfoo/promptfoo/pull/9815) | 拒绝畸形的 `__expected0` CSV 表头,而不是静默丢弃它的断言 |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (18.0k★) | [#5694](https://github.com/pydantic/pydantic-ai/pull/5694) | 修复 `MCPToolset(http_client=...)` 与 FastMCP 的兼容问题，避免把 `follow_redirects` 泄漏给调用方提供的 HTTP client factory |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (18.0k★) | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) | 兼容 Vercel AI dynamic-tool 消息里的 `providerExecuted` 和 `title` 字段，保留 provider 元数据而不是被严格校验拒绝 |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (14.4k★) | [#1735](https://github.com/ag-ui-protocol/ag-ui/pull/1735) | 修复 HITL tool call 后 ADK session 可能被旧状态回写的问题 |
@@ -466,9 +492,15 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [dify](https://github.com/langgenius/dify) (148.7k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | 在 service-api 和 explore 端点提前校验 conversation,坏 `conversation_id` 直接返回 404,而不是流式跑到后期才失败 |
+| [dify](https://github.com/langgenius/dify) (148.7k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | watercrawl 请求超时保持有界,而不是用 `timeout=None` 禁用 |
+| [dify](https://github.com/langgenius/dify) (148.7k★) | [#37425](https://github.com/langgenius/dify/pull/37425) | 给 OperationService 计费请求加超时,慢计费端点不再挂住请求 |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | 跳过空的 agent switch 条件，避免空分支判断让有效后续 agent 流程崩溃或卡住 |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | repeated n-hop GraphRAG edges 保留最强 PageRank 分数，避免路径顺序覆盖排序结果 |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (83.6k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Docling native 解析没有产出 chunks 时自动降级，避免文档解析结果变成空内容 |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16454](https://github.com/CherryHQ/cherry-studio/pull/16454) | 保留 citations 里的纯 URL markdown 引用行,不再丢弃 |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) | 在截断边界保留 surrogate pair,避免多字节字符被切成非法半个 |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (48.5k★) | [#16358](https://github.com/CherryHQ/cherry-studio/pull/16358) | aihubmix 路径丢弃 Ideogram 里没有可用 URL 的 `data[]` 项,不再渲染坏图 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | 修复 `None` file_path 传播为 `unknown_source`：补 #2793 遗漏的处理层 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3206](https://github.com/HKUDS/LightRAG/pull/3206) | 让 PostgreSQL 表存在性检查尊重当前 `search_path`，避免非 public schema 下迁移或建表判断失真 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (36.9k★) | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) | 从 Docling 异步结果 envelope 中抽取 Markdown 正文，避免 RAG chunk 混入 JSON/base64 噪声 |
