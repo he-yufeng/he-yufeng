@@ -38,10 +38,10 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 |---------|:--:|-------------|
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | Fix bench_serve UTF-8 decode crash on split multi-byte chars in streaming chunks |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | Taught the V1 ubatch wrapper to unwrap tuple model outputs, unblocking DBO and speculative decoding on tuple-returning models. |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Responses API `instructions` were leaking across turns through the `previous_response_id` chain. |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals. |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | Fix weight offloading ignoring `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` in prefetch offloader |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | Taught the V1 ubatch wrapper to unwrap tuple model outputs, unblocking DBO and speculative decoding on tuple-returning models. |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | Prefix DeepSeek V4 MTP projection layers so compressed-tensors can match artifact-side target and ignore rules during draft model loading |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | Guard flash-attn rotary imports so FA4 environments fall back cleanly when `flash_attn.ops.triton.rotary` is absent |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | Base64 JPEG video frames returning empty metadata: populate frame count, fps, duration |
@@ -52,10 +52,9 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1825](https://github.com/kvcache-ai/Mooncake/pull/1825) | Fix `P2PClientService::Put` silently swallowing write errors: propagate actual error codes for non-idempotent failures |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2651](https://github.com/kvcache-ai/Mooncake/pull/2651) | Skip bucket files with non-numeric names instead of aborting Init |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2629](https://github.com/kvcache-ai/Mooncake/pull/2629) | Don't abort client init on a malformed MC_MS_AUTO_DISC value |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin for eviction-protected objects: model weights never get evicted, const field + BatchEvict skip + backward-compat serialization |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | Clean up a failed io_uring sub-batch init so a half-prepared transfer batch can't carry broken state into later setup. |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | Add `ObjectDataType` metadata classification for KV cache, weights, tensors, and snapshots, with backward-compatible serialization and Python bindings |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2610](https://github.com/kvcache-ai/Mooncake/pull/2610) | A refactor had dropped the per-task `request` pointer in `RdmaTransport::submitTransfer`, leaving every downstream task null and breaking status, retry, and accounting reads. Traced it back and restored the association. |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin for eviction-protected objects: model weights never get evicted, const field + BatchEvict skip + backward-compat serialization |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | Add `ObjectDataType` metadata classification for KV cache, weights, tensors, and snapshots, with backward-compatible serialization and Python bindings |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2402](https://github.com/kvcache-ai/Mooncake/pull/2402) | Reject failed Python buddy-allocator backing buffers instead of inserting null raw buffers into managed slabs |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2628](https://github.com/kvcache-ai/Mooncake/pull/2628) | Fix source refcnt leak in CopyEnd/MoveEnd on invalid source |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2500](https://github.com/kvcache-ai/Mooncake/pull/2500) | Don't fail bundle cleanup when per-key remove retry succeeds |
@@ -65,6 +64,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2506](https://github.com/kvcache-ai/Mooncake/pull/2506) | Parse string booleans for enable_ssd_offload in from_file |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2641](https://github.com/kvcache-ai/Mooncake/pull/2641) | Guard MC_TCP_SLICE_SIZE parsing against std::stoull throwing |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2627](https://github.com/kvcache-ai/Mooncake/pull/2627) | Guard against null endpoint_store_ in UrmaContext destructor |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | Clean up a failed io_uring sub-batch init so a half-prepared transfer batch can't carry broken state into later setup. |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2602](https://github.com/kvcache-ai/Mooncake/pull/2602) | Return HTTP 500 when is_exist reports an error in handle_exist |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2617](https://github.com/kvcache-ai/Mooncake/pull/2617) | Associate task.request in EFA/Kunpeng submitTransfer |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2619](https://github.com/kvcache-ai/Mooncake/pull/2619) | Fix signed-char isxdigit UB in EFA smaps page-size parsing (follow-up to #2504) |
@@ -77,8 +77,8 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.7k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | Eigenvalue monitor values were computed but never logged; wired them through so they actually land in the record. |
 | [Transformers](https://github.com/huggingface/transformers) (162.5k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | `AutoProcessor.from_pretrained` was silently dropping hub kwargs like `revision` and `token`. |
 | [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | Empty `rejected_messages` now fail fast in dataset prep instead of crashing DPO mid-training. |
-| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | `_replace_system` was flattening non-string prefix elements, stripping the structured content out of templated system prompts. |
 | [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | Different-format images collided in the temp image cache; folded mode and size into the key. |
+| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | `_replace_system` was flattening non-string prefix elements, stripping the structured content out of templated system prompts. |
 | [SGLang](https://github.com/sgl-project/sglang) (30.2k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | Fix hybrid_linear_attn_backend crash when used with ngram speculative decoding |
 | [SGLang](https://github.com/sgl-project/sglang) (30.2k★) | [#21472](https://github.com/sgl-project/sglang/pull/21472) | Fix PicklingError with --backend diffusers on non-T2I models |
 | [TRL](https://github.com/huggingface/trl) (18.8k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | An already-transformed dataset in SFT prep now fails fast, instead of silently producing wrong training batches. |
@@ -99,24 +99,23 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | Log auth profile resolution failures instead of swallowing silently |
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | Propagate memory directory creation failures instead of continuing after a failed `ensureDir` |
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#96456](https://github.com/openclaw/openclaw/pull/96456) | Clip progress text on code-point boundaries to avoid lone surrogates |
+| [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | Use the canonical `shortenHomePath` in the sandbox-root escape error so the reported path matches the rest of the UI. |
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | Keep sibling dirs that share the home prefix unshortened in tool path display |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | Added a timeout to Qwen OAuth refresh so a stalled refresh endpoint can't hang the CLI on auth recovery. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | Stopped stale tool-schema recall from slipping outdated tool names back into later planning turns. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5073](https://github.com/QwenLM/qwen-code/pull/5073) | Warn when context instruction files blow the configured budget, before oversized repo guidance quietly crowds out the task. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | Isolate Anthropic SDK abort listener leak with per-request child controllers |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5071](https://github.com/QwenLM/qwen-code/pull/5071) | Submit fast tool results after stream end, so a race at the tail of streaming can't strand completed calls. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | Stopped stale tool-schema recall from slipping outdated tool names back into later planning turns. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5020](https://github.com/QwenLM/qwen-code/pull/5020) | Drop tool calls after a cancellation so an aborted turn can't leak stale requests into the next payload. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5070](https://github.com/QwenLM/qwen-code/pull/5070) | Skip expired live agents in focus navigation so stale background-agent rows can't grab keyboard focus. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5061](https://github.com/QwenLM/qwen-code/pull/5061) | Preserve background-agent launch flags so a delegated CLI run keeps the execution mode you asked for. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5077](https://github.com/QwenLM/qwen-code/pull/5077) | Show the full plan when a permission gate blocks, so you can inspect the agent's intent instead of losing it. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4715](https://github.com/QwenLM/qwen-code/pull/4715) | Managed auto-memory now honors the runtime output dir, while an explicit memory-dir override still wins. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5062](https://github.com/QwenLM/qwen-code/pull/5062) | Carry token-escalation context across agent rounds so a delegated run stops restarting from an under-provisioned model each time. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5815](https://github.com/QwenLM/qwen-code/pull/5815) | Merging assistant turns was dropping `reasoning_content`, losing multi-turn chain-of-thought. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5945](https://github.com/QwenLM/qwen-code/pull/5945) | Reject non-positive sessionRecapAwayThresholdMinutes values |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4970](https://github.com/QwenLM/qwen-code/pull/4970) | Stabilize truncated tool-retry keys so a repaired call keeps the same retry identity instead of drifting. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4828](https://github.com/QwenLM/qwen-code/pull/4828) | Keep a user-set shared `baseUrl` after auth refresh, so a same-model refresh doesn't fall back to the provider default. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5815](https://github.com/QwenLM/qwen-code/pull/5815) | Merging assistant turns was dropping `reasoning_content`, losing multi-turn chain-of-thought. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5073](https://github.com/QwenLM/qwen-code/pull/5073) | Warn when context instruction files blow the configured budget, before oversized repo guidance quietly crowds out the task. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5752](https://github.com/QwenLM/qwen-code/pull/5752) | Parse QWEN_SERVE_MCP_CLIENT_BUDGET strictly as a decimal integer |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5043](https://github.com/QwenLM/qwen-code/pull/5043) | Let grep results satisfy the prior-read check, so an edit can proceed on verified search context instead of a redundant re-read. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5679](https://github.com/QwenLM/qwen-code/pull/5679) | Parse agent & workflow integer env vars strictly |
@@ -124,6 +123,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | Dropped the discontinued Qwen OAuth path from ACP login so nobody gets routed into a dead auth method. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | Recurse into tracked Git submodules when crawling a repo, so the agent's context picks up files inside them. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5036](https://github.com/QwenLM/qwen-code/pull/5036) | Actually hard-stop repeated identical tool calls once loop detection fires, instead of letting the agent keep hammering the same stalled action. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5062](https://github.com/QwenLM/qwen-code/pull/5062) | Carry token-escalation context across agent rounds so a delegated run stops restarting from an under-provisioned model each time. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | Apply the requested output language to side queries too, so auxiliary answers follow the same language contract. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4963](https://github.com/QwenLM/qwen-code/pull/4963) | Enable fork subagents by default, so delegated work runs in isolated branches without a manual opt-in. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4673](https://github.com/QwenLM/qwen-code/pull/4673) | Restore top-level `--list-extensions` / `-l` so it prints installed extensions and exits before sandbox, auth, or TUI startup |
@@ -133,6 +133,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | Harden context-error text extraction so a nested or non-string payload surfaces a useful message instead of vanishing. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5072](https://github.com/QwenLM/qwen-code/pull/5072) | Stabilize the simple MCP integration check so server-readiness timing stops making the cross-process contract test flaky. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5167](https://github.com/QwenLM/qwen-code/pull/5167) | Hide unconfigured discontinued OAuth model |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4828](https://github.com/QwenLM/qwen-code/pull/4828) | Keep a user-set shared `baseUrl` after auth refresh, so a same-model refresh doesn't fall back to the provider default. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5461](https://github.com/QwenLM/qwen-code/pull/5461) | Accept uppercase URL schemes in Claude plugin sources |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5209](https://github.com/QwenLM/qwen-code/pull/5209) | Read SHORT-typed TIFF dimensions correctly on big-endian files |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | Fix IDE proxy requests by keeping `fetch` and `EnvHttpProxyAgent` on the same bundled `undici` module path |
@@ -151,6 +152,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5647](https://github.com/QwenLM/qwen-code/pull/5647) | Detect USE_OPENAI auth when the model is set via QWEN_MODEL |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5287](https://github.com/QwenLM/qwen-code/pull/5287) | Render a sub-minute duration that rounds to 60s as "1m" |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5204](https://github.com/QwenLM/qwen-code/pull/5204) | Reopen code fences without inserting a blank line |
+| [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#4157](https://github.com/bytedance/deer-flow/pull/4157) | A subagent's `description` is agent-editable (setup_agent / update_agent) yet was rendered raw into the `<subagent_system>` block, so a crafted first line could break out and forge framework tags. Escaped it, matching the `<soul>` fix. |
 | [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | HTML-escape `SOUL.md` before it enters the `<soul>` system-prompt block so an agent-editable personality cannot forge framework tags and break out of its trust zone |
 | [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#3797](https://github.com/bytedance/deer-flow/pull/3797) | Synchronize the MCP session-pool singleton lifecycle so concurrent first-use cannot create duplicate pools |
 | [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#3799](https://github.com/bytedance/deer-flow/pull/3799) | Serialize per-chat thread creation so concurrent messages stop spawning duplicate threads for one chat. |
@@ -216,9 +218,9 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (15.9k★) | [#3416](https://github.com/googleapis/mcp-toolbox/pull/3416) | Document execute_sql least-privilege setup |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) | Inherit the leader's permission rules in team runs, so delegated agents keep the same workspace and file-access limits. |
-| [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1786](https://github.com/agentscope-ai/agentscope/pull/1786) | Keep a caller-provided Redis session id on create, so later get/update/list hit the same session instead of a fresh UUID. |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1734](https://github.com/agentscope-ai/agentscope/pull/1734) | Refresh Redis message-list TTL on append and streaming replace, so the configured storage TTL actually bounds chat history. |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1883](https://github.com/agentscope-ai/agentscope/pull/1883) | Handle Gemini function calls without an id |
+| [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1786](https://github.com/agentscope-ai/agentscope/pull/1786) | Keep a caller-provided Redis session id on create, so later get/update/list hit the same session instead of a fresh UUID. |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1732](https://github.com/agentscope-ai/agentscope/pull/1732) | Pull skills from every active tool group, so prompt instructions and the Skill viewer match the enabled tools. |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1774](https://github.com/agentscope-ai/agentscope/pull/1774) | Forward explicitly configured Qwen `thinking_enable` into OpenAI-compatible `extra_body` without polluting normal OpenAI requests |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1823](https://github.com/agentscope-ai/agentscope/pull/1823) | Add workspace roots to the permission context, so a chat run authorizes files against the workspace the agent can actually see. |
@@ -226,6 +228,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (27.9k★) | [#3643](https://github.com/openai/openai-agents-python/pull/3643) | Report the effective Blaxel timeouts instead of the unconfigured defaults |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9867](https://github.com/promptfoo/promptfoo/pull/9867) | Avoid crashing on an empty `choices` array when reading Azure logprobs |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9897](https://github.com/promptfoo/promptfoo/pull/9897) | Guard array access in the Bedrock Titan and Cohere providers so an empty response array stops crashing generation. |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#10076](https://github.com/promptfoo/promptfoo/pull/10076) | A tool-call assertion crashed with a TypeError when the tool call was missing its `function` object; return `pass:false` instead. |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9815](https://github.com/promptfoo/promptfoo/pull/9815) | Reject a malformed `__expected0` CSV header instead of silently dropping its assertion |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9761](https://github.com/promptfoo/promptfoo/pull/9761) | Preserve quoted commas in contains-any/all assertion values |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9840](https://github.com/promptfoo/promptfoo/pull/9840) | Preserve JSONL row description instead of overwriting |
@@ -252,10 +255,10 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [goose](https://github.com/aaif-goose/goose) (51.2k★) | [#9584](https://github.com/aaif-goose/goose/pull/9584) | Show resolved skill supporting-file paths instead of unresolved placeholders |
 | [opencode](https://github.com/anomalyco/opencode) (185.4k★) | [#30022](https://github.com/anomalyco/opencode/pull/30022) | Bind the MCP OAuth callback server to the IPv4 loopback so the browser redirect connects reliably instead of racing IPv6 |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5994](https://github.com/livekit/agents/pull/5994) | Handle OpenAI-compatible realtime status details that come back as strings, so an incomplete response doesn't crash logging. |
+| [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5872](https://github.com/livekit/agents/pull/5872) | Map ElevenLabs server-VAD committed transcripts to `END_OF_SPEECH`, so a realtime turn closes without a manual empty commit. |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5820](https://github.com/livekit/agents/pull/5820) | Recreate Anthropic streaming requests on retry so transient stream creation failures do not re-await the same coroutine |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5976](https://github.com/livekit/agents/pull/5976) | Preserve request timeouts when callers provide custom Google HTTP options, without mutating the caller-owned options object |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5864](https://github.com/livekit/agents/pull/5864) | Surface Soniox STT server errors instead of treating failed streams as empty transcripts |
-| [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5872](https://github.com/livekit/agents/pull/5872) | Map ElevenLabs server-VAD committed transcripts to `END_OF_SPEECH`, so a realtime turn closes without a manual empty commit. |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#6124](https://github.com/livekit/agents/pull/6124) | Normalize two-digit years in GetDOBTask |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5887](https://github.com/livekit/agents/pull/5887) | Delete trimmed empty audio items |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.3k★) | [#2353](https://github.com/strands-agents/harness-sdk/pull/2353) | Handle Gemini safety-blocked metadata by defaulting missing usage counts and mapping safety stops to guardrail intervention |
@@ -277,10 +280,10 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#3924](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3924) | Reject unknown `GenerateConfig` fields up front, so a misspelled option isn't silently ignored. |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4363](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4363) | Return NaN instead of crashing when reducing an empty score list |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) | Parse OpenRouter `reasoning_details` in OpenAI-compatible responses instead of surfacing Python repr blocks |
-| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#3975](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3975) | Preserve call-site generation defaults when a role model override resolves, so switching a role's model doesn't drop settings like max tokens or reasoning effort. |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#3941](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3941) | Route Bedrock Nova `top_k` through the inference config instead of dropping the sampling control |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#3896](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3896) | Fix filestore recovery append mode: preserve carried message/tool-call pools without rehashing old segments |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4342](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4342) | Don't cache reasoning_summaries probe failures that are transient |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#3975](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3975) | Preserve call-site generation defaults when a role model override resolves, so switching a role's model doesn't drop settings like max tokens or reasoning effort. |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4069](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4069) | Flush streamed score samples periodically, so a long eval persists score rows before it finishes. |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4303](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4303) | Reject sample limits with more than one dash |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4218](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4218) | Reuse torn checkpoint ids |
@@ -396,10 +399,10 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 |------|:--:|--------|
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | 修复 bench_serve 流式响应拆分多字节 UTF-8 字符导致 decode 崩溃 |
-| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | 让 V1 ubatch wrapper 认得 tuple model outputs，解开 DBO 和投机解码在 tuple 返回值上的崩溃。 |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。 |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。 |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | 修复 weight offloading 忽略 `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` 环境变量 |
+| [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | 让 V1 ubatch wrapper 认得 tuple model outputs，解开 DBO 和投机解码在 tuple 返回值上的崩溃。 |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | 给 DeepSeek V4 MTP projection layers 补 prefix，让 compressed-tensors 加载 draft model 时能匹配 artifact 侧 target / ignore 规则 |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | 保护 flash-attn rotary 导入路径，让 FA4 环境缺少 `flash_attn.ops.triton.rotary` 时稳定回退而不是构造 rotary 层时崩溃 |
 | [vLLM](https://github.com/vllm-project/vllm) (86.1k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | 修复 base64 JPEG 视频帧返回空 metadata：补充帧数、fps、时长 |
@@ -410,10 +413,9 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1825](https://github.com/kvcache-ai/Mooncake/pull/1825) | 修复 `P2PClientService::Put` 静默吞掉写入错误：传播实际错误码给调用方 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2651](https://github.com/kvcache-ai/Mooncake/pull/2651) | Init 遇到非数字命名的 bucket 文件时跳过，而不是直接 abort |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2629](https://github.com/kvcache-ai/Mooncake/pull/2629) | `MC_MS_AUTO_DISC` 值非法时不再中断 client 初始化 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin 驱逐保护：模型权重永不被驱逐，const 字段 + BatchEvict 跳过 + 向后兼容序列化 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | 清掉失败的 io_uring sub-batch 初始化状态，别让半成品 transfer batch 把坏状态带进后续 setup。 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | 新增 `ObjectDataType` 元数据分类：KV cache、weights、tensors 等对象类型可在 metadata、snapshot 和 Python binding 中稳定传递 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2610](https://github.com/kvcache-ai/Mooncake/pull/2610) | 重构时漏掉了 `RdmaTransport::submitTransfer` 里每个 task 的 `request` 指针赋值，下游全拿到 null，status、重试、计费回读全废。追回来补上了这个关联。 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin 驱逐保护：模型权重永不被驱逐，const 字段 + BatchEvict 跳过 + 向后兼容序列化 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | 新增 `ObjectDataType` 元数据分类：KV cache、weights、tensors 等对象类型可在 metadata、snapshot 和 Python binding 中稳定传递 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2402](https://github.com/kvcache-ai/Mooncake/pull/2402) | Python buddy allocator backing buffer 分配失败时直接拒绝，避免把 null raw buffer 放进 managed slab |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2628](https://github.com/kvcache-ai/Mooncake/pull/2628) | 修复 `CopyEnd`/`MoveEnd` 在 source 非法时的 source 引用计数泄漏 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2500](https://github.com/kvcache-ai/Mooncake/pull/2500) | 单 key remove 重试成功后，不再把整个 bundle cleanup 判为失败 |
@@ -423,6 +425,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2506](https://github.com/kvcache-ai/Mooncake/pull/2506) | `from_file` 里把 `enable_ssd_offload` 的字符串布尔值正确解析 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2641](https://github.com/kvcache-ai/Mooncake/pull/2641) | 给 `MC_TCP_SLICE_SIZE` 解析裹上 `std::stoull` 异常守卫，非法值不再抛未捕获异常 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2627](https://github.com/kvcache-ai/Mooncake/pull/2627) | 给 `UrmaContext` 析构里的 `endpoint_store_` 加空指针守卫，避免析构时崩溃 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | 清掉失败的 io_uring sub-batch 初始化状态，别让半成品 transfer batch 把坏状态带进后续 setup。 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2602](https://github.com/kvcache-ai/Mooncake/pull/2602) | `handle_exist` 里 `is_exist` 报错时返回 HTTP 500，而不是当成“不存在” |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2617](https://github.com/kvcache-ai/Mooncake/pull/2617) | 在 EFA/鲲鹏 `submitTransfer` 里补回 `task.request` 关联（与 RDMA 路径同类漏赋值） |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.8k★) | [#2619](https://github.com/kvcache-ai/Mooncake/pull/2619) | 修复 EFA smaps page-size 解析里 signed char 传 `isxdigit` 的 UB（#2504 的后续） |
@@ -435,8 +438,8 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.7k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | eigenvalue monitor 的值算了却没写日志，接上后才真正落进记录。 |
 | [Transformers](https://github.com/huggingface/transformers) (162.5k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | `AutoProcessor.from_pretrained` 静默丢掉了 `revision`、`token` 这些 hub kwargs。 |
 | [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | DPO 数据准备阶段遇到空 `rejected_messages` 直接快速失败，不用等训练跑到一半才崩。 |
-| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | `_replace_system` 把非字符串的 prefix 元素压平了，模板化 system prompt 的结构化内容被抹掉。 |
 | [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | 不同格式的图片在临时缓存里撞了键，把 mode 和 size 也纳入 key 才分开。 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (14.8k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | `_replace_system` 把非字符串的 prefix 元素压平了，模板化 system prompt 的结构化内容被抹掉。 |
 | [SGLang](https://github.com/sgl-project/sglang) (30.2k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | 修复 hybrid_linear_attn_backend 与 ngram 投机采样同时使用时崩溃 |
 | [SGLang](https://github.com/sgl-project/sglang) (30.2k★) | [#21472](https://github.com/sgl-project/sglang/pull/21472) | 修复 `--backend diffusers` 在非 T2I 模型上的 `PicklingError` |
 | [TRL](https://github.com/huggingface/trl) (18.8k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | SFT 准备阶段遇到已经转换过的数据集直接报错，别静默产出错的训练 batch。 |
@@ -457,24 +460,23 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | 认证配置解析失败时记录日志而非静默吞掉 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | 目录创建失败时向上传递错误，避免 memory `ensureDir` 静默失败后继续执行 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#96456](https://github.com/openclaw/openclaw/pull/96456) | 按码点边界裁剪进度文本，避免落单的 surrogate |
+| [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | Use the canonical `shortenHomePath` in the sandbox-root escape error so the reported path matches the rest of the UI. |
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | 工具路径显示里，共享 home 前缀的同级目录不再被误缩写 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | 给 Qwen OAuth refresh 加超时，刷新端点卡住时不会把整个 CLI 挂在认证恢复上。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | 掐掉 stale 的 tool schema recall，别让 memory warning 把过期工具名带回后面的规划轮次。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5073](https://github.com/QwenLM/qwen-code/pull/5073) | 上下文指令文件超预算时提前告警，别等仓库级 guidance 悄悄挤掉任务上下文。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | 用 per-request 子 controller 隔离 Anthropic SDK 的 abort listener 泄漏，避免跨请求累积死监听器 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5071](https://github.com/QwenLM/qwen-code/pull/5071) | 流式结束后再提交已完成的快速 tool result，别让流尾的竞态把它们卡在本地队列。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | 掐掉 stale 的 tool schema recall，别让 memory warning 把过期工具名带回后面的规划轮次。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5020](https://github.com/QwenLM/qwen-code/pull/5020) | 取消后丢掉残留的 tool call，中止的轮次别把过期调用漏进下一次 payload。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5070](https://github.com/QwenLM/qwen-code/pull/5070) | 焦点导航跳过已过期的 live agent，别让 stale 的后台 agent 行抢走键盘焦点。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5061](https://github.com/QwenLM/qwen-code/pull/5061) | 保留后台 agent 的启动参数，delegated 的 CLI run 继续用你指定的执行模式。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5077](https://github.com/QwenLM/qwen-code/pull/5077) | permission gate 拦下来时把完整计划显示出来，能看被拦的 agent 意图，而不是白白丢掉。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4715](https://github.com/QwenLM/qwen-code/pull/4715) | managed auto-memory 听运行时输出目录的，同时显式的 memory 目录覆盖仍然优先。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5062](https://github.com/QwenLM/qwen-code/pull/5062) | 跨 agent 轮次带上 token escalation 上下文，delegated run 不用每轮都从容量不够的模型重来。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5815](https://github.com/QwenLM/qwen-code/pull/5815) | 合并 assistant 轮次时把 `reasoning_content` 丢了，多轮思维链跟着没了。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5945](https://github.com/QwenLM/qwen-code/pull/5945) | 拒绝非正的 `sessionRecapAwayThresholdMinutes` 值 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4970](https://github.com/QwenLM/qwen-code/pull/4970) | 稳住截断后的 tool retry key，修复过的调用重试时身份不变，不会漂来漂去。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4828](https://github.com/QwenLM/qwen-code/pull/4828) | 认证刷新后保留用户配的共享 `baseUrl`，同模型刷新不再回退到 provider 默认 endpoint。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5815](https://github.com/QwenLM/qwen-code/pull/5815) | 合并 assistant 轮次时把 `reasoning_content` 丢了，多轮思维链跟着没了。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5073](https://github.com/QwenLM/qwen-code/pull/5073) | 上下文指令文件超预算时提前告警，别等仓库级 guidance 悄悄挤掉任务上下文。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5752](https://github.com/QwenLM/qwen-code/pull/5752) | 把 `QWEN_SERVE_MCP_CLIENT_BUDGET` 严格按十进制整数解析 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5043](https://github.com/QwenLM/qwen-code/pull/5043) | 让 grep 结果也算通过 prior-read 检查，已经搜过的上下文不用再逼着重读一遍文件。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5679](https://github.com/QwenLM/qwen-code/pull/5679) | 严格解析 agent / workflow 的整数环境变量 |
@@ -482,6 +484,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | 把已停用的 Qwen OAuth ACP 登录路径去掉，别再把用户导向失效的认证方式。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | 爬仓库时递归进已跟踪的 Git submodule，agent 上下文才带得上子模块里的文件。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5036](https://github.com/QwenLM/qwen-code/pull/5036) | loop 检测触发后真的硬停掉重复的同一个 tool call，别让 agent 还在那反复执行卡死的动作。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5062](https://github.com/QwenLM/qwen-code/pull/5062) | 跨 agent 轮次带上 token escalation 上下文，delegated run 不用每轮都从容量不够的模型重来。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | 把用户要求的输出语言也用到 side query 上，辅助回答跟主回答守同一套语言约定。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4963](https://github.com/QwenLM/qwen-code/pull/4963) | 默认开启 fork subagent，delegated work 直接跑在隔离分支里，不用手动开。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4673](https://github.com/QwenLM/qwen-code/pull/4673) | 修复顶层 `--list-extensions` / `-l`：按文档打印扩展列表，并在 sandbox、auth、TUI 启动前退出 |
@@ -491,6 +494,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | 强化 context error 的文本抽取，嵌套的、非字符串的 payload 也能给出有用信息，而不是直接消失。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5072](https://github.com/QwenLM/qwen-code/pull/5072) | 稳住 simple MCP 集成检查，服务就绪的时序不再让跨进程协议测试偶发挂掉。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5167](https://github.com/QwenLM/qwen-code/pull/5167) | 隐藏未配置的已下线 OAuth 模型 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4828](https://github.com/QwenLM/qwen-code/pull/4828) | 认证刷新后保留用户配的共享 `baseUrl`，同模型刷新不再回退到 provider 默认 endpoint。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5461](https://github.com/QwenLM/qwen-code/pull/5461) | Claude 插件源接受大写 URL scheme |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5209](https://github.com/QwenLM/qwen-code/pull/5209) | 正确读取大端 TIFF 文件里 SHORT 类型的图像尺寸 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | 修复 IDE proxy 请求：让 `fetch` 和 `EnvHttpProxyAgent` 保持在同一个 bundled `undici` 模块路径上 |
@@ -509,6 +513,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5647](https://github.com/QwenLM/qwen-code/pull/5647) | 通过 `QWEN_MODEL` 设定模型时也能识别 `USE_OPENAI` 认证 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5287](https://github.com/QwenLM/qwen-code/pull/5287) | 让四舍五入到 60s 的亚分钟时长显示为 “1m” |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5204](https://github.com/QwenLM/qwen-code/pull/5204) | 重开 code fence 时不再插入多余空行 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#4157](https://github.com/bytedance/deer-flow/pull/4157) | A subagent's `description` is agent-editable (setup_agent / update_agent) yet was rendered raw into the `<subagent_system>` block, so a crafted first line could break out and forge framework tags. Escaped it, matching the `<soul>` fix. |
 | [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | 在 `SOUL.md` 进入 `<soul>` system-prompt 块前 HTML 转义,让可被 agent 编辑的 personality 无法伪造框架标签、越出信任边界 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#3797](https://github.com/bytedance/deer-flow/pull/3797) | 同步 MCP session-pool 单例生命周期,避免并发首次使用创建重复池 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#3799](https://github.com/bytedance/deer-flow/pull/3799) | 串行化单个聊天的线程创建，并发消息不再给一个聊天建出重复线程。 |
@@ -574,9 +579,9 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (15.9k★) | [#3416](https://github.com/googleapis/mcp-toolbox/pull/3416) | 补充 execute_sql 最小权限配置的文档 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) | team run 里继承 leader 的权限规则，delegated agent 守着和 leader 一样的 workspace、文件访问约束。 |
-| [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1786](https://github.com/agentscope-ai/agentscope/pull/1786) | 创建 Redis session 时保留调用方给的 id，后面的 get/update/list 命中同一个 session，而不是新生成的 UUID。 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1734](https://github.com/agentscope-ai/agentscope/pull/1734) | append 和 streaming replace 时刷新 Redis message list 的 TTL，配置的存储 TTL 才真正约束聊天历史。 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1883](https://github.com/agentscope-ai/agentscope/pull/1883) | 处理没有 id 的 Gemini function call |
+| [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1786](https://github.com/agentscope-ai/agentscope/pull/1786) | 创建 Redis session 时保留调用方给的 id，后面的 get/update/list 命中同一个 session，而不是新生成的 UUID。 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1732](https://github.com/agentscope-ai/agentscope/pull/1732) | 汇总所有启用的 tool group 的 skill，prompt instructions 和 Skill viewer 跟当前启用的工具对得上。 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1774](https://github.com/agentscope-ai/agentscope/pull/1774) | 显式设置 Qwen `thinking_enable` 时转发到 OpenAI-compatible `extra_body`，同时不污染普通 OpenAI 请求 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.2k★) | [#1823](https://github.com/agentscope-ai/agentscope/pull/1823) | 把 workspace root 加进 permission context，chat run 按 agent 真正能看到的 workspace 去授权文件。 |
@@ -584,6 +589,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (27.9k★) | [#3643](https://github.com/openai/openai-agents-python/pull/3643) | 上报实际生效的 Blaxel 超时值，而不是未配置的默认值 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9867](https://github.com/promptfoo/promptfoo/pull/9867) | 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9897](https://github.com/promptfoo/promptfoo/pull/9897) | 给 Bedrock Titan 和 Cohere provider 的数组访问加守卫，空响应数组不再让生成崩掉。 |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#10076](https://github.com/promptfoo/promptfoo/pull/10076) | A tool-call assertion crashed with a TypeError when the tool call was missing its `function` object; return `pass:false` instead. |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9815](https://github.com/promptfoo/promptfoo/pull/9815) | 拒绝畸形的 `__expected0` CSV 表头,而不是静默丢弃它的断言 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9761](https://github.com/promptfoo/promptfoo/pull/9761) | contains-any/all 断言值里保留引号内的逗号 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9840](https://github.com/promptfoo/promptfoo/pull/9840) | 保留 JSONL 行的 description 而不是覆盖 |
@@ -610,10 +616,10 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [goose](https://github.com/aaif-goose/goose) (51.2k★) | [#9584](https://github.com/aaif-goose/goose/pull/9584) | 显示 skill 支持文件解析后的真实路径，而不是未解析的占位符 |
 | [opencode](https://github.com/anomalyco/opencode) (185.4k★) | [#30022](https://github.com/anomalyco/opencode/pull/30022) | 把 MCP OAuth 回调服务绑到 IPv4 loopback，让浏览器回跳稳定连上、不再和 IPv6 抢地址 |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5994](https://github.com/livekit/agents/pull/5994) | 兼容 OpenAI 兼容 realtime 返回字符串的 status details，incomplete response 不再在日志路径崩。 |
+| [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5872](https://github.com/livekit/agents/pull/5872) | 把 ElevenLabs server-VAD 的 committed transcript 映射成 `END_OF_SPEECH`，realtime turn 不用手动空 commit 才结束。 |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5820](https://github.com/livekit/agents/pull/5820) | 修复 Anthropic streaming retry：瞬时建流失败后重新创建 stream，不再重复 await 同一个 coroutine |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5976](https://github.com/livekit/agents/pull/5976) | 调用方传入自定义 Google HTTP options 时仍保留请求 timeout，并避免原地修改调用方对象 |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5864](https://github.com/livekit/agents/pull/5864) | 暴露 Soniox STT server error：流式识别失败时返回明确错误，不再被当成空 transcript |
-| [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5872](https://github.com/livekit/agents/pull/5872) | 把 ElevenLabs server-VAD 的 committed transcript 映射成 `END_OF_SPEECH`，realtime turn 不用手动空 commit 才结束。 |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#6124](https://github.com/livekit/agents/pull/6124) | `GetDOBTask` 里规范化两位数年份 |
 | [LiveKit Agents](https://github.com/livekit/agents) (11.1k★) | [#5887](https://github.com/livekit/agents/pull/5887) | 删除裁剪后为空的 audio item |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.3k★) | [#2353](https://github.com/strands-agents/harness-sdk/pull/2353) | 处理 Gemini safety-blocked metadata：缺失 token 计数时安全归零，并把 safety stop 映射为 guardrail intervention |
@@ -635,10 +641,10 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#3924](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3924) | 未知的 `GenerateConfig` 字段提前报错，拼错的生成参数不再被静默忽略。 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4363](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4363) | reduce 空 score 列表时返回 NaN 而不是崩溃 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) | 修复 OpenAI-compatible 响应里的 OpenRouter `reasoning_details`：解析为可读 reasoning 文本，而不是暴露 Python repr |
-| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#3975](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3975) | 解析 role model override 时保留调用侧的生成默认值，角色换模型不会丢掉 max tokens、reasoning effort 这些设置。 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#3941](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3941) | 修复 Bedrock Nova `top_k` 路由：把采样控制传到 inference config，而不是被静默丢弃 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#3896](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3896) | 修复 filestore recovery append 模式：保留已恢复 message/tool-call 池，同时避免重复哈希旧片段 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4342](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4342) | 不缓存瞬时的 reasoning_summaries 探测失败 |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#3975](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3975) | 解析 role model override 时保留调用侧的生成默认值，角色换模型不会丢掉 max tokens、reasoning effort 这些设置。 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4069](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4069) | 周期性 flush 流式 score sample，长时间评测在结束前也能持续把 score 落盘。 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4303](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4303) | 拒绝含多个连字符的 sample limit |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4218](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4218) | 复用中断的 checkpoint id |
