@@ -460,7 +460,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | 认证配置解析失败时记录日志而非静默吞掉 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | 目录创建失败时向上传递错误，避免 memory `ensureDir` 静默失败后继续执行 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#96456](https://github.com/openclaw/openclaw/pull/96456) | 按码点边界裁剪进度文本，避免落单的 surrogate |
-| [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | Use the canonical `shortenHomePath` in the sandbox-root escape error so the reported path matches the rest of the UI. |
+| [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | sandbox-root 越界错误里改用规范的 `shortenHomePath`,报的路径和界面其余部分一致。 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (380.3k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | 工具路径显示里，共享 home 前缀的同级目录不再被误缩写 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | 给 Qwen OAuth refresh 加超时，刷新端点卡住时不会把整个 CLI 挂在认证恢复上。 |
@@ -513,7 +513,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5647](https://github.com/QwenLM/qwen-code/pull/5647) | 通过 `QWEN_MODEL` 设定模型时也能识别 `USE_OPENAI` 认证 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5287](https://github.com/QwenLM/qwen-code/pull/5287) | 让四舍五入到 60s 的亚分钟时长显示为 “1m” |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (25.5k★) | [#5204](https://github.com/QwenLM/qwen-code/pull/5204) | 重开 code fence 时不再插入多余空行 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#4157](https://github.com/bytedance/deer-flow/pull/4157) | A subagent's `description` is agent-editable (setup_agent / update_agent) yet was rendered raw into the `<subagent_system>` block, so a crafted first line could break out and forge framework tags. Escaped it, matching the `<soul>` fix. |
+| [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#4157](https://github.com/bytedance/deer-flow/pull/4157) | subagent 的 `description` 是 agent 可编辑的(setup_agent / update_agent),却原样渲染进 `<subagent_system>` 块,构造的首行能越界伪造框架标签。转义掉,和 `<soul>` 那个修复同类。 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | 在 `SOUL.md` 进入 `<soul>` system-prompt 块前 HTML 转义,让可被 agent 编辑的 personality 无法伪造框架标签、越出信任边界 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#3797](https://github.com/bytedance/deer-flow/pull/3797) | 同步 MCP session-pool 单例生命周期,避免并发首次使用创建重复池 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (76.9k★) | [#3799](https://github.com/bytedance/deer-flow/pull/3799) | 串行化单个聊天的线程创建，并发消息不再给一个聊天建出重复线程。 |
@@ -589,7 +589,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (27.9k★) | [#3643](https://github.com/openai/openai-agents-python/pull/3643) | 上报实际生效的 Blaxel 超时值，而不是未配置的默认值 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9867](https://github.com/promptfoo/promptfoo/pull/9867) | 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9897](https://github.com/promptfoo/promptfoo/pull/9897) | 给 Bedrock Titan 和 Cohere provider 的数组访问加守卫，空响应数组不再让生成崩掉。 |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#10076](https://github.com/promptfoo/promptfoo/pull/10076) | A tool-call assertion crashed with a TypeError when the tool call was missing its `function` object; return `pass:false` instead. |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#10076](https://github.com/promptfoo/promptfoo/pull/10076) | 工具调用缺 `function` 对象时 tool-call 断言抛 TypeError;改成返回 `pass:false`。 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9815](https://github.com/promptfoo/promptfoo/pull/9815) | 拒绝畸形的 `__expected0` CSV 表头,而不是静默丢弃它的断言 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9761](https://github.com/promptfoo/promptfoo/pull/9761) | contains-any/all 断言值里保留引号内的逗号 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9840](https://github.com/promptfoo/promptfoo/pull/9840) | 保留 JSONL 行的 description 而不是覆盖 |
