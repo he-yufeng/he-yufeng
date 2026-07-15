@@ -156,6 +156,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.0k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | HTML-escape `SOUL.md` before it enters the `<soul>` system-prompt block so an agent-editable personality cannot forge framework tags and break out of its trust zone |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.0k★) | [#3797](https://github.com/bytedance/deer-flow/pull/3797) | Synchronize the MCP session-pool singleton lifecycle so concurrent first-use cannot create duplicate pools |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.0k★) | [#3799](https://github.com/bytedance/deer-flow/pull/3799) | Serialize per-chat thread creation so concurrent messages stop spawning duplicate threads for one chat. |
+| [deer-flow](https://github.com/bytedance/deer-flow) (77.0k★) | [#3800](https://github.com/bytedance/deer-flow/pull/3800) | Keep `create_thread` idempotent when a concurrent insert loses the race, so a chat cannot end up with duplicate threads. |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.0k★) | [#3719](https://github.com/bytedance/deer-flow/pull/3719) | Skip whitespace-only facts in `_apply_updates` so blank memory entries do not accumulate |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.0k★) | [#3778](https://github.com/bytedance/deer-flow/pull/3778) | Synchronize skill storage singleton lifecycle |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.0k★) | [#3631](https://github.com/bytedance/deer-flow/pull/3631) | Strip base64 image data from streamed values events |
@@ -517,6 +518,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.0k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | 在 `SOUL.md` 进入 `<soul>` system-prompt 块前 HTML 转义,让可被 agent 编辑的 personality 无法伪造框架标签、越出信任边界 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.0k★) | [#3797](https://github.com/bytedance/deer-flow/pull/3797) | 同步 MCP session-pool 单例生命周期,避免并发首次使用创建重复池 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.0k★) | [#3799](https://github.com/bytedance/deer-flow/pull/3799) | 串行化单个聊天的线程创建，并发消息不再给一个聊天建出重复线程。 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (77.0k★) | [#3800](https://github.com/bytedance/deer-flow/pull/3800) | 让 `create_thread` 在并发 insert 输掉竞争时保持幂等，避免一个聊天产生重复 thread。 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.0k★) | [#3719](https://github.com/bytedance/deer-flow/pull/3719) | `_apply_updates` 跳过纯空白 facts,避免空白记忆条目堆积 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.0k★) | [#3778](https://github.com/bytedance/deer-flow/pull/3778) | 同步 skill storage 单例的生命周期 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.0k★) | [#3631](https://github.com/bytedance/deer-flow/pull/3631) | 从 streamed values 事件里剥离 base64 图片数据 |
