@@ -228,6 +228,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.8k★) | [#1822](https://github.com/agentscope-ai/agentscope/pull/1822) | Add a cwd option to the built-in Bash tool so shell commands can run in the intended workspace directory |
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (27.9k★) | [#3643](https://github.com/openai/openai-agents-python/pull/3643) | Report the effective Blaxel timeouts instead of the unconfigured defaults |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9867](https://github.com/promptfoo/promptfoo/pull/9867) | Avoid crashing on an empty `choices` array when reading Azure logprobs |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#10124](https://github.com/promptfoo/promptfoo/pull/10124) | Avoid a crash on an empty completion `choices` array in the Azure provider |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9897](https://github.com/promptfoo/promptfoo/pull/9897) | Guard array access in the Bedrock Titan and Cohere providers so an empty response array stops crashing generation. |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#10076](https://github.com/promptfoo/promptfoo/pull/10076) | A tool-call assertion crashed with a TypeError when the tool call was missing its `function` object; return `pass:false` instead. |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9815](https://github.com/promptfoo/promptfoo/pull/9815) | Reject a malformed `__expected0` CSV header instead of silently dropping its assertion |
@@ -590,6 +591,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (27.8k★) | [#1822](https://github.com/agentscope-ai/agentscope/pull/1822) | 给内置 Bash tool 增加 cwd 选项，让 shell 命令能在指定 workspace 目录执行 |
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (27.9k★) | [#3643](https://github.com/openai/openai-agents-python/pull/3643) | 上报实际生效的 Blaxel 超时值，而不是未配置的默认值 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9867](https://github.com/promptfoo/promptfoo/pull/9867) | 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#10124](https://github.com/promptfoo/promptfoo/pull/10124) | Azure provider 空 completion `choices` 数组不再崩溃 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9897](https://github.com/promptfoo/promptfoo/pull/9897) | 给 Bedrock Titan 和 Cohere provider 的数组访问加守卫，空响应数组不再让生成崩掉。 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#10076](https://github.com/promptfoo/promptfoo/pull/10076) | 工具调用缺 `function` 对象时 tool-call 断言抛 TypeError;改成返回 `pass:false`。 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (23.2k★) | [#9815](https://github.com/promptfoo/promptfoo/pull/9815) | 拒绝畸形的 `__expected0` CSV 表头,而不是静默丢弃它的断言 |
