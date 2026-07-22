@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 280+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (27 merged), Qwen Code (51 merged), Microsoft Agent Framework (22 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (19 merged), Hugging Face Transformers (1 merged), and PyTorch (7 merged).
+- 280+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (27 merged), Qwen Code (51 merged), Microsoft Agent Framework (22 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (19 merged), Hugging Face Transformers (1 merged), Vibe-Trading (1 merged), and PyTorch (7 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 ### Projects
@@ -107,6 +107,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [OpenClaw](https://github.com/openclaw/openclaw) (383.1k★) | [#96456](https://github.com/openclaw/openclaw/pull/96456) | Clip progress text on code-point boundaries to avoid lone surrogates |
 | [OpenClaw](https://github.com/openclaw/openclaw) (383.1k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | Use the canonical `shortenHomePath` in the sandbox-root escape error so the reported path matches the rest of the UI. |
 | [OpenClaw](https://github.com/openclaw/openclaw) (383.1k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | Keep sibling dirs that share the home prefix unshortened in tool path display |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (26.3k★) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio's risk x-ray: pure-computation concentration, volatility, drawdown, VaR/ES, diversification, and correlation analytics for weighted baskets, plus an agent tool that fetches closes through the loader fallback chain |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.0k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.0k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | Added a timeout to Qwen OAuth refresh so a stalled refresh endpoint can't hang the CLI on auth recovery. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.0k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | Isolate Anthropic SDK abort listener leak with per-request child controllers |
@@ -377,7 +378,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 280+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（27 个）、Qwen Code（51 个）、Microsoft Agent Framework（22 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（19 个）、Hugging Face Transformers（1 个）、PyTorch（7 个）。
+- 280+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（27 个）、Qwen Code（51 个）、Microsoft Agent Framework（22 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（19 个）、Hugging Face Transformers（1 个）、Vibe-Trading（1 个）、PyTorch（7 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -482,6 +483,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenClaw](https://github.com/openclaw/openclaw) (383.1k★) | [#96456](https://github.com/openclaw/openclaw/pull/96456) | 按码点边界裁剪进度文本，避免落单的 surrogate |
 | [OpenClaw](https://github.com/openclaw/openclaw) (383.1k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | sandbox-root 越界错误里改用规范的 `shortenHomePath`,报的路径和界面其余部分一致。 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (383.1k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | 工具路径显示里，共享 home 前缀的同级目录不再被误缩写 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (26.3k★) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio 首刀「组合风险透视」：纯计算核心（集中度/波动/回撤/VaR/分散度/相关性）加走 loader fallback 链取数的 agent 工具 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.0k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.0k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | 给 Qwen OAuth refresh 加超时，刷新端点卡住时不会把整个 CLI 挂在认证恢复上。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.0k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | 用 per-request 子 controller 隔离 Anthropic SDK 的 abort listener 泄漏，避免跨请求累积死监听器 |
