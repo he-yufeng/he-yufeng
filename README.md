@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 280+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (27 merged), Qwen Code (51 merged), Microsoft Agent Framework (22 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (18 merged), Hugging Face Transformers (1 merged), and PyTorch (7 merged).
+- 280+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (27 merged), Qwen Code (51 merged), Microsoft Agent Framework (22 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (19 merged), Hugging Face Transformers (1 merged), and PyTorch (7 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 ### Projects
@@ -297,6 +297,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4342](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4342) | Don't cache reasoning_summaries probe failures that are transient |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#3975](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3975) | Preserve call-site generation defaults when a role model override resolves, so switching a role's model doesn't drop settings like max tokens or reasoning effort. |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4069](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4069) | Flush streamed score samples periodically, so a long eval persists score rows before it finishes. |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) | Route the realtime streaming sample writer through the same fallback JSON normalization as the regular log path, so sandbox objects that don't serialize cleanly can't crash an eval mid-stream |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4303](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4303) | Reject sample limits with more than one dash |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4218](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4218) | Reuse torn checkpoint ids |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#3982](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3982) | Preserve wrapped OpenAI reasoning payloads in the agent bridge, so encrypted provider-native reasoning survives transcript conversion. |
@@ -376,7 +377,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 280+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（27 个）、Qwen Code（51 个）、Microsoft Agent Framework（22 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（18 个）、Hugging Face Transformers（1 个）、PyTorch（7 个）。
+- 280+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（27 个）、Qwen Code（51 个）、Microsoft Agent Framework（22 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（19 个）、Hugging Face Transformers（1 个）、PyTorch（7 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -671,6 +672,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4342](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4342) | 不缓存瞬时的 reasoning_summaries 探测失败 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#3975](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3975) | 解析 role model override 时保留调用侧的生成默认值，角色换模型不会丢掉 max tokens、reasoning effort 这些设置。 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4069](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4069) | 周期性 flush 流式 score sample，长时间评测在结束前也能持续把 score 落盘。 |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) | 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4303](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4303) | 拒绝含多个连字符的 sample limit |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#4218](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4218) | 复用中断的 checkpoint id |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.3k★) | [#3982](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3982) | 在 agent bridge 转换里保留 wrapped 的 OpenAI reasoning payload，加密的 provider 原生 reasoning 项在 transcript 转换时不丢。 |
