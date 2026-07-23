@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 280+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (27 merged), Qwen Code (51 merged), Microsoft Agent Framework (22 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (19 merged), Hugging Face Transformers (1 merged), Vibe-Trading (1 merged), and PyTorch (7 merged).
+- 280+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (28 merged), Qwen Code (51 merged), Microsoft Agent Framework (22 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (19 merged), Hugging Face Transformers (1 merged), Vibe-Trading (3 merged), and PyTorch (7 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, ContractGuard, and GitSense.
 
 ### Projects
@@ -72,6 +72,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.9k★) | [#2617](https://github.com/kvcache-ai/Mooncake/pull/2617) | Associate task.request in EFA/Kunpeng submitTransfer |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.9k★) | [#2619](https://github.com/kvcache-ai/Mooncake/pull/2619) | Fix signed-char isxdigit UB in EFA smaps page-size parsing (follow-up to #2504) |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.9k★) | [#2460](https://github.com/kvcache-ai/Mooncake/pull/2460) | Support EulerOS in dependencies installer |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.9k★) | [#3064](https://github.com/kvcache-ai/Mooncake/pull/3064) | Drop the no-op `enable_mooncake_nof_pool` key from the NVMe-oF docs so users stop copying a setting that does nothing |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#188027](https://github.com/pytorch/pytorch/pull/188027) | Initialize `r` in the Laguerre and Legendre polynomial helpers so they stop returning uninitialized memory on the boundary path (shows as Closed; landed via pytorchmergebot) |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#188229](https://github.com/pytorch/pytorch/pull/188229) | `avg_pool3d` backward silently corrupted gradients on inputs over `INT_MAX` elements: the atomic scatter kernel computed offsets and bounds as 32-bit `int`; widened to 64-bit indexing (shows as Closed; landed via pytorchmergebot) |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#187860](https://github.com/pytorch/pytorch/pull/187860) | Route the empty-`src` check in `meta__transformer_encoder_layer_fwd` through `guard_or_false` so an unbacked symbolic `numel` under `torch.compile` no longer raises a data-dependent error (shows as Closed; landed via pytorchmergebot) |
@@ -108,6 +109,8 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [OpenClaw](https://github.com/openclaw/openclaw) (383.8k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | Use the canonical `shortenHomePath` in the sandbox-root escape error so the reported path matches the rest of the UI. |
 | [OpenClaw](https://github.com/openclaw/openclaw) (383.8k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | Keep sibling dirs that share the home prefix unshortened in tool path display |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (26.5k★) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio's risk x-ray: pure-computation concentration, volatility, drawdown, VaR/ES, diversification, and correlation analytics for weighted baskets, plus an agent tool that fetches closes through the loader fallback chain |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (26.5k★) | [#795](https://github.com/HKUDS/Vibe-Trading/pull/795) | Portfolio Studio's rebalance notes: the backtester now writes a notes artifact with metrics for each rebalance, so agent-driven moves stay auditable |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (26.5k★) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | Wired the strict alpha-bench gate into the CLI: `alpha bench --strict` now fails the run when a strategy misses the bar |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | Added a timeout to Qwen OAuth refresh so a stalled refresh endpoint can't hang the CLI on auth recovery. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | Isolate Anthropic SDK abort listener leak with per-request child controllers |
@@ -378,7 +381,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 280+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（27 个）、Qwen Code（51 个）、Microsoft Agent Framework（22 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（19 个）、Hugging Face Transformers（1 个）、Vibe-Trading（1 个）、PyTorch（7 个）。
+- 280+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（28 个）、Qwen Code（51 个）、Microsoft Agent Framework（22 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（19 个）、Hugging Face Transformers（1 个）、Vibe-Trading（3 个）、PyTorch（7 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard、GitSense。
 
 ### 项目
@@ -448,6 +451,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.9k★) | [#2617](https://github.com/kvcache-ai/Mooncake/pull/2617) | 在 EFA/鲲鹏 `submitTransfer` 里补回 `task.request` 关联（与 RDMA 路径同类漏赋值） |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.9k★) | [#2619](https://github.com/kvcache-ai/Mooncake/pull/2619) | 修复 EFA smaps page-size 解析里 signed char 传 `isxdigit` 的 UB（#2504 的后续） |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.9k★) | [#2460](https://github.com/kvcache-ai/Mooncake/pull/2460) | 依赖安装脚本支持 EulerOS |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.9k★) | [#3064](https://github.com/kvcache-ai/Mooncake/pull/3064) | 删掉 NVMe-oF 文档示例里没有任何实际作用的 `enable_mooncake_nof_pool` 配置项，别让用户照抄一个假开关 |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#188027](https://github.com/pytorch/pytorch/pull/188027) | 在 Laguerre / Legendre 多项式的辅助函数里初始化 `r`，避免边界路径返回未初始化内存（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#188229](https://github.com/pytorch/pytorch/pull/188229) | `avg_pool3d` backward 在超过 `INT_MAX` 元素的输入上静默算错梯度：atomic scatter kernel 用 32 位 `int` 算偏移和边界，改成 64 位索引（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#187860](https://github.com/pytorch/pytorch/pull/187860) | 把 `meta__transformer_encoder_layer_fwd` 里对空 `src` 的检查改走 `guard_or_false`，让 `torch.compile` 下 unbacked 符号 `numel` 不再抛数据依赖错误（PR 显示 Closed，经 pytorchmergebot 合入） |
@@ -484,6 +488,8 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenClaw](https://github.com/openclaw/openclaw) (383.8k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | sandbox-root 越界错误里改用规范的 `shortenHomePath`,报的路径和界面其余部分一致。 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (383.8k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | 工具路径显示里，共享 home 前缀的同级目录不再被误缩写 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (26.5k★) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio 首刀「组合风险透视」：纯计算核心（集中度/波动/回撤/VaR/分散度/相关性）加走 loader fallback 链取数的 agent 工具 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (26.5k★) | [#795](https://github.com/HKUDS/Vibe-Trading/pull/795) | Portfolio Studio 的 rebalance notes：回测器每次调仓产出带指标的 notes 工件，agent 驱动的调仓可审计回看 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (26.5k★) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | 把 strict bench 门禁接进 CLI：`alpha bench --strict` 在策略不达标时直接判失败 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | 给 Qwen OAuth refresh 加超时，刷新端点卡住时不会把整个 CLI 挂在认证恢复上。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | 用 per-request 子 controller 隔离 Anthropic SDK 的 abort listener 泄漏，避免跨请求累积死监听器 |
