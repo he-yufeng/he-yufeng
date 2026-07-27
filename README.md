@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 280+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (29 merged), Qwen Code (51 merged), Microsoft Agent Framework (22 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (19 merged), Hugging Face Transformers (1 merged), Vibe-Trading (3 merged), and PyTorch (7 merged).
+- 280+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (30 merged), Qwen Code (52 merged), Microsoft Agent Framework (22 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (19 merged), Hugging Face Transformers (1 merged), Vibe-Trading (4 merged), and PyTorch (7 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, ContractGuard, and GitSense.
 
 ### Projects
@@ -74,6 +74,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.9k★) | [#2460](https://github.com/kvcache-ai/Mooncake/pull/2460) | Support EulerOS in dependencies installer |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.9k★) | [#3064](https://github.com/kvcache-ai/Mooncake/pull/3064) | Drop the no-op `enable_mooncake_nof_pool` key from the NVMe-oF docs so users stop copying a setting that does nothing |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.9k★) | [#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) | Arm the etcd view-change watch once per wait instead of per iteration, stopping the steady-state watch goroutine leak in HA mode |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.9k★) | [#3054](https://github.com/kvcache-ai/Mooncake/pull/3054) | Restore zero-copy puts for multi-buffer payloads in the wheel, which a just-merged refactor had silently regressed into copies |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#188027](https://github.com/pytorch/pytorch/pull/188027) | Initialize `r` in the Laguerre and Legendre polynomial helpers so they stop returning uninitialized memory on the boundary path (shows as Closed; landed via pytorchmergebot) |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#188229](https://github.com/pytorch/pytorch/pull/188229) | `avg_pool3d` backward silently corrupted gradients on inputs over `INT_MAX` elements: the atomic scatter kernel computed offsets and bounds as 32-bit `int`; widened to 64-bit indexing (shows as Closed; landed via pytorchmergebot) |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#187860](https://github.com/pytorch/pytorch/pull/187860) | Route the empty-`src` check in `meta__transformer_encoder_layer_fwd` through `guard_or_false` so an unbacked symbolic `numel` under `torch.compile` no longer raises a data-dependent error (shows as Closed; landed via pytorchmergebot) |
@@ -113,6 +114,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (26.5k★) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio's risk x-ray: pure-computation concentration, volatility, drawdown, VaR/ES, diversification, and correlation analytics for weighted baskets, plus an agent tool that fetches closes through the loader fallback chain |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (26.5k★) | [#795](https://github.com/HKUDS/Vibe-Trading/pull/795) | Portfolio Studio's rebalance notes: the backtester now writes a notes artifact with metrics for each rebalance, so agent-driven moves stay auditable |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (26.5k★) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | Wired the strict alpha-bench gate into the CLI: `alpha bench --strict` now fails the run when a strategy misses the bar |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (26.5k★) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio step 2: composable weight constraints that plug into any optimizer, with waterfill redistribution that only feeds positions still under their cap |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | Added a timeout to Qwen OAuth refresh so a stalled refresh endpoint can't hang the CLI on auth recovery. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | Isolate Anthropic SDK abort listener leak with per-request child controllers |
@@ -164,6 +166,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#5647](https://github.com/QwenLM/qwen-code/pull/5647) | Detect USE_OPENAI auth when the model is set via QWEN_MODEL |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#5287](https://github.com/QwenLM/qwen-code/pull/5287) | Render a sub-minute duration that rounds to 60s as "1m" |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#5204](https://github.com/QwenLM/qwen-code/pull/5204) | Reopen code fences without inserting a blank line |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#6981](https://github.com/QwenLM/qwen-code/pull/6981) | Route id-less continuation chunks to the colliding tool-call opener's slot instead of dropping them into the wrong one |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.6k★) | [#4253](https://github.com/bytedance/deer-flow/pull/4253) | A tool result containing a literal `</tool_response>` could close the MindIE framing early and inject trailing text; escaped the tool-response content, matching the tool-call name/arg escaping already in the same function. |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.6k★) | [#4157](https://github.com/bytedance/deer-flow/pull/4157) | A subagent's `description` is agent-editable (setup_agent / update_agent) yet was rendered raw into the `<subagent_system>` block, so a crafted first line could break out and forge framework tags. Escaped it, matching the `<soul>` fix. |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.6k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | HTML-escape `SOUL.md` before it enters the `<soul>` system-prompt block so an agent-editable personality cannot forge framework tags and break out of its trust zone |
@@ -177,6 +180,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.6k★) | [#3674](https://github.com/bytedance/deer-flow/pull/3674) | Let UI runtime channel config win over config.yaml |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.6k★) | [#4216](https://github.com/bytedance/deer-flow/pull/4216) | `get_memory_config()` only refreshed as a side effect of `get_app_config()`, so readers like the agent factory saw a stale `memory.mode` after a config.yaml edit; resolve through `get_app_config()` with a FileNotFoundError fallback |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.6k★) | [#4130](https://github.com/bytedance/deer-flow/pull/4130) | Recognize remaining requests/httpx HTTP methods as network sinks |
+| [deer-flow](https://github.com/bytedance/deer-flow) (77.6k★) | [#4381](https://github.com/bytedance/deer-flow/pull/4381) | Unwrap Overwrite-wrapped sandbox state in after_agent so hook consumers read the real state instead of the wrapper |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.3k★) | [#5808](https://github.com/microsoft/agent-framework/pull/5808) | Handoff was mutating message roles in place, so a retry leaked the change; reuse sanitized copies instead. |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.3k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | Fix `background=True` + tools infinite-retrieve loop: clear completed continuation state so tool results get posted |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.3k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | Drop hosted MCP tool-call history when reasoning payloads are stripped, so stateless OpenAI replay stops sending orphan MCP calls. |
@@ -340,6 +344,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [dify](https://github.com/langgenius/dify) (149.8k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | Validate the conversation up front on the service-api and explore endpoints, so a bad `conversation_id` returns 404 instead of streaming into a late failure. |
 | [dify](https://github.com/langgenius/dify) (149.8k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | Keep watercrawl request timeouts bounded instead of disabling them with `timeout=None` |
 | [dify](https://github.com/langgenius/dify) (149.8k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | Skip empty tool entries in legacy dataset config extraction |
+| [dify](https://github.com/langgenius/dify) (149.8k★) | [#39479](https://github.com/langgenius/dify/pull/39479) | Make the 10-minute email IP first-strike window actually take effect: claim the slot atomically with SET NX instead of a racy GET-then-SETEX |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (85.7k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | Skip empty agent-switch conditions so a blank branch guard can't crash or block valid downstream flows. |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (85.7k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Fall back when Docling native parsing returns no chunks, so a document still produces usable content instead of an empty parse. |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (85.7k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | Keep the strongest PageRank score for repeated n-hop GraphRAG edges, so path order can't overwrite the ranking. |
@@ -383,7 +388,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 280+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（29 个）、Qwen Code（51 个）、Microsoft Agent Framework（22 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（19 个）、Hugging Face Transformers（1 个）、Vibe-Trading（3 个）、PyTorch（7 个）。
+- 280+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（30 个）、Qwen Code（52 个）、Microsoft Agent Framework（22 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（19 个）、Hugging Face Transformers（1 个）、Vibe-Trading（4 个）、PyTorch（7 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard、GitSense。
 
 ### 项目
@@ -455,6 +460,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.9k★) | [#2460](https://github.com/kvcache-ai/Mooncake/pull/2460) | 依赖安装脚本支持 EulerOS |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.9k★) | [#3064](https://github.com/kvcache-ai/Mooncake/pull/3064) | 删掉 NVMe-oF 文档示例里没有任何实际作用的 `enable_mooncake_nof_pool` 配置项，别让用户照抄一个假开关 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.9k★) | [#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) | HA 模式下 WaitForViewChange 每次迭代都新建一个 etcd watch，改成每轮等待只建一次，堵住稳态 watch goroutine 泄漏 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (5.9k★) | [#3054](https://github.com/kvcache-ai/Mooncake/pull/3054) | 恢复 wheel 多 buffer payload 的 zero-copy put，刚合入的重构把它退化成了拷贝，双提交复现后修复 |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#188027](https://github.com/pytorch/pytorch/pull/188027) | 在 Laguerre / Legendre 多项式的辅助函数里初始化 `r`，避免边界路径返回未初始化内存（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#188229](https://github.com/pytorch/pytorch/pull/188229) | `avg_pool3d` backward 在超过 `INT_MAX` 元素的输入上静默算错梯度：atomic scatter kernel 用 32 位 `int` 算偏移和边界，改成 64 位索引（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [PyTorch](https://github.com/pytorch/pytorch) (101.8k★) | [#187860](https://github.com/pytorch/pytorch/pull/187860) | 把 `meta__transformer_encoder_layer_fwd` 里对空 `src` 的检查改走 `guard_or_false`，让 `torch.compile` 下 unbacked 符号 `numel` 不再抛数据依赖错误（PR 显示 Closed，经 pytorchmergebot 合入） |
@@ -494,6 +500,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (26.5k★) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio 首刀「组合风险透视」：纯计算核心（集中度/波动/回撤/VaR/分散度/相关性）加走 loader fallback 链取数的 agent 工具 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (26.5k★) | [#795](https://github.com/HKUDS/Vibe-Trading/pull/795) | Portfolio Studio 的 rebalance notes：回测器每次调仓产出带指标的 notes 工件，agent 驱动的调仓可审计回看 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (26.5k★) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | 把 strict bench 门禁接进 CLI：`alpha bench --strict` 在策略不达标时直接判失败 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (26.5k★) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio 第二步：可组合的组合权重约束，能挂到任意优化器上，waterfill 再分配只喂给还没到上限的仓位 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | 给 Qwen OAuth refresh 加超时，刷新端点卡住时不会把整个 CLI 挂在认证恢复上。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | 用 per-request 子 controller 隔离 Anthropic SDK 的 abort listener 泄漏，避免跨请求累积死监听器 |
@@ -545,6 +552,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#5647](https://github.com/QwenLM/qwen-code/pull/5647) | 通过 `QWEN_MODEL` 设定模型时也能识别 `USE_OPENAI` 认证 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#5287](https://github.com/QwenLM/qwen-code/pull/5287) | 让四舍五入到 60s 的亚分钟时长显示为 “1m” |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#5204](https://github.com/QwenLM/qwen-code/pull/5204) | 重开 code fence 时不再插入多余空行 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (26.2k★) | [#6981](https://github.com/QwenLM/qwen-code/pull/6981) | 不带 id 的流式 continuation chunk 在工具调用撞名时改为落到当前 opener 的槽位，不再进错槽 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.6k★) | [#4253](https://github.com/bytedance/deer-flow/pull/4253) | 工具结果里字面的 `</tool_response>` 能提前闭合 MindIE framing、注入尾随文本;转义 tool-response 内容,和同函数里 tool-call name/arg 的转义保持一致。 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.6k★) | [#4157](https://github.com/bytedance/deer-flow/pull/4157) | subagent 的 `description` 是 agent 可编辑的(setup_agent / update_agent),却原样渲染进 `<subagent_system>` 块,构造的首行能越界伪造框架标签。转义掉,和 `<soul>` 那个修复同类。 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.6k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | 在 `SOUL.md` 进入 `<soul>` system-prompt 块前 HTML 转义,让可被 agent 编辑的 personality 无法伪造框架标签、越出信任边界 |
@@ -558,6 +566,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.6k★) | [#3674](https://github.com/bytedance/deer-flow/pull/3674) | 让 UI 运行时 channel 配置优先于 config.yaml |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.6k★) | [#4216](https://github.com/bytedance/deer-flow/pull/4216) | `get_memory_config()` 只作为 `get_app_config()` 的副作用刷新，agent factory 这类直接读者在 config.yaml 改完后拿到旧的 `memory.mode`；改走 `get_app_config()` 并加 FileNotFoundError 兜底 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (77.6k★) | [#4130](https://github.com/bytedance/deer-flow/pull/4130) | 把 requests/httpx 剩余 HTTP 方法也识别为网络 sink |
+| [deer-flow](https://github.com/bytedance/deer-flow) (77.6k★) | [#4381](https://github.com/bytedance/deer-flow/pull/4381) | after_agent 钩子里的 sandbox state 被 Overwrite 包了一层，解包后再消费，不再取不到值 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.3k★) | [#5808](https://github.com/microsoft/agent-framework/pull/5808) | handoff 原地改了 message 的 role，重试复用时把改动泄漏出去了，改成复用消毒过的副本。 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.3k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | 修复 `background=True` + tools 无限 retrieve loop：清掉已完成的 continuation 状态，让 tool results 正常提交 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.3k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | reasoning payload 被剥掉时一并丢掉 hosted MCP 的 tool-call 历史，stateless 的 OpenAI replay 不再发孤立的 MCP 调用。 |
@@ -721,6 +730,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [dify](https://github.com/langgenius/dify) (149.8k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | 在 service-api 和 explore 端点提前校验 conversation，坏的 `conversation_id` 直接 404，而不是流式跑到后期才失败。 |
 | [dify](https://github.com/langgenius/dify) (149.8k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | watercrawl 请求超时保持有界,而不是用 `timeout=None` 禁用 |
 | [dify](https://github.com/langgenius/dify) (149.8k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | legacy dataset 配置提取时跳过空的 tool entry |
+| [dify](https://github.com/langgenius/dify) (149.8k★) | [#39479](https://github.com/langgenius/dify/pull/39479) | 邮件限流的 IP 首击窗口真正生效：GET 判空再 SETEX 的竞态改为 SET NX 原子认领 |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (85.7k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | 跳过空的 agent switch 条件，空分支判断不会让有效的后续 agent 流程崩掉或卡住。 |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (85.7k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Docling native 解析没产出 chunk 时降级，文档还能出可用内容，而不是空解析。 |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (85.7k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | 重复的 n-hop GraphRAG 边保留最强的 PageRank 分，路径顺序覆盖不了排序。 |
