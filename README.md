@@ -36,15 +36,15 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 #### AI infrastructure / model systems
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | Fix bench_serve UTF-8 decode crash on split multi-byte chars in streaming chunks |
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Responses API `instructions` were leaking across turns through the `previous_response_id` chain. |
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals. |
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | Fix weight offloading ignoring `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` in prefetch offloader |
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | Taught the V1 ubatch wrapper to unwrap tuple model outputs, unblocking DBO and speculative decoding on tuple-returning models. |
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | Prefix DeepSeek V4 MTP projection layers so compressed-tensors can match artifact-side target and ignore rules during draft model loading |
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | Guard flash-attn rotary imports so FA4 environments fall back cleanly when `flash_attn.ops.triton.rotary` is absent |
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | Base64 JPEG video frames returning empty metadata: populate frame count, fps, duration |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | Fix bench_serve UTF-8 decode crash on split multi-byte chars in streaming chunks |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Responses API `instructions` were leaking across turns through the `previous_response_id` chain. |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals. |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | Fix weight offloading ignoring `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` in prefetch offloader |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | Taught the V1 ubatch wrapper to unwrap tuple model outputs, unblocking DBO and speculative decoding on tuple-returning models. |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | Prefix DeepSeek V4 MTP projection layers so compressed-tensors can match artifact-side target and ignore rules during draft model loading |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | Guard flash-attn rotary imports so FA4 environments fall back cleanly when `flash_attn.ops.triton.rotary` is absent |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | Base64 JPEG video frames returning empty metadata: populate frame count, fps, duration |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.1k★) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.1k★) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang: skip redundant handshake for fabric-connected nodes |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.1k★) | [#2570](https://github.com/kvcache-ai/Mooncake/pull/2570) | Integer overflow in `BatchOffload` for >4 GiB objects: sum slice sizes in `uint64_t` and reject objects exceeding the `uint32_t` record `value_len`, instead of silently truncating |
@@ -113,11 +113,11 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [OpenClaw](https://github.com/openclaw/openclaw) (384.4k★) | [#96456](https://github.com/openclaw/openclaw/pull/96456) | Clip progress text on code-point boundaries to avoid lone surrogates |
 | [OpenClaw](https://github.com/openclaw/openclaw) (384.4k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | Use the canonical `shortenHomePath` in the sandbox-root escape error so the reported path matches the rest of the UI. |
 | [OpenClaw](https://github.com/openclaw/openclaw) (384.4k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | Keep sibling dirs that share the home prefix unshortened in tool path display |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.4k★) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio's risk x-ray: pure-computation concentration, volatility, drawdown, VaR/ES, diversification, and correlation analytics for weighted baskets, plus an agent tool that fetches closes through the loader fallback chain |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.4k★) | [#795](https://github.com/HKUDS/Vibe-Trading/pull/795) | Portfolio Studio's rebalance notes: the backtester now writes a notes artifact with metrics for each rebalance, so agent-driven moves stay auditable |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.4k★) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | Wired the strict alpha-bench gate into the CLI: `alpha bench --strict` now fails the run when a strategy misses the bar |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.4k★) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio step 2: composable weight constraints that plug into any optimizer, with waterfill redistribution that only feeds positions still under their cap |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.4k★) | [#900](https://github.com/HKUDS/Vibe-Trading/pull/900) | Every backtest run now emits a risk x-ray artifact (JSON + Markdown) over the strategy's average basket, with concentration, volatility, drawdown, and tail-risk metrics folded into run metrics |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.5k★) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio's risk x-ray: pure-computation concentration, volatility, drawdown, VaR/ES, diversification, and correlation analytics for weighted baskets, plus an agent tool that fetches closes through the loader fallback chain |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.5k★) | [#795](https://github.com/HKUDS/Vibe-Trading/pull/795) | Portfolio Studio's rebalance notes: the backtester now writes a notes artifact with metrics for each rebalance, so agent-driven moves stay auditable |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.5k★) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | Wired the strict alpha-bench gate into the CLI: `alpha bench --strict` now fails the run when a strategy misses the bar |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.5k★) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio step 2: composable weight constraints that plug into any optimizer, with waterfill redistribution that only feeds positions still under their cap |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.5k★) | [#900](https://github.com/HKUDS/Vibe-Trading/pull/900) | Every backtest run now emits a risk x-ray artifact (JSON + Markdown) over the strategy's average basket, with concentration, volatility, drawdown, and tail-risk metrics folded into run metrics |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.4k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.4k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | Added a timeout to Qwen OAuth refresh so a stalled refresh endpoint can't hang the CLI on auth recovery. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.4k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | Isolate Anthropic SDK abort listener leak with per-request child controllers |
@@ -171,7 +171,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.4k★) | [#5204](https://github.com/QwenLM/qwen-code/pull/5204) | Reopen code fences without inserting a blank line |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.4k★) | [#6981](https://github.com/QwenLM/qwen-code/pull/6981) | Route id-less continuation chunks to the colliding tool-call opener's slot instead of dropping them into the wrong one |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.4k★) | [#7535](https://github.com/QwenLM/qwen-code/pull/7535) | Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
-| [Kimi Code](https://github.com/MoonshotAI/kimi-code) (5.5k★) | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) | Customize the TUI footer status line via `status_line` config, codex / claude code style |
+| [Kimi Code](https://github.com/MoonshotAI/kimi-code) (5.6k★) | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) | Customize the TUI footer status line via `status_line` config, codex / claude code style |
 | [deer-flow](https://github.com/bytedance/deer-flow) (78.1k★) | [#4253](https://github.com/bytedance/deer-flow/pull/4253) | A tool result containing a literal `</tool_response>` could close the MindIE framing early and inject trailing text; escaped the tool-response content, matching the tool-call name/arg escaping already in the same function. |
 | [deer-flow](https://github.com/bytedance/deer-flow) (78.1k★) | [#4157](https://github.com/bytedance/deer-flow/pull/4157) | A subagent's `description` is agent-editable (setup_agent / update_agent) yet was rendered raw into the `<subagent_system>` block, so a crafted first line could break out and forge framework tags. Escaped it, matching the `<soul>` fix. |
 | [deer-flow](https://github.com/bytedance/deer-flow) (78.1k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | HTML-escape `SOUL.md` before it enters the `<soul>` system-prompt block so an agent-editable personality cannot forge framework tags and break out of its trust zone |
@@ -282,14 +282,14 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [goose](https://github.com/aaif-goose/goose) (51.9k★) | [#9599](https://github.com/aaif-goose/goose/pull/9599) | Use a blocking OTLP HTTP exporter so telemetry isn't lost when the process exits. |
 | [goose](https://github.com/aaif-goose/goose) (51.9k★) | [#9528](https://github.com/aaif-goose/goose/pull/9528) | Restore new-chat keyboard shortcut navigation in the desktop app |
 | [goose](https://github.com/aaif-goose/goose) (51.9k★) | [#9584](https://github.com/aaif-goose/goose/pull/9584) | Show resolved skill supporting-file paths instead of unresolved placeholders |
-| [opencode](https://github.com/anomalyco/opencode) (190.6k★) | [#30022](https://github.com/anomalyco/opencode/pull/30022) | Bind the MCP OAuth callback server to the IPv4 loopback so the browser redirect connects reliably instead of racing IPv6 |
-| [LiveKit Agents](https://github.com/livekit/agents) (11.5k★) | [#5994](https://github.com/livekit/agents/pull/5994) | Handle OpenAI-compatible realtime status details that come back as strings, so an incomplete response doesn't crash logging. |
-| [LiveKit Agents](https://github.com/livekit/agents) (11.5k★) | [#5872](https://github.com/livekit/agents/pull/5872) | Map ElevenLabs server-VAD committed transcripts to `END_OF_SPEECH`, so a realtime turn closes without a manual empty commit. |
-| [LiveKit Agents](https://github.com/livekit/agents) (11.5k★) | [#5820](https://github.com/livekit/agents/pull/5820) | Recreate Anthropic streaming requests on retry so transient stream creation failures do not re-await the same coroutine |
-| [LiveKit Agents](https://github.com/livekit/agents) (11.5k★) | [#5976](https://github.com/livekit/agents/pull/5976) | Preserve request timeouts when callers provide custom Google HTTP options, without mutating the caller-owned options object |
-| [LiveKit Agents](https://github.com/livekit/agents) (11.5k★) | [#5864](https://github.com/livekit/agents/pull/5864) | Surface Soniox STT server errors instead of treating failed streams as empty transcripts |
-| [LiveKit Agents](https://github.com/livekit/agents) (11.5k★) | [#6124](https://github.com/livekit/agents/pull/6124) | Normalize two-digit years in GetDOBTask |
-| [LiveKit Agents](https://github.com/livekit/agents) (11.5k★) | [#5887](https://github.com/livekit/agents/pull/5887) | Delete trimmed empty audio items |
+| [opencode](https://github.com/anomalyco/opencode) (190.8k★) | [#30022](https://github.com/anomalyco/opencode/pull/30022) | Bind the MCP OAuth callback server to the IPv4 loopback so the browser redirect connects reliably instead of racing IPv6 |
+| [LiveKit Agents](https://github.com/livekit/agents) (11.6k★) | [#5994](https://github.com/livekit/agents/pull/5994) | Handle OpenAI-compatible realtime status details that come back as strings, so an incomplete response doesn't crash logging. |
+| [LiveKit Agents](https://github.com/livekit/agents) (11.6k★) | [#5872](https://github.com/livekit/agents/pull/5872) | Map ElevenLabs server-VAD committed transcripts to `END_OF_SPEECH`, so a realtime turn closes without a manual empty commit. |
+| [LiveKit Agents](https://github.com/livekit/agents) (11.6k★) | [#5820](https://github.com/livekit/agents/pull/5820) | Recreate Anthropic streaming requests on retry so transient stream creation failures do not re-await the same coroutine |
+| [LiveKit Agents](https://github.com/livekit/agents) (11.6k★) | [#5976](https://github.com/livekit/agents/pull/5976) | Preserve request timeouts when callers provide custom Google HTTP options, without mutating the caller-owned options object |
+| [LiveKit Agents](https://github.com/livekit/agents) (11.6k★) | [#5864](https://github.com/livekit/agents/pull/5864) | Surface Soniox STT server errors instead of treating failed streams as empty transcripts |
+| [LiveKit Agents](https://github.com/livekit/agents) (11.6k★) | [#6124](https://github.com/livekit/agents/pull/6124) | Normalize two-digit years in GetDOBTask |
+| [LiveKit Agents](https://github.com/livekit/agents) (11.6k★) | [#5887](https://github.com/livekit/agents/pull/5887) | Delete trimmed empty audio items |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.7k★) | [#2353](https://github.com/strands-agents/harness-sdk/pull/2353) | Handle Gemini safety-blocked metadata by defaulting missing usage counts and mapping safety stops to guardrail intervention |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.7k★) | [#2340](https://github.com/strands-agents/harness-sdk/pull/2340) | Keep concurrent tool results in request order, so parallel execution doesn't scramble what the model sees. |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.7k★) | [#2400](https://github.com/strands-agents/harness-sdk/pull/2400) | Support non-streaming OpenAI chat completions |
@@ -299,11 +299,11 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.7k★) | [#2304](https://github.com/strands-agents/harness-sdk/pull/2304) | Map webp images explicitly |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.7k★) | [#2396](https://github.com/strands-agents/harness-sdk/pull/2396) | Pass structured output request params |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.7k★) | [#2306](https://github.com/strands-agents/harness-sdk/pull/2306) | Normalize 3gp video format |
-| [OpenHands](https://github.com/OpenHands/OpenHands) (82.4k★) | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) | Keep a custom LLM base URL when editing basic model settings, so a saved profile stops silently falling back to the provider default. |
+| [OpenHands](https://github.com/OpenHands/OpenHands) (82.5k★) | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) | Keep a custom LLM base URL when editing basic model settings, so a saved profile stops silently falling back to the provider default. |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (18.9k★) | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) | Accept `providerExecuted` and `title` on Vercel AI dynamic-tool parts, so strict validation keeps the provider metadata. |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (18.9k★) | [#5695](https://github.com/pydantic/pydantic-ai/pull/5695) | Forward penalties in completions |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (18.9k★) | [#5694](https://github.com/pydantic/pydantic-ai/pull/5694) | Fix `MCPToolset(http_client=...)` with FastMCP by keeping `follow_redirects` out of caller-provided HTTP client factories |
-| [Cline](https://github.com/cline/cline) (65.1k★) | [#11166](https://github.com/cline/cline/pull/11166) | Keep file search working when the open-tabs host RPC is down by falling back to system `rg`. |
+| [Cline](https://github.com/cline/cline) (65.2k★) | [#11166](https://github.com/cline/cline/pull/11166) | Keep file search working when the open-tabs host RPC is down by falling back to system `rg`. |
 | [Agno](https://github.com/agno-agi/agno) (41.5k★) | [#8131](https://github.com/agno-agi/agno/pull/8131) | Preserve non-sentinel tool argument whitespace while keeping string-to-None/True/False normalization for exact sentinels |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#4267](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4267) | Keep truncate() within length when smaller than the overflow indicator |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#3924](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3924) | Reject unknown `GenerateConfig` fields up front, so a misspelled option isn't silently ignored. |
@@ -335,7 +335,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.1k★) | [#185](https://github.com/HKUDS/OpenHarness/pull/185) | TUI tab-completion: fix cursor jump, strip trailing space, accept `/quit` alias |
 | [Pipecat](https://github.com/pipecat-ai/pipecat) (13.8k★) | [#4553](https://github.com/pipecat-ai/pipecat/pull/4553) | Serialize interruption frames through protobuf transports so realtime voice-agent interruptions survive transport hops |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) | Reject mangled publisher metadata instead of accepting malformed entries |
-| [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.4k★) | [#3822](https://github.com/EleutherAI/lm-evaluation-harness/pull/3822) | Keep Anthropic stop sequences non-empty so requests are not rejected |
+| [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.5k★) | [#3822](https://github.com/EleutherAI/lm-evaluation-harness/pull/3822) | Keep Anthropic stop sequences non-empty so requests are not rejected |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (4.9k★) | [#962](https://github.com/modelcontextprotocol/go-sdk/pull/962) | Reject duplicate `initialize` requests so an MCP session keeps consistent protocol state after init. |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (4.9k★) | [#981](https://github.com/modelcontextprotocol/go-sdk/pull/981) | Add `Implementation.description` metadata while keeping empty descriptions out of serialized MCP payloads |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (940★) | [#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) | Validate git workspaces with `git rev-parse --git-dir`, so a broken nested repo can't crash `/api/git/changes`. |
@@ -344,14 +344,14 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 #### Applied AI / RAG / observability
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (157.6k★) | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) | Reject self-hosted scrape interact actions with a clear error instead of failing opaquely |
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (157.6k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | Keep the auth chunk in the self-host bypass path so authenticated self-hosted scrapes don't get dropped. |
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (157.6k★) | [#3713](https://github.com/firecrawl/firecrawl/pull/3713) | Handle the async v1 batch-scrape response returned as a dict in the Python SDK |
-| [dify](https://github.com/langgenius/dify) (150.6k★) | [#37425](https://github.com/langgenius/dify/pull/37425) | Bound OperationService billing requests so a slow billing endpoint can't hang the request. |
-| [dify](https://github.com/langgenius/dify) (150.6k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | Validate the conversation up front on the service-api and explore endpoints, so a bad `conversation_id` returns 404 instead of streaming into a late failure. |
-| [dify](https://github.com/langgenius/dify) (150.6k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | Keep watercrawl request timeouts bounded instead of disabling them with `timeout=None` |
-| [dify](https://github.com/langgenius/dify) (150.6k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | Skip empty tool entries in legacy dataset config extraction |
-| [dify](https://github.com/langgenius/dify) (150.6k★) | [#39479](https://github.com/langgenius/dify/pull/39479) | Make the 10-minute email IP first-strike window actually take effect: claim the slot atomically with SET NX instead of a racy GET-then-SETEX |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (157.7k★) | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) | Reject self-hosted scrape interact actions with a clear error instead of failing opaquely |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (157.7k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | Keep the auth chunk in the self-host bypass path so authenticated self-hosted scrapes don't get dropped. |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (157.7k★) | [#3713](https://github.com/firecrawl/firecrawl/pull/3713) | Handle the async v1 batch-scrape response returned as a dict in the Python SDK |
+| [dify](https://github.com/langgenius/dify) (150.7k★) | [#37425](https://github.com/langgenius/dify/pull/37425) | Bound OperationService billing requests so a slow billing endpoint can't hang the request. |
+| [dify](https://github.com/langgenius/dify) (150.7k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | Validate the conversation up front on the service-api and explore endpoints, so a bad `conversation_id` returns 404 instead of streaming into a late failure. |
+| [dify](https://github.com/langgenius/dify) (150.7k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | Keep watercrawl request timeouts bounded instead of disabling them with `timeout=None` |
+| [dify](https://github.com/langgenius/dify) (150.7k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | Skip empty tool entries in legacy dataset config extraction |
+| [dify](https://github.com/langgenius/dify) (150.7k★) | [#39479](https://github.com/langgenius/dify/pull/39479) | Make the 10-minute email IP first-strike window actually take effect: claim the slot atomically with SET NX instead of a racy GET-then-SETEX |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (86.3k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | Skip empty agent-switch conditions so a blank branch guard can't crash or block valid downstream flows. |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (86.3k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Fall back when Docling native parsing returns no chunks, so a document still produces usable content instead of an empty parse. |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (86.3k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | Keep the strongest PageRank score for repeated n-hop GraphRAG edges, so path order can't overwrite the ranking. |
@@ -429,15 +429,15 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 #### AI infra / 模型系统
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | 修复 bench_serve 流式响应拆分多字节 UTF-8 字符导致 decode 崩溃 |
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。 |
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。 |
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | 修复 weight offloading 忽略 `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` 环境变量 |
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | 让 V1 ubatch wrapper 认得 tuple model outputs，解开 DBO 和投机解码在 tuple 返回值上的崩溃。 |
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | 给 DeepSeek V4 MTP projection layers 补 prefix，让 compressed-tensors 加载 draft model 时能匹配 artifact 侧 target / ignore 规则 |
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | 保护 flash-attn rotary 导入路径，让 FA4 环境缺少 `flash_attn.ops.triton.rotary` 时稳定回退而不是构造 rotary 层时崩溃 |
-| [vLLM](https://github.com/vllm-project/vllm) (87.5k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | 修复 base64 JPEG 视频帧返回空 metadata：补充帧数、fps、时长 |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | 修复 bench_serve 流式响应拆分多字节 UTF-8 字符导致 decode 崩溃 |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。 |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。 |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | 修复 weight offloading 忽略 `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` 环境变量 |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | 让 V1 ubatch wrapper 认得 tuple model outputs，解开 DBO 和投机解码在 tuple 返回值上的崩溃。 |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | 给 DeepSeek V4 MTP projection layers 补 prefix，让 compressed-tensors 加载 draft model 时能匹配 artifact 侧 target / ignore 规则 |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | 保护 flash-attn rotary 导入路径，让 FA4 环境缺少 `flash_attn.ops.triton.rotary` 时稳定回退而不是构造 rotary 层时崩溃 |
+| [vLLM](https://github.com/vllm-project/vllm) (87.6k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | 修复 base64 JPEG 视频帧返回空 metadata：补充帧数、fps、时长 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.1k★) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.1k★) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang：跳过 fabric 连接节点的冗余握手 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.1k★) | [#2570](https://github.com/kvcache-ai/Mooncake/pull/2570) | 修复 `BatchOffload` 处理 >4 GiB 对象时的整数溢出：用 `uint64_t` 累加各 slice 大小，并拒绝超过 `uint32_t` 记录 `value_len` 的对象，而不是静默截断 |
@@ -506,11 +506,11 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenClaw](https://github.com/openclaw/openclaw) (384.4k★) | [#96456](https://github.com/openclaw/openclaw/pull/96456) | 按码点边界裁剪进度文本，避免落单的 surrogate |
 | [OpenClaw](https://github.com/openclaw/openclaw) (384.4k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | sandbox-root 越界错误里改用规范的 `shortenHomePath`,报的路径和界面其余部分一致。 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (384.4k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | 工具路径显示里，共享 home 前缀的同级目录不再被误缩写 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.4k★) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio 首刀「组合风险透视」：纯计算核心（集中度/波动/回撤/VaR/分散度/相关性）加走 loader fallback 链取数的 agent 工具 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.4k★) | [#795](https://github.com/HKUDS/Vibe-Trading/pull/795) | Portfolio Studio 的 rebalance notes：回测器每次调仓产出带指标的 notes 工件，agent 驱动的调仓可审计回看 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.4k★) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | 把 strict bench 门禁接进 CLI：`alpha bench --strict` 在策略不达标时直接判失败 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.4k★) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio 第二步：可组合的组合权重约束，能挂到任意优化器上，waterfill 再分配只喂给还没到上限的仓位 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.4k★) | [#900](https://github.com/HKUDS/Vibe-Trading/pull/900) | 每次回测都会产出 risk x-ray 工件（JSON + Markdown），基于策略的平均持仓计算集中度、波动、回撤和尾部风险，并汇入 run 指标 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.5k★) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio 首刀「组合风险透视」：纯计算核心（集中度/波动/回撤/VaR/分散度/相关性）加走 loader fallback 链取数的 agent 工具 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.5k★) | [#795](https://github.com/HKUDS/Vibe-Trading/pull/795) | Portfolio Studio 的 rebalance notes：回测器每次调仓产出带指标的 notes 工件，agent 驱动的调仓可审计回看 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.5k★) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | 把 strict bench 门禁接进 CLI：`alpha bench --strict` 在策略不达标时直接判失败 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.5k★) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio 第二步：可组合的组合权重约束，能挂到任意优化器上，waterfill 再分配只喂给还没到上限的仓位 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (28.5k★) | [#900](https://github.com/HKUDS/Vibe-Trading/pull/900) | 每次回测都会产出 risk x-ray 工件（JSON + Markdown），基于策略的平均持仓计算集中度、波动、回撤和尾部风险，并汇入 run 指标 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.4k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.4k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | 给 Qwen OAuth refresh 加超时，刷新端点卡住时不会把整个 CLI 挂在认证恢复上。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.4k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | 用 per-request 子 controller 隔离 Anthropic SDK 的 abort listener 泄漏，避免跨请求累积死监听器 |
@@ -564,7 +564,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.4k★) | [#5204](https://github.com/QwenLM/qwen-code/pull/5204) | 重开 code fence 时不再插入多余空行 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.4k★) | [#6981](https://github.com/QwenLM/qwen-code/pull/6981) | 不带 id 的流式 continuation chunk 在工具调用撞名时改为落到当前 opener 的槽位，不再进错槽 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (26.4k★) | [#7535](https://github.com/QwenLM/qwen-code/pull/7535) | release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
-| [Kimi Code](https://github.com/MoonshotAI/kimi-code) (5.5k★) | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) | 通过 status_line 配置自定义 TUI 底部状态栏（仿 codex / claude code 的 footer 形态） |
+| [Kimi Code](https://github.com/MoonshotAI/kimi-code) (5.6k★) | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) | 通过 status_line 配置自定义 TUI 底部状态栏（仿 codex / claude code 的 footer 形态） |
 | [deer-flow](https://github.com/bytedance/deer-flow) (78.1k★) | [#4253](https://github.com/bytedance/deer-flow/pull/4253) | 工具结果里字面的 `</tool_response>` 能提前闭合 MindIE framing、注入尾随文本;转义 tool-response 内容,和同函数里 tool-call name/arg 的转义保持一致。 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (78.1k★) | [#4157](https://github.com/bytedance/deer-flow/pull/4157) | subagent 的 `description` 是 agent 可编辑的(setup_agent / update_agent),却原样渲染进 `<subagent_system>` 块,构造的首行能越界伪造框架标签。转义掉,和 `<soul>` 那个修复同类。 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (78.1k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | 在 `SOUL.md` 进入 `<soul>` system-prompt 块前 HTML 转义,让可被 agent 编辑的 personality 无法伪造框架标签、越出信任边界 |
@@ -675,14 +675,14 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [goose](https://github.com/aaif-goose/goose) (51.9k★) | [#9599](https://github.com/aaif-goose/goose/pull/9599) | 改用阻塞式的 OTLP HTTP exporter，进程退出时遥测数据不丢。 |
 | [goose](https://github.com/aaif-goose/goose) (51.9k★) | [#9528](https://github.com/aaif-goose/goose/pull/9528) | 恢复 desktop 应用里 new chat 快捷键的导航 |
 | [goose](https://github.com/aaif-goose/goose) (51.9k★) | [#9584](https://github.com/aaif-goose/goose/pull/9584) | 显示 skill 支持文件解析后的真实路径，而不是未解析的占位符 |
-| [opencode](https://github.com/anomalyco/opencode) (190.6k★) | [#30022](https://github.com/anomalyco/opencode/pull/30022) | 把 MCP OAuth 回调服务绑到 IPv4 loopback，让浏览器回跳稳定连上、不再和 IPv6 抢地址 |
-| [LiveKit Agents](https://github.com/livekit/agents) (11.5k★) | [#5994](https://github.com/livekit/agents/pull/5994) | 兼容 OpenAI 兼容 realtime 返回字符串的 status details，incomplete response 不再在日志路径崩。 |
-| [LiveKit Agents](https://github.com/livekit/agents) (11.5k★) | [#5872](https://github.com/livekit/agents/pull/5872) | 把 ElevenLabs server-VAD 的 committed transcript 映射成 `END_OF_SPEECH`，realtime turn 不用手动空 commit 才结束。 |
-| [LiveKit Agents](https://github.com/livekit/agents) (11.5k★) | [#5820](https://github.com/livekit/agents/pull/5820) | 修复 Anthropic streaming retry：瞬时建流失败后重新创建 stream，不再重复 await 同一个 coroutine |
-| [LiveKit Agents](https://github.com/livekit/agents) (11.5k★) | [#5976](https://github.com/livekit/agents/pull/5976) | 调用方传入自定义 Google HTTP options 时仍保留请求 timeout，并避免原地修改调用方对象 |
-| [LiveKit Agents](https://github.com/livekit/agents) (11.5k★) | [#5864](https://github.com/livekit/agents/pull/5864) | 暴露 Soniox STT server error：流式识别失败时返回明确错误，不再被当成空 transcript |
-| [LiveKit Agents](https://github.com/livekit/agents) (11.5k★) | [#6124](https://github.com/livekit/agents/pull/6124) | `GetDOBTask` 里规范化两位数年份 |
-| [LiveKit Agents](https://github.com/livekit/agents) (11.5k★) | [#5887](https://github.com/livekit/agents/pull/5887) | 删除裁剪后为空的 audio item |
+| [opencode](https://github.com/anomalyco/opencode) (190.8k★) | [#30022](https://github.com/anomalyco/opencode/pull/30022) | 把 MCP OAuth 回调服务绑到 IPv4 loopback，让浏览器回跳稳定连上、不再和 IPv6 抢地址 |
+| [LiveKit Agents](https://github.com/livekit/agents) (11.6k★) | [#5994](https://github.com/livekit/agents/pull/5994) | 兼容 OpenAI 兼容 realtime 返回字符串的 status details，incomplete response 不再在日志路径崩。 |
+| [LiveKit Agents](https://github.com/livekit/agents) (11.6k★) | [#5872](https://github.com/livekit/agents/pull/5872) | 把 ElevenLabs server-VAD 的 committed transcript 映射成 `END_OF_SPEECH`，realtime turn 不用手动空 commit 才结束。 |
+| [LiveKit Agents](https://github.com/livekit/agents) (11.6k★) | [#5820](https://github.com/livekit/agents/pull/5820) | 修复 Anthropic streaming retry：瞬时建流失败后重新创建 stream，不再重复 await 同一个 coroutine |
+| [LiveKit Agents](https://github.com/livekit/agents) (11.6k★) | [#5976](https://github.com/livekit/agents/pull/5976) | 调用方传入自定义 Google HTTP options 时仍保留请求 timeout，并避免原地修改调用方对象 |
+| [LiveKit Agents](https://github.com/livekit/agents) (11.6k★) | [#5864](https://github.com/livekit/agents/pull/5864) | 暴露 Soniox STT server error：流式识别失败时返回明确错误，不再被当成空 transcript |
+| [LiveKit Agents](https://github.com/livekit/agents) (11.6k★) | [#6124](https://github.com/livekit/agents/pull/6124) | `GetDOBTask` 里规范化两位数年份 |
+| [LiveKit Agents](https://github.com/livekit/agents) (11.6k★) | [#5887](https://github.com/livekit/agents/pull/5887) | 删除裁剪后为空的 audio item |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.7k★) | [#2353](https://github.com/strands-agents/harness-sdk/pull/2353) | 处理 Gemini safety-blocked metadata：缺失 token 计数时安全归零，并把 safety stop 映射为 guardrail intervention |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.7k★) | [#2340](https://github.com/strands-agents/harness-sdk/pull/2340) | 并发的 tool result 按请求顺序回填，并行执行不会打乱模型看到的输出顺序。 |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.7k★) | [#2400](https://github.com/strands-agents/harness-sdk/pull/2400) | 支持非流式 OpenAI chat completions |
@@ -692,11 +692,11 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.7k★) | [#2304](https://github.com/strands-agents/harness-sdk/pull/2304) | 显式映射 webp 图片 |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.7k★) | [#2396](https://github.com/strands-agents/harness-sdk/pull/2396) | 传递 structured output 的请求参数 |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.7k★) | [#2306](https://github.com/strands-agents/harness-sdk/pull/2306) | 规范化 3gp 视频格式 |
-| [OpenHands](https://github.com/OpenHands/OpenHands) (82.4k★) | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) | 编辑 basic model 设置时保留自定义的 LLM base URL，存下来的 profile 不再静默回退到 provider 默认 endpoint。 |
+| [OpenHands](https://github.com/OpenHands/OpenHands) (82.5k★) | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) | 编辑 basic model 设置时保留自定义的 LLM base URL，存下来的 profile 不再静默回退到 provider 默认 endpoint。 |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (18.9k★) | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) | 接受 Vercel AI dynamic-tool 消息里的 `providerExecuted` 和 `title`，严格校验下也留住 provider 元数据。 |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (18.9k★) | [#5695](https://github.com/pydantic/pydantic-ai/pull/5695) | 在 completions 里转发 penalties 参数 |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (18.9k★) | [#5694](https://github.com/pydantic/pydantic-ai/pull/5694) | 修复 `MCPToolset(http_client=...)` 与 FastMCP 的兼容问题，避免把 `follow_redirects` 泄漏给调用方提供的 HTTP client factory |
-| [Cline](https://github.com/cline/cline) (65.1k★) | [#11166](https://github.com/cline/cline/pull/11166) | open-tabs 的 host RPC 挂了也能搜文件，回退到系统 `rg`，不让搜索整个失效。 |
+| [Cline](https://github.com/cline/cline) (65.2k★) | [#11166](https://github.com/cline/cline/pull/11166) | open-tabs 的 host RPC 挂了也能搜文件，回退到系统 `rg`，不让搜索整个失效。 |
 | [Agno](https://github.com/agno-agi/agno) (41.5k★) | [#8131](https://github.com/agno-agi/agno/pull/8131) | 保留非哨兵工具参数字符串里的空白，同时继续只对精确的 None / True / False 哨兵做归一化 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#4267](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4267) | `truncate()` 在长度小于溢出指示符时仍保持在限制内 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#3924](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3924) | 未知的 `GenerateConfig` 字段提前报错，拼错的生成参数不再被静默忽略。 |
@@ -728,7 +728,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.1k★) | [#185](https://github.com/HKUDS/OpenHarness/pull/185) | TUI tab 补全三合一修复：光标跳回、去除尾部空格、接受 `/quit` 别名 |
 | [Pipecat](https://github.com/pipecat-ai/pipecat) (13.8k★) | [#4553](https://github.com/pipecat-ai/pipecat/pull/4553) | 修复 protobuf transport 丢失 interruption frame：实时语音 agent 的打断事件跨传输后仍能保留 |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) | 拒绝损坏的 publisher 元数据，而不是接收畸形条目 |
-| [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.4k★) | [#3822](https://github.com/EleutherAI/lm-evaluation-harness/pull/3822) | 保证传给 Anthropic 的 stop sequence 非空，避免请求被拒 |
+| [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.5k★) | [#3822](https://github.com/EleutherAI/lm-evaluation-harness/pull/3822) | 保证传给 Anthropic 的 stop sequence 非空，避免请求被拒 |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (4.9k★) | [#962](https://github.com/modelcontextprotocol/go-sdk/pull/962) | 拒绝重复的 `initialize` 请求，MCP session 初始化后的协议状态保持一致。 |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (4.9k★) | [#981](https://github.com/modelcontextprotocol/go-sdk/pull/981) | 补齐 `Implementation.description` 元数据，同时让空描述继续不进入序列化后的 MCP payload |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (940★) | [#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) | 用 `git rev-parse --git-dir` 校验 git workspace，坏掉的嵌套 repo 打不崩 `/api/git/changes`。 |
@@ -737,14 +737,14 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 #### 应用型 AI / RAG / 可观测性
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (157.6k★) | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) | self-host 抓取的 interact 动作明确报错拒绝，而不是隐晦地失败 |
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (157.6k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | self-host bypass 路径保留 auth chunk，已认证的 self-host 抓取不再被丢掉。 |
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (157.6k★) | [#3713](https://github.com/firecrawl/firecrawl/pull/3713) | Python SDK 正确处理 async v1 batch scrape 以 dict 形式返回的响应 |
-| [dify](https://github.com/langgenius/dify) (150.6k★) | [#37425](https://github.com/langgenius/dify/pull/37425) | 给 OperationService 计费请求加超时，慢计费端点挂不住请求。 |
-| [dify](https://github.com/langgenius/dify) (150.6k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | 在 service-api 和 explore 端点提前校验 conversation，坏的 `conversation_id` 直接 404，而不是流式跑到后期才失败。 |
-| [dify](https://github.com/langgenius/dify) (150.6k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | watercrawl 请求超时保持有界,而不是用 `timeout=None` 禁用 |
-| [dify](https://github.com/langgenius/dify) (150.6k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | legacy dataset 配置提取时跳过空的 tool entry |
-| [dify](https://github.com/langgenius/dify) (150.6k★) | [#39479](https://github.com/langgenius/dify/pull/39479) | 邮件限流的 IP 首击窗口真正生效：GET 判空再 SETEX 的竞态改为 SET NX 原子认领 |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (157.7k★) | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) | self-host 抓取的 interact 动作明确报错拒绝，而不是隐晦地失败 |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (157.7k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | self-host bypass 路径保留 auth chunk，已认证的 self-host 抓取不再被丢掉。 |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (157.7k★) | [#3713](https://github.com/firecrawl/firecrawl/pull/3713) | Python SDK 正确处理 async v1 batch scrape 以 dict 形式返回的响应 |
+| [dify](https://github.com/langgenius/dify) (150.7k★) | [#37425](https://github.com/langgenius/dify/pull/37425) | 给 OperationService 计费请求加超时，慢计费端点挂不住请求。 |
+| [dify](https://github.com/langgenius/dify) (150.7k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | 在 service-api 和 explore 端点提前校验 conversation，坏的 `conversation_id` 直接 404，而不是流式跑到后期才失败。 |
+| [dify](https://github.com/langgenius/dify) (150.7k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | watercrawl 请求超时保持有界,而不是用 `timeout=None` 禁用 |
+| [dify](https://github.com/langgenius/dify) (150.7k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | legacy dataset 配置提取时跳过空的 tool entry |
+| [dify](https://github.com/langgenius/dify) (150.7k★) | [#39479](https://github.com/langgenius/dify/pull/39479) | 邮件限流的 IP 首击窗口真正生效：GET 判空再 SETEX 的竞态改为 SET NX 原子认领 |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (86.3k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | 跳过空的 agent switch 条件，空分支判断不会让有效的后续 agent 流程崩掉或卡住。 |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (86.3k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Docling native 解析没产出 chunk 时降级，文档还能出可用内容，而不是空解析。 |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (86.3k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | 重复的 n-hop GraphRAG 边保留最强的 PageRank 分，路径顺序覆盖不了排序。 |
