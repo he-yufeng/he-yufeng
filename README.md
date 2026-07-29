@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 284+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (31 merged), Qwen Code (53 merged), Microsoft Agent Framework (22 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (19 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (4 merged), and PyTorch (8 merged).
+- 285+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (31 merged), Qwen Code (53 merged), Microsoft Agent Framework (23 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (19 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (4 merged), and PyTorch (8 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, ContractGuard, and GitSense.
 
 ### Projects
@@ -190,6 +190,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | Fix `background=True` + tools infinite-retrieve loop: clear completed continuation state so tool results get posted |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | Drop hosted MCP tool-call history when reasoning payloads are stripped, so stateless OpenAI replay stops sending orphan MCP calls. |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7108](https://github.com/microsoft/agent-framework/pull/7108) | Python: `FunctionTool.invoke` dumped arguments with `exclude_none=True`, dropping deliberate `null` values for required nullable parameters; use `exclude_unset` so explicit nulls survive |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7130](https://github.com/microsoft/agent-framework/pull/7130) | Python: extract keywords from non-English text for topic selection, so CJK and other non-latin queries stop coming back empty |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7124](https://github.com/microsoft/agent-framework/pull/7124) | Python: compaction token counting serialized messages with `ensure_ascii=True`, so the tokenizer counted `\uXXXX` escapes instead of real characters (~1.6x inflation on CJK); serialize the real text |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#5815](https://github.com/microsoft/agent-framework/pull/5815) | Forward MCP `tools/list` metadata into `call_tool` instrumentation so traces keep their tool annotations. |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#5784](https://github.com/microsoft/agent-framework/pull/5784) | Skip orphan Anthropic thinking signatures when converting history, so a replay doesn't carry an invalid standalone signature. |
@@ -393,7 +394,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 284+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（31 个）、Qwen Code（53 个）、Microsoft Agent Framework（22 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（19 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（4 个）、PyTorch（8 个）。
+- 285+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（31 个）、Qwen Code（53 个）、Microsoft Agent Framework（23 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（19 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（4 个）、PyTorch（8 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard、GitSense。
 
 ### 项目
@@ -581,6 +582,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | 修复 `background=True` + tools 无限 retrieve loop：清掉已完成的 continuation 状态，让 tool results 正常提交 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | reasoning payload 被剥掉时一并丢掉 hosted MCP 的 tool-call 历史，stateless 的 OpenAI replay 不再发孤立的 MCP 调用。 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7108](https://github.com/microsoft/agent-framework/pull/7108) | Python：`FunctionTool.invoke` 用 `exclude_none=True` 导出参数，模型有意给必需可空参数传的 `null` 被丢掉，调用直接缺参失败；改用 `exclude_unset` 保留显式 null |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7130](https://github.com/microsoft/agent-framework/pull/7130) | Python：topic selection 的关键词提取支持非英文文本，中文、日文等非拉丁查询不再空手而归 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7124](https://github.com/microsoft/agent-framework/pull/7124) | Python：compaction 估 token 时用 `ensure_ascii=True` 序列化消息，tokenizer 数的是 `\uXXXX` 转义序列而不是真实字符（CJK 约虚高 1.6 倍）；改成按真实文本序列化 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#5815](https://github.com/microsoft/agent-framework/pull/5815) | 把 MCP `tools/list` 的元数据转发到 `call_tool` instrumentation，trace 里的工具注解不丢。 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#5784](https://github.com/microsoft/agent-framework/pull/5784) | 转换历史时跳过孤立的 Anthropic thinking signature，replay 不再带上无效的独立签名。 |
