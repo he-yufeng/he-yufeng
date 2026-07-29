@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 281+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (30 merged), Qwen Code (53 merged), Microsoft Agent Framework (22 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (19 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (4 merged), and PyTorch (7 merged).
+- 282+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (30 merged), Qwen Code (53 merged), Microsoft Agent Framework (22 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (19 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (4 merged), and PyTorch (7 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, ContractGuard, and GitSense.
 
 ### Projects
@@ -183,6 +183,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [deer-flow](https://github.com/bytedance/deer-flow) (78.0k★) | [#4216](https://github.com/bytedance/deer-flow/pull/4216) | `get_memory_config()` only refreshed as a side effect of `get_app_config()`, so readers like the agent factory saw a stale `memory.mode` after a config.yaml edit; resolve through `get_app_config()` with a FileNotFoundError fallback |
 | [deer-flow](https://github.com/bytedance/deer-flow) (78.0k★) | [#4130](https://github.com/bytedance/deer-flow/pull/4130) | Recognize remaining requests/httpx HTTP methods as network sinks |
 | [deer-flow](https://github.com/bytedance/deer-flow) (78.0k★) | [#4381](https://github.com/bytedance/deer-flow/pull/4381) | Unwrap Overwrite-wrapped sandbox state in after_agent so hook consumers read the real state instead of the wrapper |
+| [deer-flow](https://github.com/bytedance/deer-flow) (78.0k★) | [#4429](https://github.com/bytedance/deer-flow/pull/4429) | Fork-restored checkpoints deliver the sandbox channel still wrapped in langgraph `Overwrite`; unified one unwrap helper across the sync/async init paths and the sibling readers |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.4k★) | [#5808](https://github.com/microsoft/agent-framework/pull/5808) | Handoff was mutating message roles in place, so a retry leaked the change; reuse sanitized copies instead. |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.4k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | Fix `background=True` + tools infinite-retrieve loop: clear completed continuation state so tool results get posted |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.4k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | Drop hosted MCP tool-call history when reasoning payloads are stripped, so stateless OpenAI replay stops sending orphan MCP calls. |
@@ -390,7 +391,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 281+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（30 个）、Qwen Code（53 个）、Microsoft Agent Framework（22 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（19 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（4 个）、PyTorch（7 个）。
+- 282+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（30 个）、Qwen Code（53 个）、Microsoft Agent Framework（22 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（19 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（4 个）、PyTorch（7 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard、GitSense。
 
 ### 项目
@@ -571,6 +572,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [deer-flow](https://github.com/bytedance/deer-flow) (78.0k★) | [#4216](https://github.com/bytedance/deer-flow/pull/4216) | `get_memory_config()` 只作为 `get_app_config()` 的副作用刷新，agent factory 这类直接读者在 config.yaml 改完后拿到旧的 `memory.mode`；改走 `get_app_config()` 并加 FileNotFoundError 兜底 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (78.0k★) | [#4130](https://github.com/bytedance/deer-flow/pull/4130) | 把 requests/httpx 剩余 HTTP 方法也识别为网络 sink |
 | [deer-flow](https://github.com/bytedance/deer-flow) (78.0k★) | [#4381](https://github.com/bytedance/deer-flow/pull/4381) | after_agent 钩子里的 sandbox state 被 Overwrite 包了一层，解包后再消费，不再取不到值 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (78.0k★) | [#4429](https://github.com/bytedance/deer-flow/pull/4429) | fork 恢复的检查点把 sandbox channel 以 langgraph `Overwrite` 包装态送达，sync/async 初始化路径和 sibling readers 统一走一个解包 helper |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.4k★) | [#5808](https://github.com/microsoft/agent-framework/pull/5808) | handoff 原地改了 message 的 role，重试复用时把改动泄漏出去了，改成复用消毒过的副本。 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.4k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | 修复 `background=True` + tools 无限 retrieve loop：清掉已完成的 continuation 状态，让 tool results 正常提交 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.4k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | reasoning payload 被剥掉时一并丢掉 hosted MCP 的 tool-call 历史，stateless 的 OpenAI replay 不再发孤立的 MCP 调用。 |
