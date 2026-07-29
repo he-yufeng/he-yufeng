@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 282+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (30 merged), Qwen Code (53 merged), Microsoft Agent Framework (22 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (19 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (4 merged), and PyTorch (7 merged).
+- 283+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (30 merged), Qwen Code (53 merged), Microsoft Agent Framework (22 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (19 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (4 merged), and PyTorch (8 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, ContractGuard, and GitSense.
 
 ### Projects
@@ -82,6 +82,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [PyTorch](https://github.com/pytorch/pytorch) (102.0k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | Guard the CuTeDSL topk override against a non-current CUDA device so it stops dispatching on the wrong device (shows as Closed; landed via pytorchmergebot) |
 | [PyTorch](https://github.com/pytorch/pytorch) (102.0k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | Remove the obsolete `setuptools` upper bound so builds resolve a current toolchain instead of pinning a stale one (shows as Closed; landed via pytorchmergebot) |
 | [PyTorch](https://github.com/pytorch/pytorch) (102.0k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | Fix user-defined Triton kernel name mangling in the Inductor codegen so distinct kernels stop colliding in generated code (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.0k★) | [#186779](https://github.com/pytorch/pytorch/pull/186779) | Error on unsupported batch norm third derivatives instead of silently returning wrong gradients (shows as Closed; landed via pytorchmergebot) |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.8k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | Eigenvalue monitor values were computed but never logged; wired them through so they actually land in the record. |
 | [Transformers](https://github.com/huggingface/transformers) (163.1k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | `AutoProcessor.from_pretrained` was silently dropping hub kwargs like `revision` and `token`. |
 | [ms-swift](https://github.com/modelscope/ms-swift) (15.0k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | Empty `rejected_messages` now fail fast in dataset prep instead of crashing DPO mid-training. |
@@ -391,7 +392,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 282+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（30 个）、Qwen Code（53 个）、Microsoft Agent Framework（22 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（19 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（4 个）、PyTorch（7 个）。
+- 283+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（30 个）、Qwen Code（53 个）、Microsoft Agent Framework（22 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（19 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（4 个）、PyTorch（8 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard、GitSense。
 
 ### 项目
@@ -471,6 +472,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [PyTorch](https://github.com/pytorch/pytorch) (102.0k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | 让 CuTeDSL 的 topk override 守住非当前 CUDA 设备，避免把工作分发到错误设备（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [PyTorch](https://github.com/pytorch/pytorch) (102.0k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | 移除过时的 `setuptools` 版本上限，让构建解析到当前工具链而不是被钉在旧版本（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [PyTorch](https://github.com/pytorch/pytorch) (102.0k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | 修复 Inductor codegen 中用户自定义 Triton kernel 的名称修饰，避免不同 kernel 在生成代码里命名冲突（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.0k★) | [#186779](https://github.com/pytorch/pytorch/pull/186779) | 不支持的 batch norm 三阶导改为显式报错，不再静默返回错误梯度（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.8k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | eigenvalue monitor 的值算了却没写日志，接上后才真正落进记录。 |
 | [Transformers](https://github.com/huggingface/transformers) (163.1k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | `AutoProcessor.from_pretrained` 静默丢掉了 `revision`、`token` 这些 hub kwargs。 |
 | [ms-swift](https://github.com/modelscope/ms-swift) (15.0k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | DPO 数据准备阶段遇到空 `rejected_messages` 直接快速失败，不用等训练跑到一半才崩。 |
