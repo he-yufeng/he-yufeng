@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 286+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (31 merged), Qwen Code (53 merged), Microsoft Agent Framework (23 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (19 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (5 merged), and PyTorch (8 merged).
+- 293+ merged upstream PRs, with fixes in vLLM (9 merged), Mooncake (31 merged), Qwen Code (53 merged), Microsoft Agent Framework (26 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (20 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (5 merged), and PyTorch (8 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, ContractGuard, and GitSense.
 
 ### Projects
@@ -90,6 +90,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [ms-swift](https://github.com/modelscope/ms-swift) (15.0k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | Different-format images collided in the temp image cache; folded mode and size into the key. |
 | [ms-swift](https://github.com/modelscope/ms-swift) (15.0k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | `_replace_system` was flattening non-string prefix elements, stripping the structured content out of templated system prompts. |
 | [ms-swift](https://github.com/modelscope/ms-swift) (15.0k★) | [#9750](https://github.com/modelscope/ms-swift/pull/9750) | A 0-fps `get_avg_fps()` on broken video metadata made `range(0, len(vr), 0)` raise before any frame was read in MiniCPM-V / mPLUG-Owl3 sampling; guard the sample step |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.0k★) | [#9816](https://github.com/modelscope/ms-swift/pull/9816) | `swift sample` crashed engine construction when `engine_kwargs` carried `torch_dtype` (the workaround while the flag was ignored); pop it before the splat so the flag always wins |
 | [SGLang](https://github.com/sgl-project/sglang) (30.9k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | Fix hybrid_linear_attn_backend crash when used with ngram speculative decoding |
 | [SGLang](https://github.com/sgl-project/sglang) (30.9k★) | [#21472](https://github.com/sgl-project/sglang/pull/21472) | Fix PicklingError with --backend diffusers on non-T2I models |
 | [TRL](https://github.com/huggingface/trl) (19.0k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | An already-transformed dataset in SFT prep now fails fast, instead of silently producing wrong training batches. |
@@ -192,6 +193,9 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | Drop hosted MCP tool-call history when reasoning payloads are stripped, so stateless OpenAI replay stops sending orphan MCP calls. |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7108](https://github.com/microsoft/agent-framework/pull/7108) | Python: `FunctionTool.invoke` dumped arguments with `exclude_none=True`, dropping deliberate `null` values for required nullable parameters; use `exclude_unset` so explicit nulls survive |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7130](https://github.com/microsoft/agent-framework/pull/7130) | Python: extract keywords from non-English text for topic selection, so CJK and other non-latin queries stop coming back empty |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7256](https://github.com/microsoft/agent-framework/pull/7256) | Python: `from_dict` validated a payload's self-declared `type` against itself, so the check could never fail; resolve the expected type from the class instead |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7162](https://github.com/microsoft/agent-framework/pull/7162) | Python: Anthropic streaming counted token usage twice by accumulating final-message usage on top of streamed deltas |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7239](https://github.com/microsoft/agent-framework/pull/7239) | Python: AG-UI MESSAGES_SNAPSHOT emitted messages out of the model's original order; preserve emission order |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7124](https://github.com/microsoft/agent-framework/pull/7124) | Python: compaction token counting serialized messages with `ensure_ascii=True`, so the tokenizer counted `\uXXXX` escapes instead of real characters (~1.6x inflation on CJK); serialize the real text |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#5815](https://github.com/microsoft/agent-framework/pull/5815) | Forward MCP `tools/list` metadata into `call_tool` instrumentation so traces keep their tool annotations. |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#5784](https://github.com/microsoft/agent-framework/pull/5784) | Skip orphan Anthropic thinking signatures when converting history, so a replay doesn't carry an invalid standalone signature. |
@@ -244,6 +248,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.0k★) | [#3516](https://github.com/googleapis/mcp-toolbox/pull/3516) | Return an error instead of panicking when a parameter type field is not a string |
 | [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.0k★) | [#3512](https://github.com/googleapis/mcp-toolbox/pull/3512) | Report the offending value in array/map parameter type errors |
 | [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.0k★) | [#3416](https://github.com/googleapis/mcp-toolbox/pull/3416) | Document execute_sql least-privilege setup |
+| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.0k★) | [#3738](https://github.com/googleapis/mcp-toolbox/pull/3738) | Keep BigQuery's own error classification in execute_sql, so a 403 from an impersonated service account surfaces as a client error instead of a generic 500 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (28.4k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (28.4k★) | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) | Inherit the leader's permission rules in team runs, so delegated agents keep the same workspace and file-access limits. |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (28.4k★) | [#1734](https://github.com/agentscope-ai/agentscope/pull/1734) | Refresh Redis message-list TTL on append and streaming replace, so the configured storage TTL actually bounds chat history. |
@@ -316,6 +321,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#4069](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4069) | Flush streamed score samples periodically, so a long eval persists score rows before it finishes. |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) | Route the realtime streaming sample writer through the same fallback JSON normalization as the regular log path, so sandbox objects that don't serialize cleanly can't crash an eval mid-stream |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#4303](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4303) | Reject sample limits with more than one dash |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#4504](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4504) | Make `registry_tag` leading parameters positional-only, so a tagged object's own keyword arguments can't collide with the decorator's |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#4218](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4218) | Reuse torn checkpoint ids |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#3982](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3982) | Preserve wrapped OpenAI reasoning payloads in the agent bridge, so encrypted provider-native reasoning survives transcript conversion. |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#4357](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4357) | Raise a clear error when reducing mismatched list/dict scores |
@@ -334,6 +340,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | [#1381](https://github.com/modelscope/evalscope/pull/1381) | Read SciCode assistant answers from OpenAI-style text content blocks, so the scorer prompt gets the real answer instead of an empty field. |
 | [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.1k★) | [#185](https://github.com/HKUDS/OpenHarness/pull/185) | TUI tab-completion: fix cursor jump, strip trailing space, accept `/quit` alias |
 | [Pipecat](https://github.com/pipecat-ai/pipecat) (13.8k★) | [#4553](https://github.com/pipecat-ai/pipecat/pull/4553) | Serialize interruption frames through protobuf transports so realtime voice-agent interruptions survive transport hops |
+| [Pipecat](https://github.com/pipecat-ai/pipecat) (13.8k★) | [#4766](https://github.com/pipecat-ai/pipecat/pull/4766) | Key cached DTMF audio by sample rate too, so the same button at a different rate stops playing back garbled |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) | Reject mangled publisher metadata instead of accepting malformed entries |
 | [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.5k★) | [#3822](https://github.com/EleutherAI/lm-evaluation-harness/pull/3822) | Keep Anthropic stop sequences non-empty so requests are not rejected |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (4.9k★) | [#962](https://github.com/modelcontextprotocol/go-sdk/pull/962) | Reject duplicate `initialize` requests so an MCP session keeps consistent protocol state after init. |
@@ -395,7 +402,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 286+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（31 个）、Qwen Code（53 个）、Microsoft Agent Framework（23 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（19 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（5 个）、PyTorch（8 个）。
+- 293+ 个上游 PR 已 merged，其中 vLLM（9 个）、Mooncake（31 个）、Qwen Code（53 个）、Microsoft Agent Framework（26 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（20 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（5 个）、PyTorch（8 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard、GitSense。
 
 ### 项目
@@ -483,6 +490,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [ms-swift](https://github.com/modelscope/ms-swift) (15.0k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | 不同格式的图片在临时缓存里撞了键，把 mode 和 size 也纳入 key 才分开。 |
 | [ms-swift](https://github.com/modelscope/ms-swift) (15.0k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | `_replace_system` 把非字符串的 prefix 元素压平了，模板化 system prompt 的结构化内容被抹掉。 |
 | [ms-swift](https://github.com/modelscope/ms-swift) (15.0k★) | [#9750](https://github.com/modelscope/ms-swift/pull/9750) | 视频元数据损坏时 `get_avg_fps()` 返回 0，`range(0, len(vr), 0)` 在读到第一帧前就抛 ValueError；给 MiniCPM-V / mPLUG-Owl3 的采样步长加守卫 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.0k★) | [#9816](https://github.com/modelscope/ms-swift/pull/9816) | `--torch_dtype` 失效期间用户只能靠 engine_kwargs 传 dtype，flag 修好后两边撞参数直接 TypeError；splat 前 pop 掉并让 flag 恒赢 |
 | [SGLang](https://github.com/sgl-project/sglang) (30.9k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | 修复 hybrid_linear_attn_backend 与 ngram 投机采样同时使用时崩溃 |
 | [SGLang](https://github.com/sgl-project/sglang) (30.9k★) | [#21472](https://github.com/sgl-project/sglang/pull/21472) | 修复 `--backend diffusers` 在非 T2I 模型上的 `PicklingError` |
 | [TRL](https://github.com/huggingface/trl) (19.0k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | SFT 准备阶段遇到已经转换过的数据集直接报错，别静默产出错的训练 batch。 |
@@ -585,6 +593,9 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | reasoning payload 被剥掉时一并丢掉 hosted MCP 的 tool-call 历史，stateless 的 OpenAI replay 不再发孤立的 MCP 调用。 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7108](https://github.com/microsoft/agent-framework/pull/7108) | Python：`FunctionTool.invoke` 用 `exclude_none=True` 导出参数，模型有意给必需可空参数传的 `null` 被丢掉，调用直接缺参失败；改用 `exclude_unset` 保留显式 null |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7130](https://github.com/microsoft/agent-framework/pull/7130) | Python：topic selection 的关键词提取支持非英文文本，中文、日文等非拉丁查询不再空手而归 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7256](https://github.com/microsoft/agent-framework/pull/7256) | Python：`from_dict` 拿 payload 自己声明的 type 校验它自己，恒真等于没校验；改成从类解析应有类型 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7162](https://github.com/microsoft/agent-framework/pull/7162) | Python：Anthropic 流式把 token 用量数了两遍，流式增量之上又累加了最终消息用量 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7239](https://github.com/microsoft/agent-framework/pull/7239) | Python：AG-UI MESSAGES_SNAPSHOT 的消息顺序与模型原始产出顺序不一致，改为保持发射顺序 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#7124](https://github.com/microsoft/agent-framework/pull/7124) | Python：compaction 估 token 时用 `ensure_ascii=True` 序列化消息，tokenizer 数的是 `\uXXXX` 转义序列而不是真实字符（CJK 约虚高 1.6 倍）；改成按真实文本序列化 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#5815](https://github.com/microsoft/agent-framework/pull/5815) | 把 MCP `tools/list` 的元数据转发到 `call_tool` instrumentation，trace 里的工具注解不丢。 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (12.5k★) | [#5784](https://github.com/microsoft/agent-framework/pull/5784) | 转换历史时跳过孤立的 Anthropic thinking signature，replay 不再带上无效的独立签名。 |
@@ -637,6 +648,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.0k★) | [#3516](https://github.com/googleapis/mcp-toolbox/pull/3516) | 参数 type 字段不是字符串时返回错误，而不是 panic |
 | [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.0k★) | [#3512](https://github.com/googleapis/mcp-toolbox/pull/3512) | array/map 参数类型报错时带上导致出错的具体值 |
 | [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.0k★) | [#3416](https://github.com/googleapis/mcp-toolbox/pull/3416) | 补充 execute_sql 最小权限配置的文档 |
+| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.0k★) | [#3738](https://github.com/googleapis/mcp-toolbox/pull/3738) | execute_sql 保留 BigQuery 原生错误分类，模拟服务账号的 403 按客户端错误上报告别笼统 500 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (28.4k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (28.4k★) | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) | team run 里继承 leader 的权限规则，delegated agent 守着和 leader 一样的 workspace、文件访问约束。 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (28.4k★) | [#1734](https://github.com/agentscope-ai/agentscope/pull/1734) | append 和 streaming replace 时刷新 Redis message list 的 TTL，配置的存储 TTL 才真正约束聊天历史。 |
@@ -709,6 +721,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#4069](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4069) | 周期性 flush 流式 score sample，长时间评测在结束前也能持续把 score 落盘。 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) | 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#4303](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4303) | 拒绝含多个连字符的 sample limit |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#4504](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4504) | `registry_tag` 的前置参数改为仅位置传参，被标记对象自己的同名关键字参数不再撞上装饰器参数 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#4218](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4218) | 复用中断的 checkpoint id |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#3982](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3982) | 在 agent bridge 转换里保留 wrapped 的 OpenAI reasoning payload，加密的 provider 原生 reasoning 项在 transcript 转换时不丢。 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.4k★) | [#4357](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4357) | reduce 不匹配的 list/dict scores 时抛出清晰错误 |
@@ -727,6 +740,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | [#1381](https://github.com/modelscope/evalscope/pull/1381) | 从 OpenAI 风格的 text content block 里读 SciCode 的 assistant 答案，scorer prompt 拿到真答案而不是空字段。 |
 | [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.1k★) | [#185](https://github.com/HKUDS/OpenHarness/pull/185) | TUI tab 补全三合一修复：光标跳回、去除尾部空格、接受 `/quit` 别名 |
 | [Pipecat](https://github.com/pipecat-ai/pipecat) (13.8k★) | [#4553](https://github.com/pipecat-ai/pipecat/pull/4553) | 修复 protobuf transport 丢失 interruption frame：实时语音 agent 的打断事件跨传输后仍能保留 |
+| [Pipecat](https://github.com/pipecat-ai/pipecat) (13.8k★) | [#4766](https://github.com/pipecat-ai/pipecat/pull/4766) | DTMF 缓存键补上采样率，同一按键不同采样率的提示音不再互相串音 |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) | 拒绝损坏的 publisher 元数据，而不是接收畸形条目 |
 | [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.5k★) | [#3822](https://github.com/EleutherAI/lm-evaluation-harness/pull/3822) | 保证传给 Anthropic 的 stop sequence 非空，避免请求被拒 |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (4.9k★) | [#962](https://github.com/modelcontextprotocol/go-sdk/pull/962) | 拒绝重复的 `initialize` 请求，MCP session 初始化后的协议状态保持一致。 |
