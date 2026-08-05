@@ -111,6 +111,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 #### Agent frameworks / protocols / evals
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [OpenClaw](https://github.com/openclaw/openclaw) (385.2k★) | [#119127](https://github.com/openclaw/openclaw/pull/119127) | Keep the mtime media sweep out of the managed-outgoing tree and fail closed when the session store is unreadable, so global GC can never delete live user originals (co-built with the project owner after his P0 review) |
 | [OpenClaw](https://github.com/openclaw/openclaw) (385.2k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | Log auth profile resolution failures instead of swallowing silently |
 | [OpenClaw](https://github.com/openclaw/openclaw) (385.2k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | Propagate memory directory creation failures instead of continuing after a failed `ensureDir` |
 | [OpenClaw](https://github.com/openclaw/openclaw) (385.2k★) | [#96456](https://github.com/openclaw/openclaw/pull/96456) | Clip progress text on code-point boundaries to avoid lone surrogates |
@@ -514,6 +515,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 #### Agent 框架 / 协议 / 评测
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [OpenClaw](https://github.com/openclaw/openclaw) (385.2k★) | [#119127](https://github.com/openclaw/openclaw/pull/119127) | 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fail-closed，全域 GC 永不误删用户原件（owner P0 评审后与项目作者共建） |
 | [OpenClaw](https://github.com/openclaw/openclaw) (385.2k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | 认证配置解析失败时记录日志而非静默吞掉 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (385.2k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | 目录创建失败时向上传递错误，避免 memory `ensureDir` 静默失败后继续执行 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (385.2k★) | [#96456](https://github.com/openclaw/openclaw/pull/96456) | 按码点边界裁剪进度文本，避免落单的 surrogate |
