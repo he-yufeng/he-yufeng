@@ -377,6 +377,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (168.6k★) | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) | Reject self-hosted scrape interact actions with a clear error instead of failing opaquely |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (168.6k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | Keep the auth chunk in the self-host bypass path so authenticated self-hosted scrapes don't get dropped. |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (168.6k★) | [#3713](https://github.com/firecrawl/firecrawl/pull/3713) | Handle the async v1 batch-scrape response returned as a dict in the Python SDK |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (50.7k★) | [#18711](https://github.com/CherryHQ/cherry-studio/pull/18711) | Keep formula copy working in release builds: the markdown styles entry was tree-shaken out of the production bundle, taking KaTeX's copy listener with it. |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (50.7k★) | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) | Preserve surrogate pairs at truncation boundaries so a multi-byte character isn't split into invalid halves. |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (50.7k★) | [#16454](https://github.com/CherryHQ/cherry-studio/pull/16454) | Keep bare-URL markdown reference lines in citations instead of dropping them |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (50.7k★) | [#17106](https://github.com/CherryHQ/cherry-studio/pull/17106) | Count images nested in `tool_result` blocks when estimating API-gateway token usage, so multimodal tool results are no longer under-counted |
@@ -797,6 +798,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (168.6k★) | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) | self-host 抓取的 interact 动作明确报错拒绝，而不是隐晦地失败 |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (168.6k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | self-host bypass 路径保留 auth chunk，已认证的 self-host 抓取不再被丢掉。 |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (168.6k★) | [#3713](https://github.com/firecrawl/firecrawl/pull/3713) | Python SDK 正确处理 async v1 batch scrape 以 dict 形式返回的响应 |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (50.7k★) | [#18711](https://github.com/CherryHQ/cherry-studio/pull/18711) | 让正式构建的公式复制重新可用：markdown styles 入口被生产构建 tree-shake 掉，连带丢了 KaTeX 的复制监听器。 |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (50.7k★) | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) | 在截断边界保住 surrogate pair，多字节字符不会被切成半个非法字符。 |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (50.7k★) | [#16454](https://github.com/CherryHQ/cherry-studio/pull/16454) | 保留 citations 里的纯 URL markdown 引用行,不再丢弃 |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (50.7k★) | [#17106](https://github.com/CherryHQ/cherry-studio/pull/17106) | 估算 API 网关 token 用量时把嵌套在 `tool_result` 里的图片计入，多模态工具结果不再被少算 |
