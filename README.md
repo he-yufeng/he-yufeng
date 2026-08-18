@@ -74,6 +74,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [vLLM](https://github.com/vllm-project/vllm) (89.3k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Responses API `instructions` were leaking across turns through the `previous_response_id` chain. |
 | [vLLM](https://github.com/vllm-project/vllm) (89.3k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
 | [vLLM](https://github.com/vllm-project/vllm) (89.3k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals. |
+| [vLLM](https://github.com/vllm-project/vllm) (89.3k★) | [#46175](https://github.com/vllm-project/vllm/pull/46175) | Accept `logprobs=-1` in the Completion API, so OpenAI clients that send -1 for unrestricted logprobs stop getting a 400. |
 | [vLLM](https://github.com/vllm-project/vllm) (89.3k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | Fix bench_serve UTF-8 decode crash on split multi-byte chars in streaming chunks |
 | [vLLM](https://github.com/vllm-project/vllm) (89.3k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | Base64 JPEG video frames returning empty metadata: populate frame count, fps, duration |
 | [vLLM](https://github.com/vllm-project/vllm) (89.3k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | Fix weight offloading ignoring `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` in prefetch offloader |
@@ -322,6 +323,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4282](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4282) | Return 0 from accuracy() on empty scores |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#3895](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3895) | Honor `COLUMNS` for `TERM=dumb`: log output no longer hard-wraps at Rich's default 80 columns |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4090](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4090) | Clarify model-graded history prompts so `include_history=True` and final-answer placement match the actual scorer behavior |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4912](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4912) | Score a single-choice answer with a stray trailing comma like "A," instead of misgrading it |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.0k★) | [#5820](https://github.com/livekit/agents/pull/5820) | Recreate Anthropic streaming requests on retry so transient stream creation failures do not re-await the same coroutine |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.0k★) | [#5994](https://github.com/livekit/agents/pull/5994) | Handle OpenAI-compatible realtime status details that come back as strings, so an incomplete response doesn't crash logging. |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.0k★) | [#5864](https://github.com/livekit/agents/pull/5864) | Surface Soniox STT server errors instead of treating failed streams as empty transcripts |
@@ -495,6 +497,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [vLLM](https://github.com/vllm-project/vllm) (89.3k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。 |
 | [vLLM](https://github.com/vllm-project/vllm) (89.3k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
 | [vLLM](https://github.com/vllm-project/vllm) (89.3k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。 |
+| [vLLM](https://github.com/vllm-project/vllm) (89.3k★) | [#46175](https://github.com/vllm-project/vllm/pull/46175) | Completion API 接受 `logprobs=-1`：按 OpenAI 语义发 -1 取全量对数概率的客户端不再吃 400。 |
 | [vLLM](https://github.com/vllm-project/vllm) (89.3k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | 修复 bench_serve 流式响应拆分多字节 UTF-8 字符导致 decode 崩溃 |
 | [vLLM](https://github.com/vllm-project/vllm) (89.3k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | 修复 base64 JPEG 视频帧返回空 metadata：补充帧数、fps、时长 |
 | [vLLM](https://github.com/vllm-project/vllm) (89.3k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | 修复 weight offloading 忽略 `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` 环境变量 |
@@ -743,6 +746,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4282](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4282) | 空 scores 时 `accuracy()` 返回 0 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#3895](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3895) | 修复 `TERM=dumb` 下终端宽度：尊重 `COLUMNS`，日志输出不再固定按 Rich 默认 80 列硬换行 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4090](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4090) | 澄清 model-graded history prompt：`include_history=True` 和最终答案字段的位置与实际 scorer 行为保持一致 |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4912](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4912) | 带尾随逗号的单选答案（如 "A,"）正常判分，不再被误判 |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.0k★) | [#5820](https://github.com/livekit/agents/pull/5820) | 修复 Anthropic streaming retry：瞬时建流失败后重新创建 stream，不再重复 await 同一个 coroutine |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.0k★) | [#5994](https://github.com/livekit/agents/pull/5994) | 兼容 OpenAI 兼容 realtime 返回字符串的 status details，incomplete response 不再在日志路径崩。 |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.0k★) | [#5864](https://github.com/livekit/agents/pull/5864) | 暴露 Soniox STT server error：流式识别失败时返回明确错误，不再被当成空 transcript |
