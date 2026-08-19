@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 370+ merged upstream PRs, with fixes in vLLM (11 merged), Mooncake (35 merged), Qwen Code (53 merged), Microsoft Agent Framework (26 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (24 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (8 merged), and PyTorch (8 merged).
+- 370+ merged upstream PRs, with fixes in vLLM (11 merged), Mooncake (35 merged), Qwen Code (53 merged), Microsoft Agent Framework (26 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (24 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (9 merged), and PyTorch (8 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 ### Projects
@@ -221,6 +221,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [deer-flow](https://github.com/bytedance/deer-flow) (80.2k★) | [#3719](https://github.com/bytedance/deer-flow/pull/3719) | Skip whitespace-only facts in `_apply_updates` so blank memory entries do not accumulate |
 | [deer-flow](https://github.com/bytedance/deer-flow) (80.2k★) | [#4253](https://github.com/bytedance/deer-flow/pull/4253) | A tool result containing a literal `</tool_response>` could close the MindIE framing early and inject trailing text; escaped the tool-response content, matching the tool-call name/arg escaping already in the same function. |
 | [deer-flow](https://github.com/bytedance/deer-flow) (80.2k★) | [#3709](https://github.com/bytedance/deer-flow/pull/3709) | Fix positional fallback consuming unrelated todo when same-content list is exhausted |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.1k★ · maintainer) | [#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) | Scheduled monitors now persist each run's parsed verdict on the job and the list endpoint carries it inline, so Market Watch renders the latest call and its delta in one query |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.1k★ · maintainer) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio's risk x-ray: pure-computation concentration, volatility, drawdown, VaR/ES, diversification, and correlation analytics for weighted baskets, plus an agent tool that fetches closes through the loader fallback chain |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.1k★ · maintainer) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio step 2: composable weight constraints that plug into any optimizer, with waterfill redistribution that only feeds positions still under their cap |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.1k★ · maintainer) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | Wired the strict alpha-bench gate into the CLI: `alpha bench --strict` now fails the run when a strategy misses the bar |
@@ -426,7 +427,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 370+ 个上游 PR 已 merged，其中 vLLM（11 个）、Mooncake（35 个）、Qwen Code（53 个）、Microsoft Agent Framework（26 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（24 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（8 个）、PyTorch（8 个）。
+- 370+ 个上游 PR 已 merged，其中 vLLM（11 个）、Mooncake（35 个）、Qwen Code（53 个）、Microsoft Agent Framework（26 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（24 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（9 个）、PyTorch（8 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -645,6 +646,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [deer-flow](https://github.com/bytedance/deer-flow) (80.2k★) | [#3719](https://github.com/bytedance/deer-flow/pull/3719) | `_apply_updates` 跳过纯空白 facts,避免空白记忆条目堆积 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (80.2k★) | [#4253](https://github.com/bytedance/deer-flow/pull/4253) | 工具结果里字面的 `</tool_response>` 能提前闭合 MindIE framing、注入尾随文本;转义 tool-response 内容,和同函数里 tool-call name/arg 的转义保持一致。 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (80.2k★) | [#3709](https://github.com/bytedance/deer-flow/pull/3709) | 修复同内容 todo 列表耗尽后 positional fallback 误吞不相关 todo |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.1k★ · 维护者) | [#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) | 定时监视器的每轮 verdict 以结构化记录持久化在 job 上并随列表接口内联下发，Market Watch 一次查询就能渲染最新判定和环比 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.1k★ · 维护者) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio 首刀「组合风险透视」：纯计算核心（集中度/波动/回撤/VaR/分散度/相关性）加走 loader fallback 链取数的 agent 工具 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.1k★ · 维护者) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio 第二步：可组合的组合权重约束，能挂到任意优化器上，waterfill 再分配只喂给还没到上限的仓位 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.1k★ · 维护者) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | 把 strict bench 门禁接进 CLI：`alpha bench --strict` 在策略不达标时直接判失败 |
