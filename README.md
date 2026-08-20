@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 370+ merged upstream PRs, with fixes in vLLM (11 merged), Mooncake (35 merged), Qwen Code (53 merged), Microsoft Agent Framework (26 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (24 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (9 merged), and PyTorch (8 merged).
+- 370+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (35 merged), Qwen Code (53 merged), Microsoft Agent Framework (26 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (24 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (9 merged), and PyTorch (8 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 ### Projects
@@ -81,6 +81,8 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [vLLM](https://github.com/vllm-project/vllm) (89.4k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | Taught the V1 ubatch wrapper to unwrap tuple model outputs, unblocking DBO and speculative decoding on tuple-returning models. |
 | [vLLM](https://github.com/vllm-project/vllm) (89.4k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | Guard flash-attn rotary imports so FA4 environments fall back cleanly when `flash_attn.ops.triton.rotary` is absent |
 | [vLLM](https://github.com/vllm-project/vllm) (89.4k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | Prefix DeepSeek V4 MTP projection layers so compressed-tensors can match artifact-side target and ignore rules during draft model loading |
+| [vLLM](https://github.com/vllm-project/vllm) (89.4k★) | [#45807](https://github.com/vllm-project/vllm/pull/45807) | Anthropic-compatible streaming now reports the stop_reason when a stop sequence actually fired, instead of leaving clients guessing |
+| [vLLM](https://github.com/vllm-project/vllm) (89.4k★) | [#45807](https://github.com/vllm-project/vllm/pull/45807) | Anthropic 兼容流式在 stop_sequence 真正命中时回填 stop_reason，客户端不再靠猜 |
 | [vLLM](https://github.com/vllm-project/vllm) (89.4k★) | [#49996](https://github.com/vllm-project/vllm/pull/49996) | Structured output: reject string schemas mixing `pattern`/`format` with length bounds at validation time with a clean 400, since xgrammar silently drops the bounds from the grammar |
 | [PyTorch](https://github.com/pytorch/pytorch) (102.4k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | Guard the CuTeDSL topk override against a non-current CUDA device so it stops dispatching on the wrong device (shows as Closed; landed via pytorchmergebot) |
 | [PyTorch](https://github.com/pytorch/pytorch) (102.4k★) | [#186779](https://github.com/pytorch/pytorch/pull/186779) | Error on unsupported batch norm third derivatives instead of silently returning wrong gradients (shows as Closed; landed via pytorchmergebot) |
@@ -427,7 +429,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 370+ 个上游 PR 已 merged，其中 vLLM（11 个）、Mooncake（35 个）、Qwen Code（53 个）、Microsoft Agent Framework（26 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（24 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（9 个）、PyTorch（8 个）。
+- 370+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（35 个）、Qwen Code（53 个）、Microsoft Agent Framework（26 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（24 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（9 个）、PyTorch（8 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
