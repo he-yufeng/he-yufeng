@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 370+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (35 merged), Qwen Code (53 merged), Microsoft Agent Framework (27 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (24 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (10 merged), and PyTorch (8 merged).
+- 370+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (36 merged), Qwen Code (53 merged), Microsoft Agent Framework (27 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (24 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (10 merged), and PyTorch (8 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 ### Projects
@@ -44,6 +44,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | Add `ObjectDataType` metadata classification for KV cache, weights, tensors, and snapshots, with backward-compatible serialization and Python bindings |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin for eviction-protected objects: model weights never get evicted, const field + BatchEvict skip + backward-compat serialization |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2570](https://github.com/kvcache-ai/Mooncake/pull/2570) | Integer overflow in `BatchOffload` for >4 GiB objects: sum slice sizes in `uint64_t` and reject objects exceeding the `uint32_t` record `value_len`, instead of silently truncating |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#3545](https://github.com/kvcache-ai/Mooncake/pull/3545) | Fix promotion-on-hit delivery starvation and retry loss in the Store: promotions now go out most-recently-read first, and a transient execution failure re-records the candidate under a bounded retry budget |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#3146](https://github.com/kvcache-ai/Mooncake/pull/3146) | Fix double free of UB/Barex slices on device-selection failure: queued slices were deallocated into the cache while `TransferTask` still owned them (sibling of the RDMA fix #3125) |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#3278](https://github.com/kvcache-ai/Mooncake/pull/3278) | Block SIGTERM/SIGINT for the graceful-shutdown watcher thread: a process-directed signal landing on the watcher suspended the only pipe reader and hung shutdown forever |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2965](https://github.com/kvcache-ai/Mooncake/pull/2965) | Roll back partial registration in `registerLocalMemory` on a later transport failure, so earlier transports' registrations don't leak |
@@ -432,7 +433,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 370+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（35 个）、Qwen Code（53 个）、Microsoft Agent Framework（27 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（24 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（10 个）、PyTorch（8 个）。
+- 370+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（36 个）、Qwen Code（53 个）、Microsoft Agent Framework（27 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（24 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（10 个）、PyTorch（8 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -474,6 +475,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | 新增 `ObjectDataType` 元数据分类：KV cache、weights、tensors 等对象类型可在 metadata、snapshot 和 Python binding 中稳定传递 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin 驱逐保护：模型权重永不被驱逐，const 字段 + BatchEvict 跳过 + 向后兼容序列化 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2570](https://github.com/kvcache-ai/Mooncake/pull/2570) | 修复 `BatchOffload` 处理 >4 GiB 对象时的整数溢出：用 `uint64_t` 累加各 slice 大小，并拒绝超过 `uint32_t` 记录 `value_len` 的对象，而不是静默截断 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#3545](https://github.com/kvcache-ai/Mooncake/pull/3545) | 修复 Store 命中晋升路径的投递饥饿与重试丢失：晋升按最近读取优先投递，瞬时执行失败在有界重试预算内重录候选 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#3146](https://github.com/kvcache-ai/Mooncake/pull/3146) | 修设备选择失败路径上 UB/Barex slice 的双重释放：已入队的 slice 被塞回缓存，而所有权还在 TransferTask 手里（#3125 RDMA 修复的 sibling） |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#3278](https://github.com/kvcache-ai/Mooncake/pull/3278) | 优雅关闭 watcher 线程屏蔽 SIGTERM/SIGINT：进程级信号落在 watcher 上会挂起唯一的管道读者，关闭流程永久挂死 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2965](https://github.com/kvcache-ai/Mooncake/pull/2965) | `registerLocalMemory` 在后续 transport 注册失败时回滚前面已注册的 transport，避免泄漏 |
