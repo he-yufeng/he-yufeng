@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 370+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (36 merged), Qwen Code (53 merged), Microsoft Agent Framework (27 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (24 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (10 merged), and PyTorch (8 merged).
+- 370+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (36 merged), Qwen Code (53 merged), Microsoft Agent Framework (28 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (24 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (10 merged), and PyTorch (8 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 ### Projects
@@ -236,10 +236,10 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#984](https://github.com/HKUDS/Vibe-Trading/pull/984) | Write hierarchy-routed memory entries with the .md extension so discovery actually sees them (bare-slug files were invisible to list/recall) |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#5808](https://github.com/microsoft/agent-framework/pull/5808) | Handoff was mutating message roles in place, so a retry leaked the change; reuse sanitized copies instead. |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7289](https://github.com/microsoft/agent-framework/pull/7289) | Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7289](https://github.com/microsoft/agent-framework/pull/7289) | turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#5773](https://github.com/microsoft/agent-framework/pull/5773) | Run synchronous Python tools off the event loop so a blocking call stops freezing concurrent agent work. |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#5801](https://github.com/microsoft/agent-framework/pull/5801) | Coalesce streamed code-interpreter history by call id, so stored history keeps the full code and results without duplicated deltas. |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7239](https://github.com/microsoft/agent-framework/pull/7239) | Python: AG-UI MESSAGES_SNAPSHOT emitted messages out of the model's original order; preserve emission order |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#5860](https://github.com/microsoft/agent-framework/pull/5860) | .NET: the Responses `logprobs` field was dropped in response serialization both ways; preserve it end to end |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#6132](https://github.com/microsoft/agent-framework/pull/6132) | Filter filesystem checkpoint indexes by session id, so reopening a store stops returning another session's checkpoints. |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | Drop hosted MCP tool-call history when reasoning payloads are stripped, so stateless OpenAI replay stops sending orphan MCP calls. |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7162](https://github.com/microsoft/agent-framework/pull/7162) | Python: Anthropic streaming counted token usage twice by accumulating final-message usage on top of streamed deltas |
@@ -433,7 +433,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 370+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（36 个）、Qwen Code（53 个）、Microsoft Agent Framework（27 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（24 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（10 个）、PyTorch（8 个）。
+- 370+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（36 个）、Qwen Code（53 个）、Microsoft Agent Framework（28 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（24 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（10 个）、PyTorch（8 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -667,6 +667,8 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#5773](https://github.com/microsoft/agent-framework/pull/5773) | 把同步的 Python 工具挪出事件循环跑，阻塞型调用不再冻住并发的 agent 任务。 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#5801](https://github.com/microsoft/agent-framework/pull/5801) | 按 call id 合并 code interpreter 的流式历史片段，存下来的代码和结果完整，也不会重复记 delta。 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7239](https://github.com/microsoft/agent-framework/pull/7239) | Python：AG-UI MESSAGES_SNAPSHOT 的消息顺序与模型原始产出顺序不一致，改为保持发射顺序 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7289](https://github.com/microsoft/agent-framework/pull/7289) | turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#5860](https://github.com/microsoft/agent-framework/pull/5860) | .NET：Responses 的 logprobs 字段在序列化双向链路里会丢，修复为全程保留 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#6132](https://github.com/microsoft/agent-framework/pull/6132) | 按 session id 过滤 filesystem checkpoint index，重开 store 不再返回别的 workflow session 的 checkpoint。 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | reasoning payload 被剥掉时一并丢掉 hosted MCP 的 tool-call 历史，stateless 的 OpenAI replay 不再发孤立的 MCP 调用。 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7162](https://github.com/microsoft/agent-framework/pull/7162) | Python：Anthropic 流式把 token 用量数了两遍，流式增量之上又累加了最终消息用量 |
