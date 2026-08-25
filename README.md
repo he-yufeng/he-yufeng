@@ -2,7 +2,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi) | MS CS @ HKU | Champion, Shanghai Global AI Contest | 3x ACM-ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 370+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (36 merged), Qwen Code (53 merged), Microsoft Agent Framework (28 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (24 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (10 merged), and PyTorch (8 merged).
+- 370+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (36 merged), Qwen Code (53 merged), Microsoft Agent Framework (28 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (24 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (12 merged), and PyTorch (8 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 ### Projects
@@ -227,6 +227,8 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1156](https://github.com/HKUDS/Vibe-Trading/pull/1156) | Complete the Scheduled Research verdict flow in Market Watch: render each monitor's latest symbols, change since the previous run, and recorded time; show explicit empty or unreadable states without adding another API query |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) | Scheduled monitors now persist each run's parsed verdict on the job and the list endpoint carries it inline, so Market Watch renders the latest call and its delta in one query |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio's risk x-ray: pure-computation concentration, volatility, drawdown, VaR/ES, diversification, and correlation analytics for weighted baskets, plus an agent tool that fetches closes through the loader fallback chain |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1212](https://github.com/HKUDS/Vibe-Trading/pull/1212) | Fail closed when broker position reads return an API error: futu/okx connectors now raise instead of treating an unreadable position book as empty, so live orders stop sailing through the mandate gate blind |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1209](https://github.com/HKUDS/Vibe-Trading/pull/1209) | Sign Alpaca position quantity by side before the mandate gate, so short positions are validated in the right direction instead of passing as bare positive numbers |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio step 2: composable weight constraints that plug into any optimizer, with waterfill redistribution that only feeds positions still under their cap |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | Wired the strict alpha-bench gate into the CLI: `alpha bench --strict` now fails the run when a strategy misses the bar |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#966](https://github.com/HKUDS/Vibe-Trading/pull/966) | Surface Portfolio Studio artifacts in run detail, so risk x-ray and rebalance outputs show up where a run is inspected |
@@ -433,7 +435,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海全球AI大赛冠军 | 三次获ACM-ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 370+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（36 个）、Qwen Code（53 个）、Microsoft Agent Framework（28 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（24 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（10 个）、PyTorch（8 个）。
+- 370+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（36 个）、Qwen Code（53 个）、Microsoft Agent Framework（28 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（24 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（12 个）、PyTorch（8 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -656,6 +658,8 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#1156](https://github.com/HKUDS/Vibe-Trading/pull/1156) | 补齐 Market Watch 的定时监视器 verdict 展示：一次列表查询直接显示最新标的状态、相对上轮变化和记录时间，并为尚无结果或记录损坏提供明确状态 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) | 定时监视器的每轮 verdict 以结构化记录持久化在 job 上并随列表接口内联下发，Market Watch 一次查询就能渲染最新判定和环比 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio 首刀「组合风险透视」：纯计算核心（集中度/波动/回撤/VaR/分散度/相关性）加走 loader fallback 链取数的 agent 工具 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#1212](https://github.com/HKUDS/Vibe-Trading/pull/1212) | 券商持仓读取返回 API 错误时改为 fail closed：futu/okx connector 显式上抛，不再把读不到的持仓簿当成空仓，实盘委托不再盲过 mandate gate |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#1209](https://github.com/HKUDS/Vibe-Trading/pull/1209) | Alpaca 持仓数量按方向带上符号再进 mandate gate，空头持仓按正确方向校验，不再以正数蒙混 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio 第二步：可组合的组合权重约束，能挂到任意优化器上，waterfill 再分配只喂给还没到上限的仓位 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | 把 strict bench 门禁接进 CLI：`alpha bench --strict` 在策略不达标时直接判失败 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#966](https://github.com/HKUDS/Vibe-Trading/pull/966) | 在 run 详情页直接展示 Portfolio Studio 产物（risk x-ray、调仓 notes），跑完即看不用翻文件 |
