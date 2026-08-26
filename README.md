@@ -67,25 +67,138 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 ### Open Source Contributions
 
-#### AI infrastructure / model systems
+377 merged PRs across 57 upstream projects. The most visible work first; the rest is folded below.
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | 36 | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang<br>[#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) Duplicate rpc_meta re-publishes are idempotent when the H…<br>[#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) Arm the etcd view-change watch once per wait instead of p… |
-| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | 12 | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API instructions were leaking across turns thro…<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call params now parse as JSON first, so nu…<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa's in-place position_ids accumulation bled into CU… |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | 8 | Kernel/compiler correctness: wrong-device dispatch, silent gradient corruption, UB | [#188027](https://github.com/pytorch/pytorch/pull/188027) Initialize r in the Laguerre and Legendre polynomial help…<br>[#186779](https://github.com/pytorch/pytorch/pull/186779) Error on unsupported batch norm third derivatives instead…<br>[#188229](https://github.com/pytorch/pytorch/pull/188229) avg_pool3d backward silently corrupted gradients on input… |
-| [Transformers](https://github.com/huggingface/transformers) (164.3k★) | 1 | AutoProcessor hub-kwarg passthrough | |
-| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | 2 | Backend crashes: hybrid attention with speculative decoding, diffusers pickling | |
-| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | 1 | Monitor wiring: eigenvalue records never landed in logs | |
-| [Triton](https://github.com/triton-lang/triton) (19.9k★) | 4 | Compiler semantics: fp8 arithmetic promotion, top_k edge cases, AxisInfo correctness | |
-| [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | 1 | Proxy logging: verbose logger sources missing from INFO output | |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | 6 | Training-prep and sampling robustness: DPO crashes, 0-fps video, CI repair | [#9642](https://github.com/modelscope/ms-swift/pull/9642) Empty rejected_messages now fail fast in dataset prep ins…<br>[#9816](https://github.com/modelscope/ms-swift/pull/9816) swift sample crashed engine construction when engine_kwar…<br>[#9750](https://github.com/modelscope/ms-swift/pull/9750) A 0-fps get_avg_fps() on broken video metadata made range… |
-| [verl](https://github.com/verl-project/verl) (23.1k★) | 1 | Colocated weight-sync rank derivation across DP/TP | |
-| [TRL](https://github.com/huggingface/trl) (19.1k★) | 2 | Dataset-prep fail-fast and vLLM special-token preservation | |
-| [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | 2 | Cross-process KV transfer: CUDA IPC event lifetimes, HND layout handling | |
-| [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | 2 | Autotuner None-input crash and CUTLASS header compile fix | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) Fix autotuner crash when input tensor is None |
-| [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | 1 | API-key hygiene: secrets out of websocket URLs | [#2564](https://github.com/googleapis/python-genai/pull/2564) Keep Live Music API keys out of websocket URLs by relying… |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | 53 | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories.<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`.<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | 36 | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink<br>[#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) Duplicate `rpc_meta` re-publishes are idempotent when the HTTP body is unchanged, and still rejected when a value actually changes.<br>[#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) Arm the etcd view-change watch once per wait instead of per iteration, stopping the steady-state watch goroutine leak in HA mode |
+| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | 12 | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API `instructions` were leaking across turns through the `previous_response_id` chain.<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals.<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | 30 | Release asset freshness, multimodal reply duplication, scheduler exception swallowing | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) Prevent Telegram media group exceptions from being silently swallowed by APScheduler |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | 12 | Portfolio analytics and monitor-verdict pipeline; fail-closed live-trading gates | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) Portfolio Studio's risk x-ray: pure-computation concentration, volatility, drawdown, VaR/ES, diversification, and correlation analytics for weighted baskets, plus an agent tool that fetches closes through the loader fallback chain<br>[#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) Scheduled monitors now persist each run's parsed verdict on the job and the list endpoint carries it inline, so Market Watch renders the latest call and its delta in one query<br>[#1156](https://github.com/HKUDS/Vibe-Trading/pull/1156) Complete the Scheduled Research verdict flow in Market Watch: render each monitor's latest symbols, change since the previous run, and recorded time; show explicit empty or unreadable states without adding another API query |
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | 6 | Session-store fail-closed sweeps, auth-failure visibility, surrogate-safe text | [#119127](https://github.com/openclaw/openclaw/pull/119127) Keep the mtime media sweep out of the managed-outgoing tree and fail closed when the session store is unreadable, so global GC can never delete live user originals (co-built with the project owner after his P0 review) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | 8 | Kernel/compiler correctness: wrong-device dispatch, silent gradient corruption, UB | [#188027](https://github.com/pytorch/pytorch/pull/188027) Initialize `r` in the Laguerre and Legendre polynomial helpers so they stop returning uninitialized memory on the boundary path (shows as Closed; landed via pytorchmergebot)<br>[#186779](https://github.com/pytorch/pytorch/pull/186779) Error on unsupported batch norm third derivatives instead of silently returning wrong gradients (shows as Closed; landed via pytorchmergebot)<br>[#188229](https://github.com/pytorch/pytorch/pull/188229) `avg_pool3d` backward silently corrupted gradients on inputs over `INT_MAX` elements: the atomic scatter kernel computed offsets and bounds as 32-bit `int`; widened to 64-bit indexing (shows as Closed; landed via pytorchmergebot) |
+| [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | 15 | Concurrency and checkpoint correctness: thread-creation races, session-pool lifecycle | [#4429](https://github.com/bytedance/deer-flow/pull/4429) Fork-restored checkpoints deliver the sandbox channel still wrapped in langgraph `Overwrite`; unified one unwrap helper across the sync/async init paths and the sibling readers<br>[#3800](https://github.com/bytedance/deer-flow/pull/3800) Keep `create_thread` idempotent when a concurrent insert loses the race, so a chat cannot end up with duplicate threads. |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | 28 | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools | [#7289](https://github.com/microsoft/agent-framework/pull/7289) Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) Handoff was mutating message roles in place, so a retry leaked the change; reuse sanitized copies instead.<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) Run synchronous Python tools off the event loop so a blocking call stops freezing concurrent agent work. |
+| [opencode](https://github.com/anomalyco/opencode) (200.9k★) | 1 | MCP OAuth callback bound to IPv4 loopback |  |
+| [dify](https://github.com/langgenius/dify) (153.3k★) | 6 | API robustness: unbounded calls get timeouts, up-front validation, atomic windows | [#39953](https://github.com/langgenius/dify/pull/39953) Bound the TiDB Cloud API calls that had no timeout, so a hanging cluster endpoint can't stall vdb operations forever |
+| [Transformers](https://github.com/huggingface/transformers) (164.3k★) | 1 | AutoProcessor hub-kwarg passthrough |  |
+| [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | 1 | Settings persistence: keep custom LLM base URLs | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) Keep a custom LLM base URL when editing basic model settings, so a saved profile stops silently falling back to the provider default. |
 
+<details>
+<summary>More projects (44 repos, 168 merged PRs)</summary>
+
+| Project | Merged | What the PRs cover | Highlight fixes |
+|---------|:------:|--------------------|-----------------|
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | 3 | Self-host scrape paths: interact errors, auth chunk retention, batch dict responses |  |
+| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | 2 | Backend crashes: hybrid attention with speculative decoding, diffusers pickling |  |
+| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | 1 | Monitor wiring: eigenvalue records never landed in logs |  |
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | 4 | Compiler semantics: fp8 arithmetic promotion, top_k edge cases, AxisInfo correctness |  |
+| [Cline](https://github.com/cline/cline) (66.7k★) | 1 | File search survives the open-tabs host RPC being down |  |
+| [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | 9 | Team-run permission inheritance, Windows subprocess windows, skill sourcing | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) Inherit the leader's permission rules in team runs, so delegated agents keep the same workspace and file-access limits.<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
+| [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | 1 | Proxy logging: verbose logger sources missing from INFO output |  |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (24.5k★) | 13 | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) Reject out-of-range trace-span-duration percentiles instead of silently computing garbage<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) Score tokenless GLEU inputs as zero instead of crashing<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) Avoid crashing on an empty `choices` array when reading Azure logprobs |
+| [goose](https://github.com/aaif-goose/goose) (53.3k★) | 3 | Telemetry export reliability, skill path display, desktop shortcuts |  |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | 7 | Renderer correctness: tree-shaken markdown styles, surrogate-safe truncation, citations | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) Preserve surrogate pairs at truncation boundaries so a multi-byte character isn't split into invalid halves. |
+| [GitHub MCP Server](https://github.com/github/github-mcp-server) (32.4k★) | 2 | Team-reviewer resolution and read-only surface hygiene |  |
+| [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | 1 | Report effective Blaxel timeouts instead of defaults |  |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | 6 | Training-prep and sampling robustness: DPO crashes, 0-fps video, CI repair | [#9642](https://github.com/modelscope/ms-swift/pull/9642) Empty `rejected_messages` now fail fast in dataset prep instead of crashing DPO mid-training.<br>[#9816](https://github.com/modelscope/ms-swift/pull/9816) `swift sample` crashed engine construction when `engine_kwargs` carried `torch_dtype` (the workaround while the flag was ignored); pop it before the splat so the flag always wins<br>[#9750](https://github.com/modelscope/ms-swift/pull/9750) A 0-fps `get_avg_fps()` on broken video metadata made `range(0, len(vr), 0)` raise before any frame was read in MiniCPM-V / mPLUG-Owl3 sampling; guard the sample step |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (15.5k★) | 10 | ADK session caching and message-to-tool-call transition ordering | [#1890](https://github.com/ag-ui-protocol/ag-ui/pull/1890) Cache ADK session reads within one execution, so a remote session service isn't refetched before every agent run. |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | 1 | Judge criteria honoring intermediate responses |  |
+| [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | 3 | Memory-store backends: S3 Vectors index naming, Qdrant https option |  |
+| [verl](https://github.com/verl-project/verl) (23.1k★) | 1 | Colocated weight-sync rank derivation across DP/TP |  |
+| [TRL](https://github.com/huggingface/trl) (19.1k★) | 2 | Dataset-prep fail-fast and vLLM special-token preservation |  |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | 24 | Eval-logging and provider parsing: reasoning blocks, streaming writer, headless crashes | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) Parse OpenRouter `reasoning_details` in OpenAI-compatible responses instead of surfacing Python repr blocks<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) Route the realtime streaming sample writer through the same fallback JSON normalization as the regular log path, so sandbox objects that don't serialize cleanly can't crash an eval mid-stream<br>[#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) macOS screen-scale detection imported AppKit unguarded and crashed headful browser runs without pyobjc; fall back to scale factor 1 |
+| [Agno](https://github.com/agno-agi/agno) (41.8k★) | 1 | Tool-argument whitespace preservation with sentinel normalization |  |
+| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | 3 | Agent-flow guards, Docling fallback, GraphRAG edge ranking | [#15691](https://github.com/infiniflow/ragflow/pull/15691) Skip empty agent-switch conditions so a blank branch guard can't crash or block valid downstream flows. |
+| [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | 7 | Realtime voice plumbing: stream-retry recreation, provider status parsing, STT errors |  |
+| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.2k★) | 6 | SSE writer panics, Looker input validation, parameter error reporting | [#3531](https://github.com/googleapis/mcp-toolbox/pull/3531) Validate the Looker explore_references shape instead of panicking on malformed input<br>[#3520](https://github.com/googleapis/mcp-toolbox/pull/3520) SSE handler rendered a 500 when the writer was no http.Flusher but fell through, leaving a nil flusher that panicked on the first Flush; return right after the error render |
+| [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | 2 | Cross-process KV transfer: CUDA IPC event lifetimes, HND layout handling |  |
+| [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.3k★) | 1 | Schema building keeps required union discriminator tags |  |
+| [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | 2 | Autotuner None-input crash and CUTLASS header compile fix | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) Fix autotuner crash when input tensor is `None`: proper None-checking for optional inputs (fixes #2749) |
+| [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | 3 | Vercel AI dynamic-tool part acceptance, completions penalties forwarding |  |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | 11 | Observability UI state: prompt-diff expiry, cursor monotonicity, startup races | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) Expire prompt tool diffs on provider change, so PXI prompt editing stops carrying stale tool-change state across providers.<br>[#13210](https://github.com/Arize-ai/phoenix/pull/13210) Return NotFound-style errors for invalid GraphQL node ids instead of leaking decoder failures to clients<br>[#13245](https://github.com/Arize-ai/phoenix/pull/13245) Keep the generative model fetch cursor monotonic so lower-id updates cannot make later polling skip newer model changes |
+| [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.9k★) | 9 | Non-streaming OpenAI support, Gemini safety metadata, vLLM reasoning chunks |  |
+| [Pipecat](https://github.com/pipecat-ai/pipecat) (14.6k★) | 2 | Realtime voice: DTMF cache keying, interruption frame serialization |  |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | 4 | Docling response unpacking, docs dark theme, PostgreSQL search_path detection | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) Extract Docling async markdown from the response envelope so RAG chunks carry clean document text, not JSON/base64 noise. |
+| [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | 1 | TUI footer status-line customization | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) Customize the TUI footer status line via `status_line` config, codex / claude code style |
+| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | 1 | FalkorDB bulk-write crash on NUL bytes |  |
+| [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | 1 | TUI tab-completion fixes |  |
+| [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | 1 | Anthropic stop-sequence validation |  |
+| [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | 1 | Publisher metadata validation | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) Reject mangled publisher metadata instead of accepting malformed entries |
+| [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | 4 | Founding PRs: tests/CI/templates, pluggable TaskStore, Gemini CLI support | [#1](https://github.com/HKUDS/ClawTeam/pull/1) First PR: 122 tests, CI, team templates, config bugfixes, task duration tracking<br>[#40](https://github.com/HKUDS/ClawTeam/pull/40) Pluggable TaskStore: extract task persistence into swappable backend abstraction |
+| [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (5.0k★) | 2 | MCP protocol state: duplicate initialize rejection, description metadata |  |
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | 5 | GPU discovery without a CUDA context, benchmark top-k honoring |  |
+| [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | 1 | Sandbox execution opt-in |  |
+| [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | 1 | API-key hygiene: secrets out of websocket URLs | [#2564](https://github.com/googleapis/python-genai/pull/2564) Keep Live Music API keys out of websocket URLs by relying on request headers instead of duplicating secrets in query strings |
+| [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | 1 | Equity-screener EPS field merge |  |
+| [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | 1 | SciCode answer extraction from content blocks |  |
+| [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | 3 | Concurrency-safe LiteLLM params, git workspace validation, UTF-8 logs | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) Serialize LiteLLM `modify_params` updates with an RLock so concurrent completions do not leak global parameter state<br>[#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) Validate git workspaces with `git rev-parse --git-dir`, so a broken nested repo can't crash `/api/git/changes`. |
+
+</details>
+
+#### Full PR listings by project
+
+<details>
+<summary>All 53 merged Qwen Code PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#7535](https://github.com/QwenLM/qwen-code/pull/7535) | Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | Added a timeout to Qwen OAuth refresh so a stalled refresh endpoint can't hang the CLI on auth recovery. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | Isolate Anthropic SDK abort listener leak with per-request child controllers |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5070](https://github.com/QwenLM/qwen-code/pull/5070) | Skip expired live agents in focus navigation so stale background-agent rows can't grab keyboard focus. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | Stopped stale tool-schema recall from slipping outdated tool names back into later planning turns. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#6981](https://github.com/QwenLM/qwen-code/pull/6981) | Route id-less continuation chunks to the colliding tool-call opener's slot instead of dropping them into the wrong one |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5020](https://github.com/QwenLM/qwen-code/pull/5020) | Drop tool calls after a cancellation so an aborted turn can't leak stale requests into the next payload. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5071](https://github.com/QwenLM/qwen-code/pull/5071) | Submit fast tool results after stream end, so a race at the tail of streaming can't strand completed calls. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | Dropped the discontinued Qwen OAuth path from ACP login so nobody gets routed into a dead auth method. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5073](https://github.com/QwenLM/qwen-code/pull/5073) | Warn when context instruction files blow the configured budget, before oversized repo guidance quietly crowds out the task. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5043](https://github.com/QwenLM/qwen-code/pull/5043) | Let grep results satisfy the prior-read check, so an edit can proceed on verified search context instead of a redundant re-read. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5061](https://github.com/QwenLM/qwen-code/pull/5061) | Preserve background-agent launch flags so a delegated CLI run keeps the execution mode you asked for. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5036](https://github.com/QwenLM/qwen-code/pull/5036) | Actually hard-stop repeated identical tool calls once loop detection fires, instead of letting the agent keep hammering the same stalled action. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | Recurse into tracked Git submodules when crawling a repo, so the agent's context picks up files inside them. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5077](https://github.com/QwenLM/qwen-code/pull/5077) | Show the full plan when a permission gate blocks, so you can inspect the agent's intent instead of losing it. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4715](https://github.com/QwenLM/qwen-code/pull/4715) | Managed auto-memory now honors the runtime output dir, while an explicit memory-dir override still wins. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5062](https://github.com/QwenLM/qwen-code/pull/5062) | Carry token-escalation context across agent rounds so a delegated run stops restarting from an under-provisioned model each time. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5945](https://github.com/QwenLM/qwen-code/pull/5945) | Reject non-positive sessionRecapAwayThresholdMinutes values |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4600](https://github.com/QwenLM/qwen-code/pull/4600) | Distinguish AUTO from AUTO_EDIT approval-mode indicators in the TUI, including shared styling, i18n keys, and visual evidence |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | Apply the requested output language to side queries too, so auxiliary answers follow the same language contract. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4963](https://github.com/QwenLM/qwen-code/pull/4963) | Enable fork subagents by default, so delegated work runs in isolated branches without a manual opt-in. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5815](https://github.com/QwenLM/qwen-code/pull/5815) | Merging assistant turns was dropping `reasoning_content`, losing multi-turn chain-of-thought. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5752](https://github.com/QwenLM/qwen-code/pull/5752) | Parse QWEN_SERVE_MCP_CLIENT_BUDGET strictly as a decimal integer |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5679](https://github.com/QwenLM/qwen-code/pull/5679) | Parse agent & workflow integer env vars strictly |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5115](https://github.com/QwenLM/qwen-code/pull/5115) | Hide teammate-only agent names when teams are disabled and fall back to one-shot subagents if an old prompt still sends one |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4673](https://github.com/QwenLM/qwen-code/pull/4673) | Restore top-level `--list-extensions` / `-l` so it prints installed extensions and exits before sandbox, auth, or TUI startup |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4635](https://github.com/QwenLM/qwen-code/pull/4635) | Hide completed sticky todos from the active CLI view so the list stays on what's left. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | Harden context-error text extraction so a nested or non-string payload surfaces a useful message instead of vanishing. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5167](https://github.com/QwenLM/qwen-code/pull/5167) | Hide unconfigured discontinued OAuth model |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4828](https://github.com/QwenLM/qwen-code/pull/4828) | Keep a user-set shared `baseUrl` after auth refresh, so a same-model refresh doesn't fall back to the provider default. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5461](https://github.com/QwenLM/qwen-code/pull/5461) | Accept uppercase URL schemes in Claude plugin sources |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5209](https://github.com/QwenLM/qwen-code/pull/5209) | Read SHORT-typed TIFF dimensions correctly on big-endian files |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4717](https://github.com/QwenLM/qwen-code/pull/4717) | Replace exit-time deep history clones with shallow read paths across copy, arena, and ACP snapshot flows while keeping restore-time cloning defensive |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4970](https://github.com/QwenLM/qwen-code/pull/4970) | Stabilize truncated tool-retry keys so a repaired call keeps the same retry identity instead of drifting. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | Fix IDE proxy requests by keeping `fetch` and `EnvHttpProxyAgent` on the same bundled `undici` module path |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5429](https://github.com/QwenLM/qwen-code/pull/5429) | Accept uppercase URL schemes when parsing install sources |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5494](https://github.com/QwenLM/qwen-code/pull/5494) | Don't treat an empty-parts message as a function call/response |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5285](https://github.com/QwenLM/qwen-code/pull/5285) | Confirm the WEBP signature, not just the RIFF prefix |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5420](https://github.com/QwenLM/qwen-code/pull/5420) | Keep estimated token split summing to total |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5336](https://github.com/QwenLM/qwen-code/pull/5336) | Detect WebP and AVI in RIFF magic-byte sniffing |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5328](https://github.com/QwenLM/qwen-code/pull/5328) | Keep qwen3.6-flash and kimi-k2.6 presets text-only |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5227](https://github.com/QwenLM/qwen-code/pull/5227) | Read BMP height as signed int32 for top-down bitmaps |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5194](https://github.com/QwenLM/qwen-code/pull/5194) | Read WebP VP8X canvas height from the correct byte offset |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5719](https://github.com/QwenLM/qwen-code/pull/5719) | Validate list maxEntries as a positive integer |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5630](https://github.com/QwenLM/qwen-code/pull/5630) | Escape backslashes and quotes in emacs ediff paths |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4738](https://github.com/QwenLM/qwen-code/pull/4738) | Skip hidden thought parts when copying visible CLI output, so the clipboard matches what's on screen. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5426](https://github.com/QwenLM/qwen-code/pull/5426) | Accept uppercase URL schemes in mcp add transport detection |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5287](https://github.com/QwenLM/qwen-code/pull/5287) | Render a sub-minute duration that rounds to 60s as "1m" |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5647](https://github.com/QwenLM/qwen-code/pull/5647) | Detect USE_OPENAI auth when the model is set via QWEN_MODEL |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5204](https://github.com/QwenLM/qwen-code/pull/5204) | Reopen code fences without inserting a blank line |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5072](https://github.com/QwenLM/qwen-code/pull/5072) | Stabilize the simple MCP integration check so server-readiness timing stops making the cross-process contract test flaky. |
+
+</details>
 <details>
 <summary>All 36 merged Mooncake PRs</summary>
 
@@ -149,220 +262,6 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 </details>
 <details>
-<summary>All 8 merged PyTorch PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | Guard the CuTeDSL topk override against a non-current CUDA device so it stops dispatching on the wrong device (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#186779](https://github.com/pytorch/pytorch/pull/186779) | Error on unsupported batch norm third derivatives instead of silently returning wrong gradients (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188027](https://github.com/pytorch/pytorch/pull/188027) | Initialize `r` in the Laguerre and Legendre polynomial helpers so they stop returning uninitialized memory on the boundary path (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188229](https://github.com/pytorch/pytorch/pull/188229) | `avg_pool3d` backward silently corrupted gradients on inputs over `INT_MAX` elements: the atomic scatter kernel computed offsets and bounds as 32-bit `int`; widened to 64-bit indexing (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | Fix a `ValueError` in the `stale_issues` workflow's `parse_older_than` on non-leap years, where a naive Feb 29 offset crashed the run (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | Fix user-defined Triton kernel name mangling in the Inductor codegen so distinct kernels stop colliding in generated code (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187860](https://github.com/pytorch/pytorch/pull/187860) | Route the empty-`src` check in `meta__transformer_encoder_layer_fwd` through `guard_or_false` so an unbacked symbolic `numel` under `torch.compile` no longer raises a data-dependent error (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | Remove the obsolete `setuptools` upper bound so builds resolve a current toolchain instead of pinning a stale one (shows as Closed; landed via pytorchmergebot) |
-
-</details>
-<details>
-<summary>All 1 merged Transformers PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [Transformers](https://github.com/huggingface/transformers) (164.3k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | `AutoProcessor.from_pretrained` was silently dropping hub kwargs like `revision` and `token`. |
-
-</details>
-<details>
-<summary>All 2 merged SGLang PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | Fix hybrid_linear_attn_backend crash when used with ngram speculative decoding |
-| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#21472](https://github.com/sgl-project/sglang/pull/21472) | Fix PicklingError with --backend diffusers on non-T2I models |
-
-</details>
-<details>
-<summary>All 1 merged DeepSpeed PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | Eigenvalue monitor values were computed but never logged; wired them through so they actually land in the record. |
-
-</details>
-<details>
-<summary>All 4 merged Triton PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10883](https://github.com/triton-lang/triton/pull/10883) | Promote fp8 operands before division and modulo instead of evaluating them in fp8 precision (BC breaking) |
-| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10689](https://github.com/triton-lang/triton/pull/10689) | Keep at least one config when a fractional top_k rounds to zero |
-| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10687](https://github.com/triton-lang/triton/pull/10687) | `is_power_of_two(0)` was returning True. |
-| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | Fix AxisInfo correctness: signed constants, unknown shift divisibility, and shift UB guards |
-
-</details>
-<details>
-<summary>All 1 merged LiteLLM PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | [#26401](https://github.com/BerriAI/litellm/pull/26401) | Fix `LITELLM_LOG=INFO` missing `verbose_logger`: proxy INFO logs now include all verbose logger sources |
-
-</details>
-<details>
-<summary>All 6 merged ms-swift PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | Empty `rejected_messages` now fail fast in dataset prep instead of crashing DPO mid-training. |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9816](https://github.com/modelscope/ms-swift/pull/9816) | `swift sample` crashed engine construction when `engine_kwargs` carried `torch_dtype` (the workaround while the flag was ignored); pop it before the splat so the flag always wins |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9789](https://github.com/modelscope/ms-swift/pull/9789) | Refresh wandb in the CUDA test container setup, unbreaking the repo-wide CI an old baked wandb had poisoned against protobuf 7.x |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9750](https://github.com/modelscope/ms-swift/pull/9750) | A 0-fps `get_avg_fps()` on broken video metadata made `range(0, len(vr), 0)` raise before any frame was read in MiniCPM-V / mPLUG-Owl3 sampling; guard the sample step |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | Different-format images collided in the temp image cache; folded mode and size into the key. |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | `_replace_system` was flattening non-string prefix elements, stripping the structured content out of templated system prompts. |
-
-</details>
-<details>
-<summary>All 1 merged verl PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [verl](https://github.com/verl-project/verl) (23.1k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | Derived the colocated vLLM weight-sync ZMQ socket rank from the DP and TP ranks, so DP workers stop colliding on one receiver. |
-
-</details>
-<details>
-<summary>All 2 merged TRL PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [TRL](https://github.com/huggingface/trl) (19.1k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | An already-transformed dataset in SFT prep now fails fast, instead of silently producing wrong training batches. |
-| [TRL](https://github.com/huggingface/trl) (19.1k★) | [#6063](https://github.com/huggingface/trl/pull/6063) | Preserve vllm prompt special tokens |
-
-</details>
-<details>
-<summary>All 2 merged LMCache PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | [#3245](https://github.com/LMCache/LMCache/pull/3245) | Retain producer-side CUDA IPC events across MP store/retrieve so daemon IPC handles don't dereference collected events. |
-| [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | [#3282](https://github.com/LMCache/LMCache/pull/3282) | Handle HND GPU KV layouts in MP KV transfer, which previously mishandled that tensor format. |
-
-</details>
-<details>
-<summary>All 2 merged FlashInfer PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) | Fix autotuner crash when input tensor is `None`: proper None-checking for optional inputs (fixes #2749) |
-| [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | [#2772](https://github.com/flashinfer-ai/flashinfer/pull/2772) | Fix compilation error: add missing `<optional>` header for `std::optional` usage in CUTLASS headers |
-
-</details>
-<details>
-<summary>All 1 merged Google Gen AI SDK PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | [#2564](https://github.com/googleapis/python-genai/pull/2564) | Keep Live Music API keys out of websocket URLs by relying on request headers instead of duplicating secrets in query strings |
-
-</details>
-
-#### Agent frameworks / protocols / evals
-
-| Project | Merged | What the PRs cover | Highlight fixes |
-|---------|:------:|--------------------|-----------------|
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | 53 | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so O…<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed /bug, /docs, and /insight browser launches through…<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in r… |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | 30 | Release asset freshness, multimodal reply duplication, scheduler exception swallowing | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) Prevent Telegram media group exceptions from being silent… |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | 12 | Portfolio analytics and monitor-verdict pipeline; fail-closed live-trading gates | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) Portfolio Studio's risk x-ray<br>[#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) Scheduled monitors now persist each run's parsed verdict…<br>[#1156](https://github.com/HKUDS/Vibe-Trading/pull/1156) Complete the Scheduled Research verdict flow in Market Wa… |
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | 6 | Session-store fail-closed sweeps, auth-failure visibility, surrogate-safe text | [#119127](https://github.com/openclaw/openclaw/pull/119127) Keep the mtime media sweep out of the managed-outgoing tr… |
-| [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | 15 | Concurrency and checkpoint correctness: thread-creation races, session-pool lifecycle | [#4429](https://github.com/bytedance/deer-flow/pull/4429) Fork-restored checkpoints deliver the sandbox channel sti…<br>[#3800](https://github.com/bytedance/deer-flow/pull/3800) Keep create_thread idempotent when a concurrent insert lo… |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | 28 | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools | [#7289](https://github.com/microsoft/agent-framework/pull/7289) Defer turn-scoped after_run providers to the agent loop b…<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) Handoff was mutating message roles in place, so a retry l…<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) Run synchronous Python tools off the event loop so a bloc… |
-| [opencode](https://github.com/anomalyco/opencode) (200.9k★) | 1 | MCP OAuth callback bound to IPv4 loopback | |
-| [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | 1 | Settings persistence: keep custom LLM base URLs | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) Keep a custom LLM base URL when editing basic model setti… |
-| [Cline](https://github.com/cline/cline) (66.7k★) | 1 | File search survives the open-tabs host RPC being down | |
-| [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | 9 | Team-run permission inheritance, Windows subprocess windows, skill sourcing | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) Inherit the leader's permission rules in team runs, so de…<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Hide Bash tool subprocess windows on Windows with CREATE_… |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (24.5k★) | 13 | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) Reject out-of-range trace-span-duration percentiles inste…<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) Score tokenless GLEU inputs as zero instead of crashing<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) Avoid crashing on an empty choices array when reading Azu… |
-| [goose](https://github.com/aaif-goose/goose) (53.3k★) | 3 | Telemetry export reliability, skill path display, desktop shortcuts | |
-| [GitHub MCP Server](https://github.com/github/github-mcp-server) (32.4k★) | 2 | Team-reviewer resolution and read-only surface hygiene | |
-| [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | 1 | Report effective Blaxel timeouts instead of defaults | |
-| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (15.5k★) | 10 | ADK session caching and message-to-tool-call transition ordering | [#1890](https://github.com/ag-ui-protocol/ag-ui/pull/1890) Cache ADK session reads within one execution, so a remote… |
-| [Google ADK](https://github.com/google/adk-python) (21.2k★) | 1 | Judge criteria honoring intermediate responses | |
-| [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | 3 | Memory-store backends: S3 Vectors index naming, Qdrant https option | |
-| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | 24 | Eval-logging and provider parsing: reasoning blocks, streaming writer, headless crashes | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) Parse OpenRouter reasoning_details in OpenAI-compatible r…<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) Route the realtime streaming sample writer through the sa…<br>[#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) macOS screen-scale detection imported AppKit unguarded an… |
-| [Agno](https://github.com/agno-agi/agno) (41.8k★) | 1 | Tool-argument whitespace preservation with sentinel normalization | |
-| [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | 7 | Realtime voice plumbing: stream-retry recreation, provider status parsing, STT errors | |
-| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.2k★) | 6 | SSE writer panics, Looker input validation, parameter error reporting | [#3531](https://github.com/googleapis/mcp-toolbox/pull/3531) Validate the Looker explore_references shape instead of p…<br>[#3520](https://github.com/googleapis/mcp-toolbox/pull/3520) SSE handler rendered a 500 when the writer was no http.Fl… |
-| [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.3k★) | 1 | Schema building keeps required union discriminator tags | |
-| [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | 3 | Vercel AI dynamic-tool part acceptance, completions penalties forwarding | |
-| [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.9k★) | 9 | Non-streaming OpenAI support, Gemini safety metadata, vLLM reasoning chunks | |
-| [Pipecat](https://github.com/pipecat-ai/pipecat) (14.6k★) | 2 | Realtime voice: DTMF cache keying, interruption frame serialization | |
-| [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | 1 | TUI footer status-line customization | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) Customize the TUI footer status line via status_line conf… |
-| [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | 1 | TUI tab-completion fixes | |
-| [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | 1 | Anthropic stop-sequence validation | |
-| [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | 1 | Publisher metadata validation | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) Reject mangled publisher metadata instead of accepting ma… |
-| [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | 4 | Founding PRs: tests/CI/templates, pluggable TaskStore, Gemini CLI support | [#1](https://github.com/HKUDS/ClawTeam/pull/1) First PR<br>[#40](https://github.com/HKUDS/ClawTeam/pull/40) Pluggable TaskStore |
-| [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (5.0k★) | 2 | MCP protocol state: duplicate initialize rejection, description metadata | |
-| [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | 1 | SciCode answer extraction from content blocks | |
-| [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | 3 | Concurrency-safe LiteLLM params, git workspace validation, UTF-8 logs | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) Serialize LiteLLM modify_params updates with an RLock so…<br>[#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) Validate git workspaces with git rev-parse --git-dir, so… |
-
-<details>
-<summary>All 53 merged Qwen Code PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#7535](https://github.com/QwenLM/qwen-code/pull/7535) | Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | Added a timeout to Qwen OAuth refresh so a stalled refresh endpoint can't hang the CLI on auth recovery. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | Isolate Anthropic SDK abort listener leak with per-request child controllers |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5070](https://github.com/QwenLM/qwen-code/pull/5070) | Skip expired live agents in focus navigation so stale background-agent rows can't grab keyboard focus. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | Stopped stale tool-schema recall from slipping outdated tool names back into later planning turns. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#6981](https://github.com/QwenLM/qwen-code/pull/6981) | Route id-less continuation chunks to the colliding tool-call opener's slot instead of dropping them into the wrong one |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5020](https://github.com/QwenLM/qwen-code/pull/5020) | Drop tool calls after a cancellation so an aborted turn can't leak stale requests into the next payload. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5071](https://github.com/QwenLM/qwen-code/pull/5071) | Submit fast tool results after stream end, so a race at the tail of streaming can't strand completed calls. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | Dropped the discontinued Qwen OAuth path from ACP login so nobody gets routed into a dead auth method. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5073](https://github.com/QwenLM/qwen-code/pull/5073) | Warn when context instruction files blow the configured budget, before oversized repo guidance quietly crowds out the task. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5043](https://github.com/QwenLM/qwen-code/pull/5043) | Let grep results satisfy the prior-read check, so an edit can proceed on verified search context instead of a redundant re-read. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5061](https://github.com/QwenLM/qwen-code/pull/5061) | Preserve background-agent launch flags so a delegated CLI run keeps the execution mode you asked for. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5036](https://github.com/QwenLM/qwen-code/pull/5036) | Actually hard-stop repeated identical tool calls once loop detection fires, instead of letting the agent keep hammering the same stalled action. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | Recurse into tracked Git submodules when crawling a repo, so the agent's context picks up files inside them. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5077](https://github.com/QwenLM/qwen-code/pull/5077) | Show the full plan when a permission gate blocks, so you can inspect the agent's intent instead of losing it. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4715](https://github.com/QwenLM/qwen-code/pull/4715) | Managed auto-memory now honors the runtime output dir, while an explicit memory-dir override still wins. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5062](https://github.com/QwenLM/qwen-code/pull/5062) | Carry token-escalation context across agent rounds so a delegated run stops restarting from an under-provisioned model each time. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5945](https://github.com/QwenLM/qwen-code/pull/5945) | Reject non-positive sessionRecapAwayThresholdMinutes values |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4600](https://github.com/QwenLM/qwen-code/pull/4600) | Distinguish AUTO from AUTO_EDIT approval-mode indicators in the TUI, including shared styling, i18n keys, and visual evidence |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | Apply the requested output language to side queries too, so auxiliary answers follow the same language contract. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4963](https://github.com/QwenLM/qwen-code/pull/4963) | Enable fork subagents by default, so delegated work runs in isolated branches without a manual opt-in. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5815](https://github.com/QwenLM/qwen-code/pull/5815) | Merging assistant turns was dropping `reasoning_content`, losing multi-turn chain-of-thought. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5752](https://github.com/QwenLM/qwen-code/pull/5752) | Parse QWEN_SERVE_MCP_CLIENT_BUDGET strictly as a decimal integer |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5679](https://github.com/QwenLM/qwen-code/pull/5679) | Parse agent & workflow integer env vars strictly |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5115](https://github.com/QwenLM/qwen-code/pull/5115) | Hide teammate-only agent names when teams are disabled and fall back to one-shot subagents if an old prompt still sends one |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4673](https://github.com/QwenLM/qwen-code/pull/4673) | Restore top-level `--list-extensions` / `-l` so it prints installed extensions and exits before sandbox, auth, or TUI startup |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4635](https://github.com/QwenLM/qwen-code/pull/4635) | Hide completed sticky todos from the active CLI view so the list stays on what's left. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | Harden context-error text extraction so a nested or non-string payload surfaces a useful message instead of vanishing. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5167](https://github.com/QwenLM/qwen-code/pull/5167) | Hide unconfigured discontinued OAuth model |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4828](https://github.com/QwenLM/qwen-code/pull/4828) | Keep a user-set shared `baseUrl` after auth refresh, so a same-model refresh doesn't fall back to the provider default. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5461](https://github.com/QwenLM/qwen-code/pull/5461) | Accept uppercase URL schemes in Claude plugin sources |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5209](https://github.com/QwenLM/qwen-code/pull/5209) | Read SHORT-typed TIFF dimensions correctly on big-endian files |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4717](https://github.com/QwenLM/qwen-code/pull/4717) | Replace exit-time deep history clones with shallow read paths across copy, arena, and ACP snapshot flows while keeping restore-time cloning defensive |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4970](https://github.com/QwenLM/qwen-code/pull/4970) | Stabilize truncated tool-retry keys so a repaired call keeps the same retry identity instead of drifting. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | Fix IDE proxy requests by keeping `fetch` and `EnvHttpProxyAgent` on the same bundled `undici` module path |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5429](https://github.com/QwenLM/qwen-code/pull/5429) | Accept uppercase URL schemes when parsing install sources |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5494](https://github.com/QwenLM/qwen-code/pull/5494) | Don't treat an empty-parts message as a function call/response |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5285](https://github.com/QwenLM/qwen-code/pull/5285) | Confirm the WEBP signature, not just the RIFF prefix |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5420](https://github.com/QwenLM/qwen-code/pull/5420) | Keep estimated token split summing to total |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5336](https://github.com/QwenLM/qwen-code/pull/5336) | Detect WebP and AVI in RIFF magic-byte sniffing |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5328](https://github.com/QwenLM/qwen-code/pull/5328) | Keep qwen3.6-flash and kimi-k2.6 presets text-only |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5227](https://github.com/QwenLM/qwen-code/pull/5227) | Read BMP height as signed int32 for top-down bitmaps |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5194](https://github.com/QwenLM/qwen-code/pull/5194) | Read WebP VP8X canvas height from the correct byte offset |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5719](https://github.com/QwenLM/qwen-code/pull/5719) | Validate list maxEntries as a positive integer |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5630](https://github.com/QwenLM/qwen-code/pull/5630) | Escape backslashes and quotes in emacs ediff paths |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4738](https://github.com/QwenLM/qwen-code/pull/4738) | Skip hidden thought parts when copying visible CLI output, so the clipboard matches what's on screen. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5426](https://github.com/QwenLM/qwen-code/pull/5426) | Accept uppercase URL schemes in mcp add transport detection |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5287](https://github.com/QwenLM/qwen-code/pull/5287) | Render a sub-minute duration that rounds to 60s as "1m" |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5647](https://github.com/QwenLM/qwen-code/pull/5647) | Detect USE_OPENAI auth when the model is set via QWEN_MODEL |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5204](https://github.com/QwenLM/qwen-code/pull/5204) | Reopen code fences without inserting a blank line |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5072](https://github.com/QwenLM/qwen-code/pull/5072) | Stabilize the simple MCP integration check so server-readiness timing stops making the cross-process contract test flaky. |
-
-</details>
-<details>
 <summary>All 30 merged AstrBot PRs</summary>
 
 | Project | PR | What I Fixed |
@@ -400,6 +299,25 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 </details>
 <details>
+<summary>All 12 merged Vibe-Trading PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1156](https://github.com/HKUDS/Vibe-Trading/pull/1156) | Complete the Scheduled Research verdict flow in Market Watch: render each monitor's latest symbols, change since the previous run, and recorded time; show explicit empty or unreadable states without adding another API query |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) | Scheduled monitors now persist each run's parsed verdict on the job and the list endpoint carries it inline, so Market Watch renders the latest call and its delta in one query |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio's risk x-ray: pure-computation concentration, volatility, drawdown, VaR/ES, diversification, and correlation analytics for weighted baskets, plus an agent tool that fetches closes through the loader fallback chain |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1212](https://github.com/HKUDS/Vibe-Trading/pull/1212) | Fail closed when broker position reads return an API error: futu/okx connectors now raise instead of treating an unreadable position book as empty, so live orders stop sailing through the mandate gate blind |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1209](https://github.com/HKUDS/Vibe-Trading/pull/1209) | Sign Alpaca position quantity by side before the mandate gate, so short positions are validated in the right direction instead of passing as bare positive numbers |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio step 2: composable weight constraints that plug into any optimizer, with waterfill redistribution that only feeds positions still under their cap |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | Wired the strict alpha-bench gate into the CLI: `alpha bench --strict` now fails the run when a strategy misses the bar |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#966](https://github.com/HKUDS/Vibe-Trading/pull/966) | Surface Portfolio Studio artifacts in run detail, so risk x-ray and rebalance outputs show up where a run is inspected |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#795](https://github.com/HKUDS/Vibe-Trading/pull/795) | Portfolio Studio's rebalance notes: the backtester now writes a notes artifact with metrics for each rebalance, so agent-driven moves stay auditable |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#900](https://github.com/HKUDS/Vibe-Trading/pull/900) | Every backtest run now emits a risk x-ray artifact (JSON + Markdown) over the strategy's average basket, with concentration, volatility, drawdown, and tail-risk metrics folded into run metrics |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#970](https://github.com/HKUDS/Vibe-Trading/pull/970) | Route `source: yfinance` crypto backtests to CryptoEngine instead of the stock path, so BTC/ETH runs stop erroring out |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#984](https://github.com/HKUDS/Vibe-Trading/pull/984) | Write hierarchy-routed memory entries with the .md extension so discovery actually sees them (bare-slug files were invisible to list/recall) |
+
+</details>
+<details>
 <summary>All 6 merged OpenClaw PRs</summary>
 
 | Project | PR | What I Fixed |
@@ -410,6 +328,21 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | Propagate memory directory creation failures instead of continuing after a failed `ensureDir` |
 | [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | Use the canonical `shortenHomePath` in the sandbox-root escape error so the reported path matches the rest of the UI. |
 | [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | Keep sibling dirs that share the home prefix unshortened in tool path display |
+
+</details>
+<details>
+<summary>All 8 merged PyTorch PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | Guard the CuTeDSL topk override against a non-current CUDA device so it stops dispatching on the wrong device (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#186779](https://github.com/pytorch/pytorch/pull/186779) | Error on unsupported batch norm third derivatives instead of silently returning wrong gradients (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188027](https://github.com/pytorch/pytorch/pull/188027) | Initialize `r` in the Laguerre and Legendre polynomial helpers so they stop returning uninitialized memory on the boundary path (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188229](https://github.com/pytorch/pytorch/pull/188229) | `avg_pool3d` backward silently corrupted gradients on inputs over `INT_MAX` elements: the atomic scatter kernel computed offsets and bounds as 32-bit `int`; widened to 64-bit indexing (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | Fix a `ValueError` in the `stale_issues` workflow's `parse_older_than` on non-leap years, where a naive Feb 29 offset crashed the run (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | Fix user-defined Triton kernel name mangling in the Inductor codegen so distinct kernels stop colliding in generated code (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187860](https://github.com/pytorch/pytorch/pull/187860) | Route the empty-`src` check in `meta__transformer_encoder_layer_fwd` through `guard_or_false` so an unbacked symbolic `numel` under `torch.compile` no longer raises a data-dependent error (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | Remove the obsolete `setuptools` upper bound so builds resolve a current toolchain instead of pinning a stale one (shows as Closed; landed via pytorchmergebot) |
 
 </details>
 <details>
@@ -432,25 +365,6 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | [#3719](https://github.com/bytedance/deer-flow/pull/3719) | Skip whitespace-only facts in `_apply_updates` so blank memory entries do not accumulate |
 | [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | [#4253](https://github.com/bytedance/deer-flow/pull/4253) | A tool result containing a literal `</tool_response>` could close the MindIE framing early and inject trailing text; escaped the tool-response content, matching the tool-call name/arg escaping already in the same function. |
 | [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | [#3709](https://github.com/bytedance/deer-flow/pull/3709) | Fix positional fallback consuming unrelated todo when same-content list is exhausted |
-
-</details>
-<details>
-<summary>All 12 merged Vibe-Trading PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1156](https://github.com/HKUDS/Vibe-Trading/pull/1156) | Complete the Scheduled Research verdict flow in Market Watch: render each monitor's latest symbols, change since the previous run, and recorded time; show explicit empty or unreadable states without adding another API query |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) | Scheduled monitors now persist each run's parsed verdict on the job and the list endpoint carries it inline, so Market Watch renders the latest call and its delta in one query |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio's risk x-ray: pure-computation concentration, volatility, drawdown, VaR/ES, diversification, and correlation analytics for weighted baskets, plus an agent tool that fetches closes through the loader fallback chain |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1212](https://github.com/HKUDS/Vibe-Trading/pull/1212) | Fail closed when broker position reads return an API error: futu/okx connectors now raise instead of treating an unreadable position book as empty, so live orders stop sailing through the mandate gate blind |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1209](https://github.com/HKUDS/Vibe-Trading/pull/1209) | Sign Alpaca position quantity by side before the mandate gate, so short positions are validated in the right direction instead of passing as bare positive numbers |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio step 2: composable weight constraints that plug into any optimizer, with waterfill redistribution that only feeds positions still under their cap |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | Wired the strict alpha-bench gate into the CLI: `alpha bench --strict` now fails the run when a strategy misses the bar |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#966](https://github.com/HKUDS/Vibe-Trading/pull/966) | Surface Portfolio Studio artifacts in run detail, so risk x-ray and rebalance outputs show up where a run is inspected |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#795](https://github.com/HKUDS/Vibe-Trading/pull/795) | Portfolio Studio's rebalance notes: the backtester now writes a notes artifact with metrics for each rebalance, so agent-driven moves stay auditable |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#900](https://github.com/HKUDS/Vibe-Trading/pull/900) | Every backtest run now emits a risk x-ray artifact (JSON + Markdown) over the strategy's average basket, with concentration, volatility, drawdown, and tail-risk metrics folded into run metrics |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#970](https://github.com/HKUDS/Vibe-Trading/pull/970) | Route `source: yfinance` crypto backtests to CryptoEngine instead of the stock path, so BTC/ETH runs stop erroring out |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#984](https://github.com/HKUDS/Vibe-Trading/pull/984) | Write hierarchy-routed memory entries with the .md extension so discovery actually sees them (bare-slug files were invisible to list/recall) |
 
 </details>
 <details>
@@ -497,11 +411,70 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 </details>
 <details>
+<summary>All 6 merged dify PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [dify](https://github.com/langgenius/dify) (153.3k★) | [#39953](https://github.com/langgenius/dify/pull/39953) | Bound the TiDB Cloud API calls that had no timeout, so a hanging cluster endpoint can't stall vdb operations forever |
+| [dify](https://github.com/langgenius/dify) (153.3k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | Validate the conversation up front on the service-api and explore endpoints, so a bad `conversation_id` returns 404 instead of streaming into a late failure. |
+| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37425](https://github.com/langgenius/dify/pull/37425) | Bound OperationService billing requests so a slow billing endpoint can't hang the request. |
+| [dify](https://github.com/langgenius/dify) (153.3k★) | [#39479](https://github.com/langgenius/dify/pull/39479) | Make the 10-minute email IP first-strike window actually take effect: claim the slot atomically with SET NX instead of a racy GET-then-SETEX |
+| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | Keep watercrawl request timeouts bounded instead of disabling them with `timeout=None` |
+| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | Skip empty tool entries in legacy dataset config extraction |
+
+</details>
+<details>
+<summary>All 1 merged Transformers PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [Transformers](https://github.com/huggingface/transformers) (164.3k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | `AutoProcessor.from_pretrained` was silently dropping hub kwargs like `revision` and `token`. |
+
+</details>
+<details>
 <summary>All 1 merged OpenHands PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) | Keep a custom LLM base URL when editing basic model settings, so a saved profile stops silently falling back to the provider default. |
+
+</details>
+<details>
+<summary>All 3 merged Firecrawl PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) | Reject self-hosted scrape interact actions with a clear error instead of failing opaquely |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | Keep the auth chunk in the self-host bypass path so authenticated self-hosted scrapes don't get dropped. |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3713](https://github.com/firecrawl/firecrawl/pull/3713) | Handle the async v1 batch-scrape response returned as a dict in the Python SDK |
+
+</details>
+<details>
+<summary>All 2 merged SGLang PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | Fix hybrid_linear_attn_backend crash when used with ngram speculative decoding |
+| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#21472](https://github.com/sgl-project/sglang/pull/21472) | Fix PicklingError with --backend diffusers on non-T2I models |
+
+</details>
+<details>
+<summary>All 1 merged DeepSpeed PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | Eigenvalue monitor values were computed but never logged; wired them through so they actually land in the record. |
+
+</details>
+<details>
+<summary>All 4 merged Triton PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10883](https://github.com/triton-lang/triton/pull/10883) | Promote fp8 operands before division and modulo instead of evaluating them in fp8 precision (BC breaking) |
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10689](https://github.com/triton-lang/triton/pull/10689) | Keep at least one config when a fractional top_k rounds to zero |
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10687](https://github.com/triton-lang/triton/pull/10687) | `is_power_of_two(0)` was returning True. |
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | Fix AxisInfo correctness: signed constants, unknown shift divisibility, and shift UB guards |
 
 </details>
 <details>
@@ -526,6 +499,14 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | [#1734](https://github.com/agentscope-ai/agentscope/pull/1734) | Refresh Redis message-list TTL on append and streaming replace, so the configured storage TTL actually bounds chat history. |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | [#1822](https://github.com/agentscope-ai/agentscope/pull/1822) | Add a cwd option to the built-in Bash tool so shell commands can run in the intended workspace directory |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | [#1786](https://github.com/agentscope-ai/agentscope/pull/1786) | Keep a caller-provided Redis session id on create, so later get/update/list hit the same session instead of a fresh UUID. |
+
+</details>
+<details>
+<summary>All 1 merged LiteLLM PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | [#26401](https://github.com/BerriAI/litellm/pull/26401) | Fix `LITELLM_LOG=INFO` missing `verbose_logger`: proxy INFO logs now include all verbose logger sources |
 
 </details>
 <details>
@@ -559,6 +540,20 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 </details>
 <details>
+<summary>All 7 merged cherry-studio PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#18711](https://github.com/CherryHQ/cherry-studio/pull/18711) | Keep formula copy working in release builds: the markdown styles entry was tree-shaken out of the production bundle, taking KaTeX's copy listener with it. |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) | Preserve surrogate pairs at truncation boundaries so a multi-byte character isn't split into invalid halves. |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16454](https://github.com/CherryHQ/cherry-studio/pull/16454) | Keep bare-URL markdown reference lines in citations instead of dropping them |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#17106](https://github.com/CherryHQ/cherry-studio/pull/17106) | Count images nested in `tool_result` blocks when estimating API-gateway token usage, so multimodal tool results are no longer under-counted |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16358](https://github.com/CherryHQ/cherry-studio/pull/16358) | Drop Ideogram `data[]` items without a usable URL in the aihubmix path instead of rendering broken images |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16361](https://github.com/CherryHQ/cherry-studio/pull/16361) | Resolve the .d.ts icon for uppercase extensions |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16217](https://github.com/CherryHQ/cherry-studio/pull/16217) | Roll relative time up at the unit boundary |
+
+</details>
+<details>
 <summary>All 2 merged GitHub MCP Server PRs</summary>
 
 | Project | PR | What I Fixed |
@@ -573,6 +568,19 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | [#3643](https://github.com/openai/openai-agents-python/pull/3643) | Report the effective Blaxel timeouts instead of the unconfigured defaults |
+
+</details>
+<details>
+<summary>All 6 merged ms-swift PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | Empty `rejected_messages` now fail fast in dataset prep instead of crashing DPO mid-training. |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9816](https://github.com/modelscope/ms-swift/pull/9816) | `swift sample` crashed engine construction when `engine_kwargs` carried `torch_dtype` (the workaround while the flag was ignored); pop it before the splat so the flag always wins |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9789](https://github.com/modelscope/ms-swift/pull/9789) | Refresh wandb in the CUDA test container setup, unbreaking the repo-wide CI an old baked wandb had poisoned against protobuf 7.x |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9750](https://github.com/modelscope/ms-swift/pull/9750) | A 0-fps `get_avg_fps()` on broken video metadata made `range(0, len(vr), 0)` raise before any frame was read in MiniCPM-V / mPLUG-Owl3 sampling; guard the sample step |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | Different-format images collided in the temp image cache; folded mode and size into the key. |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | `_replace_system` was flattening non-string prefix elements, stripping the structured content out of templated system prompts. |
 
 </details>
 <details>
@@ -611,11 +619,20 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 </details>
 <details>
-<summary>All 1 merged Agno PRs</summary>
+<summary>All 1 merged verl PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
-| [Agno](https://github.com/agno-agi/agno) (41.8k★) | [#8131](https://github.com/agno-agi/agno/pull/8131) | Preserve non-sentinel tool argument whitespace while keeping string-to-None/True/False normalization for exact sentinels |
+| [verl](https://github.com/verl-project/verl) (23.1k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | Derived the colocated vLLM weight-sync ZMQ socket rank from the DP and TP ranks, so DP workers stop colliding on one receiver. |
+
+</details>
+<details>
+<summary>All 2 merged TRL PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [TRL](https://github.com/huggingface/trl) (19.1k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | An already-transformed dataset in SFT prep now fails fast, instead of silently producing wrong training batches. |
+| [TRL](https://github.com/huggingface/trl) (19.1k★) | [#6063](https://github.com/huggingface/trl/pull/6063) | Preserve vllm prompt special tokens |
 
 </details>
 <details>
@@ -650,6 +667,24 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 </details>
 <details>
+<summary>All 1 merged Agno PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [Agno](https://github.com/agno-agi/agno) (41.8k★) | [#8131](https://github.com/agno-agi/agno/pull/8131) | Preserve non-sentinel tool argument whitespace while keeping string-to-None/True/False normalization for exact sentinels |
+
+</details>
+<details>
+<summary>All 3 merged RAGFlow PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | Skip empty agent-switch conditions so a blank branch guard can't crash or block valid downstream flows. |
+| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Fall back when Docling native parsing returns no chunks, so a document still produces usable content instead of an empty parse. |
+| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | Keep the strongest PageRank score for repeated n-hop GraphRAG edges, so path order can't overwrite the ranking. |
+
+</details>
+<details>
 <summary>All 7 merged LiveKit Agents PRs</summary>
 
 | Project | PR | What I Fixed |
@@ -677,11 +712,29 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 </details>
 <details>
+<summary>All 2 merged LMCache PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | [#3245](https://github.com/LMCache/LMCache/pull/3245) | Retain producer-side CUDA IPC events across MP store/retrieve so daemon IPC handles don't dereference collected events. |
+| [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | [#3282](https://github.com/LMCache/LMCache/pull/3282) | Handle HND GPU KV layouts in MP KV transfer, which previously mishandled that tensor format. |
+
+</details>
+<details>
 <summary>All 1 merged FastMCP PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.3k★) | [#4297](https://github.com/PrefectHQ/fastmcp/pull/4297) | Keep required discriminator tags when building tool schemas, so union arguments stay valid. |
+
+</details>
+<details>
+<summary>All 2 merged FlashInfer PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) | Fix autotuner crash when input tensor is `None`: proper None-checking for optional inputs (fixes #2749) |
+| [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | [#2772](https://github.com/flashinfer-ai/flashinfer/pull/2772) | Fix compilation error: add missing `<optional>` header for `std::optional` usage in CUTLASS headers |
 
 </details>
 <details>
@@ -692,6 +745,24 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) | Accept `providerExecuted` and `title` on Vercel AI dynamic-tool parts, so strict validation keeps the provider metadata. |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | [#5695](https://github.com/pydantic/pydantic-ai/pull/5695) | Forward penalties in completions |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | [#5694](https://github.com/pydantic/pydantic-ai/pull/5694) | Fix `MCPToolset(http_client=...)` with FastMCP by keeping `follow_redirects` out of caller-provided HTTP client factories |
+
+</details>
+<details>
+<summary>All 11 merged Phoenix PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) | Expire prompt tool diffs on provider change, so PXI prompt editing stops carrying stale tool-change state across providers. |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13210](https://github.com/Arize-ai/phoenix/pull/13210) | Return NotFound-style errors for invalid GraphQL node ids instead of leaking decoder failures to clients |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13245](https://github.com/Arize-ai/phoenix/pull/13245) | Keep the generative model fetch cursor monotonic so lower-id updates cannot make later polling skip newer model changes |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13533](https://github.com/Arize-ai/phoenix/pull/13533) | Clarify empty span-annotation tool input instead of failing opaquely |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13653](https://github.com/Arize-ai/phoenix/pull/13653) | Focus the PXI input when the agent panel opens, so keyboard-first workflows start without an extra click. |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13637](https://github.com/Arize-ai/phoenix/pull/13637) | Wait for in-memory SQLite schema init before serving Phoenix, so a startup race can't hit a missing table. |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13242](https://github.com/Arize-ai/phoenix/pull/13242) | Pass Anthropic computer-use beta headers for raw computer tool definitions in playground streaming and non-streaming calls |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13139](https://github.com/Arize-ai/phoenix/pull/13139) | Surface playground validation errors instead of returning empty subscription payloads |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13636](https://github.com/Arize-ai/phoenix/pull/13636) | Update PXI system prompt guidance to point at the current server-side Jinja templates and capability wiring instead of stale browser-side paths |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13614](https://github.com/Arize-ai/phoenix/pull/13614) | Refresh the prompts table while users stay on the page so newly created or updated prompts appear without a manual reload |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13261](https://github.com/Arize-ai/phoenix/pull/13261) | Refresh span annotation notes after create so the UI shows newly added notes without a manual reload |
 
 </details>
 <details>
@@ -720,11 +791,30 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 </details>
 <details>
+<summary>All 4 merged LightRAG PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) | Extract Docling async markdown from the response envelope so RAG chunks carry clean document text, not JSON/base64 noise. |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#3123](https://github.com/HKUDS/LightRAG/pull/3123) | Sync the API docs colors with the dark theme so endpoint examples stay readable in dark mode. |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#3206](https://github.com/HKUDS/LightRAG/pull/3206) | Honor PostgreSQL `search_path` in table-existence checks so a non-public schema is detected before migration or table creation. |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | Fix `None` file_path propagating as `unknown_source`: fill gaps left by #2793 |
+
+</details>
+<details>
 <summary>All 1 merged Kimi Code PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) | Customize the TUI footer status line via `status_line` config, codex / claude code style |
+
+</details>
+<details>
+<summary>All 1 merged Graphiti PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | [#1531](https://github.com/getzep/graphiti/pull/1531) | Strip embedded NUL bytes from FalkorDB query params, so one malformed document string can't crash a bulk graph write. |
 
 </details>
 <details>
@@ -772,6 +862,42 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 </details>
 <details>
+<summary>All 5 merged Microsoft Recommenders PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2345](https://github.com/recommenders-team/recommenders/pull/2345) | Query GPU memory through PyTorch first with numba as fallback, so GPU discovery doesn't fail when a CUDA context is unavailable. |
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2349](https://github.com/recommenders-team/recommenders/pull/2349) | Query GPU memory with torch first |
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2322](https://github.com/recommenders-team/recommenders/pull/2322) | Honor the benchmark recommendation-count arg so eval scripts actually generate the requested top-k. |
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2351](https://github.com/recommenders-team/recommenders/pull/2351) | Fail fast when TensorFlow GPU is unavailable |
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2350](https://github.com/recommenders-team/recommenders/pull/2350) | Label MAP@k notebook outputs consistently |
+
+</details>
+<details>
+<summary>All 1 merged DB-GPT PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | [#3092](https://github.com/eosphoros-ai/DB-GPT/pull/3092) | Require explicit opt-in before the sandbox executes on the local runtime |
+
+</details>
+<details>
+<summary>All 1 merged Google Gen AI SDK PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | [#2564](https://github.com/googleapis/python-genai/pull/2564) | Keep Live Music API keys out of websocket URLs by relying on request headers instead of duplicating secrets in query strings |
+
+</details>
+<details>
+<summary>All 1 merged yfinance PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | [#2867](https://github.com/ranaroussi/yfinance/pull/2867) | Add a missing comma that was merging two equity-screener EPS fields into one |
+
+</details>
+<details>
 <summary>All 1 merged EvalScope PRs</summary>
 
 | Project | PR | What I Fixed |
@@ -789,141 +915,6 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | [#3225](https://github.com/OpenHands/software-agent-sdk/pull/3225) | Write remote completion logs as UTF-8, so non-ASCII output survives local replay and debugging. |
 
 </details>
-
-#### Applied AI / RAG / observability
-
-| Project | Merged | What the PRs cover | Highlight fixes |
-|---------|:------:|--------------------|-----------------|
-| [dify](https://github.com/langgenius/dify) (153.3k★) | 6 | API robustness: unbounded calls get timeouts, up-front validation, atomic windows | [#39953](https://github.com/langgenius/dify/pull/39953) Bound the TiDB Cloud API calls that had no timeout, so a… |
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | 3 | Self-host scrape paths: interact errors, auth chunk retention, batch dict responses | |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | 7 | Renderer correctness: tree-shaken markdown styles, surrogate-safe truncation, citations | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) Preserve surrogate pairs at truncation boundaries so a mu… |
-| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | 3 | Agent-flow guards, Docling fallback, GraphRAG edge ranking | [#15691](https://github.com/infiniflow/ragflow/pull/15691) Skip empty agent-switch conditions so a blank branch guar… |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | 11 | Observability UI state: prompt-diff expiry, cursor monotonicity, startup races | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) Expire prompt tool diffs on provider change, so PXI promp…<br>[#13210](https://github.com/Arize-ai/phoenix/pull/13210) Return NotFound-style errors for invalid GraphQL node ids…<br>[#13245](https://github.com/Arize-ai/phoenix/pull/13245) Keep the generative model fetch cursor monotonic so lower… |
-| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | 4 | Docling response unpacking, docs dark theme, PostgreSQL search_path detection | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) Extract Docling async markdown from the response envelope… |
-| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | 1 | FalkorDB bulk-write crash on NUL bytes | |
-| [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | 1 | Sandbox execution opt-in | |
-| [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | 1 | Equity-screener EPS field merge | |
-
-<details>
-<summary>All 6 merged dify PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [dify](https://github.com/langgenius/dify) (153.3k★) | [#39953](https://github.com/langgenius/dify/pull/39953) | Bound the TiDB Cloud API calls that had no timeout, so a hanging cluster endpoint can't stall vdb operations forever |
-| [dify](https://github.com/langgenius/dify) (153.3k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | Validate the conversation up front on the service-api and explore endpoints, so a bad `conversation_id` returns 404 instead of streaming into a late failure. |
-| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37425](https://github.com/langgenius/dify/pull/37425) | Bound OperationService billing requests so a slow billing endpoint can't hang the request. |
-| [dify](https://github.com/langgenius/dify) (153.3k★) | [#39479](https://github.com/langgenius/dify/pull/39479) | Make the 10-minute email IP first-strike window actually take effect: claim the slot atomically with SET NX instead of a racy GET-then-SETEX |
-| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | Keep watercrawl request timeouts bounded instead of disabling them with `timeout=None` |
-| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | Skip empty tool entries in legacy dataset config extraction |
-
-</details>
-<details>
-<summary>All 3 merged Firecrawl PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) | Reject self-hosted scrape interact actions with a clear error instead of failing opaquely |
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | Keep the auth chunk in the self-host bypass path so authenticated self-hosted scrapes don't get dropped. |
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3713](https://github.com/firecrawl/firecrawl/pull/3713) | Handle the async v1 batch-scrape response returned as a dict in the Python SDK |
-
-</details>
-<details>
-<summary>All 7 merged cherry-studio PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#18711](https://github.com/CherryHQ/cherry-studio/pull/18711) | Keep formula copy working in release builds: the markdown styles entry was tree-shaken out of the production bundle, taking KaTeX's copy listener with it. |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) | Preserve surrogate pairs at truncation boundaries so a multi-byte character isn't split into invalid halves. |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16454](https://github.com/CherryHQ/cherry-studio/pull/16454) | Keep bare-URL markdown reference lines in citations instead of dropping them |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#17106](https://github.com/CherryHQ/cherry-studio/pull/17106) | Count images nested in `tool_result` blocks when estimating API-gateway token usage, so multimodal tool results are no longer under-counted |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16358](https://github.com/CherryHQ/cherry-studio/pull/16358) | Drop Ideogram `data[]` items without a usable URL in the aihubmix path instead of rendering broken images |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16361](https://github.com/CherryHQ/cherry-studio/pull/16361) | Resolve the .d.ts icon for uppercase extensions |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16217](https://github.com/CherryHQ/cherry-studio/pull/16217) | Roll relative time up at the unit boundary |
-
-</details>
-<details>
-<summary>All 3 merged RAGFlow PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | Skip empty agent-switch conditions so a blank branch guard can't crash or block valid downstream flows. |
-| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Fall back when Docling native parsing returns no chunks, so a document still produces usable content instead of an empty parse. |
-| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | Keep the strongest PageRank score for repeated n-hop GraphRAG edges, so path order can't overwrite the ranking. |
-
-</details>
-<details>
-<summary>All 11 merged Phoenix PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) | Expire prompt tool diffs on provider change, so PXI prompt editing stops carrying stale tool-change state across providers. |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13210](https://github.com/Arize-ai/phoenix/pull/13210) | Return NotFound-style errors for invalid GraphQL node ids instead of leaking decoder failures to clients |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13245](https://github.com/Arize-ai/phoenix/pull/13245) | Keep the generative model fetch cursor monotonic so lower-id updates cannot make later polling skip newer model changes |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13533](https://github.com/Arize-ai/phoenix/pull/13533) | Clarify empty span-annotation tool input instead of failing opaquely |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13653](https://github.com/Arize-ai/phoenix/pull/13653) | Focus the PXI input when the agent panel opens, so keyboard-first workflows start without an extra click. |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13637](https://github.com/Arize-ai/phoenix/pull/13637) | Wait for in-memory SQLite schema init before serving Phoenix, so a startup race can't hit a missing table. |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13242](https://github.com/Arize-ai/phoenix/pull/13242) | Pass Anthropic computer-use beta headers for raw computer tool definitions in playground streaming and non-streaming calls |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13139](https://github.com/Arize-ai/phoenix/pull/13139) | Surface playground validation errors instead of returning empty subscription payloads |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13636](https://github.com/Arize-ai/phoenix/pull/13636) | Update PXI system prompt guidance to point at the current server-side Jinja templates and capability wiring instead of stale browser-side paths |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13614](https://github.com/Arize-ai/phoenix/pull/13614) | Refresh the prompts table while users stay on the page so newly created or updated prompts appear without a manual reload |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13261](https://github.com/Arize-ai/phoenix/pull/13261) | Refresh span annotation notes after create so the UI shows newly added notes without a manual reload |
-
-</details>
-<details>
-<summary>All 4 merged LightRAG PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) | Extract Docling async markdown from the response envelope so RAG chunks carry clean document text, not JSON/base64 noise. |
-| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#3123](https://github.com/HKUDS/LightRAG/pull/3123) | Sync the API docs colors with the dark theme so endpoint examples stay readable in dark mode. |
-| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#3206](https://github.com/HKUDS/LightRAG/pull/3206) | Honor PostgreSQL `search_path` in table-existence checks so a non-public schema is detected before migration or table creation. |
-| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | Fix `None` file_path propagating as `unknown_source`: fill gaps left by #2793 |
-
-</details>
-<details>
-<summary>All 1 merged Graphiti PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | [#1531](https://github.com/getzep/graphiti/pull/1531) | Strip embedded NUL bytes from FalkorDB query params, so one malformed document string can't crash a bulk graph write. |
-
-</details>
-<details>
-<summary>All 1 merged DB-GPT PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | [#3092](https://github.com/eosphoros-ai/DB-GPT/pull/3092) | Require explicit opt-in before the sandbox executes on the local runtime |
-
-</details>
-<details>
-<summary>All 1 merged yfinance PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | [#2867](https://github.com/ranaroussi/yfinance/pull/2867) | Add a missing comma that was merging two equity-screener EPS fields into one |
-
-</details>
-
-#### Recommender systems
-
-| Project | Merged | What the PRs cover | Highlight fixes |
-|---------|:------:|--------------------|-----------------|
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | 5 | GPU discovery without a CUDA context, benchmark top-k honoring | |
-
-<details>
-<summary>All 5 merged Microsoft Recommenders PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2345](https://github.com/recommenders-team/recommenders/pull/2345) | Query GPU memory through PyTorch first with numba as fallback, so GPU discovery doesn't fail when a CUDA context is unavailable. |
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2349](https://github.com/recommenders-team/recommenders/pull/2349) | Query GPU memory with torch first |
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2322](https://github.com/recommenders-team/recommenders/pull/2322) | Honor the benchmark recommendation-count arg so eval scripts actually generate the requested top-k. |
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2351](https://github.com/recommenders-team/recommenders/pull/2351) | Fail fast when TensorFlow GPU is unavailable |
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2350](https://github.com/recommenders-team/recommenders/pull/2350) | Label MAP@k notebook outputs consistently |
-
-</details>
-
 
 <p align="center">
   <samp>
@@ -994,240 +985,77 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 ### 开源贡献
 
-#### AI infra / 模型系统
+上游 57 个项目共 377 个 PR 已 merged。展示分高的项目直接列，其余收进折叠。
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | 36 | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：cudaMalloc → cuMemCreate(FABRIC) + cu…<br>[#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) rpc_meta 内容没变时重复发布保持幂等，真正改了值才拒绝。<br>[#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) HA 模式下 WaitForViewChange 每次迭代都新建一个 etcd watch，改成每轮等待只建一次，… |
-| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | 12 | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API 的 instructions 顺着 previous_response_id 链泄漏到…<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call 参数先按 JSON 解析，null/false 这类 literal 在流…<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa 的 position_ids 原地累积串进了 CUDA graph 的 padding，BGE-M… |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | 8 | 算子与编译器正确性：错设备派发、梯度静默损坏、未初始化内存 | [#188027](https://github.com/pytorch/pytorch/pull/188027) 在 Laguerre / Legendre 多项式的辅助函数里初始化 r，避免边界路径返回未初始化内存（PR 显示…<br>[#186779](https://github.com/pytorch/pytorch/pull/186779) 不支持的 batch norm 三阶导改为显式报错，不再静默返回错误梯度（PR 显示 Closed，经 pytor…<br>[#188229](https://github.com/pytorch/pytorch/pull/188229) avg_pool3d backward 在超过 INT_MAX 元素的输入上静默算错梯度：atomic scatt… |
-| [Transformers](https://github.com/huggingface/transformers) (164.3k★) | 1 | AutoProcessor 丢失 hub 参数透传 | |
-| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | 2 | 后端崩溃修复：混合注意力撞投机解码、diffusers 序列化 | |
-| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | 1 | 监控接线：特征值记录从未落日志 | |
-| [Triton](https://github.com/triton-lang/triton) (19.9k★) | 4 | 编译器语义：fp8 算术提升、top_k 边界、AxisInfo 正确性 | |
-| [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | 1 | 代理日志：INFO 输出丢失 verbose logger 来源 | |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | 6 | 训练准备与采样健壮性：DPO 崩溃、0 fps 视频、CI 修复 | [#9642](https://github.com/modelscope/ms-swift/pull/9642) DPO 数据准备阶段遇到空 rejected_messages 直接快速失败，不用等训练跑到一半才崩。<br>[#9816](https://github.com/modelscope/ms-swift/pull/9816) --torch_dtype 失效期间用户只能靠 engine_kwargs 传 dtype，flag 修好后两边撞…<br>[#9750](https://github.com/modelscope/ms-swift/pull/9750) 视频元数据损坏时 get_avg_fps() 返回 0，range(0, len(vr), 0) 在读到第一帧前就… |
-| [verl](https://github.com/verl-project/verl) (23.1k★) | 1 | colocated 权重同步的 DP/TP rank 推导 | |
-| [TRL](https://github.com/huggingface/trl) (19.1k★) | 2 | 数据准备快速失败与 vLLM 特殊 token 保留 | |
-| [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | 2 | 跨进程 KV 传输：CUDA IPC 事件生命周期、HND 布局处理 | |
-| [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | 2 | autotuner 空输入崩溃与 CUTLASS 头文件编译修复 | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) 修复 autotuner 在输入 tensor 为 None 时崩溃（fixes #2749） |
-| [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | 1 | 密钥卫生：websocket URL 不再带 secret | [#2564](https://github.com/googleapis/python-genai/pull/2564) 让 Live Music API key 不再进入 websocket URL query，改由请求 header… |
-
-<details>
-<summary>全部 36 个已合并的 Mooncake PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) | HA 模式下 WaitForViewChange 每次迭代都新建一个 etcd watch，改成每轮等待只建一次，堵住稳态 watch goroutine 泄漏 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | `rpc_meta` 内容没变时重复发布保持幂等，真正改了值才拒绝。 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang：跳过 fabric 连接节点的冗余握手 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#3054](https://github.com/kvcache-ai/Mooncake/pull/3054) | 恢复 wheel 多 buffer payload 的 zero-copy put，刚合入的重构把它退化成了拷贝，双提交复现后修复 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | 新增 `ObjectDataType` 元数据分类：KV cache、weights、tensors 等对象类型可在 metadata、snapshot 和 Python binding 中稳定传递 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin 驱逐保护：模型权重永不被驱逐，const 字段 + BatchEvict 跳过 + 向后兼容序列化 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2570](https://github.com/kvcache-ai/Mooncake/pull/2570) | 修复 `BatchOffload` 处理 >4 GiB 对象时的整数溢出：用 `uint64_t` 累加各 slice 大小，并拒绝超过 `uint32_t` 记录 `value_len` 的对象，而不是静默截断 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#3545](https://github.com/kvcache-ai/Mooncake/pull/3545) | 修复 Store 命中晋升路径的投递饥饿与重试丢失：晋升按最近读取优先投递，瞬时执行失败在有界重试预算内重录候选 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#3146](https://github.com/kvcache-ai/Mooncake/pull/3146) | 修设备选择失败路径上 UB/Barex slice 的双重释放：已入队的 slice 被塞回缓存，而所有权还在 TransferTask 手里（#3125 RDMA 修复的 sibling） |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#3278](https://github.com/kvcache-ai/Mooncake/pull/3278) | 优雅关闭 watcher 线程屏蔽 SIGTERM/SIGINT：进程级信号落在 watcher 上会挂起唯一的管道读者，关闭流程永久挂死 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2965](https://github.com/kvcache-ai/Mooncake/pull/2965) | `registerLocalMemory` 在后续 transport 注册失败时回滚前面已注册的 transport，避免泄漏 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2628](https://github.com/kvcache-ai/Mooncake/pull/2628) | 修复 `CopyEnd`/`MoveEnd` 在 source 非法时的 source 引用计数泄漏 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#1825](https://github.com/kvcache-ai/Mooncake/pull/1825) | 修复 `P2PClientService::Put` 静默吞掉写入错误：传播实际错误码给调用方 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2500](https://github.com/kvcache-ai/Mooncake/pull/2500) | 单 key remove 重试成功后，不再把整个 bundle cleanup 判为失败 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#1831](https://github.com/kvcache-ai/Mooncake/pull/1831) | TENT NVLink IPC 修复：sub-allocated GPU tensor 使用 base pointer，将 #1622 修复移植到 TENT 路径 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2610](https://github.com/kvcache-ai/Mooncake/pull/2610) | 重构时漏掉了 `RdmaTransport::submitTransfer` 里每个 task 的 `request` 指针赋值，下游全拿到 null，status、重试、计费回读全废。追回来补上了这个关联。 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2955](https://github.com/kvcache-ai/Mooncake/pull/2955) | 无 GPU 主机跳过 CUDA 指针探测，TransferEngine 初始化不再因此失败（探测结果本就只用于打日志） |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2942](https://github.com/kvcache-ai/Mooncake/pull/2942) | HTTP 元数据服务器 `start()` 丢弃了 `async_start()` 的 future，bind 失败（如端口被占）在 C++ 侧完全不可见、`poll()` 永远报健康；改为检查 future 错误码 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2506](https://github.com/kvcache-ai/Mooncake/pull/2506) | `from_file` 里把 `enable_ssd_offload` 的字符串布尔值正确解析 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2927](https://github.com/kvcache-ai/Mooncake/pull/2927) | snapshot 恢复丢了 `ssd_total_capacity_bytes`，SSD 总容量在 metrics 里变 `0 B`，要等 client 重跑 `FileStorage::Init` 才恢复；把该字段随 segment 一起序列化 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2629](https://github.com/kvcache-ai/Mooncake/pull/2629) | `MC_MS_AUTO_DISC` 值非法时不再中断 client 初始化 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2460](https://github.com/kvcache-ai/Mooncake/pull/2460) | 依赖安装脚本支持 EulerOS |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | 清掉失败的 io_uring sub-batch 初始化状态，别让半成品 transfer batch 把坏状态带进后续 setup。 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2651](https://github.com/kvcache-ai/Mooncake/pull/2651) | Init 遇到非数字命名的 bucket 文件时跳过，而不是直接 abort |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#3064](https://github.com/kvcache-ai/Mooncake/pull/3064) | 删掉 NVMe-oF 文档示例里没有任何实际作用的 `enable_mooncake_nof_pool` 配置项，别让用户照抄一个假开关 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2617](https://github.com/kvcache-ai/Mooncake/pull/2617) | 在 EFA/鲲鹏 `submitTransfer` 里补回 `task.request` 关联（与 RDMA 路径同类漏赋值） |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2602](https://github.com/kvcache-ai/Mooncake/pull/2602) | `handle_exist` 里 `is_exist` 报错时返回 HTTP 500，而不是当成“不存在” |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2402](https://github.com/kvcache-ai/Mooncake/pull/2402) | Python buddy allocator backing buffer 分配失败时直接拒绝，避免把 null raw buffer 放进 managed slab |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2641](https://github.com/kvcache-ai/Mooncake/pull/2641) | 给 `MC_TCP_SLICE_SIZE` 解析裹上 `std::stoull` 异常守卫，非法值不再抛未捕获异常 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2606](https://github.com/kvcache-ai/Mooncake/pull/2606) | 为节点内 NVLink 构建补上 `cudaStreamQuery` 映射 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2619](https://github.com/kvcache-ai/Mooncake/pull/2619) | 修复 EFA smaps page-size 解析里 signed char 传 `isxdigit` 的 UB（#2504 的后续） |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2962](https://github.com/kvcache-ai/Mooncake/pull/2962) | 单个 unregisterLocalMemory 改 best-effort，teardown 不再必须精确追踪注册状态 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#2627](https://github.com/kvcache-ai/Mooncake/pull/2627) | 给 `UrmaContext` 析构里的 `endpoint_store_` 加空指针守卫，避免析构时崩溃 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#3266](https://github.com/kvcache-ai/Mooncake/pull/3266) | PutStartExpiringTest 不再断言完马上检查，改成轮询等异步驱逐落位，消掉 CI 间歇性红 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | [#1626](https://github.com/kvcache-ai/Mooncake/pull/1626) | 修复非内存副本的错误日志刷屏 |
-
-</details>
-<details>
-<summary>全部 12 个已合并的 vLLM PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。 |
-| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
-| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。 |
-| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#46175](https://github.com/vllm-project/vllm/pull/46175) | Completion API 接受 `logprobs=-1`：按 OpenAI 语义发 -1 取全量对数概率的客户端不再吃 400。 |
-| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | 修复 bench_serve 流式响应拆分多字节 UTF-8 字符导致 decode 崩溃 |
-| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | 修复 base64 JPEG 视频帧返回空 metadata：补充帧数、fps、时长 |
-| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | 修复 weight offloading 忽略 `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` 环境变量 |
-| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | 让 V1 ubatch wrapper 认得 tuple model outputs，解开 DBO 和投机解码在 tuple 返回值上的崩溃。 |
-| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | 保护 flash-attn rotary 导入路径，让 FA4 环境缺少 `flash_attn.ops.triton.rotary` 时稳定回退而不是构造 rotary 层时崩溃 |
-| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | 给 DeepSeek V4 MTP projection layers 补 prefix，让 compressed-tensors 加载 draft model 时能匹配 artifact 侧 target / ignore 规则 |
-| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#49996](https://github.com/vllm-project/vllm/pull/49996) | 结构化输出：string schema 混用 `pattern`/`format` 与长度界定时在校验期直接回 400，此前 xgrammar 会把长度界定静默丢出语法 |
-| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#45807](https://github.com/vllm-project/vllm/pull/45807) | Anthropic 兼容流式在 stop_sequence 真正命中时回填 stop_reason，客户端不再靠猜 |
-
-</details>
-<details>
-<summary>全部 8 个已合并的 PyTorch PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | 让 CuTeDSL 的 topk override 守住非当前 CUDA 设备，避免把工作分发到错误设备（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#186779](https://github.com/pytorch/pytorch/pull/186779) | 不支持的 batch norm 三阶导改为显式报错，不再静默返回错误梯度（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188027](https://github.com/pytorch/pytorch/pull/188027) | 在 Laguerre / Legendre 多项式的辅助函数里初始化 `r`，避免边界路径返回未初始化内存（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188229](https://github.com/pytorch/pytorch/pull/188229) | `avg_pool3d` backward 在超过 `INT_MAX` 元素的输入上静默算错梯度：atomic scatter kernel 用 32 位 `int` 算偏移和边界，改成 64 位索引（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | 修复 `stale_issues` workflow 的 `parse_older_than` 在非闰年崩溃：朴素的 2 月 29 日偏移会抛 `ValueError`（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | 修复 Inductor codegen 中用户自定义 Triton kernel 的名称修饰，避免不同 kernel 在生成代码里命名冲突（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187860](https://github.com/pytorch/pytorch/pull/187860) | 把 `meta__transformer_encoder_layer_fwd` 里对空 `src` 的检查改走 `guard_or_false`，让 `torch.compile` 下 unbacked 符号 `numel` 不再抛数据依赖错误（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | 移除过时的 `setuptools` 版本上限，让构建解析到当前工具链而不是被钉在旧版本（PR 显示 Closed，经 pytorchmergebot 合入） |
-
-</details>
-<details>
-<summary>全部 1 个已合并的 Transformers PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [Transformers](https://github.com/huggingface/transformers) (164.3k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | `AutoProcessor.from_pretrained` 静默丢掉了 `revision`、`token` 这些 hub kwargs。 |
-
-</details>
-<details>
-<summary>全部 2 个已合并的 SGLang PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | 修复 hybrid_linear_attn_backend 与 ngram 投机采样同时使用时崩溃 |
-| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#21472](https://github.com/sgl-project/sglang/pull/21472) | 修复 `--backend diffusers` 在非 T2I 模型上的 `PicklingError` |
-
-</details>
-<details>
-<summary>全部 1 个已合并的 DeepSpeed PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | eigenvalue monitor 的值算了却没写日志，接上后才真正落进记录。 |
-
-</details>
-<details>
-<summary>全部 4 个已合并的 Triton PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10883](https://github.com/triton-lang/triton/pull/10883) | 除法和取模先把 fp8 操作数提升精度再算，不再直接按 fp8 精度求值（BC breaking） |
-| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10689](https://github.com/triton-lang/triton/pull/10689) | 分数 `top_k` 向下取整为 0 时至少保留一个 config |
-| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10687](https://github.com/triton-lang/triton/pull/10687) | `is_power_of_two(0)` 误返回了 True。 |
-| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | 修复 AxisInfo 正确性：有符号常量、未知 shift 和 shift UB 都保守处理 |
-
-</details>
-<details>
-<summary>全部 1 个已合并的 LiteLLM PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | [#26401](https://github.com/BerriAI/litellm/pull/26401) | 修复 `LITELLM_LOG=INFO` 漏设 `verbose_logger`：proxy INFO 日志不再静默丢失 |
-
-</details>
-<details>
-<summary>全部 6 个已合并的 ms-swift PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | DPO 数据准备阶段遇到空 `rejected_messages` 直接快速失败，不用等训练跑到一半才崩。 |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9816](https://github.com/modelscope/ms-swift/pull/9816) | `--torch_dtype` 失效期间用户只能靠 engine_kwargs 传 dtype，flag 修好后两边撞参数直接 TypeError；splat 前 pop 掉并让 flag 恒赢 |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9789](https://github.com/modelscope/ms-swift/pull/9789) | CUDA 测试容器里升级老 wandb，其旧 pb2 与 protobuf 7.x 相冲曾致全仓 CI 红 |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9750](https://github.com/modelscope/ms-swift/pull/9750) | 视频元数据损坏时 `get_avg_fps()` 返回 0，`range(0, len(vr), 0)` 在读到第一帧前就抛 ValueError；给 MiniCPM-V / mPLUG-Owl3 的采样步长加守卫 |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | 不同格式的图片在临时缓存里撞了键，把 mode 和 size 也纳入 key 才分开。 |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | `_replace_system` 把非字符串的 prefix 元素压平了，模板化 system prompt 的结构化内容被抹掉。 |
-
-</details>
-<details>
-<summary>全部 1 个已合并的 verl PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [verl](https://github.com/verl-project/verl) (23.1k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | 按 DP 和 TP rank 算 colocated vLLM 权重同步的 ZMQ socket rank，多个 DP worker 不再挤到同一个 receiver。 |
-
-</details>
-<details>
-<summary>全部 2 个已合并的 TRL PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [TRL](https://github.com/huggingface/trl) (19.1k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | SFT 准备阶段遇到已经转换过的数据集直接报错，别静默产出错的训练 batch。 |
-| [TRL](https://github.com/huggingface/trl) (19.1k★) | [#6063](https://github.com/huggingface/trl/pull/6063) | 保留 vLLM prompt 的 special tokens |
-
-</details>
-<details>
-<summary>全部 2 个已合并的 LMCache PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | [#3245](https://github.com/LMCache/LMCache/pull/3245) | MP store/retrieve 期间留住 producer 侧的 CUDA IPC event，别让 daemon 拿着已回收的 handle 去恢复。 |
-| [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | [#3282](https://github.com/LMCache/LMCache/pull/3282) | MP KV transfer 处理 HND 这种 GPU KV layout，之前这种排布会被算错。 |
-
-</details>
-<details>
-<summary>全部 2 个已合并的 FlashInfer PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) | 修复 autotuner 在输入 tensor 为 `None` 时崩溃（fixes #2749） |
-| [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | [#2772](https://github.com/flashinfer-ai/flashinfer/pull/2772) | 修复编译错误：CUTLASS 头文件缺少 `<optional>` include 导致 `std::optional` 未定义 |
-
-</details>
-<details>
-<summary>全部 1 个已合并的 Google Gen AI SDK PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | [#2564](https://github.com/googleapis/python-genai/pull/2564) | 让 Live Music API key 不再进入 websocket URL query，改由请求 header 承载，避免密钥出现在日志和代理路径里 |
-
-</details>
-
-#### Agent 框架 / 协议 / 评测
-
-| 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
-|------|:-----:|------------------|-----------------|
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | 53 | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容…<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 /bug、/docs、/insight 的浏览器打开走安全 launcher，headless 环境不再因为直…<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | 30 | 发版资源新鲜度、多模态回复重复、调度器吞异常 | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) 修复 Telegram media group 异常被 APScheduler 静默吞掉：try/except +… |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | 12 | 组合分析与监视器判定流水线；实盘 fail-closed 门禁 | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) Portfolio Studio 首刀「组合风险透视」：纯计算核心（集中度/波动/回撤/VaR/分散度/相关性）加…<br>[#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) 定时监视器的每轮 verdict 以结构化记录持久化在 job 上并随列表接口内联下发，Market Watch…<br>[#1156](https://github.com/HKUDS/Vibe-Trading/pull/1156) 补齐 Market Watch 的定时监视器 verdict 展示：一次列表查询直接显示最新标的状态、相对上轮变化… |
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | 6 | 会话存储失败即关的清扫、鉴权失败可见性、代理对安全文本 | [#119127](https://github.com/openclaw/openclaw/pull/119127) 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fa… |
-| [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | 15 | 并发与 checkpoint 正确性：建线程竞态、会话池生命周期、fork 恢复 | [#4429](https://github.com/bytedance/deer-flow/pull/4429) fork 恢复的检查点把 sandbox channel 以 langgraph Overwrite 包装态送达，…<br>[#3800](https://github.com/bytedance/deer-flow/pull/3800) 让 create_thread 在并发 insert 输掉竞争时保持幂等，避免一个聊天产生重复 thread。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | 53 | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | 36 | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信<br>[#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) `rpc_meta` 内容没变时重复发布保持幂等，真正改了值才拒绝。<br>[#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) HA 模式下 WaitForViewChange 每次迭代都新建一个 etcd watch，改成每轮等待只建一次，堵住稳态 watch goroutine 泄漏 |
+| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | 12 | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | 30 | 发版资源新鲜度、多模态回复重复、调度器吞异常 | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) 修复 Telegram media group 异常被 APScheduler 静默吞掉：try/except + EVENT_JOB_ERROR listener |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | 12 | 组合分析与监视器判定流水线；实盘 fail-closed 门禁 | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) Portfolio Studio 首刀「组合风险透视」：纯计算核心（集中度/波动/回撤/VaR/分散度/相关性）加走 loader fallback 链取数的 agent 工具<br>[#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) 定时监视器的每轮 verdict 以结构化记录持久化在 job 上并随列表接口内联下发，Market Watch 一次查询就能渲染最新判定和环比<br>[#1156](https://github.com/HKUDS/Vibe-Trading/pull/1156) 补齐 Market Watch 的定时监视器 verdict 展示：一次列表查询直接显示最新标的状态、相对上轮变化和记录时间，并为尚无结果或记录损坏提供明确状态 |
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | 6 | 会话存储失败即关的清扫、鉴权失败可见性、代理对安全文本 | [#119127](https://github.com/openclaw/openclaw/pull/119127) 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fail-closed，全域 GC 永不误删用户原件（owner P0 评审后与项目作者共建） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | 8 | 算子与编译器正确性：错设备派发、梯度静默损坏、未初始化内存 | [#188027](https://github.com/pytorch/pytorch/pull/188027) 在 Laguerre / Legendre 多项式的辅助函数里初始化 `r`，避免边界路径返回未初始化内存（PR 显示 Closed，经 pytorchmergebot 合入）<br>[#186779](https://github.com/pytorch/pytorch/pull/186779) 不支持的 batch norm 三阶导改为显式报错，不再静默返回错误梯度（PR 显示 Closed，经 pytorchmergebot 合入）<br>[#188229](https://github.com/pytorch/pytorch/pull/188229) `avg_pool3d` backward 在超过 `INT_MAX` 元素的输入上静默算错梯度：atomic scatter kernel 用 32 位 `int` 算偏移和边界，改成 64 位索引（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | 15 | 并发与 checkpoint 正确性：建线程竞态、会话池生命周期、fork 恢复 | [#4429](https://github.com/bytedance/deer-flow/pull/4429) fork 恢复的检查点把 sandbox channel 以 langgraph `Overwrite` 包装态送达，sync/async 初始化路径和 sibling readers 统一走一个解包 helper<br>[#3800](https://github.com/bytedance/deer-flow/pull/3800) 让 `create_thread` 在并发 insert 输掉竞争时保持幂等，避免一个聊天产生重复 thread。 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | 28 | agent 循环边界：消息 role 原地改泄漏、每轮钩子、阻塞工具 | [#7289](https://github.com/microsoft/agent-framework/pull/7289) turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) handoff 原地改了 message 的 role，重试复用时把改动泄漏出去了，改成复用消毒过的副本。<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) 把同步的 Python 工具挪出事件循环跑，阻塞型调用不再冻住并发的 agent 任务。 |
-| [opencode](https://github.com/anomalyco/opencode) (200.9k★) | 1 | MCP OAuth 回调绑定 IPv4 loopback | |
-| [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | 1 | 设置持久化：保留自定义 LLM base URL | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) 编辑 basic model 设置时保留自定义的 LLM base URL，存下来的 profile 不再静默回退… |
-| [Cline](https://github.com/cline/cline) (66.7k★) | 1 | open-tabs 宿主 RPC 挂掉时文件搜索仍可用 | |
-| [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | 9 | 团队运行权限继承、Windows 子进程窗口、skill 来源 | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) team run 里继承 leader 的权限规则，delegated agent 守着和 leader 一样的…<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Windows 上启动 Bash tool 子进程时使用 CREATE_NO_WINDOW，避免工具执行弹出控制台… |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (24.5k★) | 13 | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) 空 token 输入的 GLEU 评分返回 0 分，不再报错<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) 读取 Azure logprobs 时空 choices 数组不再崩溃 |
-| [goose](https://github.com/aaif-goose/goose) (53.3k★) | 3 | 遥测导出可靠性、skill 路径展示、桌面快捷键 | |
-| [GitHub MCP Server](https://github.com/github/github-mcp-server) (32.4k★) | 2 | team reviewer 解析与只读面卫生 | |
-| [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | 1 | 上报生效中的 Blaxel 超时而非默认值 | |
-| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (15.5k★) | 10 | ADK 会话缓存与文本到工具调用的过渡顺序 | [#1890](https://github.com/ag-ui-protocol/ag-ui/pull/1890) 在一次 ADK execution 内缓存 session 读取，远端 session service 不用在每次… |
-| [Google ADK](https://github.com/google/adk-python) (21.2k★) | 1 | 评判标准纳入中间响应 | |
-| [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | 3 | 记忆存储后端：S3 Vectors 索引命名、Qdrant https 选项 | |
-| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | 24 | 评测日志与 provider 解析：reasoning 块、流式写盘、无头环境崩溃 | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) 修复 OpenAI-compatible 响应里的 OpenRouter reasoning_details：解析…<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandb…<br>[#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) macOS 分支无守卫 import AppKit 并解引用 NSScreen，没装 pyobjc 时 headf… |
-| [Agno](https://github.com/agno-agi/agno) (41.8k★) | 1 | 工具参数空白保留与哨兵值归一化 | |
-| [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | 7 | 实时语音链路：流式重试重建、provider 状态解析、STT 错误透出 | |
-| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.2k★) | 6 | SSE writer panic、Looker 入参校验、参数错误报告 | [#3531](https://github.com/googleapis/mcp-toolbox/pull/3531) 校验 Looker explore_references 的结构，非法输入不再 panic<br>[#3520](https://github.com/googleapis/mcp-toolbox/pull/3520) SSE handler 遇到不支持 http.Flusher 的 writer 时渲染 500 却没 return… |
-| [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.3k★) | 1 | schema 构建保留必需的 union 判别标签 | |
-| [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | 3 | Vercel AI 动态工具部件接纳、completions penalty 透传 | |
-| [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.9k★) | 9 | OpenAI 非流式支持、Gemini 安全元数据、vLLM reasoning 块 | |
-| [Pipecat](https://github.com/pipecat-ai/pipecat) (14.6k★) | 2 | 实时语音：DTMF 缓存键、打断帧序列化 | |
-| [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | 1 | TUI 底部状态栏自定义 | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) 通过 status_line 配置自定义 TUI 底部状态栏（仿 codex / claude code 的 fo… |
-| [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | 1 | TUI tab 补全修复 | |
-| [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | 1 | Anthropic stop 序列校验 | |
+| [opencode](https://github.com/anomalyco/opencode) (200.9k★) | 1 | MCP OAuth 回调绑定 IPv4 loopback |  |
+| [dify](https://github.com/langgenius/dify) (153.3k★) | 6 | API 健壮性：无超时调用加边界、前置校验、原子窗口 | [#39953](https://github.com/langgenius/dify/pull/39953) 给没有超时的 TiDB Cloud API 调用补上有界超时，集群端点挂起不再无限拖住 vdb 操作 |
+| [Transformers](https://github.com/huggingface/transformers) (164.3k★) | 1 | AutoProcessor 丢失 hub 参数透传 |  |
+| [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | 1 | 设置持久化：保留自定义 LLM base URL | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) 编辑 basic model 设置时保留自定义的 LLM base URL，存下来的 profile 不再静默回退到 provider 默认 endpoint。 |
+
+<details>
+<summary>更多项目（44 个仓库，168 个已合并 PR）</summary>
+
+| 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
+|------|:-----:|------------------|-----------------|
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | 3 | 自托管抓取链路：interact 报错、auth 块保留、批量 dict 响应 |  |
+| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | 2 | 后端崩溃修复：混合注意力撞投机解码、diffusers 序列化 |  |
+| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | 1 | 监控接线：特征值记录从未落日志 |  |
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | 4 | 编译器语义：fp8 算术提升、top_k 边界、AxisInfo 正确性 |  |
+| [Cline](https://github.com/cline/cline) (66.7k★) | 1 | open-tabs 宿主 RPC 挂掉时文件搜索仍可用 |  |
+| [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | 9 | 团队运行权限继承、Windows 子进程窗口、skill 来源 | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) team run 里继承 leader 的权限规则，delegated agent 守着和 leader 一样的 workspace、文件访问约束。<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
+| [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | 1 | 代理日志：INFO 输出丢失 verbose logger 来源 |  |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (24.5k★) | 13 | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) 空 token 输入的 GLEU 评分返回 0 分，不再报错<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
+| [goose](https://github.com/aaif-goose/goose) (53.3k★) | 3 | 遥测导出可靠性、skill 路径展示、桌面快捷键 |  |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | 7 | 渲染正确性：markdown 样式被 tree-shake、代理对安全截断、引用行 | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) 在截断边界保住 surrogate pair，多字节字符不会被切成半个非法字符。 |
+| [GitHub MCP Server](https://github.com/github/github-mcp-server) (32.4k★) | 2 | team reviewer 解析与只读面卫生 |  |
+| [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | 1 | 上报生效中的 Blaxel 超时而非默认值 |  |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | 6 | 训练准备与采样健壮性：DPO 崩溃、0 fps 视频、CI 修复 | [#9642](https://github.com/modelscope/ms-swift/pull/9642) DPO 数据准备阶段遇到空 `rejected_messages` 直接快速失败，不用等训练跑到一半才崩。<br>[#9816](https://github.com/modelscope/ms-swift/pull/9816) `--torch_dtype` 失效期间用户只能靠 engine_kwargs 传 dtype，flag 修好后两边撞参数直接 TypeError；splat 前 pop 掉并让 flag 恒赢<br>[#9750](https://github.com/modelscope/ms-swift/pull/9750) 视频元数据损坏时 `get_avg_fps()` 返回 0，`range(0, len(vr), 0)` 在读到第一帧前就抛 ValueError；给 MiniCPM-V / mPLUG-Owl3 的采样步长加守卫 |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (15.5k★) | 10 | ADK 会话缓存与文本到工具调用的过渡顺序 | [#1890](https://github.com/ag-ui-protocol/ag-ui/pull/1890) 在一次 ADK execution 内缓存 session 读取，远端 session service 不用在每次 agent 运行前重复拉一遍。 |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | 1 | 评判标准纳入中间响应 |  |
+| [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | 3 | 记忆存储后端：S3 Vectors 索引命名、Qdrant https 选项 |  |
+| [verl](https://github.com/verl-project/verl) (23.1k★) | 1 | colocated 权重同步的 DP/TP rank 推导 |  |
+| [TRL](https://github.com/huggingface/trl) (19.1k★) | 2 | 数据准备快速失败与 vLLM 特殊 token 保留 |  |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | 24 | 评测日志与 provider 解析：reasoning 块、流式写盘、无头环境崩溃 | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) 修复 OpenAI-compatible 响应里的 OpenRouter `reasoning_details`：解析为可读 reasoning 文本，而不是暴露 Python repr<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。<br>[#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) macOS 分支无守卫 import AppKit 并解引用 NSScreen，没装 pyobjc 时 headful 浏览器工具直接崩；回落 scale factor 1 |
+| [Agno](https://github.com/agno-agi/agno) (41.8k★) | 1 | 工具参数空白保留与哨兵值归一化 |  |
+| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | 3 | agent 流守卫、Docling 回退、GraphRAG 边排序 | [#15691](https://github.com/infiniflow/ragflow/pull/15691) 跳过空的 agent switch 条件，空分支判断不会让有效的后续 agent 流程崩掉或卡住。 |
+| [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | 7 | 实时语音链路：流式重试重建、provider 状态解析、STT 错误透出 |  |
+| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.2k★) | 6 | SSE writer panic、Looker 入参校验、参数错误报告 | [#3531](https://github.com/googleapis/mcp-toolbox/pull/3531) 校验 Looker explore_references 的结构，非法输入不再 panic<br>[#3520](https://github.com/googleapis/mcp-toolbox/pull/3520) SSE handler 遇到不支持 http.Flusher 的 writer 时渲染 500 却没 return，nil flusher 在第一次 Flush 直接 panic；现在渲染完就返回 |
+| [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | 2 | 跨进程 KV 传输：CUDA IPC 事件生命周期、HND 布局处理 |  |
+| [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.3k★) | 1 | schema 构建保留必需的 union 判别标签 |  |
+| [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | 2 | autotuner 空输入崩溃与 CUTLASS 头文件编译修复 | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) 修复 autotuner 在输入 tensor 为 `None` 时崩溃（fixes #2749） |
+| [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | 3 | Vercel AI 动态工具部件接纳、completions penalty 透传 |  |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | 11 | 可观测 UI 状态：prompt diff 过期、游标单调性、启动竞态 | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) provider 变化时让 prompt tool diff 过期，PXI 编辑不再把旧的工具差异状态带到别的 provider。<br>[#13210](https://github.com/Arize-ai/phoenix/pull/13210) 修复非法 GraphQL node id 的错误处理：返回 NotFound 风格错误，而不是把 decoder failure 泄漏给客户端<br>[#13245](https://github.com/Arize-ai/phoenix/pull/13245) 修复 generative model fetch 游标回退：低 id 更新不会让后续轮询跳过更新的模型变更 |
+| [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.9k★) | 9 | OpenAI 非流式支持、Gemini 安全元数据、vLLM reasoning 块 |  |
+| [Pipecat](https://github.com/pipecat-ai/pipecat) (14.6k★) | 2 | 实时语音：DTMF 缓存键、打断帧序列化 |  |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | 4 | Docling 响应解包、文档站深色主题、PostgreSQL search_path 探测 | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) 从 Docling 异步结果 envelope 里抽出 Markdown 正文，RAG chunk 拿到干净文本，不混 JSON/base64 噪声。 |
+| [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | 1 | TUI 底部状态栏自定义 | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) 通过 status_line 配置自定义 TUI 底部状态栏（仿 codex / claude code 的 footer 形态） |
+| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | 1 | FalkorDB 批量写入遇 NUL 字节崩溃 |  |
+| [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | 1 | TUI tab 补全修复 |  |
+| [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | 1 | Anthropic stop 序列校验 |  |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | 1 | 发布者元数据校验 | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) 拒绝损坏的 publisher 元数据，而不是接收畸形条目 |
 | [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | 4 | 奠基 PR：测试/CI/模板、可插拔 TaskStore、Gemini CLI 支持 | [#1](https://github.com/HKUDS/ClawTeam/pull/1) 首个 PR：122 个测试、CI、团队模板、config 修复、任务耗时追踪<br>[#40](https://github.com/HKUDS/ClawTeam/pull/40) 可插拔 TaskStore：将任务持久化抽取为可替换的后端抽象层 |
-| [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (5.0k★) | 2 | MCP 协议状态：拒绝重复 initialize、description 元数据 | |
-| [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | 1 | 从内容块提取 SciCode 答案 | |
-| [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | 3 | 并发安全的 LiteLLM 参数、git 工作区校验、UTF-8 日志 | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) 用 RLock 串行化 LiteLLM modify_params 的保存、设置和恢复，避免并发 completi…<br>[#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) 用 git rev-parse --git-dir 校验 git workspace，坏掉的嵌套 repo 打不崩… |
+| [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (5.0k★) | 2 | MCP 协议状态：拒绝重复 initialize、description 元数据 |  |
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | 5 | 无 CUDA 上下文下的 GPU 探测、基准脚本 top-k 生效 |  |
+| [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | 1 | 沙箱执行改为显式开启 |  |
+| [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | 1 | 密钥卫生：websocket URL 不再带 secret | [#2564](https://github.com/googleapis/python-genai/pull/2564) 让 Live Music API key 不再进入 websocket URL query，改由请求 header 承载，避免密钥出现在日志和代理路径里 |
+| [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | 1 | 股票筛选器 EPS 字段粘连 |  |
+| [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | 1 | 从内容块提取 SciCode 答案 |  |
+| [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | 3 | 并发安全的 LiteLLM 参数、git 工作区校验、UTF-8 日志 | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) 用 RLock 串行化 LiteLLM `modify_params` 的保存、设置和恢复，避免并发 completion 泄漏全局参数状态<br>[#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) 用 `git rev-parse --git-dir` 校验 git workspace，坏掉的嵌套 repo 打不崩 `/api/git/changes`。 |
+
+</details>
+
+#### 全量 PR 明细（按项目）
 
 <details>
 <summary>全部 53 个已合并的 Qwen Code PR</summary>
@@ -1290,6 +1118,68 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
+<summary>全部 36 个已合并的 Mooncake PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) | HA 模式下 WaitForViewChange 每次迭代都新建一个 etcd watch，改成每轮等待只建一次，堵住稳态 watch goroutine 泄漏 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | `rpc_meta` 内容没变时重复发布保持幂等，真正改了值才拒绝。 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang：跳过 fabric 连接节点的冗余握手 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#3054](https://github.com/kvcache-ai/Mooncake/pull/3054) | 恢复 wheel 多 buffer payload 的 zero-copy put，刚合入的重构把它退化成了拷贝，双提交复现后修复 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#1719](https://github.com/kvcache-ai/Mooncake/pull/1719) | 新增 `ObjectDataType` 元数据分类：KV cache、weights、tensors 等对象类型可在 metadata、snapshot 和 Python binding 中稳定传递 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#1728](https://github.com/kvcache-ai/Mooncake/pull/1728) | Hard pin 驱逐保护：模型权重永不被驱逐，const 字段 + BatchEvict 跳过 + 向后兼容序列化 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2570](https://github.com/kvcache-ai/Mooncake/pull/2570) | 修复 `BatchOffload` 处理 >4 GiB 对象时的整数溢出：用 `uint64_t` 累加各 slice 大小，并拒绝超过 `uint32_t` 记录 `value_len` 的对象，而不是静默截断 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#3545](https://github.com/kvcache-ai/Mooncake/pull/3545) | 修复 Store 命中晋升路径的投递饥饿与重试丢失：晋升按最近读取优先投递，瞬时执行失败在有界重试预算内重录候选 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#3146](https://github.com/kvcache-ai/Mooncake/pull/3146) | 修设备选择失败路径上 UB/Barex slice 的双重释放：已入队的 slice 被塞回缓存，而所有权还在 TransferTask 手里（#3125 RDMA 修复的 sibling） |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#3278](https://github.com/kvcache-ai/Mooncake/pull/3278) | 优雅关闭 watcher 线程屏蔽 SIGTERM/SIGINT：进程级信号落在 watcher 上会挂起唯一的管道读者，关闭流程永久挂死 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2965](https://github.com/kvcache-ai/Mooncake/pull/2965) | `registerLocalMemory` 在后续 transport 注册失败时回滚前面已注册的 transport，避免泄漏 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2628](https://github.com/kvcache-ai/Mooncake/pull/2628) | 修复 `CopyEnd`/`MoveEnd` 在 source 非法时的 source 引用计数泄漏 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#1825](https://github.com/kvcache-ai/Mooncake/pull/1825) | 修复 `P2PClientService::Put` 静默吞掉写入错误：传播实际错误码给调用方 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2500](https://github.com/kvcache-ai/Mooncake/pull/2500) | 单 key remove 重试成功后，不再把整个 bundle cleanup 判为失败 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#1831](https://github.com/kvcache-ai/Mooncake/pull/1831) | TENT NVLink IPC 修复：sub-allocated GPU tensor 使用 base pointer，将 #1622 修复移植到 TENT 路径 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2610](https://github.com/kvcache-ai/Mooncake/pull/2610) | 重构时漏掉了 `RdmaTransport::submitTransfer` 里每个 task 的 `request` 指针赋值，下游全拿到 null，status、重试、计费回读全废。追回来补上了这个关联。 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2955](https://github.com/kvcache-ai/Mooncake/pull/2955) | 无 GPU 主机跳过 CUDA 指针探测，TransferEngine 初始化不再因此失败（探测结果本就只用于打日志） |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2942](https://github.com/kvcache-ai/Mooncake/pull/2942) | HTTP 元数据服务器 `start()` 丢弃了 `async_start()` 的 future，bind 失败（如端口被占）在 C++ 侧完全不可见、`poll()` 永远报健康；改为检查 future 错误码 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2506](https://github.com/kvcache-ai/Mooncake/pull/2506) | `from_file` 里把 `enable_ssd_offload` 的字符串布尔值正确解析 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2927](https://github.com/kvcache-ai/Mooncake/pull/2927) | snapshot 恢复丢了 `ssd_total_capacity_bytes`，SSD 总容量在 metrics 里变 `0 B`，要等 client 重跑 `FileStorage::Init` 才恢复；把该字段随 segment 一起序列化 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2629](https://github.com/kvcache-ai/Mooncake/pull/2629) | `MC_MS_AUTO_DISC` 值非法时不再中断 client 初始化 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2460](https://github.com/kvcache-ai/Mooncake/pull/2460) | 依赖安装脚本支持 EulerOS |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | 清掉失败的 io_uring sub-batch 初始化状态，别让半成品 transfer batch 把坏状态带进后续 setup。 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2651](https://github.com/kvcache-ai/Mooncake/pull/2651) | Init 遇到非数字命名的 bucket 文件时跳过，而不是直接 abort |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#3064](https://github.com/kvcache-ai/Mooncake/pull/3064) | 删掉 NVMe-oF 文档示例里没有任何实际作用的 `enable_mooncake_nof_pool` 配置项，别让用户照抄一个假开关 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2617](https://github.com/kvcache-ai/Mooncake/pull/2617) | 在 EFA/鲲鹏 `submitTransfer` 里补回 `task.request` 关联（与 RDMA 路径同类漏赋值） |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2602](https://github.com/kvcache-ai/Mooncake/pull/2602) | `handle_exist` 里 `is_exist` 报错时返回 HTTP 500，而不是当成“不存在” |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2402](https://github.com/kvcache-ai/Mooncake/pull/2402) | Python buddy allocator backing buffer 分配失败时直接拒绝，避免把 null raw buffer 放进 managed slab |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2641](https://github.com/kvcache-ai/Mooncake/pull/2641) | 给 `MC_TCP_SLICE_SIZE` 解析裹上 `std::stoull` 异常守卫，非法值不再抛未捕获异常 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2606](https://github.com/kvcache-ai/Mooncake/pull/2606) | 为节点内 NVLink 构建补上 `cudaStreamQuery` 映射 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2619](https://github.com/kvcache-ai/Mooncake/pull/2619) | 修复 EFA smaps page-size 解析里 signed char 传 `isxdigit` 的 UB（#2504 的后续） |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2962](https://github.com/kvcache-ai/Mooncake/pull/2962) | 单个 unregisterLocalMemory 改 best-effort，teardown 不再必须精确追踪注册状态 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2627](https://github.com/kvcache-ai/Mooncake/pull/2627) | 给 `UrmaContext` 析构里的 `endpoint_store_` 加空指针守卫，避免析构时崩溃 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#3266](https://github.com/kvcache-ai/Mooncake/pull/3266) | PutStartExpiringTest 不再断言完马上检查，改成轮询等异步驱逐落位，消掉 CI 间歇性红 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#1626](https://github.com/kvcache-ai/Mooncake/pull/1626) | 修复非内存副本的错误日志刷屏 |
+
+</details>
+<details>
+<summary>全部 12 个已合并的 vLLM PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#37727](https://github.com/vllm-project/vllm/pull/37727) | Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。 |
+| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#37884](https://github.com/vllm-project/vllm/pull/37884) | RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
+| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#43243](https://github.com/vllm-project/vllm/pull/43243) | Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。 |
+| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#46175](https://github.com/vllm-project/vllm/pull/46175) | Completion API 接受 `logprobs=-1`：按 OpenAI 语义发 -1 取全量对数概率的客户端不再吃 400。 |
+| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#38732](https://github.com/vllm-project/vllm/pull/38732) | 修复 bench_serve 流式响应拆分多字节 UTF-8 字符导致 decode 崩溃 |
+| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#37301](https://github.com/vllm-project/vllm/pull/37301) | 修复 base64 JPEG 视频帧返回空 metadata：补充帧数、fps、时长 |
+| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#37699](https://github.com/vllm-project/vllm/pull/37699) | 修复 weight offloading 忽略 `VLLM_WEIGHT_OFFLOADING_DISABLE_PIN_MEMORY` 环境变量 |
+| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#40789](https://github.com/vllm-project/vllm/pull/40789) | 让 V1 ubatch wrapper 认得 tuple model outputs，解开 DBO 和投机解码在 tuple 返回值上的崩溃。 |
+| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#42679](https://github.com/vllm-project/vllm/pull/42679) | 保护 flash-attn rotary 导入路径，让 FA4 环境缺少 `flash_attn.ops.triton.rotary` 时稳定回退而不是构造 rotary 层时崩溃 |
+| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | 给 DeepSeek V4 MTP projection layers 补 prefix，让 compressed-tensors 加载 draft model 时能匹配 artifact 侧 target / ignore 规则 |
+| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#49996](https://github.com/vllm-project/vllm/pull/49996) | 结构化输出：string schema 混用 `pattern`/`format` 与长度界定时在校验期直接回 400，此前 xgrammar 会把长度界定静默丢出语法 |
+| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | [#45807](https://github.com/vllm-project/vllm/pull/45807) | Anthropic 兼容流式在 stop_sequence 真正命中时回填 stop_reason，客户端不再靠猜 |
+
+</details>
+<details>
 <summary>全部 30 个已合并的 AstrBot PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -1327,6 +1217,25 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
+<summary>全部 12 个已合并的 Vibe-Trading PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1156](https://github.com/HKUDS/Vibe-Trading/pull/1156) | 补齐 Market Watch 的定时监视器 verdict 展示：一次列表查询直接显示最新标的状态、相对上轮变化和记录时间，并为尚无结果或记录损坏提供明确状态 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) | 定时监视器的每轮 verdict 以结构化记录持久化在 job 上并随列表接口内联下发，Market Watch 一次查询就能渲染最新判定和环比 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio 首刀「组合风险透视」：纯计算核心（集中度/波动/回撤/VaR/分散度/相关性）加走 loader fallback 链取数的 agent 工具 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1212](https://github.com/HKUDS/Vibe-Trading/pull/1212) | 券商持仓读取返回 API 错误时改为 fail closed：futu/okx connector 显式上抛，不再把读不到的持仓簿当成空仓，实盘委托不再盲过 mandate gate |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1209](https://github.com/HKUDS/Vibe-Trading/pull/1209) | Alpaca 持仓数量按方向带上符号再进 mandate gate，空头持仓按正确方向校验，不再以正数蒙混 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio 第二步：可组合的组合权重约束，能挂到任意优化器上，waterfill 再分配只喂给还没到上限的仓位 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | 把 strict bench 门禁接进 CLI：`alpha bench --strict` 在策略不达标时直接判失败 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#966](https://github.com/HKUDS/Vibe-Trading/pull/966) | 在 run 详情页直接展示 Portfolio Studio 产物（risk x-ray、调仓 notes），跑完即看不用翻文件 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#795](https://github.com/HKUDS/Vibe-Trading/pull/795) | Portfolio Studio 的 rebalance notes：回测器每次调仓产出带指标的 notes 工件，agent 驱动的调仓可审计回看 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#900](https://github.com/HKUDS/Vibe-Trading/pull/900) | 每次回测都会产出 risk x-ray 工件（JSON + Markdown），基于策略的平均持仓计算集中度、波动、回撤和尾部风险，并汇入 run 指标 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#970](https://github.com/HKUDS/Vibe-Trading/pull/970) | yfinance 数据源的加密货币回测改走 CryptoEngine，BTC/ETH 这类标的不再报错 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#984](https://github.com/HKUDS/Vibe-Trading/pull/984) | 层级路由写入的记忆条目补上 .md 扩展名，修复写入即隐形（裸 slug 文件对所有发现路径不可见） |
+
+</details>
+<details>
 <summary>全部 6 个已合并的 OpenClaw PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -1337,6 +1246,21 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | 目录创建失败时向上传递错误，避免 memory `ensureDir` 静默失败后继续执行 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | sandbox-root 越界错误里改用规范的 `shortenHomePath`,报的路径和界面其余部分一致。 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | 工具路径显示里，共享 home 前缀的同级目录不再被误缩写 |
+
+</details>
+<details>
+<summary>全部 8 个已合并的 PyTorch PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | 让 CuTeDSL 的 topk override 守住非当前 CUDA 设备，避免把工作分发到错误设备（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#186779](https://github.com/pytorch/pytorch/pull/186779) | 不支持的 batch norm 三阶导改为显式报错，不再静默返回错误梯度（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188027](https://github.com/pytorch/pytorch/pull/188027) | 在 Laguerre / Legendre 多项式的辅助函数里初始化 `r`，避免边界路径返回未初始化内存（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188229](https://github.com/pytorch/pytorch/pull/188229) | `avg_pool3d` backward 在超过 `INT_MAX` 元素的输入上静默算错梯度：atomic scatter kernel 用 32 位 `int` 算偏移和边界，改成 64 位索引（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | 修复 `stale_issues` workflow 的 `parse_older_than` 在非闰年崩溃：朴素的 2 月 29 日偏移会抛 `ValueError`（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | 修复 Inductor codegen 中用户自定义 Triton kernel 的名称修饰，避免不同 kernel 在生成代码里命名冲突（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187860](https://github.com/pytorch/pytorch/pull/187860) | 把 `meta__transformer_encoder_layer_fwd` 里对空 `src` 的检查改走 `guard_or_false`，让 `torch.compile` 下 unbacked 符号 `numel` 不再抛数据依赖错误（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | 移除过时的 `setuptools` 版本上限，让构建解析到当前工具链而不是被钉在旧版本（PR 显示 Closed，经 pytorchmergebot 合入） |
 
 </details>
 <details>
@@ -1359,25 +1283,6 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | [#3719](https://github.com/bytedance/deer-flow/pull/3719) | `_apply_updates` 跳过纯空白 facts,避免空白记忆条目堆积 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | [#4253](https://github.com/bytedance/deer-flow/pull/4253) | 工具结果里字面的 `</tool_response>` 能提前闭合 MindIE framing、注入尾随文本;转义 tool-response 内容,和同函数里 tool-call name/arg 的转义保持一致。 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | [#3709](https://github.com/bytedance/deer-flow/pull/3709) | 修复同内容 todo 列表耗尽后 positional fallback 误吞不相关 todo |
-
-</details>
-<details>
-<summary>全部 12 个已合并的 Vibe-Trading PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#1156](https://github.com/HKUDS/Vibe-Trading/pull/1156) | 补齐 Market Watch 的定时监视器 verdict 展示：一次列表查询直接显示最新标的状态、相对上轮变化和记录时间，并为尚无结果或记录损坏提供明确状态 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) | 定时监视器的每轮 verdict 以结构化记录持久化在 job 上并随列表接口内联下发，Market Watch 一次查询就能渲染最新判定和环比 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio 首刀「组合风险透视」：纯计算核心（集中度/波动/回撤/VaR/分散度/相关性）加走 loader fallback 链取数的 agent 工具 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#1212](https://github.com/HKUDS/Vibe-Trading/pull/1212) | 券商持仓读取返回 API 错误时改为 fail closed：futu/okx connector 显式上抛，不再把读不到的持仓簿当成空仓，实盘委托不再盲过 mandate gate |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#1209](https://github.com/HKUDS/Vibe-Trading/pull/1209) | Alpaca 持仓数量按方向带上符号再进 mandate gate，空头持仓按正确方向校验，不再以正数蒙混 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio 第二步：可组合的组合权重约束，能挂到任意优化器上，waterfill 再分配只喂给还没到上限的仓位 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | 把 strict bench 门禁接进 CLI：`alpha bench --strict` 在策略不达标时直接判失败 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#966](https://github.com/HKUDS/Vibe-Trading/pull/966) | 在 run 详情页直接展示 Portfolio Studio 产物（risk x-ray、调仓 notes），跑完即看不用翻文件 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#795](https://github.com/HKUDS/Vibe-Trading/pull/795) | Portfolio Studio 的 rebalance notes：回测器每次调仓产出带指标的 notes 工件，agent 驱动的调仓可审计回看 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#900](https://github.com/HKUDS/Vibe-Trading/pull/900) | 每次回测都会产出 risk x-ray 工件（JSON + Markdown），基于策略的平均持仓计算集中度、波动、回撤和尾部风险，并汇入 run 指标 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#970](https://github.com/HKUDS/Vibe-Trading/pull/970) | yfinance 数据源的加密货币回测改走 CryptoEngine，BTC/ETH 这类标的不再报错 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#984](https://github.com/HKUDS/Vibe-Trading/pull/984) | 层级路由写入的记忆条目补上 .md 扩展名，修复写入即隐形（裸 slug 文件对所有发现路径不可见） |
 
 </details>
 <details>
@@ -1424,11 +1329,70 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
+<summary>全部 6 个已合并的 dify PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [dify](https://github.com/langgenius/dify) (153.3k★) | [#39953](https://github.com/langgenius/dify/pull/39953) | 给没有超时的 TiDB Cloud API 调用补上有界超时，集群端点挂起不再无限拖住 vdb 操作 |
+| [dify](https://github.com/langgenius/dify) (153.3k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | 在 service-api 和 explore 端点提前校验 conversation，坏的 `conversation_id` 直接 404，而不是流式跑到后期才失败。 |
+| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37425](https://github.com/langgenius/dify/pull/37425) | 给 OperationService 计费请求加超时，慢计费端点挂不住请求。 |
+| [dify](https://github.com/langgenius/dify) (153.3k★) | [#39479](https://github.com/langgenius/dify/pull/39479) | 邮件限流的 IP 首击窗口真正生效：GET 判空再 SETEX 的竞态改为 SET NX 原子认领 |
+| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | watercrawl 请求超时保持有界,而不是用 `timeout=None` 禁用 |
+| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | legacy dataset 配置提取时跳过空的 tool entry |
+
+</details>
+<details>
+<summary>全部 1 个已合并的 Transformers PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [Transformers](https://github.com/huggingface/transformers) (164.3k★) | [#44710](https://github.com/huggingface/transformers/pull/44710) | `AutoProcessor.from_pretrained` 静默丢掉了 `revision`、`token` 这些 hub kwargs。 |
+
+</details>
+<details>
 <summary>全部 1 个已合并的 OpenHands PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) | 编辑 basic model 设置时保留自定义的 LLM base URL，存下来的 profile 不再静默回退到 provider 默认 endpoint。 |
+
+</details>
+<details>
+<summary>全部 3 个已合并的 Firecrawl PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) | self-host 抓取的 interact 动作明确报错拒绝，而不是隐晦地失败 |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | self-host bypass 路径保留 auth chunk，已认证的 self-host 抓取不再被丢掉。 |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3713](https://github.com/firecrawl/firecrawl/pull/3713) | Python SDK 正确处理 async v1 batch scrape 以 dict 形式返回的响应 |
+
+</details>
+<details>
+<summary>全部 2 个已合并的 SGLang PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | 修复 hybrid_linear_attn_backend 与 ngram 投机采样同时使用时崩溃 |
+| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#21472](https://github.com/sgl-project/sglang/pull/21472) | 修复 `--backend diffusers` 在非 T2I 模型上的 `PicklingError` |
+
+</details>
+<details>
+<summary>全部 1 个已合并的 DeepSpeed PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | eigenvalue monitor 的值算了却没写日志，接上后才真正落进记录。 |
+
+</details>
+<details>
+<summary>全部 4 个已合并的 Triton PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10883](https://github.com/triton-lang/triton/pull/10883) | 除法和取模先把 fp8 操作数提升精度再算，不再直接按 fp8 精度求值（BC breaking） |
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10689](https://github.com/triton-lang/triton/pull/10689) | 分数 `top_k` 向下取整为 0 时至少保留一个 config |
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10687](https://github.com/triton-lang/triton/pull/10687) | `is_power_of_two(0)` 误返回了 True。 |
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#9613](https://github.com/triton-lang/triton/pull/9613) | 修复 AxisInfo 正确性：有符号常量、未知 shift 和 shift UB 都保守处理 |
 
 </details>
 <details>
@@ -1453,6 +1417,14 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | [#1734](https://github.com/agentscope-ai/agentscope/pull/1734) | append 和 streaming replace 时刷新 Redis message list 的 TTL，配置的存储 TTL 才真正约束聊天历史。 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | [#1822](https://github.com/agentscope-ai/agentscope/pull/1822) | 给内置 Bash tool 增加 cwd 选项，让 shell 命令能在指定 workspace 目录执行 |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | [#1786](https://github.com/agentscope-ai/agentscope/pull/1786) | 创建 Redis session 时保留调用方给的 id，后面的 get/update/list 命中同一个 session，而不是新生成的 UUID。 |
+
+</details>
+<details>
+<summary>全部 1 个已合并的 LiteLLM PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | [#26401](https://github.com/BerriAI/litellm/pull/26401) | 修复 `LITELLM_LOG=INFO` 漏设 `verbose_logger`：proxy INFO 日志不再静默丢失 |
 
 </details>
 <details>
@@ -1486,6 +1458,20 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
+<summary>全部 7 个已合并的 cherry-studio PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#18711](https://github.com/CherryHQ/cherry-studio/pull/18711) | 让正式构建的公式复制重新可用：markdown styles 入口被生产构建 tree-shake 掉，连带丢了 KaTeX 的复制监听器。 |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) | 在截断边界保住 surrogate pair，多字节字符不会被切成半个非法字符。 |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16454](https://github.com/CherryHQ/cherry-studio/pull/16454) | 保留 citations 里的纯 URL markdown 引用行,不再丢弃 |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#17106](https://github.com/CherryHQ/cherry-studio/pull/17106) | 估算 API 网关 token 用量时把嵌套在 `tool_result` 里的图片计入，多模态工具结果不再被少算 |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16358](https://github.com/CherryHQ/cherry-studio/pull/16358) | aihubmix 路径丢弃 Ideogram 里没有可用 URL 的 `data[]` 项,不再渲染坏图 |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16361](https://github.com/CherryHQ/cherry-studio/pull/16361) | 为大写扩展名正确解析 `.d.ts` 图标 |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16217](https://github.com/CherryHQ/cherry-studio/pull/16217) | 相对时间在单位边界正确进位 |
+
+</details>
+<details>
 <summary>全部 2 个已合并的 GitHub MCP Server PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -1500,6 +1486,19 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | [#3643](https://github.com/openai/openai-agents-python/pull/3643) | 上报实际生效的 Blaxel 超时值，而不是未配置的默认值 |
+
+</details>
+<details>
+<summary>全部 6 个已合并的 ms-swift PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | DPO 数据准备阶段遇到空 `rejected_messages` 直接快速失败，不用等训练跑到一半才崩。 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9816](https://github.com/modelscope/ms-swift/pull/9816) | `--torch_dtype` 失效期间用户只能靠 engine_kwargs 传 dtype，flag 修好后两边撞参数直接 TypeError；splat 前 pop 掉并让 flag 恒赢 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9789](https://github.com/modelscope/ms-swift/pull/9789) | CUDA 测试容器里升级老 wandb，其旧 pb2 与 protobuf 7.x 相冲曾致全仓 CI 红 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9750](https://github.com/modelscope/ms-swift/pull/9750) | 视频元数据损坏时 `get_avg_fps()` 返回 0，`range(0, len(vr), 0)` 在读到第一帧前就抛 ValueError；给 MiniCPM-V / mPLUG-Owl3 的采样步长加守卫 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | 不同格式的图片在临时缓存里撞了键，把 mode 和 size 也纳入 key 才分开。 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | `_replace_system` 把非字符串的 prefix 元素压平了，模板化 system prompt 的结构化内容被抹掉。 |
 
 </details>
 <details>
@@ -1538,11 +1537,20 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
-<summary>全部 1 个已合并的 Agno PR</summary>
+<summary>全部 1 个已合并的 verl PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
-| [Agno](https://github.com/agno-agi/agno) (41.8k★) | [#8131](https://github.com/agno-agi/agno/pull/8131) | 保留非哨兵工具参数字符串里的空白，同时继续只对精确的 None / True / False 哨兵做归一化 |
+| [verl](https://github.com/verl-project/verl) (23.1k★) | [#6620](https://github.com/verl-project/verl/pull/6620) | 按 DP 和 TP rank 算 colocated vLLM 权重同步的 ZMQ socket rank，多个 DP worker 不再挤到同一个 receiver。 |
+
+</details>
+<details>
+<summary>全部 2 个已合并的 TRL PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [TRL](https://github.com/huggingface/trl) (19.1k★) | [#6054](https://github.com/huggingface/trl/pull/6054) | SFT 准备阶段遇到已经转换过的数据集直接报错，别静默产出错的训练 batch。 |
+| [TRL](https://github.com/huggingface/trl) (19.1k★) | [#6063](https://github.com/huggingface/trl/pull/6063) | 保留 vLLM prompt 的 special tokens |
 
 </details>
 <details>
@@ -1577,6 +1585,24 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
+<summary>全部 1 个已合并的 Agno PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [Agno](https://github.com/agno-agi/agno) (41.8k★) | [#8131](https://github.com/agno-agi/agno/pull/8131) | 保留非哨兵工具参数字符串里的空白，同时继续只对精确的 None / True / False 哨兵做归一化 |
+
+</details>
+<details>
+<summary>全部 3 个已合并的 RAGFlow PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | 跳过空的 agent switch 条件，空分支判断不会让有效的后续 agent 流程崩掉或卡住。 |
+| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Docling native 解析没产出 chunk 时降级，文档还能出可用内容，而不是空解析。 |
+| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | 重复的 n-hop GraphRAG 边保留最强的 PageRank 分，路径顺序覆盖不了排序。 |
+
+</details>
+<details>
 <summary>全部 7 个已合并的 LiveKit Agents PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -1604,11 +1630,29 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
+<summary>全部 2 个已合并的 LMCache PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | [#3245](https://github.com/LMCache/LMCache/pull/3245) | MP store/retrieve 期间留住 producer 侧的 CUDA IPC event，别让 daemon 拿着已回收的 handle 去恢复。 |
+| [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | [#3282](https://github.com/LMCache/LMCache/pull/3282) | MP KV transfer 处理 HND 这种 GPU KV layout，之前这种排布会被算错。 |
+
+</details>
+<details>
 <summary>全部 1 个已合并的 FastMCP PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.3k★) | [#4297](https://github.com/PrefectHQ/fastmcp/pull/4297) | 构建工具 schema 时保留必需的 discriminator tag，union 参数才还有效。 |
+
+</details>
+<details>
+<summary>全部 2 个已合并的 FlashInfer PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) | 修复 autotuner 在输入 tensor 为 `None` 时崩溃（fixes #2749） |
+| [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | [#2772](https://github.com/flashinfer-ai/flashinfer/pull/2772) | 修复编译错误：CUTLASS 头文件缺少 `<optional>` include 导致 `std::optional` 未定义 |
 
 </details>
 <details>
@@ -1619,6 +1663,24 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) | 接受 Vercel AI dynamic-tool 消息里的 `providerExecuted` 和 `title`，严格校验下也留住 provider 元数据。 |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | [#5695](https://github.com/pydantic/pydantic-ai/pull/5695) | 在 completions 里转发 penalties 参数 |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | [#5694](https://github.com/pydantic/pydantic-ai/pull/5694) | 修复 `MCPToolset(http_client=...)` 与 FastMCP 的兼容问题，避免把 `follow_redirects` 泄漏给调用方提供的 HTTP client factory |
+
+</details>
+<details>
+<summary>全部 11 个已合并的 Phoenix PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) | provider 变化时让 prompt tool diff 过期，PXI 编辑不再把旧的工具差异状态带到别的 provider。 |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13210](https://github.com/Arize-ai/phoenix/pull/13210) | 修复非法 GraphQL node id 的错误处理：返回 NotFound 风格错误，而不是把 decoder failure 泄漏给客户端 |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13245](https://github.com/Arize-ai/phoenix/pull/13245) | 修复 generative model fetch 游标回退：低 id 更新不会让后续轮询跳过更新的模型变更 |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13533](https://github.com/Arize-ai/phoenix/pull/13533) | span 标注工具的空输入给出明确处理，不再模糊失败 |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13653](https://github.com/Arize-ai/phoenix/pull/13653) | PXI agent 面板一打开就聚焦输入框，键盘优先的流程少点一下。 |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13637](https://github.com/Arize-ai/phoenix/pull/13637) | in-memory SQLite schema 初始化完再对外服务 Phoenix，启动竞态撞不上缺表。 |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13242](https://github.com/Arize-ai/phoenix/pull/13242) | 为 raw computer tool definitions 传递 Anthropic computer-use beta headers，覆盖 playground streaming 和非 streaming 调用 |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13139](https://github.com/Arize-ai/phoenix/pull/13139) | 修复 Playground 校验错误被吞掉的问题：失败时返回明确错误，而不是空 subscription payload |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13636](https://github.com/Arize-ai/phoenix/pull/13636) | 更新 PXI system prompt 指南，指向当前 server-side Jinja 模板和 capability wiring，不再引用过期的 browser-side 路径 |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13614](https://github.com/Arize-ai/phoenix/pull/13614) | 修复 Prompts 表格停留页面时不会自动刷新的问题：新建或更新的 prompt 不再需要手动刷新才能出现 |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13261](https://github.com/Arize-ai/phoenix/pull/13261) | 修复 span annotation note 新建后的刷新问题：创建成功后立即重新拉取列表，前端不再需要手动刷新才能看到新 note |
 
 </details>
 <details>
@@ -1647,11 +1709,30 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
+<summary>全部 4 个已合并的 LightRAG PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) | 从 Docling 异步结果 envelope 里抽出 Markdown 正文，RAG chunk 拿到干净文本，不混 JSON/base64 噪声。 |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#3123](https://github.com/HKUDS/LightRAG/pull/3123) | 把 API 文档配色和暗色主题同步，endpoint 示例在 dark mode 下也读得清。 |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#3206](https://github.com/HKUDS/LightRAG/pull/3206) | PostgreSQL 表存在性检查尊重 `search_path`，非 public schema 在迁移、建表前就能识别对。 |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | 修复 `None` file_path 传播为 `unknown_source`：补 #2793 遗漏的处理层 |
+
+</details>
+<details>
 <summary>全部 1 个已合并的 Kimi Code PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) | 通过 status_line 配置自定义 TUI 底部状态栏（仿 codex / claude code 的 footer 形态） |
+
+</details>
+<details>
+<summary>全部 1 个已合并的 Graphiti PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | [#1531](https://github.com/getzep/graphiti/pull/1531) | 递归清掉 FalkorDB 查询参数里的 NUL 字节，单个异常文档字符串打断不了批量图写入。 |
 
 </details>
 <details>
@@ -1699,6 +1780,42 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
+<summary>全部 5 个已合并的 Microsoft Recommenders PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2345](https://github.com/recommenders-team/recommenders/pull/2345) | 先用 PyTorch 查 GPU 显存，numba 兜底，CUDA context 不可用时 GPU discovery 不至于直接失败。 |
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2349](https://github.com/recommenders-team/recommenders/pull/2349) | 优先用 torch 查询 GPU 显存 |
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2322](https://github.com/recommenders-team/recommenders/pull/2322) | 让 benchmark 的推荐数量参数生效，评测脚本按要求生成 top-k。 |
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2351](https://github.com/recommenders-team/recommenders/pull/2351) | TensorFlow GPU 不可用时 fail fast |
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2350](https://github.com/recommenders-team/recommenders/pull/2350) | 统一标注 MAP@k notebook 的输出 |
+
+</details>
+<details>
+<summary>全部 1 个已合并的 DB-GPT PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | [#3092](https://github.com/eosphoros-ai/DB-GPT/pull/3092) | sandbox 用本地 runtime 执行前要求显式 opt-in |
+
+</details>
+<details>
+<summary>全部 1 个已合并的 Google Gen AI SDK PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | [#2564](https://github.com/googleapis/python-genai/pull/2564) | 让 Live Music API key 不再进入 websocket URL query，改由请求 header 承载，避免密钥出现在日志和代理路径里 |
+
+</details>
+<details>
+<summary>全部 1 个已合并的 yfinance PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | [#2867](https://github.com/ranaroussi/yfinance/pull/2867) | 补上漏掉的逗号，避免 equity screener 的两个 EPS 字段被并成一个 |
+
+</details>
+<details>
 <summary>全部 1 个已合并的 EvalScope PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -1714,140 +1831,6 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) | 用 RLock 串行化 LiteLLM `modify_params` 的保存、设置和恢复，避免并发 completion 泄漏全局参数状态 |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | [#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) | 用 `git rev-parse --git-dir` 校验 git workspace，坏掉的嵌套 repo 打不崩 `/api/git/changes`。 |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | [#3225](https://github.com/OpenHands/software-agent-sdk/pull/3225) | remote completion 日志按 UTF-8 写，中文和非 ASCII 输出在本地回放、排查时不乱码。 |
-
-</details>
-
-#### 应用型 AI / RAG / 可观测性
-
-| 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
-|------|:-----:|------------------|-----------------|
-| [dify](https://github.com/langgenius/dify) (153.3k★) | 6 | API 健壮性：无超时调用加边界、前置校验、原子窗口 | [#39953](https://github.com/langgenius/dify/pull/39953) 给没有超时的 TiDB Cloud API 调用补上有界超时，集群端点挂起不再无限拖住 vdb 操作 |
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | 3 | 自托管抓取链路：interact 报错、auth 块保留、批量 dict 响应 | |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | 7 | 渲染正确性：markdown 样式被 tree-shake、代理对安全截断、引用行 | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) 在截断边界保住 surrogate pair，多字节字符不会被切成半个非法字符。 |
-| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | 3 | agent 流守卫、Docling 回退、GraphRAG 边排序 | [#15691](https://github.com/infiniflow/ragflow/pull/15691) 跳过空的 agent switch 条件，空分支判断不会让有效的后续 agent 流程崩掉或卡住。 |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | 11 | 可观测 UI 状态：prompt diff 过期、游标单调性、启动竞态 | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) provider 变化时让 prompt tool diff 过期，PXI 编辑不再把旧的工具差异状态带到别的 p…<br>[#13210](https://github.com/Arize-ai/phoenix/pull/13210) 修复非法 GraphQL node id 的错误处理：返回 NotFound 风格错误，而不是把 decoder…<br>[#13245](https://github.com/Arize-ai/phoenix/pull/13245) 修复 generative model fetch 游标回退：低 id 更新不会让后续轮询跳过更新的模型变更 |
-| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | 4 | Docling 响应解包、文档站深色主题、PostgreSQL search_path 探测 | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) 从 Docling 异步结果 envelope 里抽出 Markdown 正文，RAG chunk 拿到干净文本，… |
-| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | 1 | FalkorDB 批量写入遇 NUL 字节崩溃 | |
-| [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | 1 | 沙箱执行改为显式开启 | |
-| [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | 1 | 股票筛选器 EPS 字段粘连 | |
-
-<details>
-<summary>全部 6 个已合并的 dify PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [dify](https://github.com/langgenius/dify) (153.3k★) | [#39953](https://github.com/langgenius/dify/pull/39953) | 给没有超时的 TiDB Cloud API 调用补上有界超时，集群端点挂起不再无限拖住 vdb 操作 |
-| [dify](https://github.com/langgenius/dify) (153.3k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | 在 service-api 和 explore 端点提前校验 conversation，坏的 `conversation_id` 直接 404，而不是流式跑到后期才失败。 |
-| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37425](https://github.com/langgenius/dify/pull/37425) | 给 OperationService 计费请求加超时，慢计费端点挂不住请求。 |
-| [dify](https://github.com/langgenius/dify) (153.3k★) | [#39479](https://github.com/langgenius/dify/pull/39479) | 邮件限流的 IP 首击窗口真正生效：GET 判空再 SETEX 的竞态改为 SET NX 原子认领 |
-| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | watercrawl 请求超时保持有界,而不是用 `timeout=None` 禁用 |
-| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | legacy dataset 配置提取时跳过空的 tool entry |
-
-</details>
-<details>
-<summary>全部 3 个已合并的 Firecrawl PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) | self-host 抓取的 interact 动作明确报错拒绝，而不是隐晦地失败 |
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | self-host bypass 路径保留 auth chunk，已认证的 self-host 抓取不再被丢掉。 |
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3713](https://github.com/firecrawl/firecrawl/pull/3713) | Python SDK 正确处理 async v1 batch scrape 以 dict 形式返回的响应 |
-
-</details>
-<details>
-<summary>全部 7 个已合并的 cherry-studio PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#18711](https://github.com/CherryHQ/cherry-studio/pull/18711) | 让正式构建的公式复制重新可用：markdown styles 入口被生产构建 tree-shake 掉，连带丢了 KaTeX 的复制监听器。 |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) | 在截断边界保住 surrogate pair，多字节字符不会被切成半个非法字符。 |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16454](https://github.com/CherryHQ/cherry-studio/pull/16454) | 保留 citations 里的纯 URL markdown 引用行,不再丢弃 |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#17106](https://github.com/CherryHQ/cherry-studio/pull/17106) | 估算 API 网关 token 用量时把嵌套在 `tool_result` 里的图片计入，多模态工具结果不再被少算 |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16358](https://github.com/CherryHQ/cherry-studio/pull/16358) | aihubmix 路径丢弃 Ideogram 里没有可用 URL 的 `data[]` 项,不再渲染坏图 |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16361](https://github.com/CherryHQ/cherry-studio/pull/16361) | 为大写扩展名正确解析 `.d.ts` 图标 |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | [#16217](https://github.com/CherryHQ/cherry-studio/pull/16217) | 相对时间在单位边界正确进位 |
-
-</details>
-<details>
-<summary>全部 3 个已合并的 RAGFlow PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | [#15691](https://github.com/infiniflow/ragflow/pull/15691) | 跳过空的 agent switch 条件，空分支判断不会让有效的后续 agent 流程崩掉或卡住。 |
-| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | [#15601](https://github.com/infiniflow/ragflow/pull/15601) | Docling native 解析没产出 chunk 时降级，文档还能出可用内容，而不是空解析。 |
-| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | [#15696](https://github.com/infiniflow/ragflow/pull/15696) | 重复的 n-hop GraphRAG 边保留最强的 PageRank 分，路径顺序覆盖不了排序。 |
-
-</details>
-<details>
-<summary>全部 11 个已合并的 Phoenix PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) | provider 变化时让 prompt tool diff 过期，PXI 编辑不再把旧的工具差异状态带到别的 provider。 |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13210](https://github.com/Arize-ai/phoenix/pull/13210) | 修复非法 GraphQL node id 的错误处理：返回 NotFound 风格错误，而不是把 decoder failure 泄漏给客户端 |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13245](https://github.com/Arize-ai/phoenix/pull/13245) | 修复 generative model fetch 游标回退：低 id 更新不会让后续轮询跳过更新的模型变更 |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13533](https://github.com/Arize-ai/phoenix/pull/13533) | span 标注工具的空输入给出明确处理，不再模糊失败 |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13653](https://github.com/Arize-ai/phoenix/pull/13653) | PXI agent 面板一打开就聚焦输入框，键盘优先的流程少点一下。 |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13637](https://github.com/Arize-ai/phoenix/pull/13637) | in-memory SQLite schema 初始化完再对外服务 Phoenix，启动竞态撞不上缺表。 |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13242](https://github.com/Arize-ai/phoenix/pull/13242) | 为 raw computer tool definitions 传递 Anthropic computer-use beta headers，覆盖 playground streaming 和非 streaming 调用 |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13139](https://github.com/Arize-ai/phoenix/pull/13139) | 修复 Playground 校验错误被吞掉的问题：失败时返回明确错误，而不是空 subscription payload |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13636](https://github.com/Arize-ai/phoenix/pull/13636) | 更新 PXI system prompt 指南，指向当前 server-side Jinja 模板和 capability wiring，不再引用过期的 browser-side 路径 |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13614](https://github.com/Arize-ai/phoenix/pull/13614) | 修复 Prompts 表格停留页面时不会自动刷新的问题：新建或更新的 prompt 不再需要手动刷新才能出现 |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | [#13261](https://github.com/Arize-ai/phoenix/pull/13261) | 修复 span annotation note 新建后的刷新问题：创建成功后立即重新拉取列表，前端不再需要手动刷新才能看到新 note |
-
-</details>
-<details>
-<summary>全部 4 个已合并的 LightRAG PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) | 从 Docling 异步结果 envelope 里抽出 Markdown 正文，RAG chunk 拿到干净文本，不混 JSON/base64 噪声。 |
-| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#3123](https://github.com/HKUDS/LightRAG/pull/3123) | 把 API 文档配色和暗色主题同步，endpoint 示例在 dark mode 下也读得清。 |
-| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#3206](https://github.com/HKUDS/LightRAG/pull/3206) | PostgreSQL 表存在性检查尊重 `search_path`，非 public schema 在迁移、建表前就能识别对。 |
-| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | 修复 `None` file_path 传播为 `unknown_source`：补 #2793 遗漏的处理层 |
-
-</details>
-<details>
-<summary>全部 1 个已合并的 Graphiti PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | [#1531](https://github.com/getzep/graphiti/pull/1531) | 递归清掉 FalkorDB 查询参数里的 NUL 字节，单个异常文档字符串打断不了批量图写入。 |
-
-</details>
-<details>
-<summary>全部 1 个已合并的 DB-GPT PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | [#3092](https://github.com/eosphoros-ai/DB-GPT/pull/3092) | sandbox 用本地 runtime 执行前要求显式 opt-in |
-
-</details>
-<details>
-<summary>全部 1 个已合并的 yfinance PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | [#2867](https://github.com/ranaroussi/yfinance/pull/2867) | 补上漏掉的逗号，避免 equity screener 的两个 EPS 字段被并成一个 |
-
-</details>
-
-#### 推荐系统
-
-| 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
-|------|:-----:|------------------|-----------------|
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | 5 | 无 CUDA 上下文下的 GPU 探测、基准脚本 top-k 生效 | |
-
-<details>
-<summary>全部 5 个已合并的 Microsoft Recommenders PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2345](https://github.com/recommenders-team/recommenders/pull/2345) | 先用 PyTorch 查 GPU 显存，numba 兜底，CUDA context 不可用时 GPU discovery 不至于直接失败。 |
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2349](https://github.com/recommenders-team/recommenders/pull/2349) | 优先用 torch 查询 GPU 显存 |
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2322](https://github.com/recommenders-team/recommenders/pull/2322) | 让 benchmark 的推荐数量参数生效，评测脚本按要求生成 top-k。 |
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2351](https://github.com/recommenders-team/recommenders/pull/2351) | TensorFlow GPU 不可用时 fail fast |
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | [#2350](https://github.com/recommenders-team/recommenders/pull/2350) | 统一标注 MAP@k notebook 的输出 |
 
 </details>
 
