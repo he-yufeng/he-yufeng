@@ -6,7 +6,7 @@
   <samp>
     <a href="#cn">中文</a> ·
     <a href="https://www.linkedin.com/in/yufenghe">LinkedIn</a> ·
-    <a href="https://he-yufeng.github.io">Blog</a>
+    <a href="https://heyufeng.me">Blog</a>
   </samp>
 </p>
 
@@ -22,30 +22,69 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
   <img height="165" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=he-yufeng&theme=github_dark" alt="GitHub stats"/>
   <img height="165" src="https://streak-stats.demolab.com/?user=he-yufeng&theme=github-dark-blue&hide_border=true" alt="Contribution streak"/>
 </p>
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=python,cpp,go,ts,react,pytorch,docker,git,linux&theme=dark" alt="Skills"/>
-</p>
+
+### Projects
+
+| Project | Stars | What it is |
+|---------|:-----:|------------|
+| [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.6k+ | 512K lines of Claude Code distilled to 1,400 lines of Python: every key architectural pattern, runnable, any LLM. 7 architecture deep-dive articles. |
+| [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
+| [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, and reading guides. |
+| [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, plain-English explanations. |
+| [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
+| [IslandEscape](https://github.com/he-yufeng/IslandEscape) | new | 2D pixel-art survival game where four LLM agents play the islanders, negotiating trades in natural language and forming alliances. |
+
+<details>
+<summary>All projects (22)</summary>
+
+| Area | Project | Stars | Notes |
+|------|---------|:-----:|-------|
+| Coding agents / evals | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.6k+ | 512K lines of Claude Code → 1,400 lines of Python. Every key architectural pattern, runnable. Any LLM. 7 architecture deep-dive articles. |
+| Applied agents | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
+| Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, and reading guides. |
+| Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, and plain-English explanations. |
+| Codebase maps | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
+| Code understanding | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | AI code reader for non-programmers: plain-language file guides, hover annotations, a terminology dictionary, Q&A, and natural-language edits. |
+| Coding agents / evals | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | new | Pytest plugin for regression-testing AI agents: snapshot baselines, semantic comparison, and mock LLMs. |
+| Coding agents / evals | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | new | AI coding agent CLI supporting 100+ LLMs via litellm, with dangerous command blocking, parallel tools, and session persistence. |
+| Coding agents / evals | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | new | CLI arena for AI coding agents: isolated `git worktree` runs, test/cost/diff/time scoring, and `pip install codejoust`. |
+| Coding agents / evals | [LiteBench](https://github.com/he-yufeng/LiteBench) | new | Pip-installable LLM/agent benchmark CLI + web dashboard, with agent mode, custom YAML, LLM-as-judge, and 100+ litellm models. |
+| Agent tooling | [RuleForge](https://github.com/he-yufeng/RuleForge) | new | Auto-generate AI assistant rules (CLAUDE.md, .cursorrules, copilot-instructions) from codebase analysis. |
+| LLM tooling | [PromptDiff](https://github.com/he-yufeng/PromptDiff) | new | Semantic diff for LLM prompts: compare prompt versions like `git diff`. |
+| LLM tooling | [TokenTracker](https://github.com/he-yufeng/TokenTracker) | new | Drop-in LLM cost tracker: change one import line and see where the money goes. OpenAI, OpenRouter, Azure, Ollama. |
+| LLM tooling | [BatchLLM](https://github.com/he-yufeng/BatchLLM) | new | Batch processing for LLM APIs: CSV/JSONL in, results out, with concurrency, retries, checkpointing, and cost tracking. |
+| Applied agents | [IslandEscape](https://github.com/he-yufeng/IslandEscape) | new | 2D pixel-art survival game where four LLM agents play the islanders — each with a personality, negotiating trades in natural language and forming alliances; race them to 100 coins to escape. |
+| Agent / MCP / CI tooling | [agentcikit](https://github.com/he-yufeng/agentcikit) | new | One CLI for AI-agent, MCP, and open-source work: diagnose CI failures into repro plans, pack issue-specific context for coding agents, gate and replay MCP servers, and test tool-call safety. Bundles `ci-repro`, `patch-context`, `mcp-gate`, `mcp-replay`, and `tool-fence`. |
+| Coding agents / evals | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | new | Turn real GitHub issues and local bugs into small, reproducible coding-agent benchmark tasks with before/after scoring and HTML reports. |
+| Agent observability | [FlightBox](https://github.com/he-yufeng/FlightBox) | new | Black-box flight recorder for AI agents: record, redact, replay, and diff local agent sessions. |
+| Quant / RL | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | new | Deep-RL trading: Double DQN with Transformer attention over a Fama-French-style multi-factor model, plus adaptive risk and volatility targeting. |
+| Research | [adversarial-refinement-imputation](https://github.com/he-yufeng/adversarial-refinement-imputation) | new | Companion code for the MiLeTS 2026 paper adapting R3GAN to multivariate time-series imputation — a clearly-scoped negative result. |
+| Research | [TrajBias](https://github.com/he-yufeng/TrajBias) | new | A study of structural biases in LLM-as-judge evaluation of agent trajectories. |
+
+</details>
+
+---
 
 ### Open Source Contributions
 
 #### AI infrastructure / model systems
 
-| Project | Merged | Highlight fixes |
-|---------|:------:|-----------------|
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | 36 | GB200 MNNVL EP hang · Arm the etcd view-change watch once per wait instead of per iteration… |
-| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | 12 | Responses API instructions were leaking across turns through the prev… · RoBERTa's in-place position_ids accumulation bled into CUDA-graph pad… |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | 8 | Guard the CuTeDSL topk override against a non-current CUDA device so… · Error on unsupported batch norm third derivatives instead of silently… |
-| [Transformers](https://github.com/huggingface/transformers) (164.3k★) | 1 | AutoProcessor.from_pretrained was silently dropping hub kwargs like r… |
-| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | 2 | Fix hybrid_linear_attn_backend crash when used with ngram speculative… · Fix PicklingError with --backend diffusers on non-T2I models |
-| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | 1 | Eigenvalue monitor values were computed but never logged |
-| [Triton](https://github.com/triton-lang/triton) (19.9k★) | 4 | Promote fp8 operands before division and modulo instead of evaluating… · Keep at least one config when a fractional top_k rounds to zero |
-| [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | 1 | Fix LITELLM_LOG=INFO missing verbose_logger |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | 6 | Empty rejected_messages now fail fast in dataset prep instead of cras… · swift sample crashed engine construction when engine_kwargs carried t… |
-| [verl](https://github.com/verl-project/verl) (23.1k★) | 1 | Derived the colocated vLLM weight-sync ZMQ socket rank from the DP an… |
-| [TRL](https://github.com/huggingface/trl) (19.1k★) | 2 | An already-transformed dataset in SFT prep now fails fast, instead of… · Preserve vllm prompt special tokens |
-| [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | 2 | Retain producer-side CUDA IPC events across MP store/retrieve so daem… · Handle HND GPU KV layouts in MP KV transfer, which previously mishand… |
-| [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | 2 | Fix autotuner crash when input tensor is None · Fix compilation error |
-| [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | 1 | Keep Live Music API keys out of websocket URLs by relying on request… |
+| Project | Merged | What the PRs cover | Highlight fixes |
+|---------|:------:|--------------------|-----------------|
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | 36 | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang · [#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) Arm the etcd view-change watch once per wait instead of p… · [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) Duplicate rpc_meta re-publishes are idempotent when the H… |
+| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | 12 | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API instructions were leaking across turns thro… · [#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa's in-place position_ids accumulation bled into CU… · [#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call params now parse as JSON first, so nu… |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | 8 | Kernel/compiler correctness: wrong-device dispatch, silent gradient corruption, UB | [#188022](https://github.com/pytorch/pytorch/pull/188022) Guard the CuTeDSL topk override against a non-current CUD… · [#186779](https://github.com/pytorch/pytorch/pull/186779) Error on unsupported batch norm third derivatives instead… · [#188027](https://github.com/pytorch/pytorch/pull/188027) Initialize r in the Laguerre and Legendre polynomial help… |
+| [Transformers](https://github.com/huggingface/transformers) (164.3k★) | 1 | AutoProcessor hub-kwarg passthrough | [#44710](https://github.com/huggingface/transformers/pull/44710) AutoProcessor.from_pretrained was silently dropping hub k… |
+| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | 2 | Backend crashes: hybrid attention with speculative decoding, diffusers pickling | [#20739](https://github.com/sgl-project/sglang/pull/20739) Fix hybrid_linear_attn_backend crash when used with ngram… · [#21472](https://github.com/sgl-project/sglang/pull/21472) Fix PicklingError with --backend diffusers on non-T2I mod… |
+| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | 1 | Monitor wiring: eigenvalue records never landed in logs | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) Eigenvalue monitor values were computed but never logged |
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | 4 | Compiler semantics: fp8 arithmetic promotion, top_k edge cases, AxisInfo correctness | [#10883](https://github.com/triton-lang/triton/pull/10883) Promote fp8 operands before division and modulo instead o… · [#10689](https://github.com/triton-lang/triton/pull/10689) Keep at least one config when a fractional top_k rounds t… · [#10687](https://github.com/triton-lang/triton/pull/10687) is_power_of_two(0) was returning True. |
+| [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | 1 | Proxy logging: verbose logger sources missing from INFO output | [#26401](https://github.com/BerriAI/litellm/pull/26401) Fix LITELLM_LOG=INFO missing verbose_logger |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | 6 | Training-prep and sampling robustness: DPO crashes, 0-fps video, CI repair | [#9642](https://github.com/modelscope/ms-swift/pull/9642) Empty rejected_messages now fail fast in dataset prep ins… · [#9816](https://github.com/modelscope/ms-swift/pull/9816) swift sample crashed engine construction when engine_kwar… · [#9789](https://github.com/modelscope/ms-swift/pull/9789) Refresh wandb in the CUDA test container setup, unbreakin… |
+| [verl](https://github.com/verl-project/verl) (23.1k★) | 1 | Colocated weight-sync rank derivation across DP/TP | [#6620](https://github.com/verl-project/verl/pull/6620) Derived the colocated vLLM weight-sync ZMQ socket rank fr… |
+| [TRL](https://github.com/huggingface/trl) (19.1k★) | 2 | Dataset-prep fail-fast and vLLM special-token preservation | [#6054](https://github.com/huggingface/trl/pull/6054) An already-transformed dataset in SFT prep now fails fast… · [#6063](https://github.com/huggingface/trl/pull/6063) Preserve vllm prompt special tokens |
+| [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | 2 | Cross-process KV transfer: CUDA IPC event lifetimes, HND layout handling | [#3245](https://github.com/LMCache/LMCache/pull/3245) Retain producer-side CUDA IPC events across MP store/retr… · [#3282](https://github.com/LMCache/LMCache/pull/3282) Handle HND GPU KV layouts in MP KV transfer, which previo… |
+| [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | 2 | Autotuner None-input crash and CUTLASS header compile fix | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) Fix autotuner crash when input tensor is None · [#2772](https://github.com/flashinfer-ai/flashinfer/pull/2772) Fix compilation error |
+| [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | 1 | API-key hygiene: secrets out of websocket URLs | [#2564](https://github.com/googleapis/python-genai/pull/2564) Keep Live Music API keys out of websocket URLs by relying… |
 
 <details>
 <summary>All 36 merged Mooncake PRs</summary>
@@ -227,41 +266,41 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 #### Agent frameworks / protocols / evals
 
-| Project | Merged | Highlight fixes |
-|---------|:------:|-----------------|
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | 53 | Routed /bug, /docs, and /insight browser launches through the secure… · Kept assistant tool calls adjacent to their results, so OpenAI-compat… |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | 30 | Prefer bundled dashboard assets over a stale data dist, so a release… · Avoid duplicate quoted image captions when multimodal replies include… |
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | 6 | Keep the mtime media sweep out of the managed-outgoing tree and fail… · Log auth profile resolution failures instead of swallowing silently |
-| [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | 15 | Keep create_thread idempotent when a concurrent insert loses the race… · Fork-restored checkpoints deliver the sandbox channel still wrapped i… |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | 12 | Complete the Scheduled Research verdict flow in Market Watch · Scheduled monitors now persist each run's parsed verdict on the job a… |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | 28 | Handoff was mutating message roles in place, so a retry leaked the ch… · Defer turn-scoped after_run providers to the agent loop boundary, so… |
-| [opencode](https://github.com/anomalyco/opencode) (200.9k★) | 1 | Bind the MCP OAuth callback server to the IPv4 loopback so the browse… |
-| [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | 1 | Keep a custom LLM base URL when editing basic model settings, so a sa… |
-| [Cline](https://github.com/cline/cline) (66.7k★) | 1 | Keep file search working when the open-tabs host RPC is down by falli… |
-| [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | 9 | Inherit the leader's permission rules in team runs, so delegated agen… · Hide Bash tool subprocess windows on Windows with CREATE_NO_WINDOW, w… |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (24.5k★) | 13 | Reject out-of-range trace-span-duration percentiles instead of silent… · Score tokenless GLEU inputs as zero instead of crashing |
-| [goose](https://github.com/aaif-goose/goose) (53.3k★) | 3 | Use a blocking OTLP HTTP exporter so telemetry isn't lost when the pr… · Show resolved skill supporting-file paths instead of unresolved place… |
-| [GitHub MCP Server](https://github.com/github/github-mcp-server) (32.4k★) | 2 | Support team reviewers in PR review requests by resolving team slugs… · Hide write-side UI resources when the MCP server runs read-only, whil… |
-| [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | 1 | Report the effective Blaxel timeouts instead of the unconfigured defa… |
-| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (15.5k★) | 10 | Cache ADK session reads within one execution, so a remote session ser… · Avoid stale ADK session writes after human-in-the-loop tool calls |
-| [Google ADK](https://github.com/google/adk-python) (21.2k★) | 1 | Include intermediate responses in final_response_match_v2 judging whe… |
-| [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | 3 | Use valid S3 Vectors entity index names so agent memory writes no lon… · Expose Qdrant's https option so a self-hosted HTTP cluster can use AP… |
-| [Agno](https://github.com/agno-agi/agno) (41.8k★) | 1 | Preserve non-sentinel tool argument whitespace while keeping string-t… |
-| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | 24 | Parse OpenRouter reasoning_details in OpenAI-compatible responses ins… · Route the realtime streaming sample writer through the same fallback… |
-| [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | 7 | Recreate Anthropic streaming requests on retry so transient stream cr… · Handle OpenAI-compatible realtime status details that come back as st… |
-| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.2k★) | 6 | SSE handler rendered a 500 when the writer was no http.Flusher but fe… · Validate the Looker explore_references shape instead of panicking on… |
-| [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.3k★) | 1 | Keep required discriminator tags when building tool schemas, so union… |
-| [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | 3 | Accept providerExecuted and title on Vercel AI dynamic-tool parts, so… · Forward penalties in completions |
-| [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.9k★) | 9 | Support non-streaming OpenAI chat completions · Handle Gemini safety-blocked metadata by defaulting missing usage cou… |
-| [Pipecat](https://github.com/pipecat-ai/pipecat) (14.6k★) | 2 | Key cached DTMF audio by sample rate too, so the same button at a dif… · Serialize interruption frames through protobuf transports so realtime… |
-| [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | 1 | Customize the TUI footer status line via status_line config, codex /… |
-| [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | 1 | TUI tab-completion |
-| [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | 1 | Keep Anthropic stop sequences non-empty so requests are not rejected |
-| [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | 1 | Reject mangled publisher metadata instead of accepting malformed entries |
-| [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | 4 | First PR · Pluggable TaskStore |
-| [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (5.0k★) | 2 | Reject duplicate initialize requests so an MCP session keeps consiste… · Add Implementation.description metadata while keeping empty descripti… |
-| [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | 1 | Read SciCode assistant answers from OpenAI-style text content blocks,… |
-| [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | 3 | Serialize LiteLLM modify_params updates with an RLock so concurrent c… · Validate git workspaces with git rev-parse --git-dir, so a broken nes… |
+| Project | Merged | What the PRs cover | Highlight fixes |
+|---------|:------:|--------------------|-----------------|
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | 53 | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed /bug, /docs, and /insight browser launches through… · [#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so O… · [#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in r… |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | 30 | Release asset freshness, multimodal reply duplication, scheduler exception swallowing | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) Prefer bundled dashboard assets over a stale data dist, s… · [#8718](https://github.com/AstrBotDevs/AstrBot/pull/8718) Avoid duplicate quoted image captions when multimodal rep… · [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) Prevent Telegram media group exceptions from being silent… |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | 12 | Portfolio analytics and monitor-verdict pipeline; fail-closed live-trading gates | [#1156](https://github.com/HKUDS/Vibe-Trading/pull/1156) Complete the Scheduled Research verdict flow in Market Wa… · [#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) Scheduled monitors now persist each run's parsed verdict… · [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) Portfolio Studio's risk x-ray |
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | 6 | Session-store fail-closed sweeps, auth-failure visibility, surrogate-safe text | [#119127](https://github.com/openclaw/openclaw/pull/119127) Keep the mtime media sweep out of the managed-outgoing tr… · [#41271](https://github.com/openclaw/openclaw/pull/41271) Log auth profile resolution failures instead of swallowin… · [#96456](https://github.com/openclaw/openclaw/pull/96456) Clip progress text on code-point boundaries to avoid lone… |
+| [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | 15 | Concurrency and checkpoint correctness: thread-creation races, session-pool lifecycle | [#3800](https://github.com/bytedance/deer-flow/pull/3800) Keep create_thread idempotent when a concurrent insert lo… · [#4429](https://github.com/bytedance/deer-flow/pull/4429) Fork-restored checkpoints deliver the sandbox channel sti… · [#3797](https://github.com/bytedance/deer-flow/pull/3797) Synchronize the MCP session-pool singleton lifecycle so c… |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | 28 | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools | [#5808](https://github.com/microsoft/agent-framework/pull/5808) Handoff was mutating message roles in place, so a retry l… · [#7289](https://github.com/microsoft/agent-framework/pull/7289) Defer turn-scoped after_run providers to the agent loop b… · [#5773](https://github.com/microsoft/agent-framework/pull/5773) Run synchronous Python tools off the event loop so a bloc… |
+| [opencode](https://github.com/anomalyco/opencode) (200.9k★) | 1 | MCP OAuth callback bound to IPv4 loopback | [#30022](https://github.com/anomalyco/opencode/pull/30022) Bind the MCP OAuth callback server to the IPv4 loopback s… |
+| [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | 1 | Settings persistence: keep custom LLM base URLs | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) Keep a custom LLM base URL when editing basic model setti… |
+| [Cline](https://github.com/cline/cline) (66.7k★) | 1 | File search survives the open-tabs host RPC being down | [#11166](https://github.com/cline/cline/pull/11166) Keep file search working when the open-tabs host RPC is d… |
+| [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | 9 | Team-run permission inheritance, Windows subprocess windows, skill sourcing | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) Inherit the leader's permission rules in team runs, so de… · [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Hide Bash tool subprocess windows on Windows with CREATE_… · [#1732](https://github.com/agentscope-ai/agentscope/pull/1732) Pull skills from every active tool group, so prompt instr… |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (24.5k★) | 13 | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) Reject out-of-range trace-span-duration percentiles inste… · [#9850](https://github.com/promptfoo/promptfoo/pull/9850) Score tokenless GLEU inputs as zero instead of crashing · [#9867](https://github.com/promptfoo/promptfoo/pull/9867) Avoid crashing on an empty choices array when reading Azu… |
+| [goose](https://github.com/aaif-goose/goose) (53.3k★) | 3 | Telemetry export reliability, skill path display, desktop shortcuts | [#9599](https://github.com/aaif-goose/goose/pull/9599) Use a blocking OTLP HTTP exporter so telemetry isn't lost… · [#9584](https://github.com/aaif-goose/goose/pull/9584) Show resolved skill supporting-file paths instead of unre… · [#9528](https://github.com/aaif-goose/goose/pull/9528) Restore new-chat keyboard shortcut navigation in the desk… |
+| [GitHub MCP Server](https://github.com/github/github-mcp-server) (32.4k★) | 2 | Team-reviewer resolution and read-only surface hygiene | [#2514](https://github.com/github/github-mcp-server/pull/2514) Support team reviewers in PR review requests by resolving… · [#2612](https://github.com/github/github-mcp-server/pull/2612) Hide write-side UI resources when the MCP server runs rea… |
+| [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | 1 | Report effective Blaxel timeouts instead of defaults | [#3643](https://github.com/openai/openai-agents-python/pull/3643) Report the effective Blaxel timeouts instead of the uncon… |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (15.5k★) | 10 | ADK session caching and message-to-tool-call transition ordering | [#1890](https://github.com/ag-ui-protocol/ag-ui/pull/1890) Cache ADK session reads within one execution, so a remote… · [#1735](https://github.com/ag-ui-protocol/ag-ui/pull/1735) Avoid stale ADK session writes after human-in-the-loop to… · [#1829](https://github.com/ag-ui-protocol/ag-ui/pull/1829) Close LangGraph text messages before tool-call chunks so… |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | 1 | Judge criteria honoring intermediate responses | [#5698](https://github.com/google/adk-python/pull/5698) Include intermediate responses in final_response_match_v2… |
+| [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | 3 | Memory-store backends: S3 Vectors index naming, Qdrant https option | [#5416](https://github.com/mem0ai/mem0/pull/5416) Use valid S3 Vectors entity index names so agent memory w… · [#5380](https://github.com/mem0ai/mem0/pull/5380) Expose Qdrant's https option so a self-hosted HTTP cluste… · [#5383](https://github.com/mem0ai/mem0/pull/5383) Skip OpenClaw runtime setup during CLI metadata registrat… |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | 24 | Eval-logging and provider parsing: reasoning blocks, streaming writer, headless crashes | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) Parse OpenRouter reasoning_details in OpenAI-compatible r… · [#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) Route the realtime streaming sample writer through the sa… · [#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) macOS screen-scale detection imported AppKit unguarded an… |
+| [Agno](https://github.com/agno-agi/agno) (41.8k★) | 1 | Tool-argument whitespace preservation with sentinel normalization | [#8131](https://github.com/agno-agi/agno/pull/8131) Preserve non-sentinel tool argument whitespace while keep… |
+| [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | 7 | Realtime voice plumbing: stream-retry recreation, provider status parsing, STT errors | [#5820](https://github.com/livekit/agents/pull/5820) Recreate Anthropic streaming requests on retry so transie… · [#5994](https://github.com/livekit/agents/pull/5994) Handle OpenAI-compatible realtime status details that com… · [#5864](https://github.com/livekit/agents/pull/5864) Surface Soniox STT server errors instead of treating fail… |
+| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.2k★) | 6 | SSE writer panics, Looker input validation, parameter error reporting | [#3520](https://github.com/googleapis/mcp-toolbox/pull/3520) SSE handler rendered a 500 when the writer was no http.Fl… · [#3531](https://github.com/googleapis/mcp-toolbox/pull/3531) Validate the Looker explore_references shape instead of p… · [#3512](https://github.com/googleapis/mcp-toolbox/pull/3512) Report the offending value in array/map parameter type er… |
+| [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.3k★) | 1 | Schema building keeps required union discriminator tags | [#4297](https://github.com/PrefectHQ/fastmcp/pull/4297) Keep required discriminator tags when building tool schem… |
+| [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | 3 | Vercel AI dynamic-tool part acceptance, completions penalties forwarding | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) Accept providerExecuted and title on Vercel AI dynamic-to… · [#5695](https://github.com/pydantic/pydantic-ai/pull/5695) Forward penalties in completions · [#5694](https://github.com/pydantic/pydantic-ai/pull/5694) Fix MCPToolset(http_client=...) with FastMCP by keeping f… |
+| [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.9k★) | 9 | Non-streaming OpenAI support, Gemini safety metadata, vLLM reasoning chunks | [#2400](https://github.com/strands-agents/harness-sdk/pull/2400) Support non-streaming OpenAI chat completions · [#2353](https://github.com/strands-agents/harness-sdk/pull/2353) Handle Gemini safety-blocked metadata by defaulting missi… · [#2354](https://github.com/strands-agents/harness-sdk/pull/2354) Read vLLM delta.reasoning chunks in OpenAI-compatible str… |
+| [Pipecat](https://github.com/pipecat-ai/pipecat) (14.6k★) | 2 | Realtime voice: DTMF cache keying, interruption frame serialization | [#4766](https://github.com/pipecat-ai/pipecat/pull/4766) Key cached DTMF audio by sample rate too, so the same but… · [#4553](https://github.com/pipecat-ai/pipecat/pull/4553) Serialize interruption frames through protobuf transports… |
+| [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | 1 | TUI footer status-line customization | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) Customize the TUI footer status line via status_line conf… |
+| [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | 1 | TUI tab-completion fixes | [#185](https://github.com/HKUDS/OpenHarness/pull/185) TUI tab-completion |
+| [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | 1 | Anthropic stop-sequence validation | [#3822](https://github.com/EleutherAI/lm-evaluation-harness/pull/3822) Keep Anthropic stop sequences non-empty so requests are n… |
+| [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | 1 | Publisher metadata validation | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) Reject mangled publisher metadata instead of accepting ma… |
+| [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | 4 | Founding PRs: tests/CI/templates, pluggable TaskStore, Gemini CLI support | [#1](https://github.com/HKUDS/ClawTeam/pull/1) First PR · [#40](https://github.com/HKUDS/ClawTeam/pull/40) Pluggable TaskStore · [#32](https://github.com/HKUDS/ClawTeam/pull/32) Gemini CLI support |
+| [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (5.0k★) | 2 | MCP protocol state: duplicate initialize rejection, description metadata | [#962](https://github.com/modelcontextprotocol/go-sdk/pull/962) Reject duplicate initialize requests so an MCP session ke… · [#981](https://github.com/modelcontextprotocol/go-sdk/pull/981) Add Implementation.description metadata while keeping emp… |
+| [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | 1 | SciCode answer extraction from content blocks | [#1381](https://github.com/modelscope/evalscope/pull/1381) Read SciCode assistant answers from OpenAI-style text con… |
+| [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | 3 | Concurrency-safe LiteLLM params, git workspace validation, UTF-8 logs | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) Serialize LiteLLM modify_params updates with an RLock so… · [#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) Validate git workspaces with git rev-parse --git-dir, so… · [#3225](https://github.com/OpenHands/software-agent-sdk/pull/3225) Write remote completion logs as UTF-8, so non-ASCII outpu… |
 
 <details>
 <summary>All 53 merged Qwen Code PRs</summary>
@@ -753,17 +792,17 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 #### Applied AI / RAG / observability
 
-| Project | Merged | Highlight fixes |
-|---------|:------:|-----------------|
-| [dify](https://github.com/langgenius/dify) (153.3k★) | 6 | Bound the TiDB Cloud API calls that had no timeout, so a hanging clus… · Validate the conversation up front on the service-api and explore end… |
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | 3 | Reject self-hosted scrape interact actions with a clear error instead… · Keep the auth chunk in the self-host bypass path so authenticated sel… |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | 7 | Keep formula copy working in release builds · Preserve surrogate pairs at truncation boundaries so a multi-byte cha… |
-| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | 3 | Skip empty agent-switch conditions so a blank branch guard can't cras… · Fall back when Docling native parsing returns no chunks, so a documen… |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | 11 | Expire prompt tool diffs on provider change, so PXI prompt editing st… · Return NotFound-style errors for invalid GraphQL node ids instead of… |
-| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | 4 | Extract Docling async markdown from the response envelope so RAG chun… · Sync the API docs colors with the dark theme so endpoint examples sta… |
-| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | 1 | Strip embedded NUL bytes from FalkorDB query params, so one malformed… |
-| [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | 1 | Require explicit opt-in before the sandbox executes on the local runtime |
-| [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | 1 | Add a missing comma that was merging two equity-screener EPS fields i… |
+| Project | Merged | What the PRs cover | Highlight fixes |
+|---------|:------:|--------------------|-----------------|
+| [dify](https://github.com/langgenius/dify) (153.3k★) | 6 | API robustness: unbounded calls get timeouts, up-front validation, atomic windows | [#39953](https://github.com/langgenius/dify/pull/39953) Bound the TiDB Cloud API calls that had no timeout, so a… · [#38801](https://github.com/langgenius/dify/pull/38801) Validate the conversation up front on the service-api and… · [#37425](https://github.com/langgenius/dify/pull/37425) Bound OperationService billing requests so a slow billing… |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | 3 | Self-host scrape paths: interact errors, auth chunk retention, batch dict responses | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) Reject self-hosted scrape interact actions with a clear e… · [#3729](https://github.com/firecrawl/firecrawl/pull/3729) Keep the auth chunk in the self-host bypass path so authe… · [#3713](https://github.com/firecrawl/firecrawl/pull/3713) Handle the async v1 batch-scrape response returned as a d… |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | 7 | Renderer correctness: tree-shaken markdown styles, surrogate-safe truncation, citations | [#18711](https://github.com/CherryHQ/cherry-studio/pull/18711) Keep formula copy working in release builds · [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) Preserve surrogate pairs at truncation boundaries so a mu… · [#16454](https://github.com/CherryHQ/cherry-studio/pull/16454) Keep bare-URL markdown reference lines in citations inste… |
+| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | 3 | Agent-flow guards, Docling fallback, GraphRAG edge ranking | [#15691](https://github.com/infiniflow/ragflow/pull/15691) Skip empty agent-switch conditions so a blank branch guar… · [#15601](https://github.com/infiniflow/ragflow/pull/15601) Fall back when Docling native parsing returns no chunks,… · [#15696](https://github.com/infiniflow/ragflow/pull/15696) Keep the strongest PageRank score for repeated n-hop Grap… |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | 11 | Observability UI state: prompt-diff expiry, cursor monotonicity, startup races | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) Expire prompt tool diffs on provider change, so PXI promp… · [#13210](https://github.com/Arize-ai/phoenix/pull/13210) Return NotFound-style errors for invalid GraphQL node ids… · [#13245](https://github.com/Arize-ai/phoenix/pull/13245) Keep the generative model fetch cursor monotonic so lower… |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | 4 | Docling response unpacking, docs dark theme, PostgreSQL search_path detection | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) Extract Docling async markdown from the response envelope… · [#3123](https://github.com/HKUDS/LightRAG/pull/3123) Sync the API docs colors with the dark theme so endpoint… · [#3206](https://github.com/HKUDS/LightRAG/pull/3206) Honor PostgreSQL search_path in table-existence checks so… |
+| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | 1 | FalkorDB bulk-write crash on NUL bytes | [#1531](https://github.com/getzep/graphiti/pull/1531) Strip embedded NUL bytes from FalkorDB query params, so o… |
+| [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | 1 | Sandbox execution opt-in | [#3092](https://github.com/eosphoros-ai/DB-GPT/pull/3092) Require explicit opt-in before the sandbox executes on th… |
+| [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | 1 | Equity-screener EPS field merge | [#2867](https://github.com/ranaroussi/yfinance/pull/2867) Add a missing comma that was merging two equity-screener… |
 
 <details>
 <summary>All 6 merged dify PRs</summary>
@@ -868,9 +907,9 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 #### Recommender systems
 
-| Project | Merged | Highlight fixes |
-|---------|:------:|-----------------|
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | 5 | Query GPU memory through PyTorch first with numba as fallback, so GPU… · Query GPU memory with torch first |
+| Project | Merged | What the PRs cover | Highlight fixes |
+|---------|:------:|--------------------|-----------------|
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | 5 | GPU discovery without a CUDA context, benchmark top-k honoring | [#2345](https://github.com/recommenders-team/recommenders/pull/2345) Query GPU memory through PyTorch first with numba as fall… · [#2349](https://github.com/recommenders-team/recommenders/pull/2349) Query GPU memory with torch first · [#2322](https://github.com/recommenders-team/recommenders/pull/2322) Honor the benchmark recommendation-count arg so eval scri… |
 
 <details>
 <summary>All 5 merged Microsoft Recommenders PRs</summary>
@@ -885,51 +924,12 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 </details>
 
-### Projects
-
-| Project | Stars | What it is |
-|---------|:-----:|------------|
-| [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.6k+ | 512K lines of Claude Code distilled to 1,400 lines of Python: every key architectural pattern, runnable, any LLM. 7 architecture deep-dive articles. |
-| [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
-| [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, and reading guides. |
-| [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, plain-English explanations. |
-| [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
-| [IslandEscape](https://github.com/he-yufeng/IslandEscape) | new | 2D pixel-art survival game where four LLM agents play the islanders, negotiating trades in natural language and forming alliances. |
-
-<details>
-<summary>All projects (22)</summary>
-
-| Area | Project | Stars | Notes |
-|------|---------|:-----:|-------|
-| Coding agents / evals | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.6k+ | 512K lines of Claude Code → 1,400 lines of Python. Every key architectural pattern, runnable. Any LLM. 7 architecture deep-dive articles. |
-| Applied agents | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
-| Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, and reading guides. |
-| Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, and plain-English explanations. |
-| Codebase maps | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
-| Code understanding | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | AI code reader for non-programmers: plain-language file guides, hover annotations, a terminology dictionary, Q&A, and natural-language edits. |
-| Coding agents / evals | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | new | Pytest plugin for regression-testing AI agents: snapshot baselines, semantic comparison, and mock LLMs. |
-| Coding agents / evals | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | new | AI coding agent CLI supporting 100+ LLMs via litellm, with dangerous command blocking, parallel tools, and session persistence. |
-| Coding agents / evals | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | new | CLI arena for AI coding agents: isolated `git worktree` runs, test/cost/diff/time scoring, and `pip install codejoust`. |
-| Coding agents / evals | [LiteBench](https://github.com/he-yufeng/LiteBench) | new | Pip-installable LLM/agent benchmark CLI + web dashboard, with agent mode, custom YAML, LLM-as-judge, and 100+ litellm models. |
-| Agent tooling | [RuleForge](https://github.com/he-yufeng/RuleForge) | new | Auto-generate AI assistant rules (CLAUDE.md, .cursorrules, copilot-instructions) from codebase analysis. |
-| LLM tooling | [PromptDiff](https://github.com/he-yufeng/PromptDiff) | new | Semantic diff for LLM prompts: compare prompt versions like `git diff`. |
-| LLM tooling | [TokenTracker](https://github.com/he-yufeng/TokenTracker) | new | Drop-in LLM cost tracker: change one import line and see where the money goes. OpenAI, OpenRouter, Azure, Ollama. |
-| LLM tooling | [BatchLLM](https://github.com/he-yufeng/BatchLLM) | new | Batch processing for LLM APIs: CSV/JSONL in, results out, with concurrency, retries, checkpointing, and cost tracking. |
-| Applied agents | [IslandEscape](https://github.com/he-yufeng/IslandEscape) | new | 2D pixel-art survival game where four LLM agents play the islanders — each with a personality, negotiating trades in natural language and forming alliances; race them to 100 coins to escape. |
-| Agent / MCP / CI tooling | [agentcikit](https://github.com/he-yufeng/agentcikit) | new | One CLI for AI-agent, MCP, and open-source work: diagnose CI failures into repro plans, pack issue-specific context for coding agents, gate and replay MCP servers, and test tool-call safety. Bundles `ci-repro`, `patch-context`, `mcp-gate`, `mcp-replay`, and `tool-fence`. |
-| Coding agents / evals | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | new | Turn real GitHub issues and local bugs into small, reproducible coding-agent benchmark tasks with before/after scoring and HTML reports. |
-| Agent observability | [FlightBox](https://github.com/he-yufeng/FlightBox) | new | Black-box flight recorder for AI agents: record, redact, replay, and diff local agent sessions. |
-| Quant / RL | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | new | Deep-RL trading: Double DQN with Transformer attention over a Fama-French-style multi-factor model, plus adaptive risk and volatility targeting. |
-| Research | [adversarial-refinement-imputation](https://github.com/he-yufeng/adversarial-refinement-imputation) | new | Companion code for the MiLeTS 2026 paper adapting R3GAN to multivariate time-series imputation — a clearly-scoped negative result. |
-| Research | [TrajBias](https://github.com/he-yufeng/TrajBias) | new | A study of structural biases in LLM-as-judge evaluation of agent trajectories. |
-
-</details>
 
 <p align="center">
   <samp>
     <a href="#cn">中文</a> ·
     <a href="https://www.linkedin.com/in/yufenghe">LinkedIn</a> ·
-    <a href="https://he-yufeng.github.io">Blog</a>
+    <a href="https://heyufeng.me">Blog</a>
   </samp>
 </p>
 
@@ -941,7 +941,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
   <samp>
     <a href="#en">English</a> ·
     <a href="https://www.linkedin.com/in/yufenghe">领英</a> ·
-    <a href="https://he-yufeng.github.io">博客</a>
+    <a href="https://heyufeng.me">博客</a>
   </samp>
 </p>
 
@@ -952,26 +952,66 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 - 370+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（36 个）、Qwen Code（53 个）、Microsoft Agent Framework（28 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（24 个）、deer-flow（15 个）、promptfoo（13 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（12 个）、cherry-studio（7 个）、openclaw（6 个）、dify（6 个）、PyTorch（8 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
+### 项目
+
+| 项目 | Stars | 简介 |
+|------|:-----:|------|
+| [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.6k+ | Claude Code 51万行源码蒸馏成 1400 行 Python 核心，关键架构模式全部可跑，支持任意大模型，附 7 篇架构导读。 |
+| [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化、职位结构化。 |
+| [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | 开源版 DeepWiki：CLI/浏览器生成代码库 wiki，PageRank 文件排序、Mermaid 图、阅读导览。 |
+| [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | 签合同前让 AI agent 先排雷：不公平条款、缺失保护、人话解释。 |
+| [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI 贡献雷达：找匹配 issue，看 PR 合并信号，再决定要不要花这个周末。 |
+| [IslandEscape](https://github.com/he-yufeng/IslandEscape) | new | 2D 像素生存游戏，四个 LLM agent 扮演岛民，用自然语言谈交易、结盟，比谁先到 100 金币逃离荒岛。 |
+
+<details>
+<summary>全部项目（22 个）</summary>
+
+| 方向 | 项目 | Stars | 简介 |
+|------|------|:-----:|------|
+| Coding agents / 评测 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.6k+ | Claude Code 51万行源码 → 1400行 Python 核心重写，支持任意大模型，附 7 篇架构导读。 |
+| 应用型 Agent | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化和岗位结构化。 |
+| 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
+| 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI 合同审查 Agent，签字前帮你找红旗条款、不公平约定和缺失保护。 |
+| 代码库地图 | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI 开源贡献发现器 + 仓库雷达：找匹配 issue，也评估 PR 合入友好度。 |
+| 代码理解 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | 面向非程序员的 AI 代码阅读器：大白话文件导读、悬浮批注、术语词典、问答、自然语言改写。 |
+| Coding agents / 评测 | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | new | AI Agent 回归测试 pytest 插件：快照基线、语义比较、Mock LLM。 |
+| Coding agents / 评测 | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | new | 终端 AI 编程 Agent，通过 litellm 支持 100+ 大模型，危险命令拦截、并行执行、会话持久化。 |
+| Coding agents / 评测 | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | new | AI 编程 Agent 擂台：独立 `git worktree` 运行，按测试通过率、成本、diff 大小、耗时打分。 |
+| Coding agents / 评测 | [LiteBench](https://github.com/he-yufeng/LiteBench) | new | LLM / Agent benchmark 轻量 CLI + Web 面板：agent 模式、自定义 YAML、LLM judge、100+ litellm 模型。 |
+| Agent 工具 | [RuleForge](https://github.com/he-yufeng/RuleForge) | new | 从代码库分析自动生成 AI 助手规则文件（CLAUDE.md、.cursorrules、copilot-instructions）。 |
+| LLM 工具 | [PromptDiff](https://github.com/he-yufeng/PromptDiff) | new | LLM prompt 语义 diff：像 `git diff` 一样比较 prompt 版本。 |
+| LLM 工具 | [TokenTracker](https://github.com/he-yufeng/TokenTracker) | new | 即插即用的 LLM 成本追踪：改一行 import 就能看清钱花在哪。支持 OpenAI、OpenRouter、Azure、Ollama。 |
+| LLM 工具 | [BatchLLM](https://github.com/he-yufeng/BatchLLM) | new | LLM API 批处理：CSV/JSONL 进、结果出，支持并发、重试、断点续跑和成本追踪。 |
+| 应用型 Agent | [IslandEscape](https://github.com/he-yufeng/IslandEscape) | new | 2D 像素风生存交易游戏：四个 LLM agent 扮演岛民，各有性格、用自然语言谈判交易、结盟博弈；和他们赛跑攒到 100 金币逃离孤岛。 |
+| Agent / MCP / CI 工具 | [agentcikit](https://github.com/he-yufeng/agentcikit) | new | 一个 CLI 覆盖 AI agent、MCP 和开源贡献工作：把 CI 失败转成复现计划、给 coding agent 打包任务上下文、给 MCP server 做门禁和回放、测试工具调用安全。内含 `ci-repro`、`patch-context`、`mcp-gate`、`mcp-replay`、`tool-fence`。 |
+| Coding agents / 评测 | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | new | 把真实 GitHub issue 和本地 bug 打包成可复现、可评分、可分享的 coding-agent benchmark 任务。 |
+| Agent 可观测性 | [FlightBox](https://github.com/he-yufeng/FlightBox) | new | AI Agent 黑盒飞行记录器：录制、脱敏、回放并 diff 本地 agent session。 |
+| 量化 / 强化学习 | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | new | 深度强化学习交易：Double DQN + Transformer attention 叠加 Fama-French 式多因子模型，含自适应风控和波动率目标。 |
+| 研究 | [adversarial-refinement-imputation](https://github.com/he-yufeng/adversarial-refinement-imputation) | new | MiLeTS 2026 论文配套代码：把 R3GAN 适配到多元时间序列填补，一个范围清晰的负结果。 |
+| 研究 | [TrajBias](https://github.com/he-yufeng/TrajBias) | new | 研究 LLM-as-judge 评估 agent 轨迹时的结构性偏差。 |
+
+</details>
+
 ### 开源贡献
 
 #### AI infra / 模型系统
 
-| 项目 | 已合并 | 代表性修复 |
-|------|:-----:|-------------|
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · 维护者) | 36 | GB200 MNNVL EP hang：cudaMalloc → cuMemCreate(FABRIC) + cuMemMap 跨节点 N… · HA 模式下 WaitForViewChange 每次迭代都新建一个 etcd watch，改成每轮等待只建一次，堵住稳态 watch g… |
-| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | 12 | Responses API 的 instructions 顺着 previous_response_id 链泄漏到了后续轮次。 · RoBERTa 的 position_ids 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请… |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | 8 | 让 CuTeDSL 的 topk override 守住非当前 CUDA 设备，避免把工作分发到错误设备（PR 显示 Closed，经 p… · 不支持的 batch norm 三阶导改为显式报错，不再静默返回错误梯度（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [Transformers](https://github.com/huggingface/transformers) (164.3k★) | 1 | AutoProcessor.from_pretrained 静默丢掉了 revision、token 这些 hub kwargs。 |
-| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | 2 | 修复 hybrid_linear_attn_backend 与 ngram 投机采样同时使用时崩溃 · 修复 --backend diffusers 在非 T2I 模型上的 PicklingError |
-| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | 1 | eigenvalue monitor 的值算了却没写日志，接上后才真正落进记录。 |
-| [Triton](https://github.com/triton-lang/triton) (19.9k★) | 4 | 除法和取模先把 fp8 操作数提升精度再算，不再直接按 fp8 精度求值（BC breaking） · 分数 top_k 向下取整为 0 时至少保留一个 config |
-| [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | 1 | 修复 LITELLM_LOG=INFO 漏设 verbose_logger：proxy INFO 日志不再静默丢失 |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | 6 | DPO 数据准备阶段遇到空 rejected_messages 直接快速失败，不用等训练跑到一半才崩。 · --torch_dtype 失效期间用户只能靠 engine_kwargs 传 dtype，flag 修好后两边撞参数直接 TypeErr… |
-| [verl](https://github.com/verl-project/verl) (23.1k★) | 1 | 按 DP 和 TP rank 算 colocated vLLM 权重同步的 ZMQ socket rank，多个 DP worker 不再… |
-| [TRL](https://github.com/huggingface/trl) (19.1k★) | 2 | SFT 准备阶段遇到已经转换过的数据集直接报错，别静默产出错的训练 batch。 · 保留 vLLM prompt 的 special tokens |
-| [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | 2 | MP store/retrieve 期间留住 producer 侧的 CUDA IPC event，别让 daemon 拿着已回收的 ha… · MP KV transfer 处理 HND 这种 GPU KV layout，之前这种排布会被算错。 |
-| [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | 2 | 修复 autotuner 在输入 tensor 为 None 时崩溃（fixes #2749） · 修复编译错误：CUTLASS 头文件缺少 <optional> include 导致 std |
-| [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | 1 | 让 Live Music API key 不再进入 websocket URL query，改由请求 header 承载，避免密钥出现在日… |
+| 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
+|------|:-----:|------------------|-----------------|
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | 36 | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：cudaMalloc → cuMemCreate(FABRIC) + cu… · [#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) HA 模式下 WaitForViewChange 每次迭代都新建一个 etcd watch，改成每轮等待只建一次，… · [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) rpc_meta 内容没变时重复发布保持幂等，真正改了值才拒绝。 |
+| [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | 12 | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API 的 instructions 顺着 previous_response_id 链泄漏到… · [#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa 的 position_ids 原地累积串进了 CUDA graph 的 padding，BGE-M… · [#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call 参数先按 JSON 解析，null/false 这类 literal 在流… |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | 8 | 算子与编译器正确性：错设备派发、梯度静默损坏、未初始化内存 | [#188022](https://github.com/pytorch/pytorch/pull/188022) 让 CuTeDSL 的 topk override 守住非当前 CUDA 设备，避免把工作分发到错误设备（PR 显… · [#186779](https://github.com/pytorch/pytorch/pull/186779) 不支持的 batch norm 三阶导改为显式报错，不再静默返回错误梯度（PR 显示 Closed，经 pytor… · [#188027](https://github.com/pytorch/pytorch/pull/188027) 在 Laguerre / Legendre 多项式的辅助函数里初始化 r，避免边界路径返回未初始化内存（PR 显示… |
+| [Transformers](https://github.com/huggingface/transformers) (164.3k★) | 1 | AutoProcessor 丢失 hub 参数透传 | [#44710](https://github.com/huggingface/transformers/pull/44710) AutoProcessor.from_pretrained 静默丢掉了 revision、token 这些 hub… |
+| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | 2 | 后端崩溃修复：混合注意力撞投机解码、diffusers 序列化 | [#20739](https://github.com/sgl-project/sglang/pull/20739) 修复 hybrid_linear_attn_backend 与 ngram 投机采样同时使用时崩溃 · [#21472](https://github.com/sgl-project/sglang/pull/21472) 修复 --backend diffusers 在非 T2I 模型上的 PicklingError |
+| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | 1 | 监控接线：特征值记录从未落日志 | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) eigenvalue monitor 的值算了却没写日志，接上后才真正落进记录。 |
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | 4 | 编译器语义：fp8 算术提升、top_k 边界、AxisInfo 正确性 | [#10883](https://github.com/triton-lang/triton/pull/10883) 除法和取模先把 fp8 操作数提升精度再算，不再直接按 fp8 精度求值（BC breaking） · [#10689](https://github.com/triton-lang/triton/pull/10689) 分数 top_k 向下取整为 0 时至少保留一个 config · [#10687](https://github.com/triton-lang/triton/pull/10687) is_power_of_two(0) 误返回了 True。 |
+| [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | 1 | 代理日志：INFO 输出丢失 verbose logger 来源 | [#26401](https://github.com/BerriAI/litellm/pull/26401) 修复 LITELLM_LOG=INFO 漏设 verbose_logger：proxy INFO 日志不再静默丢失 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | 6 | 训练准备与采样健壮性：DPO 崩溃、0 fps 视频、CI 修复 | [#9642](https://github.com/modelscope/ms-swift/pull/9642) DPO 数据准备阶段遇到空 rejected_messages 直接快速失败，不用等训练跑到一半才崩。 · [#9816](https://github.com/modelscope/ms-swift/pull/9816) --torch_dtype 失效期间用户只能靠 engine_kwargs 传 dtype，flag 修好后两边撞… · [#9789](https://github.com/modelscope/ms-swift/pull/9789) CUDA 测试容器里升级老 wandb，其旧 pb2 与 protobuf 7.x 相冲曾致全仓 CI 红 |
+| [verl](https://github.com/verl-project/verl) (23.1k★) | 1 | colocated 权重同步的 DP/TP rank 推导 | [#6620](https://github.com/verl-project/verl/pull/6620) 按 DP 和 TP rank 算 colocated vLLM 权重同步的 ZMQ socket rank，多个… |
+| [TRL](https://github.com/huggingface/trl) (19.1k★) | 2 | 数据准备快速失败与 vLLM 特殊 token 保留 | [#6054](https://github.com/huggingface/trl/pull/6054) SFT 准备阶段遇到已经转换过的数据集直接报错，别静默产出错的训练 batch。 · [#6063](https://github.com/huggingface/trl/pull/6063) 保留 vLLM prompt 的 special tokens |
+| [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | 2 | 跨进程 KV 传输：CUDA IPC 事件生命周期、HND 布局处理 | [#3245](https://github.com/LMCache/LMCache/pull/3245) MP store/retrieve 期间留住 producer 侧的 CUDA IPC event，别让 daem… · [#3282](https://github.com/LMCache/LMCache/pull/3282) MP KV transfer 处理 HND 这种 GPU KV layout，之前这种排布会被算错。 |
+| [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | 2 | autotuner 空输入崩溃与 CUTLASS 头文件编译修复 | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) 修复 autotuner 在输入 tensor 为 None 时崩溃（fixes #2749） · [#2772](https://github.com/flashinfer-ai/flashinfer/pull/2772) 修复编译错误：CUTLASS 头文件缺少 <optional> include 导致 std |
+| [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | 1 | 密钥卫生：websocket URL 不再带 secret | [#2564](https://github.com/googleapis/python-genai/pull/2564) 让 Live Music API key 不再进入 websocket URL query，改由请求 header… |
 
 <details>
 <summary>全部 36 个已合并的 Mooncake PR</summary>
@@ -1153,41 +1193,41 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 #### Agent 框架 / 协议 / 评测
 
-| 项目 | 已合并 | 代表性修复 |
-|------|:-----:|-------------|
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | 53 | 让 /bug、/docs、/insight 的浏览器打开走安全 launcher，headless 环境不再因为直接 open 崩。 · 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | 30 | 优先用打包进去的 dashboard 资产，而不是过期的 data dist，发版后不再展示旧前端。 · 避免多模态回复在引用文本和图片 metadata 同时存在时重复显示 quoted image caption |
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | 6 | 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fail-closed，全域… · 认证配置解析失败时记录日志而非静默吞掉 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | 15 | 让 create_thread 在并发 insert 输掉竞争时保持幂等，避免一个聊天产生重复 thread。 · fork 恢复的检查点把 sandbox channel 以 langgraph Overwrite 包装态送达，sync/async 初… |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | 12 | 补齐 Market Watch 的定时监视器 verdict 展示：一次列表查询直接显示最新标的状态、相对上轮变化和记录时间，并为尚无结果… · 定时监视器的每轮 verdict 以结构化记录持久化在 job 上并随列表接口内联下发，Market Watch 一次查询就能渲染最新判定和环比 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | 28 | handoff 原地改了 message 的 role，重试复用时把改动泄漏出去了，改成复用消毒过的副本。 · 把同步的 Python 工具挪出事件循环跑，阻塞型调用不再冻住并发的 agent 任务。 |
-| [opencode](https://github.com/anomalyco/opencode) (200.9k★) | 1 | 把 MCP OAuth 回调服务绑到 IPv4 loopback，让浏览器回跳稳定连上、不再和 IPv6 抢地址 |
-| [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | 1 | 编辑 basic model 设置时保留自定义的 LLM base URL，存下来的 profile 不再静默回退到 provider 默… |
-| [Cline](https://github.com/cline/cline) (66.7k★) | 1 | open-tabs 的 host RPC 挂了也能搜文件，回退到系统 rg，不让搜索整个失效。 |
-| [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | 9 | team run 里继承 leader 的权限规则，delegated agent 守着和 leader 一样的 workspace、文件… · Windows 上启动 Bash tool 子进程时使用 CREATE_NO_WINDOW，避免工具执行弹出控制台窗口 |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (24.5k★) | 13 | trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果 · 空 token 输入的 GLEU 评分返回 0 分，不再报错 |
-| [goose](https://github.com/aaif-goose/goose) (53.3k★) | 3 | 改用阻塞式的 OTLP HTTP exporter，进程退出时遥测数据不丢。 · 显示 skill 支持文件解析后的真实路径，而不是未解析的占位符 |
-| [GitHub MCP Server](https://github.com/github/github-mcp-server) (32.4k★) | 2 | PR review 请求支持 team reviewer，把 team slug 解析成 GitHub review subject，而不… · read-only 模式下隐藏会写入 GitHub 的 UI resources，同时保留安全的只读资源注册 |
-| [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | 1 | 上报实际生效的 Blaxel 超时值，而不是未配置的默认值 |
-| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (15.5k★) | 10 | 在一次 ADK execution 内缓存 session 读取，远端 session service 不用在每次 agent 运行前重复… · 修复 HITL tool call 后 ADK session 可能被旧状态回写的问题 |
-| [Google ADK](https://github.com/google/adk-python) (21.2k★) | 1 | 让 final_response_match_v2 在 criterion 选择开启时把 intermediate responses 纳… |
-| [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | 3 | 修复 S3 Vectors entity index 命名，避免 agent memory 写入因 AWS index-name 校验失败 · 暴露 Qdrant 的 https 选项，自托管的 HTTP 集群用 API key 认证就行，不用被逼进 TLS client 模式。 |
-| [Agno](https://github.com/agno-agi/agno) (41.8k★) | 1 | 保留非哨兵工具参数字符串里的空白，同时继续只对精确的 None / True / False 哨兵做归一化 |
-| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | 24 | 修复 OpenAI-compatible 响应里的 OpenRouter reasoning_details：解析为可读 reasonin… · 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。 |
-| [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | 7 | 修复 Anthropic streaming retry：瞬时建流失败后重新创建 stream，不再重复 await 同一个 coroutine · 兼容 OpenAI 兼容 realtime 返回字符串的 status details，incomplete response 不再在日志… |
-| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.2k★) | 6 | SSE handler 遇到不支持 http.Flusher 的 writer 时渲染 500 却没 return，nil flusher… · 校验 Looker explore_references 的结构，非法输入不再 panic |
-| [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.3k★) | 1 | 构建工具 schema 时保留必需的 discriminator tag，union 参数才还有效。 |
-| [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | 3 | 接受 Vercel AI dynamic-tool 消息里的 providerExecuted 和 title，严格校验下也留住 prov… · 在 completions 里转发 penalties 参数 |
-| [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.9k★) | 9 | 支持非流式 OpenAI chat completions · 处理 Gemini safety-blocked metadata：缺失 token 计数时安全归零，并把 safety stop 映射为… |
-| [Pipecat](https://github.com/pipecat-ai/pipecat) (14.6k★) | 2 | DTMF 缓存键补上采样率，同一按键不同采样率的提示音不再互相串音 · 修复 protobuf transport 丢失 interruption frame：实时语音 agent 的打断事件跨传输后仍能保留 |
-| [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | 1 | 通过 status_line 配置自定义 TUI 底部状态栏（仿 codex / claude code 的 footer 形态） |
-| [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | 1 | TUI tab 补全三合一修复：光标跳回、去除尾部空格、接受 /quit 别名 |
-| [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | 1 | 保证传给 Anthropic 的 stop sequence 非空，避免请求被拒 |
-| [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | 1 | 拒绝损坏的 publisher 元数据，而不是接收畸形条目 |
-| [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | 4 | 首个 PR：122 个测试、CI、团队模板、config 修复、任务耗时追踪 · 可插拔 TaskStore：将任务持久化抽取为可替换的后端抽象层 |
-| [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (5.0k★) | 2 | 拒绝重复的 initialize 请求，MCP session 初始化后的协议状态保持一致。 · 补齐 Implementation.description 元数据，同时让空描述继续不进入序列化后的 MCP payload |
-| [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | 1 | 从 OpenAI 风格的 text content block 里读 SciCode 的 assistant 答案，scorer prom… |
-| [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | 3 | 用 RLock 串行化 LiteLLM modify_params 的保存、设置和恢复，避免并发 completion 泄漏全局参数状态 · 用 git rev-parse --git-dir 校验 git workspace，坏掉的嵌套 repo 打不崩 /api/git/ch… |
+| 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
+|------|:-----:|------------------|-----------------|
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | 53 | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 /bug、/docs、/insight 的浏览器打开走安全 launcher，headless 环境不再因为直… · [#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容… · [#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | 30 | 发版资源新鲜度、多模态回复重复、调度器吞异常 | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) 优先用打包进去的 dashboard 资产，而不是过期的 data dist，发版后不再展示旧前端。 · [#8718](https://github.com/AstrBotDevs/AstrBot/pull/8718) 避免多模态回复在引用文本和图片 metadata 同时存在时重复显示 quoted image caption · [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) 修复 Telegram media group 异常被 APScheduler 静默吞掉：try/except +… |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | 12 | 组合分析与监视器判定流水线；实盘 fail-closed 门禁 | [#1156](https://github.com/HKUDS/Vibe-Trading/pull/1156) 补齐 Market Watch 的定时监视器 verdict 展示：一次列表查询直接显示最新标的状态、相对上轮变化… · [#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) 定时监视器的每轮 verdict 以结构化记录持久化在 job 上并随列表接口内联下发，Market Watch… · [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) Portfolio Studio 首刀「组合风险透视」：纯计算核心（集中度/波动/回撤/VaR/分散度/相关性）加… |
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | 6 | 会话存储失败即关的清扫、鉴权失败可见性、代理对安全文本 | [#119127](https://github.com/openclaw/openclaw/pull/119127) 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fa… · [#41271](https://github.com/openclaw/openclaw/pull/41271) 认证配置解析失败时记录日志而非静默吞掉 · [#96456](https://github.com/openclaw/openclaw/pull/96456) 按码点边界裁剪进度文本，避免落单的 surrogate |
+| [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | 15 | 并发与 checkpoint 正确性：建线程竞态、会话池生命周期、fork 恢复 | [#3800](https://github.com/bytedance/deer-flow/pull/3800) 让 create_thread 在并发 insert 输掉竞争时保持幂等，避免一个聊天产生重复 thread。 · [#4429](https://github.com/bytedance/deer-flow/pull/4429) fork 恢复的检查点把 sandbox channel 以 langgraph Overwrite 包装态送达，… · [#3797](https://github.com/bytedance/deer-flow/pull/3797) 同步 MCP session-pool 单例生命周期,避免并发首次使用创建重复池 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | 28 | agent 循环边界：消息 role 原地改泄漏、每轮钩子、阻塞工具 | [#5808](https://github.com/microsoft/agent-framework/pull/5808) handoff 原地改了 message 的 role，重试复用时把改动泄漏出去了，改成复用消毒过的副本。 · [#7289](https://github.com/microsoft/agent-framework/pull/7289) turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次 · [#5773](https://github.com/microsoft/agent-framework/pull/5773) 把同步的 Python 工具挪出事件循环跑，阻塞调用不再冻住并发 agent |
+| [opencode](https://github.com/anomalyco/opencode) (200.9k★) | 1 | MCP OAuth 回调绑定 IPv4 loopback | [#30022](https://github.com/anomalyco/opencode/pull/30022) 把 MCP OAuth 回调服务绑到 IPv4 loopback，让浏览器回跳稳定连上、不再和 IPv6 抢地址 |
+| [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | 1 | 设置持久化：保留自定义 LLM base URL | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) 编辑 basic model 设置时保留自定义的 LLM base URL，存下来的 profile 不再静默回退… |
+| [Cline](https://github.com/cline/cline) (66.7k★) | 1 | open-tabs 宿主 RPC 挂掉时文件搜索仍可用 | [#11166](https://github.com/cline/cline/pull/11166) open-tabs 的 host RPC 挂了也能搜文件，回退到系统 rg，不让搜索整个失效。 |
+| [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | 9 | 团队运行权限继承、Windows 子进程窗口、skill 来源 | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) team run 里继承 leader 的权限规则，delegated agent 守着和 leader 一样的… · [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Windows 上启动 Bash tool 子进程时使用 CREATE_NO_WINDOW，避免工具执行弹出控制台… · [#1732](https://github.com/agentscope-ai/agentscope/pull/1732) 汇总所有启用的 tool group 的 skill，prompt instructions 和 Skill vi… |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (24.5k★) | 13 | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果 · [#9850](https://github.com/promptfoo/promptfoo/pull/9850) 空 token 输入的 GLEU 评分返回 0 分，不再报错 · [#9867](https://github.com/promptfoo/promptfoo/pull/9867) 读取 Azure logprobs 时空 choices 数组不再崩溃 |
+| [goose](https://github.com/aaif-goose/goose) (53.3k★) | 3 | 遥测导出可靠性、skill 路径展示、桌面快捷键 | [#9599](https://github.com/aaif-goose/goose/pull/9599) 改用阻塞式的 OTLP HTTP exporter，进程退出时遥测数据不丢。 · [#9584](https://github.com/aaif-goose/goose/pull/9584) 显示 skill 支持文件解析后的真实路径，而不是未解析的占位符 · [#9528](https://github.com/aaif-goose/goose/pull/9528) 恢复 desktop 应用里 new chat 快捷键的导航 |
+| [GitHub MCP Server](https://github.com/github/github-mcp-server) (32.4k★) | 2 | team reviewer 解析与只读面卫生 | [#2514](https://github.com/github/github-mcp-server/pull/2514) PR review 请求支持 team reviewer，把 team slug 解析成 GitHub revie… · [#2612](https://github.com/github/github-mcp-server/pull/2612) read-only 模式下隐藏会写入 GitHub 的 UI resources，同时保留安全的只读资源注册 |
+| [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | 1 | 上报生效中的 Blaxel 超时而非默认值 | [#3643](https://github.com/openai/openai-agents-python/pull/3643) 上报实际生效的 Blaxel 超时值，而不是未配置的默认值 |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (15.5k★) | 10 | ADK 会话缓存与文本到工具调用的过渡顺序 | [#1890](https://github.com/ag-ui-protocol/ag-ui/pull/1890) 在一次 ADK execution 内缓存 session 读取，远端 session service 不用在每次… · [#1735](https://github.com/ag-ui-protocol/ag-ui/pull/1735) 修复 HITL tool call 后 ADK session 可能被旧状态回写的问题 · [#1829](https://github.com/ag-ui-protocol/ag-ui/pull/1829) LangGraph 流从文本切到 tool call 时先关闭当前文本消息，避免工具调用事件被前一段文本吞掉 |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | 1 | 评判标准纳入中间响应 | [#5698](https://github.com/google/adk-python/pull/5698) 让 final_response_match_v2 在 criterion 选择开启时把 intermediate… |
+| [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | 3 | 记忆存储后端：S3 Vectors 索引命名、Qdrant https 选项 | [#5416](https://github.com/mem0ai/mem0/pull/5416) 修复 S3 Vectors entity index 命名，避免 agent memory 写入因 AWS ind… · [#5380](https://github.com/mem0ai/mem0/pull/5380) 暴露 Qdrant 的 https 选项，自托管的 HTTP 集群用 API key 认证就行，不用被逼进 TLS… · [#5383](https://github.com/mem0ai/mem0/pull/5383) OpenClaw CLI metadata 注册时跳过 runtime setup，插件发现阶段不再重复注册运行时… |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | 24 | 评测日志与 provider 解析：reasoning 块、流式写盘、无头环境崩溃 | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) 修复 OpenAI-compatible 响应里的 OpenRouter reasoning_details：解析… · [#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandb… · [#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) macOS 分支无守卫 import AppKit 并解引用 NSScreen，没装 pyobjc 时 headf… |
+| [Agno](https://github.com/agno-agi/agno) (41.8k★) | 1 | 工具参数空白保留与哨兵值归一化 | [#8131](https://github.com/agno-agi/agno/pull/8131) 保留非哨兵工具参数字符串里的空白，同时继续只对精确的 None / True / False 哨兵做归一化 |
+| [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | 7 | 实时语音链路：流式重试重建、provider 状态解析、STT 错误透出 | [#5820](https://github.com/livekit/agents/pull/5820) 修复 Anthropic streaming retry：瞬时建流失败后重新创建 stream，不再重复 awai… · [#5994](https://github.com/livekit/agents/pull/5994) 兼容 OpenAI 兼容 realtime 返回字符串的 status details，incomplete re… · [#5864](https://github.com/livekit/agents/pull/5864) 暴露 Soniox STT server error：流式识别失败时返回明确错误，不再被当成空 transcript |
+| [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.2k★) | 6 | SSE writer panic、Looker 入参校验、参数错误报告 | [#3520](https://github.com/googleapis/mcp-toolbox/pull/3520) SSE handler 遇到不支持 http.Flusher 的 writer 时渲染 500 却没 return… · [#3531](https://github.com/googleapis/mcp-toolbox/pull/3531) 校验 Looker explore_references 的结构，非法输入不再 panic · [#3512](https://github.com/googleapis/mcp-toolbox/pull/3512) array/map 参数类型报错时带上导致出错的具体值 |
+| [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.3k★) | 1 | schema 构建保留必需的 union 判别标签 | [#4297](https://github.com/PrefectHQ/fastmcp/pull/4297) 构建工具 schema 时保留必需的 discriminator tag，union 参数才还有效。 |
+| [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | 3 | Vercel AI 动态工具部件接纳、completions penalty 透传 | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) 接受 Vercel AI dynamic-tool 消息里的 providerExecuted 和 title，严… · [#5695](https://github.com/pydantic/pydantic-ai/pull/5695) 在 completions 里转发 penalties 参数 · [#5694](https://github.com/pydantic/pydantic-ai/pull/5694) 修复 MCPToolset(http_client=...) 与 FastMCP 的兼容问题，避免把 follow… |
+| [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.9k★) | 9 | OpenAI 非流式支持、Gemini 安全元数据、vLLM reasoning 块 | [#2400](https://github.com/strands-agents/harness-sdk/pull/2400) 支持非流式 OpenAI chat completions · [#2353](https://github.com/strands-agents/harness-sdk/pull/2353) 处理 Gemini safety-blocked metadata：缺失 token 计数时安全归零，并把 saf… · [#2354](https://github.com/strands-agents/harness-sdk/pull/2354) 读 OpenAI 兼容 vLLM 流里的 delta.reasoning，reasoning 输出过了 provi… |
+| [Pipecat](https://github.com/pipecat-ai/pipecat) (14.6k★) | 2 | 实时语音：DTMF 缓存键、打断帧序列化 | [#4766](https://github.com/pipecat-ai/pipecat/pull/4766) DTMF 缓存键补上采样率，同一按键不同采样率的提示音不再互相串音 · [#4553](https://github.com/pipecat-ai/pipecat/pull/4553) 修复 protobuf transport 丢失 interruption frame：实时语音 agent 的打… |
+| [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | 1 | TUI 底部状态栏自定义 | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) 通过 status_line 配置自定义 TUI 底部状态栏（仿 codex / claude code 的 fo… |
+| [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | 1 | TUI tab 补全修复 | [#185](https://github.com/HKUDS/OpenHarness/pull/185) TUI tab 补全三合一修复：光标跳回、去除尾部空格、接受 /quit 别名 |
+| [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | 1 | Anthropic stop 序列校验 | [#3822](https://github.com/EleutherAI/lm-evaluation-harness/pull/3822) 保证传给 Anthropic 的 stop sequence 非空，避免请求被拒 |
+| [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | 1 | 发布者元数据校验 | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) 拒绝损坏的 publisher 元数据，而不是接收畸形条目 |
+| [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | 4 | 奠基 PR：测试/CI/模板、可插拔 TaskStore、Gemini CLI 支持 | [#1](https://github.com/HKUDS/ClawTeam/pull/1) 首个 PR：122 个测试、CI、团队模板、config 修复、任务耗时追踪 · [#40](https://github.com/HKUDS/ClawTeam/pull/40) 可插拔 TaskStore：将任务持久化抽取为可替换的后端抽象层 · [#32](https://github.com/HKUDS/ClawTeam/pull/32) Gemini CLI 支持：spawn、权限、prompt 注入双 backend 适配 |
+| [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (5.0k★) | 2 | MCP 协议状态：拒绝重复 initialize、description 元数据 | [#962](https://github.com/modelcontextprotocol/go-sdk/pull/962) 拒绝重复的 initialize 请求，MCP session 初始化后的协议状态保持一致。 · [#981](https://github.com/modelcontextprotocol/go-sdk/pull/981) 补齐 Implementation.description 元数据，同时让空描述继续不进入序列化后的 MCP pa… |
+| [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | 1 | 从内容块提取 SciCode 答案 | [#1381](https://github.com/modelscope/evalscope/pull/1381) 从 OpenAI 风格的 text content block 里读 SciCode 的 assistant 答案… |
+| [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | 3 | 并发安全的 LiteLLM 参数、git 工作区校验、UTF-8 日志 | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) 用 RLock 串行化 LiteLLM modify_params 的保存、设置和恢复，避免并发 completi… · [#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) 用 git rev-parse --git-dir 校验 git workspace，坏掉的嵌套 repo 打不崩… · [#3225](https://github.com/OpenHands/software-agent-sdk/pull/3225) remote completion 日志按 UTF-8 写，中文和非 ASCII 输出在本地回放、排查时不乱码。 |
 
 <details>
 <summary>全部 53 个已合并的 Qwen Code PR</summary>
@@ -1679,17 +1719,17 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 #### 应用型 AI / RAG / 可观测性
 
-| 项目 | 已合并 | 代表性修复 |
-|------|:-----:|-------------|
-| [dify](https://github.com/langgenius/dify) (153.3k★) | 6 | 给没有超时的 TiDB Cloud API 调用补上有界超时，集群端点挂起不再无限拖住 vdb 操作 · 在 service-api 和 explore 端点提前校验 conversation，坏的 conversation_id 直接 404… |
-| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | 3 | self-host 抓取的 interact 动作明确报错拒绝，而不是隐晦地失败 · self-host bypass 路径保留 auth chunk，已认证的 self-host 抓取不再被丢掉。 |
-| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | 7 | 让正式构建的公式复制重新可用：markdown styles 入口被生产构建 tree-shake 掉，连带丢了 KaTeX 的复制监听器。 · 在截断边界保住 surrogate pair，多字节字符不会被切成半个非法字符。 |
-| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | 3 | 跳过空的 agent switch 条件，空分支判断不会让有效的后续 agent 流程崩掉或卡住。 · Docling native 解析没产出 chunk 时降级，文档还能出可用内容，而不是空解析。 |
-| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | 11 | provider 变化时让 prompt tool diff 过期，PXI 编辑不再把旧的工具差异状态带到别的 provider。 · 修复非法 GraphQL node id 的错误处理：返回 NotFound 风格错误，而不是把 decoder failure 泄漏给客户端 |
-| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | 4 | 从 Docling 异步结果 envelope 里抽出 Markdown 正文，RAG chunk 拿到干净文本，不混 JSON/base… · 把 API 文档配色和暗色主题同步，endpoint 示例在 dark mode 下也读得清。 |
-| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | 1 | 递归清掉 FalkorDB 查询参数里的 NUL 字节，单个异常文档字符串打断不了批量图写入。 |
-| [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | 1 | sandbox 用本地 runtime 执行前要求显式 opt-in |
-| [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | 1 | 补上漏掉的逗号，避免 equity screener 的两个 EPS 字段被并成一个 |
+| 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
+|------|:-----:|------------------|-----------------|
+| [dify](https://github.com/langgenius/dify) (153.3k★) | 6 | API 健壮性：无超时调用加边界、前置校验、原子窗口 | [#39953](https://github.com/langgenius/dify/pull/39953) 给没有超时的 TiDB Cloud API 调用补上有界超时，集群端点挂起不再无限拖住 vdb 操作 · [#38801](https://github.com/langgenius/dify/pull/38801) 在 service-api 和 explore 端点提前校验 conversation，坏的 conversati… · [#37425](https://github.com/langgenius/dify/pull/37425) 给 OperationService 计费请求加超时，慢计费端点挂不住请求。 |
+| [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | 3 | 自托管抓取链路：interact 报错、auth 块保留、批量 dict 响应 | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) self-host 抓取的 interact 动作明确报错拒绝，而不是隐晦地失败 · [#3729](https://github.com/firecrawl/firecrawl/pull/3729) self-host bypass 路径保留 auth chunk，已认证的 self-host 抓取不再被丢掉。 · [#3713](https://github.com/firecrawl/firecrawl/pull/3713) Python SDK 正确处理 async v1 batch scrape 以 dict 形式返回的响应 |
+| [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | 7 | 渲染正确性：markdown 样式被 tree-shake、代理对安全截断、引用行 | [#18711](https://github.com/CherryHQ/cherry-studio/pull/18711) 让正式构建的公式复制重新可用：markdown styles 入口被生产构建 tree-shake 掉，连带丢了… · [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) 在截断边界保住 surrogate pair，多字节字符不会被切成半个非法字符。 · [#16454](https://github.com/CherryHQ/cherry-studio/pull/16454) 保留 citations 里的纯 URL markdown 引用行,不再丢弃 |
+| [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | 3 | agent 流守卫、Docling 回退、GraphRAG 边排序 | [#15691](https://github.com/infiniflow/ragflow/pull/15691) 跳过空的 agent switch 条件，空分支判断不会让有效的后续 agent 流程崩掉或卡住。 · [#15601](https://github.com/infiniflow/ragflow/pull/15601) Docling native 解析没产出 chunk 时降级，文档还能出可用内容，而不是空解析。 · [#15696](https://github.com/infiniflow/ragflow/pull/15696) 重复的 n-hop GraphRAG 边保留最强的 PageRank 分，路径顺序覆盖不了排序。 |
+| [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | 11 | 可观测 UI 状态：prompt diff 过期、游标单调性、启动竞态 | [#13641](https://github.com/Arize-ai/phoenix/pull/13641) provider 变化时让 prompt tool diff 过期，PXI 编辑不再把旧的工具差异状态带到别的 p… · [#13210](https://github.com/Arize-ai/phoenix/pull/13210) 修复非法 GraphQL node id 的错误处理：返回 NotFound 风格错误，而不是把 decoder… · [#13245](https://github.com/Arize-ai/phoenix/pull/13245) 修复 generative model fetch 游标回退：低 id 更新不会让后续轮询跳过更新的模型变更 |
+| [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | 4 | Docling 响应解包、文档站深色主题、PostgreSQL search_path 探测 | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) 从 Docling 异步结果 envelope 里抽出 Markdown 正文，RAG chunk 拿到干净文本，… · [#3123](https://github.com/HKUDS/LightRAG/pull/3123) 把 API 文档配色和暗色主题同步，endpoint 示例在 dark mode 下也读得清。 · [#3206](https://github.com/HKUDS/LightRAG/pull/3206) PostgreSQL 表存在性检查尊重 search_path，非 public schema 在迁移、建表前就能… |
+| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | 1 | FalkorDB 批量写入遇 NUL 字节崩溃 | [#1531](https://github.com/getzep/graphiti/pull/1531) 递归清掉 FalkorDB 查询参数里的 NUL 字节，单个异常文档字符串打断不了批量图写入。 |
+| [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | 1 | 沙箱执行改为显式开启 | [#3092](https://github.com/eosphoros-ai/DB-GPT/pull/3092) sandbox 用本地 runtime 执行前要求显式 opt-in |
+| [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | 1 | 股票筛选器 EPS 字段粘连 | [#2867](https://github.com/ranaroussi/yfinance/pull/2867) 补上漏掉的逗号，避免 equity screener 的两个 EPS 字段被并成一个 |
 
 <details>
 <summary>全部 6 个已合并的 dify PR</summary>
@@ -1794,9 +1834,9 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 #### 推荐系统
 
-| 项目 | 已合并 | 代表性修复 |
-|------|:-----:|-------------|
-| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | 5 | 先用 PyTorch 查 GPU 显存，numba 兜底，CUDA context 不可用时 GPU discovery 不至于直接失败。 · 优先用 torch 查询 GPU 显存 |
+| 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
+|------|:-----:|------------------|-----------------|
+| [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | 5 | 无 CUDA 上下文下的 GPU 探测、基准脚本 top-k 生效 | [#2345](https://github.com/recommenders-team/recommenders/pull/2345) 先用 PyTorch 查 GPU 显存，numba 兜底，CUDA context 不可用时 GPU discov… · [#2349](https://github.com/recommenders-team/recommenders/pull/2349) 优先用 torch 查询 GPU 显存 · [#2322](https://github.com/recommenders-team/recommenders/pull/2322) 让 benchmark 的推荐数量参数生效，评测脚本按要求生成 top-k。 |
 
 <details>
 <summary>全部 5 个已合并的 Microsoft Recommenders PR</summary>
@@ -1811,50 +1851,10 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 
-### 项目
-
-| 项目 | Stars | 简介 |
-|------|:-----:|------|
-| [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.6k+ | Claude Code 51万行源码蒸馏成 1400 行 Python 核心，关键架构模式全部可跑，支持任意大模型，附 7 篇架构导读。 |
-| [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化、职位结构化。 |
-| [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | 开源版 DeepWiki：CLI/浏览器生成代码库 wiki，PageRank 文件排序、Mermaid 图、阅读导览。 |
-| [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | 签合同前让 AI agent 先排雷：不公平条款、缺失保护、人话解释。 |
-| [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI 贡献雷达：找匹配 issue，看 PR 合并信号，再决定要不要花这个周末。 |
-| [IslandEscape](https://github.com/he-yufeng/IslandEscape) | new | 2D 像素生存游戏，四个 LLM agent 扮演岛民，用自然语言谈交易、结盟，比谁先到 100 金币逃离荒岛。 |
-
-<details>
-<summary>全部项目（22 个）</summary>
-
-| 方向 | 项目 | Stars | 简介 |
-|------|------|:-----:|------|
-| Coding agents / 评测 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.6k+ | Claude Code 51万行源码 → 1400行 Python 核心重写，支持任意大模型，附 7 篇架构导读。 |
-| 应用型 Agent | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化和岗位结构化。 |
-| 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
-| 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI 合同审查 Agent，签字前帮你找红旗条款、不公平约定和缺失保护。 |
-| 代码库地图 | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI 开源贡献发现器 + 仓库雷达：找匹配 issue，也评估 PR 合入友好度。 |
-| 代码理解 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | 面向非程序员的 AI 代码阅读器：大白话文件导读、悬浮批注、术语词典、问答、自然语言改写。 |
-| Coding agents / 评测 | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | new | AI Agent 回归测试 pytest 插件：快照基线、语义比较、Mock LLM。 |
-| Coding agents / 评测 | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | new | 终端 AI 编程 Agent，通过 litellm 支持 100+ 大模型，危险命令拦截、并行执行、会话持久化。 |
-| Coding agents / 评测 | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | new | AI 编程 Agent 擂台：独立 `git worktree` 运行，按测试通过率、成本、diff 大小、耗时打分。 |
-| Coding agents / 评测 | [LiteBench](https://github.com/he-yufeng/LiteBench) | new | LLM / Agent benchmark 轻量 CLI + Web 面板：agent 模式、自定义 YAML、LLM judge、100+ litellm 模型。 |
-| Agent 工具 | [RuleForge](https://github.com/he-yufeng/RuleForge) | new | 从代码库分析自动生成 AI 助手规则文件（CLAUDE.md、.cursorrules、copilot-instructions）。 |
-| LLM 工具 | [PromptDiff](https://github.com/he-yufeng/PromptDiff) | new | LLM prompt 语义 diff：像 `git diff` 一样比较 prompt 版本。 |
-| LLM 工具 | [TokenTracker](https://github.com/he-yufeng/TokenTracker) | new | 即插即用的 LLM 成本追踪：改一行 import 就能看清钱花在哪。支持 OpenAI、OpenRouter、Azure、Ollama。 |
-| LLM 工具 | [BatchLLM](https://github.com/he-yufeng/BatchLLM) | new | LLM API 批处理：CSV/JSONL 进、结果出，支持并发、重试、断点续跑和成本追踪。 |
-| 应用型 Agent | [IslandEscape](https://github.com/he-yufeng/IslandEscape) | new | 2D 像素风生存交易游戏：四个 LLM agent 扮演岛民，各有性格、用自然语言谈判交易、结盟博弈；和他们赛跑攒到 100 金币逃离孤岛。 |
-| Agent / MCP / CI 工具 | [agentcikit](https://github.com/he-yufeng/agentcikit) | new | 一个 CLI 覆盖 AI agent、MCP 和开源贡献工作：把 CI 失败转成复现计划、给 coding agent 打包任务上下文、给 MCP server 做门禁和回放、测试工具调用安全。内含 `ci-repro`、`patch-context`、`mcp-gate`、`mcp-replay`、`tool-fence`。 |
-| Coding agents / 评测 | [IssueBenchKit](https://github.com/he-yufeng/IssueBenchKit) | new | 把真实 GitHub issue 和本地 bug 打包成可复现、可评分、可分享的 coding-agent benchmark 任务。 |
-| Agent 可观测性 | [FlightBox](https://github.com/he-yufeng/FlightBox) | new | AI Agent 黑盒飞行记录器：录制、脱敏、回放并 diff 本地 agent session。 |
-| 量化 / 强化学习 | [DRL-MultiFactorTrading](https://github.com/he-yufeng/DRL-MultiFactorTrading) | new | 深度强化学习交易：Double DQN + Transformer attention 叠加 Fama-French 式多因子模型，含自适应风控和波动率目标。 |
-| 研究 | [adversarial-refinement-imputation](https://github.com/he-yufeng/adversarial-refinement-imputation) | new | MiLeTS 2026 论文配套代码：把 R3GAN 适配到多元时间序列填补，一个范围清晰的负结果。 |
-| 研究 | [TrajBias](https://github.com/he-yufeng/TrajBias) | new | 研究 LLM-as-judge 评估 agent 轨迹时的结构性偏差。 |
-
-</details>
-
 <p align="center">
   <samp>
     <a href="#en">English</a> ·
     <a href="https://www.linkedin.com/in/yufenghe">领英</a> ·
-    <a href="https://he-yufeng.github.io">博客</a>
+    <a href="https://heyufeng.me">博客</a>
   </samp>
 </p>
