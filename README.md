@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://www.linkedin.com/in/yufenghe"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-  <a href="https://heyufeng.me"><img src="https://img.shields.io/badge/heyufeng.me-1f4550?style=for-the-badge&logoColor=white" alt="heyufeng.me"/></a>
+  <a href="https://heyufeng.me"><img src="https://img.shields.io/badge/Personal_Homepage-1f4550?style=for-the-badge&logoColor=white" alt="Personal Homepage"/></a>
 </p>
 <p align="center"><samp><a href="#cn">中文</a></samp></p>
 
@@ -906,7 +906,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 <p align="center">
   <a href="https://www.linkedin.com/in/yufenghe"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-  <a href="https://heyufeng.me"><img src="https://img.shields.io/badge/heyufeng.me-1f4550?style=for-the-badge&logoColor=white" alt="heyufeng.me"/></a>
+  <a href="https://heyufeng.me"><img src="https://img.shields.io/badge/Personal_Homepage-1f4550?style=for-the-badge&logoColor=white" alt="Personal Homepage"/></a>
 </p>
 <p align="center"><samp><a href="#cn">中文</a></samp></p>
 
