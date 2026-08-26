@@ -4,9 +4,7 @@
 
 <p align="center">
   <a href="https://www.linkedin.com/in/yufenghe"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-</p>
-<p align="center">
-  <a href="https://heyufeng.me"><img src="https://img.shields.io/badge/%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5-1f4550?style=for-the-badge&logoColor=white" alt="个人主页"/></a>
+  <a href="https://heyufeng.me"><img src="https://img.shields.io/badge/heyufeng.me-1f4550?style=for-the-badge&logoColor=white" alt="heyufeng.me"/></a>
 </p>
 <p align="center"><samp><a href="#cn">中文</a></samp></p>
 
@@ -908,9 +906,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 <p align="center">
   <a href="https://www.linkedin.com/in/yufenghe"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-</p>
-<p align="center">
-  <a href="https://heyufeng.me"><img src="https://img.shields.io/badge/%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5-1f4550?style=for-the-badge&logoColor=white" alt="个人主页"/></a>
+  <a href="https://heyufeng.me"><img src="https://img.shields.io/badge/heyufeng.me-1f4550?style=for-the-badge&logoColor=white" alt="heyufeng.me"/></a>
 </p>
 <p align="center"><samp><a href="#cn">中文</a></samp></p>
 
@@ -920,8 +916,6 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 <p align="center">
   <a href="https://www.linkedin.com/in/yufenghe"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-</p>
-<p align="center">
   <a href="https://heyufeng.me"><img src="https://img.shields.io/badge/%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5-1f4550?style=for-the-badge&logoColor=white" alt="个人主页"/></a>
 </p>
 <p align="center"><samp><a href="#en">English</a></samp></p>
@@ -1816,8 +1810,6 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 <p align="center">
   <a href="https://www.linkedin.com/in/yufenghe"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-</p>
-<p align="center">
   <a href="https://heyufeng.me"><img src="https://img.shields.io/badge/%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5-1f4550?style=for-the-badge&logoColor=white" alt="个人主页"/></a>
 </p>
 <p align="center"><samp><a href="#en">English</a></samp></p>
