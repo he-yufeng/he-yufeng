@@ -67,7 +67,7 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 
 ### Open Source Contributions
 
-377 merged PRs across 57 upstream projects. The most visible work first; the rest is folded below.
+377 merged PRs across 57 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -84,12 +84,6 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [dify](https://github.com/langgenius/dify) (153.3k★) | 6 | API robustness: unbounded calls get timeouts, up-front validation, atomic windows | [#39953](https://github.com/langgenius/dify/pull/39953) Bound the TiDB Cloud API calls that had no timeout, so a hanging cluster endpoint can't stall vdb operations forever |
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | 1 | AutoProcessor hub-kwarg passthrough |  |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | 1 | Settings persistence: keep custom LLM base URLs | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) Keep a custom LLM base URL when editing basic model settings, so a saved profile stops silently falling back to the provider default. |
-
-<details>
-<summary>More projects (44 repos, 168 merged PRs)</summary>
-
-| Project | Merged | What the PRs cover | Highlight fixes |
-|---------|:------:|--------------------|-----------------|
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | 3 | Self-host scrape paths: interact errors, auth chunk retention, batch dict responses |  |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | 2 | Backend crashes: hybrid attention with speculative decoding, diffusers pickling |  |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | 1 | Monitor wiring: eigenvalue records never landed in logs |  |
@@ -134,10 +128,6 @@ AI Agents & LLM Systems Engineer | Formerly @ [Moonshot AI](https://www.moonshot
 | [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | 1 | Equity-screener EPS field merge |  |
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | 1 | SciCode answer extraction from content blocks |  |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | 3 | Concurrency-safe LiteLLM params, git workspace validation, UTF-8 logs | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) Serialize LiteLLM `modify_params` updates with an RLock so concurrent completions do not leak global parameter state<br>[#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) Validate git workspaces with `git rev-parse --git-dir`, so a broken nested repo can't crash `/api/git/changes`. |
-
-</details>
-
-#### Full PR listings by project
 
 <details>
 <summary>All 53 merged Qwen Code PRs</summary>
@@ -985,7 +975,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 ### 开源贡献
 
-上游 57 个项目共 377 个 PR 已 merged。展示分高的项目直接列，其余收进折叠。
+上游 57 个项目共 377 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
@@ -1002,12 +992,6 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [dify](https://github.com/langgenius/dify) (153.3k★) | 6 | API 健壮性：无超时调用加边界、前置校验、原子窗口 | [#39953](https://github.com/langgenius/dify/pull/39953) 给没有超时的 TiDB Cloud API 调用补上有界超时，集群端点挂起不再无限拖住 vdb 操作 |
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | 1 | AutoProcessor 丢失 hub 参数透传 |  |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | 1 | 设置持久化：保留自定义 LLM base URL | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) 编辑 basic model 设置时保留自定义的 LLM base URL，存下来的 profile 不再静默回退到 provider 默认 endpoint。 |
-
-<details>
-<summary>更多项目（44 个仓库，168 个已合并 PR）</summary>
-
-| 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
-|------|:-----:|------------------|-----------------|
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | 3 | 自托管抓取链路：interact 报错、auth 块保留、批量 dict 响应 |  |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | 2 | 后端崩溃修复：混合注意力撞投机解码、diffusers 序列化 |  |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | 1 | 监控接线：特征值记录从未落日志 |  |
@@ -1052,10 +1036,6 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | 1 | 股票筛选器 EPS 字段粘连 |  |
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | 1 | 从内容块提取 SciCode 答案 |  |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | 3 | 并发安全的 LiteLLM 参数、git 工作区校验、UTF-8 日志 | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) 用 RLock 串行化 LiteLLM `modify_params` 的保存、设置和恢复，避免并发 completion 泄漏全局参数状态<br>[#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) 用 `git rev-parse --git-dir` 校验 git workspace，坏掉的嵌套 repo 打不崩 `/api/git/changes`。 |
-
-</details>
-
-#### 全量 PR 明细（按项目）
 
 <details>
 <summary>全部 53 个已合并的 Qwen Code PR</summary>
