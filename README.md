@@ -65,7 +65,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 ### Open Source Contributions
 
-377 merged PRs across 57 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
+378 merged PRs across 58 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -85,6 +85,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | **3** | Self-host scrape paths: interact errors, auth chunk retention, batch dict responses |  |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **2** | Backend crashes: hybrid attention with speculative decoding, diffusers pickling |  |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | Monitor wiring: eigenvalue records never landed in logs |  |
+| [milvus](https://github.com/milvus-io/milvus) (45.8k★) | **1** | Scheduler shutdown safety: in-flight broadcast tasks no longer panic a closing scheduler |  |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | **4** | Compiler semantics: fp8 arithmetic promotion, top_k edge cases, AxisInfo correctness |  |
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | File search survives the open-tabs host RPC being down |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **9** | Team-run permission inheritance, Windows subprocess windows, skill sourcing | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) Inherit the leader's permission rules in team runs, so delegated agents keep the same workspace and file-access limits.<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
@@ -455,6 +456,14 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | Eigenvalue monitor values were computed but never logged; wired them through so they actually land in the record. |
+
+</details>
+<details>
+<summary>All 1 merged milvus PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [milvus](https://github.com/milvus-io/milvus) (45.8k★) | [#50858](https://github.com/milvus-io/milvus/pull/50858) | `broadcastTaskManager.Close` shut the broadcast scheduler before the ack scheduler, so an in-flight promote goroutine could still call `AddTask` and hit the panic branch; return the on-shutdown error instead, matching the broadcast_manager.go precedent, with a regression test. |
 
 </details>
 <details>
@@ -966,7 +975,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 ### 开源贡献
 
-上游 57 个项目共 377 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
+上游 58 个项目共 378 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
@@ -986,6 +995,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | **3** | 自托管抓取链路：interact 报错、auth 块保留、批量 dict 响应 |  |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **2** | 后端崩溃修复：混合注意力撞投机解码、diffusers 序列化 |  |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | 监控接线：特征值记录从未落日志 |  |
+| [milvus](https://github.com/milvus-io/milvus) (45.8k★) | **1** | 调度器关停安全：在途广播任务不再把正在关闭的调度器打崩 |  |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | **4** | 编译器语义：fp8 算术提升、top_k 边界、AxisInfo 正确性 |  |
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | open-tabs 宿主 RPC 挂掉时文件搜索仍可用 |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **9** | 团队运行权限继承、Windows 子进程窗口、skill 来源 | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) team run 里继承 leader 的权限规则，delegated agent 守着和 leader 一样的 workspace、文件访问约束。<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
@@ -1356,6 +1366,14 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | eigenvalue monitor 的值算了却没写日志，接上后才真正落进记录。 |
+
+</details>
+<details>
+<summary>全部 1 个已合并的 milvus PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [milvus](https://github.com/milvus-io/milvus) (45.8k★) | [#50858](https://github.com/milvus-io/milvus/pull/50858) | `broadcastTaskManager.Close` 先关广播调度器再关 ack 调度器，在途 promote goroutine 仍会调 `AddTask` 命中 panic 分支崩进程；改成返回 on-shutdown 错误（沿用 broadcast_manager.go 同签名先例），附回归测试。 |
 
 </details>
 <details>
