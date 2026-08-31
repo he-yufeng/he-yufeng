@@ -70,7 +70,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | **53** | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories.<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`.<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | **36** | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink<br>[#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) Duplicate `rpc_meta` re-publishes are idempotent when the HTTP body is unchanged, and still rejected when a value actually changes.<br>[#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) Arm the etcd view-change watch once per wait instead of per iteration, stopping the steady-state watch goroutine leak in HA mode |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | **37** | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink<br>[#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) Duplicate `rpc_meta` re-publishes are idempotent when the HTTP body is unchanged, and still rejected when a value actually changes.<br>[#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) Arm the etcd view-change watch once per wait instead of per iteration, stopping the steady-state watch goroutine leak in HA mode |
 | [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | **12** | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API `instructions` were leaking across turns through the `previous_response_id` chain.<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals.<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | **30** | Release asset freshness, multimodal reply duplication, scheduler exception swallowing | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) Prevent Telegram media group exceptions from being silently swallowed by APScheduler |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | **17** | Portfolio analytics and monitor-verdict pipeline; fail-closed live-trading gates | |
@@ -189,11 +189,12 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 36 merged Mooncake PRs</summary>
+<summary>All 37 merged Mooncake PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#3683](https://github.com/kvcache-ai/Mooncake/pull/3683) | TENT worker no longer starves on its own submit queue: parked requeue entries drain before same-priority producer entries, verified against the production ordering with a regression test |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) | Arm the etcd view-change watch once per wait instead of per iteration, stopping the steady-state watch goroutine leak in HA mode |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | Duplicate `rpc_meta` re-publishes are idempotent when the HTTP body is unchanged, and still rejected when a value actually changes. |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang: skip redundant handshake for fabric-connected nodes |
@@ -982,7 +983,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | **53** | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | **36** | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信<br>[#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) `rpc_meta` 内容没变时重复发布保持幂等，真正改了值才拒绝。<br>[#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) HA 模式下 WaitForViewChange 每次迭代都新建一个 etcd watch，改成每轮等待只建一次，堵住稳态 watch goroutine 泄漏 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | **37** | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信<br>[#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) `rpc_meta` 内容没变时重复发布保持幂等，真正改了值才拒绝。<br>[#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) HA 模式下 WaitForViewChange 每次迭代都新建一个 etcd watch，改成每轮等待只建一次，堵住稳态 watch goroutine 泄漏 |
 | [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | **12** | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | **30** | 发版资源新鲜度、多模态回复重复、调度器吞异常 | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) 修复 Telegram media group 异常被 APScheduler 静默吞掉：try/except + EVENT_JOB_ERROR listener |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | **17** | 组合分析与监视器判定流水线；实盘 fail-closed 门禁 | |
@@ -1101,11 +1102,13 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 36 个已合并的 Mooncake PR</summary>
+<summary>全部 37 个已合并的 Mooncake PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#3683](https://github.com/kvcache-ai/Mooncake/pull/3683) | TENT worker 不再被自己的提交队列饿死：requeue_overflow 里泊住的重试条目先于同优先级新生产条目排干，回归测试按生产顺序验证选取顺序 |
+
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) | HA 模式下 WaitForViewChange 每次迭代都新建一个 etcd watch，改成每轮等待只建一次，堵住稳态 watch goroutine 泄漏 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | `rpc_meta` 内容没变时重复发布保持幂等，真正改了值才拒绝。 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang：跳过 fabric 连接节点的冗余握手 |
