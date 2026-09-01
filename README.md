@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 370+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (37 merged), Qwen Code (53 merged), Microsoft Agent Framework (28 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (24 merged), deer-flow (15 merged), promptfoo (13 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (20 merged), cherry-studio (7 merged), openclaw (6 merged), dify (6 merged), and PyTorch (9 merged).
+- 380+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (37 merged), Qwen Code (53 merged), Microsoft Agent Framework (28 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (24 merged), deer-flow (15 merged), promptfoo (13 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (20 merged), cherry-studio (7 merged), openclaw (6 merged), dify (6 merged), and PyTorch (9 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -65,7 +65,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 ### Open Source Contributions
 
-378 merged PRs across 58 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
+380 merged PRs across 58 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -329,7 +329,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 8 merged PyTorch PRs</summary>
+<summary>All 9 merged PyTorch PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -341,6 +341,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | Fix user-defined Triton kernel name mangling in the Inductor codegen so distinct kernels stop colliding in generated code (shows as Closed; landed via pytorchmergebot) |
 | [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187860](https://github.com/pytorch/pytorch/pull/187860) | Route the empty-`src` check in `meta__transformer_encoder_layer_fwd` through `guard_or_false` so an unbacked symbolic `numel` under `torch.compile` no longer raises a data-dependent error (shows as Closed; landed via pytorchmergebot) |
 | [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | Remove the obsolete `setuptools` upper bound so builds resolve a current toolchain instead of pinning a stale one (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187720](https://github.com/pytorch/pytorch/pull/187720) | Fix the `stale_issues` year cutoff clamping the day to the 28th in every month, so month-end batches land on the intended date (shows as Closed; landed via pytorchmergebot) |
 
 </details>
 <details>
@@ -937,7 +938,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 370+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（37 个）、Qwen Code（53 个）、Microsoft Agent Framework（28 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（24 个）、deer-flow（15 个）、promptfoo（13 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（20 个）、cherry-studio（7 个）、openclaw（6 个）、dify（6 个）、PyTorch（9 个）。
+- 380+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（37 个）、Qwen Code（53 个）、Microsoft Agent Framework（28 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（24 个）、deer-flow（15 个）、promptfoo（13 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（20 个）、cherry-studio（7 个）、openclaw（6 个）、dify（6 个）、PyTorch（9 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -982,7 +983,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 ### 开源贡献
 
-上游 58 个项目共 378 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
+上游 58 个项目共 380 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
@@ -1247,7 +1248,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 8 个已合并的 PyTorch PR</summary>
+<summary>全部 9 个已合并的 PyTorch PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
@@ -1259,6 +1260,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | 修复 Inductor codegen 中用户自定义 Triton kernel 的名称修饰，避免不同 kernel 在生成代码里命名冲突（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187860](https://github.com/pytorch/pytorch/pull/187860) | 把 `meta__transformer_encoder_layer_fwd` 里对空 `src` 的检查改走 `guard_or_false`，让 `torch.compile` 下 unbacked 符号 `numel` 不再抛数据依赖错误（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | 移除过时的 `setuptools` 版本上限，让构建解析到当前工具链而不是被钉在旧版本（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187720](https://github.com/pytorch/pytorch/pull/187720) | 修掉 `stale_issues` 按年截断时把日钳到 28 号的问题，月末批次落到正确日期（PR 显示 Closed，经 pytorchmergebot 合入） |
 
 </details>
 <details>
