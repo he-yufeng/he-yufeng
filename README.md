@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 398+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (37 merged), Qwen Code (53 merged), Microsoft Agent Framework (30 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (25 merged), deer-flow (16 merged), promptfoo (13 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (31 merged), cherry-studio (7 merged), openclaw (6 merged), dify (6 merged), and PyTorch (9 merged).
+- 399+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (37 merged), Qwen Code (53 merged), Microsoft Agent Framework (30 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (25 merged), deer-flow (16 merged), promptfoo (13 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (31 merged), cherry-studio (7 merged), openclaw (6 merged), dify (6 merged), and PyTorch (9 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -87,6 +87,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | **2** | File-format conversion correctness: DOCX underline preservation, legacy XLSX tolerance |  |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **2** | Backend crashes: hybrid attention with speculative decoding, diffusers pickling |  |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | Monitor wiring: eigenvalue records never landed in logs |  |
+| [DSPy](https://github.com/stanfordnlp/dspy) (37.8k★) | **1** | Streaming error propagation: sync iterator failures no longer vanish |  |
 | [milvus](https://github.com/milvus-io/milvus) (45.8k★) | **1** | Scheduler shutdown safety: in-flight broadcast tasks no longer panic a closing scheduler |  |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | **4** | Compiler semantics: fp8 arithmetic promotion, top_k edge cases, AxisInfo correctness |  |
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | File search survives the open-tabs host RPC being down |  |
@@ -499,6 +500,15 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | Eigenvalue monitor values were computed but never logged; wired them through so they actually land in the record. |
+
+</details>
+
+<details>
+<summary>All 1 merged DSPy PRs</summary>
+
+| Project | PR | What it fixed |
+| --- | --- | --- |
+| [DSPy](https://github.com/stanfordnlp/dspy) (37.8k★) | [#9864](https://github.com/stanfordnlp/dspy/pull/9864) | Propagate sync streaming errors: exceptions raised inside a synchronous streaming iterator were swallowed instead of surfacing to the caller. |
 
 </details>
 <details>
@@ -975,7 +985,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 398+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（37 个）、Qwen Code（53 个）、Microsoft Agent Framework（30 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（25 个）、deer-flow（16 个）、promptfoo（13 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（31 个）、cherry-studio（7 个）、openclaw（6 个）、dify（6 个）、PyTorch（9 个）。
+- 399+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（37 个）、Qwen Code（53 个）、Microsoft Agent Framework（30 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（25 个）、deer-flow（16 个）、promptfoo（13 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（31 个）、cherry-studio（7 个）、openclaw（6 个）、dify（6 个）、PyTorch（9 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1042,6 +1052,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | **2** | 文件格式转换正确性：DOCX 下划线保留、老旧 XLSX 兼容 |  |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **2** | 后端崩溃修复：混合注意力撞投机解码、diffusers 序列化 |  |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | 监控接线：特征值记录从未落日志 |  |
+| [DSPy](https://github.com/stanfordnlp/dspy) (37.8k★) | **1** | 流式错误传播：同步迭代器失败不再静默消失 |  |
 | [milvus](https://github.com/milvus-io/milvus) (45.8k★) | **1** | 调度器关停安全：在途广播任务不再把正在关闭的调度器打崩 |  |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | **4** | 编译器语义：fp8 算术提升、top_k 边界、AxisInfo 正确性 |  |
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | open-tabs 宿主 RPC 挂掉时文件搜索仍可用 |  |
@@ -1449,6 +1460,15 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | [#8049](https://github.com/deepspeedai/DeepSpeed/pull/8049) | eigenvalue monitor 的值算了却没写日志，接上后才真正落进记录。 |
+
+</details>
+
+<details>
+<summary>全部 1 个已合并的 DSPy PR</summary>
+
+| 项目 | PR | 修复内容 |
+| --- | --- | --- |
+| [DSPy](https://github.com/stanfordnlp/dspy) (37.8k★) | [#9864](https://github.com/stanfordnlp/dspy/pull/9864) | 传播同步流式错误：同步流式迭代器里抛出的异常此前被吞掉，调用方完全看不到，现在正常上抛。 |
 
 </details>
 <details>
