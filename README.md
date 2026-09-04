@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 392+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (37 merged), Qwen Code (53 merged), Microsoft Agent Framework (28 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (24 merged), deer-flow (16 merged), promptfoo (13 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (31 merged), cherry-studio (7 merged), openclaw (6 merged), dify (6 merged), and PyTorch (9 merged).
+- 398+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (37 merged), Qwen Code (53 merged), Microsoft Agent Framework (30 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (25 merged), deer-flow (16 merged), promptfoo (13 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (31 merged), cherry-studio (7 merged), openclaw (6 merged), dify (6 merged), and PyTorch (9 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -77,12 +77,14 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | **6** | Session-store fail-closed sweeps, auth-failure visibility, surrogate-safe text | [#119127](https://github.com/openclaw/openclaw/pull/119127) Keep the mtime media sweep out of the managed-outgoing tree and fail closed when the session store is unreadable, so global GC can never delete live user originals (co-built with the project owner after his P0 review) |
 | [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | **9** | Kernel/compiler correctness: wrong-device dispatch, silent gradient corruption, UB | [#188027](https://github.com/pytorch/pytorch/pull/188027) Initialize `r` in the Laguerre and Legendre polynomial helpers so they stop returning uninitialized memory on the boundary path (shows as Closed; landed via pytorchmergebot)<br>[#186779](https://github.com/pytorch/pytorch/pull/186779) Error on unsupported batch norm third derivatives instead of silently returning wrong gradients (shows as Closed; landed via pytorchmergebot)<br>[#188229](https://github.com/pytorch/pytorch/pull/188229) `avg_pool3d` backward silently corrupted gradients on inputs over `INT_MAX` elements: the atomic scatter kernel computed offsets and bounds as 32-bit `int`; widened to 64-bit indexing (shows as Closed; landed via pytorchmergebot) |
 | [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | **16** | Concurrency and checkpoint correctness: thread-creation races, session-pool lifecycle | [#3800](https://github.com/bytedance/deer-flow/pull/3800) Keep `create_thread` idempotent when a concurrent insert loses the race, so a chat cannot end up with duplicate threads.<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) Fork-restored checkpoints deliver the sandbox channel still wrapped in langgraph `Overwrite`; unified one unwrap helper across the sync/async init paths and the sibling readers<br>[#4839](https://github.com/bytedance/deer-flow/pull/4839) Sanitize MCP-sourced tool results through the same trust pipeline as other external content, so a hostile tool server cannot smuggle instructions into model context |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | **28** | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools | [#7289](https://github.com/microsoft/agent-framework/pull/7289) Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) Handoff was mutating message roles in place, so a retry leaked the change; reuse sanitized copies instead.<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) Run synchronous Python tools off the event loop so a blocking call stops freezing concurrent agent work. |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | **30** | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools | [#7289](https://github.com/microsoft/agent-framework/pull/7289) Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) Handoff was mutating message roles in place, so a retry leaked the change; reuse sanitized copies instead.<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) Run synchronous Python tools off the event loop so a blocking call stops freezing concurrent agent work. |
 | [opencode](https://github.com/anomalyco/opencode) (200.9k★) | **1** | MCP OAuth callback bound to IPv4 loopback |  |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | **6** | API robustness: unbounded calls get timeouts, up-front validation, atomic windows | [#39953](https://github.com/langgenius/dify/pull/39953) Bound the TiDB Cloud API calls that had no timeout, so a hanging cluster endpoint can't stall vdb operations forever |
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | **1** | AutoProcessor hub-kwarg passthrough |  |
+| [MCP Servers](https://github.com/modelcontextprotocol/servers) (90.1k★) | **1** | Dependency hygiene: zod declared where servers import it |  |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | **1** | Settings persistence: keep custom LLM base URLs | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) Keep a custom LLM base URL when editing basic model settings, so a saved profile stops silently falling back to the provider default. |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | **3** | Self-host scrape paths: interact errors, auth chunk retention, batch dict responses |  |
+| [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | **2** | File-format conversion correctness: DOCX underline preservation, legacy XLSX tolerance |  |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **2** | Backend crashes: hybrid attention with speculative decoding, diffusers pickling |  |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | Monitor wiring: eigenvalue records never landed in logs |  |
 | [milvus](https://github.com/milvus-io/milvus) (45.8k★) | **1** | Scheduler shutdown safety: in-flight broadcast tasks no longer panic a closing scheduler |  |
@@ -101,7 +103,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | **3** | Memory-store backends: S3 Vectors index naming, Qdrant https option |  |
 | [verl](https://github.com/verl-project/verl) (23.1k★) | **1** | Colocated weight-sync rank derivation across DP/TP |  |
 | [TRL](https://github.com/huggingface/trl) (19.1k★) | **2** | Dataset-prep fail-fast and vLLM special-token preservation |  |
-| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **24** | Eval-logging and provider parsing: reasoning blocks, streaming writer, headless crashes | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) Parse OpenRouter `reasoning_details` in OpenAI-compatible responses instead of surfacing Python repr blocks<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) Route the realtime streaming sample writer through the same fallback JSON normalization as the regular log path, so sandbox objects that don't serialize cleanly can't crash an eval mid-stream<br>[#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) macOS screen-scale detection imported AppKit unguarded and crashed headful browser runs without pyobjc; fall back to scale factor 1 |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **25** | Eval-logging and provider parsing: reasoning blocks, streaming writer, headless crashes | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) Parse OpenRouter `reasoning_details` in OpenAI-compatible responses instead of surfacing Python repr blocks<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) Route the realtime streaming sample writer through the same fallback JSON normalization as the regular log path, so sandbox objects that don't serialize cleanly can't crash an eval mid-stream<br>[#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) macOS screen-scale detection imported AppKit unguarded and crashed headful browser runs without pyobjc; fall back to scale factor 1 |
 | [Agno](https://github.com/agno-agi/agno) (41.8k★) | **1** | Tool-argument whitespace preservation with sentinel normalization |  |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | **3** | Agent-flow guards, Docling fallback, GraphRAG edge ranking | [#15691](https://github.com/infiniflow/ragflow/pull/15691) Skip empty agent-switch conditions so a blank branch guard can't crash or block valid downstream flows. |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | **7** | Realtime voice plumbing: stream-retry recreation, provider status parsing, STT errors |  |
@@ -382,13 +384,14 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 28 merged Microsoft Agent Framework PRs</summary>
+<summary>All 30 merged Microsoft Agent Framework PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#5808](https://github.com/microsoft/agent-framework/pull/5808) | Handoff was mutating message roles in place, so a retry leaked the change; reuse sanitized copies instead. |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7289](https://github.com/microsoft/agent-framework/pull/7289) | Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#5773](https://github.com/microsoft/agent-framework/pull/5773) | Run synchronous Python tools off the event loop so a blocking call stops freezing concurrent agent work. |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7704](https://github.com/microsoft/agent-framework/pull/7704) | Python: name the real MCP initialization error (e.g. HTTP 401) instead of the bare `Cancelled via cancel scope` that masks it |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#5801](https://github.com/microsoft/agent-framework/pull/5801) | Coalesce streamed code-interpreter history by call id, so stored history keeps the full code and results without duplicated deltas. |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7239](https://github.com/microsoft/agent-framework/pull/7239) | Python: AG-UI MESSAGES_SNAPSHOT emitted messages out of the model's original order; preserve emission order |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#5860](https://github.com/microsoft/agent-framework/pull/5860) | .NET: the Responses `logprobs` field was dropped in response serialization both ways; preserve it end to end |
@@ -414,6 +417,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7130](https://github.com/microsoft/agent-framework/pull/7130) | Python: extract keywords from non-English text for topic selection, so CJK and other non-latin queries stop coming back empty |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7124](https://github.com/microsoft/agent-framework/pull/7124) | Python: compaction token counting serialized messages with `ensure_ascii=True`, so the tokenizer counted `\uXXXX` escapes instead of real characters (~1.6x inflation on CJK); serialize the real text |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#6037](https://github.com/microsoft/agent-framework/pull/6037) | Keep Foundry citation `get_url` metadata through response conversion so source links survive in chat responses |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7777](https://github.com/microsoft/agent-framework/pull/7777) | Python: replace the stale "Learn docs are coming soon" placeholder in the README with the live Learn links |
 
 </details>
 <details>
@@ -446,6 +450,14 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
+<summary>All 1 merged MCP Servers PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [MCP Servers](https://github.com/modelcontextprotocol/servers) (90.1k★) | [#4289](https://github.com/modelcontextprotocol/servers/pull/4289) | Declare zod as a runtime dependency for the servers that import it directly, so strict installs stop hitting ERR_MODULE_NOT_FOUND at startup |
+
+</details>
+<details>
 <summary>All 1 merged OpenHands PRs</summary>
 
 | Project | PR | What I Fixed |
@@ -461,6 +473,15 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) | Reject self-hosted scrape interact actions with a clear error instead of failing opaquely |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | Keep the auth chunk in the self-host bypass path so authenticated self-hosted scrapes don't get dropped. |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3713](https://github.com/firecrawl/firecrawl/pull/3713) | Handle the async v1 batch-scrape response returned as a dict in the Python SDK |
+
+</details>
+<details>
+<summary>All 2 merged MarkItDown PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | [#2017](https://github.com/microsoft/markitdown/pull/2017) | Preserve underlined runs in DOCX conversion: add the default `u` style-map entry and keep underline markup in the Markdown output |
+| [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | [#2064](https://github.com/microsoft/markitdown/pull/2064) | Tolerate the legacy `showZeroes` sheet-view attribute that openpyxl 3.1+ rejects, so older XLSX files still convert instead of raising TypeError |
 
 </details>
 <details>
@@ -659,7 +680,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 24 merged Inspect AI PRs</summary>
+<summary>All 25 merged Inspect AI PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -687,6 +708,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#3895](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3895) | Honor `COLUMNS` for `TERM=dumb`: log output no longer hard-wraps at Rich's default 80 columns |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4090](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4090) | Clarify model-graded history prompts so `include_history=True` and final-answer placement match the actual scorer behavior |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4912](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4912) | Score a single-choice answer with a stray trailing comma like "A," instead of misgrading it |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4322](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4322) | Keep backticks inside transcript code blocks from breaking `html_escape_markdown`'s fence tracking, so code content no longer leaks raw HTML into the log |
 
 </details>
 <details>
@@ -953,7 +975,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 392+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（37 个）、Qwen Code（53 个）、Microsoft Agent Framework（28 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（24 个）、deer-flow（16 个）、promptfoo（13 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（31 个）、cherry-studio（7 个）、openclaw（6 个）、dify（6 个）、PyTorch（9 个）。
+- 398+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（37 个）、Qwen Code（53 个）、Microsoft Agent Framework（30 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（25 个）、deer-flow（16 个）、promptfoo（13 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（31 个）、cherry-studio（7 个）、openclaw（6 个）、dify（6 个）、PyTorch（9 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1010,12 +1032,14 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | **6** | 会话存储失败即关的清扫、鉴权失败可见性、代理对安全文本 | [#119127](https://github.com/openclaw/openclaw/pull/119127) 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fail-closed，全域 GC 永不误删用户原件（owner P0 评审后与项目作者共建） |
 | [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | **9** | 算子与编译器正确性：错设备派发、梯度静默损坏、未初始化内存 | [#188027](https://github.com/pytorch/pytorch/pull/188027) 在 Laguerre / Legendre 多项式的辅助函数里初始化 `r`，避免边界路径返回未初始化内存（PR 显示 Closed，经 pytorchmergebot 合入）<br>[#186779](https://github.com/pytorch/pytorch/pull/186779) 不支持的 batch norm 三阶导改为显式报错，不再静默返回错误梯度（PR 显示 Closed，经 pytorchmergebot 合入）<br>[#188229](https://github.com/pytorch/pytorch/pull/188229) `avg_pool3d` backward 在超过 `INT_MAX` 元素的输入上静默算错梯度：atomic scatter kernel 用 32 位 `int` 算偏移和边界，改成 64 位索引（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | **16** | 并发与 checkpoint 正确性：建线程竞态、会话池生命周期、fork 恢复 | [#3800](https://github.com/bytedance/deer-flow/pull/3800) 让 `create_thread` 在并发 insert 输掉竞争时保持幂等，避免一个聊天产生重复 thread。<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) fork 恢复的检查点把 sandbox channel 以 langgraph `Overwrite` 包装态送达，sync/async 初始化路径和 sibling readers 统一走一个解包 helper<br>[#4839](https://github.com/bytedance/deer-flow/pull/4839) MCP 来源的工具结果改走与其他外部内容相同的信任管道清洗，恶意 tool server 不再能往模型上下文夹带指令 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | **28** | agent 循环边界：消息 role 原地改泄漏、每轮钩子、阻塞工具 | [#7289](https://github.com/microsoft/agent-framework/pull/7289) turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) handoff 原地改了 message 的 role，重试复用时把改动泄漏出去了，改成复用消毒过的副本。<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) 把同步的 Python 工具挪出事件循环跑，阻塞型调用不再冻住并发的 agent 任务。 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | **30** | agent 循环边界：消息 role 原地改泄漏、每轮钩子、阻塞工具 | [#7289](https://github.com/microsoft/agent-framework/pull/7289) turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) handoff 原地改了 message 的 role，重试复用时把改动泄漏出去了，改成复用消毒过的副本。<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) 把同步的 Python 工具挪出事件循环跑，阻塞型调用不再冻住并发的 agent 任务。 |
 | [opencode](https://github.com/anomalyco/opencode) (200.9k★) | **1** | MCP OAuth 回调绑定 IPv4 loopback |  |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | **6** | API 健壮性：无超时调用加边界、前置校验、原子窗口 | [#39953](https://github.com/langgenius/dify/pull/39953) 给没有超时的 TiDB Cloud API 调用补上有界超时，集群端点挂起不再无限拖住 vdb 操作 |
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | **1** | AutoProcessor 丢失 hub 参数透传 |  |
+| [MCP Servers](https://github.com/modelcontextprotocol/servers) (90.1k★) | **1** | 依赖声明卫生：直接 import zod 的服务补上运行时依赖声明 |  |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | **1** | 设置持久化：保留自定义 LLM base URL | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) 编辑 basic model 设置时保留自定义的 LLM base URL，存下来的 profile 不再静默回退到 provider 默认 endpoint。 |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | **3** | 自托管抓取链路：interact 报错、auth 块保留、批量 dict 响应 |  |
+| [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | **2** | 文件格式转换正确性：DOCX 下划线保留、老旧 XLSX 兼容 |  |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **2** | 后端崩溃修复：混合注意力撞投机解码、diffusers 序列化 |  |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | 监控接线：特征值记录从未落日志 |  |
 | [milvus](https://github.com/milvus-io/milvus) (45.8k★) | **1** | 调度器关停安全：在途广播任务不再把正在关闭的调度器打崩 |  |
@@ -1034,7 +1058,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | **3** | 记忆存储后端：S3 Vectors 索引命名、Qdrant https 选项 |  |
 | [verl](https://github.com/verl-project/verl) (23.1k★) | **1** | colocated 权重同步的 DP/TP rank 推导 |  |
 | [TRL](https://github.com/huggingface/trl) (19.1k★) | **2** | 数据准备快速失败与 vLLM 特殊 token 保留 |  |
-| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **24** | 评测日志与 provider 解析：reasoning 块、流式写盘、无头环境崩溃 | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) 修复 OpenAI-compatible 响应里的 OpenRouter `reasoning_details`：解析为可读 reasoning 文本，而不是暴露 Python repr<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。<br>[#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) macOS 分支无守卫 import AppKit 并解引用 NSScreen，没装 pyobjc 时 headful 浏览器工具直接崩；回落 scale factor 1 |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **25** | 评测日志与 provider 解析：reasoning 块、流式写盘、无头环境崩溃 | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) 修复 OpenAI-compatible 响应里的 OpenRouter `reasoning_details`：解析为可读 reasoning 文本，而不是暴露 Python repr<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。<br>[#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) macOS 分支无守卫 import AppKit 并解引用 NSScreen，没装 pyobjc 时 headful 浏览器工具直接崩；回落 scale factor 1 |
 | [Agno](https://github.com/agno-agi/agno) (41.8k★) | **1** | 工具参数空白保留与哨兵值归一化 |  |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | **3** | agent 流守卫、Docling 回退、GraphRAG 边排序 | [#15691](https://github.com/infiniflow/ragflow/pull/15691) 跳过空的 agent switch 条件，空分支判断不会让有效的后续 agent 流程崩掉或卡住。 |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | **7** | 实时语音链路：流式重试重建、provider 状态解析、STT 错误透出 |  |
@@ -1310,12 +1334,13 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 28 个已合并的 Microsoft Agent Framework PR</summary>
+<summary>全部 30 个已合并的 Microsoft Agent Framework PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#5808](https://github.com/microsoft/agent-framework/pull/5808) | handoff 原地改了 message 的 role，重试复用时把改动泄漏出去了，改成复用消毒过的副本。 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#5773](https://github.com/microsoft/agent-framework/pull/5773) | 把同步的 Python 工具挪出事件循环跑，阻塞型调用不再冻住并发的 agent 任务。 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7704](https://github.com/microsoft/agent-framework/pull/7704) | Python：MCP 初始化的真实报错（比如 HTTP 401）被 cancel scope 吞成一句 `Cancelled via cancel scope`，沿异常链把真正的错误名字报出来 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#5801](https://github.com/microsoft/agent-framework/pull/5801) | 按 call id 合并 code interpreter 的流式历史片段，存下来的代码和结果完整，也不会重复记 delta。 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7239](https://github.com/microsoft/agent-framework/pull/7239) | Python：AG-UI MESSAGES_SNAPSHOT 的消息顺序与模型原始产出顺序不一致，改为保持发射顺序 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7289](https://github.com/microsoft/agent-framework/pull/7289) | turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次 |
@@ -1342,6 +1367,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7130](https://github.com/microsoft/agent-framework/pull/7130) | Python：topic selection 的关键词提取支持非英文文本，中文、日文等非拉丁查询不再空手而归 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7124](https://github.com/microsoft/agent-framework/pull/7124) | Python：compaction 估 token 时用 `ensure_ascii=True` 序列化消息，tokenizer 数的是 `\uXXXX` 转义序列而不是真实字符（CJK 约虚高 1.6 倍）；改成按真实文本序列化 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#6037](https://github.com/microsoft/agent-framework/pull/6037) | 保留 Foundry citation `get_url` 元数据，让检索引用链接经过 response conversion 后仍能出现在 chat response 中 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7777](https://github.com/microsoft/agent-framework/pull/7777) | Python：README 里"Learn 文档即将上线"的过期占位符换成三个已上线的 Learn 链接（当天逐一验证 200） |
 
 </details>
 <details>
@@ -1374,6 +1400,14 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
+<summary>全部 1 个已合并的 MCP Servers PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [MCP Servers](https://github.com/modelcontextprotocol/servers) (90.1k★) | [#4289](https://github.com/modelcontextprotocol/servers/pull/4289) | 给直接 import zod 的 server 包补上 zod 运行时依赖声明，严格隔离安装不再在启动时炸 ERR_MODULE_NOT_FOUND |
+
+</details>
+<details>
 <summary>全部 1 个已合并的 OpenHands PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -1389,6 +1423,15 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3730](https://github.com/firecrawl/firecrawl/pull/3730) | self-host 抓取的 interact 动作明确报错拒绝，而不是隐晦地失败 |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3729](https://github.com/firecrawl/firecrawl/pull/3729) | self-host bypass 路径保留 auth chunk，已认证的 self-host 抓取不再被丢掉。 |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | [#3713](https://github.com/firecrawl/firecrawl/pull/3713) | Python SDK 正确处理 async v1 batch scrape 以 dict 形式返回的响应 |
+
+</details>
+<details>
+<summary>全部 2 个已合并的 MarkItDown PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | [#2017](https://github.com/microsoft/markitdown/pull/2017) | DOCX 转换保留下划线文本：补默认 `u` 样式映射，并让下划线标记保留进 Markdown 输出 |
+| [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | [#2064](https://github.com/microsoft/markitdown/pull/2064) | 兼容老旧 XLSX 里的 `showZeroes` 视图属性（openpyxl 3.1+ 只认 `showZeros`），老文件不再 TypeError 拒读 |
 
 </details>
 <details>
@@ -1587,7 +1630,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 24 个已合并的 Inspect AI PR</summary>
+<summary>全部 25 个已合并的 Inspect AI PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
@@ -1615,6 +1658,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#3895](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3895) | 修复 `TERM=dumb` 下终端宽度：尊重 `COLUMNS`，日志输出不再固定按 Rich 默认 80 列硬换行 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4090](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4090) | 澄清 model-graded history prompt：`include_history=True` 和最终答案字段的位置与实际 scorer 行为保持一致 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4912](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4912) | 带尾随逗号的单选答案（如 "A,"）正常判分，不再被误判 |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4322](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4322) | transcript 代码块里出现的反引号会打乱 `html_escape_markdown` 的围栏追踪，导致代码内容把未转义的 HTML 泄进日志；修正 fence 识别 |
 
 </details>
 <details>
