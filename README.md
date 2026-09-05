@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 402+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (37 merged), Qwen Code (54 merged), Microsoft Agent Framework (30 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (25 merged), deer-flow (16 merged), promptfoo (13 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (32 merged), cherry-studio (7 merged), openclaw (6 merged), dify (6 merged), and PyTorch (10 merged).
+- 403+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (37 merged), Qwen Code (54 merged), Microsoft Agent Framework (30 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (26 merged), deer-flow (16 merged), promptfoo (13 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (32 merged), cherry-studio (7 merged), openclaw (6 merged), dify (6 merged), and PyTorch (10 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -693,10 +693,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 25 merged Inspect AI PRs</summary>
+<summary>All 26 merged Inspect AI PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (36.2k★) | [#5153](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5153) | Shaped metrics collapsed to a synthesized flat NaN on an all-empty run; let the metric own its empty-input shape on both the list and dict paths, with a one-time warning for metrics that raise |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) | Parse OpenRouter `reasoning_details` in OpenAI-compatible responses instead of surfacing Python repr blocks |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) | Route the realtime streaming sample writer through the same fallback JSON normalization as the regular log path, so sandbox objects that don't serialize cleanly can't crash an eval mid-stream |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) | macOS screen-scale detection imported AppKit unguarded and crashed headful browser runs without pyobjc; fall back to scale factor 1 |
@@ -988,7 +989,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 402+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（37 个）、Qwen Code（54 个）、Microsoft Agent Framework（30 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（25 个）、deer-flow（16 个）、promptfoo（13 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（32 个）、cherry-studio（7 个）、openclaw（6 个）、dify（6 个）、PyTorch（10 个）。
+- 403+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（37 个）、Qwen Code（54 个）、Microsoft Agent Framework（30 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（26 个）、deer-flow（16 个）、promptfoo（13 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（32 个）、cherry-studio（7 个）、openclaw（6 个）、dify（6 个）、PyTorch（10 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1656,10 +1657,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 25 个已合并的 Inspect AI PR</summary>
+<summary>全部 26 个已合并的 Inspect AI PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (36.2k★) | [#5153](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5153) | 全空输入时 shaped metric 不再塌成上游合成的扁平 NaN，list/dict 两条 metric 路径统一护栏；空输入抛错的 metric 报 NaN 并一次性告警 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) | 修复 OpenAI-compatible 响应里的 OpenRouter `reasoning_details`：解析为可读 reasoning 文本，而不是暴露 Python repr |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) | 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) | macOS 分支无守卫 import AppKit 并解引用 NSScreen，没装 pyobjc 时 headful 浏览器工具直接崩；回落 scale factor 1 |
