@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 401+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (37 merged), Qwen Code (53 merged), Microsoft Agent Framework (30 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (25 merged), deer-flow (16 merged), promptfoo (13 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (32 merged), cherry-studio (7 merged), openclaw (6 merged), dify (6 merged), and PyTorch (10 merged).
+- 402+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (37 merged), Qwen Code (54 merged), Microsoft Agent Framework (30 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (25 merged), deer-flow (16 merged), promptfoo (13 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (32 merged), cherry-studio (7 merged), openclaw (6 merged), dify (6 merged), and PyTorch (10 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -69,7 +69,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | **53** | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories.<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`.<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | **54** | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories.<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`.<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | **37** | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) Self-heal dangling LOCAL_DISK replicas in `Client::Put`: a put onto a key left with only client-local disk replicas evicts them and retries cleanly, with BatchPut probing and evicting the already-exists subset in one pass.<br>[#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) Arm the etcd view-change watch once per wait instead of per iteration, stopping the steady-state watch goroutine leak in HA mode |
 | [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | **12** | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API `instructions` were leaking across turns through the `previous_response_id` chain.<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals.<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | **30** | Release asset freshness, multimodal reply duplication, scheduler exception swallowing | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) Prevent Telegram media group exceptions from being silently swallowed by APScheduler |
@@ -132,10 +132,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | **3** | Concurrency-safe LiteLLM params, git workspace validation, UTF-8 logs | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) Serialize LiteLLM `modify_params` updates with an RLock so concurrent completions do not leak global parameter state<br>[#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) Validate git workspaces with `git rev-parse --git-dir`, so a broken nested repo can't crash `/api/git/changes`. |
 
 <details>
-<summary>All 53 merged Qwen Code PRs</summary>
+<summary>All 54 merged Qwen Code PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#11085](https://github.com/QwenLM/qwen-code/pull/11085) | cron-interactive nightly flaked because one 30s wait folded the model's first turn into the cron fire budget; split the two clocks and made the echo-vacuous ALIVE99 assertion actually observe the model reply |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#7535](https://github.com/QwenLM/qwen-code/pull/7535) | Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
@@ -987,7 +988,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 401+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（37 个）、Qwen Code（53 个）、Microsoft Agent Framework（30 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（25 个）、deer-flow（16 个）、promptfoo（13 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（32 个）、cherry-studio（7 个）、openclaw（6 个）、dify（6 个）、PyTorch（10 个）。
+- 402+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（37 个）、Qwen Code（54 个）、Microsoft Agent Framework（30 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（25 个）、deer-flow（16 个）、promptfoo（13 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（32 个）、cherry-studio（7 个）、openclaw（6 个）、dify（6 个）、PyTorch（10 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1036,7 +1037,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | **53** | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | **54** | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | **37** | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) `Client::Put` 自愈悬挂 LOCAL_DISK 副本：目标 key 只剩客户端本地磁盘副本时自动逐出并干净重试，BatchPut 对已存在子集一次探测加一次批量逐出<br>[#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) HA 模式下 WaitForViewChange 每次迭代都新建一个 etcd watch，改成每轮等待只建一次，堵住稳态 watch goroutine 泄漏 |
 | [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | **12** | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | **30** | 发版资源新鲜度、多模态回复重复、调度器吞异常 | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) 修复 Telegram media group 异常被 APScheduler 静默吞掉：try/except + EVENT_JOB_ERROR listener |
@@ -1099,10 +1100,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | **3** | 并发安全的 LiteLLM 参数、git 工作区校验、UTF-8 日志 | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) 用 RLock 串行化 LiteLLM `modify_params` 的保存、设置和恢复，避免并发 completion 泄漏全局参数状态<br>[#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) 用 `git rev-parse --git-dir` 校验 git workspace，坏掉的嵌套 repo 打不崩 `/api/git/changes`。 |
 
 <details>
-<summary>全部 53 个已合并的 Qwen Code PR</summary>
+<summary>全部 54 个已合并的 Qwen Code PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#11085](https://github.com/QwenLM/qwen-code/pull/11085) | cron-interactive 夜跑 flake 的根因是 30s 等待把模型首回合延迟折进了 cron 触发预算；拆成两段钟，顺手把被自身回显空转的 ALIVE99 断言改成真观察模型回复 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#7535](https://github.com/QwenLM/qwen-code/pull/7535) | release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
