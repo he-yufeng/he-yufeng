@@ -299,29 +299,6 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 16 merged deer-flow PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3800](https://github.com/bytedance/deer-flow/pull/3800) | Keep `create_thread` idempotent when a concurrent insert loses the race, so a chat cannot end up with duplicate threads. |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4429](https://github.com/bytedance/deer-flow/pull/4429) | Fork-restored checkpoints deliver the sandbox channel still wrapped in langgraph `Overwrite`; unified one unwrap helper across the sync/async init paths and the sibling readers |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3797](https://github.com/bytedance/deer-flow/pull/3797) | Synchronize the MCP session-pool singleton lifecycle so concurrent first-use cannot create duplicate pools |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3778](https://github.com/bytedance/deer-flow/pull/3778) | Synchronize skill storage singleton lifecycle |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4839](https://github.com/bytedance/deer-flow/pull/4839) | Sanitize MCP-sourced tool results through the same trust pipeline as other external content: a hostile tool server can no longer smuggle instructions into the model's context |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3799](https://github.com/bytedance/deer-flow/pull/3799) | Serialize per-chat thread creation so concurrent messages stop spawning duplicate threads for one chat. |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4216](https://github.com/bytedance/deer-flow/pull/4216) | `get_memory_config()` only refreshed as a side effect of `get_app_config()`, so readers like the agent factory saw a stale `memory.mode` after a config.yaml edit; resolve through `get_app_config()` with a FileNotFoundError fallback |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4157](https://github.com/bytedance/deer-flow/pull/4157) | A subagent's `description` is agent-editable (setup_agent / update_agent) yet was rendered raw into the `<subagent_system>` block, so a crafted first line could break out and forge framework tags. Escaped it, matching the `<soul>` fix. |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | HTML-escape `SOUL.md` before it enters the `<soul>` system-prompt block so an agent-editable personality cannot forge framework tags and break out of its trust zone |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4381](https://github.com/bytedance/deer-flow/pull/4381) | Unwrap Overwrite-wrapped sandbox state in after_agent so hook consumers read the real state instead of the wrapper |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3631](https://github.com/bytedance/deer-flow/pull/3631) | Strip base64 image data from streamed values events |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3674](https://github.com/bytedance/deer-flow/pull/3674) | Let UI runtime channel config win over config.yaml |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4130](https://github.com/bytedance/deer-flow/pull/4130) | Recognize remaining requests/httpx HTTP methods as network sinks |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3719](https://github.com/bytedance/deer-flow/pull/3719) | Skip whitespace-only facts in `_apply_updates` so blank memory entries do not accumulate |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4253](https://github.com/bytedance/deer-flow/pull/4253) | A tool result containing a literal `</tool_response>` could close the MindIE framing early and inject trailing text; escaped the tool-response content, matching the tool-call name/arg escaping already in the same function. |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3709](https://github.com/bytedance/deer-flow/pull/3709) | Fix positional fallback consuming unrelated todo when same-content list is exhausted |
-
-</details>
-<details>
 <summary>All 30 merged Microsoft Agent Framework PRs</summary>
 
 | Project | PR | What I Fixed |
@@ -425,27 +402,28 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [OpenClaw](https://github.com/openclaw/openclaw) (389.0k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | Keep sibling dirs that share the home prefix unshortened in tool path display |
 
 </details>
-<details>
-<summary>全部 16 个已合并的 deer-flow PR</summary>
 
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3800](https://github.com/bytedance/deer-flow/pull/3800) | 让 `create_thread` 在并发 insert 输掉竞争时保持幂等，避免一个聊天产生重复 thread。 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4429](https://github.com/bytedance/deer-flow/pull/4429) | fork 恢复的检查点把 sandbox channel 以 langgraph `Overwrite` 包装态送达，sync/async 初始化路径和 sibling readers 统一走一个解包 helper |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3797](https://github.com/bytedance/deer-flow/pull/3797) | 同步 MCP session-pool 单例生命周期,避免并发首次使用创建重复池 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3778](https://github.com/bytedance/deer-flow/pull/3778) | 同步 skill storage 单例的生命周期 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4839](https://github.com/bytedance/deer-flow/pull/4839) | MCP 来源的工具结果改走与其他外部内容相同的信任管道清洗：恶意 tool server 不再能往模型上下文夹带指令 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3799](https://github.com/bytedance/deer-flow/pull/3799) | 串行化单个聊天的线程创建，并发消息不再给一个聊天建出重复线程。 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4216](https://github.com/bytedance/deer-flow/pull/4216) | `get_memory_config()` 只作为 `get_app_config()` 的副作用刷新，agent factory 这类直接读者在 config.yaml 改完后拿到旧的 `memory.mode`；改走 `get_app_config()` 并加 FileNotFoundError 兜底 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4157](https://github.com/bytedance/deer-flow/pull/4157) | subagent 的 `description` 是 agent 可编辑的(setup_agent / update_agent),却原样渲染进 `<subagent_system>` 块,构造的首行能越界伪造框架标签。转义掉,和 `<soul>` 那个修复同类。 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | 在 `SOUL.md` 进入 `<soul>` system-prompt 块前 HTML 转义,让可被 agent 编辑的 personality 无法伪造框架标签、越出信任边界 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4381](https://github.com/bytedance/deer-flow/pull/4381) | after_agent 钩子里的 sandbox state 被 Overwrite 包了一层，解包后再消费，不再取不到值 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3631](https://github.com/bytedance/deer-flow/pull/3631) | 从 streamed values 事件里剥离 base64 图片数据 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3674](https://github.com/bytedance/deer-flow/pull/3674) | 让 UI 运行时 channel 配置优先于 config.yaml |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4130](https://github.com/bytedance/deer-flow/pull/4130) | 把 requests/httpx 剩余 HTTP 方法也识别为网络 sink |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3719](https://github.com/bytedance/deer-flow/pull/3719) | `_apply_updates` 跳过纯空白 facts,避免空白记忆条目堆积 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4253](https://github.com/bytedance/deer-flow/pull/4253) | 工具结果里字面的 `</tool_response>` 能提前闭合 MindIE framing、注入尾随文本;转义 tool-response 内容,和同函数里 tool-call name/arg 的转义保持一致。 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3709](https://github.com/bytedance/deer-flow/pull/3709) | 修复同内容 todo 列表耗尽后 positional fallback 误吞不相关 todo |
+<details>
+<summary>All 16 merged deer-flow PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3800](https://github.com/bytedance/deer-flow/pull/3800) | Keep `create_thread` idempotent when a concurrent insert loses the race, so a chat cannot end up with duplicate threads. |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4429](https://github.com/bytedance/deer-flow/pull/4429) | Fork-restored checkpoints deliver the sandbox channel still wrapped in langgraph `Overwrite`; unified one unwrap helper across the sync/async init paths and the sibling readers |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3797](https://github.com/bytedance/deer-flow/pull/3797) | Synchronize the MCP session-pool singleton lifecycle so concurrent first-use cannot create duplicate pools |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3778](https://github.com/bytedance/deer-flow/pull/3778) | Synchronize skill storage singleton lifecycle |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4839](https://github.com/bytedance/deer-flow/pull/4839) | Sanitize MCP-sourced tool results through the same trust pipeline as other external content: a hostile tool server can no longer smuggle instructions into the model's context |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3799](https://github.com/bytedance/deer-flow/pull/3799) | Serialize per-chat thread creation so concurrent messages stop spawning duplicate threads for one chat. |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4216](https://github.com/bytedance/deer-flow/pull/4216) | `get_memory_config()` only refreshed as a side effect of `get_app_config()`, so readers like the agent factory saw a stale `memory.mode` after a config.yaml edit; resolve through `get_app_config()` with a FileNotFoundError fallback |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4157](https://github.com/bytedance/deer-flow/pull/4157) | A subagent's `description` is agent-editable (setup_agent / update_agent) yet was rendered raw into the `<subagent_system>` block, so a crafted first line could break out and forge framework tags. Escaped it, matching the `<soul>` fix. |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | HTML-escape `SOUL.md` before it enters the `<soul>` system-prompt block so an agent-editable personality cannot forge framework tags and break out of its trust zone |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4381](https://github.com/bytedance/deer-flow/pull/4381) | Unwrap Overwrite-wrapped sandbox state in after_agent so hook consumers read the real state instead of the wrapper |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3631](https://github.com/bytedance/deer-flow/pull/3631) | Strip base64 image data from streamed values events |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3674](https://github.com/bytedance/deer-flow/pull/3674) | Let UI runtime channel config win over config.yaml |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4130](https://github.com/bytedance/deer-flow/pull/4130) | Recognize remaining requests/httpx HTTP methods as network sinks |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3719](https://github.com/bytedance/deer-flow/pull/3719) | Skip whitespace-only facts in `_apply_updates` so blank memory entries do not accumulate |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4253](https://github.com/bytedance/deer-flow/pull/4253) | A tool result containing a literal `</tool_response>` could close the MindIE framing early and inject trailing text; escaped the tool-response content, matching the tool-call name/arg escaping already in the same function. |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3709](https://github.com/bytedance/deer-flow/pull/3709) | Fix positional fallback consuming unrelated todo when same-content list is exhausted |
 
 </details>
 <details>
@@ -1389,6 +1367,30 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [OpenClaw](https://github.com/openclaw/openclaw) (389.0k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | 目录创建失败时向上传递错误，避免 memory `ensureDir` 静默失败后继续执行 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (389.0k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | sandbox-root 越界错误里改用规范的 `shortenHomePath`,报的路径和界面其余部分一致。 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (389.0k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | 工具路径显示里，共享 home 前缀的同级目录不再被误缩写 |
+
+</details>
+
+<details>
+<summary>全部 16 个已合并的 deer-flow PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3800](https://github.com/bytedance/deer-flow/pull/3800) | 让 `create_thread` 在并发 insert 输掉竞争时保持幂等，避免一个聊天产生重复 thread。 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4429](https://github.com/bytedance/deer-flow/pull/4429) | fork 恢复的检查点把 sandbox channel 以 langgraph `Overwrite` 包装态送达，sync/async 初始化路径和 sibling readers 统一走一个解包 helper |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3797](https://github.com/bytedance/deer-flow/pull/3797) | 同步 MCP session-pool 单例生命周期,避免并发首次使用创建重复池 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3778](https://github.com/bytedance/deer-flow/pull/3778) | 同步 skill storage 单例的生命周期 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4839](https://github.com/bytedance/deer-flow/pull/4839) | MCP 来源的工具结果改走与其他外部内容相同的信任管道清洗：恶意 tool server 不再能往模型上下文夹带指令 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3799](https://github.com/bytedance/deer-flow/pull/3799) | 串行化单个聊天的线程创建，并发消息不再给一个聊天建出重复线程。 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4216](https://github.com/bytedance/deer-flow/pull/4216) | `get_memory_config()` 只作为 `get_app_config()` 的副作用刷新，agent factory 这类直接读者在 config.yaml 改完后拿到旧的 `memory.mode`；改走 `get_app_config()` 并加 FileNotFoundError 兜底 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4157](https://github.com/bytedance/deer-flow/pull/4157) | subagent 的 `description` 是 agent 可编辑的(setup_agent / update_agent),却原样渲染进 `<subagent_system>` 块,构造的首行能越界伪造框架标签。转义掉,和 `<soul>` 那个修复同类。 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4137](https://github.com/bytedance/deer-flow/pull/4137) | 在 `SOUL.md` 进入 `<soul>` system-prompt 块前 HTML 转义,让可被 agent 编辑的 personality 无法伪造框架标签、越出信任边界 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4381](https://github.com/bytedance/deer-flow/pull/4381) | after_agent 钩子里的 sandbox state 被 Overwrite 包了一层，解包后再消费，不再取不到值 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3631](https://github.com/bytedance/deer-flow/pull/3631) | 从 streamed values 事件里剥离 base64 图片数据 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3674](https://github.com/bytedance/deer-flow/pull/3674) | 让 UI 运行时 channel 配置优先于 config.yaml |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4130](https://github.com/bytedance/deer-flow/pull/4130) | 把 requests/httpx 剩余 HTTP 方法也识别为网络 sink |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3719](https://github.com/bytedance/deer-flow/pull/3719) | `_apply_updates` 跳过纯空白 facts,避免空白记忆条目堆积 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#4253](https://github.com/bytedance/deer-flow/pull/4253) | 工具结果里字面的 `</tool_response>` 能提前闭合 MindIE framing、注入尾随文本;转义 tool-response 内容,和同函数里 tool-call name/arg 的转义保持一致。 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | [#3709](https://github.com/bytedance/deer-flow/pull/3709) | 修复同内容 todo 列表耗尽后 positional fallback 误吞不相关 todo |
 
 </details>
 
