@@ -25,7 +25,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 | Project | Stars | What it is |
 |---------|:-----:|------------|
-| [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.7k+ | 512K lines of Claude Code distilled to 1,400 lines of Python: every key architectural pattern, runnable, any LLM. 7 architecture deep-dive articles. |
+| [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.7k+ | 512K lines of Claude Code distilled to 1,161 lines of Python: every key architectural pattern, runnable, any LLM. 7 architecture deep-dive articles. |
 | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, and reading guides. |
 | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, plain-English explanations. |
@@ -37,7 +37,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 | Area | Project | Stars | Notes |
 |------|---------|:-----:|-------|
-| Coding agents / evals | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.7k+ | 512K lines of Claude Code → 1,400 lines of Python. Every key architectural pattern, runnable. Any LLM. 7 architecture deep-dive articles. |
+| Coding agents / evals | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.7k+ | 512K lines of Claude Code → 1,161 lines of Python. Every key architectural pattern, runnable. Any LLM. 7 architecture deep-dive articles. |
 | Applied agents | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
 | Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | Open-source DeepWiki alternative: CLI/browser wiki generation, PageRank file ranking, Mermaid diagrams, and reading guides. |
 | Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, and plain-English explanations. |
@@ -997,7 +997,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 | 项目 | Stars | 简介 |
 |------|:-----:|------|
-| [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.7k+ | Claude Code 51万行源码蒸馏成 1400 行 Python 核心，关键架构模式全部可跑，支持任意大模型，附 7 篇架构导读。 |
+| [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.7k+ | Claude Code 51万行源码蒸馏成 1,161 行 Python 核心，关键架构模式全部可跑，支持任意大模型，附 7 篇架构导读。 |
 | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化、职位结构化。 |
 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | 开源版 DeepWiki：CLI/浏览器生成代码库 wiki，PageRank 文件排序、Mermaid 图、阅读导览。 |
 | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | 签合同前让 AI agent 先排雷：不公平条款、缺失保护、人话解释。 |
@@ -1009,7 +1009,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 | 方向 | 项目 | Stars | 简介 |
 |------|------|:-----:|------|
-| Coding agents / 评测 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.7k+ | Claude Code 51万行源码 → 1400行 Python 核心重写，支持任意大模型，附 7 篇架构导读。 |
+| Coding agents / 评测 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.7k+ | Claude Code 51万行源码 → 1,161 行 Python 核心重写，支持任意大模型，附 7 篇架构导读。 |
 | 应用型 Agent | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化和岗位结构化。 |
 | 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
 | 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI 合同审查 Agent，签字前帮你找红旗条款、不公平约定和缺失保护。 |
