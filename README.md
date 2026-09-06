@@ -69,15 +69,15 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | **54** | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories.<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`.<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | **37** | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) Self-heal dangling LOCAL_DISK replicas in `Client::Put`: a put onto a key left with only client-local disk replicas evicts them and retries cleanly, with BatchPut probing and evicting the already-exists subset in one pass.<br>[#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) Arm the etcd view-change watch once per wait instead of per iteration, stopping the steady-state watch goroutine leak in HA mode |
 | [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | **12** | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API `instructions` were leaking across turns through the `previous_response_id` chain.<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals.<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | **30** | Release asset freshness, multimodal reply duplication, scheduler exception swallowing | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) Prevent Telegram media group exceptions from being silently swallowed by APScheduler |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | **54** | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories.<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`.<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | **32** | Portfolio analytics and monitor-verdict pipeline; fail-closed live-trading gates; backtest accounting correctness (shorts, corporate actions, T+1) | [#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) Persist the flatten latch across runner restarts so a reboot cannot replay the kill-switch sweep and flip the account<br>[#1311](https://github.com/HKUDS/Vibe-Trading/pull/1311) Model short lots in FIFO pairing and restate legs to one caliber across splits and dividends, so short-side PnL stops double-counting borrowed exposure<br>[#1317](https://github.com/HKUDS/Vibe-Trading/pull/1317) Stamp every served frame with its price-adjustment caliber and warn when a basket mixes calibers, closing the silent mixed-caliber backtest gap from #1301 |
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | **6** | Session-store fail-closed sweeps, auth-failure visibility, surrogate-safe text | [#119127](https://github.com/openclaw/openclaw/pull/119127) Keep the mtime media sweep out of the managed-outgoing tree and fail closed when the session store is unreadable, so global GC can never delete live user originals (co-built with the project owner after his P0 review) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | **10** | Kernel/compiler correctness: wrong-device dispatch, silent gradient corruption, UB | [#188027](https://github.com/pytorch/pytorch/pull/188027) Initialize `r` in the Laguerre and Legendre polynomial helpers so they stop returning uninitialized memory on the boundary path (shows as Closed; landed via pytorchmergebot)<br>[#186779](https://github.com/pytorch/pytorch/pull/186779) Error on unsupported batch norm third derivatives instead of silently returning wrong gradients (shows as Closed; landed via pytorchmergebot)<br>[#188229](https://github.com/pytorch/pytorch/pull/188229) `avg_pool3d` backward silently corrupted gradients on inputs over `INT_MAX` elements: the atomic scatter kernel computed offsets and bounds as 32-bit `int`; widened to 64-bit indexing (shows as Closed; landed via pytorchmergebot) |
 | [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | **16** | Concurrency and checkpoint correctness: thread-creation races, session-pool lifecycle | [#3800](https://github.com/bytedance/deer-flow/pull/3800) Keep `create_thread` idempotent when a concurrent insert loses the race, so a chat cannot end up with duplicate threads.<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) Fork-restored checkpoints deliver the sandbox channel still wrapped in langgraph `Overwrite`; unified one unwrap helper across the sync/async init paths and the sibling readers<br>[#4839](https://github.com/bytedance/deer-flow/pull/4839) Sanitize MCP-sourced tool results through the same trust pipeline as other external content, so a hostile tool server cannot smuggle instructions into model context |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | **30** | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools | [#7289](https://github.com/microsoft/agent-framework/pull/7289) Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) Handoff was mutating message roles in place, so a retry leaked the change; reuse sanitized copies instead.<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) Run synchronous Python tools off the event loop so a blocking call stops freezing concurrent agent work. |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | **10** | Kernel/compiler correctness: wrong-device dispatch, silent gradient corruption, UB | [#188027](https://github.com/pytorch/pytorch/pull/188027) Initialize `r` in the Laguerre and Legendre polynomial helpers so they stop returning uninitialized memory on the boundary path (shows as Closed; landed via pytorchmergebot)<br>[#186779](https://github.com/pytorch/pytorch/pull/186779) Error on unsupported batch norm third derivatives instead of silently returning wrong gradients (shows as Closed; landed via pytorchmergebot)<br>[#188229](https://github.com/pytorch/pytorch/pull/188229) `avg_pool3d` backward silently corrupted gradients on inputs over `INT_MAX` elements: the atomic scatter kernel computed offsets and bounds as 32-bit `int`; widened to 64-bit indexing (shows as Closed; landed via pytorchmergebot) |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | **30** | Release asset freshness, multimodal reply duplication, scheduler exception swallowing | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) Prevent Telegram media group exceptions from being silently swallowed by APScheduler |
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | **6** | Session-store fail-closed sweeps, auth-failure visibility, surrogate-safe text | [#119127](https://github.com/openclaw/openclaw/pull/119127) Keep the mtime media sweep out of the managed-outgoing tree and fail closed when the session store is unreadable, so global GC can never delete live user originals (co-built with the project owner after his P0 review) |
 | [opencode](https://github.com/anomalyco/opencode) (200.9k★) | **1** | MCP OAuth callback bound to IPv4 loopback |  |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | **6** | API robustness: unbounded calls get timeouts, up-front validation, atomic windows | [#39953](https://github.com/langgenius/dify/pull/39953) Bound the TiDB Cloud API calls that had no timeout, so a hanging cluster endpoint can't stall vdb operations forever |
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | **1** | AutoProcessor hub-kwarg passthrough |  |
@@ -131,67 +131,6 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | **1** | SciCode answer extraction from content blocks |  |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | **3** | Concurrency-safe LiteLLM params, git workspace validation, UTF-8 logs | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) Serialize LiteLLM `modify_params` updates with an RLock so concurrent completions do not leak global parameter state<br>[#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) Validate git workspaces with `git rev-parse --git-dir`, so a broken nested repo can't crash `/api/git/changes`. |
 
-<details>
-<summary>All 54 merged Qwen Code PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#11085](https://github.com/QwenLM/qwen-code/pull/11085) | cron-interactive nightly flaked because one 30s wait folded the model's first turn into the cron fire budget; split the two clocks and made the echo-vacuous ALIVE99 assertion actually observe the model reply |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#7535](https://github.com/QwenLM/qwen-code/pull/7535) | Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | Added a timeout to Qwen OAuth refresh so a stalled refresh endpoint can't hang the CLI on auth recovery. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | Isolate Anthropic SDK abort listener leak with per-request child controllers |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5070](https://github.com/QwenLM/qwen-code/pull/5070) | Skip expired live agents in focus navigation so stale background-agent rows can't grab keyboard focus. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | Stopped stale tool-schema recall from slipping outdated tool names back into later planning turns. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#6981](https://github.com/QwenLM/qwen-code/pull/6981) | Route id-less continuation chunks to the colliding tool-call opener's slot instead of dropping them into the wrong one |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5020](https://github.com/QwenLM/qwen-code/pull/5020) | Drop tool calls after a cancellation so an aborted turn can't leak stale requests into the next payload. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5071](https://github.com/QwenLM/qwen-code/pull/5071) | Submit fast tool results after stream end, so a race at the tail of streaming can't strand completed calls. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | Dropped the discontinued Qwen OAuth path from ACP login so nobody gets routed into a dead auth method. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5073](https://github.com/QwenLM/qwen-code/pull/5073) | Warn when context instruction files blow the configured budget, before oversized repo guidance quietly crowds out the task. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5043](https://github.com/QwenLM/qwen-code/pull/5043) | Let grep results satisfy the prior-read check, so an edit can proceed on verified search context instead of a redundant re-read. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5061](https://github.com/QwenLM/qwen-code/pull/5061) | Preserve background-agent launch flags so a delegated CLI run keeps the execution mode you asked for. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5036](https://github.com/QwenLM/qwen-code/pull/5036) | Actually hard-stop repeated identical tool calls once loop detection fires, instead of letting the agent keep hammering the same stalled action. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | Recurse into tracked Git submodules when crawling a repo, so the agent's context picks up files inside them. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5077](https://github.com/QwenLM/qwen-code/pull/5077) | Show the full plan when a permission gate blocks, so you can inspect the agent's intent instead of losing it. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4715](https://github.com/QwenLM/qwen-code/pull/4715) | Managed auto-memory now honors the runtime output dir, while an explicit memory-dir override still wins. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5062](https://github.com/QwenLM/qwen-code/pull/5062) | Carry token-escalation context across agent rounds so a delegated run stops restarting from an under-provisioned model each time. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5945](https://github.com/QwenLM/qwen-code/pull/5945) | Reject non-positive sessionRecapAwayThresholdMinutes values |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4600](https://github.com/QwenLM/qwen-code/pull/4600) | Distinguish AUTO from AUTO_EDIT approval-mode indicators in the TUI, including shared styling, i18n keys, and visual evidence |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | Apply the requested output language to side queries too, so auxiliary answers follow the same language contract. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4963](https://github.com/QwenLM/qwen-code/pull/4963) | Enable fork subagents by default, so delegated work runs in isolated branches without a manual opt-in. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5815](https://github.com/QwenLM/qwen-code/pull/5815) | Merging assistant turns was dropping `reasoning_content`, losing multi-turn chain-of-thought. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5752](https://github.com/QwenLM/qwen-code/pull/5752) | Parse QWEN_SERVE_MCP_CLIENT_BUDGET strictly as a decimal integer |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5679](https://github.com/QwenLM/qwen-code/pull/5679) | Parse agent & workflow integer env vars strictly |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5115](https://github.com/QwenLM/qwen-code/pull/5115) | Hide teammate-only agent names when teams are disabled and fall back to one-shot subagents if an old prompt still sends one |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4673](https://github.com/QwenLM/qwen-code/pull/4673) | Restore top-level `--list-extensions` / `-l` so it prints installed extensions and exits before sandbox, auth, or TUI startup |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4635](https://github.com/QwenLM/qwen-code/pull/4635) | Hide completed sticky todos from the active CLI view so the list stays on what's left. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | Harden context-error text extraction so a nested or non-string payload surfaces a useful message instead of vanishing. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5167](https://github.com/QwenLM/qwen-code/pull/5167) | Hide unconfigured discontinued OAuth model |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4828](https://github.com/QwenLM/qwen-code/pull/4828) | Keep a user-set shared `baseUrl` after auth refresh, so a same-model refresh doesn't fall back to the provider default. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5461](https://github.com/QwenLM/qwen-code/pull/5461) | Accept uppercase URL schemes in Claude plugin sources |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5209](https://github.com/QwenLM/qwen-code/pull/5209) | Read SHORT-typed TIFF dimensions correctly on big-endian files |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4717](https://github.com/QwenLM/qwen-code/pull/4717) | Replace exit-time deep history clones with shallow read paths across copy, arena, and ACP snapshot flows while keeping restore-time cloning defensive |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4970](https://github.com/QwenLM/qwen-code/pull/4970) | Stabilize truncated tool-retry keys so a repaired call keeps the same retry identity instead of drifting. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | Fix IDE proxy requests by keeping `fetch` and `EnvHttpProxyAgent` on the same bundled `undici` module path |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5429](https://github.com/QwenLM/qwen-code/pull/5429) | Accept uppercase URL schemes when parsing install sources |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5494](https://github.com/QwenLM/qwen-code/pull/5494) | Don't treat an empty-parts message as a function call/response |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5285](https://github.com/QwenLM/qwen-code/pull/5285) | Confirm the WEBP signature, not just the RIFF prefix |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5420](https://github.com/QwenLM/qwen-code/pull/5420) | Keep estimated token split summing to total |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5336](https://github.com/QwenLM/qwen-code/pull/5336) | Detect WebP and AVI in RIFF magic-byte sniffing |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5328](https://github.com/QwenLM/qwen-code/pull/5328) | Keep qwen3.6-flash and kimi-k2.6 presets text-only |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5227](https://github.com/QwenLM/qwen-code/pull/5227) | Read BMP height as signed int32 for top-down bitmaps |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5194](https://github.com/QwenLM/qwen-code/pull/5194) | Read WebP VP8X canvas height from the correct byte offset |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5719](https://github.com/QwenLM/qwen-code/pull/5719) | Validate list maxEntries as a positive integer |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5630](https://github.com/QwenLM/qwen-code/pull/5630) | Escape backslashes and quotes in emacs ediff paths |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4738](https://github.com/QwenLM/qwen-code/pull/4738) | Skip hidden thought parts when copying visible CLI output, so the clipboard matches what's on screen. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5426](https://github.com/QwenLM/qwen-code/pull/5426) | Accept uppercase URL schemes in mcp add transport detection |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5287](https://github.com/QwenLM/qwen-code/pull/5287) | Render a sub-minute duration that rounds to 60s as "1m" |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5647](https://github.com/QwenLM/qwen-code/pull/5647) | Detect USE_OPENAI auth when the model is set via QWEN_MODEL |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5204](https://github.com/QwenLM/qwen-code/pull/5204) | Reopen code fences without inserting a blank line |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5072](https://github.com/QwenLM/qwen-code/pull/5072) | Stabilize the simple MCP integration check so server-readiness timing stops making the cross-process contract test flaky. |
-
-</details>
 <details>
 <summary>All 37 merged Mooncake PRs</summary>
 
@@ -257,40 +196,64 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 30 merged AstrBot PRs</summary>
+<summary>All 54 merged Qwen Code PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) | Prefer bundled dashboard assets over a stale data dist, so a release stops serving an outdated WebUI. |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8718](https://github.com/AstrBotDevs/AstrBot/pull/8718) | Avoid duplicate quoted image captions when multimodal replies include both quoted text and image metadata |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) | Prevent Telegram media group exceptions from being silently swallowed by APScheduler |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6581](https://github.com/AstrBotDevs/AstrBot/pull/6581) | Context truncation dropping the only user message: causes 400 from Zhipu/Gemini |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7196](https://github.com/AstrBotDevs/AstrBot/pull/7196) | Fix Gemini thinking parts leaking into user-facing response |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8750](https://github.com/AstrBotDevs/AstrBot/pull/8750) | Fixed changelog anchor links so dashboard release notes jump to the right section instead of a dead anchor. |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8736](https://github.com/AstrBotDevs/AstrBot/pull/8736) | Preserve embedding API version suffixes so a versioned provider endpoint doesn't get normalized to the wrong path. |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) | Apply empty-assistant message filter to streaming OpenAI path: strict providers no longer 400 on reasoning-only turns |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8089](https://github.com/AstrBotDevs/AstrBot/pull/8089) | Route image requests to a vision-capable fallback provider when the primary provider cannot accept image input |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6710](https://github.com/AstrBotDevs/AstrBot/pull/6710) | Skills-like re-query dropping image captions: `extra_user_content_parts` not forwarded |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6596](https://github.com/AstrBotDevs/AstrBot/pull/6596) | Multimodal token counting: images, audio, chain-of-thought were invisible to context compression |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8786](https://github.com/AstrBotDevs/AstrBot/pull/8786) | Enforce persona tool boundaries |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8061](https://github.com/AstrBotDevs/AstrBot/pull/8061) | Keep Discord startup alive when command sync hits the daily create quota; only quota errors become warnings |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8175](https://github.com/AstrBotDevs/AstrBot/pull/8175) | Surface WeChat OA media send failures instead of reporting success after prepare/send timeouts |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8768](https://github.com/AstrBotDevs/AstrBot/pull/8768) | Sanitize Lark platform id suffixes so invisible whitespace in configured ids does not break platform matching |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8388](https://github.com/AstrBotDevs/AstrBot/pull/8388) | Add the missing dashboard i18n for plugin sub-command counts, so extension details stop showing raw translation keys. |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8255](https://github.com/AstrBotDevs/AstrBot/pull/8255) | Support RST and AsciiDoc knowledge uploads by keeping backend parser checks and dashboard file validation in sync |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8195](https://github.com/AstrBotDevs/AstrBot/pull/8195) | Skip empty LLM summaries so context compression keeps the original history instead of inserting a blank placeholder. |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8119](https://github.com/AstrBotDevs/AstrBot/pull/8119) | Pass image inputs through active replies so image-triggered mentions reach the LLM as image URLs |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8073](https://github.com/AstrBotDevs/AstrBot/pull/8073) | Fix image-only KB retrieval: skip blank prompts so embedding APIs are not called with empty text |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6527](https://github.com/AstrBotDevs/AstrBot/pull/6527) | Fix LLM tool selection: rewrote ambiguous Upload/Download descriptions |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6474](https://github.com/AstrBotDevs/AstrBot/pull/6474) | SQLite `database is locked` under concurrent writes: added busy timeout |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7216](https://github.com/AstrBotDevs/AstrBot/pull/7216) | Fix Gemini tool call 400: wrap plain-text tool results as Protobuf Struct |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7003](https://github.com/AstrBotDevs/AstrBot/pull/7003) | SSE heartbeat for WebChat: long context compression killed the connection |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7398](https://github.com/AstrBotDevs/AstrBot/pull/7398) | Fix Telegram sendMessageDraft spamming 400 errors on empty text in streaming mode |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7217](https://github.com/AstrBotDevs/AstrBot/pull/7217) | Fix qwen3-rerank response parsing: handle both old and new Dashscope API formats |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6313](https://github.com/AstrBotDevs/AstrBot/pull/6313) | Null choices guard: OpenAI API returning `None` instead of empty list |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6551](https://github.com/AstrBotDevs/AstrBot/pull/6551) | Fix empty content causing Grok 400: set content to None when empty |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7407](https://github.com/AstrBotDevs/AstrBot/pull/7407) | Fix Gemini native search 400 when no function tools: skip FunctionCallingConfig |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6656](https://github.com/AstrBotDevs/AstrBot/pull/6656) | `/stop` follow-up race: agent_stop flag not checked during follow-up capture |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#11085](https://github.com/QwenLM/qwen-code/pull/11085) | cron-interactive nightly flaked because one 30s wait folded the model's first turn into the cron fire budget; split the two clocks and made the echo-vacuous ALIVE99 assertion actually observe the model reply |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#7535](https://github.com/QwenLM/qwen-code/pull/7535) | Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | Added a timeout to Qwen OAuth refresh so a stalled refresh endpoint can't hang the CLI on auth recovery. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | Isolate Anthropic SDK abort listener leak with per-request child controllers |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5070](https://github.com/QwenLM/qwen-code/pull/5070) | Skip expired live agents in focus navigation so stale background-agent rows can't grab keyboard focus. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | Stopped stale tool-schema recall from slipping outdated tool names back into later planning turns. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#6981](https://github.com/QwenLM/qwen-code/pull/6981) | Route id-less continuation chunks to the colliding tool-call opener's slot instead of dropping them into the wrong one |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5020](https://github.com/QwenLM/qwen-code/pull/5020) | Drop tool calls after a cancellation so an aborted turn can't leak stale requests into the next payload. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5071](https://github.com/QwenLM/qwen-code/pull/5071) | Submit fast tool results after stream end, so a race at the tail of streaming can't strand completed calls. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | Dropped the discontinued Qwen OAuth path from ACP login so nobody gets routed into a dead auth method. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5073](https://github.com/QwenLM/qwen-code/pull/5073) | Warn when context instruction files blow the configured budget, before oversized repo guidance quietly crowds out the task. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5043](https://github.com/QwenLM/qwen-code/pull/5043) | Let grep results satisfy the prior-read check, so an edit can proceed on verified search context instead of a redundant re-read. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5061](https://github.com/QwenLM/qwen-code/pull/5061) | Preserve background-agent launch flags so a delegated CLI run keeps the execution mode you asked for. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5036](https://github.com/QwenLM/qwen-code/pull/5036) | Actually hard-stop repeated identical tool calls once loop detection fires, instead of letting the agent keep hammering the same stalled action. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | Recurse into tracked Git submodules when crawling a repo, so the agent's context picks up files inside them. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5077](https://github.com/QwenLM/qwen-code/pull/5077) | Show the full plan when a permission gate blocks, so you can inspect the agent's intent instead of losing it. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4715](https://github.com/QwenLM/qwen-code/pull/4715) | Managed auto-memory now honors the runtime output dir, while an explicit memory-dir override still wins. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5062](https://github.com/QwenLM/qwen-code/pull/5062) | Carry token-escalation context across agent rounds so a delegated run stops restarting from an under-provisioned model each time. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5945](https://github.com/QwenLM/qwen-code/pull/5945) | Reject non-positive sessionRecapAwayThresholdMinutes values |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4600](https://github.com/QwenLM/qwen-code/pull/4600) | Distinguish AUTO from AUTO_EDIT approval-mode indicators in the TUI, including shared styling, i18n keys, and visual evidence |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | Apply the requested output language to side queries too, so auxiliary answers follow the same language contract. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4963](https://github.com/QwenLM/qwen-code/pull/4963) | Enable fork subagents by default, so delegated work runs in isolated branches without a manual opt-in. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5815](https://github.com/QwenLM/qwen-code/pull/5815) | Merging assistant turns was dropping `reasoning_content`, losing multi-turn chain-of-thought. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5752](https://github.com/QwenLM/qwen-code/pull/5752) | Parse QWEN_SERVE_MCP_CLIENT_BUDGET strictly as a decimal integer |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5679](https://github.com/QwenLM/qwen-code/pull/5679) | Parse agent & workflow integer env vars strictly |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5115](https://github.com/QwenLM/qwen-code/pull/5115) | Hide teammate-only agent names when teams are disabled and fall back to one-shot subagents if an old prompt still sends one |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4673](https://github.com/QwenLM/qwen-code/pull/4673) | Restore top-level `--list-extensions` / `-l` so it prints installed extensions and exits before sandbox, auth, or TUI startup |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4635](https://github.com/QwenLM/qwen-code/pull/4635) | Hide completed sticky todos from the active CLI view so the list stays on what's left. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | Harden context-error text extraction so a nested or non-string payload surfaces a useful message instead of vanishing. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5167](https://github.com/QwenLM/qwen-code/pull/5167) | Hide unconfigured discontinued OAuth model |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4828](https://github.com/QwenLM/qwen-code/pull/4828) | Keep a user-set shared `baseUrl` after auth refresh, so a same-model refresh doesn't fall back to the provider default. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5461](https://github.com/QwenLM/qwen-code/pull/5461) | Accept uppercase URL schemes in Claude plugin sources |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5209](https://github.com/QwenLM/qwen-code/pull/5209) | Read SHORT-typed TIFF dimensions correctly on big-endian files |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4717](https://github.com/QwenLM/qwen-code/pull/4717) | Replace exit-time deep history clones with shallow read paths across copy, arena, and ACP snapshot flows while keeping restore-time cloning defensive |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4970](https://github.com/QwenLM/qwen-code/pull/4970) | Stabilize truncated tool-retry keys so a repaired call keeps the same retry identity instead of drifting. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | Fix IDE proxy requests by keeping `fetch` and `EnvHttpProxyAgent` on the same bundled `undici` module path |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5429](https://github.com/QwenLM/qwen-code/pull/5429) | Accept uppercase URL schemes when parsing install sources |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5494](https://github.com/QwenLM/qwen-code/pull/5494) | Don't treat an empty-parts message as a function call/response |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5285](https://github.com/QwenLM/qwen-code/pull/5285) | Confirm the WEBP signature, not just the RIFF prefix |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5420](https://github.com/QwenLM/qwen-code/pull/5420) | Keep estimated token split summing to total |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5336](https://github.com/QwenLM/qwen-code/pull/5336) | Detect WebP and AVI in RIFF magic-byte sniffing |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5328](https://github.com/QwenLM/qwen-code/pull/5328) | Keep qwen3.6-flash and kimi-k2.6 presets text-only |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5227](https://github.com/QwenLM/qwen-code/pull/5227) | Read BMP height as signed int32 for top-down bitmaps |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5194](https://github.com/QwenLM/qwen-code/pull/5194) | Read WebP VP8X canvas height from the correct byte offset |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5719](https://github.com/QwenLM/qwen-code/pull/5719) | Validate list maxEntries as a positive integer |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5630](https://github.com/QwenLM/qwen-code/pull/5630) | Escape backslashes and quotes in emacs ediff paths |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4738](https://github.com/QwenLM/qwen-code/pull/4738) | Skip hidden thought parts when copying visible CLI output, so the clipboard matches what's on screen. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5426](https://github.com/QwenLM/qwen-code/pull/5426) | Accept uppercase URL schemes in mcp add transport detection |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5287](https://github.com/QwenLM/qwen-code/pull/5287) | Render a sub-minute duration that rounds to 60s as "1m" |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5647](https://github.com/QwenLM/qwen-code/pull/5647) | Detect USE_OPENAI auth when the model is set via QWEN_MODEL |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5204](https://github.com/QwenLM/qwen-code/pull/5204) | Reopen code fences without inserting a blank line |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5072](https://github.com/QwenLM/qwen-code/pull/5072) | Stabilize the simple MCP integration check so server-readiness timing stops making the cross-process contract test flaky. |
 
 </details>
 <details>
@@ -332,36 +295,6 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1225](https://github.com/HKUDS/Vibe-Trading/pull/1225) | Streamed LLM calls now ask the endpoint for usage, so swarm runs record real token counts instead of character-count estimates (output tokens were under-reported 18-36x); endpoints that reject stream_options self-heal with one stateless retry |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1217](https://github.com/HKUDS/Vibe-Trading/pull/1217) | Shadow Account derived PnL from metrics keys the runner never emits, so successful backtests reported Shadow PnL = 0 and the Delta came out inverted; PnL now resolves from final_value/total_return and unknown states fail closed instead of rendering as 0.00 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | [#1220](https://github.com/HKUDS/Vibe-Trading/pull/1220) | Pin that rows between combinatorial CV test blocks stay trainable, the regression coverage the multi-segment purge fix shipped without |
-
-</details>
-<details>
-<summary>All 6 merged OpenClaw PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#119127](https://github.com/openclaw/openclaw/pull/119127) | Keep the mtime media sweep out of the managed-outgoing tree and fail closed when the session store is unreadable, so global GC can never delete live user originals (co-built with the project owner after his P0 review) |
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | Log auth profile resolution failures instead of swallowing silently |
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#96456](https://github.com/openclaw/openclaw/pull/96456) | Clip progress text on code-point boundaries to avoid lone surrogates |
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | Propagate memory directory creation failures instead of continuing after a failed `ensureDir` |
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | Use the canonical `shortenHomePath` in the sandbox-root escape error so the reported path matches the rest of the UI. |
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | Keep sibling dirs that share the home prefix unshortened in tool path display |
-
-</details>
-<details>
-<summary>All 10 merged PyTorch PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#192025](https://github.com/pytorch/pytorch/pull/192025) | Vectorized integer remainder in Inductor C++ codegen zeroed the divisor on padded tail lanes, producing div-by-zero under masking; keep tail divisors non-zero (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | Guard the CuTeDSL topk override against a non-current CUDA device so it stops dispatching on the wrong device (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#186779](https://github.com/pytorch/pytorch/pull/186779) | Error on unsupported batch norm third derivatives instead of silently returning wrong gradients (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188027](https://github.com/pytorch/pytorch/pull/188027) | Initialize `r` in the Laguerre and Legendre polynomial helpers so they stop returning uninitialized memory on the boundary path (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188229](https://github.com/pytorch/pytorch/pull/188229) | `avg_pool3d` backward silently corrupted gradients on inputs over `INT_MAX` elements: the atomic scatter kernel computed offsets and bounds as 32-bit `int`; widened to 64-bit indexing (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | Fix a `ValueError` in the `stale_issues` workflow's `parse_older_than` on non-leap years, where a naive Feb 29 offset crashed the run (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | Fix user-defined Triton kernel name mangling in the Inductor codegen so distinct kernels stop colliding in generated code (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187860](https://github.com/pytorch/pytorch/pull/187860) | Route the empty-`src` check in `meta__transformer_encoder_layer_fwd` through `guard_or_false` so an unbacked symbolic `numel` under `torch.compile` no longer raises a data-dependent error (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | Remove the obsolete `setuptools` upper bound so builds resolve a current toolchain instead of pinning a stale one (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187720](https://github.com/pytorch/pytorch/pull/187720) | Fix the `stale_issues` year cutoff clamping the day to the 28th in every month, so month-end batches land on the intended date (shows as Closed; landed via pytorchmergebot) |
 
 </details>
 <details>
@@ -422,6 +355,73 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7124](https://github.com/microsoft/agent-framework/pull/7124) | Python: compaction token counting serialized messages with `ensure_ascii=True`, so the tokenizer counted `\uXXXX` escapes instead of real characters (~1.6x inflation on CJK); serialize the real text |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#6037](https://github.com/microsoft/agent-framework/pull/6037) | Keep Foundry citation `get_url` metadata through response conversion so source links survive in chat responses |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7777](https://github.com/microsoft/agent-framework/pull/7777) | Python: replace the stale "Learn docs are coming soon" placeholder in the README with the live Learn links |
+
+</details>
+<details>
+<summary>All 10 merged PyTorch PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#192025](https://github.com/pytorch/pytorch/pull/192025) | Vectorized integer remainder in Inductor C++ codegen zeroed the divisor on padded tail lanes, producing div-by-zero under masking; keep tail divisors non-zero (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | Guard the CuTeDSL topk override against a non-current CUDA device so it stops dispatching on the wrong device (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#186779](https://github.com/pytorch/pytorch/pull/186779) | Error on unsupported batch norm third derivatives instead of silently returning wrong gradients (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188027](https://github.com/pytorch/pytorch/pull/188027) | Initialize `r` in the Laguerre and Legendre polynomial helpers so they stop returning uninitialized memory on the boundary path (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188229](https://github.com/pytorch/pytorch/pull/188229) | `avg_pool3d` backward silently corrupted gradients on inputs over `INT_MAX` elements: the atomic scatter kernel computed offsets and bounds as 32-bit `int`; widened to 64-bit indexing (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | Fix a `ValueError` in the `stale_issues` workflow's `parse_older_than` on non-leap years, where a naive Feb 29 offset crashed the run (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | Fix user-defined Triton kernel name mangling in the Inductor codegen so distinct kernels stop colliding in generated code (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187860](https://github.com/pytorch/pytorch/pull/187860) | Route the empty-`src` check in `meta__transformer_encoder_layer_fwd` through `guard_or_false` so an unbacked symbolic `numel` under `torch.compile` no longer raises a data-dependent error (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | Remove the obsolete `setuptools` upper bound so builds resolve a current toolchain instead of pinning a stale one (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187720](https://github.com/pytorch/pytorch/pull/187720) | Fix the `stale_issues` year cutoff clamping the day to the 28th in every month, so month-end batches land on the intended date (shows as Closed; landed via pytorchmergebot) |
+
+</details>
+<details>
+<summary>All 30 merged AstrBot PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) | Prefer bundled dashboard assets over a stale data dist, so a release stops serving an outdated WebUI. |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8718](https://github.com/AstrBotDevs/AstrBot/pull/8718) | Avoid duplicate quoted image captions when multimodal replies include both quoted text and image metadata |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) | Prevent Telegram media group exceptions from being silently swallowed by APScheduler |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6581](https://github.com/AstrBotDevs/AstrBot/pull/6581) | Context truncation dropping the only user message: causes 400 from Zhipu/Gemini |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7196](https://github.com/AstrBotDevs/AstrBot/pull/7196) | Fix Gemini thinking parts leaking into user-facing response |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8750](https://github.com/AstrBotDevs/AstrBot/pull/8750) | Fixed changelog anchor links so dashboard release notes jump to the right section instead of a dead anchor. |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8736](https://github.com/AstrBotDevs/AstrBot/pull/8736) | Preserve embedding API version suffixes so a versioned provider endpoint doesn't get normalized to the wrong path. |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) | Apply empty-assistant message filter to streaming OpenAI path: strict providers no longer 400 on reasoning-only turns |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8089](https://github.com/AstrBotDevs/AstrBot/pull/8089) | Route image requests to a vision-capable fallback provider when the primary provider cannot accept image input |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6710](https://github.com/AstrBotDevs/AstrBot/pull/6710) | Skills-like re-query dropping image captions: `extra_user_content_parts` not forwarded |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6596](https://github.com/AstrBotDevs/AstrBot/pull/6596) | Multimodal token counting: images, audio, chain-of-thought were invisible to context compression |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8786](https://github.com/AstrBotDevs/AstrBot/pull/8786) | Enforce persona tool boundaries |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8061](https://github.com/AstrBotDevs/AstrBot/pull/8061) | Keep Discord startup alive when command sync hits the daily create quota; only quota errors become warnings |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8175](https://github.com/AstrBotDevs/AstrBot/pull/8175) | Surface WeChat OA media send failures instead of reporting success after prepare/send timeouts |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8768](https://github.com/AstrBotDevs/AstrBot/pull/8768) | Sanitize Lark platform id suffixes so invisible whitespace in configured ids does not break platform matching |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8388](https://github.com/AstrBotDevs/AstrBot/pull/8388) | Add the missing dashboard i18n for plugin sub-command counts, so extension details stop showing raw translation keys. |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8255](https://github.com/AstrBotDevs/AstrBot/pull/8255) | Support RST and AsciiDoc knowledge uploads by keeping backend parser checks and dashboard file validation in sync |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8195](https://github.com/AstrBotDevs/AstrBot/pull/8195) | Skip empty LLM summaries so context compression keeps the original history instead of inserting a blank placeholder. |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8119](https://github.com/AstrBotDevs/AstrBot/pull/8119) | Pass image inputs through active replies so image-triggered mentions reach the LLM as image URLs |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8073](https://github.com/AstrBotDevs/AstrBot/pull/8073) | Fix image-only KB retrieval: skip blank prompts so embedding APIs are not called with empty text |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6527](https://github.com/AstrBotDevs/AstrBot/pull/6527) | Fix LLM tool selection: rewrote ambiguous Upload/Download descriptions |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6474](https://github.com/AstrBotDevs/AstrBot/pull/6474) | SQLite `database is locked` under concurrent writes: added busy timeout |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7216](https://github.com/AstrBotDevs/AstrBot/pull/7216) | Fix Gemini tool call 400: wrap plain-text tool results as Protobuf Struct |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7003](https://github.com/AstrBotDevs/AstrBot/pull/7003) | SSE heartbeat for WebChat: long context compression killed the connection |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7398](https://github.com/AstrBotDevs/AstrBot/pull/7398) | Fix Telegram sendMessageDraft spamming 400 errors on empty text in streaming mode |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7217](https://github.com/AstrBotDevs/AstrBot/pull/7217) | Fix qwen3-rerank response parsing: handle both old and new Dashscope API formats |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6313](https://github.com/AstrBotDevs/AstrBot/pull/6313) | Null choices guard: OpenAI API returning `None` instead of empty list |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6551](https://github.com/AstrBotDevs/AstrBot/pull/6551) | Fix empty content causing Grok 400: set content to None when empty |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7407](https://github.com/AstrBotDevs/AstrBot/pull/7407) | Fix Gemini native search 400 when no function tools: skip FunctionCallingConfig |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6656](https://github.com/AstrBotDevs/AstrBot/pull/6656) | `/stop` follow-up race: agent_stop flag not checked during follow-up capture |
+
+</details>
+<details>
+<summary>All 6 merged OpenClaw PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#119127](https://github.com/openclaw/openclaw/pull/119127) | Keep the mtime media sweep out of the managed-outgoing tree and fail closed when the session store is unreadable, so global GC can never delete live user originals (co-built with the project owner after his P0 review) |
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | Log auth profile resolution failures instead of swallowing silently |
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#96456](https://github.com/openclaw/openclaw/pull/96456) | Clip progress text on code-point boundaries to avoid lone surrogates |
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | Propagate memory directory creation failures instead of continuing after a failed `ensureDir` |
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | Use the canonical `shortenHomePath` in the sandbox-root escape error so the reported path matches the rest of the UI. |
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | Keep sibling dirs that share the home prefix unshortened in tool path display |
 
 </details>
 <details>
@@ -1038,15 +1038,15 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | **54** | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.3k★ · maintainer) | **37** | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) `Client::Put` 自愈悬挂 LOCAL_DISK 副本：目标 key 只剩客户端本地磁盘副本时自动逐出并干净重试，BatchPut 对已存在子集一次探测加一次批量逐出<br>[#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) HA 模式下 WaitForViewChange 每次迭代都新建一个 etcd watch，改成每轮等待只建一次，堵住稳态 watch goroutine 泄漏 |
 | [vLLM](https://github.com/vllm-project/vllm) (89.8k★) | **12** | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | **30** | 发版资源新鲜度、多模态回复重复、调度器吞异常 | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) 修复 Telegram media group 异常被 APScheduler 静默吞掉：try/except + EVENT_JOB_ERROR listener |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | **54** | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · maintainer) | **32** | 组合分析与监视器判定流水线；实盘 fail-closed 门禁；回测账务正确性（空头、公司行动、T+1） | [#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) flatten latch 持久化绑定 halt episode：重启不再整轮重放扫仓把账户翻空<br>[#1311](https://github.com/HKUDS/Vibe-Trading/pull/1311) FIFO 配对里显式建模空头批次，拆股/分红时把多空腿重述到同一口径，空头盈亏不再重复计借入敞口<br>[#1317](https://github.com/HKUDS/Vibe-Trading/pull/1317) 给每个下发的行情帧打上复权口径戳，篮子混口径时显式告警，堵上 #1301 暴露的静默混口径回测缺口 |
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | **6** | 会话存储失败即关的清扫、鉴权失败可见性、代理对安全文本 | [#119127](https://github.com/openclaw/openclaw/pull/119127) 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fail-closed，全域 GC 永不误删用户原件（owner P0 评审后与项目作者共建） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | **10** | 算子与编译器正确性：错设备派发、梯度静默损坏、未初始化内存 | [#188027](https://github.com/pytorch/pytorch/pull/188027) 在 Laguerre / Legendre 多项式的辅助函数里初始化 `r`，避免边界路径返回未初始化内存（PR 显示 Closed，经 pytorchmergebot 合入）<br>[#186779](https://github.com/pytorch/pytorch/pull/186779) 不支持的 batch norm 三阶导改为显式报错，不再静默返回错误梯度（PR 显示 Closed，经 pytorchmergebot 合入）<br>[#188229](https://github.com/pytorch/pytorch/pull/188229) `avg_pool3d` backward 在超过 `INT_MAX` 元素的输入上静默算错梯度：atomic scatter kernel 用 32 位 `int` 算偏移和边界，改成 64 位索引（PR 显示 Closed，经 pytorchmergebot 合入） |
 | [deer-flow](https://github.com/bytedance/deer-flow) (80.7k★) | **16** | 并发与 checkpoint 正确性：建线程竞态、会话池生命周期、fork 恢复 | [#3800](https://github.com/bytedance/deer-flow/pull/3800) 让 `create_thread` 在并发 insert 输掉竞争时保持幂等，避免一个聊天产生重复 thread。<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) fork 恢复的检查点把 sandbox channel 以 langgraph `Overwrite` 包装态送达，sync/async 初始化路径和 sibling readers 统一走一个解包 helper<br>[#4839](https://github.com/bytedance/deer-flow/pull/4839) MCP 来源的工具结果改走与其他外部内容相同的信任管道清洗，恶意 tool server 不再能往模型上下文夹带指令 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | **30** | agent 循环边界：消息 role 原地改泄漏、每轮钩子、阻塞工具 | [#7289](https://github.com/microsoft/agent-framework/pull/7289) turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) handoff 原地改了 message 的 role，重试复用时把改动泄漏出去了，改成复用消毒过的副本。<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) 把同步的 Python 工具挪出事件循环跑，阻塞型调用不再冻住并发的 agent 任务。 |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | **10** | 算子与编译器正确性：错设备派发、梯度静默损坏、未初始化内存 | [#188027](https://github.com/pytorch/pytorch/pull/188027) 在 Laguerre / Legendre 多项式的辅助函数里初始化 `r`，避免边界路径返回未初始化内存（PR 显示 Closed，经 pytorchmergebot 合入）<br>[#186779](https://github.com/pytorch/pytorch/pull/186779) 不支持的 batch norm 三阶导改为显式报错，不再静默返回错误梯度（PR 显示 Closed，经 pytorchmergebot 合入）<br>[#188229](https://github.com/pytorch/pytorch/pull/188229) `avg_pool3d` backward 在超过 `INT_MAX` 元素的输入上静默算错梯度：atomic scatter kernel 用 32 位 `int` 算偏移和边界，改成 64 位索引（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | **30** | 发版资源新鲜度、多模态回复重复、调度器吞异常 | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) 修复 Telegram media group 异常被 APScheduler 静默吞掉：try/except + EVENT_JOB_ERROR listener |
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | **6** | 会话存储失败即关的清扫、鉴权失败可见性、代理对安全文本 | [#119127](https://github.com/openclaw/openclaw/pull/119127) 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fail-closed，全域 GC 永不误删用户原件（owner P0 评审后与项目作者共建） |
 | [opencode](https://github.com/anomalyco/opencode) (200.9k★) | **1** | MCP OAuth 回调绑定 IPv4 loopback |  |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | **6** | API 健壮性：无超时调用加边界、前置校验、原子窗口 | [#39953](https://github.com/langgenius/dify/pull/39953) 给没有超时的 TiDB Cloud API 调用补上有界超时，集群端点挂起不再无限拖住 vdb 操作 |
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | **1** | AutoProcessor 丢失 hub 参数透传 |  |
@@ -1100,67 +1100,6 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | **1** | 从内容块提取 SciCode 答案 |  |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | **3** | 并发安全的 LiteLLM 参数、git 工作区校验、UTF-8 日志 | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) 用 RLock 串行化 LiteLLM `modify_params` 的保存、设置和恢复，避免并发 completion 泄漏全局参数状态<br>[#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) 用 `git rev-parse --git-dir` 校验 git workspace，坏掉的嵌套 repo 打不崩 `/api/git/changes`。 |
 
-<details>
-<summary>全部 54 个已合并的 Qwen Code PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#11085](https://github.com/QwenLM/qwen-code/pull/11085) | cron-interactive 夜跑 flake 的根因是 30s 等待把模型首回合延迟折进了 cron 触发预算；拆成两段钟，顺手把被自身回显空转的 ALIVE99 断言改成真观察模型回复 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#7535](https://github.com/QwenLM/qwen-code/pull/7535) | release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | 给 Qwen OAuth refresh 加超时，刷新端点卡住时不会把整个 CLI 挂在认证恢复上。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | 用 per-request 子 controller 隔离 Anthropic SDK 的 abort listener 泄漏，避免跨请求累积死监听器 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5070](https://github.com/QwenLM/qwen-code/pull/5070) | 焦点导航跳过已过期的 live agent，别让 stale 的后台 agent 行抢走键盘焦点。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | 掐掉 stale 的 tool schema recall，别让 memory warning 把过期工具名带回后面的规划轮次。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#6981](https://github.com/QwenLM/qwen-code/pull/6981) | 不带 id 的流式 continuation chunk 在工具调用撞名时改为落到当前 opener 的槽位，不再进错槽 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5020](https://github.com/QwenLM/qwen-code/pull/5020) | 取消后丢掉残留的 tool call，中止的轮次别把过期调用漏进下一次 payload。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5071](https://github.com/QwenLM/qwen-code/pull/5071) | 流式结束后再提交已完成的快速 tool result，别让流尾的竞态把它们卡在本地队列。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | 把已停用的 Qwen OAuth ACP 登录路径去掉，别再把用户导向失效的认证方式。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5073](https://github.com/QwenLM/qwen-code/pull/5073) | 上下文指令文件超预算时提前告警，别等仓库级 guidance 悄悄挤掉任务上下文。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5043](https://github.com/QwenLM/qwen-code/pull/5043) | 让 grep 结果也算通过 prior-read 检查，已经搜过的上下文不用再逼着重读一遍文件。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5061](https://github.com/QwenLM/qwen-code/pull/5061) | 保留后台 agent 的启动参数，delegated 的 CLI run 继续用你指定的执行模式。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5036](https://github.com/QwenLM/qwen-code/pull/5036) | loop 检测触发后真的硬停掉重复的同一个 tool call，别让 agent 还在那反复执行卡死的动作。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | 爬仓库时递归进已跟踪的 Git submodule，agent 上下文才带得上子模块里的文件。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5077](https://github.com/QwenLM/qwen-code/pull/5077) | permission gate 拦下来时把完整计划显示出来，能看被拦的 agent 意图，而不是白白丢掉。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4715](https://github.com/QwenLM/qwen-code/pull/4715) | managed auto-memory 听运行时输出目录的，同时显式的 memory 目录覆盖仍然优先。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5062](https://github.com/QwenLM/qwen-code/pull/5062) | 跨 agent 轮次带上 token escalation 上下文，delegated run 不用每轮都从容量不够的模型重来。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5945](https://github.com/QwenLM/qwen-code/pull/5945) | 拒绝非正的 `sessionRecapAwayThresholdMinutes` 值 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4600](https://github.com/QwenLM/qwen-code/pull/4600) | 区分 TUI 中 AUTO 与 AUTO_EDIT approval-mode 指示器：共享样式、本地化 key 和可视化证据一起补齐 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | 把用户要求的输出语言也用到 side query 上，辅助回答跟主回答守同一套语言约定。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4963](https://github.com/QwenLM/qwen-code/pull/4963) | 默认开启 fork subagent，delegated work 直接跑在隔离分支里，不用手动开。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5815](https://github.com/QwenLM/qwen-code/pull/5815) | 合并 assistant 轮次时把 `reasoning_content` 丢了，多轮思维链跟着没了。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5752](https://github.com/QwenLM/qwen-code/pull/5752) | 把 `QWEN_SERVE_MCP_CLIENT_BUDGET` 严格按十进制整数解析 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5679](https://github.com/QwenLM/qwen-code/pull/5679) | 严格解析 agent / workflow 的整数环境变量 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5115](https://github.com/QwenLM/qwen-code/pull/5115) | team 功能关闭时隐藏 teammate 专属的 agent 名称参数；旧 prompt 仍传入名称时回退到 one-shot subagent，而不是直接失败 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4673](https://github.com/QwenLM/qwen-code/pull/4673) | 修复顶层 `--list-extensions` / `-l`：按文档打印扩展列表，并在 sandbox、auth、TUI 启动前退出 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4635](https://github.com/QwenLM/qwen-code/pull/4635) | CLI todo 视图里把做完的 sticky todo 藏起来，列表只盯着还没做的。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | 强化 context error 的文本抽取，嵌套的、非字符串的 payload 也能给出有用信息，而不是直接消失。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5167](https://github.com/QwenLM/qwen-code/pull/5167) | 隐藏未配置的已下线 OAuth 模型 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4828](https://github.com/QwenLM/qwen-code/pull/4828) | 认证刷新后保留用户配的共享 `baseUrl`，同模型刷新不再回退到 provider 默认 endpoint。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5461](https://github.com/QwenLM/qwen-code/pull/5461) | Claude 插件源接受大写 URL scheme |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5209](https://github.com/QwenLM/qwen-code/pull/5209) | 正确读取大端 TIFF 文件里 SHORT 类型的图像尺寸 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4717](https://github.com/QwenLM/qwen-code/pull/4717) | 将 copy、arena、ACP snapshot 等退出路径的深拷贝改成浅层只读历史访问，同时保留 restore 写回路径的防御性克隆 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4970](https://github.com/QwenLM/qwen-code/pull/4970) | 稳住截断后的 tool retry key，修复过的调用重试时身份不变，不会漂来漂去。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | 修复 IDE proxy 请求：让 `fetch` 和 `EnvHttpProxyAgent` 保持在同一个 bundled `undici` 模块路径上 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5429](https://github.com/QwenLM/qwen-code/pull/5429) | 解析安装源时接受大写 URL scheme |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5494](https://github.com/QwenLM/qwen-code/pull/5494) | 空 parts 的消息不再被误当成 function call/response |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5285](https://github.com/QwenLM/qwen-code/pull/5285) | 校验完整 WEBP 签名而不只是 RIFF 前缀 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5420](https://github.com/QwenLM/qwen-code/pull/5420) | 让估算的 token 拆分之和恒等于总数 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5336](https://github.com/QwenLM/qwen-code/pull/5336) | RIFF 魔数嗅探里识别 WebP 和 AVI |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5328](https://github.com/QwenLM/qwen-code/pull/5328) | 让 qwen3.6-flash 和 kimi-k2.6 预设保持纯文本 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5227](https://github.com/QwenLM/qwen-code/pull/5227) | 把 BMP 高度按 signed int32 读取以支持 top-down 位图 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5194](https://github.com/QwenLM/qwen-code/pull/5194) | 从正确的字节偏移读取 WebP VP8X 画布高度 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5719](https://github.com/QwenLM/qwen-code/pull/5719) | 校验 list `maxEntries` 必须为正整数 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5630](https://github.com/QwenLM/qwen-code/pull/5630) | 转义 emacs ediff 路径里的反斜杠和引号 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4738](https://github.com/QwenLM/qwen-code/pull/4738) | 复制可见的 CLI 输出时跳过隐藏的 thought 片段，剪贴板和屏幕上看到的一致。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5426](https://github.com/QwenLM/qwen-code/pull/5426) | `mcp add` 的 transport 探测接受大写 URL scheme |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5287](https://github.com/QwenLM/qwen-code/pull/5287) | 让四舍五入到 60s 的亚分钟时长显示为 “1m” |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5647](https://github.com/QwenLM/qwen-code/pull/5647) | 通过 `QWEN_MODEL` 设定模型时也能识别 `USE_OPENAI` 认证 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5204](https://github.com/QwenLM/qwen-code/pull/5204) | 重开 code fence 时不再插入多余空行 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5072](https://github.com/QwenLM/qwen-code/pull/5072) | 稳住 simple MCP 集成检查，服务就绪的时序不再让跨进程协议测试偶发挂掉。 |
-
-</details>
 <details>
 <summary>全部 37 个已合并的 Mooncake PR</summary>
 
@@ -1225,40 +1164,64 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 30 个已合并的 AstrBot PR</summary>
+<summary>全部 54 个已合并的 Qwen Code PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) | 优先用打包进去的 dashboard 资产，而不是过期的 data dist，发版后不再展示旧前端。 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8718](https://github.com/AstrBotDevs/AstrBot/pull/8718) | 避免多模态回复在引用文本和图片 metadata 同时存在时重复显示 quoted image caption |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) | 修复 Telegram media group 异常被 APScheduler 静默吞掉：try/except + EVENT_JOB_ERROR listener |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6581](https://github.com/AstrBotDevs/AstrBot/pull/6581) | 修复截断器丢失唯一 user 消息导致智谱/Gemini 返回 400 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7196](https://github.com/AstrBotDevs/AstrBot/pull/7196) | 修复 Gemini thinking parts 泄漏到用户可见的消息内容中 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8750](https://github.com/AstrBotDevs/AstrBot/pull/8750) | 修好 changelog 的 anchor 链接，dashboard 的 release notes 能跳到对的小节，不再是断锚。 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8736](https://github.com/AstrBotDevs/AstrBot/pull/8736) | 保留 embedding API 的版本后缀，带版本的 provider endpoint 不会被归一化到错的路径。 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) | 修复 OpenAI streaming 路径复用 empty-assistant 过滤：reasoning-only 历史不再让严格 provider 返回 400 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8089](https://github.com/AstrBotDevs/AstrBot/pull/8089) | 图片请求在主 provider 不支持视觉输入时自动切到 vision fallback provider |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6710](https://github.com/AstrBotDevs/AstrBot/pull/6710) | 修复 skills-like re-query 丢失图片描述：`extra_user_content_parts` 未传递 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6596](https://github.com/AstrBotDevs/AstrBot/pull/6596) | 多模态 token 计数：图片/音频/思考链对 context 压缩不可见的问题 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8786](https://github.com/AstrBotDevs/AstrBot/pull/8786) | 强制 persona 的工具调用边界 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8061](https://github.com/AstrBotDevs/AstrBot/pull/8061) | 修复 Discord 启动同步命令触发 daily create quota 时打断 bot 启动：只把配额错误降级为 warning，其它异常继续抛出 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8175](https://github.com/AstrBotDevs/AstrBot/pull/8175) | 修复 WeChat OA 媒体发送失败仍上报成功：prepare/send 超时或失败时向调用方抛出明确错误 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8768](https://github.com/AstrBotDevs/AstrBot/pull/8768) | 清理 Lark platform id 后缀中的不可见空白，避免配置里的尾部空格破坏平台匹配 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8388](https://github.com/AstrBotDevs/AstrBot/pull/8388) | 补上插件详情页 sub-command 数量的 dashboard i18n，扩展详情不再露出原始翻译 key。 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8255](https://github.com/AstrBotDevs/AstrBot/pull/8255) | 支持 RST / AsciiDoc 知识库上传：后端解析白名单和前端文件校验同步扩展，避免支持的文档格式被入口拦截 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8195](https://github.com/AstrBotDevs/AstrBot/pull/8195) | 跳过空的 LLM summary，压缩时保留原始历史，不塞空占位。 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8119](https://github.com/AstrBotDevs/AstrBot/pull/8119) | 修复 active reply 图片输入丢失：把图片组件转成 image URLs 传给 LLM，保留原有文本 prompt 行为 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8073](https://github.com/AstrBotDevs/AstrBot/pull/8073) | 修复纯图片/表情消息的知识库空 prompt：空白文本时跳过 KB 检索，避免 embedding API 400 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6527](https://github.com/AstrBotDevs/AstrBot/pull/6527) | 修复 LLM 工具选择：重写模糊的 Upload/Download 描述 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6474](https://github.com/AstrBotDevs/AstrBot/pull/6474) | 修复 SQLite 并发写入 `database is locked`，添加 busy timeout |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7216](https://github.com/AstrBotDevs/AstrBot/pull/7216) | 修复 Gemini tool call 400：纯文本 tool result 包装为 Protobuf Struct |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7003](https://github.com/AstrBotDevs/AstrBot/pull/7003) | 修复 WebChat 长响应断连：SSE 心跳保活，context 压缩期间不再超时 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7398](https://github.com/AstrBotDevs/AstrBot/pull/7398) | 修复 Telegram 流式模式下空文本 sendMessageDraft 导致 400 错误刷屏 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7217](https://github.com/AstrBotDevs/AstrBot/pull/7217) | 修复 qwen3-rerank 响应解析：兼容新旧百炼 API 格式 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6313](https://github.com/AstrBotDevs/AstrBot/pull/6313) | 修复 OpenAI API 返回 `None` choices 导致崩溃 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6551](https://github.com/AstrBotDevs/AstrBot/pull/6551) | 修复空 content 导致 Grok 400：content 为空时设为 None |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7407](https://github.com/AstrBotDevs/AstrBot/pull/7407) | 修复 Gemini 原生搜索无 function tools 时 400：跳过 FunctionCallingConfig |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6656](https://github.com/AstrBotDevs/AstrBot/pull/6656) | 修复 `/stop` 后新消息仍被 follow-up 捕获的竞态条件 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#11085](https://github.com/QwenLM/qwen-code/pull/11085) | cron-interactive 夜跑 flake 的根因是 30s 等待把模型首回合延迟折进了 cron 触发预算；拆成两段钟，顺手把被自身回显空转的 ALIVE99 断言改成真观察模型回复 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#7535](https://github.com/QwenLM/qwen-code/pull/7535) | release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | 给 Qwen OAuth refresh 加超时，刷新端点卡住时不会把整个 CLI 挂在认证恢复上。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | 用 per-request 子 controller 隔离 Anthropic SDK 的 abort listener 泄漏，避免跨请求累积死监听器 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5070](https://github.com/QwenLM/qwen-code/pull/5070) | 焦点导航跳过已过期的 live agent，别让 stale 的后台 agent 行抢走键盘焦点。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | 掐掉 stale 的 tool schema recall，别让 memory warning 把过期工具名带回后面的规划轮次。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#6981](https://github.com/QwenLM/qwen-code/pull/6981) | 不带 id 的流式 continuation chunk 在工具调用撞名时改为落到当前 opener 的槽位，不再进错槽 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5020](https://github.com/QwenLM/qwen-code/pull/5020) | 取消后丢掉残留的 tool call，中止的轮次别把过期调用漏进下一次 payload。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5071](https://github.com/QwenLM/qwen-code/pull/5071) | 流式结束后再提交已完成的快速 tool result，别让流尾的竞态把它们卡在本地队列。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | 把已停用的 Qwen OAuth ACP 登录路径去掉，别再把用户导向失效的认证方式。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5073](https://github.com/QwenLM/qwen-code/pull/5073) | 上下文指令文件超预算时提前告警，别等仓库级 guidance 悄悄挤掉任务上下文。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5043](https://github.com/QwenLM/qwen-code/pull/5043) | 让 grep 结果也算通过 prior-read 检查，已经搜过的上下文不用再逼着重读一遍文件。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5061](https://github.com/QwenLM/qwen-code/pull/5061) | 保留后台 agent 的启动参数，delegated 的 CLI run 继续用你指定的执行模式。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5036](https://github.com/QwenLM/qwen-code/pull/5036) | loop 检测触发后真的硬停掉重复的同一个 tool call，别让 agent 还在那反复执行卡死的动作。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | 爬仓库时递归进已跟踪的 Git submodule，agent 上下文才带得上子模块里的文件。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5077](https://github.com/QwenLM/qwen-code/pull/5077) | permission gate 拦下来时把完整计划显示出来，能看被拦的 agent 意图，而不是白白丢掉。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4715](https://github.com/QwenLM/qwen-code/pull/4715) | managed auto-memory 听运行时输出目录的，同时显式的 memory 目录覆盖仍然优先。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5062](https://github.com/QwenLM/qwen-code/pull/5062) | 跨 agent 轮次带上 token escalation 上下文，delegated run 不用每轮都从容量不够的模型重来。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5945](https://github.com/QwenLM/qwen-code/pull/5945) | 拒绝非正的 `sessionRecapAwayThresholdMinutes` 值 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4600](https://github.com/QwenLM/qwen-code/pull/4600) | 区分 TUI 中 AUTO 与 AUTO_EDIT approval-mode 指示器：共享样式、本地化 key 和可视化证据一起补齐 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4636](https://github.com/QwenLM/qwen-code/pull/4636) | 把用户要求的输出语言也用到 side query 上，辅助回答跟主回答守同一套语言约定。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4963](https://github.com/QwenLM/qwen-code/pull/4963) | 默认开启 fork subagent，delegated work 直接跑在隔离分支里，不用手动开。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5815](https://github.com/QwenLM/qwen-code/pull/5815) | 合并 assistant 轮次时把 `reasoning_content` 丢了，多轮思维链跟着没了。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5752](https://github.com/QwenLM/qwen-code/pull/5752) | 把 `QWEN_SERVE_MCP_CLIENT_BUDGET` 严格按十进制整数解析 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5679](https://github.com/QwenLM/qwen-code/pull/5679) | 严格解析 agent / workflow 的整数环境变量 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5115](https://github.com/QwenLM/qwen-code/pull/5115) | team 功能关闭时隐藏 teammate 专属的 agent 名称参数；旧 prompt 仍传入名称时回退到 one-shot subagent，而不是直接失败 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4673](https://github.com/QwenLM/qwen-code/pull/4673) | 修复顶层 `--list-extensions` / `-l`：按文档打印扩展列表，并在 sandbox、auth、TUI 启动前退出 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4635](https://github.com/QwenLM/qwen-code/pull/4635) | CLI todo 视图里把做完的 sticky todo 藏起来，列表只盯着还没做的。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | 强化 context error 的文本抽取，嵌套的、非字符串的 payload 也能给出有用信息，而不是直接消失。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5167](https://github.com/QwenLM/qwen-code/pull/5167) | 隐藏未配置的已下线 OAuth 模型 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4828](https://github.com/QwenLM/qwen-code/pull/4828) | 认证刷新后保留用户配的共享 `baseUrl`，同模型刷新不再回退到 provider 默认 endpoint。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5461](https://github.com/QwenLM/qwen-code/pull/5461) | Claude 插件源接受大写 URL scheme |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5209](https://github.com/QwenLM/qwen-code/pull/5209) | 正确读取大端 TIFF 文件里 SHORT 类型的图像尺寸 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4717](https://github.com/QwenLM/qwen-code/pull/4717) | 将 copy、arena、ACP snapshot 等退出路径的深拷贝改成浅层只读历史访问，同时保留 restore 写回路径的防御性克隆 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4970](https://github.com/QwenLM/qwen-code/pull/4970) | 稳住截断后的 tool retry key，修复过的调用重试时身份不变，不会漂来漂去。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4607](https://github.com/QwenLM/qwen-code/pull/4607) | 修复 IDE proxy 请求：让 `fetch` 和 `EnvHttpProxyAgent` 保持在同一个 bundled `undici` 模块路径上 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5429](https://github.com/QwenLM/qwen-code/pull/5429) | 解析安装源时接受大写 URL scheme |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5494](https://github.com/QwenLM/qwen-code/pull/5494) | 空 parts 的消息不再被误当成 function call/response |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5285](https://github.com/QwenLM/qwen-code/pull/5285) | 校验完整 WEBP 签名而不只是 RIFF 前缀 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5420](https://github.com/QwenLM/qwen-code/pull/5420) | 让估算的 token 拆分之和恒等于总数 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5336](https://github.com/QwenLM/qwen-code/pull/5336) | RIFF 魔数嗅探里识别 WebP 和 AVI |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5328](https://github.com/QwenLM/qwen-code/pull/5328) | 让 qwen3.6-flash 和 kimi-k2.6 预设保持纯文本 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5227](https://github.com/QwenLM/qwen-code/pull/5227) | 把 BMP 高度按 signed int32 读取以支持 top-down 位图 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5194](https://github.com/QwenLM/qwen-code/pull/5194) | 从正确的字节偏移读取 WebP VP8X 画布高度 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5719](https://github.com/QwenLM/qwen-code/pull/5719) | 校验 list `maxEntries` 必须为正整数 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5630](https://github.com/QwenLM/qwen-code/pull/5630) | 转义 emacs ediff 路径里的反斜杠和引号 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#4738](https://github.com/QwenLM/qwen-code/pull/4738) | 复制可见的 CLI 输出时跳过隐藏的 thought 片段，剪贴板和屏幕上看到的一致。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5426](https://github.com/QwenLM/qwen-code/pull/5426) | `mcp add` 的 transport 探测接受大写 URL scheme |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5287](https://github.com/QwenLM/qwen-code/pull/5287) | 让四舍五入到 60s 的亚分钟时长显示为 “1m” |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5647](https://github.com/QwenLM/qwen-code/pull/5647) | 通过 `QWEN_MODEL` 设定模型时也能识别 `USE_OPENAI` 认证 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5204](https://github.com/QwenLM/qwen-code/pull/5204) | 重开 code fence 时不再插入多余空行 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (27.3k★) | [#5072](https://github.com/QwenLM/qwen-code/pull/5072) | 稳住 simple MCP 集成检查，服务就绪的时序不再让跨进程协议测试偶发挂掉。 |
 
 </details>
 <details>
@@ -1296,36 +1259,6 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#1225](https://github.com/HKUDS/Vibe-Trading/pull/1225) | 流式 LLM 调用现在会主动向端点请求 usage，swarm run 记录真实 token 数而不是字符数估算（output tokens 曾少报 18-36 倍）；拒绝 stream_options 的端点自动降级一次重试并记忆 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#1217](https://github.com/HKUDS/Vibe-Trading/pull/1217) | Shadow Account 从 runner 从不产生的键提取 PnL，成功回测被记成 Shadow PnL=0、Delta 结论反向；改为按 final_value/total_return 推导，未知状态 fail closed 不再渲染成 0.00 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (31.6k★ · 维护者) | [#1220](https://github.com/HKUDS/Vibe-Trading/pull/1220) | 补上组合式 CV 多段测试块间隙行保持可训练的回归钉，这是多段 purge 修复合入时缺的那条回归 |
-
-</details>
-<details>
-<summary>全部 6 个已合并的 OpenClaw PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#119127](https://github.com/openclaw/openclaw/pull/119127) | 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fail-closed，全域 GC 永不误删用户原件（owner P0 评审后与项目作者共建） |
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | 认证配置解析失败时记录日志而非静默吞掉 |
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#96456](https://github.com/openclaw/openclaw/pull/96456) | 按码点边界裁剪进度文本，避免落单的 surrogate |
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | 目录创建失败时向上传递错误，避免 memory `ensureDir` 静默失败后继续执行 |
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | sandbox-root 越界错误里改用规范的 `shortenHomePath`,报的路径和界面其余部分一致。 |
-| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | 工具路径显示里，共享 home 前缀的同级目录不再被误缩写 |
-
-</details>
-<details>
-<summary>全部 10 个已合并的 PyTorch PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#192025](https://github.com/pytorch/pytorch/pull/192025) | Inductor 向量化整数取余的 C++ codegen 在 padded 尾块上把除数清零，掩码下触发除零；保持尾块除数非零（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | 让 CuTeDSL 的 topk override 守住非当前 CUDA 设备，避免把工作分发到错误设备（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#186779](https://github.com/pytorch/pytorch/pull/186779) | 不支持的 batch norm 三阶导改为显式报错，不再静默返回错误梯度（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188027](https://github.com/pytorch/pytorch/pull/188027) | 在 Laguerre / Legendre 多项式的辅助函数里初始化 `r`，避免边界路径返回未初始化内存（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188229](https://github.com/pytorch/pytorch/pull/188229) | `avg_pool3d` backward 在超过 `INT_MAX` 元素的输入上静默算错梯度：atomic scatter kernel 用 32 位 `int` 算偏移和边界，改成 64 位索引（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | 修复 `stale_issues` workflow 的 `parse_older_than` 在非闰年崩溃：朴素的 2 月 29 日偏移会抛 `ValueError`（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | 修复 Inductor codegen 中用户自定义 Triton kernel 的名称修饰，避免不同 kernel 在生成代码里命名冲突（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187860](https://github.com/pytorch/pytorch/pull/187860) | 把 `meta__transformer_encoder_layer_fwd` 里对空 `src` 的检查改走 `guard_or_false`，让 `torch.compile` 下 unbacked 符号 `numel` 不再抛数据依赖错误（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | 移除过时的 `setuptools` 版本上限，让构建解析到当前工具链而不是被钉在旧版本（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187720](https://github.com/pytorch/pytorch/pull/187720) | 修掉 `stale_issues` 按年截断时把日钳到 28 号的问题，月末批次落到正确日期（PR 显示 Closed，经 pytorchmergebot 合入） |
 
 </details>
 <details>
@@ -1386,6 +1319,73 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7124](https://github.com/microsoft/agent-framework/pull/7124) | Python：compaction 估 token 时用 `ensure_ascii=True` 序列化消息，tokenizer 数的是 `\uXXXX` 转义序列而不是真实字符（CJK 约虚高 1.6 倍）；改成按真实文本序列化 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#6037](https://github.com/microsoft/agent-framework/pull/6037) | 保留 Foundry citation `get_url` 元数据，让检索引用链接经过 response conversion 后仍能出现在 chat response 中 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.0k★) | [#7777](https://github.com/microsoft/agent-framework/pull/7777) | Python：README 里"Learn 文档即将上线"的过期占位符换成三个已上线的 Learn 链接（当天逐一验证 200） |
+
+</details>
+<details>
+<summary>全部 10 个已合并的 PyTorch PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#192025](https://github.com/pytorch/pytorch/pull/192025) | Inductor 向量化整数取余的 C++ codegen 在 padded 尾块上把除数清零，掩码下触发除零；保持尾块除数非零（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | 让 CuTeDSL 的 topk override 守住非当前 CUDA 设备，避免把工作分发到错误设备（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#186779](https://github.com/pytorch/pytorch/pull/186779) | 不支持的 batch norm 三阶导改为显式报错，不再静默返回错误梯度（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188027](https://github.com/pytorch/pytorch/pull/188027) | 在 Laguerre / Legendre 多项式的辅助函数里初始化 `r`，避免边界路径返回未初始化内存（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#188229](https://github.com/pytorch/pytorch/pull/188229) | `avg_pool3d` backward 在超过 `INT_MAX` 元素的输入上静默算错梯度：atomic scatter kernel 用 32 位 `int` 算偏移和边界，改成 64 位索引（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | 修复 `stale_issues` workflow 的 `parse_older_than` 在非闰年崩溃：朴素的 2 月 29 日偏移会抛 `ValueError`（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | 修复 Inductor codegen 中用户自定义 Triton kernel 的名称修饰，避免不同 kernel 在生成代码里命名冲突（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187860](https://github.com/pytorch/pytorch/pull/187860) | 把 `meta__transformer_encoder_layer_fwd` 里对空 `src` 的检查改走 `guard_or_false`，让 `torch.compile` 下 unbacked 符号 `numel` 不再抛数据依赖错误（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | 移除过时的 `setuptools` 版本上限，让构建解析到当前工具链而不是被钉在旧版本（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (102.5k★) | [#187720](https://github.com/pytorch/pytorch/pull/187720) | 修掉 `stale_issues` 按年截断时把日钳到 28 号的问题，月末批次落到正确日期（PR 显示 Closed，经 pytorchmergebot 合入） |
+
+</details>
+<details>
+<summary>全部 30 个已合并的 AstrBot PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) | 优先用打包进去的 dashboard 资产，而不是过期的 data dist，发版后不再展示旧前端。 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8718](https://github.com/AstrBotDevs/AstrBot/pull/8718) | 避免多模态回复在引用文本和图片 metadata 同时存在时重复显示 quoted image caption |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) | 修复 Telegram media group 异常被 APScheduler 静默吞掉：try/except + EVENT_JOB_ERROR listener |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6581](https://github.com/AstrBotDevs/AstrBot/pull/6581) | 修复截断器丢失唯一 user 消息导致智谱/Gemini 返回 400 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7196](https://github.com/AstrBotDevs/AstrBot/pull/7196) | 修复 Gemini thinking parts 泄漏到用户可见的消息内容中 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8750](https://github.com/AstrBotDevs/AstrBot/pull/8750) | 修好 changelog 的 anchor 链接，dashboard 的 release notes 能跳到对的小节，不再是断锚。 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8736](https://github.com/AstrBotDevs/AstrBot/pull/8736) | 保留 embedding API 的版本后缀，带版本的 provider endpoint 不会被归一化到错的路径。 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) | 修复 OpenAI streaming 路径复用 empty-assistant 过滤：reasoning-only 历史不再让严格 provider 返回 400 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8089](https://github.com/AstrBotDevs/AstrBot/pull/8089) | 图片请求在主 provider 不支持视觉输入时自动切到 vision fallback provider |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6710](https://github.com/AstrBotDevs/AstrBot/pull/6710) | 修复 skills-like re-query 丢失图片描述：`extra_user_content_parts` 未传递 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6596](https://github.com/AstrBotDevs/AstrBot/pull/6596) | 多模态 token 计数：图片/音频/思考链对 context 压缩不可见的问题 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8786](https://github.com/AstrBotDevs/AstrBot/pull/8786) | 强制 persona 的工具调用边界 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8061](https://github.com/AstrBotDevs/AstrBot/pull/8061) | 修复 Discord 启动同步命令触发 daily create quota 时打断 bot 启动：只把配额错误降级为 warning，其它异常继续抛出 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8175](https://github.com/AstrBotDevs/AstrBot/pull/8175) | 修复 WeChat OA 媒体发送失败仍上报成功：prepare/send 超时或失败时向调用方抛出明确错误 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8768](https://github.com/AstrBotDevs/AstrBot/pull/8768) | 清理 Lark platform id 后缀中的不可见空白，避免配置里的尾部空格破坏平台匹配 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8388](https://github.com/AstrBotDevs/AstrBot/pull/8388) | 补上插件详情页 sub-command 数量的 dashboard i18n，扩展详情不再露出原始翻译 key。 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8255](https://github.com/AstrBotDevs/AstrBot/pull/8255) | 支持 RST / AsciiDoc 知识库上传：后端解析白名单和前端文件校验同步扩展，避免支持的文档格式被入口拦截 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8195](https://github.com/AstrBotDevs/AstrBot/pull/8195) | 跳过空的 LLM summary，压缩时保留原始历史，不塞空占位。 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8119](https://github.com/AstrBotDevs/AstrBot/pull/8119) | 修复 active reply 图片输入丢失：把图片组件转成 image URLs 传给 LLM，保留原有文本 prompt 行为 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#8073](https://github.com/AstrBotDevs/AstrBot/pull/8073) | 修复纯图片/表情消息的知识库空 prompt：空白文本时跳过 KB 检索，避免 embedding API 400 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6527](https://github.com/AstrBotDevs/AstrBot/pull/6527) | 修复 LLM 工具选择：重写模糊的 Upload/Download 描述 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6474](https://github.com/AstrBotDevs/AstrBot/pull/6474) | 修复 SQLite 并发写入 `database is locked`，添加 busy timeout |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7216](https://github.com/AstrBotDevs/AstrBot/pull/7216) | 修复 Gemini tool call 400：纯文本 tool result 包装为 Protobuf Struct |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7003](https://github.com/AstrBotDevs/AstrBot/pull/7003) | 修复 WebChat 长响应断连：SSE 心跳保活，context 压缩期间不再超时 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7398](https://github.com/AstrBotDevs/AstrBot/pull/7398) | 修复 Telegram 流式模式下空文本 sendMessageDraft 导致 400 错误刷屏 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7217](https://github.com/AstrBotDevs/AstrBot/pull/7217) | 修复 qwen3-rerank 响应解析：兼容新旧百炼 API 格式 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6313](https://github.com/AstrBotDevs/AstrBot/pull/6313) | 修复 OpenAI API 返回 `None` choices 导致崩溃 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6551](https://github.com/AstrBotDevs/AstrBot/pull/6551) | 修复空 content 导致 Grok 400：content 为空时设为 None |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#7407](https://github.com/AstrBotDevs/AstrBot/pull/7407) | 修复 Gemini 原生搜索无 function tools 时 400：跳过 FunctionCallingConfig |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (39.5k★) | [#6656](https://github.com/AstrBotDevs/AstrBot/pull/6656) | 修复 `/stop` 后新消息仍被 follow-up 捕获的竞态条件 |
+
+</details>
+<details>
+<summary>全部 6 个已合并的 OpenClaw PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#119127](https://github.com/openclaw/openclaw/pull/119127) | 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fail-closed，全域 GC 永不误删用户原件（owner P0 评审后与项目作者共建） |
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | 认证配置解析失败时记录日志而非静默吞掉 |
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#96456](https://github.com/openclaw/openclaw/pull/96456) | 按码点边界裁剪进度文本，避免落单的 surrogate |
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#41259](https://github.com/openclaw/openclaw/pull/41259) | 目录创建失败时向上传递错误，避免 memory `ensureDir` 静默失败后继续执行 |
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#106603](https://github.com/openclaw/openclaw/pull/106603) | sandbox-root 越界错误里改用规范的 `shortenHomePath`,报的路径和界面其余部分一致。 |
+| [OpenClaw](https://github.com/openclaw/openclaw) (387.3k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | 工具路径显示里，共享 home 前缀的同级目录不再被误缩写 |
 
 </details>
 <details>
