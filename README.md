@@ -1286,7 +1286,8 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.7k★) | [#5072](https://github.com/QwenLM/qwen-code/pull/5072) | 稳住 simple MCP 集成检查，服务就绪的时序不再让跨进程协议测试偶发挂掉。 |
 
 </details>
- DEER_SLOT <details>
+
+<details>
 <summary>全部 30 个已合并的 Microsoft Agent Framework PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -1390,7 +1391,8 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [OpenClaw](https://github.com/openclaw/openclaw) (389.0k★) | [#96562](https://github.com/openclaw/openclaw/pull/96562) | 工具路径显示里，共享 home 前缀的同级目录不再被误缩写 |
 
 </details>
- DEER_SLOT <details>
+
+<details>
 <summary>全部 1 个已合并的 opencode PR</summary>
 
 | 项目 | PR | 修了啥 |
