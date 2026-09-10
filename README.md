@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 407+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (37 merged), Qwen Code (54 merged), Microsoft Agent Framework (31 merged), AstrBot (30 merged), Google ADK (10 merged), Inspect AI (26 merged), deer-flow (16 merged), promptfoo (14 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (35 merged), cherry-studio (7 merged), openclaw (6 merged), dify (6 merged), and PyTorch (11 merged).
+- 411+ merged upstream PRs, with fixes in vLLM (12 merged), Mooncake (38 merged), Qwen Code (54 merged), Microsoft Agent Framework (31 merged), AstrBot (31 merged), Google ADK (10 merged), Inspect AI (27 merged), deer-flow (16 merged), promptfoo (14 merged), Hugging Face Transformers (1 merged), Kimi Code (1 merged), Vibe-Trading (35 merged), cherry-studio (7 merged), openclaw (6 merged), dify (6 merged), and PyTorch (11 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -69,13 +69,13 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | **37** | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) Self-heal dangling LOCAL_DISK replicas in `Client::Put`: a put onto a key left with only client-local disk replicas evicts them and retries cleanly, with BatchPut probing and evicting the already-exists subset in one pass.<br>[#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) Arm the etcd view-change watch once per wait instead of per iteration, stopping the steady-state watch goroutine leak in HA mode |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | **38** | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) Self-heal dangling LOCAL_DISK replicas in `Client::Put`: a put onto a key left with only client-local disk replicas evicts them and retries cleanly, with BatchPut probing and evicting the already-exists subset in one pass.<br>[#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) Arm the etcd view-change watch once per wait instead of per iteration, stopping the steady-state watch goroutine leak in HA mode |
 | [vLLM](https://github.com/vllm-project/vllm) (91.1k★) | **12** | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API `instructions` were leaking across turns through the `previous_response_id` chain.<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals.<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (32.7k★ · maintainer) | **35** | Portfolio analytics and monitor-verdict pipeline; fail-closed live-trading gates; backtest accounting correctness (shorts, corporate actions, T+1) | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) Cash-dividend journal rows were never parsed, so dividends paid into the shadow account read as flat real PnL; they are booked properly now<br>[#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) Persist the flatten latch across runner restarts so a reboot cannot replay the kill-switch sweep and flip the account<br>[#1317](https://github.com/HKUDS/Vibe-Trading/pull/1317) Stamp every served frame with its price-adjustment caliber and warn when a basket mixes calibers, closing the silent mixed-caliber backtest gap from #1301 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.7k★) | **54** | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories.<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`.<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.4k★) | **31** | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools | [#7289](https://github.com/microsoft/agent-framework/pull/7289) Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) Handoff was mutating message roles in place, so a retry leaked the change; reuse sanitized copies instead.<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) Run synchronous Python tools off the event loop so a blocking call stops freezing concurrent agent work. |
 | [PyTorch](https://github.com/pytorch/pytorch) (102.8k★) | **11** | Kernel/compiler correctness: wrong-device dispatch, silent gradient corruption, UB | [#188027](https://github.com/pytorch/pytorch/pull/188027) Initialize `r` in the Laguerre and Legendre polynomial helpers so they stop returning uninitialized memory on the boundary path (shows as Closed; landed via pytorchmergebot)<br>[#186779](https://github.com/pytorch/pytorch/pull/186779) Error on unsupported batch norm third derivatives instead of silently returning wrong gradients (shows as Closed; landed via pytorchmergebot)<br>[#188229](https://github.com/pytorch/pytorch/pull/188229) `avg_pool3d` backward silently corrupted gradients on inputs over `INT_MAX` elements: the atomic scatter kernel computed offsets and bounds as 32-bit `int`; widened to 64-bit indexing (shows as Closed; landed via pytorchmergebot) |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.1k★) | **30** | Release asset freshness, multimodal reply duplication, scheduler exception swallowing | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) Prevent Telegram media group exceptions from being silently swallowed by APScheduler |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.1k★) | **31** | Release asset freshness, multimodal reply duplication, scheduler exception swallowing | [#9987](https://github.com/AstrBotDevs/AstrBot/pull/9987) Propagate the cron agent runner's ERROR terminal state so a failed scheduled run is recorded failed with its error instead of completed-with-null<br>[#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) Prevent Telegram media group exceptions from being silently swallowed by APScheduler |
 | [OpenClaw](https://github.com/openclaw/openclaw) (389.0k★) | **6** | Session-store fail-closed sweeps, auth-failure visibility, surrogate-safe text | [#119127](https://github.com/openclaw/openclaw/pull/119127) Keep the mtime media sweep out of the managed-outgoing tree and fail closed when the session store is unreadable, so global GC can never delete live user originals (co-built with the project owner after his P0 review) |
 | [deer-flow](https://github.com/bytedance/deer-flow) (81.5k★) | **16** | Concurrency and checkpoint correctness: thread-creation races, session-pool lifecycle | [#3800](https://github.com/bytedance/deer-flow/pull/3800) Keep `create_thread` idempotent when a concurrent insert loses the race, so a chat cannot end up with duplicate threads.<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) Fork-restored checkpoints deliver the sandbox channel still wrapped in langgraph `Overwrite`; unified one unwrap helper across the sync/async init paths and the sibling readers<br>[#4839](https://github.com/bytedance/deer-flow/pull/4839) Sanitize MCP-sourced tool results through the same trust pipeline as other external content, so a hostile tool server cannot smuggle instructions into model context |
 | [opencode](https://github.com/anomalyco/opencode) (204.9k★) | **1** | MCP OAuth callback bound to IPv4 loopback |  |
@@ -104,10 +104,10 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | **3** | Memory-store backends: S3 Vectors index naming, Qdrant https option |  |
 | [verl](https://github.com/verl-project/verl) (23.1k★) | **1** | Colocated weight-sync rank derivation across DP/TP |  |
 | [TRL](https://github.com/huggingface/trl) (19.1k★) | **2** | Dataset-prep fail-fast and vLLM special-token preservation |  |
-| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **26** | Eval-logging and provider parsing: reasoning blocks, streaming writer, headless crashes | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) Parse OpenRouter `reasoning_details` in OpenAI-compatible responses instead of surfacing Python repr blocks<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) Route the realtime streaming sample writer through the same fallback JSON normalization as the regular log path, so sandbox objects that don't serialize cleanly can't crash an eval mid-stream<br>[#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) macOS screen-scale detection imported AppKit unguarded and crashed headful browser runs without pyobjc; fall back to scale factor 1 |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **27** | Eval-logging and provider parsing: reasoning blocks, streaming writer, headless crashes | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) Parse OpenRouter `reasoning_details` in OpenAI-compatible responses instead of surfacing Python repr blocks<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) Route the realtime streaming sample writer through the same fallback JSON normalization as the regular log path, so sandbox objects that don't serialize cleanly can't crash an eval mid-stream<br>[#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) macOS screen-scale detection imported AppKit unguarded and crashed headful browser runs without pyobjc; fall back to scale factor 1 |
 | [Agno](https://github.com/agno-agi/agno) (41.8k★) | **1** | Tool-argument whitespace preservation with sentinel normalization |  |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | **3** | Agent-flow guards, Docling fallback, GraphRAG edge ranking | [#15691](https://github.com/infiniflow/ragflow/pull/15691) Skip empty agent-switch conditions so a blank branch guard can't crash or block valid downstream flows. |
-| [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | **7** | Realtime voice plumbing: stream-retry recreation, provider status parsing, STT errors |  |
+| [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | **8** | Realtime voice plumbing: stream-retry recreation, provider status parsing, STT errors | [#6000](https://github.com/livekit/agents/pull/6000) Skip context replay on resumed realtime sessions so a resumed Gemini session stops re-reading its own history back as fresh turns |
 | [MCP Toolbox](https://github.com/googleapis/mcp-toolbox) (16.2k★) | **6** | SSE writer panics, Looker input validation, parameter error reporting | [#3531](https://github.com/googleapis/mcp-toolbox/pull/3531) Validate the Looker explore_references shape instead of panicking on malformed input<br>[#3520](https://github.com/googleapis/mcp-toolbox/pull/3520) SSE handler rendered a 500 when the writer was no http.Flusher but fell through, leaving a nil flusher that panicked on the first Flush; return right after the error render |
 | [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | **2** | Cross-process KV transfer: CUDA IPC event lifetimes, HND layout handling |  |
 | [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.7k★) | **1** | Schema building keeps required union discriminator tags |  |
@@ -132,13 +132,13 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | **3** | Concurrency-safe LiteLLM params, git workspace validation, UTF-8 logs | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) Serialize LiteLLM `modify_params` updates with an RLock so concurrent completions do not leak global parameter state<br>[#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) Validate git workspaces with `git rev-parse --git-dir`, so a broken nested repo can't crash `/api/git/changes`. |
 
 <details>
-<summary>All 37 merged Mooncake PRs</summary>
+<summary>All 38 merged Mooncake PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | [#2404](https://github.com/kvcache-ai/Mooncake/pull/2404) | Fail Python initialization loudly when the chosen memory allocator's support is unavailable, instead of starting with a broken allocator and failing later |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | [#3683](https://github.com/kvcache-ai/Mooncake/pull/3683) | TENT worker no longer starves on its own submit queue: parked requeue entries drain before same-priority producer entries, verified against the production ordering with a regression test |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | [#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) | `Client::Put` 自愈悬挂 LOCAL_DISK 副本：目标 key 只剩客户端本地磁盘副本时自动逐出并干净重试；BatchPut 对已存在子集一次探测加一次批量逐出后重试，逐条与批量孪生测试齐 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | [#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) | Self-heal dangling LOCAL_DISK replicas in `Client::Put`: a put onto a key left with only client-local disk replicas evicts them and retries cleanly; BatchPut probes the already-exists subset and bulk-evicts it in one pass before retrying, with local and batch twin tests |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | [#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) | Arm the etcd view-change watch once per wait instead of per iteration, stopping the steady-state watch goroutine leak in HA mode |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | Duplicate `rpc_meta` re-publishes are idempotent when the HTTP body is unchanged, and still rejected when a value actually changes. |
@@ -355,10 +355,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 30 merged AstrBot PRs</summary>
+<summary>All 31 merged AstrBot PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.1k★) | [#9987](https://github.com/AstrBotDevs/AstrBot/pull/9987) | Propagate the cron agent runner's ERROR terminal state so a failed scheduled run is recorded failed with its error instead of completed-with-null |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.1k★) | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) | Prefer bundled dashboard assets over a stale data dist, so a release stops serving an outdated WebUI. |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.1k★) | [#8718](https://github.com/AstrBotDevs/AstrBot/pull/8718) | Avoid duplicate quoted image captions when multimodal replies include both quoted text and image metadata |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.1k★) | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) | Prevent Telegram media group exceptions from being silently swallowed by APScheduler |
@@ -698,10 +699,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 26 merged Inspect AI PRs</summary>
+<summary>All 27 merged Inspect AI PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#5262](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5262) | Accept percent-encoded file:// policy URIs in the approval layer, so policies written against URL-escaped paths stop being silently unmatched |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (36.2k★) | [#5153](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5153) | Shaped metrics collapsed to a synthesized flat NaN on an all-empty run; let the metric own its empty-input shape on both the list and dict paths, with a one-time warning for metrics that raise |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) | Parse OpenRouter `reasoning_details` in OpenAI-compatible responses instead of surfacing Python repr blocks |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) | Route the realtime streaming sample writer through the same fallback JSON normalization as the regular log path, so sandbox objects that don't serialize cleanly can't crash an eval mid-stream |
@@ -749,10 +751,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 7 merged LiveKit Agents PRs</summary>
+<summary>All 8 merged LiveKit Agents PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | [#6000](https://github.com/livekit/agents/pull/6000) | Skip context replay on resumed realtime sessions so a resumed Gemini session stops re-reading its own history back as fresh turns |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | [#5820](https://github.com/livekit/agents/pull/5820) | Recreate Anthropic streaming requests on retry so transient stream creation failures do not re-await the same coroutine |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | [#5994](https://github.com/livekit/agents/pull/5994) | Handle OpenAI-compatible realtime status details that come back as strings, so an incomplete response doesn't crash logging. |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | [#5864](https://github.com/livekit/agents/pull/5864) | Surface Soniox STT server errors instead of treating failed streams as empty transcripts |
@@ -994,7 +997,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 407+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（37 个）、Qwen Code（54 个）、Microsoft Agent Framework（31 个）、AstrBot（30 个）、Google ADK（10 个）、Inspect AI（26 个）、deer-flow（16 个）、promptfoo（14 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（35 个）、cherry-studio（7 个）、openclaw（6 个）、dify（6 个）、PyTorch（11 个）。
+- 411+ 个上游 PR 已 merged，其中 vLLM（12 个）、Mooncake（38 个）、Qwen Code（54 个）、Microsoft Agent Framework（31 个）、AstrBot（31 个）、Google ADK（10 个）、Inspect AI（27 个）、deer-flow（16 个）、promptfoo（14 个）、Hugging Face Transformers（1 个）、Kimi Code（1 个）、Vibe-Trading（35 个）、cherry-studio（7 个）、openclaw（6 个）、dify（6 个）、PyTorch（11 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1043,7 +1046,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | **37** | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) `Client::Put` 自愈悬挂 LOCAL_DISK 副本：目标 key 只剩客户端本地磁盘副本时自动逐出并干净重试，BatchPut 对已存在子集一次探测加一次批量逐出<br>[#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) HA 模式下 WaitForViewChange 每次迭代都新建一个 etcd watch，改成每轮等待只建一次，堵住稳态 watch goroutine 泄漏 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | **38** | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) `Client::Put` 自愈悬挂 LOCAL_DISK 副本：目标 key 只剩客户端本地磁盘副本时自动逐出并干净重试，BatchPut 对已存在子集一次探测加一次批量逐出<br>[#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) HA 模式下 WaitForViewChange 每次迭代都新建一个 etcd watch，改成每轮等待只建一次，堵住稳态 watch goroutine 泄漏 |
 | [vLLM](https://github.com/vllm-project/vllm) (91.1k★) | **12** | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (32.7k★ · maintainer) | **35** | 组合分析与监视器判定流水线；实盘 fail-closed 门禁；回测账务正确性（空头、公司行动、T+1） | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) 现金股息的 journal 行一直没被解析，派息进 shadow 账户后实盘 PnL 读成平的；现在正确入账<br>[#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) flatten latch 持久化绑定 halt episode：重启不再整轮重放扫仓把账户翻空<br>[#1317](https://github.com/HKUDS/Vibe-Trading/pull/1317) 给每个下发的行情帧打上复权口径戳，篮子混口径时显式告警，堵上 #1301 暴露的静默混口径回测缺口 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.7k★) | **54** | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
@@ -1078,7 +1081,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | **3** | 记忆存储后端：S3 Vectors 索引命名、Qdrant https 选项 |  |
 | [verl](https://github.com/verl-project/verl) (23.1k★) | **1** | colocated 权重同步的 DP/TP rank 推导 |  |
 | [TRL](https://github.com/huggingface/trl) (19.1k★) | **2** | 数据准备快速失败与 vLLM 特殊 token 保留 |  |
-| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **26** | 评测日志与 provider 解析：reasoning 块、流式写盘、无头环境崩溃 | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) 修复 OpenAI-compatible 响应里的 OpenRouter `reasoning_details`：解析为可读 reasoning 文本，而不是暴露 Python repr<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。<br>[#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) macOS 分支无守卫 import AppKit 并解引用 NSScreen，没装 pyobjc 时 headful 浏览器工具直接崩；回落 scale factor 1 |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **27** | 评测日志与 provider 解析：reasoning 块、流式写盘、无头环境崩溃 | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) 修复 OpenAI-compatible 响应里的 OpenRouter `reasoning_details`：解析为可读 reasoning 文本，而不是暴露 Python repr<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。<br>[#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) macOS 分支无守卫 import AppKit 并解引用 NSScreen，没装 pyobjc 时 headful 浏览器工具直接崩；回落 scale factor 1 |
 | [Agno](https://github.com/agno-agi/agno) (41.8k★) | **1** | 工具参数空白保留与哨兵值归一化 |  |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | **3** | agent 流守卫、Docling 回退、GraphRAG 边排序 | [#15691](https://github.com/infiniflow/ragflow/pull/15691) 跳过空的 agent switch 条件，空分支判断不会让有效的后续 agent 流程崩掉或卡住。 |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | **7** | 实时语音链路：流式重试重建、provider 状态解析、STT 错误透出 |  |
@@ -1106,12 +1109,14 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | **3** | 并发安全的 LiteLLM 参数、git 工作区校验、UTF-8 日志 | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) 用 RLock 串行化 LiteLLM `modify_params` 的保存、设置和恢复，避免并发 completion 泄漏全局参数状态<br>[#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) 用 `git rev-parse --git-dir` 校验 git workspace，坏掉的嵌套 repo 打不崩 `/api/git/changes`。 |
 
 <details>
-<summary>全部 37 个已合并的 Mooncake PR</summary>
+<summary>全部 38 个已合并的 Mooncake PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | [#2404](https://github.com/kvcache-ai/Mooncake/pull/2404) | 所选内存分配器支持不可用时让 Python 初始化直接报错，不再带着坏分配器起到后面才崩 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | [#3683](https://github.com/kvcache-ai/Mooncake/pull/3683) | TENT worker 不再被自己的提交队列饿死：requeue_overflow 里泊住的重试条目先于同优先级新生产条目排干，回归测试按生产顺序验证选取顺序 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | [#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) | `Client::Put` 自愈悬挂 LOCAL_DISK 副本：目标 key 只剩客户端本地磁盘副本时自动逐出并干净重试；BatchPut 对已存在子集一次探测加一次批量逐出后重试，逐条与批量孪生测试齐 |
 
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | [#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) | HA 模式下 WaitForViewChange 每次迭代都新建一个 etcd watch，改成每轮等待只建一次，堵住稳态 watch goroutine 泄漏 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.5k★ · maintainer) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | `rpc_meta` 内容没变时重复发布保持幂等，真正改了值才拒绝。 |
@@ -1329,10 +1334,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 30 个已合并的 AstrBot PR</summary>
+<summary>全部 31 个已合并的 AstrBot PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.1k★) | [#9987](https://github.com/AstrBotDevs/AstrBot/pull/9987) | 把 cron agent runner 的 ERROR 终态传上去：定时任务失败如实记 failed 带错误信息，不再记成 completed 且 last_error 为空 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.1k★) | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) | 优先用打包进去的 dashboard 资产，而不是过期的 data dist，发版后不再展示旧前端。 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.1k★) | [#8718](https://github.com/AstrBotDevs/AstrBot/pull/8718) | 避免多模态回复在引用文本和图片 metadata 同时存在时重复显示 quoted image caption |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.1k★) | [#7537](https://github.com/AstrBotDevs/AstrBot/pull/7537) | 修复 Telegram media group 异常被 APScheduler 静默吞掉：try/except + EVENT_JOB_ERROR listener |
@@ -1673,10 +1679,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 26 个已合并的 Inspect AI PR</summary>
+<summary>全部 27 个已合并的 Inspect AI PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#5262](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5262) | 审批层接受百分号编码的 file:// 策略 URI，按 URL 转义路径写的策略不再静默匹配不上 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (36.2k★) | [#5153](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5153) | 全空输入时 shaped metric 不再塌成上游合成的扁平 NaN，list/dict 两条 metric 路径统一护栏；空输入抛错的 metric 报 NaN 并一次性告警 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) | 修复 OpenAI-compatible 响应里的 OpenRouter `reasoning_details`：解析为可读 reasoning 文本，而不是暴露 Python repr |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) | 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。 |
@@ -1724,10 +1731,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 7 个已合并的 LiveKit Agents PR</summary>
+<summary>全部 8 个已合并的 LiveKit Agents PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | [#6000](https://github.com/livekit/agents/pull/6000) | 恢复的 Gemini realtime 会话跳过上下文重放，不再把自己的历史当新对话再读一遍 |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | [#5820](https://github.com/livekit/agents/pull/5820) | 修复 Anthropic streaming retry：瞬时建流失败后重新创建 stream，不再重复 await 同一个 coroutine |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | [#5994](https://github.com/livekit/agents/pull/5994) | 兼容 OpenAI 兼容 realtime 返回字符串的 status details，incomplete response 不再在日志路径崩。 |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | [#5864](https://github.com/livekit/agents/pull/5864) | 暴露 Soniox STT server error：流式识别失败时返回明确错误，不再被当成空 transcript |
