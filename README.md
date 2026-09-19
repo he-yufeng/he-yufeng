@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 427+ merged upstream PRs, with fixes in Mooncake (43 merged), vLLM (12 merged), Qwen Code (56 merged), Vibe-Trading (36 merged), deer-flow (18 merged), Microsoft Agent Framework (32 merged), PyTorch (11 merged), AstrBot (32 merged), openclaw (6 merged), promptfoo (15 merged), Inspect AI (28 merged), and Google ADK (10 merged).
+- 428+ merged upstream PRs, with fixes in Mooncake (43 merged), vLLM (12 merged), Qwen Code (56 merged), Vibe-Trading (36 merged), deer-flow (18 merged), Microsoft Agent Framework (32 merged), PyTorch (11 merged), AstrBot (33 merged), openclaw (6 merged), promptfoo (15 merged), Inspect AI (28 merged), and Google ADK (10 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -65,7 +65,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 ### Open Source Contributions
 
-432 merged PRs across 59 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
+433 merged PRs across 59 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -76,7 +76,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.5k★) | **32** | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools | [#7289](https://github.com/microsoft/agent-framework/pull/7289) Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) Handoff was mutating message roles in place, so a retry leaked the change; reuse sanitized copies instead.<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) Run synchronous Python tools off the event loop so a blocking call stops freezing concurrent agent work. |
 | [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | **18** | Concurrency and checkpoint correctness: thread-creation races, session-pool lifecycle, channel protocol limits | [#3800](https://github.com/bytedance/deer-flow/pull/3800) Keep `create_thread` idempotent when a concurrent insert loses the race, so a chat cannot end up with duplicate threads.<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) Fork-restored checkpoints deliver the sandbox channel still wrapped in langgraph `Overwrite`; unified one unwrap helper across the sync/async init paths and the sibling readers<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) Cap WeCom outbound content at the 20480-byte protocol limit: proactive pushes split into ordered chunks with a refcounted per-chat send lock, so long pushes stop being rejected and concurrent sends stop interleaving |
 | [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | **11** | Kernel/compiler correctness: wrong-device dispatch, silent gradient corruption, UB | [#188027](https://github.com/pytorch/pytorch/pull/188027) Initialize `r` in the Laguerre and Legendre polynomial helpers so they stop returning uninitialized memory on the boundary path (shows as Closed; landed via pytorchmergebot)<br>[#186779](https://github.com/pytorch/pytorch/pull/186779) Error on unsupported batch norm third derivatives instead of silently returning wrong gradients (shows as Closed; landed via pytorchmergebot)<br>[#188229](https://github.com/pytorch/pytorch/pull/188229) `avg_pool3d` backward silently corrupted gradients on inputs over `INT_MAX` elements: the atomic scatter kernel computed offsets and bounds as 32-bit `int`; widened to 64-bit indexing (shows as Closed; landed via pytorchmergebot) |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | **32** | Release asset freshness, reasoning-turn 400s on strict providers, scheduler failure recording | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) Prefer bundled dashboard assets over a stale data dist, so a release stops serving an outdated WebUI<br>[#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) Apply empty-assistant message filter to streaming OpenAI path: strict providers no longer 400 on reasoning-only turns<br>[#9987](https://github.com/AstrBotDevs/AstrBot/pull/9987) Propagate the cron agent runner's ERROR terminal state so a failed scheduled run is recorded failed with its error instead of completed-with-null |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | **33** | Release asset freshness, reasoning-turn 400s on strict providers, scheduler and provider failure propagation | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) Prefer bundled dashboard assets over a stale data dist, so a release stops serving an outdated WebUI<br>[#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) Apply empty-assistant message filter to streaming OpenAI path: strict providers no longer 400 on reasoning-only turns<br>[#9987](https://github.com/AstrBotDevs/AstrBot/pull/9987) Propagate the cron agent runner's ERROR terminal state so a failed scheduled run is recorded failed with its error instead of completed-with-null |
 | [OpenClaw](https://github.com/openclaw/openclaw) (389.6k★) | **6** | Session-store fail-closed sweeps, auth-failure visibility, surrogate-safe text | [#119127](https://github.com/openclaw/openclaw/pull/119127) Keep the mtime media sweep out of the managed-outgoing tree and fail closed when the session store is unreadable, so global GC can never delete live user originals (co-built with the project owner after his P0 review) |
 | [opencode](https://github.com/anomalyco/opencode) (204.9k★) | **1** | MCP OAuth callback bound to IPv4 loopback |  |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | **6** | API robustness: unbounded calls get timeouts, up-front validation, atomic windows | [#39953](https://github.com/langgenius/dify/pull/39953) Bound the TiDB Cloud API calls that had no timeout, so a hanging cluster endpoint can't stall vdb operations forever |
@@ -372,7 +372,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 32 merged AstrBot PRs</summary>
+<summary>All 33 merged AstrBot PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -404,6 +404,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | [#7003](https://github.com/AstrBotDevs/AstrBot/pull/7003) | SSE heartbeat for WebChat: long context compression killed the connection |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | [#7398](https://github.com/AstrBotDevs/AstrBot/pull/7398) | Fix Telegram sendMessageDraft spamming 400 errors on empty text in streaming mode |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | [#7217](https://github.com/AstrBotDevs/AstrBot/pull/7217) | Fix qwen3-rerank response parsing: handle both old and new Dashscope API formats |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | [#10051](https://github.com/AstrBotDevs/AstrBot/pull/10051) | Propagate Xinference rerank failures instead of silently returning empty results |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | [#6313](https://github.com/AstrBotDevs/AstrBot/pull/6313) | Null choices guard: OpenAI API returning `None` instead of empty list |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | [#6551](https://github.com/AstrBotDevs/AstrBot/pull/6551) | Fix empty content causing Grok 400: set content to None when empty |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | [#7407](https://github.com/AstrBotDevs/AstrBot/pull/7407) | Fix Gemini native search 400 when no function tools: skip FunctionCallingConfig |
@@ -1020,7 +1021,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 427+ 个上游 PR 已 merged，其中 Mooncake（43 个）、vLLM（12 个）、Qwen Code（56 个）、Vibe-Trading（36 个）、deer-flow（18 个）、Microsoft Agent Framework（32 个）、PyTorch（11 个）、AstrBot（32 个）、openclaw（6 个）、promptfoo（15 个）、Inspect AI（28 个）、Google ADK（10 个）。
+- 428+ 个上游 PR 已 merged，其中 Mooncake（43 个）、vLLM（12 个）、Qwen Code（56 个）、Vibe-Trading（36 个）、deer-flow（18 个）、Microsoft Agent Framework（32 个）、PyTorch（11 个）、AstrBot（33 个）、openclaw（6 个）、promptfoo（15 个）、Inspect AI（28 个）、Google ADK（10 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1065,7 +1066,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 ### 开源贡献
 
-上游 59 个项目共 432 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
+上游 59 个项目共 433 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
@@ -1076,7 +1077,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.5k★) | **32** | agent 循环边界：消息 role 原地改泄漏、每轮钩子、阻塞工具 | [#7289](https://github.com/microsoft/agent-framework/pull/7289) turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) handoff 原地改了 message 的 role，重试复用时把改动泄漏出去了，改成复用消毒过的副本。<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) 把同步的 Python 工具挪出事件循环跑，阻塞型调用不再冻住并发的 agent 任务。 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | **18** | 并发与 checkpoint 正确性：建线程竞态、会话池生命周期、fork 恢复、渠道协议上限 | [#3800](https://github.com/bytedance/deer-flow/pull/3800) 让 `create_thread` 在并发 insert 输掉竞争时保持幂等，避免一个聊天产生重复 thread。<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) fork 恢复的检查点把 sandbox channel 以 langgraph `Overwrite` 包装态送达，sync/async 初始化路径和 sibling readers 统一走一个解包 helper<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) WeCom 出站内容封顶在 20480 字节协议上限：主动推送按序分块并给每个聊天配 refcount 发送锁，长推送不再被协议拒绝、并发发送不再交错 |
 | [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | **11** | 算子与编译器正确性：错设备派发、梯度静默损坏、未初始化内存 | [#188027](https://github.com/pytorch/pytorch/pull/188027) 在 Laguerre / Legendre 多项式的辅助函数里初始化 `r`，避免边界路径返回未初始化内存（PR 显示 Closed，经 pytorchmergebot 合入）<br>[#186779](https://github.com/pytorch/pytorch/pull/186779) 不支持的 batch norm 三阶导改为显式报错，不再静默返回错误梯度（PR 显示 Closed，经 pytorchmergebot 合入）<br>[#188229](https://github.com/pytorch/pytorch/pull/188229) `avg_pool3d` backward 在超过 `INT_MAX` 元素的输入上静默算错梯度：atomic scatter kernel 用 32 位 `int` 算偏移和边界，改成 64 位索引（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | **32** | 发版资源新鲜度、严格 provider 的 reasoning 回合 400、定时任务失败如实记录 | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) 优先用打包进去的 dashboard 资产，而不是过期的 data dist，发版后不再展示旧前端<br>[#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) 修复 OpenAI streaming 路径复用 empty-assistant 过滤：reasoning-only 历史不再让严格 provider 返回 400<br>[#9987](https://github.com/AstrBotDevs/AstrBot/pull/9987) 把 cron agent runner 的 ERROR 终态传上去：定时任务失败如实记 failed 带错误信息，不再记成 completed 且 last_error 为空 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | **33** | 发版资源新鲜度、严格 provider 的 reasoning 回合 400、定时任务与 provider 失败如实上抛 | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) 优先用打包进去的 dashboard 资产，而不是过期的 data dist，发版后不再展示旧前端<br>[#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) 修复 OpenAI streaming 路径复用 empty-assistant 过滤：reasoning-only 历史不再让严格 provider 返回 400<br>[#9987](https://github.com/AstrBotDevs/AstrBot/pull/9987) 把 cron agent runner 的 ERROR 终态传上去：定时任务失败如实记 failed 带错误信息，不再记成 completed 且 last_error 为空 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (389.6k★) | **6** | 会话存储失败即关的清扫、鉴权失败可见性、代理对安全文本 | [#119127](https://github.com/openclaw/openclaw/pull/119127) 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fail-closed，全域 GC 永不误删用户原件（owner P0 评审后与项目作者共建） |
 | [opencode](https://github.com/anomalyco/opencode) (204.9k★) | **1** | MCP OAuth 回调绑定 IPv4 loopback |  |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | **6** | API 健壮性：无超时调用加边界、前置校验、原子窗口 | [#39953](https://github.com/langgenius/dify/pull/39953) 给没有超时的 TiDB Cloud API 调用补上有界超时，集群端点挂起不再无限拖住 vdb 操作 |
@@ -1374,7 +1375,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 32 个已合并的 AstrBot PR</summary>
+<summary>全部 33 个已合并的 AstrBot PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
@@ -1406,6 +1407,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | [#7003](https://github.com/AstrBotDevs/AstrBot/pull/7003) | 修复 WebChat 长响应断连：SSE 心跳保活，context 压缩期间不再超时 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | [#7398](https://github.com/AstrBotDevs/AstrBot/pull/7398) | 修复 Telegram 流式模式下空文本 sendMessageDraft 导致 400 错误刷屏 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | [#7217](https://github.com/AstrBotDevs/AstrBot/pull/7217) | 修复 qwen3-rerank 响应解析：兼容新旧百炼 API 格式 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | [#10051](https://github.com/AstrBotDevs/AstrBot/pull/10051) | Xinference rerank 失败如实上抛，不再静默返回空结果 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | [#6313](https://github.com/AstrBotDevs/AstrBot/pull/6313) | 修复 OpenAI API 返回 `None` choices 导致崩溃 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | [#6551](https://github.com/AstrBotDevs/AstrBot/pull/6551) | 修复空 content 导致 Grok 400：content 为空时设为 None |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | [#7407](https://github.com/AstrBotDevs/AstrBot/pull/7407) | 修复 Gemini 原生搜索无 function tools 时 400：跳过 FunctionCallingConfig |
