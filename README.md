@@ -65,7 +65,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 ### Open Source Contributions
 
-392 merged PRs across 59 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
+432 merged PRs across 59 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -1065,7 +1065,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 ### 开源贡献
 
-上游 59 个项目共 392 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
+上游 59 个项目共 432 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
