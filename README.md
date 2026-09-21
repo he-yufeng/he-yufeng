@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 430+ merged upstream PRs, with fixes in Mooncake (43 merged), vLLM (12 merged), Qwen Code (56 merged), Vibe-Trading (38 merged), deer-flow (18 merged), Microsoft Agent Framework (32 merged), PyTorch (11 merged), AstrBot (33 merged), openclaw (6 merged), promptfoo (15 merged), Inspect AI (28 merged), and Google ADK (10 merged).
+- 430+ merged upstream PRs, with fixes in Mooncake (43 merged), vLLM (12 merged), Qwen Code (56 merged), Vibe-Trading (38 merged), deer-flow (18 merged), Microsoft Agent Framework (32 merged), PyTorch (11 merged), AstrBot (33 merged), openclaw (6 merged), promptfoo (15 merged), Inspect AI (29 merged), and Google ADK (10 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -89,7 +89,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | Monitor wiring: eigenvalue records never landed in logs |  |
 | [DSPy](https://github.com/stanfordnlp/dspy) (37.8k★) | **1** | Streaming error propagation: sync iterator failures no longer vanish |  |
 | [milvus](https://github.com/milvus-io/milvus) (45.8k★) | **1** | Scheduler shutdown safety: in-flight broadcast tasks no longer panic a closing scheduler |  |
-| [Triton](https://github.com/triton-lang/triton) (19.9k★) | **5** | Compiler semantics: fp8 arithmetic promotion, top_k edge cases, AxisInfo correctness, call-graph cycle safety |  |
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | **6** | Compiler semantics: fp8 arithmetic promotion, top_k edge cases, AxisInfo correctness, call-graph cycle safety |  |
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | File search survives the open-tabs host RPC being down |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | Team-run permission inheritance, Windows subprocess windows, skill sourcing | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) Inherit the leader's permission rules in team runs, so delegated agents keep the same workspace and file-access limits.<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
 | [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | **1** | Proxy logging: verbose logger sources missing from INFO output |  |
@@ -105,7 +105,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | **3** | Memory-store backends: S3 Vectors index naming, Qdrant https option |  |
 | [verl](https://github.com/verl-project/verl) (23.1k★) | **1** | Colocated weight-sync rank derivation across DP/TP |  |
 | [TRL](https://github.com/huggingface/trl) (19.1k★) | **2** | Dataset-prep fail-fast and vLLM special-token preservation |  |
-| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **28** | Provider parsing and eval integrity: reasoning blocks, perplexity sample loss, streaming writer crash | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) Parse OpenRouter `reasoning_details` in OpenAI-compatible responses instead of surfacing Python repr blocks<br>[#5414](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5414) perplexity() and target_perplexity() no longer lose samples to OverflowError on extreme logprobs: exp overflow saturates instead of skipping whole batches<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) Route the realtime streaming sample writer through the same fallback JSON normalization as the regular log path, so sandbox objects that don't serialize cleanly can't crash an eval mid-stream |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **29** | Provider parsing and eval integrity: reasoning blocks, perplexity sample loss, streaming writer crash | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) Parse OpenRouter `reasoning_details` in OpenAI-compatible responses instead of surfacing Python repr blocks<br>[#5414](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5414) perplexity() and target_perplexity() no longer lose samples to OverflowError on extreme logprobs: exp overflow saturates instead of skipping whole batches<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) Route the realtime streaming sample writer through the same fallback JSON normalization as the regular log path, so sandbox objects that don't serialize cleanly can't crash an eval mid-stream |
 | [Agno](https://github.com/agno-agi/agno) (41.8k★) | **1** | Tool-argument whitespace preservation with sentinel normalization |  |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | **3** | Agent-flow guards, Docling fallback, GraphRAG edge ranking | [#15691](https://github.com/infiniflow/ragflow/pull/15691) Skip empty agent-switch conditions so a blank branch guard can't crash or block valid downstream flows. |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | **8** | Realtime voice plumbing: stream-retry recreation, provider status parsing, STT errors | [#6000](https://github.com/livekit/agents/pull/6000) Skip context replay on resumed realtime sessions so a resumed Gemini session stops re-reading its own history back as fresh turns |
@@ -543,10 +543,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 5 merged Triton PRs</summary>
+<summary>All 6 merged Triton PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#11842](https://github.com/triton-lang/triton/pull/11842) | Skip the thread-locality rewrite when the accumulator is read in-loop, so the layout contract stops breaking on that path |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#11756](https://github.com/triton-lang/triton/pull/11756) | Mark the recursion path in CallGraph::doWalk's visited set so a cyclic call graph reports the cycle instead of recursing until the stack gives out |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10883](https://github.com/triton-lang/triton/pull/10883) | Promote fp8 operands before division and modulo instead of evaluating them in fp8 precision (BC breaking) |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10689](https://github.com/triton-lang/triton/pull/10689) | Keep at least one config when a fractional top_k rounds to zero |
@@ -725,13 +726,14 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 28 merged Inspect AI PRs</summary>
+<summary>All 29 merged Inspect AI PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#5262](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5262) | Accept percent-encoded file:// policy URIs in the approval layer, so policies written against URL-escaped paths stop being silently unmatched |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#5153](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5153) | Shaped metrics collapsed to a synthesized flat NaN on an all-empty run; let the metric own its empty-input shape on both the list and dict paths, with a one-time warning for metrics that raise |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) | Parse OpenRouter `reasoning_details` in OpenAI-compatible responses instead of surfacing Python repr blocks |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#5488](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5488) | bash_session no longer sends a literal 'None' into the shell when type_submit is called without input |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#5414](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5414) | perplexity() and target_perplexity() no longer lose samples to OverflowError on extreme logprobs: exp overflow saturates instead of skipping whole batches |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) | Route the realtime streaming sample writer through the same fallback JSON normalization as the regular log path, so sandbox objects that don't serialize cleanly can't crash an eval mid-stream |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) | macOS screen-scale detection imported AppKit unguarded and crashed headful browser runs without pyobjc; fall back to scale factor 1 |
@@ -1024,7 +1026,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 430+ 个上游 PR 已 merged，其中 Mooncake（43 个）、vLLM（12 个）、Qwen Code（56 个）、Vibe-Trading（38 个）、deer-flow（18 个）、Microsoft Agent Framework（32 个）、PyTorch（11 个）、AstrBot（33 个）、openclaw（6 个）、promptfoo（15 个）、Inspect AI（28 个）、Google ADK（10 个）。
+- 430+ 个上游 PR 已 merged，其中 Mooncake（43 个）、vLLM（12 个）、Qwen Code（56 个）、Vibe-Trading（38 个）、deer-flow（18 个）、Microsoft Agent Framework（32 个）、PyTorch（11 个）、AstrBot（33 个）、openclaw（6 个）、promptfoo（15 个）、Inspect AI（29 个）、Google ADK（10 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1093,7 +1095,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | 监控接线：特征值记录从未落日志 |  |
 | [DSPy](https://github.com/stanfordnlp/dspy) (37.8k★) | **1** | 流式错误传播：同步迭代器失败不再静默消失 |  |
 | [milvus](https://github.com/milvus-io/milvus) (45.8k★) | **1** | 调度器关停安全：在途广播任务不再把正在关闭的调度器打崩 |  |
-| [Triton](https://github.com/triton-lang/triton) (19.9k★) | **5** | 编译器语义：fp8 算术提升、top_k 边界、AxisInfo 正确性、调用图环安全 |  |
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | **6** | 编译器语义：fp8 算术提升、top_k 边界、AxisInfo 正确性、调用图环安全 |  |
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | open-tabs 宿主 RPC 挂掉时文件搜索仍可用 |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | 团队运行权限继承、Windows 子进程窗口、skill 来源 | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) team run 里继承 leader 的权限规则，delegated agent 守着和 leader 一样的 workspace、文件访问约束。<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
 | [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | **1** | 代理日志：INFO 输出丢失 verbose logger 来源 |  |
@@ -1109,7 +1111,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | **3** | 记忆存储后端：S3 Vectors 索引命名、Qdrant https 选项 |  |
 | [verl](https://github.com/verl-project/verl) (23.1k★) | **1** | colocated 权重同步的 DP/TP rank 推导 |  |
 | [TRL](https://github.com/huggingface/trl) (19.1k★) | **2** | 数据准备快速失败与 vLLM 特殊 token 保留 |  |
-| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **28** | provider 解析与评测完整性：reasoning 块、perplexity 丢样本、流式写盘崩溃 | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) 修复 OpenAI-compatible 响应里的 OpenRouter `reasoning_details`：解析为可读 reasoning 文本，而不是暴露 Python repr<br>[#5414](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5414) 修复 perplexity() 与 target_perplexity() 在极端 logprob 下因 OverflowError 静默丢样本：exp 溢出改为饱和钳制，整批样本不再被跳过<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。 |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **29** | provider 解析与评测完整性：reasoning 块、perplexity 丢样本、流式写盘崩溃 | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) 修复 OpenAI-compatible 响应里的 OpenRouter `reasoning_details`：解析为可读 reasoning 文本，而不是暴露 Python repr<br>[#5414](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5414) 修复 perplexity() 与 target_perplexity() 在极端 logprob 下因 OverflowError 静默丢样本：exp 溢出改为饱和钳制，整批样本不再被跳过<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。 |
 | [Agno](https://github.com/agno-agi/agno) (41.8k★) | **1** | 工具参数空白保留与哨兵值归一化 |  |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | **3** | agent 流守卫、Docling 回退、GraphRAG 边排序 | [#15691](https://github.com/infiniflow/ragflow/pull/15691) 跳过空的 agent switch 条件，空分支判断不会让有效的后续 agent 流程崩掉或卡住。 |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | **8** | 实时语音链路：流式重试重建、provider 状态解析、STT 错误透出 | [#6000](https://github.com/livekit/agents/pull/6000) 恢复的 Gemini realtime 会话跳过上下文重放，不再把自己的历史当新对话再读一遍 |
@@ -1550,10 +1552,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 5 个已合并的 Triton PR</summary>
+<summary>全部 6 个已合并的 Triton PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#11842](https://github.com/triton-lang/triton/pull/11842) | accumulator 在循环内被读取时跳过 thread-locality 重写，该路径上的布局契约不再被破坏 |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#11756](https://github.com/triton-lang/triton/pull/11756) | 在 CallGraph::doWalk 的 visited 集合里标记递归路径，环状调用图报告环而不是无限递归直到栈溢出 |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10883](https://github.com/triton-lang/triton/pull/10883) | 除法和取模先把 fp8 操作数提升精度再算，不再直接按 fp8 精度求值（BC breaking） |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10689](https://github.com/triton-lang/triton/pull/10689) | 分数 `top_k` 向下取整为 0 时至少保留一个 config |
@@ -1732,13 +1735,14 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 28 个已合并的 Inspect AI PR</summary>
+<summary>全部 29 个已合并的 Inspect AI PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#5262](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5262) | 审批层接受百分号编码的 file:// 策略 URI，按 URL 转义路径写的策略不再静默匹配不上 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#5153](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5153) | 全空输入时 shaped metric 不再塌成上游合成的扁平 NaN，list/dict 两条 metric 路径统一护栏；空输入抛错的 metric 报 NaN 并一次性告警 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) | 修复 OpenAI-compatible 响应里的 OpenRouter `reasoning_details`：解析为可读 reasoning 文本，而不是暴露 Python repr |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#5488](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5488) | bash_session 在无输入 type_submit 时不再把字面 'None' 发进 shell |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#5414](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5414) | 修复 perplexity() 与 target_perplexity() 在极端 logprob 下因 OverflowError 静默丢样本：exp 溢出改为饱和钳制，整批样本不再被跳过 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) | 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | [#4479](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4479) | macOS 分支无守卫 import AppKit 并解引用 NSScreen，没装 pyobjc 时 headful 浏览器工具直接崩；回落 scale factor 1 |
