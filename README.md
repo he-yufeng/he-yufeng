@@ -89,7 +89,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | Monitor wiring: eigenvalue records never landed in logs |  |
 | [DSPy](https://github.com/stanfordnlp/dspy) (37.8k★) | **1** | Streaming error propagation: sync iterator failures no longer vanish |  |
 | [milvus](https://github.com/milvus-io/milvus) (45.8k★) | **1** | Scheduler shutdown safety: in-flight broadcast tasks no longer panic a closing scheduler |  |
-| [Triton](https://github.com/triton-lang/triton) (19.9k★) | **4** | Compiler semantics: fp8 arithmetic promotion, top_k edge cases, AxisInfo correctness |  |
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | **5** | Compiler semantics: fp8 arithmetic promotion, top_k edge cases, AxisInfo correctness, call-graph cycle safety |  |
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | File search survives the open-tabs host RPC being down |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | Team-run permission inheritance, Windows subprocess windows, skill sourcing | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) Inherit the leader's permission rules in team runs, so delegated agents keep the same workspace and file-access limits.<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
 | [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | **1** | Proxy logging: verbose logger sources missing from INFO output |  |
@@ -541,10 +541,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 4 merged Triton PRs</summary>
+<summary>All 5 merged Triton PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#11756](https://github.com/triton-lang/triton/pull/11756) | Mark the recursion path in CallGraph::doWalk's visited set so a cyclic call graph reports the cycle instead of recursing until the stack gives out |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10883](https://github.com/triton-lang/triton/pull/10883) | Promote fp8 operands before division and modulo instead of evaluating them in fp8 precision (BC breaking) |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10689](https://github.com/triton-lang/triton/pull/10689) | Keep at least one config when a fractional top_k rounds to zero |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10687](https://github.com/triton-lang/triton/pull/10687) | `is_power_of_two(0)` was returning True. |
@@ -1090,7 +1091,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | 监控接线：特征值记录从未落日志 |  |
 | [DSPy](https://github.com/stanfordnlp/dspy) (37.8k★) | **1** | 流式错误传播：同步迭代器失败不再静默消失 |  |
 | [milvus](https://github.com/milvus-io/milvus) (45.8k★) | **1** | 调度器关停安全：在途广播任务不再把正在关闭的调度器打崩 |  |
-| [Triton](https://github.com/triton-lang/triton) (19.9k★) | **4** | 编译器语义：fp8 算术提升、top_k 边界、AxisInfo 正确性 |  |
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | **5** | 编译器语义：fp8 算术提升、top_k 边界、AxisInfo 正确性、调用图环安全 |  |
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | open-tabs 宿主 RPC 挂掉时文件搜索仍可用 |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | 团队运行权限继承、Windows 子进程窗口、skill 来源 | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) team run 里继承 leader 的权限规则，delegated agent 守着和 leader 一样的 workspace、文件访问约束。<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
 | [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | **1** | 代理日志：INFO 输出丢失 verbose logger 来源 |  |
@@ -1545,10 +1546,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 4 个已合并的 Triton PR</summary>
+<summary>全部 5 个已合并的 Triton PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#11756](https://github.com/triton-lang/triton/pull/11756) | 在 CallGraph::doWalk 的 visited 集合里标记递归路径，环状调用图报告环而不是无限递归直到栈溢出 |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10883](https://github.com/triton-lang/triton/pull/10883) | 除法和取模先把 fp8 操作数提升精度再算，不再直接按 fp8 精度求值（BC breaking） |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10689](https://github.com/triton-lang/triton/pull/10689) | 分数 `top_k` 向下取整为 0 时至少保留一个 config |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | [#10687](https://github.com/triton-lang/triton/pull/10687) | `is_power_of_two(0)` 误返回了 True。 |
