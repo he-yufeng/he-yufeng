@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 434+ merged upstream PRs, with fixes in Mooncake (43 merged), vLLM (12 merged), Qwen Code (56 merged), Vibe-Trading (39 merged), deer-flow (18 merged), Microsoft Agent Framework (32 merged), PyTorch (11 merged), AstrBot (33 merged), openclaw (7 merged), promptfoo (16 merged), Inspect AI (30 merged), and Google ADK (10 merged).
+- 433+ merged upstream PRs, with fixes in Mooncake (43 merged), vLLM (12 merged), Qwen Code (56 merged), Vibe-Trading (38 merged), deer-flow (18 merged), Microsoft Agent Framework (32 merged), PyTorch (11 merged), AstrBot (33 merged), openclaw (7 merged), promptfoo (16 merged), Inspect AI (30 merged), and Google ADK (10 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -65,7 +65,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 ### Open Source Contributions
 
-434 merged PRs across 59 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
+433 merged PRs across 59 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -1029,7 +1029,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 434+ 个上游 PR 已 merged，其中 Mooncake（43 个）、vLLM（12 个）、Qwen Code（56 个）、Vibe-Trading（39 个）,deer-flow（18 个）、Microsoft Agent Framework（32 个）、PyTorch（11 个）、AstrBot（33 个）、openclaw（7 个）、promptfoo（16 个）、Inspect AI（30 个）,Google ADK（10 个）。
+- 433+ 个上游 PR 已 merged，其中 Mooncake（43 个）、vLLM（12 个）、Qwen Code（56 个）、Vibe-Trading（38 个）,deer-flow（18 个）、Microsoft Agent Framework（32 个）、PyTorch（11 个）、AstrBot（33 个）、openclaw（7 个）、promptfoo（16 个）、Inspect AI（30 个）,Google ADK（10 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1074,7 +1074,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 ### 开源贡献
 
-上游 59 个项目共 434 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
+上游 59 个项目共 433 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
