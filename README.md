@@ -17,7 +17,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 438+ merged upstream PRs, with fixes in Mooncake (43 merged), vLLM (12 merged), Qwen Code (56 merged), Vibe-Trading (42 merged), deer-flow (18 merged), Microsoft Agent Framework (32 merged), PyTorch (11 merged), AstrBot (33 merged), openclaw (7 merged), promptfoo (16 merged), Inspect AI (30 merged), and Google ADK (10 merged).
+- 439+ merged upstream PRs, with fixes in Mooncake (43 merged), vLLM (12 merged), Qwen Code (56 merged), Vibe-Trading (42 merged), deer-flow (18 merged), Microsoft Agent Framework (32 merged), PyTorch (11 merged), AstrBot (33 merged), openclaw (7 merged), promptfoo (17 merged), Inspect AI (30 merged), and Google ADK (10 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -69,7 +69,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 ### Open Source Contributions
 
-433 merged PRs across 59 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
+434 merged PRs across 59 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -97,7 +97,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | File search survives the open-tabs host RPC being down |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | Team-run permission inheritance, Windows subprocess windows, skill sourcing | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) Inherit the leader's permission rules in team runs, so delegated agents keep the same workspace and file-access limits.<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
 | [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | **1** | Proxy logging: verbose logger sources missing from INFO output |  |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (25.3k★) | **16** | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) Reject out-of-range trace-span-duration percentiles instead of silently computing garbage<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) Score tokenless GLEU inputs as zero instead of crashing<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) Avoid crashing on an empty `choices` array when reading Azure logprobs |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.3k★) | **17** | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) Reject out-of-range trace-span-duration percentiles instead of silently computing garbage<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) Score tokenless GLEU inputs as zero instead of crashing<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) Avoid crashing on an empty `choices` array when reading Azure logprobs |
 | [goose](https://github.com/aaif-goose/goose) (53.3k★) | **3** | Telemetry export reliability, skill path display, desktop shortcuts |  |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | **7** | Renderer correctness: tree-shaken markdown styles, surrogate-safe truncation, citations | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) Preserve surrogate pairs at truncation boundaries so a multi-byte character isn't split into invalid halves. |
 | [GitHub MCP Server](https://github.com/github/github-mcp-server) (32.4k★) | **2** | Team-reviewer resolution and read-only surface hygiene |  |
@@ -599,12 +599,13 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 16 merged promptfoo PRs</summary>
+<summary>All 17 merged promptfoo PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.3k★) | [#11004](https://github.com/promptfoo/promptfoo/pull/11004) | Honor an explicitly configured redteamProvider in the iterative, crescendo and iterative:tree attack strategies instead of silently falling back to the default provider |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.3k★) | [#10904](https://github.com/promptfoo/promptfoo/pull/10904) | Never invert grader failures on not-classifier / not-search-rubric: a grader that itself errored was inverted into a pass, so a broken rubric read as a pass |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.3k★) | [#10634](https://github.com/promptfoo/promptfoo/pull/10634) | Assert the Claude Agent SDK MCP adapters omit `env` entirely when a stdio server has no environment map, instead of emitting `env: undefined` |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.3k★) | [#10665](https://github.com/promptfoo/promptfoo/pull/10665) | Recognize OpenAI Responses-API function_call items in the tool-call F1 scorer, so those payloads stop scoring as zero tool calls |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.3k★) | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) | Reject out-of-range trace-span-duration percentiles instead of silently computing garbage |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.3k★) | [#9850](https://github.com/promptfoo/promptfoo/pull/9850) | Score tokenless GLEU inputs as zero instead of crashing |
@@ -1037,7 +1038,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 438+ 个上游 PR 已 merged，其中 Mooncake（43 个）、vLLM（12 个）、Qwen Code（56 个）、Vibe-Trading（42 个）,deer-flow（18 个）、Microsoft Agent Framework（32 个）、PyTorch（11 个）、AstrBot（33 个）、openclaw（7 个）、promptfoo（16 个）、Inspect AI（30 个）,Google ADK（10 个）。
+- 439+ 个上游 PR 已 merged，其中 Mooncake（43 个）、vLLM（12 个）、Qwen Code（56 个）、Vibe-Trading（42 个）,deer-flow（18 个）、Microsoft Agent Framework（32 个）、PyTorch（11 个）、AstrBot（33 个）、openclaw（7 个）、promptfoo（17 个）、Inspect AI（30 个）,Google ADK（10 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1082,7 +1083,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 ### 开源贡献
 
-上游 59 个项目共 433 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
+上游 59 个项目共 434 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
@@ -1110,7 +1111,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | open-tabs 宿主 RPC 挂掉时文件搜索仍可用 |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | 团队运行权限继承、Windows 子进程窗口、skill 来源 | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) team run 里继承 leader 的权限规则，delegated agent 守着和 leader 一样的 workspace、文件访问约束。<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
 | [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | **1** | 代理日志：INFO 输出丢失 verbose logger 来源 |  |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (25.3k★) | **16** | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) 空 token 输入的 GLEU 评分返回 0 分，不再报错<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.3k★) | **17** | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) 空 token 输入的 GLEU 评分返回 0 分，不再报错<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
 | [goose](https://github.com/aaif-goose/goose) (53.3k★) | **3** | 遥测导出可靠性、skill 路径展示、桌面快捷键 |  |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (51.0k★) | **7** | 渲染正确性：markdown 样式被 tree-shake、代理对安全截断、引用行 | [#16352](https://github.com/CherryHQ/cherry-studio/pull/16352) 在截断边界保住 surrogate pair，多字节字符不会被切成半个非法字符。 |
 | [GitHub MCP Server](https://github.com/github/github-mcp-server) (32.4k★) | **2** | team reviewer 解析与只读面卫生 |  |
@@ -1611,12 +1612,13 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 16 个已合并的 promptfoo PR</summary>
+<summary>全部 17 个已合并的 promptfoo PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.3k★) | [#11004](https://github.com/promptfoo/promptfoo/pull/11004) | 显式配置的 redteamProvider 在 iterative、crescendo、iterative:tree 三条攻击策略中生效，不再静默回退到默认 provider |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.3k★) | [#10904](https://github.com/promptfoo/promptfoo/pull/10904) | not-classifier / not-search-rubric 不再反转评分器失败：评分器自己出错的条目曾被反转为通过，坏 rubric 读起来像通过 |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.3k★) | [#10634](https://github.com/promptfoo/promptfoo/pull/10634) | 断言 Claude Agent SDK 的 MCP 适配器在 stdio server 无环境变量表时整体省略 `env` 字段，而不是发出 `env: undefined` |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.3k★) | [#10665](https://github.com/promptfoo/promptfoo/pull/10665) | tool-call-f1 评分器认出 OpenAI Responses API 的 function_call 条目，这类载荷不再被算成零次工具调用 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.3k★) | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) | trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.3k★) | [#9850](https://github.com/promptfoo/promptfoo/pull/9850) | 空 token 输入的 GLEU 评分返回 0 分，不再报错 |
