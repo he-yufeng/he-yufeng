@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 458+ merged upstream PRs, with fixes in Mooncake (44 merged), vLLM (12 merged), Vibe-Trading (42 merged), Qwen Code (56 merged), Microsoft Agent Framework (32 merged), deer-flow (18 merged), PyTorch (11 merged), AstrBot (33 merged), openclaw (7 merged), promptfoo (18 merged), Inspect AI (30 merged), and Google ADK (10 merged).
+- 459+ merged upstream PRs, with fixes in Mooncake (44 merged), vLLM (12 merged), Vibe-Trading (43 merged), Qwen Code (56 merged), Microsoft Agent Framework (32 merged), deer-flow (18 merged), PyTorch (11 merged), AstrBot (33 merged), openclaw (7 merged), promptfoo (18 merged), Inspect AI (30 merged), and Google ADK (10 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -65,12 +65,12 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 ### Open Source Contributions
 
-458 merged PRs across 65 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
+459 merged PRs across 65 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | **44** | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) Batch reads with a duplicate key handed back the first occurrence's never-written buffer as success; each unique key now transfers once and its verified bytes fan out to every duplicate with device-aware copies<br>[#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) Self-heal dangling LOCAL_DISK replicas in `Client::Put`: a put onto a key left with only client-local disk replicas evicts them and retries cleanly, with BatchPut probing and evicting the already-exists subset in one pass. |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | **42** | Portfolio analytics and monitor-verdict pipeline; fail-closed live-trading gates; backtest accounting correctness (shorts, corporate actions, T+1) | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) Cash-dividend journal rows were never parsed, so dividends paid into the shadow account read as flat real PnL; they are booked properly now<br>[#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) Persist the flatten latch across runner restarts so a reboot cannot replay the kill-switch sweep and flip the account<br>[#1520](https://github.com/HKUDS/Vibe-Trading/pull/1520) IM channels became configurable from the Web UI: credential forms rendered from backend field metadata, a connection probe for unsaved credentials, and a non-destructive hot-applied Enable toggle, with DingTalk as the first fully-guided channel |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | **43** | Portfolio analytics and monitor-verdict pipeline; fail-closed live-trading gates; backtest accounting correctness (shorts, corporate actions, T+1) | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) Cash-dividend journal rows were never parsed, so dividends paid into the shadow account read as flat real PnL; they are booked properly now<br>[#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) Persist the flatten latch across runner restarts so a reboot cannot replay the kill-switch sweep and flip the account<br>[#1520](https://github.com/HKUDS/Vibe-Trading/pull/1520) IM channels became configurable from the Web UI: credential forms rendered from backend field metadata, a connection probe for unsaved credentials, and a non-destructive hot-applied Enable toggle, with DingTalk as the first fully-guided channel |
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | **12** | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API `instructions` were leaking across turns through the `previous_response_id` chain.<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals.<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.8k★) | **56** | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories.<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`.<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.5k★) | **32** | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools | [#7289](https://github.com/microsoft/agent-framework/pull/7289) Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) Handoff was mutating message roles in place, so a retry leaked the change; reuse sanitized copies instead.<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) Run synchronous Python tools off the event loop so a blocking call stops freezing concurrent agent work. |
@@ -206,10 +206,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 42 merged Vibe-Trading PRs</summary>
+<summary>All 43 merged Vibe-Trading PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | [#1551](https://github.com/HKUDS/Vibe-Trading/pull/1551) | Convert additive-caliber A-share qfq factors to the multiplicative caliber the backtest books in whenever the offset chain validates, so adjusted prices stop drifting away from corporate-action accounting |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | [#1598](https://github.com/HKUDS/Vibe-Trading/pull/1598) | Let backtests attach to the already-running MT5 terminal instead of demanding fresh credentials, unbreaking the sandbox flow for broker-managed terminals |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | [#1615](https://github.com/HKUDS/Vibe-Trading/pull/1615) | Bound baostock socket IO with a per-read deadline: a silent server no longer hangs the loader forever and a closed connection no longer spins at 100% CPU |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | [#1627](https://github.com/HKUDS/Vibe-Trading/pull/1627) | Weekly live-source health canary: every no-auth loader fetches a known-liquid symbol and the frame is checked for shape and freshness, so a dead or drifted endpoint fails CI before a user files it |
@@ -1065,7 +1066,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 458+ 个上游 PR 已 merged，其中 Mooncake（44 个）、vLLM（12 个）、Vibe-Trading（42 个）、Qwen Code（56 个）、Microsoft Agent Framework（32 个）、deer-flow（18 个）、PyTorch（11 个）、AstrBot（33 个）、openclaw（7 个）、promptfoo（18 个）、Inspect AI（30 个）、Google ADK（10 个）。
+- 459+ 个上游 PR 已 merged，其中 Mooncake（44 个）、vLLM（12 个）、Vibe-Trading（43 个）、Qwen Code（56 个）、Microsoft Agent Framework（32 个）、deer-flow（18 个）、PyTorch（11 个）、AstrBot（33 个）、openclaw（7 个）、promptfoo（18 个）、Inspect AI（30 个）、Google ADK（10 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1110,12 +1111,12 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 ### 开源贡献
 
-上游 65 个项目共 458 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
+上游 65 个项目共 459 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | **44** | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) 批量读里出现重复 key 时，第一次出现的位置原本拿着从未写入的缓冲区返回成功；现在每个唯一 key 只传输一次，验证过的字节经设备感知拷贝扇出到每个重复目标<br>[#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) `Client::Put` 自愈悬挂 LOCAL_DISK 副本：目标 key 只剩客户端本地磁盘副本时自动逐出并干净重试，BatchPut 对已存在子集一次探测加一次批量逐出 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | **42** | 组合分析与监视器判定流水线；实盘 fail-closed 门禁；回测账务正确性（空头、公司行动、T+1） | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) 现金股息的 journal 行一直没被解析，派息进 shadow 账户后实盘 PnL 读成平的；现在正确入账<br>[#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) flatten latch 持久化绑定 halt episode：重启不再整轮重放扫仓把账户翻空<br>[#1520](https://github.com/HKUDS/Vibe-Trading/pull/1520) IM 渠道改为 Web UI 全引导配置：按后端字段元数据渲染凭证表单、Test connection 探测未保存凭证、Enable 开关非破坏热应用免重启，钉钉作为首个全引导渠道落地 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | **43** | 组合分析与监视器判定流水线；实盘 fail-closed 门禁；回测账务正确性（空头、公司行动、T+1） | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) 现金股息的 journal 行一直没被解析，派息进 shadow 账户后实盘 PnL 读成平的；现在正确入账<br>[#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) flatten latch 持久化绑定 halt episode：重启不再整轮重放扫仓把账户翻空<br>[#1520](https://github.com/HKUDS/Vibe-Trading/pull/1520) IM 渠道改为 Web UI 全引导配置：按后端字段元数据渲染凭证表单、Test connection 探测未保存凭证、Enable 开关非破坏热应用免重启，钉钉作为首个全引导渠道落地 |
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | **12** | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.8k★) | **56** | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.5k★) | **32** | agent 循环边界：消息 role 原地改泄漏、每轮钩子、阻塞工具 | [#7289](https://github.com/microsoft/agent-framework/pull/7289) turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) handoff 原地改了 message 的 role，重试复用时把改动泄漏出去了，改成复用消毒过的副本。<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) 把同步的 Python 工具挪出事件循环跑，阻塞型调用不再冻住并发的 agent 任务。 |
@@ -1252,10 +1253,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 42 个已合并的 Vibe-Trading PR</summary>
+<summary>全部 43 个已合并的 Vibe-Trading PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | [#1551](https://github.com/HKUDS/Vibe-Trading/pull/1551) | A 股前复权因子若是可加口径，偏移链校验通过时换算成回测入账的乘法口径，调整后价格与公司行动账务不再错位 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | [#1444](https://github.com/HKUDS/Vibe-Trading/pull/1444) | 尾风险声明的度量与置信度经声明 ref 坐实进 grounding：ref 可指名证据字段、多调用时需 call_id::field 消歧，VaR/ES 不再凭一行共享 var_95 全放行 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | [#1520](https://github.com/HKUDS/Vibe-Trading/pull/1520) | IM 渠道改为 Web UI 全引导配置：按后端字段元数据渲染凭证表单、Test connection 探测未保存凭证、Enable 开关非破坏热应用免重启，钉钉作为首个全引导渠道落地 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | [#1518](https://github.com/HKUDS/Vibe-Trading/pull/1518) | 股东户数历史改读分期明细报表（此前读的“最新快照”报表永远只回一行，max_periods 是死参数），每个返回期标注其变动测量区间 |
