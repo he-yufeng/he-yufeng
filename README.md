@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 447+ merged upstream PRs, with fixes in Mooncake (44 merged), vLLM (12 merged), Vibe-Trading (42 merged), Qwen Code (56 merged), Microsoft Agent Framework (32 merged), deer-flow (18 merged), PyTorch (11 merged), AstrBot (33 merged), openclaw (7 merged), promptfoo (18 merged), Inspect AI (30 merged), and Google ADK (10 merged).
+- 458+ merged upstream PRs, with fixes in Mooncake (44 merged), vLLM (12 merged), Vibe-Trading (42 merged), Qwen Code (56 merged), Microsoft Agent Framework (32 merged), deer-flow (18 merged), PyTorch (11 merged), AstrBot (33 merged), openclaw (7 merged), promptfoo (18 merged), Inspect AI (30 merged), and Google ADK (10 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -65,7 +65,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 ### Open Source Contributions
 
-447 merged PRs across 65 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
+458 merged PRs across 65 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -120,7 +120,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | **4** | Founding PRs: tests/CI/templates, pluggable TaskStore, Gemini CLI support | [#1](https://github.com/HKUDS/ClawTeam/pull/1) First PR: 122 tests, CI, team templates, config bugfixes, task duration tracking<br>[#40](https://github.com/HKUDS/ClawTeam/pull/40) Pluggable TaskStore: extract task persistence into swappable backend abstraction |
 | [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | **1** | TUI footer status-line customization | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) Customize the TUI footer status line via `status_line` config, codex / claude code style |
 | [OpenAI Python SDK](https://github.com/openai/openai-python) (31.6k★) | **1** | Bounded vector-store polling and client lifecycle edges | [#3401](https://github.com/openai/openai-python/pull/3401) Bound vector-store file polling so a stuck upload stops spinning the client forever |
-| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | **1** | FalkorDB bulk-write crash on NUL bytes |  |
+| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | **2** | FalkorDB bulk-write crash on NUL bytes, MCP server keeps the URI username |  |
 | [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | **1** | Anthropic stop-sequence validation |  |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | **1** | Publisher metadata validation | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) Reject mangled publisher metadata instead of accepting malformed entries |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (5.0k★) | **2** | MCP protocol state: duplicate initialize rejection, description metadata |  |
@@ -920,11 +920,12 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 1 merged Graphiti PRs</summary>
+<summary>All 2 merged Graphiti PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | [#1531](https://github.com/getzep/graphiti/pull/1531) | Strip embedded NUL bytes from FalkorDB query params, so one malformed document string can't crash a bulk graph write. |
+| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | [#1530](https://github.com/getzep/graphiti/pull/1530) | Preserve the username from a FalkorDB URI in the MCP server config, so authenticated deployments stop dropping credentials |
 
 </details>
 <details>
@@ -1064,7 +1065,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 447+ 个上游 PR 已 merged，其中 Mooncake（44 个）、vLLM（12 个）、Vibe-Trading（42 个）、Qwen Code（56 个）、Microsoft Agent Framework（32 个）、deer-flow（18 个）、PyTorch（11 个）、AstrBot（33 个）、openclaw（7 个）、promptfoo（18 个）、Inspect AI（30 个）、Google ADK（10 个）。
+- 458+ 个上游 PR 已 merged，其中 Mooncake（44 个）、vLLM（12 个）、Vibe-Trading（42 个）、Qwen Code（56 个）、Microsoft Agent Framework（32 个）、deer-flow（18 个）、PyTorch（11 个）、AstrBot（33 个）、openclaw（7 个）、promptfoo（18 个）、Inspect AI（30 个）、Google ADK（10 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1109,7 +1110,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 ### 开源贡献
 
-上游 65 个项目共 447 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
+上游 65 个项目共 458 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
@@ -1135,7 +1136,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **18** | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) 空 token 输入的 GLEU 评分返回 0 分，不再报错<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
 | [goose](https://github.com/aaif-goose/goose) (53.3k★) | **3** | 遥测导出可靠性、skill 路径展示、桌面快捷键 |  |
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | **1** | 上报生效中的 Blaxel 超时而非默认值 |  |
-| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **29** | provider 解析与评测完整性：reasoning 块、perplexity 丢样本、流式写盘崩溃 | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) 修复 OpenAI-compatible 响应里的 OpenRouter `reasoning_details`：解析为可读 reasoning 文本，而不是暴露 Python repr<br>[#5414](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5414) 修复 perplexity() 与 target_perplexity() 在极端 logprob 下因 OverflowError 静默丢样本：exp 溢出改为饱和钳制，整批样本不再被跳过<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。 |
+| [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **30** | provider 解析与评测完整性：reasoning 块、perplexity 丢样本、流式写盘崩溃 | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) 修复 OpenAI-compatible 响应里的 OpenRouter `reasoning_details`：解析为可读 reasoning 文本，而不是暴露 Python repr<br>[#5414](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5414) 修复 perplexity() 与 target_perplexity() 在极端 logprob 下因 OverflowError 静默丢样本：exp 溢出改为饱和钳制，整批样本不再被跳过<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。 |
 | [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | **1** | 代理日志：INFO 输出丢失 verbose logger 来源 |  |
 | [Google ADK](https://github.com/google/adk-python) (21.2k★) | **1** | 评判标准纳入中间响应 |  |
 | [Agno](https://github.com/agno-agi/agno) (41.8k★) | **1** | 工具参数空白保留与哨兵值归一化 |  |
@@ -1164,7 +1165,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | **4** | 奠基 PR：测试/CI/模板、可插拔 TaskStore、Gemini CLI 支持 | [#1](https://github.com/HKUDS/ClawTeam/pull/1) 首个 PR：122 个测试、CI、团队模板、config 修复、任务耗时追踪<br>[#40](https://github.com/HKUDS/ClawTeam/pull/40) 可插拔 TaskStore：将任务持久化抽取为可替换的后端抽象层 |
 | [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | **1** | TUI 底部状态栏自定义 | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) 通过 status_line 配置自定义 TUI 底部状态栏（仿 codex / claude code 的 footer 形态） |
 | [OpenAI Python SDK](https://github.com/openai/openai-python) (31.6k★) | **1** | 有界的 vector-store 轮询与客户端生命周期边界 | [#3401](https://github.com/openai/openai-python/pull/3401) 给 vector-store 文件轮询加上界，卡住的上传不再让客户端永远空转 |
-| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | **1** | FalkorDB 批量写入遇 NUL 字节崩溃 |  |
+| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | **2** | FalkorDB 批量写入遇 NUL 字节崩溃，MCP server 保住 URI 用户名 |  |
 | [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | **1** | Anthropic stop 序列校验 |  |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | **1** | 发布者元数据校验 | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) 拒绝损坏的 publisher 元数据，而不是接收畸形条目 |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (5.0k★) | **2** | MCP 协议状态：拒绝重复 initialize、description 元数据 |  |
@@ -1963,11 +1964,12 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 1 个已合并的 Graphiti PR</summary>
+<summary>全部 2 个已合并的 Graphiti PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | [#1531](https://github.com/getzep/graphiti/pull/1531) | 递归清掉 FalkorDB 查询参数里的 NUL 字节，单个异常文档字符串打断不了批量图写入。 |
+| [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | [#1530](https://github.com/getzep/graphiti/pull/1530) | MCP server 配置保留 FalkorDB URI 里的用户名，带认证的部署不再丢凭证 |
 
 </details>
 <details>
