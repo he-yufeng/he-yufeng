@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 459+ merged upstream PRs, with fixes in Mooncake (44 merged), vLLM (12 merged), Vibe-Trading (43 merged), Qwen Code (56 merged), Microsoft Agent Framework (32 merged), deer-flow (18 merged), PyTorch (11 merged), AstrBot (33 merged), openclaw (7 merged), promptfoo (18 merged), Inspect AI (30 merged), and Google ADK (10 merged).
+- 460+ merged upstream PRs, with fixes in Mooncake (44 merged), vLLM (12 merged), Vibe-Trading (43 merged), Qwen Code (56 merged), Microsoft Agent Framework (32 merged), deer-flow (18 merged), PyTorch (11 merged), AstrBot (33 merged), openclaw (7 merged), promptfoo (19 merged), Inspect AI (30 merged), and Google ADK (10 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -65,7 +65,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 ### Open Source Contributions
 
-459 merged PRs across 65 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
+460 merged PRs across 65 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -88,7 +88,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | Team-run permission inheritance, Windows subprocess windows, skill sourcing | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) Inherit the leader's permission rules in team runs, so delegated agents keep the same workspace and file-access limits.<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | **6** | Compiler semantics: fp8 arithmetic promotion, top_k edge cases, AxisInfo correctness, call-graph cycle safety |  |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | Monitor wiring: eigenvalue records never landed in logs |  |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **18** | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) Reject out-of-range trace-span-duration percentiles instead of silently computing garbage<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) Score tokenless GLEU inputs as zero instead of crashing<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) Avoid crashing on an empty `choices` array when reading Azure logprobs |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **19** | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) Reject out-of-range trace-span-duration percentiles instead of silently computing garbage<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) Score tokenless GLEU inputs as zero instead of crashing<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) Avoid crashing on an empty `choices` array when reading Azure logprobs |
 | [goose](https://github.com/aaif-goose/goose) (53.3k★) | **3** | Telemetry export reliability, skill path display, desktop shortcuts |  |
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | **1** | Report effective Blaxel timeouts instead of defaults |  |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **30** | Provider parsing and eval integrity: reasoning blocks, perplexity sample loss, streaming writer crash | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) Parse OpenRouter `reasoning_details` in OpenAI-compatible responses instead of surfacing Python repr blocks<br>[#5414](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5414) perplexity() and target_perplexity() no longer lose samples to OverflowError on extreme logprobs: exp overflow saturates instead of skipping whole batches<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) Route the realtime streaming sample writer through the same fallback JSON normalization as the regular log path, so sandbox objects that don't serialize cleanly can't crash an eval mid-stream |
@@ -600,10 +600,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 18 merged promptfoo PRs</summary>
+<summary>All 19 merged promptfoo PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10917](https://github.com/promptfoo/promptfoo/pull/10917) | Honor per-call cache overrides in the AI21, Cohere and LocalAI chat/completion providers: `bustCache` now takes precedence over the legacy `debug` fallback, including an explicit `bustCache: false` |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11320](https://github.com/promptfoo/promptfoo/pull/11320) | Support comma-separated OR values in `--filter-metadata`, so one flag can match any of several values for the same metadata key |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11004](https://github.com/promptfoo/promptfoo/pull/11004) | Honor an explicitly configured redteamProvider in the iterative, crescendo and iterative:tree attack strategies instead of silently falling back to the default provider |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10904](https://github.com/promptfoo/promptfoo/pull/10904) | Never invert grader failures on not-classifier / not-search-rubric: a grader that itself errored was inverted into a pass, so a broken rubric read as a pass |
@@ -1066,7 +1067,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 459+ 个上游 PR 已 merged，其中 Mooncake（44 个）、vLLM（12 个）、Vibe-Trading（43 个）、Qwen Code（56 个）、Microsoft Agent Framework（32 个）、deer-flow（18 个）、PyTorch（11 个）、AstrBot（33 个）、openclaw（7 个）、promptfoo（18 个）、Inspect AI（30 个）、Google ADK（10 个）。
+- 460+ 个上游 PR 已 merged，其中 Mooncake（44 个）、vLLM（12 个）、Vibe-Trading（43 个）、Qwen Code（56 个）、Microsoft Agent Framework（32 个）、deer-flow（18 个）、PyTorch（11 个）、AstrBot（33 个）、openclaw（7 个）、promptfoo（19 个）、Inspect AI（30 个）、Google ADK（10 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1111,7 +1112,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 ### 开源贡献
 
-上游 65 个项目共 459 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
+上游 65 个项目共 460 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
@@ -1134,7 +1135,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | 团队运行权限继承、Windows 子进程窗口、skill 来源 | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) team run 里继承 leader 的权限规则，delegated agent 守着和 leader 一样的 workspace、文件访问约束。<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | **6** | 编译器语义：fp8 算术提升、top_k 边界、AxisInfo 正确性、调用图环安全 |  |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | 监控接线：特征值记录从未落日志 |  |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **18** | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) 空 token 输入的 GLEU 评分返回 0 分，不再报错<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **19** | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) 空 token 输入的 GLEU 评分返回 0 分，不再报错<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
 | [goose](https://github.com/aaif-goose/goose) (53.3k★) | **3** | 遥测导出可靠性、skill 路径展示、桌面快捷键 |  |
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | **1** | 上报生效中的 Blaxel 超时而非默认值 |  |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **30** | provider 解析与评测完整性：reasoning 块、perplexity 丢样本、流式写盘崩溃 | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) 修复 OpenAI-compatible 响应里的 OpenRouter `reasoning_details`：解析为可读 reasoning 文本，而不是暴露 Python repr<br>[#5414](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5414) 修复 perplexity() 与 target_perplexity() 在极端 logprob 下因 OverflowError 静默丢样本：exp 溢出改为饱和钳制，整批样本不再被跳过<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。 |
@@ -1645,10 +1646,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 18 个已合并的 promptfoo PR</summary>
+<summary>全部 19 个已合并的 promptfoo PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10917](https://github.com/promptfoo/promptfoo/pull/10917) | AI21、Cohere、LocalAI 的 chat/completion provider 遵循每次调用的缓存覆盖：`bustCache` 优先于旧的 `debug` 回退，显式 `bustCache: false` 也不再被忽略 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11320](https://github.com/promptfoo/promptfoo/pull/11320) | `--filter-metadata` 支持逗号分隔的 OR 取值，一个 flag 可匹配同一 metadata key 的多个值中的任意一个 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11004](https://github.com/promptfoo/promptfoo/pull/11004) | 显式配置的 redteamProvider 在 iterative、crescendo、iterative:tree 三条攻击策略中生效，不再静默回退到默认 provider |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10904](https://github.com/promptfoo/promptfoo/pull/10904) | not-classifier / not-search-rubric 不再反转评分器失败：评分器自己出错的条目曾被反转为通过，坏 rubric 读起来像通过 |
