@@ -65,7 +65,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 ### Open Source Contributions
 
-465 merged PRs across 65 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
+468 merged PRs across 65 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -87,8 +87,8 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | File search survives the open-tabs host RPC being down |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | Team-run permission inheritance, Windows subprocess windows, skill sourcing | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) Inherit the leader's permission rules in team runs, so delegated agents keep the same workspace and file-access limits.<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | **6** | Compiler semantics: fp8 arithmetic promotion, top_k edge cases, AxisInfo correctness, call-graph cycle safety |  |
-| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | Monitor wiring: eigenvalue records never landed in logs |  |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **19** | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) Reject out-of-range trace-span-duration percentiles instead of silently computing garbage<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) Score tokenless GLEU inputs as zero instead of crashing<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) Avoid crashing on an empty `choices` array when reading Azure logprobs |
+| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | Monitor wiring: eigenvalue records never landed in logs |  |
 | [goose](https://github.com/aaif-goose/goose) (53.3k★) | **3** | Telemetry export reliability, skill path display, desktop shortcuts |  |
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | **1** | Report effective Blaxel timeouts instead of defaults |  |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **30** | Provider parsing and eval integrity: reasoning blocks, perplexity sample loss, streaming writer crash | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) Parse OpenRouter `reasoning_details` in OpenAI-compatible responses instead of surfacing Python repr blocks<br>[#5414](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5414) perplexity() and target_perplexity() no longer lose samples to OverflowError on extreme logprobs: exp overflow saturates instead of skipping whole batches<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) Route the realtime streaming sample writer through the same fallback JSON normalization as the regular log path, so sandbox objects that don't serialize cleanly can't crash an eval mid-stream |
@@ -117,6 +117,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | **2** | Autotuner None-input crash and CUTLASS header compile fix | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) Fix autotuner crash when input tensor is `None`: proper None-checking for optional inputs (fixes #2749) |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | **3** | Vercel AI dynamic-tool part acceptance, completions penalties forwarding |  |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | **4** | Docling response unpacking, docs dark theme, PostgreSQL search_path detection | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) Extract Docling async markdown from the response envelope so RAG chunks carry clean document text, not JSON/base64 noise. |
+| [langfuse](https://github.com/langfuse/langfuse) (35.2k★) | **1** | OTel trace export: int64 fields serialized as strings per protobuf JSON |  |
 | [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | **4** | Founding PRs: tests/CI/templates, pluggable TaskStore, Gemini CLI support | [#1](https://github.com/HKUDS/ClawTeam/pull/1) First PR: 122 tests, CI, team templates, config bugfixes, task duration tracking<br>[#40](https://github.com/HKUDS/ClawTeam/pull/40) Pluggable TaskStore: extract task persistence into swappable backend abstraction |
 | [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | **1** | TUI footer status-line customization | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) Customize the TUI footer status line via `status_line` config, codex / claude code style |
 | [OpenAI Python SDK](https://github.com/openai/openai-python) (31.6k★) | **1** | Bounded vector-store polling and client lifecycle edges | [#3401](https://github.com/openai/openai-python/pull/3401) Bound vector-store file polling so a stuck upload stops spinning the client forever |
@@ -131,7 +132,6 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | **1** | Equity-screener EPS field merge |  |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | **3** | Concurrency-safe LiteLLM params, git workspace validation, UTF-8 logs | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) Serialize LiteLLM `modify_params` updates with an RLock so concurrent completions do not leak global parameter state<br>[#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) Validate git workspaces with `git rev-parse --git-dir`, so a broken nested repo can't crash `/api/git/changes`. |
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | **1** | SciCode answer extraction from content blocks |  |
-| [langfuse](https://github.com/langfuse/langfuse) (35.2k★) | **1** | OTel trace export: int64 fields serialized as strings per protobuf JSON |  |
 | [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) (17.5k★) | **1** | Registry entry for the dsh-tool-reading-map and dsh-tool-radar plugins |  |
 | [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | Model download safety: tar extraction rejects unsafe paths |  |
 
@@ -1120,7 +1120,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 ### 开源贡献
 
-上游 65 个项目共 465 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
+上游 65 个项目共 468 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
@@ -1142,8 +1142,8 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | open-tabs 宿主 RPC 挂掉时文件搜索仍可用 |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | 团队运行权限继承、Windows 子进程窗口、skill 来源 | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) team run 里继承 leader 的权限规则，delegated agent 守着和 leader 一样的 workspace、文件访问约束。<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | **6** | 编译器语义：fp8 算术提升、top_k 边界、AxisInfo 正确性、调用图环安全 |  |
-| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | 监控接线：特征值记录从未落日志 |  |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **19** | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) 空 token 输入的 GLEU 评分返回 0 分，不再报错<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
+| [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | 监控接线：特征值记录从未落日志 |  |
 | [goose](https://github.com/aaif-goose/goose) (53.3k★) | **3** | 遥测导出可靠性、skill 路径展示、桌面快捷键 |  |
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | **1** | 上报生效中的 Blaxel 超时而非默认值 |  |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **30** | provider 解析与评测完整性：reasoning 块、perplexity 丢样本、流式写盘崩溃 | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) 修复 OpenAI-compatible 响应里的 OpenRouter `reasoning_details`：解析为可读 reasoning 文本，而不是暴露 Python repr<br>[#5414](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5414) 修复 perplexity() 与 target_perplexity() 在极端 logprob 下因 OverflowError 静默丢样本：exp 溢出改为饱和钳制，整批样本不再被跳过<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。 |
@@ -1172,6 +1172,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | **2** | autotuner 空输入崩溃与 CUTLASS 头文件编译修复 | [#2756](https://github.com/flashinfer-ai/flashinfer/pull/2756) 修复 autotuner 在输入 tensor 为 `None` 时崩溃（fixes #2749） |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | **3** | Vercel AI 动态工具部件接纳、completions penalty 透传 |  |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | **4** | Docling 响应解包、文档站深色主题、PostgreSQL search_path 探测 | [#3031](https://github.com/HKUDS/LightRAG/pull/3031) 从 Docling 异步结果 envelope 里抽出 Markdown 正文，RAG chunk 拿到干净文本，不混 JSON/base64 噪声。 |
+| [langfuse](https://github.com/langfuse/langfuse) (35.2k★) | **1** | OTel trace 导出：int64 字段按字符串序列化，符合 protobuf JSON 约定 |  |
 | [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | **4** | 奠基 PR：测试/CI/模板、可插拔 TaskStore、Gemini CLI 支持 | [#1](https://github.com/HKUDS/ClawTeam/pull/1) 首个 PR：122 个测试、CI、团队模板、config 修复、任务耗时追踪<br>[#40](https://github.com/HKUDS/ClawTeam/pull/40) 可插拔 TaskStore：将任务持久化抽取为可替换的后端抽象层 |
 | [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | **1** | TUI 底部状态栏自定义 | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) 通过 status_line 配置自定义 TUI 底部状态栏（仿 codex / claude code 的 footer 形态） |
 | [OpenAI Python SDK](https://github.com/openai/openai-python) (31.6k★) | **1** | 有界的 vector-store 轮询与客户端生命周期边界 | [#3401](https://github.com/openai/openai-python/pull/3401) 给 vector-store 文件轮询加上界，卡住的上传不再让客户端永远空转 |
@@ -1186,7 +1187,6 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | **1** | 股票筛选器 EPS 字段粘连 |  |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | **3** | 并发安全的 LiteLLM 参数、git 工作区校验、UTF-8 日志 | [#3248](https://github.com/OpenHands/software-agent-sdk/pull/3248) 用 RLock 串行化 LiteLLM `modify_params` 的保存、设置和恢复，避免并发 completion 泄漏全局参数状态<br>[#3247](https://github.com/OpenHands/software-agent-sdk/pull/3247) 用 `git rev-parse --git-dir` 校验 git workspace，坏掉的嵌套 repo 打不崩 `/api/git/changes`。 |
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | **1** | 从内容块提取 SciCode 答案 |  |
-| [langfuse](https://github.com/langfuse/langfuse) (35.2k★) | **1** | OTel trace 导出：int64 字段按字符串序列化，符合 protobuf JSON 约定 |  |
 | [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) (17.5k★) | **1** | 插件索引收录：dsh-tool-reading-map 与 dsh-tool-radar |  |
 | [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | 模型下载安全：tar 解包拒绝不安全路径 |  |
 
