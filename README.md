@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 468+ merged upstream PRs, with fixes in Mooncake (44 merged), vLLM (13 merged), Vibe-Trading (47 merged), Qwen Code (56 merged), Microsoft Agent Framework (33 merged), deer-flow (19 merged), PyTorch (11 merged), AstrBot (34 merged), openclaw (7 merged), promptfoo (19 merged), Inspect AI (30 merged), and Google ADK (10 merged).
+- 469+ merged upstream PRs, with fixes in Mooncake (44 merged), vLLM (14 merged), Vibe-Trading (47 merged), Qwen Code (56 merged), Microsoft Agent Framework (33 merged), deer-flow (19 merged), PyTorch (11 merged), AstrBot (34 merged), openclaw (7 merged), promptfoo (19 merged), Inspect AI (30 merged), and Google ADK (10 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -65,13 +65,13 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 ### Open Source Contributions
 
-468 merged PRs across 65 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
+469 merged PRs across 65 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | **44** | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) Batch reads with a duplicate key handed back the first occurrence's never-written buffer as success; each unique key now transfers once and its verified bytes fan out to every duplicate with device-aware copies<br>[#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) Self-heal dangling LOCAL_DISK replicas in `Client::Put`: a put onto a key left with only client-local disk replicas evicts them and retries cleanly, with BatchPut probing and evicting the already-exists subset in one pass. |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | **47** | Portfolio analytics and monitor-verdict pipeline; fail-closed live-trading gates; backtest accounting correctness (shorts, corporate actions, T+1) | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) Cash-dividend journal rows were never parsed, so dividends paid into the shadow account read as flat real PnL; they are booked properly now<br>[#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) Persist the flatten latch across runner restarts so a reboot cannot replay the kill-switch sweep and flip the account<br>[#1311](https://github.com/HKUDS/Vibe-Trading/pull/1311) Model short lots in FIFO pairing and restate legs to one caliber across splits and dividends, so short-side PnL stops double-counting borrowed exposure |
-| [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | **13** | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API `instructions` were leaking across turns through the `previous_response_id` chain.<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals.<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
+| [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | **14** | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API `instructions` were leaking across turns through the `previous_response_id` chain.<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals.<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.8k★) | **56** | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories.<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`.<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.5k★) | **33** | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools | [#7289](https://github.com/microsoft/agent-framework/pull/7289) Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) Handoff was mutating message roles in place, so a retry leaked the change; reuse sanitized copies instead.<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) Run synchronous Python tools off the event loop so a blocking call stops freezing concurrent agent work. |
 | [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | **19** | Concurrency and checkpoint correctness: thread-creation races, session-pool lifecycle, channel protocol limits | [#3800](https://github.com/bytedance/deer-flow/pull/3800) Keep `create_thread` idempotent when a concurrent insert loses the race, so a chat cannot end up with duplicate threads.<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) Fork-restored checkpoints deliver the sandbox channel still wrapped in langgraph `Overwrite`; unified one unwrap helper across the sync/async init paths and the sibling readers<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) Cap WeCom outbound content at the 20480-byte protocol limit: proactive pushes split into ordered chunks with a refcounted per-chat send lock, so long pushes stop being rejected and concurrent sends stop interleaving |
@@ -187,7 +187,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 13 merged vLLM PRs</summary>
+<summary>All 14 merged vLLM PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -204,6 +204,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | [#45807](https://github.com/vllm-project/vllm/pull/45807) | Anthropic-compatible streaming now reports the stop_reason when a stop sequence actually fired, instead of leaving clients guessing |
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | [#49996](https://github.com/vllm-project/vllm/pull/49996) | Structured output: reject string schemas mixing `pattern`/`format` with length bounds at validation time with a clean 400, since xgrammar silently drops the bounds from the grammar |
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | [#59565](https://github.com/vllm-project/vllm/pull/59565) | Size the GLM-5.3 image encoder cache from the exact 8000-token ceiling instead of the nearest aligned square (7921 of 8000), so ordinary non-square images stop being refused with HTTP 400 at serving time |
+| [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | [#59859](https://github.com/vllm-project/vllm/pull/59859) | Reuse the item ids already streamed in `output_item.*` events when rebuilding the final harmony response, so strict clients stop dropping the stream when `response.completed` arrives with freshly minted ids |
 
 </details>
 <details>
@@ -1075,7 +1076,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 468+ 个上游 PR 已 merged，其中 Mooncake（44 个）、vLLM（13 个）、Vibe-Trading（47 个）、Qwen Code（56 个）、Microsoft Agent Framework（33 个）、deer-flow（19 个）、PyTorch（11 个）、AstrBot（34 个）、openclaw（7 个）、promptfoo（19 个）、Inspect AI（30 个）、Google ADK（10 个）。
+- 469+ 个上游 PR 已 merged，其中 Mooncake（44 个）、vLLM（14 个）、Vibe-Trading（47 个）、Qwen Code（56 个）、Microsoft Agent Framework（33 个）、deer-flow（19 个）、PyTorch（11 个）、AstrBot（34 个）、openclaw（7 个）、promptfoo（19 个）、Inspect AI（30 个）、Google ADK（10 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1120,13 +1121,13 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 ### 开源贡献
 
-上游 65 个项目共 468 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
+上游 65 个项目共 469 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | **44** | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) 批量读里出现重复 key 时，第一次出现的位置原本拿着从未写入的缓冲区返回成功；现在每个唯一 key 只传输一次，验证过的字节经设备感知拷贝扇出到每个重复目标<br>[#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) `Client::Put` 自愈悬挂 LOCAL_DISK 副本：目标 key 只剩客户端本地磁盘副本时自动逐出并干净重试，BatchPut 对已存在子集一次探测加一次批量逐出 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | **47** | 组合分析与监视器判定流水线；实盘 fail-closed 门禁；回测账务正确性（空头、公司行动、T+1） | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) 现金股息的 journal 行一直没被解析，派息进 shadow 账户后实盘 PnL 读成平的；现在正确入账<br>[#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) flatten latch 持久化绑定 halt episode：重启不再整轮重放扫仓把账户翻空<br>[#1311](https://github.com/HKUDS/Vibe-Trading/pull/1311) FIFO 配对里显式建模空头批次，拆股/分红时把多空腿重述到同一口径，空头侧 PnL 不再重复计借入敞口 |
-| [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | **13** | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
+| [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | **14** | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.8k★) | **56** | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.5k★) | **33** | agent 循环边界：消息 role 原地改泄漏、每轮钩子、阻塞工具 | [#7289](https://github.com/microsoft/agent-framework/pull/7289) turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) handoff 原地改了 message 的 role，重试复用时把改动泄漏出去了，改成复用消毒过的副本。<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) 把同步的 Python 工具挪出事件循环跑，阻塞型调用不再冻住并发的 agent 任务。 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | **19** | 并发与 checkpoint 正确性：建线程竞态、会话池生命周期、fork 恢复、渠道协议上限 | [#3800](https://github.com/bytedance/deer-flow/pull/3800) 让 `create_thread` 在并发 insert 输掉竞争时保持幂等，避免一个聊天产生重复 thread。<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) fork 恢复的检查点把 sandbox channel 以 langgraph `Overwrite` 包装态送达，sync/async 初始化路径和 sibling readers 统一走一个解包 helper<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) WeCom 出站内容封顶在 20480 字节协议上限：主动推送按序分块并给每个聊天配 refcount 发送锁，长推送不再被协议拒绝、并发发送不再交错 |
@@ -1243,7 +1244,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 13 个已合并的 vLLM PR</summary>
+<summary>全部 14 个已合并的 vLLM PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
@@ -1259,6 +1260,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | [#44821](https://github.com/vllm-project/vllm/pull/44821) | 给 DeepSeek V4 MTP projection layers 补 prefix，让 compressed-tensors 加载 draft model 时能匹配 artifact 侧 target / ignore 规则 |
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | [#49996](https://github.com/vllm-project/vllm/pull/49996) | 结构化输出：string schema 混用 `pattern`/`format` 与长度界定时在校验期直接回 400，此前 xgrammar 会把长度界定静默丢出语法 |
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | [#59565](https://github.com/vllm-project/vllm/pull/59565) | GLM-5.3 图像编码缓存按 8000 token 上限精确取尺寸：此前沿用 GLM-4V 的方形探测只覆盖 7921，普通非方形图（手机照片、4K 帧、A4 扫描件）在 serving 时直接吃 HTTP 400 |
+| [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | [#59859](https://github.com/vllm-project/vllm/pull/59859) | Responses API 流式重建最终 harmony 响应时复用 `output_item.*` 事件里已流出的 item id：此前新铸 id 与流事件对不上，严格客户端直接断流 |
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | [#45807](https://github.com/vllm-project/vllm/pull/45807) | Anthropic 兼容流式在 stop_sequence 真正命中时回填 stop_reason，客户端不再靠猜 |
 
 </details>
