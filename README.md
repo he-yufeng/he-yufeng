@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 485+ merged upstream PRs, with fixes in Mooncake (47 merged), vLLM (14 merged), Vibe-Trading (51 merged), Qwen Code (56 merged), Microsoft Agent Framework (34 merged), deer-flow (21 merged), PyTorch (11 merged), AstrBot (36 merged), openclaw (7 merged), promptfoo (20 merged), Inspect AI (30 merged), Triton (7 merged), and Google ADK (10 merged).
+- 486+ merged upstream PRs, with fixes in Mooncake (47 merged), vLLM (14 merged), Vibe-Trading (51 merged), Qwen Code (56 merged), Microsoft Agent Framework (34 merged), deer-flow (21 merged), PyTorch (11 merged), AstrBot (36 merged), openclaw (7 merged), promptfoo (21 merged), Inspect AI (30 merged), Triton (7 merged), and Google ADK (10 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -25,7 +25,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 | Project | Stars | What it is |
 |---------|:-----:|------------|
-| [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.7k+ | 512K lines of Claude Code distilled to a 1,309-line engine inside 2,658 lines of Python: every key architectural pattern, runnable, any LLM. 8 architecture deep-dive articles. |
+| [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.8k+ | 512K lines of Claude Code distilled to a 1,309-line engine inside 2,658 lines of Python: every key architectural pattern, runnable, any LLM. 8 architecture deep-dive articles. |
 | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | Open-source DeepWiki alternative: CLI/browser wiki generation with knowledge cards and grounded multi-turn chat, PageRank file ranking, Mermaid diagrams, and reading guides. |
 | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, plain-English explanations. |
@@ -37,7 +37,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 | Area | Project | Stars | Notes |
 |------|---------|:-----:|-------|
-| Coding agents / evals | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.7k+ | 512K lines of Claude Code → a 1,309-line engine inside 2,658 lines of Python. Every key architectural pattern, runnable. Any LLM. 8 architecture deep-dive articles. |
+| Coding agents / evals | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.8k+ | 512K lines of Claude Code → a 1,309-line engine inside 2,658 lines of Python. Every key architectural pattern, runnable. Any LLM. 8 architecture deep-dive articles. |
 | Applied agents | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
 | Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | Open-source DeepWiki alternative: CLI/browser wiki generation with knowledge cards and grounded multi-turn chat, PageRank file ranking, Mermaid diagrams, and reading guides. |
 | Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, and plain-English explanations. |
@@ -65,7 +65,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 ### Open Source Contributions
 
-485 merged PRs across 67 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
+486 merged PRs across 67 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -83,10 +83,10 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | **1** | AutoProcessor hub-kwarg passthrough |  |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | **1** | Settings persistence: keep custom LLM base URLs | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) Keep a custom LLM base URL when editing basic model settings, so a saved profile stops silently falling back to the provider default. |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | **3** | Self-host scrape paths: interact errors, auth chunk retention, batch dict responses |  |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **21** | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) Reject out-of-range trace-span-duration percentiles instead of silently computing garbage<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) Score tokenless GLEU inputs as zero instead of crashing<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) Avoid crashing on an empty `choices` array when reading Azure logprobs |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **2** | Backend crashes: hybrid attention with speculative decoding, diffusers pickling |  |
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | File search survives the open-tabs host RPC being down |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | Team-run permission inheritance, Windows subprocess windows, skill sourcing | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) Inherit the leader's permission rules in team runs, so delegated agents keep the same workspace and file-access limits.<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **20** | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) Reject out-of-range trace-span-duration percentiles instead of silently computing garbage<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) Score tokenless GLEU inputs as zero instead of crashing<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) Avoid crashing on an empty `choices` array when reading Azure logprobs |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | **7** | Compiler semantics: fp8 arithmetic promotion, top_k edge cases, AxisInfo correctness, call-graph cycle safety |  |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | Monitor wiring: eigenvalue records never landed in logs |  |
 | [goose](https://github.com/aaif-goose/goose) (53.3k★) | **3** | Telemetry export reliability, skill path display, desktop shortcuts |  |
@@ -623,7 +623,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 20 merged promptfoo PRs</summary>
+<summary>All 21 merged promptfoo PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -631,6 +631,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11320](https://github.com/promptfoo/promptfoo/pull/11320) | Support comma-separated OR values in `--filter-metadata`, so one flag can match any of several values for the same metadata key |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11004](https://github.com/promptfoo/promptfoo/pull/11004) | Honor an explicitly configured redteamProvider in the iterative, crescendo and iterative:tree attack strategies instead of silently falling back to the default provider |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11445](https://github.com/promptfoo/promptfoo/pull/11445) | Report redteam targets that omit output or return null/undefined as integration errors instead of scoring them successful; literal "null"/"undefined" strings and genuine refusals stay gradable |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10978](https://github.com/promptfoo/promptfoo/pull/10978) | Honor an explicitly configured redteamProvider in the custom attack strategy instead of silently falling back to the default provider |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10904](https://github.com/promptfoo/promptfoo/pull/10904) | Never invert grader failures on not-classifier / not-search-rubric: a grader that itself errored was inverted into a pass, so a broken rubric read as a pass |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10634](https://github.com/promptfoo/promptfoo/pull/10634) | Assert the Claude Agent SDK MCP adapters omit `env` entirely when a stdio server has no environment map, instead of emitting `env: undefined` |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10665](https://github.com/promptfoo/promptfoo/pull/10665) | Recognize OpenAI Responses-API function_call items in the tool-call F1 scorer, so those payloads stop scoring as zero tool calls |
@@ -1108,14 +1109,14 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 485+ 个上游 PR 已 merged，其中 Mooncake（47 个）、vLLM（14 个）、Vibe-Trading（51 个）、Qwen Code（56 个）、Microsoft Agent Framework（34 个）、deer-flow（21 个）、PyTorch（11 个）、AstrBot（36 个）、openclaw（7 个）、promptfoo（20 个）、Inspect AI（30 个）、Triton（7 个）、Google ADK（10 个）。
+- 486+ 个上游 PR 已 merged，其中 Mooncake（47 个）、vLLM（14 个）、Vibe-Trading（51 个）、Qwen Code（56 个）、Microsoft Agent Framework（34 个）、deer-flow（21 个）、PyTorch（11 个）、AstrBot（36 个）、openclaw（7 个）、promptfoo（21 个）、Inspect AI（30 个）、Triton（7 个）、Google ADK（10 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
 
 | 项目 | Stars | 简介 |
 |------|:-----:|------|
-| [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.7k+ | Claude Code 51万行源码蒸馏成 1,309 行引擎、整包 2,658 行 Python，关键架构模式全部可跑，支持任意大模型，附 8 篇架构导读。 |
+| [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.8k+ | Claude Code 51万行源码蒸馏成 1,309 行引擎、整包 2,658 行 Python，关键架构模式全部可跑，支持任意大模型，附 8 篇架构导读。 |
 | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化、职位结构化。 |
 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | 开源版 DeepWiki：CLI/浏览器生成代码库 wiki，带知识卡片和基于源码的多轮问答，PageRank 文件排序、Mermaid 图、阅读导览。 |
 | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | 签合同前让 AI agent 先排雷：不公平条款、缺失保护、人话解释。 |
@@ -1127,7 +1128,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 | 方向 | 项目 | Stars | 简介 |
 |------|------|:-----:|------|
-| Coding agents / 评测 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.7k+ | Claude Code 51万行源码 → 1,309 行引擎、整包 2,658 行 Python 重写，支持任意大模型，附 8 篇架构导读。 |
+| Coding agents / 评测 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.8k+ | Claude Code 51万行源码 → 1,309 行引擎、整包 2,658 行 Python 重写，支持任意大模型，附 8 篇架构导读。 |
 | 应用型 Agent | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化和岗位结构化。 |
 | 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 200+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，知识卡片+基于源码的多轮问答，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
 | 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI 合同审查 Agent，签字前帮你找红旗条款、不公平约定和缺失保护。 |
@@ -1153,7 +1154,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 ### 开源贡献
 
-上游 67 个项目共 485 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
+上游 67 个项目共 486 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
@@ -1171,10 +1172,10 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | **1** | AutoProcessor 丢失 hub 参数透传 |  |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | **1** | 设置持久化：保留自定义 LLM base URL | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) 编辑 basic model 设置时保留自定义的 LLM base URL，存下来的 profile 不再静默回退到 provider 默认 endpoint。 |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | **3** | 自托管抓取链路：interact 报错、auth 块保留、批量 dict 响应 |  |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **21** | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) 空 token 输入的 GLEU 评分返回 0 分，不再报错<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **2** | 后端崩溃修复：混合注意力撞投机解码、diffusers 序列化 |  |
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | open-tabs 宿主 RPC 挂掉时文件搜索仍可用 |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | 团队运行权限继承、Windows 子进程窗口、skill 来源 | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) team run 里继承 leader 的权限规则，delegated agent 守着和 leader 一样的 workspace、文件访问约束。<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **20** | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) 空 token 输入的 GLEU 评分返回 0 分，不再报错<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | **7** | 编译器语义：fp8 算术提升、top_k 边界、AxisInfo 正确性、调用图环安全 |  |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | 监控接线：特征值记录从未落日志 |  |
 | [goose](https://github.com/aaif-goose/goose) (53.3k★) | **3** | 遥测导出可靠性、skill 路径展示、桌面快捷键 |  |
@@ -1714,7 +1715,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 20 个已合并的 promptfoo PR</summary>
+<summary>全部 21 个已合并的 promptfoo PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
@@ -1722,6 +1723,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11320](https://github.com/promptfoo/promptfoo/pull/11320) | `--filter-metadata` 支持逗号分隔的 OR 取值，一个 flag 可匹配同一 metadata key 的多个值中的任意一个 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11004](https://github.com/promptfoo/promptfoo/pull/11004) | 显式配置的 redteamProvider 在 iterative、crescendo、iterative:tree 三条攻击策略中生效，不再静默回退到默认 provider |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11445](https://github.com/promptfoo/promptfoo/pull/11445) | redteam 目标缺 output 或返回 null/undefined 时记为集成错误，不再判成功；字面 "null"/"undefined" 字符串与真实拒答仍正常评分 |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10978](https://github.com/promptfoo/promptfoo/pull/10978) | 显式配置的 redteamProvider 在 custom 攻击策略中同样生效，不再静默回退到默认 provider |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10904](https://github.com/promptfoo/promptfoo/pull/10904) | not-classifier / not-search-rubric 不再反转评分器失败：评分器自己出错的条目曾被反转为通过，坏 rubric 读起来像通过 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10634](https://github.com/promptfoo/promptfoo/pull/10634) | 断言 Claude Agent SDK 的 MCP 适配器在 stdio server 无环境变量表时整体省略 `env` 字段，而不是发出 `env: undefined` |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10665](https://github.com/promptfoo/promptfoo/pull/10665) | tool-call-f1 评分器认出 OpenAI Responses API 的 function_call 条目，这类载荷不再被算成零次工具调用 |
