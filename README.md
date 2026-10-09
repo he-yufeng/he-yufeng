@@ -33,7 +33,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | AI code reader for non-programmers: plain-language file guides, hover annotations, a terminology dictionary, Q&A, and natural-language edits. |
 
 <details>
-<summary>All projects (22)</summary>
+<summary>All projects (21)</summary>
 
 | Area | Project | Stars | Notes |
 |------|---------|:-----:|-------|
@@ -1123,7 +1123,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | 给非程序员看的 AI 代码阅读器：大白话文件导读、悬停注解、术语词典、问答、自然语言改代码。 |
 
 <details>
-<summary>全部项目（22 个）</summary>
+<summary>全部项目（21 个）</summary>
 
 | 方向 | 项目 | Stars | 简介 |
 |------|------|:-----:|------|
