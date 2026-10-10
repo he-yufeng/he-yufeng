@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 500+ merged upstream PRs, with fixes in Mooncake (49 merged), vLLM (14 merged), Vibe-Trading (55 merged), Qwen Code (56 merged), Microsoft Agent Framework (35 merged), deer-flow (22 merged), PyTorch (11 merged), AstrBot (36 merged), openclaw (7 merged), promptfoo (24 merged), Inspect AI (30 merged), Triton (7 merged), and Google ADK (10 merged).
+- 500+ merged upstream PRs, with fixes in Mooncake (50 merged), vLLM (14 merged), Vibe-Trading (55 merged), Qwen Code (56 merged), Microsoft Agent Framework (35 merged), deer-flow (22 merged), AstrBot (36 merged), openclaw (7 merged), promptfoo (24 merged), Inspect AI (30 merged), Triton (7 merged), Google ADK (16 merged), and PyTorch (1 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -69,14 +69,14 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | **49** | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) Batch reads with a duplicate key handed back the first occurrence's never-written buffer as success; each unique key now transfers once and its verified bytes fan out to every duplicate with device-aware copies<br>[#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) Self-heal dangling LOCAL_DISK replicas in `Client::Put`: a put onto a key left with only client-local disk replicas evicts them and retries cleanly, with BatchPut probing and evicting the already-exists subset in one pass. |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | **50** | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) Batch reads with a duplicate key handed back the first occurrence's never-written buffer as success; each unique key now transfers once and its verified bytes fan out to every duplicate with device-aware copies<br>[#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) Self-heal dangling LOCAL_DISK replicas in `Client::Put`: a put onto a key left with only client-local disk replicas evicts them and retries cleanly, with BatchPut probing and evicting the already-exists subset in one pass. |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | **55** | Portfolio analytics and monitor-verdict pipeline; fail-closed live-trading gates; backtest accounting correctness (shorts, corporate actions, T+1) | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) Cash-dividend journal rows were never parsed, so dividends paid into the shadow account read as flat real PnL; they are booked properly now<br>[#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) Persist the flatten latch across runner restarts so a reboot cannot replay the kill-switch sweep and flip the account<br>[#1311](https://github.com/HKUDS/Vibe-Trading/pull/1311) Model short lots in FIFO pairing and restate legs to one caliber across splits and dividends, so short-side PnL stops double-counting borrowed exposure |
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | **14** | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API `instructions` were leaking across turns through the `previous_response_id` chain.<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals.<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.8k★) | **56** | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories.<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`.<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.5k★) | **35** | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools | [#7289](https://github.com/microsoft/agent-framework/pull/7289) Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) Handoff was mutating message roles in place, so a retry leaked the change; reuse sanitized copies instead.<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) Run synchronous Python tools off the event loop so a blocking call stops freezing concurrent agent work. |
 | [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | **22** | Concurrency and checkpoint correctness: thread-creation races, session-pool lifecycle, channel protocol limits, batch pause semantics | [#3800](https://github.com/bytedance/deer-flow/pull/3800) Keep `create_thread` idempotent when a concurrent insert loses the race, so a chat cannot end up with duplicate threads.<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) Fork-restored checkpoints deliver the sandbox channel still wrapped in langgraph `Overwrite`; unified one unwrap helper across the sync/async init paths and the sibling readers<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) Cap WeCom outbound content at the 20480-byte protocol limit: proactive pushes split into ordered chunks with a refcounted per-chat send lock, so long pushes stop being rejected and concurrent sends stop interleaving |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | **36** | Release asset freshness, reasoning-turn 400s on strict providers, scheduler and provider failure propagation, retired embedding defaults | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) Prefer bundled dashboard assets over a stale data dist, so a release stops serving an outdated WebUI<br>[#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) Apply empty-assistant message filter to streaming OpenAI path: strict providers no longer 400 on reasoning-only turns<br>[#9987](https://github.com/AstrBotDevs/AstrBot/pull/9987) Propagate the cron agent runner's ERROR terminal state so a failed scheduled run is recorded failed with its error instead of completed-with-null |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | **11** | Kernel/compiler correctness: wrong-device dispatch, silent gradient corruption, UB | [#188027](https://github.com/pytorch/pytorch/pull/188027) Initialize `r` in the Laguerre and Legendre polynomial helpers so they stop returning uninitialized memory on the boundary path (shows as Closed; landed via pytorchmergebot)<br>[#186779](https://github.com/pytorch/pytorch/pull/186779) Error on unsupported batch norm third derivatives instead of silently returning wrong gradients (shows as Closed; landed via pytorchmergebot)<br>[#188229](https://github.com/pytorch/pytorch/pull/188229) `avg_pool3d` backward silently corrupted gradients on inputs over `INT_MAX` elements: the atomic scatter kernel computed offsets and bounds as 32-bit `int`; widened to 64-bit indexing (shows as Closed; landed via pytorchmergebot) |
+| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | **1** | Inductor pattern-match correctness | [#196943](https://github.com/pytorch/pytorch/pull/196943) The `cat_splitwithsizes`/`splitwithsizes_cat` post-grad patterns compared dims with a plain `!=`, so `cat(dim=1)` + `split_with_sizes(dim=-1)` on a 2D input was rejected and the redundant pair stayed in the graph; both dims are now normalized against the input rank before comparing (landed via pytorchmergebot; shows as Closed on GitHub) |
 | [OpenClaw](https://github.com/openclaw/openclaw) (389.6k★) | **7** | Session-store fail-closed sweeps, auth-failure visibility, surrogate-safe text | [#119127](https://github.com/openclaw/openclaw/pull/119127) Keep the mtime media sweep out of the managed-outgoing tree and fail closed when the session store is unreadable, so global GC can never delete live user originals (co-built with the project owner after his P0 review) |
 | [opencode](https://github.com/anomalyco/opencode) (204.9k★) | **1** | MCP OAuth callback bound to IPv4 loopback |  |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | **6** | API robustness: unbounded calls get timeouts, up-front validation, atomic windows | [#39953](https://github.com/langgenius/dify/pull/39953) Bound the TiDB Cloud API calls that had no timeout, so a hanging cluster endpoint can't stall vdb operations forever |
@@ -93,7 +93,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | **1** | Report effective Blaxel timeouts instead of defaults |  |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **30** | Provider parsing and eval integrity: reasoning blocks, perplexity sample loss, streaming writer crash | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) Parse OpenRouter `reasoning_details` in OpenAI-compatible responses instead of surfacing Python repr blocks<br>[#5414](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5414) perplexity() and target_perplexity() no longer lose samples to OverflowError on extreme logprobs: exp overflow saturates instead of skipping whole batches<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) Route the realtime streaming sample writer through the same fallback JSON normalization as the regular log path, so sandbox objects that don't serialize cleanly can't crash an eval mid-stream |
 | [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | **1** | Proxy logging: verbose logger sources missing from INFO output |  |
-| [Google ADK](https://github.com/google/adk-python) (21.2k★) | **1** | Judge criteria honoring intermediate responses |  |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | **16** | Agent runtime correctness: eval metadata, live streaming, context caching, MCP header auth | [#6067](https://github.com/google/adk-python/pull/6067) Fingerprint the cacheable context prefix so cached prompts stay hit-safe across agent config changes<br>[#6009](https://github.com/google/adk-python/pull/6009) Keep streaming tool yields from completing turns early in live sessions (landed via copybara; GitHub shows Closed) |
 | [Agno](https://github.com/agno-agi/agno) (41.8k★) | **1** | Tool-argument whitespace preservation with sentinel normalization |  |
 | [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | **6** | Training-prep and sampling robustness: DPO crashes, 0-fps video, CI repair | [#9642](https://github.com/modelscope/ms-swift/pull/9642) Empty `rejected_messages` now fail fast in dataset prep instead of crashing DPO mid-training.<br>[#9816](https://github.com/modelscope/ms-swift/pull/9816) `swift sample` crashed engine construction when `engine_kwargs` carried `torch_dtype` (the workaround while the flag was ignored); pop it before the splat so the flag always wins<br>[#9750](https://github.com/modelscope/ms-swift/pull/9750) A 0-fps `get_avg_fps()` on broken video metadata made `range(0, len(vr), 0)` raise before any frame was read in MiniCPM-V / mPLUG-Owl3 sampling; guard the sample step |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | **8** | Realtime voice plumbing: stream-retry recreation, provider status parsing, STT errors | [#6000](https://github.com/livekit/agents/pull/6000) Skip context replay on resumed realtime sessions so a resumed Gemini session stops re-reading its own history back as fresh turns |
@@ -138,10 +138,13 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | Model download safety: tar extraction rejects unsafe paths |  |
 
 <details>
-<summary>All 49 merged Mooncake PRs</summary>
+<summary>All 50 merged Mooncake PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#3806](https://github.com/kvcache-ai/Mooncake/pull/3806) | Restore the standby index tolerantly: ambiguous overlapping replicas are discarded with durable repair instead of failing the whole promotion |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4453](https://github.com/kvcache-ai/Mooncake/pull/4453) | Bound the handshake daemon's pending-notify queue so a stalled peer stops growing memory without bound |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4552](https://github.com/kvcache-ai/Mooncake/pull/4552) | Keep startup skew out of the queued-send progress timeout window so slow-starting ranks stop tripping the watchdog |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) | Batch reads with a duplicate key handed back the first occurrence's never-written buffer as success; each unique key now transfers once and its verified bytes fan out to every duplicate with device-aware copies |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#2404](https://github.com/kvcache-ai/Mooncake/pull/2404) | Fail Python initialization loudly when the chosen memory allocator's support is unavailable, instead of starting with a broken allocator and failing later |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink |
@@ -454,24 +457,6 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 11 merged PyTorch PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#187731](https://github.com/pytorch/pytorch/pull/187731) | `extract_scripts.py` numbered each extracted step with zero-padding one index off, so traced step files shifted out of order (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#192025](https://github.com/pytorch/pytorch/pull/192025) | Vectorized integer remainder in Inductor C++ codegen zeroed the divisor on padded tail lanes, producing div-by-zero under masking; keep tail divisors non-zero (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | Guard the CuTeDSL topk override against a non-current CUDA device so it stops dispatching on the wrong device (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#186779](https://github.com/pytorch/pytorch/pull/186779) | Error on unsupported batch norm third derivatives instead of silently returning wrong gradients (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#188027](https://github.com/pytorch/pytorch/pull/188027) | Initialize `r` in the Laguerre and Legendre polynomial helpers so they stop returning uninitialized memory on the boundary path (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#188229](https://github.com/pytorch/pytorch/pull/188229) | `avg_pool3d` backward silently corrupted gradients on inputs over `INT_MAX` elements: the atomic scatter kernel computed offsets and bounds as 32-bit `int`; widened to 64-bit indexing (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | Fix a `ValueError` in the `stale_issues` workflow's `parse_older_than` on non-leap years, where a naive Feb 29 offset crashed the run (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | Fix user-defined Triton kernel name mangling in the Inductor codegen so distinct kernels stop colliding in generated code (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#187860](https://github.com/pytorch/pytorch/pull/187860) | Route the empty-`src` check in `meta__transformer_encoder_layer_fwd` through `guard_or_false` so an unbacked symbolic `numel` under `torch.compile` no longer raises a data-dependent error (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | Remove the obsolete `setuptools` upper bound so builds resolve a current toolchain instead of pinning a stale one (shows as Closed; landed via pytorchmergebot) |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#187720](https://github.com/pytorch/pytorch/pull/187720) | Fix the `stale_issues` year cutoff clamping the day to the 28th in every month, so month-end batches land on the intended date (shows as Closed; landed via pytorchmergebot) |
-
-</details>
-<details>
 <summary>All 7 merged OpenClaw PRs</summary>
 
 | Project | PR | What I Fixed |
@@ -743,10 +728,26 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 1 merged Google ADK PRs</summary>
+<summary>All 16 merged Google ADK PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#6100](https://github.com/google/adk-python/pull/6100) | Preserve single-turn structured output instead of dropping it on the final response path (landed via copybara) |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5834](https://github.com/google/adk-python/pull/5834) | Include grounding metadata in the rubric judge prompt so grounded answers are scored with their evidence (landed via copybara) |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#6001](https://github.com/google/adk-python/pull/6001) | Collect eval state from workflow nodes so nested agents stop losing evaluation data (landed via copybara) |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#6106](https://github.com/google/adk-python/pull/6106) | Single-flight Discovery Engine mode detection so concurrent lookups stop racing the probe (landed via copybara) |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#6009](https://github.com/google/adk-python/pull/6009) | Keep streaming tool yields from completing turns early in live sessions (landed via copybara) |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#6105](https://github.com/google/adk-python/pull/6105) | Await async MCP header providers so authed MCP servers stop seeing missing headers (landed via copybara) |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#6008](https://github.com/google/adk-python/pull/6008) | Scope single-turn node inputs to their workflow branch so sibling branches no longer see each other's input (landed via copybara) |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#6067](https://github.com/google/adk-python/pull/6067) | Fingerprint the cacheable context prefix so cached prompts stay hit-safe across agent config changes (landed via copybara) |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5905](https://github.com/google/adk-python/pull/5905) | Forward thinking config to live sessions so reasoning settings stop being dropped on the live path (landed via copybara) |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5922](https://github.com/google/adk-python/pull/5922) | Preserve custom eval metadata through the eval pipeline (landed via copybara) |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5878](https://github.com/google/adk-python/pull/5878) | Handle failed inference results without invocations instead of crashing the eval runner (landed via copybara) |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#6066](https://github.com/google/adk-python/pull/6066) | Handle a missing agent name in readonly context instead of raising (landed via copybara) |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5956](https://github.com/google/adk-python/pull/5956) | Serialize LiteLlm graph models safely in the CLI (landed via copybara) |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5904](https://github.com/google/adk-python/pull/5904) | Clarify the missing Vertex AI extra error so installs stop failing cryptically (landed via copybara) |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5918](https://github.com/google/adk-python/pull/5918) | Allow the internal builder assistant app name (landed via copybara) |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5885](https://github.com/google/adk-python/pull/5885) | Add the skill script dir to sys.path so bundled skill scripts import cleanly (landed via copybara) |
 | [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5698](https://github.com/google/adk-python/pull/5698) | Include intermediate responses in `final_response_match_v2` judging when the criterion opts in |
 
 </details>
@@ -1120,7 +1121,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 500+ 个上游 PR 已 merged，其中 Mooncake（49 个）、vLLM（14 个）、Vibe-Trading（55 个）、Qwen Code（56 个）、Microsoft Agent Framework（35 个）、deer-flow（22 个）、PyTorch（11 个）、AstrBot（36 个）、openclaw（7 个）、promptfoo（24 个）、Inspect AI（30 个）、Triton（7 个）、Google ADK（10 个）。
+- 500+ 个上游 PR 已 merged，其中 Mooncake（50 个）、vLLM（14 个）、Vibe-Trading（55 个）、Qwen Code（56 个）、Microsoft Agent Framework（35 个）、deer-flow（22 个）、AstrBot（36 个）、openclaw（7 个）、promptfoo（24 个）、Inspect AI（30 个）、Triton（7 个）、Google ADK（16 个）、PyTorch（1 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1169,14 +1170,14 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | **49** | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) 批量读里出现重复 key 时，第一次出现的位置原本拿着从未写入的缓冲区返回成功；现在每个唯一 key 只传输一次，验证过的字节经设备感知拷贝扇出到每个重复目标<br>[#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) `Client::Put` 自愈悬挂 LOCAL_DISK 副本：目标 key 只剩客户端本地磁盘副本时自动逐出并干净重试，BatchPut 对已存在子集一次探测加一次批量逐出 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | **50** | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) 批量读里出现重复 key 时，第一次出现的位置原本拿着从未写入的缓冲区返回成功；现在每个唯一 key 只传输一次，验证过的字节经设备感知拷贝扇出到每个重复目标<br>[#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) `Client::Put` 自愈悬挂 LOCAL_DISK 副本：目标 key 只剩客户端本地磁盘副本时自动逐出并干净重试，BatchPut 对已存在子集一次探测加一次批量逐出 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | **55** | 组合分析与监视器判定流水线；实盘 fail-closed 门禁；回测账务正确性（空头、公司行动、T+1） | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) 现金股息的 journal 行一直没被解析，派息进 shadow 账户后实盘 PnL 读成平的；现在正确入账<br>[#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) flatten latch 持久化绑定 halt episode：重启不再整轮重放扫仓把账户翻空<br>[#1311](https://github.com/HKUDS/Vibe-Trading/pull/1311) FIFO 配对里显式建模空头批次，拆股/分红时把多空腿重述到同一口径，空头侧 PnL 不再重复计借入敞口 |
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | **14** | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.8k★) | **56** | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.5k★) | **35** | agent 循环边界：消息 role 原地改泄漏、每轮钩子、阻塞工具 | [#7289](https://github.com/microsoft/agent-framework/pull/7289) turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) handoff 原地改了 message 的 role，重试复用时把改动泄漏出去了，改成复用消毒过的副本。<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) 把同步的 Python 工具挪出事件循环跑，阻塞型调用不再冻住并发的 agent 任务。 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | **22** | 并发与 checkpoint 正确性：建线程竞态、会话池生命周期、fork 恢复、渠道协议上限、批次暂停语义 | [#3800](https://github.com/bytedance/deer-flow/pull/3800) 让 `create_thread` 在并发 insert 输掉竞争时保持幂等，避免一个聊天产生重复 thread。<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) fork 恢复的检查点把 sandbox channel 以 langgraph `Overwrite` 包装态送达，sync/async 初始化路径和 sibling readers 统一走一个解包 helper<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) WeCom 出站内容封顶在 20480 字节协议上限：主动推送按序分块并给每个聊天配 refcount 发送锁，长推送不再被协议拒绝、并发发送不再交错 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | **36** | 发版资源新鲜度、严格 provider 的 reasoning 回合 400、定时任务与 provider 失败如实上抛、退役 embedding 默认值 | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) 优先用打包进去的 dashboard 资产，而不是过期的 data dist，发版后不再展示旧前端<br>[#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) 修复 OpenAI streaming 路径复用 empty-assistant 过滤：reasoning-only 历史不再让严格 provider 返回 400<br>[#9987](https://github.com/AstrBotDevs/AstrBot/pull/9987) 把 cron agent runner 的 ERROR 终态传上去：定时任务失败如实记 failed 带错误信息，不再记成 completed 且 last_error 为空 |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | **11** | 算子与编译器正确性：错设备派发、梯度静默损坏、未初始化内存 | [#188027](https://github.com/pytorch/pytorch/pull/188027) 在 Laguerre / Legendre 多项式的辅助函数里初始化 `r`，避免边界路径返回未初始化内存（PR 显示 Closed，经 pytorchmergebot 合入）<br>[#186779](https://github.com/pytorch/pytorch/pull/186779) 不支持的 batch norm 三阶导改为显式报错，不再静默返回错误梯度（PR 显示 Closed，经 pytorchmergebot 合入）<br>[#188229](https://github.com/pytorch/pytorch/pull/188229) `avg_pool3d` backward 在超过 `INT_MAX` 元素的输入上静默算错梯度：atomic scatter kernel 用 32 位 `int` 算偏移和边界，改成 64 位索引（PR 显示 Closed，经 pytorchmergebot 合入） |
+| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | **1** | Inductor pattern 匹配正确性 | [#196943](https://github.com/pytorch/pytorch/pull/196943) `cat_splitwithsizes`/`splitwithsizes_cat` 后向 pattern 用裸 `!=` 比较 dim，2D 输入下 `cat(dim=1)` + `split_with_sizes(dim=-1)` 被拒、冗余对留在图里；现在先按输入 rank 归一化两个 dim 再比较（经 pytorchmergebot 落地，GitHub 显示 Closed） |
 | [OpenClaw](https://github.com/openclaw/openclaw) (389.6k★) | **7** | 会话存储失败即关的清扫、鉴权失败可见性、代理对安全文本 | [#119127](https://github.com/openclaw/openclaw/pull/119127) 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fail-closed，全域 GC 永不误删用户原件（owner P0 评审后与项目作者共建） |
 | [opencode](https://github.com/anomalyco/opencode) (204.9k★) | **1** | MCP OAuth 回调绑定 IPv4 loopback |  |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | **6** | API 健壮性：无超时调用加边界、前置校验、原子窗口 | [#39953](https://github.com/langgenius/dify/pull/39953) 给没有超时的 TiDB Cloud API 调用补上有界超时，集群端点挂起不再无限拖住 vdb 操作 |
@@ -1193,7 +1194,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | **1** | 上报生效中的 Blaxel 超时而非默认值 |  |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (2.6k★) | **30** | provider 解析与评测完整性：reasoning 块、perplexity 丢样本、流式写盘崩溃 | [#3902](https://github.com/UKGovernmentBEIS/inspect_ai/pull/3902) 修复 OpenAI-compatible 响应里的 OpenRouter `reasoning_details`：解析为可读 reasoning 文本，而不是暴露 Python repr<br>[#5414](https://github.com/UKGovernmentBEIS/inspect_ai/pull/5414) 修复 perplexity() 与 target_perplexity() 在极端 logprob 下因 OverflowError 静默丢样本：exp 溢出改为饱和钳制，整批样本不再被跳过<br>[#4167](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4167) 让实时流式 sample 写出走与常规日志路径相同的 fallback JSON 归一化，无法序列化的 sandbox 对象不再让评测中途崩掉。 |
 | [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | **1** | 代理日志：INFO 输出丢失 verbose logger 来源 |  |
-| [Google ADK](https://github.com/google/adk-python) (21.2k★) | **1** | 评判标准纳入中间响应 |  |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | **16** | Agent 运行时正确性：eval 元数据、live 流式、上下文缓存、MCP header 鉴权 | [#6067](https://github.com/google/adk-python/pull/6067) 给可缓存上下文前缀做指纹，agent 配置变化后缓存提示词不再错误命中<br>[#6009](https://github.com/google/adk-python/pull/6009) 阻止 live 会话里流式 tool yield 过早终结当前 turn（经 copybara 落地，GitHub 显示 Closed） |
 | [Agno](https://github.com/agno-agi/agno) (41.8k★) | **1** | 工具参数空白保留与哨兵值归一化 |  |
 | [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | **6** | 训练准备与采样健壮性：DPO 崩溃、0 fps 视频、CI 修复 | [#9642](https://github.com/modelscope/ms-swift/pull/9642) DPO 数据准备阶段遇到空 `rejected_messages` 直接快速失败，不用等训练跑到一半才崩。<br>[#9816](https://github.com/modelscope/ms-swift/pull/9816) `--torch_dtype` 失效期间用户只能靠 engine_kwargs 传 dtype，flag 修好后两边撞参数直接 TypeError；splat 前 pop 掉并让 flag 恒赢<br>[#9750](https://github.com/modelscope/ms-swift/pull/9750) 视频元数据损坏时 `get_avg_fps()` 返回 0，`range(0, len(vr), 0)` 在读到第一帧前就抛 ValueError；给 MiniCPM-V / mPLUG-Owl3 的采样步长加守卫 |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | **8** | 实时语音链路：流式重试重建、provider 状态解析、STT 错误透出 | [#6000](https://github.com/livekit/agents/pull/6000) 恢复的 Gemini realtime 会话跳过上下文重放，不再把自己的历史当新对话再读一遍 |
@@ -1238,10 +1239,13 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | 模型下载安全：tar 解包拒绝不安全路径 |  |
 
 <details>
-<summary>全部 49 个已合并的 Mooncake PR</summary>
+<summary>全部 50 个已合并的 Mooncake PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#3806](https://github.com/kvcache-ai/Mooncake/pull/3806) | standby 索引容错恢复：歧义重叠副本丢弃并留可持久修复记录，不再让整个 promotion 失败 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4453](https://github.com/kvcache-ai/Mooncake/pull/4453) | 给 handshake daemon 的 pending-notify 队列设上限，卡死的对端不再让内存无界增长 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4552](https://github.com/kvcache-ai/Mooncake/pull/4552) | 启动偏差不计入 queued-send 进度超时窗口，慢启动的 rank 不再误触 watchdog |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) | 批量读里出现重复 key 时，第一次出现的位置原本拿着从未写入的缓冲区返回成功；现在每个唯一 key 只传输一次，验证过的字节经设备感知拷贝扇出到每个重复目标 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#2404](https://github.com/kvcache-ai/Mooncake/pull/2404) | 所选内存分配器支持不可用时让 Python 初始化直接报错，不再带着坏分配器起到后面才崩 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) | GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信 |
@@ -1556,24 +1560,6 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 11 个已合并的 PyTorch PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#187731](https://github.com/pytorch/pytorch/pull/187731) | `extract_scripts.py` 给抽取的每个 step 编号时零填充错位一位，trace 的 step 文件序列整体错序（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#192025](https://github.com/pytorch/pytorch/pull/192025) | Inductor 向量化整数取余的 C++ codegen 在 padded 尾块上把除数清零，掩码下触发除零；保持尾块除数非零（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#188022](https://github.com/pytorch/pytorch/pull/188022) | 让 CuTeDSL 的 topk override 守住非当前 CUDA 设备，避免把工作分发到错误设备（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#186779](https://github.com/pytorch/pytorch/pull/186779) | 不支持的 batch norm 三阶导改为显式报错，不再静默返回错误梯度（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#188027](https://github.com/pytorch/pytorch/pull/188027) | 在 Laguerre / Legendre 多项式的辅助函数里初始化 `r`，避免边界路径返回未初始化内存（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#188229](https://github.com/pytorch/pytorch/pull/188229) | `avg_pool3d` backward 在超过 `INT_MAX` 元素的输入上静默算错梯度：atomic scatter kernel 用 32 位 `int` 算偏移和边界，改成 64 位索引（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#187643](https://github.com/pytorch/pytorch/pull/187643) | 修复 `stale_issues` workflow 的 `parse_older_than` 在非闰年崩溃：朴素的 2 月 29 日偏移会抛 `ValueError`（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#176100](https://github.com/pytorch/pytorch/pull/176100) | 修复 Inductor codegen 中用户自定义 Triton kernel 的名称修饰，避免不同 kernel 在生成代码里命名冲突（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#187860](https://github.com/pytorch/pytorch/pull/187860) | 把 `meta__transformer_encoder_layer_fwd` 里对空 `src` 的检查改走 `guard_or_false`，让 `torch.compile` 下 unbacked 符号 `numel` 不再抛数据依赖错误（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#187262](https://github.com/pytorch/pytorch/pull/187262) | 移除过时的 `setuptools` 版本上限，让构建解析到当前工具链而不是被钉在旧版本（PR 显示 Closed，经 pytorchmergebot 合入） |
-| [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | [#187720](https://github.com/pytorch/pytorch/pull/187720) | 修掉 `stale_issues` 按年截断时把日钳到 28 号的问题，月末批次落到正确日期（PR 显示 Closed，经 pytorchmergebot 合入） |
-
-</details>
-<details>
 <summary>全部 7 个已合并的 OpenClaw PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -1846,10 +1832,26 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 1 个已合并的 Google ADK PR</summary>
+<summary>全部 16 个已合并的 Google ADK PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#6100](https://github.com/google/adk-python/pull/6100) | 保住单轮 structured output，不再在最终响应路径上丢失（经 copybara 落地） |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5834](https://github.com/google/adk-python/pull/5834) | rubric judge 提示词纳入 grounding metadata，带证据的回答按证据评分（经 copybara 落地） |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#6001](https://github.com/google/adk-python/pull/6001) | 从 workflow 节点收集 eval 状态，嵌套 agent 不再丢评估数据（经 copybara 落地） |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#6106](https://github.com/google/adk-python/pull/6106) | Discovery Engine 模式探测改为 single-flight，并发查询不再竞争同一探针（经 copybara 落地） |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#6009](https://github.com/google/adk-python/pull/6009) | 阻止 live 会话里流式 tool yield 过早终结当前 turn（经 copybara 落地） |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#6105](https://github.com/google/adk-python/pull/6105) | await 异步 MCP header provider，带鉴权的 MCP 服务不再收到缺 header 的请求（经 copybara 落地） |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#6008](https://github.com/google/adk-python/pull/6008) | 单轮节点输入限定在本 workflow 分支，兄弟分支不再互相看见（经 copybara 落地） |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#6067](https://github.com/google/adk-python/pull/6067) | 给可缓存上下文前缀做指纹，agent 配置变化后缓存提示词不再错误命中（经 copybara 落地） |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5905](https://github.com/google/adk-python/pull/5905) | thinking config 透传到 live 会话，推理档位不再在 live 路径被丢（经 copybara 落地） |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5922](https://github.com/google/adk-python/pull/5922) | 自定义 eval 元数据穿过整条 eval 管线保留下来（经 copybara 落地） |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5878](https://github.com/google/adk-python/pull/5878) | 没有 invocation 的失败推理结果不再让 eval runner 崩溃（经 copybara 落地） |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#6066](https://github.com/google/adk-python/pull/6066) | readonly context 缺 agent name 时正常处理而不是抛错（经 copybara 落地） |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5956](https://github.com/google/adk-python/pull/5956) | CLI 里 LiteLlm graph 模型安全序列化（经 copybara 落地） |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5904](https://github.com/google/adk-python/pull/5904) | 缺 Vertex AI extra 的报错说人话，安装失败不再莫名其妙（经 copybara 落地） |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5918](https://github.com/google/adk-python/pull/5918) | 放行内部 builder assistant 的专用 app 名（经 copybara 落地） |
+| [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5885](https://github.com/google/adk-python/pull/5885) | skill 脚本目录加进 sys.path，内置 skill 脚本正常 import（经 copybara 落地） |
 | [Google ADK](https://github.com/google/adk-python) (21.2k★) | [#5698](https://github.com/google/adk-python/pull/5698) | 让 `final_response_match_v2` 在 criterion 选择开启时把 intermediate responses 纳入最终回答评判 |
 
 </details>
