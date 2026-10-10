@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 496+ merged upstream PRs, with fixes in Mooncake (47 merged), vLLM (14 merged), Vibe-Trading (55 merged), Qwen Code (56 merged), Microsoft Agent Framework (35 merged), deer-flow (22 merged), PyTorch (11 merged), AstrBot (36 merged), openclaw (7 merged), promptfoo (22 merged), Inspect AI (30 merged), Triton (7 merged), and Google ADK (10 merged).
+- 500+ merged upstream PRs, with fixes in Mooncake (49 merged), vLLM (14 merged), Vibe-Trading (55 merged), Qwen Code (56 merged), Microsoft Agent Framework (35 merged), deer-flow (22 merged), PyTorch (11 merged), AstrBot (36 merged), openclaw (7 merged), promptfoo (24 merged), Inspect AI (30 merged), Triton (7 merged), and Google ADK (10 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -65,11 +65,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 ### Open Source Contributions
 
-496 merged PRs across 67 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
+500 merged PRs across 67 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | **47** | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) Batch reads with a duplicate key handed back the first occurrence's never-written buffer as success; each unique key now transfers once and its verified bytes fan out to every duplicate with device-aware copies<br>[#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) Self-heal dangling LOCAL_DISK replicas in `Client::Put`: a put onto a key left with only client-local disk replicas evicts them and retries cleanly, with BatchPut probing and evicting the already-exists subset in one pass. |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | **49** | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) Batch reads with a duplicate key handed back the first occurrence's never-written buffer as success; each unique key now transfers once and its verified bytes fan out to every duplicate with device-aware copies<br>[#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) Self-heal dangling LOCAL_DISK replicas in `Client::Put`: a put onto a key left with only client-local disk replicas evicts them and retries cleanly, with BatchPut probing and evicting the already-exists subset in one pass. |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | **55** | Portfolio analytics and monitor-verdict pipeline; fail-closed live-trading gates; backtest accounting correctness (shorts, corporate actions, T+1) | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) Cash-dividend journal rows were never parsed, so dividends paid into the shadow account read as flat real PnL; they are booked properly now<br>[#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) Persist the flatten latch across runner restarts so a reboot cannot replay the kill-switch sweep and flip the account<br>[#1311](https://github.com/HKUDS/Vibe-Trading/pull/1311) Model short lots in FIFO pairing and restate legs to one caliber across splits and dividends, so short-side PnL stops double-counting borrowed exposure |
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | **14** | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API `instructions` were leaking across turns through the `previous_response_id` chain.<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals.<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.8k★) | **56** | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories.<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`.<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
@@ -83,7 +83,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | **1** | AutoProcessor hub-kwarg passthrough |  |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | **1** | Settings persistence: keep custom LLM base URLs | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) Keep a custom LLM base URL when editing basic model settings, so a saved profile stops silently falling back to the provider default. |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | **3** | Self-host scrape paths: interact errors, auth chunk retention, batch dict responses |  |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **22** | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) Reject out-of-range trace-span-duration percentiles instead of silently computing garbage<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) Score tokenless GLEU inputs as zero instead of crashing<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) Avoid crashing on an empty `choices` array when reading Azure logprobs |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **24** | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) Reject out-of-range trace-span-duration percentiles instead of silently computing garbage<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) Score tokenless GLEU inputs as zero instead of crashing<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) Avoid crashing on an empty `choices` array when reading Azure logprobs |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **2** | Backend crashes: hybrid attention with speculative decoding, diffusers pickling |  |
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | File search survives the open-tabs host RPC being down |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | Team-run permission inheritance, Windows subprocess windows, skill sourcing | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) Inherit the leader's permission rules in team runs, so delegated agents keep the same workspace and file-access limits.<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
@@ -138,7 +138,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | Model download safety: tar extraction rejects unsafe paths |  |
 
 <details>
-<summary>All 47 merged Mooncake PRs</summary>
+<summary>All 49 merged Mooncake PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -158,6 +158,8 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4107](https://github.com/kvcache-ai/Mooncake/pull/4107) | Report Redis error replies as failures in the metadata plugin: REDIS_REPLY_ERROR no longer passes as a silent successful write |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#3146](https://github.com/kvcache-ai/Mooncake/pull/3146) | Fix double free of UB/Barex slices on device-selection failure: queued slices were deallocated into the cache while `TransferTask` still owned them (sibling of the RDMA fix #3125) |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#3278](https://github.com/kvcache-ai/Mooncake/pull/3278) | Block SIGTERM/SIGINT for the graceful-shutdown watcher thread: a process-directed signal landing on the watcher suspended the only pipe reader and hung shutdown forever |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4453](https://github.com/kvcache-ai/Mooncake/pull/4453) | Cap the handshake daemon's pending-notify queue (default 1024, `MC_HANDSHAKE_MAX_NOTIFY_ENTRIES`): unbounded appends let any peer that reaches the RPC port flood the process (50 MB to 2.6 GB RSS in 20 s in the reporter's PoC), and a full queue now evicts the oldest undrained entry |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4552](https://github.com/kvcache-ai/Mooncake/pull/4552) | Keep startup skew out of the queued-send progress timeout window: rank 0's first isend started while rank 1 was still allocating its 1 GiB receive buffer, and the ~1.4 s skew on shared 2 vCPU runners blew past the 50 ms no-progress window, redding every test-wheel-ubuntu leg since the regression test landed |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4463](https://github.com/kvcache-ai/Mooncake/pull/4463) | Handshake daemon no longer dies on SIGPIPE when an unvetted peer resets mid-reply: replies go out via `send(MSG_NOSIGNAL)` (or `SO_NOSIGPIPE` on macOS) and a reset peer comes back as a plain EPIPE error |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#2965](https://github.com/kvcache-ai/Mooncake/pull/2965) | Roll back partial registration in `registerLocalMemory` on a later transport failure, so earlier transports' registrations don't leak |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#2628](https://github.com/kvcache-ai/Mooncake/pull/2628) | Fix source refcnt leak in CopyEnd/MoveEnd on invalid source |
@@ -629,13 +631,15 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 22 merged promptfoo PRs</summary>
+<summary>All 24 merged promptfoo PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10917](https://github.com/promptfoo/promptfoo/pull/10917) | Honor per-call cache overrides in the AI21, Cohere and LocalAI chat/completion providers: `bustCache` now takes precedence over the legacy `debug` fallback, including an explicit `bustCache: false` |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11320](https://github.com/promptfoo/promptfoo/pull/11320) | Support comma-separated OR values in `--filter-metadata`, so one flag can match any of several values for the same metadata key |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11004](https://github.com/promptfoo/promptfoo/pull/11004) | Honor an explicitly configured redteamProvider in the iterative, crescendo and iterative:tree attack strategies instead of silently falling back to the default provider |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#9872](https://github.com/promptfoo/promptfoo/pull/9872) | Harden malformed completion responses in OpenRouter and Snowflake: a missing, empty or unusable first choice now returns a structured provider error instead of throwing or grading a malformed success, and failed partial output is neither graded nor written to conversation history |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10437](https://github.com/promptfoo/promptfoo/pull/10437) | Return a clean `Malformed response data` error when LocalAI chat/completions or OpenAI legacy completions get a successful HTTP response with no first choice, including a null JSON body; valid empty-string completions still work |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11445](https://github.com/promptfoo/promptfoo/pull/11445) | Report redteam targets that omit output or return null/undefined as integration errors instead of scoring them successful; literal "null"/"undefined" strings and genuine refusals stay gradable |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10978](https://github.com/promptfoo/promptfoo/pull/10978) | Honor an explicitly configured redteamProvider in the custom attack strategy instead of silently falling back to the default provider |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10793](https://github.com/promptfoo/promptfoo/pull/10793) | Honor disabled caching across separate ESM/CJS package copies: providers and graders loaded through a second package instance now see the cache-off policy, so a disabled run neither reads nor overwrites warmed cached responses |
@@ -1116,7 +1120,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 496+ 个上游 PR 已 merged，其中 Mooncake（47 个）、vLLM（14 个）、Vibe-Trading（55 个）、Qwen Code（56 个）、Microsoft Agent Framework（35 个）、deer-flow（22 个）、PyTorch（11 个）、AstrBot（36 个）、openclaw（7 个）、promptfoo（22 个）、Inspect AI（30 个）、Triton（7 个）、Google ADK（10 个）。
+- 500+ 个上游 PR 已 merged，其中 Mooncake（49 个）、vLLM（14 个）、Vibe-Trading（55 个）、Qwen Code（56 个）、Microsoft Agent Framework（35 个）、deer-flow（22 个）、PyTorch（11 个）、AstrBot（36 个）、openclaw（7 个）、promptfoo（24 个）、Inspect AI（30 个）、Triton（7 个）、Google ADK（10 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1161,11 +1165,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 ### 开源贡献
 
-上游 67 个项目共 496 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
+上游 67 个项目共 500 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | **47** | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) 批量读里出现重复 key 时，第一次出现的位置原本拿着从未写入的缓冲区返回成功；现在每个唯一 key 只传输一次，验证过的字节经设备感知拷贝扇出到每个重复目标<br>[#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) `Client::Put` 自愈悬挂 LOCAL_DISK 副本：目标 key 只剩客户端本地磁盘副本时自动逐出并干净重试，BatchPut 对已存在子集一次探测加一次批量逐出 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | **49** | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) 批量读里出现重复 key 时，第一次出现的位置原本拿着从未写入的缓冲区返回成功；现在每个唯一 key 只传输一次，验证过的字节经设备感知拷贝扇出到每个重复目标<br>[#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) `Client::Put` 自愈悬挂 LOCAL_DISK 副本：目标 key 只剩客户端本地磁盘副本时自动逐出并干净重试，BatchPut 对已存在子集一次探测加一次批量逐出 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | **55** | 组合分析与监视器判定流水线；实盘 fail-closed 门禁；回测账务正确性（空头、公司行动、T+1） | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) 现金股息的 journal 行一直没被解析，派息进 shadow 账户后实盘 PnL 读成平的；现在正确入账<br>[#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) flatten latch 持久化绑定 halt episode：重启不再整轮重放扫仓把账户翻空<br>[#1311](https://github.com/HKUDS/Vibe-Trading/pull/1311) FIFO 配对里显式建模空头批次，拆股/分红时把多空腿重述到同一口径，空头侧 PnL 不再重复计借入敞口 |
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | **14** | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.8k★) | **56** | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
@@ -1179,7 +1183,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | **1** | AutoProcessor 丢失 hub 参数透传 |  |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | **1** | 设置持久化：保留自定义 LLM base URL | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) 编辑 basic model 设置时保留自定义的 LLM base URL，存下来的 profile 不再静默回退到 provider 默认 endpoint。 |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | **3** | 自托管抓取链路：interact 报错、auth 块保留、批量 dict 响应 |  |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **22** | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) 空 token 输入的 GLEU 评分返回 0 分，不再报错<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **24** | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) 空 token 输入的 GLEU 评分返回 0 分，不再报错<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **2** | 后端崩溃修复：混合注意力撞投机解码、diffusers 序列化 |  |
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | open-tabs 宿主 RPC 挂掉时文件搜索仍可用 |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | 团队运行权限继承、Windows 子进程窗口、skill 来源 | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) team run 里继承 leader 的权限规则，delegated agent 守着和 leader 一样的 workspace、文件访问约束。<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
@@ -1234,7 +1238,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | 模型下载安全：tar 解包拒绝不安全路径 |  |
 
 <details>
-<summary>全部 47 个已合并的 Mooncake PR</summary>
+<summary>全部 49 个已合并的 Mooncake PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
@@ -1255,6 +1259,8 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4107](https://github.com/kvcache-ai/Mooncake/pull/4107) | metadata 插件把 Redis 错误应答如实上报为失败：REDIS_REPLY_ERROR 不再被当成静默成功的写入 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#3146](https://github.com/kvcache-ai/Mooncake/pull/3146) | 修设备选择失败路径上 UB/Barex slice 的双重释放：已入队的 slice 被塞回缓存，而所有权还在 TransferTask 手里（#3125 RDMA 修复的 sibling） |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#3278](https://github.com/kvcache-ai/Mooncake/pull/3278) | 优雅关闭 watcher 线程屏蔽 SIGTERM/SIGINT：进程级信号落在 watcher 上会挂起唯一的管道读者，关闭流程永久挂死 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4453](https://github.com/kvcache-ai/Mooncake/pull/4453) | 握手 daemon 的 pending-notify 队列加上界（默认 1024，`MC_HANDSHAKE_MAX_NOTIFY_ENTRIES`）：任何能摸到 RPC 端口的对端都能无上限追加通知，报告者 PoC 里 20 秒把 RSS 从 50 MB 顶到 2.6 GB；队列满时逐出最老的未取走条目 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4552](https://github.com/kvcache-ai/Mooncake/pull/4552) | queued-send 进度超时窗口不再计入启动偏斜：rank 0 首次 isend 起跑时 rank 1 还在分配 1 GiB 接收缓冲，共享 2 vCPU runner 上约 1.4 s 的偏斜远超 50 ms 无进展窗口，回归测试落地后 test-wheel-ubuntu 腿全红 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4463](https://github.com/kvcache-ai/Mooncake/pull/4463) | 握手 daemon 给未授信对端写回复时，对端中途 reset 不再让 SIGPIPE 杀掉宿主进程：回复改走 `send(MSG_NOSIGNAL)`（macOS 用 `SO_NOSIGPIPE`），reset 只回一个普通的 EPIPE 错误 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#2965](https://github.com/kvcache-ai/Mooncake/pull/2965) | `registerLocalMemory` 在后续 transport 注册失败时回滚前面已注册的 transport，避免泄漏 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#2628](https://github.com/kvcache-ai/Mooncake/pull/2628) | 修复 `CopyEnd`/`MoveEnd` 在 source 非法时的 source 引用计数泄漏 |
@@ -1728,13 +1734,15 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 22 个已合并的 promptfoo PR</summary>
+<summary>全部 24 个已合并的 promptfoo PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10917](https://github.com/promptfoo/promptfoo/pull/10917) | AI21、Cohere、LocalAI 的 chat/completion provider 遵循每次调用的缓存覆盖：`bustCache` 优先于旧的 `debug` 回退，显式 `bustCache: false` 也不再被忽略 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11320](https://github.com/promptfoo/promptfoo/pull/11320) | `--filter-metadata` 支持逗号分隔的 OR 取值，一个 flag 可匹配同一 metadata key 的多个值中的任意一个 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11004](https://github.com/promptfoo/promptfoo/pull/11004) | 显式配置的 redteamProvider 在 iterative、crescendo、iterative:tree 三条攻击策略中生效，不再静默回退到默认 provider |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#9872](https://github.com/promptfoo/promptfoo/pull/9872) | OpenRouter 与 Snowflake 的畸形补全响应加固：首个 choice 缺失、为空或不可用时返回结构化 provider 错误，不再抛异常或把畸形结果当成功评分；失败的部分输出既不评分也不写入对话历史 |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10437](https://github.com/promptfoo/promptfoo/pull/10437) | LocalAI chat/completions 与 OpenAI 传统 completions 在 HTTP 成功但没有首个 choice（含 null JSON body）时返回干净的 `Malformed response data` 错误；合法的空字符串补全不受影响 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11445](https://github.com/promptfoo/promptfoo/pull/11445) | redteam 目标缺 output 或返回 null/undefined 时记为集成错误，不再判成功；字面 "null"/"undefined" 字符串与真实拒答仍正常评分 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10978](https://github.com/promptfoo/promptfoo/pull/10978) | 显式配置的 redteamProvider 在 custom 攻击策略中同样生效，不再静默回退到默认 provider |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10793](https://github.com/promptfoo/promptfoo/pull/10793) | 禁用缓存的策略现在能跨 ESM/CJS 包副本生效：经另一份包实例加载的 provider 和 grader 同样遵守关缓存，关缓存的运行不再读取或改写已预热的缓存响应 |
