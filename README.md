@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 500+ merged upstream PRs, with fixes in Mooncake (51 merged), vLLM (15 merged), Vibe-Trading (57 merged), Qwen Code (56 merged), Microsoft Agent Framework (35 merged), deer-flow (23 merged), AstrBot (36 merged), openclaw (7 merged), promptfoo (24 merged), Inspect AI (30 merged), Triton (7 merged), Google ADK (16 merged), and PyTorch (1 merged).
+- 500+ merged upstream PRs, with fixes in Mooncake (51 merged), vLLM (15 merged), Vibe-Trading (57 merged), Qwen Code (56 merged), Microsoft Agent Framework (35 merged), deer-flow (23 merged), AstrBot (36 merged), openclaw (7 merged), promptfoo (25 merged), Inspect AI (30 merged), Triton (7 merged), Google ADK (16 merged), and PyTorch (1 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -83,8 +83,8 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | **1** | AutoProcessor hub-kwarg passthrough |  |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | **1** | Settings persistence: keep custom LLM base URLs | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) Keep a custom LLM base URL when editing basic model settings, so a saved profile stops silently falling back to the provider default. |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | **3** | Self-host scrape paths: interact errors, auth chunk retention, batch dict responses |  |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **24** | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) Reject out-of-range trace-span-duration percentiles instead of silently computing garbage<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) Score tokenless GLEU inputs as zero instead of crashing<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) Avoid crashing on an empty `choices` array when reading Azure logprobs |
-| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **2** | Backend crashes: hybrid attention with speculative decoding, diffusers pickling |  |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **25** | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) Reject out-of-range trace-span-duration percentiles instead of silently computing garbage<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) Score tokenless GLEU inputs as zero instead of crashing<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) Avoid crashing on an empty `choices` array when reading Azure logprobs |
+| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **3** | Backend crashes: hybrid attention with speculative decoding, diffusers pickling, scheduler full-batch latch |  |
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | File search survives the open-tabs host RPC being down |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | Team-run permission inheritance, Windows subprocess windows, skill sourcing | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) Inherit the leader's permission rules in team runs, so delegated agents keep the same workspace and file-access limits.<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | **7** | Compiler semantics: fp8 arithmetic promotion, top_k edge cases, AxisInfo correctness, call-graph cycle safety |  |
@@ -541,12 +541,13 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 2 merged SGLang PRs</summary>
+<summary>All 3 merged SGLang PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | Fix hybrid_linear_attn_backend crash when used with ngram speculative decoding |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#21472](https://github.com/sgl-project/sglang/pull/21472) | Fix PicklingError with --backend diffusers on non-T2I models |
+| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#41872](https://github.com/sgl-project/sglang/pull/41872) | Stop latching `batch_is_full` when the running batch is empty and nothing can be scheduled, so a momentarily dry memory pool no longer wedges every later prefill on an idle engine |
 
 </details>
 <details>
@@ -622,10 +623,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 24 merged promptfoo PRs</summary>
+<summary>All 25 merged promptfoo PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11329](https://github.com/promptfoo/promptfoo/pull/11329) | Disclose cache-hit rows in the eval summary, so results served from cache are no longer indistinguishable from fresh runs |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10917](https://github.com/promptfoo/promptfoo/pull/10917) | Honor per-call cache overrides in the AI21, Cohere and LocalAI chat/completion providers: `bustCache` now takes precedence over the legacy `debug` fallback, including an explicit `bustCache: false` |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11320](https://github.com/promptfoo/promptfoo/pull/11320) | Support comma-separated OR values in `--filter-metadata`, so one flag can match any of several values for the same metadata key |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11004](https://github.com/promptfoo/promptfoo/pull/11004) | Honor an explicitly configured redteamProvider in the iterative, crescendo and iterative:tree attack strategies instead of silently falling back to the default provider |
@@ -1127,7 +1129,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 500+ 个上游 PR 已 merged，其中 Mooncake（51 个）、vLLM（15 个）、Vibe-Trading（57 个）、Qwen Code（56 个）、Microsoft Agent Framework（35 个）、deer-flow（23 个）、AstrBot（36 个）、openclaw（7 个）、promptfoo（24 个）、Inspect AI（30 个）、Triton（7 个）、Google ADK（16 个）、PyTorch（1 个）。
+- 500+ 个上游 PR 已 merged，其中 Mooncake（51 个）、vLLM（15 个）、Vibe-Trading（57 个）、Qwen Code（56 个）、Microsoft Agent Framework（35 个）、deer-flow（23 个）、AstrBot（36 个）、openclaw（7 个）、promptfoo（25 个）、Inspect AI（30 个）、Triton（7 个）、Google ADK（16 个）、PyTorch（1 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1190,8 +1192,8 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | **1** | AutoProcessor 丢失 hub 参数透传 |  |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | **1** | 设置持久化：保留自定义 LLM base URL | [#14776](https://github.com/OpenHands/OpenHands/pull/14776) 编辑 basic model 设置时保留自定义的 LLM base URL，存下来的 profile 不再静默回退到 provider 默认 endpoint。 |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | **3** | 自托管抓取链路：interact 报错、auth 块保留、批量 dict 响应 |  |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **24** | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) 空 token 输入的 GLEU 评分返回 0 分，不再报错<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
-| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **2** | 后端崩溃修复：混合注意力撞投机解码、diffusers 序列化 |  |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | **25** | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果<br>[#9850](https://github.com/promptfoo/promptfoo/pull/9850) 空 token 输入的 GLEU 评分返回 0 分，不再报错<br>[#9867](https://github.com/promptfoo/promptfoo/pull/9867) 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
+| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **3** | 后端崩溃修复：混合注意力撞投机解码、diffusers 序列化、调度器满载锁存 |  |
 | [Cline](https://github.com/cline/cline) (66.7k★) | **1** | open-tabs 宿主 RPC 挂掉时文件搜索仍可用 |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | 团队运行权限继承、Windows 子进程窗口、skill 来源 | [#1815](https://github.com/agentscope-ai/agentscope/pull/1815) team run 里继承 leader 的权限规则，delegated agent 守着和 leader 一样的 workspace、文件访问约束。<br>[#1717](https://github.com/agentscope-ai/agentscope/pull/1717) Windows 上启动 Bash tool 子进程时使用 `CREATE_NO_WINDOW`，避免工具执行弹出控制台窗口 |
 | [Triton](https://github.com/triton-lang/triton) (19.9k★) | **7** | 编译器语义：fp8 算术提升、top_k 边界、AxisInfo 正确性、调用图环安全 |  |
@@ -1651,12 +1653,13 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 2 个已合并的 SGLang PR</summary>
+<summary>全部 3 个已合并的 SGLang PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | 修复 hybrid_linear_attn_backend 与 ngram 投机采样同时使用时崩溃 |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#21472](https://github.com/sgl-project/sglang/pull/21472) | 修复 `--backend diffusers` 在非 T2I 模型上的 `PicklingError` |
+| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#41872](https://github.com/sgl-project/sglang/pull/41872) | 运行批次为空且无可调度请求时不再锁存 `batch_is_full`：内存池短暂见底后，空闲引擎的后续 prefill 不再被全部卡死 |
 
 </details>
 <details>
@@ -1732,10 +1735,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 24 个已合并的 promptfoo PR</summary>
+<summary>全部 25 个已合并的 promptfoo PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11329](https://github.com/promptfoo/promptfoo/pull/11329) | 评测摘要标注命中缓存的行，缓存结果与新跑结果不再无法区分 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#10917](https://github.com/promptfoo/promptfoo/pull/10917) | AI21、Cohere、LocalAI 的 chat/completion provider 遵循每次调用的缓存覆盖：`bustCache` 优先于旧的 `debug` 回退，显式 `bustCache: false` 也不再被忽略 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11320](https://github.com/promptfoo/promptfoo/pull/11320) | `--filter-metadata` 支持逗号分隔的 OR 取值，一个 flag 可匹配同一 metadata key 的多个值中的任意一个 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (25.6k★) | [#11004](https://github.com/promptfoo/promptfoo/pull/11004) | 显式配置的 redteamProvider 在 iterative、crescendo、iterative:tree 三条攻击策略中生效，不再静默回退到默认 provider |
