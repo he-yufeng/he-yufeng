@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 500+ merged upstream PRs, with fixes in Mooncake (51 merged), vLLM (15 merged), Vibe-Trading (57 merged), Qwen Code (56 merged), Microsoft Agent Framework (35 merged), deer-flow (23 merged), AstrBot (36 merged), openclaw (7 merged), promptfoo (25 merged), Inspect AI (30 merged), Triton (7 merged), Google ADK (16 merged), and PyTorch (1 merged).
+- 500+ merged upstream PRs, with fixes in Mooncake (52 merged), vLLM (15 merged), Vibe-Trading (57 merged), Qwen Code (56 merged), Microsoft Agent Framework (35 merged), deer-flow (23 merged), AstrBot (36 merged), openclaw (7 merged), promptfoo (25 merged), Inspect AI (30 merged), Triton (7 merged), Google ADK (16 merged), and PyTorch (1 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -69,7 +69,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | **51** | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) Batch reads with a duplicate key handed back the first occurrence's never-written buffer as success; each unique key now transfers once and its verified bytes fan out to every duplicate with device-aware copies<br>[#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) Self-heal dangling LOCAL_DISK replicas in `Client::Put`: a put onto a key left with only client-local disk replicas evicts them and retries cleanly, with BatchPut probing and evicting the already-exists subset in one pass. |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | **52** | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) Batch reads with a duplicate key handed back the first occurrence's never-written buffer as success; each unique key now transfers once and its verified bytes fan out to every duplicate with device-aware copies<br>[#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang: `cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` for cross-node NVLink<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) Self-heal dangling LOCAL_DISK replicas in `Client::Put`: a put onto a key left with only client-local disk replicas evicts them and retries cleanly, with BatchPut probing and evicting the already-exists subset in one pass. |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | **57** | Portfolio analytics and monitor-verdict pipeline; fail-closed live-trading gates; backtest accounting correctness (shorts, corporate actions, T+1) | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) Cash-dividend journal rows were never parsed, so dividends paid into the shadow account read as flat real PnL; they are booked properly now<br>[#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) Persist the flatten latch across runner restarts so a reboot cannot replay the kill-switch sweep and flip the account<br>[#1311](https://github.com/HKUDS/Vibe-Trading/pull/1311) Model short lots in FIFO pairing and restate legs to one caliber across splits and dividends, so short-side PnL stops double-counting borrowed exposure |
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | **15** | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API `instructions` were leaking across turns through the `previous_response_id` chain.<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals.<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.8k★) | **56** | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories.<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`.<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
@@ -121,7 +121,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | **4** | Founding PRs: tests/CI/templates, pluggable TaskStore, Gemini CLI support | [#1](https://github.com/HKUDS/ClawTeam/pull/1) First PR: 122 tests, CI, team templates, config bugfixes, task duration tracking<br>[#40](https://github.com/HKUDS/ClawTeam/pull/40) Pluggable TaskStore: extract task persistence into swappable backend abstraction |
 | [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | **1** | TUI footer status-line customization | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) Customize the TUI footer status line via `status_line` config, codex / claude code style |
 | [llama.cpp](https://github.com/ggml-org/llama.cpp) (130.4k★) | **1** | Server multimodal ingestion safety | [#24076](https://github.com/ggml-org/llama.cpp/pull/24076) Reject partial media truncation instead of letting a cut-off image or audio segment reach the model as if it were whole |
-| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | **1** | Sleep-mode admission safety | [#8501](https://github.com/vllm-project/vllm-omni/pull/8501) Validate sleep stage_ids before blocking admission, so a malformed wake request fails fast instead of hanging the scheduler gate |
+| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | **2** | Sleep-mode admission safety | [#8501](https://github.com/vllm-project/vllm-omni/pull/8501) Validate sleep stage_ids before blocking admission, so a malformed wake request fails fast instead of hanging the scheduler gate |
 | [OpenAI Python SDK](https://github.com/openai/openai-python) (31.6k★) | **1** | Bounded vector-store polling and client lifecycle edges | [#3401](https://github.com/openai/openai-python/pull/3401) Bound vector-store file polling so a stuck upload stops spinning the client forever |
 | [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | **2** | FalkorDB bulk-write crash on NUL bytes, MCP server keeps the URI username |  |
 | [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | **1** | Anthropic stop-sequence validation |  |
@@ -138,10 +138,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | Model download safety: tar extraction rejects unsafe paths |  |
 
 <details>
-<summary>All 51 merged Mooncake PRs</summary>
+<summary>All 52 merged Mooncake PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4610](https://github.com/kvcache-ai/Mooncake/pull/4610) | Fix the conductor pybind client after the npu-to-device rename: the missed member rename broke the _conductor build and redded main CI plus every PR |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#3806](https://github.com/kvcache-ai/Mooncake/pull/3806) | Restore the standby index tolerantly: ambiguous overlapping replicas are discarded with durable repair instead of failing the whole promotion |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4453](https://github.com/kvcache-ai/Mooncake/pull/4453) | Bound the handshake daemon's pending-notify queue so a stalled peer stops growing memory without bound |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4451](https://github.com/kvcache-ai/Mooncake/pull/4451) | Keep a stalled peer from wedging the handshake daemon: the accepted socket now gets a send timeout symmetric with its receive one, so a reader that stalls mid-reply fails instead of freezing the control plane |
@@ -1107,10 +1108,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 1 merged vllm-omni PRs</summary>
+<summary>All 2 merged vllm-omni PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8846](https://github.com/vllm-project/vllm-omni/pull/8846) | Build Qwen3-Omni Thinker PP-capture tensors without dict.update: vLLM's cudagraph guard rejects the update name in Dynamo bytecode, so PP>1 captures failed at compile time |
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8501](https://github.com/vllm-project/vllm-omni/pull/8501) | Validate sleep stage_ids before blocking admission, so a malformed wake request fails fast instead of hanging the scheduler gate with no way to clear it |
 
 </details>
@@ -1178,7 +1180,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | **51** | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) 批量读里出现重复 key 时，第一次出现的位置原本拿着从未写入的缓冲区返回成功；现在每个唯一 key 只传输一次，验证过的字节经设备感知拷贝扇出到每个重复目标<br>[#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) `Client::Put` 自愈悬挂 LOCAL_DISK 副本：目标 key 只剩客户端本地磁盘副本时自动逐出并干净重试，BatchPut 对已存在子集一次探测加一次批量逐出 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | **52** | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) 批量读里出现重复 key 时，第一次出现的位置原本拿着从未写入的缓冲区返回成功；现在每个唯一 key 只传输一次，验证过的字节经设备感知拷贝扇出到每个重复目标<br>[#1629](https://github.com/kvcache-ai/Mooncake/pull/1629) GB200 MNNVL EP hang：`cudaMalloc` → `cuMemCreate(FABRIC)` + `cuMemMap` 跨节点 NVLink 通信<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) `Client::Put` 自愈悬挂 LOCAL_DISK 副本：目标 key 只剩客户端本地磁盘副本时自动逐出并干净重试，BatchPut 对已存在子集一次探测加一次批量逐出 |
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | **57** | 组合分析与监视器判定流水线；实盘 fail-closed 门禁；回测账务正确性（空头、公司行动、T+1） | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) 现金股息的 journal 行一直没被解析，派息进 shadow 账户后实盘 PnL 读成平的；现在正确入账<br>[#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) flatten latch 持久化绑定 halt episode：重启不再整轮重放扫仓把账户翻空<br>[#1311](https://github.com/HKUDS/Vibe-Trading/pull/1311) FIFO 配对里显式建模空头批次，拆股/分红时把多空腿重述到同一口径，空头侧 PnL 不再重复计借入敞口 |
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | **15** | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.8k★) | **56** | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
@@ -1230,7 +1232,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | **4** | 奠基 PR：测试/CI/模板、可插拔 TaskStore、Gemini CLI 支持 | [#1](https://github.com/HKUDS/ClawTeam/pull/1) 首个 PR：122 个测试、CI、团队模板、config 修复、任务耗时追踪<br>[#40](https://github.com/HKUDS/ClawTeam/pull/40) 可插拔 TaskStore：将任务持久化抽取为可替换的后端抽象层 |
 | [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | **1** | TUI 底部状态栏自定义 | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) 通过 status_line 配置自定义 TUI 底部状态栏（仿 codex / claude code 的 footer 形态） |
 | [llama.cpp](https://github.com/ggml-org/llama.cpp) (130.4k★) | **1** | server 多模态摄入安全 | [#24076](https://github.com/ggml-org/llama.cpp/pull/24076) 拒绝在媒体块内部截断，不再让被切断的图片或音频片段冒充完整输入送进模型 |
-| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | **1** | sleep 模式准入安全 | [#8501](https://github.com/vllm-project/vllm-omni/pull/8501) sleep 在阻塞准入前先校验 stage_ids，非法唤醒请求快速失败，不再把调度闸门永久卡死 |
+| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | **2** | sleep 模式准入安全 | [#8501](https://github.com/vllm-project/vllm-omni/pull/8501) sleep 在阻塞准入前先校验 stage_ids，非法唤醒请求快速失败，不再把调度闸门永久卡死 |
 | [OpenAI Python SDK](https://github.com/openai/openai-python) (31.6k★) | **1** | 有界的 vector-store 轮询与客户端生命周期边界 | [#3401](https://github.com/openai/openai-python/pull/3401) 给 vector-store 文件轮询加上界，卡住的上传不再让客户端永远空转 |
 | [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | **2** | FalkorDB 批量写入遇 NUL 字节崩溃，MCP server 保住 URI 用户名 |  |
 | [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | **1** | Anthropic stop 序列校验 |  |
@@ -1247,10 +1249,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | 模型下载安全：tar 解包拒绝不安全路径 |  |
 
 <details>
-<summary>全部 51 个已合并的 Mooncake PR</summary>
+<summary>全部 52 个已合并的 Mooncake PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4610](https://github.com/kvcache-ai/Mooncake/pull/4610) | 修复 npu-to-device 重命名漏掉的 conductor pybind 客户端：_conductor 模块编译失败，main CI 和所有带上该提交的 PR 全红 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#3806](https://github.com/kvcache-ai/Mooncake/pull/3806) | standby 索引容错恢复：歧义重叠副本丢弃并留可持久修复记录，不再让整个 promotion 失败 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4453](https://github.com/kvcache-ai/Mooncake/pull/4453) | 给 handshake daemon 的 pending-notify 队列设上限，卡死的对端不再让内存无界增长 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.7k★ · maintainer) | [#4451](https://github.com/kvcache-ai/Mooncake/pull/4451) | 卡住不读响应的对端不再堵死 handshake daemon：已接受套接字加上与接收侧对称的发送超时，读到一半停滞的对端报错收场，控制面不再整体冻结 |
@@ -2219,10 +2222,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 1 个已合并的 vllm-omni PR</summary>
+<summary>全部 2 个已合并的 vllm-omni PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8846](https://github.com/vllm-project/vllm-omni/pull/8846) | Qwen3-Omni Thinker PP capture 张量改绕开 dict.update 构造：vLLM cudagraph 门禁按名字拒绝 update，PP>1 capture 编译期就失败 |
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8501](https://github.com/vllm-project/vllm-omni/pull/8501) | sleep 在阻塞准入前先校验 stage_ids，非法唤醒请求快速失败，不再把调度闸门永久卡死且无法恢复 |
 
 </details>
