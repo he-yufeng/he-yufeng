@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 500+ merged upstream PRs, with fixes in Mooncake (54 merged), vLLM (15 merged), Vibe-Trading (58 merged), Qwen Code (56 merged), Microsoft Agent Framework (35 merged), deer-flow (23 merged), AstrBot (36 merged), openclaw (7 merged), promptfoo (25 merged), Inspect AI (30 merged), Triton (7 merged), Google ADK (16 merged), and PyTorch (1 merged).
+- 500+ merged upstream PRs, with fixes in Mooncake (54 merged), vLLM (15 merged), Vibe-Trading (58 merged), Qwen Code (56 merged), Microsoft Agent Framework (35 merged), deer-flow (24 merged), AstrBot (36 merged), openclaw (8 merged), promptfoo (25 merged), Inspect AI (30 merged), Triton (7 merged), Google ADK (16 merged), and PyTorch (1 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -65,7 +65,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 ### Open Source Contributions
 
-515 merged PRs across 67 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
+517 merged PRs across 67 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
 
 | Project | Merged | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -73,11 +73,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | **58** | Portfolio analytics and monitor-verdict pipeline; fail-closed live-trading gates; backtest accounting correctness (shorts, corporate actions, T+1) | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) Cash-dividend journal rows were never parsed, so dividends paid into the shadow account read as flat real PnL; they are booked properly now<br>[#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) Persist the flatten latch across runner restarts so a reboot cannot replay the kill-switch sweep and flip the account<br>[#1311](https://github.com/HKUDS/Vibe-Trading/pull/1311) Model short lots in FIFO pairing and restate legs to one caliber across splits and dividends, so short-side PnL stops double-counting borrowed exposure |
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | **15** | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API `instructions` were leaking across turns through the `previous_response_id` chain.<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals.<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.8k★) | **56** | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories.<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`.<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
-| [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | **23** | Concurrency and checkpoint correctness: thread-creation races, session-pool lifecycle, channel protocol limits, batch pause semantics | [#3800](https://github.com/bytedance/deer-flow/pull/3800) Keep `create_thread` idempotent when a concurrent insert loses the race, so a chat cannot end up with duplicate threads.<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) Fork-restored checkpoints deliver the sandbox channel still wrapped in langgraph `Overwrite`; unified one unwrap helper across the sync/async init paths and the sibling readers<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) Cap WeCom outbound content at the 20480-byte protocol limit: proactive pushes split into ordered chunks with a refcounted per-chat send lock, so long pushes stop being rejected and concurrent sends stop interleaving |
+| [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | **24** | Concurrency and checkpoint correctness: thread-creation races, session-pool lifecycle, channel protocol limits, batch pause semantics | [#3800](https://github.com/bytedance/deer-flow/pull/3800) Keep `create_thread` idempotent when a concurrent insert loses the race, so a chat cannot end up with duplicate threads.<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) Fork-restored checkpoints deliver the sandbox channel still wrapped in langgraph `Overwrite`; unified one unwrap helper across the sync/async init paths and the sibling readers<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) Cap WeCom outbound content at the 20480-byte protocol limit: proactive pushes split into ordered chunks with a refcounted per-chat send lock, so long pushes stop being rejected and concurrent sends stop interleaving |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.5k★) | **35** | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools | [#7289](https://github.com/microsoft/agent-framework/pull/7289) Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) Handoff was mutating message roles in place, so a retry leaked the change; reuse sanitized copies instead.<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) Run synchronous Python tools off the event loop so a blocking call stops freezing concurrent agent work. |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | **36** | Release asset freshness, reasoning-turn 400s on strict providers, scheduler and provider failure propagation, retired embedding defaults | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) Prefer bundled dashboard assets over a stale data dist, so a release stops serving an outdated WebUI<br>[#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) Apply empty-assistant message filter to streaming OpenAI path: strict providers no longer 400 on reasoning-only turns<br>[#9987](https://github.com/AstrBotDevs/AstrBot/pull/9987) Propagate the cron agent runner's ERROR terminal state so a failed scheduled run is recorded failed with its error instead of completed-with-null |
 | [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | **1** | Inductor pattern-match correctness | [#196943](https://github.com/pytorch/pytorch/pull/196943) The `cat_splitwithsizes`/`splitwithsizes_cat` post-grad patterns compared dims with a plain `!=`, so `cat(dim=1)` + `split_with_sizes(dim=-1)` on a 2D input was rejected and the redundant pair stayed in the graph; both dims are now normalized against the input rank before comparing (landed via pytorchmergebot; shows as Closed on GitHub) |
-| [OpenClaw](https://github.com/openclaw/openclaw) (389.6k★) | **7** | Session-store fail-closed sweeps, auth-failure visibility, surrogate-safe text | [#119127](https://github.com/openclaw/openclaw/pull/119127) Keep the mtime media sweep out of the managed-outgoing tree and fail closed when the session store is unreadable, so global GC can never delete live user originals (co-built with the project owner after his P0 review) |
+| [OpenClaw](https://github.com/openclaw/openclaw) (389.6k★) | **8** | Session-store fail-closed sweeps, auth-failure visibility, surrogate-safe text | [#119127](https://github.com/openclaw/openclaw/pull/119127) Keep the mtime media sweep out of the managed-outgoing tree and fail closed when the session store is unreadable, so global GC can never delete live user originals (co-built with the project owner after his P0 review) |
 | [opencode](https://github.com/anomalyco/opencode) (204.9k★) | **1** | MCP OAuth callback bound to IPv4 loopback |  |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | **6** | API robustness: unbounded calls get timeouts, up-front validation, atomic windows | [#39953](https://github.com/langgenius/dify/pull/39953) Bound the TiDB Cloud API calls that had no timeout, so a hanging cluster endpoint can't stall vdb operations forever |
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | **1** | AutoProcessor hub-kwarg passthrough |  |
@@ -390,10 +390,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 23 merged deer-flow PRs</summary>
+<summary>All 24 merged deer-flow PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | [#6848](https://github.com/bytedance/deer-flow/pull/6848) | E2B and BoxLite reported a timed-out sandbox bash command as a bare `Error:` with no exit marker (BoxLite's bridge timeout stringified to an empty message), breaking the truncation and acceptance tooling that parses `Exit Code: 124`; both adapters now catch the timeout ahead of the generic handler and append the marker, same as local/Tenki |
 | [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | [#6621](https://github.com/bytedance/deer-flow/pull/6621) | Embedded uploads snapshotted a convertible source into a private temp dir so the saved upload and its Markdown companion always convert the same version: a save landing between the two reads used to leave the pair silently skewed on a success response |
 | [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | [#6533](https://github.com/bytedance/deer-flow/pull/6533) | Skip upload entries that vanish mid-scan: a concurrent delete or the staging sweep reclaiming a stale `.part` turned into a `FileNotFoundError` that 500'd the whole listing; entries that disappear between the scandir sweep and their stat are now skipped (ENOENT/ENOTDIR/ELOOP only) |
 | [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | [#6417](https://github.com/bytedance/deer-flow/pull/6417) | Retrying one failed item in a paused durable subagent batch used to flip the whole batch back to queued, so the scheduler claimed the untouched siblings too; now the item resets to pending and the batch stays paused until an explicit resume |
@@ -463,10 +464,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 7 merged OpenClaw PRs</summary>
+<summary>All 8 merged OpenClaw PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [OpenClaw](https://github.com/openclaw/openclaw) (389.6k★) | [#171388](https://github.com/openclaw/openclaw/pull/171388) | doctor falsely rejected imported legacy sessions with media: the SQLite transcript writer already canonicalizes legacy `MediaPath`/`MediaType` fields into `__openclaw.media`, but verification staged the raw legacy JSON; the verifier now runs the same canonicalizer before the exact-match comparison, so equivalent media pass while genuine differences still conflict |
 | [OpenClaw](https://github.com/openclaw/openclaw) (389.6k★) | [#157497](https://github.com/openclaw/openclaw/pull/157497) | `automations get`/`update` stopped failing output-schema validation for jobs carrying a schedule-error count (owner-verified on a real Gateway against main) |
 | [OpenClaw](https://github.com/openclaw/openclaw) (389.6k★) | [#119127](https://github.com/openclaw/openclaw/pull/119127) | Keep the mtime media sweep out of the managed-outgoing tree and fail closed when the session store is unreadable, so global GC can never delete live user originals (co-built with the project owner after his P0 review) |
 | [OpenClaw](https://github.com/openclaw/openclaw) (389.6k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | Log auth profile resolution failures instead of swallowing silently |
@@ -1130,7 +1132,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 500+ 个上游 PR 已 merged，其中 Mooncake（54 个）、vLLM（15 个）、Vibe-Trading（58 个）、Qwen Code（56 个）、Microsoft Agent Framework（35 个）、deer-flow（23 个）、AstrBot（36 个）、openclaw（7 个）、promptfoo（25 个）、Inspect AI（30 个）、Triton（7 个）、Google ADK（16 个）、PyTorch（1 个）。
+- 500+ 个上游 PR 已 merged，其中 Mooncake（54 个）、vLLM（15 个）、Vibe-Trading（58 个）、Qwen Code（56 个）、Microsoft Agent Framework（35 个）、deer-flow（24 个）、AstrBot（36 个）、openclaw（8 个）、promptfoo（25 个）、Inspect AI（30 个）、Triton（7 个）、Google ADK（16 个）、PyTorch（1 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1175,7 +1177,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 ### 开源贡献
 
-上游 67 个项目共 515 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
+上游 67 个项目共 517 个 PR 已 merged，按展示分排序；点项目名进仓库，点 PR 号进改动。
 
 | 项目 | 已合并 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
@@ -1183,11 +1185,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (34.4k★ · maintainer) | **58** | 组合分析与监视器判定流水线；实盘 fail-closed 门禁；回测账务正确性（空头、公司行动、T+1） | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) 现金股息的 journal 行一直没被解析，派息进 shadow 账户后实盘 PnL 读成平的；现在正确入账<br>[#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) flatten latch 持久化绑定 halt episode：重启不再整轮重放扫仓把账户翻空<br>[#1311](https://github.com/HKUDS/Vibe-Trading/pull/1311) FIFO 配对里显式建模空头批次，拆股/分红时把多空腿重述到同一口径，空头侧 PnL 不再重复计借入敞口 |
 | [vLLM](https://github.com/vllm-project/vllm) (91.7k★) | **15** | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 | [#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (27.8k★) | **56** | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。<br>[#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | **23** | 并发与 checkpoint 正确性：建线程竞态、会话池生命周期、fork 恢复、渠道协议上限、批次暂停语义 | [#3800](https://github.com/bytedance/deer-flow/pull/3800) 让 `create_thread` 在并发 insert 输掉竞争时保持幂等，避免一个聊天产生重复 thread。<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) fork 恢复的检查点把 sandbox channel 以 langgraph `Overwrite` 包装态送达，sync/async 初始化路径和 sibling readers 统一走一个解包 helper<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) WeCom 出站内容封顶在 20480 字节协议上限：主动推送按序分块并给每个聊天配 refcount 发送锁，长推送不再被协议拒绝、并发发送不再交错 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | **24** | 并发与 checkpoint 正确性：建线程竞态、会话池生命周期、fork 恢复、渠道协议上限、批次暂停语义 | [#3800](https://github.com/bytedance/deer-flow/pull/3800) 让 `create_thread` 在并发 insert 输掉竞争时保持幂等，避免一个聊天产生重复 thread。<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) fork 恢复的检查点把 sandbox channel 以 langgraph `Overwrite` 包装态送达，sync/async 初始化路径和 sibling readers 统一走一个解包 helper<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) WeCom 出站内容封顶在 20480 字节协议上限：主动推送按序分块并给每个聊天配 refcount 发送锁，长推送不再被协议拒绝、并发发送不再交错 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (13.5k★) | **35** | agent 循环边界：消息 role 原地改泄漏、每轮钩子、阻塞工具 | [#7289](https://github.com/microsoft/agent-framework/pull/7289) turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次<br>[#5808](https://github.com/microsoft/agent-framework/pull/5808) handoff 原地改了 message 的 role，重试复用时把改动泄漏出去了，改成复用消毒过的副本。<br>[#5773](https://github.com/microsoft/agent-framework/pull/5773) 把同步的 Python 工具挪出事件循环跑，阻塞型调用不再冻住并发的 agent 任务。 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (40.5k★) | **36** | 发版资源新鲜度、严格 provider 的 reasoning 回合 400、定时任务与 provider 失败如实上抛、退役 embedding 默认值 | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) 优先用打包进去的 dashboard 资产，而不是过期的 data dist，发版后不再展示旧前端<br>[#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) 修复 OpenAI streaming 路径复用 empty-assistant 过滤：reasoning-only 历史不再让严格 provider 返回 400<br>[#9987](https://github.com/AstrBotDevs/AstrBot/pull/9987) 把 cron agent runner 的 ERROR 终态传上去：定时任务失败如实记 failed 带错误信息，不再记成 completed 且 last_error 为空 |
 | [PyTorch](https://github.com/pytorch/pytorch) (103.0k★) | **1** | Inductor pattern 匹配正确性 | [#196943](https://github.com/pytorch/pytorch/pull/196943) `cat_splitwithsizes`/`splitwithsizes_cat` 后向 pattern 用裸 `!=` 比较 dim，2D 输入下 `cat(dim=1)` + `split_with_sizes(dim=-1)` 被拒、冗余对留在图里；现在先按输入 rank 归一化两个 dim 再比较（经 pytorchmergebot 落地，GitHub 显示 Closed） |
-| [OpenClaw](https://github.com/openclaw/openclaw) (389.6k★) | **7** | 会话存储失败即关的清扫、鉴权失败可见性、代理对安全文本 | [#119127](https://github.com/openclaw/openclaw/pull/119127) 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fail-closed，全域 GC 永不误删用户原件（owner P0 评审后与项目作者共建） |
+| [OpenClaw](https://github.com/openclaw/openclaw) (389.6k★) | **8** | 会话存储失败即关的清扫、鉴权失败可见性、代理对安全文本 | [#119127](https://github.com/openclaw/openclaw/pull/119127) 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fail-closed，全域 GC 永不误删用户原件（owner P0 评审后与项目作者共建） |
 | [opencode](https://github.com/anomalyco/opencode) (204.9k★) | **1** | MCP OAuth 回调绑定 IPv4 loopback |  |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | **6** | API 健壮性：无超时调用加边界、前置校验、原子窗口 | [#39953](https://github.com/langgenius/dify/pull/39953) 给没有超时的 TiDB Cloud API 调用补上有界超时，集群端点挂起不再无限拖住 vdb 操作 |
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | **1** | AutoProcessor 丢失 hub 参数透传 |  |
@@ -1502,10 +1504,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 23 个已合并的 deer-flow PR</summary>
+<summary>全部 24 个已合并的 deer-flow PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | [#6848](https://github.com/bytedance/deer-flow/pull/6848) | E2B/BoxLite 沙箱里 bash 超时只回裸 `Error:` 且没有退出码标记（BoxLite 的 bridge 超时甚至序列化成空消息），靠 `Exit Code: 124` 标记还原真实 shell 状态的截断与验收工具全断；两个适配器现在先于通用错误处理接住超时并补上该标记，与 local/Tenki 行为一致 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | [#6621](https://github.com/bytedance/deer-flow/pull/6621) | 嵌入式上传先把可转换源快照进私有临时目录，落盘副本和 Markdown companion 始终出自同一次读取：此前两次读取之间的一次保存会让两者版本错位，而响应仍报成功 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | [#6533](https://github.com/bytedance/deer-flow/pull/6533) | 上传列表扫描中途消失的文件现在跳过而不是整个请求 500：并发删除或 staging 清扫回收 `.part` 会在 scandir 与 stat 之间制造 FileNotFoundError；容错限定在竞态预期的 ENOENT/ENOTDIR/ELOOP |
 | [deer-flow](https://github.com/bytedance/deer-flow) (82.4k★) | [#6417](https://github.com/bytedance/deer-flow/pull/6417) | 暂停中的 durable subagent 批次里重试单个失败项会把整个批次翻回 queued，未动的 sibling 被调度器一并领走；现在重试只把该项重置为 pending，批次保持暂停直到显式 resume |
@@ -1575,10 +1578,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 7 个已合并的 OpenClaw PR</summary>
+<summary>全部 8 个已合并的 OpenClaw PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [OpenClaw](https://github.com/openclaw/openclaw) (389.6k★) | [#171388](https://github.com/openclaw/openclaw/pull/171388) | doctor 误拒带媒体的导入旧 session：SQLite transcript writer 早已把 legacy `MediaPath`/`MediaType` 字段归一化进 `__openclaw.media`，校验侧却在比对原始 legacy JSON；现在 verifier 先过同一个 canonicalizer 再做精确比对，等价媒体放行、真实差异仍然拒绝 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (389.6k★) | [#157497](https://github.com/openclaw/openclaw/pull/157497) | `automations get`/`update` 不再因任务携带调度错误计数而在输出 schema 校验处失败（owner 在真实 Gateway 上对照 main 亲验） |
 | [OpenClaw](https://github.com/openclaw/openclaw) (389.6k★) | [#119127](https://github.com/openclaw/openclaw/pull/119127) | 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fail-closed，全域 GC 永不误删用户原件（owner P0 评审后与项目作者共建） |
 | [OpenClaw](https://github.com/openclaw/openclaw) (389.6k★) | [#41271](https://github.com/openclaw/openclaw/pull/41271) | 认证配置解析失败时记录日志而非静默吞掉 |
