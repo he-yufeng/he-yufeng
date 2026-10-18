@@ -27,9 +27,9 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 |---------|:-----:|------------|
 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.8k+ | 512K lines of Claude Code distilled to a 1,309-line engine inside 2,658 lines of Python: every key architectural pattern, runnable, any LLM. 8 architecture deep-dive articles. |
 | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
-| [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 290+ | Open-source DeepWiki alternative: CLI/browser wiki generation with knowledge cards and grounded multi-turn chat, PageRank file ranking, Mermaid diagrams, and reading guides. |
+| [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 250+ | Open-source DeepWiki alternative: CLI/browser wiki generation with knowledge cards and grounded multi-turn chat, PageRank file ranking, Mermaid diagrams, and reading guides. |
 | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, plain-English explanations. |
-| [GitSense](https://github.com/he-yufeng/GitSense) | 90+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
+| [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | AI code reader for non-programmers: plain-language file guides, hover annotations, a terminology dictionary, Q&A, and natural-language edits. |
 
 <details>
@@ -39,9 +39,9 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 |------|---------|:-----:|-------|
 | Coding agents / evals | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.8k+ | 512K lines of Claude Code → a 1,309-line engine inside 2,658 lines of Python. Every key architectural pattern, runnable. Any LLM. 8 architecture deep-dive articles. |
 | Applied agents | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
-| Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 290+ | Open-source DeepWiki alternative: CLI/browser wiki generation with knowledge cards and grounded multi-turn chat, PageRank file ranking, Mermaid diagrams, and reading guides. |
+| Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 250+ | Open-source DeepWiki alternative: CLI/browser wiki generation with knowledge cards and grounded multi-turn chat, PageRank file ranking, Mermaid diagrams, and reading guides. |
 | Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, and plain-English explanations. |
-| Codebase maps | [GitSense](https://github.com/he-yufeng/GitSense) | 90+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
+| Codebase maps | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
 | Code understanding | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | AI code reader for non-programmers: plain-language file guides, hover annotations, a terminology dictionary, Q&A, and natural-language edits. |
 | Coding agents / evals | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | new | Pytest plugin for regression-testing AI agents: snapshot baselines, semantic comparison, and mock LLMs. |
 | Coding agents / evals | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | new | AI coding agent CLI supporting 100+ LLMs via litellm, with dangerous command blocking, parallel tools, and session persistence. |
@@ -1172,9 +1172,9 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 |------|:-----:|------|
 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.8k+ | Claude Code 51万行源码蒸馏成 1,309 行引擎、整包 2,658 行 Python，关键架构模式全部可跑，支持任意大模型，附 8 篇架构导读。 |
 | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化、职位结构化。 |
-| [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 290+ | 开源版 DeepWiki：CLI/浏览器生成代码库 wiki，带知识卡片和基于源码的多轮问答，PageRank 文件排序、Mermaid 图、阅读导览。 |
+| [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 250+ | 开源版 DeepWiki：CLI/浏览器生成代码库 wiki，带知识卡片和基于源码的多轮问答，PageRank 文件排序、Mermaid 图、阅读导览。 |
 | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | 签合同前让 AI agent 先排雷：不公平条款、缺失保护、人话解释。 |
-| [GitSense](https://github.com/he-yufeng/GitSense) | 90+ | AI 贡献雷达：找匹配 issue，看 PR 合并信号，再决定要不要花这个周末。 |
+| [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI 贡献雷达：找匹配 issue，看 PR 合并信号，再决定要不要花这个周末。 |
 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | 给非程序员看的 AI 代码阅读器：大白话文件导读、悬停注解、术语词典、问答、自然语言改代码。 |
 
 <details>
@@ -1184,9 +1184,9 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 |------|------|:-----:|------|
 | Coding agents / 评测 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.8k+ | Claude Code 51万行源码 → 1,309 行引擎、整包 2,658 行 Python 重写，支持任意大模型，附 8 篇架构导读。 |
 | 应用型 Agent | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化和岗位结构化。 |
-| 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 290+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，知识卡片+基于源码的多轮问答，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
+| 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 250+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，知识卡片+基于源码的多轮问答，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
 | 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI 合同审查 Agent，签字前帮你找红旗条款、不公平约定和缺失保护。 |
-| 代码库地图 | [GitSense](https://github.com/he-yufeng/GitSense) | 90+ | AI 开源贡献发现器 + 仓库雷达：找匹配 issue，也评估 PR 合入友好度。 |
+| 代码库地图 | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI 开源贡献发现器 + 仓库雷达：找匹配 issue，也评估 PR 合入友好度。 |
 | 代码理解 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | 面向非程序员的 AI 代码阅读器：大白话文件导读、悬浮批注、术语词典、问答、自然语言改写。 |
 | Coding agents / 评测 | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | new | AI Agent 回归测试 pytest 插件：快照基线、语义比较、Mock LLM。 |
 | Coding agents / 评测 | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | new | 终端 AI 编程 Agent，通过 litellm 支持 100+ 大模型，危险命令拦截、并行执行、会话持久化。 |
