@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 540+ merged or landed upstream PRs, with fixes in Mooncake (57 merged), Vibe-Trading (66 merged), vLLM (16 merged), Qwen Code (57 merged), deer-flow (24 merged), Microsoft Agent Framework (35 merged), PyTorch (16 landed), AstrBot (37 merged), openclaw (8 merged), Google ADK (17 landed), promptfoo (27 merged), Triton (8 merged), and Inspect AI (30 merged).
+- 550+ merged or landed upstream PRs, with fixes in Mooncake (57 merged), Vibe-Trading (66 merged), vLLM (16 merged), Qwen Code (57 merged), deer-flow (25 merged), Microsoft Agent Framework (35 merged), PyTorch (16 landed), AstrBot (37 merged), openclaw (8 merged), Google ADK (17 landed), promptfoo (27 merged), Triton (8 merged), and Inspect AI (30 merged).
 - Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
 
 <p align="center">
@@ -65,7 +65,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 ### Open Source Contributions
 
-540+ merged or landed PRs across 67 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
+550+ merged or landed PRs across 67 upstream projects, ordered by display score. The repo name links to the project, the PR number to the change.
 
 | Project | Merged / landed | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -73,7 +73,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | **66** | Portfolio analytics and monitor-verdict pipeline; fail-closed live-trading gates; backtest accounting correctness (shorts, corporate actions, T+1) | [#1631](https://github.com/HKUDS/Vibe-Trading/pull/1631) Split the context compaction helpers out of loop.py so the agent loop file stops carrying compaction bookkeeping inline<br>[#777](https://github.com/HKUDS/Vibe-Trading/pull/777) Portfolio Studio's risk x-ray: pure-computation concentration, volatility, drawdown, VaR/ES, diversification, and correlation analytics for weighted baskets, plus an agent tool that fetches closes through the loader fallback chain<br>[#1551](https://github.com/HKUDS/Vibe-Trading/pull/1551) Convert additive-caliber A-share qfq factors to the multiplicative caliber the backtest books in whenever the offset chain validates, so adjusted prices stop drifting away from corporate-action accounting |
 | [vLLM](https://github.com/vllm-project/vllm) (95.0k★) | **16** | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing | [#59859](https://github.com/vllm-project/vllm/pull/59859) Reuse the item ids already streamed in `output_item.*` events when rebuilding the final harmony response, so strict clients stop dropping the stream when `response.completed` arrives with freshly minted ids<br>[#45807](https://github.com/vllm-project/vllm/pull/45807) Anthropic-compatible streaming now reports the stop_reason when a stop sequence actually fired, instead of leaving clients guessing<br>[#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API `instructions` were leaking across turns through the `previous_response_id` chain. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | **57** | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`.<br>[#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories.<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
-| [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | **24** | Concurrency and checkpoint correctness: thread-creation races, session-pool lifecycle, channel protocol limits, batch pause semantics | [#6208](https://github.com/bytedance/deer-flow/pull/6208) MindIE structured tool results were dropped between the tool and the model turn; they are now preserved and counted against the token budget so long structured payloads cannot blow the context silently<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) Cap WeCom outbound content at the 20480-byte protocol limit: proactive pushes split into ordered chunks with a refcounted per-chat send lock, so long pushes stop being rejected and concurrent sends stop interleaving<br>[#6621](https://github.com/bytedance/deer-flow/pull/6621) Embedded uploads snapshotted a convertible source into a private temp dir so the saved upload and its Markdown companion always convert the same version: a save landing between the two reads used to leave the pair silently skewed on a success response |
+| [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | **25** | Concurrency and checkpoint correctness: thread-creation races, session-pool lifecycle, channel protocol limits, batch pause semantics | [#6208](https://github.com/bytedance/deer-flow/pull/6208) MindIE structured tool results were dropped between the tool and the model turn; they are now preserved and counted against the token budget so long structured payloads cannot blow the context silently<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) Cap WeCom outbound content at the 20480-byte protocol limit: proactive pushes split into ordered chunks with a refcounted per-chat send lock, so long pushes stop being rejected and concurrent sends stop interleaving<br>[#6621](https://github.com/bytedance/deer-flow/pull/6621) Embedded uploads snapshotted a convertible source into a private temp dir so the saved upload and its Markdown companion always convert the same version: a save landing between the two reads used to leave the pair silently skewed on a success response |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | **35** | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools | [#7289](https://github.com/microsoft/agent-framework/pull/7289) Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration<br>[#8953](https://github.com/microsoft/agent-framework/pull/8953) Fold streamed text runs in one pass instead of repeated `+=`: every `Content.__add__` rebuilt the text string, re-merged properties and re-concatenated raw representations, so n chunks cost O(n^2) on every aggregated response; now one join per run with a single props merge<br>[#8773](https://github.com/microsoft/agent-framework/pull/8773) Python: the OpenAI chat-completions SDK stream was never closed when the consumer stopped early (break, exception, cancellation), leaking the provider response until GC; bind it with async with so exit closes it deterministically |
 | [PyTorch](https://github.com/pytorch/pytorch) (105.0k★) | **16** | Inductor correctness, CUDA indexing, autograd and native operator safety | [#201631](https://github.com/pytorch/pytorch/pull/201631) Raise on mixed-dtype linalg.cross on MPS instead of silently reinterpreting the second operand under the output dtype (landed via pytorchmergebot; GitHub shows Closed)<br>[#196943](https://github.com/pytorch/pytorch/pull/196943) Accept equivalent negative dimensions in the cat/split-with-sizes patterns (landed via pytorchmergebot; GitHub shows Closed)<br>[#188031](https://github.com/pytorch/pytorch/pull/188031) Fix 64-bit indexing in spatial softmax backward (landed via pytorchmergebot; GitHub shows Closed)<br>[#188022](https://github.com/pytorch/pytorch/pull/188022) Guard the CuTeDSL topk override against a non-current CUDA device (landed via pytorchmergebot; GitHub shows Closed) |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | **37** | Release asset freshness, reasoning-turn 400s on strict providers, scheduler and provider failure propagation, retired embedding defaults | [#10437](https://github.com/AstrBotDevs/AstrBot/pull/10437) Merge list-valued custom tools from `custom_extra_body` into Anthropic requests instead of letting `extra_body` replace the registered function tools, so a custom server-tool entry stops silently wiping the tool list<br>[#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) Apply empty-assistant message filter to streaming OpenAI path: strict providers no longer 400 on reasoning-only turns<br>[#10069](https://github.com/AstrBotDevs/AstrBot/pull/10069) Always send the state=10 closing frame in QQ C2C streaming, so a finished answer stops rolling back to its first packet when the tail buffer is empty |
@@ -126,7 +126,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | **1** | Anthropic stop-sequence validation |  |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | **1** | Publisher metadata validation | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) Reject mangled publisher metadata instead of accepting malformed entries |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (5.0k★) | **2** | MCP protocol state: duplicate initialize rejection, description metadata | [#962](https://github.com/modelcontextprotocol/go-sdk/pull/962) Reject duplicate `initialize` requests so an MCP session keeps consistent protocol state after init. |
-| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | **2** | Sleep-mode admission safety | [#8501](https://github.com/vllm-project/vllm-omni/pull/8501) Validate sleep stage_ids before blocking admission, so a malformed wake request fails fast instead of hanging the scheduler gate with no way to clear it |
+| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | **3** | Sleep-mode admission and diffusion-runtime device correctness | [#8874](https://github.com/vllm-project/vllm-omni/pull/8874) Keep diffusion LoRA buffers resident on the compute device under every offload strategy, so adapters registered during sleep cannot later mix host sidecars with device activations<br>[#8501](https://github.com/vllm-project/vllm-omni/pull/8501) Validate sleep stage_ids before blocking admission, so a malformed wake request fails fast instead of hanging the scheduler gate with no way to clear it |
 | [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | **1** | Sandbox execution opt-in |  |
 | [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | **5** | GPU discovery without a CUDA context, benchmark top-k honoring |  |
 | [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | **1** | TUI tab-completion fixes |  |
@@ -362,10 +362,11 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 
 </details>
 <details>
-<summary>All 24 merged deer-flow PRs</summary>
+<summary>All 25 merged deer-flow PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | [#6770](https://github.com/bytedance/deer-flow/pull/6770) | Honor a custom `skills.container_path` in user-scoped skill storage: the factory now seeds the resolved configured root while an explicit caller override still wins, so custom, legacy, and integration skills register and activate at paths that actually exist in the sandbox |
 | [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | [#6208](https://github.com/bytedance/deer-flow/pull/6208) | MindIE structured tool results were dropped between the tool and the model turn; they are now preserved and counted against the token budget so long structured payloads cannot blow the context silently |
 | [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | [#5148](https://github.com/bytedance/deer-flow/pull/5148) | Cap WeCom outbound content at the 20480-byte protocol limit: proactive pushes split into ordered chunks with a refcounted per-chat send lock, so long pushes stop being rejected and concurrent sends stop interleaving |
 | [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | [#6621](https://github.com/bytedance/deer-flow/pull/6621) | Embedded uploads snapshotted a convertible source into a private temp dir so the saved upload and its Markdown companion always convert the same version: a save landing between the two reads used to leave the pair silently skewed on a success response |
@@ -1072,10 +1073,11 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 2 merged vllm-omni PRs</summary>
+<summary>All 3 merged vllm-omni PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8874](https://github.com/vllm-project/vllm-omni/pull/8874) | Keep diffusion LoRA sidecar buffers on the compute device under every offload strategy, including rank-growth reinitialization: adapters registered while base weights are offloaded no longer leave host buffers that later matmul with device activations |
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8501](https://github.com/vllm-project/vllm-omni/pull/8501) | Validate sleep stage_ids before blocking admission, so a malformed wake request fails fast instead of hanging the scheduler gate with no way to clear it |
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8846](https://github.com/vllm-project/vllm-omni/pull/8846) | Build Qwen3-Omni Thinker PP-capture tensors without dict.update: vLLM's cudagraph guard rejects the update name in Dynamo bytecode, so PP>1 captures failed at compile time |
 
@@ -1173,7 +1175,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 540+ 个上游 PR 已合并或落地，其中 Mooncake（57 个）、Vibe-Trading（66 个）、vLLM（16 个）、Qwen Code（57 个）、deer-flow（24 个）、Microsoft Agent Framework（35 个）、PyTorch（16 个）、AstrBot（37 个）、openclaw（8 个）、Google ADK（17 个）、promptfoo（27 个）、Triton（8 个）、Inspect AI（30 个）。
+- 550+ 个上游 PR 已合并或落地，其中 Mooncake（57 个）、Vibe-Trading（66 个）、vLLM（16 个）、Qwen Code（57 个）、deer-flow（25 个）、Microsoft Agent Framework（35 个）、PyTorch（16 个）、AstrBot（37 个）、openclaw（8 个）、Google ADK（17 个）、promptfoo（27 个）、Triton（8 个）、Inspect AI（30 个）。
 - 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
 
 ### 项目
@@ -1218,7 +1220,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 ### 开源贡献
 
-上游 67 个项目共 540+ 个 PR 已合并或落地，按展示分排序；点项目名进仓库，点 PR 号进改动。
+上游 67 个项目共 550+ 个 PR 已合并或落地，按展示分排序；点项目名进仓库，点 PR 号进改动。
 
 | 项目 | 已合并 / 落地 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
@@ -1226,7 +1228,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | **66** | 组合分析与监视器判定流水线；实盘 fail-closed 门禁；回测账务正确性（空头、公司行动、T+1） | [#1631](https://github.com/HKUDS/Vibe-Trading/pull/1631) 把上下文压缩辅助函数拆出 loop.py，agent 主循环不再内联背着压缩簿记<br>[#777](https://github.com/HKUDS/Vibe-Trading/pull/777) Portfolio Studio 首刀「组合风险透视」：纯计算核心（集中度/波动/回撤/VaR/分散度/相关性）加走 loader fallback 链取数的 agent 工具<br>[#1551](https://github.com/HKUDS/Vibe-Trading/pull/1551) A 股前复权因子若是可加口径，偏移链校验通过时换算成回测入账的乘法口径，调整后价格与公司行动账务不再错位 |
 | [vLLM](https://github.com/vllm-project/vllm) (95.0k★) | **16** | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 | [#59859](https://github.com/vllm-project/vllm/pull/59859) Responses API 流式重建最终 harmony 响应时复用 `output_item.*` 事件里已流出的 item id：此前新铸 id 与流事件对不上，严格客户端直接断流<br>[#45807](https://github.com/vllm-project/vllm/pull/45807) Anthropic 兼容流式在 stop_sequence 真正命中时回填 stop_reason，客户端不再靠猜<br>[#37727](https://github.com/vllm-project/vllm/pull/37727) Responses API 的 `instructions` 顺着 `previous_response_id` 链泄漏到了后续轮次。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | **57** | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。<br>[#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | **24** | 并发与 checkpoint 正确性：建线程竞态、会话池生命周期、fork 恢复、渠道协议上限、批次暂停语义 | [#6208](https://github.com/bytedance/deer-flow/pull/6208) MindIE 的结构化工具结果此前在工具和模型轮次之间丢失；现在保留并计入 token 预算，超长结构化负载不会再悄悄撑爆上下文<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) WeCom 出站内容封顶在 20480 字节协议上限：主动推送按序分块并给每个聊天配 refcount 发送锁，长推送不再被协议拒绝、并发发送不再交错<br>[#6621](https://github.com/bytedance/deer-flow/pull/6621) 嵌入式上传先把可转换源快照进私有临时目录，落盘副本和 Markdown companion 始终出自同一次读取：此前两次读取之间的一次保存会让两者版本错位，而响应仍报成功 |
+| [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | **25** | 并发与 checkpoint 正确性：建线程竞态、会话池生命周期、fork 恢复、渠道协议上限、批次暂停语义 | [#6208](https://github.com/bytedance/deer-flow/pull/6208) MindIE 的结构化工具结果此前在工具和模型轮次之间丢失；现在保留并计入 token 预算，超长结构化负载不会再悄悄撑爆上下文<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) WeCom 出站内容封顶在 20480 字节协议上限：主动推送按序分块并给每个聊天配 refcount 发送锁，长推送不再被协议拒绝、并发发送不再交错<br>[#6621](https://github.com/bytedance/deer-flow/pull/6621) 嵌入式上传先把可转换源快照进私有临时目录，落盘副本和 Markdown companion 始终出自同一次读取：此前两次读取之间的一次保存会让两者版本错位，而响应仍报成功 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | **35** | agent 循环边界：消息 role 原地改泄漏、每轮钩子、阻塞工具 | [#7289](https://github.com/microsoft/agent-framework/pull/7289) turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次<br>[#8953](https://github.com/microsoft/agent-framework/pull/8953) 流式文本片段聚合从反复 `+=` 改成一遍折叠：此前每个 `Content.__add__` 都重建字符串、重并属性、重接 raw 列表，n 个片段就是 O(n^2)，每条聚合响应都在付这个税；现在每个 run 一次 join、一次属性合并<br>[#8773](https://github.com/microsoft/agent-framework/pull/8773) Python：OpenAI chat-completions 的 SDK 流在消费方提前停止（break、异常、取消）时从不关闭，provider 响应一直泄漏到 GC 才回收；改用 async with 绑定，退出即确定性关闭 |
 | [PyTorch](https://github.com/pytorch/pytorch) (105.0k★) | **16** | Inductor 正确性、CUDA 索引、autograd 与原生算子安全 | [#201631](https://github.com/pytorch/pytorch/pull/201631) MPS 上 linalg.cross 混合 dtype 直接报错，不再按输出 dtype 静默重解释第二个操作数（经 pytorchmergebot 落地，GitHub 显示为 Closed）<br>[#196943](https://github.com/pytorch/pytorch/pull/196943) cat/split-with-sizes pattern 匹配接受等价的负维度（经 pytorchmergebot 落地，GitHub 显示为 Closed）<br>[#188031](https://github.com/pytorch/pytorch/pull/188031) 修复 spatial softmax backward 的 64 位索引（经 pytorchmergebot 落地，GitHub 显示为 Closed）<br>[#188022](https://github.com/pytorch/pytorch/pull/188022) 为 CuTeDSL topk override 增加非当前 CUDA 设备保护（经 pytorchmergebot 落地，GitHub 显示为 Closed） |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | **37** | 发版资源新鲜度、严格 provider 的 reasoning 回合 400、定时任务与 provider 失败如实上抛、退役 embedding 默认值 | [#10437](https://github.com/AstrBotDevs/AstrBot/pull/10437) Anthropic 请求把 custom_extra_body 里列表形的自定义 tools 合并进已注册 function tools，不再被 extra_body 顶层替换静默清空（DeepSeek 兼容端点的服务端联网搜索就是这种情况）<br>[#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) 修复 OpenAI streaming 路径复用 empty-assistant 过滤：reasoning-only 历史不再让严格 provider 返回 400<br>[#10069](https://github.com/AstrBotDevs/AstrBot/pull/10069) QQ C2C 流式永远补发 state=10 收尾帧：尾 buffer 为空也不再让整段回滚到首包只显示几个字 |
@@ -1279,7 +1281,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | **1** | Anthropic stop 序列校验 |  |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | **1** | 发布者元数据校验 | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) 拒绝损坏的 publisher 元数据，而不是接收畸形条目 |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (5.0k★) | **2** | MCP 协议状态：拒绝重复 initialize、description 元数据 | [#962](https://github.com/modelcontextprotocol/go-sdk/pull/962) 拒绝重复的 `initialize` 请求，MCP session 初始化后的协议状态保持一致。 |
-| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | **2** | sleep 模式准入安全 | [#8501](https://github.com/vllm-project/vllm-omni/pull/8501) sleep 在阻塞准入前先校验 stage_ids，非法唤醒请求快速失败，不再把调度闸门永久卡死且无法恢复 |
+| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | **3** | sleep 准入与 diffusion 运行时设备正确性 | [#8874](https://github.com/vllm-project/vllm-omni/pull/8874) 所有 offload 策略都把 diffusion LoRA buffer 留在计算设备，休眠期间注册的 adapter 不会在唤醒后混用 host sidecar 与 device activation<br>[#8501](https://github.com/vllm-project/vllm-omni/pull/8501) sleep 在阻塞准入前先校验 stage_ids，非法唤醒请求快速失败，不再把调度闸门永久卡死且无法恢复 |
 | [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | **1** | 沙箱执行改为显式开启 |  |
 | [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | **5** | 无 CUDA 上下文下的 GPU 探测、基准脚本 top-k 生效 |  |
 | [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | **1** | TUI tab 补全修复 |  |
@@ -1516,10 +1518,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 24 个已合并的 deer-flow PR</summary>
+<summary>全部 25 个已合并的 deer-flow PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | [#6770](https://github.com/bytedance/deer-flow/pull/6770) | 用户级 skill storage 现在继承解析后的 `skills.container_path`，显式 caller override 仍优先；自定义挂载根下，custom、legacy、integration skills 不再注册和激活到不存在的默认 `/mnt/skills` |
 | [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | [#6208](https://github.com/bytedance/deer-flow/pull/6208) | MindIE 的结构化工具结果此前在工具和模型轮次之间丢失；现在保留并计入 token 预算，超长结构化负载不会再悄悄撑爆上下文 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | [#5148](https://github.com/bytedance/deer-flow/pull/5148) | WeCom 出站内容封顶在 20480 字节协议上限：主动推送按序分块并给每个聊天配 refcount 发送锁，长推送不再被协议拒绝、并发发送不再交错 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | [#6621](https://github.com/bytedance/deer-flow/pull/6621) | 嵌入式上传先把可转换源快照进私有临时目录，落盘副本和 Markdown companion 始终出自同一次读取：此前两次读取之间的一次保存会让两者版本错位，而响应仍报成功 |
@@ -2226,10 +2229,11 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 2 个已合并的 vllm-omni PR</summary>
+<summary>全部 3 个已合并的 vllm-omni PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8874](https://github.com/vllm-project/vllm-omni/pull/8874) | 所有 offload 策略都把 diffusion LoRA sidecar buffer 固定到计算设备，rank 增长重建也走同一设备；基础权重休眠 offload 时注册的 adapter 不再把 host buffer 留到唤醒后与 device activation 做 matmul |
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8501](https://github.com/vllm-project/vllm-omni/pull/8501) | sleep 在阻塞准入前先校验 stage_ids，非法唤醒请求快速失败，不再把调度闸门永久卡死且无法恢复 |
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8846](https://github.com/vllm-project/vllm-omni/pull/8846) | Qwen3-Omni Thinker PP capture 张量改绕开 dict.update 构造：vLLM cudagraph 门禁按名字拒绝 update，PP>1 capture 编译期就失败 |
 
