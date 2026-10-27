@@ -126,7 +126,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | **1** | Anthropic stop-sequence validation |  |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | **1** | Publisher metadata validation | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) Reject mangled publisher metadata instead of accepting malformed entries |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (5.0k★) | **2** | MCP protocol state: duplicate initialize rejection, description metadata | [#962](https://github.com/modelcontextprotocol/go-sdk/pull/962) Reject duplicate `initialize` requests so an MCP session keeps consistent protocol state after init. |
-| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | **3** | Sleep-mode admission and diffusion-runtime device correctness | [#8874](https://github.com/vllm-project/vllm-omni/pull/8874) Keep diffusion LoRA buffers resident on the compute device under every offload strategy, so adapters registered during sleep cannot later mix host sidecars with device activations<br>[#8501](https://github.com/vllm-project/vllm-omni/pull/8501) Validate sleep stage_ids before blocking admission, so a malformed wake request fails fast instead of hanging the scheduler gate with no way to clear it |
+| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | **5** | Duplex Realtime scaling, sleep admission, diffusion runtime and engine configuration | [#8691](https://github.com/vllm-project/vllm-omni/pull/8691) Keep duplex Realtime deltas O(1) by appending to response projections and materializing stored history only at retrieval and truncate boundaries, instead of rebuilding transcripts and audio-mark history on every delta<br>[#8585](https://github.com/vllm-project/vllm-omni/pull/8585) Preserve 45 non-parallel diffusion engine arguments through `OmniEngineArgs.from_cli_args`, so explicitly supplied stage settings reach the engine while unset defaults stay untouched<br>[#8874](https://github.com/vllm-project/vllm-omni/pull/8874) Keep diffusion LoRA buffers resident on the compute device under every offload strategy, so adapters registered during sleep cannot later mix host sidecars with device activations<br>[#8501](https://github.com/vllm-project/vllm-omni/pull/8501) Validate sleep stage_ids before blocking admission, so a malformed wake request fails fast instead of hanging the scheduler gate with no way to clear it |
 | [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | **1** | Sandbox execution opt-in |  |
 | [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | **5** | GPU discovery without a CUDA context, benchmark top-k honoring |  |
 | [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | **1** | TUI tab-completion fixes |  |
@@ -1073,10 +1073,12 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 3 merged vllm-omni PRs</summary>
+<summary>All 5 merged vllm-omni PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8691](https://github.com/vllm-project/vllm-omni/pull/8691) | Keep duplex Realtime deltas O(1) by appending to response projections and materializing stored history only at retrieval and truncate boundaries, instead of rejoining transcripts and deduplicating the full audio-mark history on every delta; truncate acknowledgements now apply once at a boundary instead of risking a second cut |
+| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8585](https://github.com/vllm-project/vllm-omni/pull/8585) | Preserve 45 non-parallel diffusion engine arguments through `OmniEngineArgs.from_cli_args`, so explicitly configured stage settings reach the diffusion engine instead of being silently dropped by the dataclass filter; unset values remain unset |
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8874](https://github.com/vllm-project/vllm-omni/pull/8874) | Keep diffusion LoRA sidecar buffers on the compute device under every offload strategy, including rank-growth reinitialization: adapters registered while base weights are offloaded no longer leave host buffers that later matmul with device activations |
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8501](https://github.com/vllm-project/vllm-omni/pull/8501) | Validate sleep stage_ids before blocking admission, so a malformed wake request fails fast instead of hanging the scheduler gate with no way to clear it |
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8846](https://github.com/vllm-project/vllm-omni/pull/8846) | Build Qwen3-Omni Thinker PP-capture tensors without dict.update: vLLM's cudagraph guard rejects the update name in Dynamo bytecode, so PP>1 captures failed at compile time |
@@ -1281,7 +1283,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | **1** | Anthropic stop 序列校验 |  |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | **1** | 发布者元数据校验 | [#1310](https://github.com/modelcontextprotocol/registry/pull/1310) 拒绝损坏的 publisher 元数据，而不是接收畸形条目 |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (5.0k★) | **2** | MCP 协议状态：拒绝重复 initialize、description 元数据 | [#962](https://github.com/modelcontextprotocol/go-sdk/pull/962) 拒绝重复的 `initialize` 请求，MCP session 初始化后的协议状态保持一致。 |
-| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | **3** | sleep 准入与 diffusion 运行时设备正确性 | [#8874](https://github.com/vllm-project/vllm-omni/pull/8874) 所有 offload 策略都把 diffusion LoRA buffer 留在计算设备，休眠期间注册的 adapter 不会在唤醒后混用 host sidecar 与 device activation<br>[#8501](https://github.com/vllm-project/vllm-omni/pull/8501) sleep 在阻塞准入前先校验 stage_ids，非法唤醒请求快速失败，不再把调度闸门永久卡死且无法恢复 |
+| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | **5** | duplex Realtime 扩展性、sleep 准入、diffusion 运行时与引擎配置 | [#8691](https://github.com/vllm-project/vllm-omni/pull/8691) duplex Realtime 增量只追加 response projection，stored history 仅在 retrieve 和 truncate 边界物化，不再每个 delta 都重建 transcript 并整理完整 audio-mark 历史，长响应不再在 session event loop 上产生平方级重复工作<br>[#8585](https://github.com/vllm-project/vllm-omni/pull/8585) 让 45 个非并行 diffusion engine 参数完整穿过 `OmniEngineArgs.from_cli_args`：显式配置不再被 dataclass 字段过滤静默丢弃，未配置值仍不向下游传播<br>[#8874](https://github.com/vllm-project/vllm-omni/pull/8874) 所有 offload 策略都把 diffusion LoRA buffer 留在计算设备，休眠期间注册的 adapter 不会在唤醒后混用 host sidecar 与 device activation<br>[#8501](https://github.com/vllm-project/vllm-omni/pull/8501) sleep 在阻塞准入前先校验 stage_ids，非法唤醒请求快速失败，不再把调度闸门永久卡死且无法恢复 |
 | [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | **1** | 沙箱执行改为显式开启 |  |
 | [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | **5** | 无 CUDA 上下文下的 GPU 探测、基准脚本 top-k 生效 |  |
 | [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | **1** | TUI tab 补全修复 |  |
@@ -2229,10 +2231,12 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 3 个已合并的 vllm-omni PR</summary>
+<summary>全部 5 个已合并的 vllm-omni PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8691](https://github.com/vllm-project/vllm-omni/pull/8691) | duplex Realtime 增量只追加 response projection，stored history 仅在 retrieve 和 truncate 边界物化，不再每个 delta 都重拼 transcript、去重并排序完整 audio-mark 历史；truncate acknowledgement 也改为边界处幂等生效，避免重复截断 |
+| [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8585](https://github.com/vllm-project/vllm-omni/pull/8585) | 让 45 个非并行 diffusion engine 参数完整穿过 `OmniEngineArgs.from_cli_args`：显式配置不再被 dataclass 字段过滤静默丢弃，未配置值仍不向下游传播 |
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8874](https://github.com/vllm-project/vllm-omni/pull/8874) | 所有 offload 策略都把 diffusion LoRA sidecar buffer 固定到计算设备，rank 增长重建也走同一设备；基础权重休眠 offload 时注册的 adapter 不再把 host buffer 留到唤醒后与 device activation 做 matmul |
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8501](https://github.com/vllm-project/vllm-omni/pull/8501) | sleep 在阻塞准入前先校验 stage_ids，非法唤醒请求快速失败，不再把调度闸门永久卡死且无法恢复 |
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8846](https://github.com/vllm-project/vllm-omni/pull/8846) | Qwen3-Omni Thinker PP capture 张量改绕开 dict.update 构造：vLLM cudagraph 门禁按名字拒绝 update，PP>1 capture 编译期就失败 |
