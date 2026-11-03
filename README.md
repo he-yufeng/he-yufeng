@@ -13,8 +13,8 @@
 
 AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | MS CS @ HKU | **Champion, Shanghai Global AI Contest** | **3x ACM-ICPC Silver Medalist** | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 560+ merged or landed upstream PRs, with fixes in Mooncake (63 merged), Vibe-Trading (68 merged), vLLM (17 merged), Qwen Code (57 merged), deer-flow (25 merged), Microsoft Agent Framework (35 merged), PyTorch (16 landed), AstrBot (37 merged), openclaw (9 merged), Google ADK (17 landed), promptfoo (27 merged), Triton (8 merged), and Inspect AI (30 merged).
-- Selected public projects led by CoreCoder, FindJobs-Agent, RepoWiki, and ContractGuard.
+- 560+ merged or landed upstream PRs, with fixes in [Mooncake](https://github.com/kvcache-ai/Mooncake) (63 merged), [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (68 merged), [vLLM](https://github.com/vllm-project/vllm) (17 merged), [Qwen Code](https://github.com/QwenLM/qwen-code) (57 merged), [deer-flow](https://github.com/bytedance/deer-flow) (25 merged), [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (37 merged), [PyTorch](https://github.com/pytorch/pytorch) (16 landed), [AstrBot](https://github.com/AstrBotDevs/AstrBot) (37 merged), [openclaw](https://github.com/openclaw/openclaw) (9 merged), [Google ADK](https://github.com/google/adk-python) (17 landed), [promptfoo](https://github.com/promptfoo/promptfoo) (27 merged), [Triton](https://github.com/triton-lang/triton) (8 merged), and [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (30 merged).
+- Selected public projects led by [CoreCoder](https://github.com/he-yufeng/CoreCoder) and [RepoWiki](https://github.com/he-yufeng/RepoWiki).
 
 <p align="center">
   <img height="165" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=he-yufeng&theme=github_dark" alt="GitHub stats"/>
@@ -26,8 +26,8 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | Project | Stars | What it is |
 |---------|:-----:|------------|
 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.8k+ | 512K lines of Claude Code distilled to a 1,309-line engine inside 2,658 lines of Python: every key architectural pattern, runnable, any LLM. 8 architecture deep-dive articles. |
-| [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 250+ | Open-source DeepWiki alternative: CLI/browser wiki generation with knowledge cards and grounded multi-turn chat, PageRank file ranking, Mermaid diagrams, and reading guides. |
+| [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
 | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, plain-English explanations. |
 | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | AI code reader for non-programmers: plain-language file guides, hover annotations, a terminology dictionary, Q&A, and natural-language edits. |
@@ -38,8 +38,8 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | Area | Project | Stars | Notes |
 |------|---------|:-----:|-------|
 | Coding agents / evals | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.8k+ | 512K lines of Claude Code → a 1,309-line engine inside 2,658 lines of Python. Every key architectural pattern, runnable. Any LLM. 8 architecture deep-dive articles. |
-| Applied agents | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
 | Codebase maps | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 250+ | Open-source DeepWiki alternative: CLI/browser wiki generation with knowledge cards and grounded multi-turn chat, PageRank file ranking, Mermaid diagrams, and reading guides. |
+| Applied agents | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM-powered job toolkit: skill gap analysis, mock interviews, resume optimization, and job structuring. |
 | Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, and plain-English explanations. |
 | Codebase maps | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
 | Code understanding | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | AI code reader for non-programmers: plain-language file guides, hover annotations, a terminology dictionary, Q&A, and natural-language edits. |
@@ -76,7 +76,7 @@ AI Agents & LLM Systems Engineer | **Formerly @ [Moonshot AI](https://www.moonsh
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | **37** | Release asset freshness, reasoning-turn 400s on strict providers, scheduler and provider failure propagation, retired embedding defaults | [#10437](https://github.com/AstrBotDevs/AstrBot/pull/10437) Merge list-valued custom tools from `custom_extra_body` into Anthropic requests instead of letting `extra_body` replace the registered function tools, so a custom server-tool entry stops silently wiping the tool list<br>[#10591](https://github.com/AstrBotDevs/AstrBot/pull/10591) Keep one unreadable skill directory from failing the whole request: skip it and load the rest<br>[#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) Prefer bundled dashboard assets over a stale data dist, so a release stops serving an outdated WebUI. |
 | [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | **25** | Concurrency and checkpoint correctness: thread-creation races, session-pool lifecycle, channel protocol limits, batch pause semantics | [#6208](https://github.com/bytedance/deer-flow/pull/6208) MindIE structured tool results were dropped between the tool and the model turn; they are now preserved and counted against the token budget so long structured payloads cannot blow the context silently<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) Cap WeCom outbound content at the 20480-byte protocol limit: proactive pushes split into ordered chunks with a refcounted per-chat send lock, so long pushes stop being rejected and concurrent sends stop interleaving<br>[#3800](https://github.com/bytedance/deer-flow/pull/3800) Keep `create_thread` idempotent when a concurrent insert loses the race, so a chat cannot end up with duplicate threads.<br>[#6621](https://github.com/bytedance/deer-flow/pull/6621) Embedded uploads snapshotted a convertible source into a private temp dir so the saved upload and its Markdown companion always convert the same version: a save landing between the two reads used to leave the pair silently skewed on a success response<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) Fork-restored checkpoints deliver the sandbox channel still wrapped in langgraph `Overwrite`; unified one unwrap helper across the sync/async init paths and the sibling readers |
 | [PyTorch](https://github.com/pytorch/pytorch) (105.0k★) | **16** | Inductor correctness, CUDA indexing, autograd and native operator safety | [#196943](https://github.com/pytorch/pytorch/pull/196943) Accept equivalent negative dimensions in the cat/split-with-sizes patterns |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | **35** | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools | [#8953](https://github.com/microsoft/agent-framework/pull/8953) Fold streamed text runs in one pass instead of repeated `+=`: every `Content.__add__` rebuilt the text string, re-merged properties and re-concatenated raw representations, so n chunks cost O(n^2) on every aggregated response; now one join per run with a single props merge<br>[#8773](https://github.com/microsoft/agent-framework/pull/8773) Python: the OpenAI chat-completions SDK stream was never closed when the consumer stopped early (break, exception, cancellation), leaking the provider response until GC; bind it with async with so exit closes it deterministically<br>[#7289](https://github.com/microsoft/agent-framework/pull/7289) Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | **37** | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools | [#8953](https://github.com/microsoft/agent-framework/pull/8953) Fold streamed text runs in one pass instead of repeated `+=`: every `Content.__add__` rebuilt the text string, re-merged properties and re-concatenated raw representations, so n chunks cost O(n^2) on every aggregated response; now one join per run with a single props merge<br>[#8773](https://github.com/microsoft/agent-framework/pull/8773) Python: the OpenAI chat-completions SDK stream was never closed when the consumer stopped early (break, exception, cancellation), leaking the provider response until GC; bind it with async with so exit closes it deterministically<br>[#7289](https://github.com/microsoft/agent-framework/pull/7289) Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration |
 | [OpenClaw](https://github.com/openclaw/openclaw) (392.7k★) | **9** | Session-store fail-closed sweeps, auth-failure visibility, surrogate-safe text | [#119127](https://github.com/openclaw/openclaw/pull/119127) Keep the mtime media sweep out of the managed-outgoing tree and fail closed when the session store is unreadable, so global GC can never delete live user originals (co-built with the project owner after their P0 review)<br>[#166720](https://github.com/openclaw/openclaw/pull/166720) Preserve completed tool history as plain text when settled-turn finalization disables tools, so Bedrock no longer rejects the summary request for carrying toolUse/toolResult blocks without toolConfig |
 | [opencode](https://github.com/anomalyco/opencode) (204.9k★) | **1** | MCP OAuth callback bound to IPv4 loopback |  |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | **6** | API robustness: unbounded calls get timeouts, up-front validation, atomic windows |  |
@@ -472,7 +472,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 35 merged Microsoft Agent Framework PRs</summary>
+<summary>All 37 merged Microsoft Agent Framework PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -511,6 +511,8 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7130](https://github.com/microsoft/agent-framework/pull/7130) | Python: extract keywords from non-English text for topic selection, so CJK and other non-latin queries stop coming back empty |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7124](https://github.com/microsoft/agent-framework/pull/7124) | Python: compaction token counting serialized messages with `ensure_ascii=True`, so the tokenizer counted `\uXXXX` escapes instead of real characters (~1.6x inflation on CJK); serialize the real text |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6037](https://github.com/microsoft/agent-framework/pull/6037) | Keep Foundry citation `get_url` metadata through response conversion so source links survive in chat responses |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9977](https://github.com/microsoft/agent-framework/pull/9977) | Prefer a caller-injected Redis history client over redundant connection settings, while preserving owned-client validation and leaving borrowed clients open on close |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9852](https://github.com/microsoft/agent-framework/pull/9852) | Accept whole-number floats for JSON Schema integer arguments while still rejecting booleans and fractional values |
 
 </details>
 <details>
@@ -1187,16 +1189,16 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi)** | 港大计算机硕士 | **上海全球AI大赛冠军** | **三次获ACM-ICPC银牌** | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 560+ 个上游 PR 已合并或落地，其中 Mooncake（63 个）、Vibe-Trading（68 个）、vLLM（17 个）、Qwen Code（57 个）、deer-flow（25 个）、Microsoft Agent Framework（35 个）、PyTorch（16 个）、AstrBot（37 个）、openclaw（9 个）、Google ADK（17 个）、promptfoo（27 个）、Triton（8 个）、Inspect AI（30 个）。
-- 代表性公开项目（star 100+）：CoreCoder、FindJobs-Agent、RepoWiki、ContractGuard。
+- 560+ 个上游 PR 已合并或落地，其中 [Mooncake](https://github.com/kvcache-ai/Mooncake)（63 个）、[Vibe-Trading](https://github.com/HKUDS/Vibe-Trading)（68 个）、[vLLM](https://github.com/vllm-project/vllm)（17 个）、[Qwen Code](https://github.com/QwenLM/qwen-code)（57 个）、[deer-flow](https://github.com/bytedance/deer-flow)（25 个）、[Microsoft Agent Framework](https://github.com/microsoft/agent-framework)（37 个）、[PyTorch](https://github.com/pytorch/pytorch)（16 个）、[AstrBot](https://github.com/AstrBotDevs/AstrBot)（37 个）、[openclaw](https://github.com/openclaw/openclaw)（9 个）、[Google ADK](https://github.com/google/adk-python)（17 个）、[promptfoo](https://github.com/promptfoo/promptfoo)（27 个）、[Triton](https://github.com/triton-lang/triton)（8 个）、[Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai)（30 个）。
+- 代表性公开项目：[CoreCoder](https://github.com/he-yufeng/CoreCoder)、[RepoWiki](https://github.com/he-yufeng/RepoWiki)。
 
 ### 项目
 
 | 项目 | Stars | 简介 |
 |------|:-----:|------|
 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.8k+ | Claude Code 51万行源码蒸馏成 1,309 行引擎、整包 2,658 行 Python，关键架构模式全部可跑，支持任意大模型，附 8 篇架构导读。 |
-| [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化、职位结构化。 |
 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 250+ | 开源版 DeepWiki：CLI/浏览器生成代码库 wiki，带知识卡片和基于源码的多轮问答，PageRank 文件排序、Mermaid 图、阅读导览。 |
+| [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化、职位结构化。 |
 | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | 签合同前让 AI agent 先排雷：不公平条款、缺失保护、人话解释。 |
 | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI 贡献雷达：找匹配 issue，看 PR 合并信号，再决定要不要花这个周末。 |
 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | 给非程序员看的 AI 代码阅读器：大白话文件导读、悬停注解、术语词典、问答、自然语言改代码。 |
@@ -1207,8 +1209,8 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | 方向 | 项目 | Stars | 简介 |
 |------|------|:-----:|------|
 | Coding agents / 评测 | [CoreCoder](https://github.com/he-yufeng/CoreCoder) | 1.8k+ | Claude Code 51万行源码 → 1,309 行引擎、整包 2,658 行 Python 重写，支持任意大模型，附 8 篇架构导读。 |
-| 应用型 Agent | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化和岗位结构化。 |
 | 代码库地图 | [RepoWiki](https://github.com/he-yufeng/RepoWiki) | 250+ | 开源 DeepWiki 替代品：CLI 或浏览器生成仓库 wiki，知识卡片+基于源码的多轮问答，PageRank 文件排名、Mermaid 架构图、阅读指南。 |
+| 应用型 Agent | [FindJobs-Agent](https://github.com/he-yufeng/FindJobs-Agent) | 200+ | LLM 求职工具箱：技能差距分析、模拟面试、简历优化和岗位结构化。 |
 | 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 100+ | AI 合同审查 Agent，签字前帮你找红旗条款、不公平约定和缺失保护。 |
 | 代码库地图 | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI 开源贡献发现器 + 仓库雷达：找匹配 issue，也评估 PR 合入友好度。 |
 | 代码理解 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | 面向非程序员的 AI 代码阅读器：大白话文件导读、悬浮批注、术语词典、问答、自然语言改写。 |
@@ -1243,7 +1245,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | **37** | 发版资源新鲜度、严格 provider 的 reasoning 回合 400、定时任务与 provider 失败如实上抛、退役 embedding 默认值 | [#10437](https://github.com/AstrBotDevs/AstrBot/pull/10437) Anthropic 请求把 custom_extra_body 里列表形的自定义 tools 合并进已注册 function tools，不再被 extra_body 顶层替换静默清空（DeepSeek 兼容端点的服务端联网搜索就是这种情况）<br>[#10591](https://github.com/AstrBotDevs/AstrBot/pull/10591) 单个不可读的 skill 目录不再拖垮整个请求：跳过它、其余照常加载<br>[#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) 优先用打包进去的 dashboard 资产，而不是过期的 data dist，发版后不再展示旧前端。 |
 | [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | **25** | 并发与 checkpoint 正确性：建线程竞态、会话池生命周期、fork 恢复、渠道协议上限、批次暂停语义 | [#6208](https://github.com/bytedance/deer-flow/pull/6208) MindIE 的结构化工具结果此前在工具和模型轮次之间丢失；现在保留并计入 token 预算，超长结构化负载不会再悄悄撑爆上下文<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) WeCom 出站内容封顶在 20480 字节协议上限：主动推送按序分块并给每个聊天配 refcount 发送锁，长推送不再被协议拒绝、并发发送不再交错<br>[#3800](https://github.com/bytedance/deer-flow/pull/3800) 让 `create_thread` 在并发 insert 输掉竞争时保持幂等，避免一个聊天产生重复 thread。<br>[#6621](https://github.com/bytedance/deer-flow/pull/6621) 嵌入式上传先把可转换源快照进私有临时目录，落盘副本和 Markdown companion 始终出自同一次读取：此前两次读取之间的一次保存会让两者版本错位，而响应仍报成功<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) fork 恢复的检查点把 sandbox channel 以 langgraph `Overwrite` 包装态送达，sync/async 初始化路径和 sibling readers 统一走一个解包 helper |
 | [PyTorch](https://github.com/pytorch/pytorch) (105.0k★) | **16** | Inductor 正确性、CUDA 索引、autograd 与原生算子安全 | [#196943](https://github.com/pytorch/pytorch/pull/196943) cat/split-with-sizes pattern 匹配接受等价的负维度 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | **35** | agent 循环边界：消息 role 原地改泄漏、每轮钩子、阻塞工具 | [#8953](https://github.com/microsoft/agent-framework/pull/8953) 流式文本片段聚合从反复 `+=` 改成一遍折叠：此前每个 `Content.__add__` 都重建字符串、重并属性、重接 raw 列表，n 个片段就是 O(n^2)，每条聚合响应都在付这个税；现在每个 run 一次 join、一次属性合并<br>[#8773](https://github.com/microsoft/agent-framework/pull/8773) Python：OpenAI chat-completions 的 SDK 流在消费方提前停止（break、异常、取消）时从不关闭，provider 响应一直泄漏到 GC 才回收；改用 async with 绑定，退出即确定性关闭<br>[#7289](https://github.com/microsoft/agent-framework/pull/7289) turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | **37** | agent 循环边界：消息 role 原地改泄漏、每轮钩子、阻塞工具 | [#8953](https://github.com/microsoft/agent-framework/pull/8953) 流式文本片段聚合从反复 `+=` 改成一遍折叠：此前每个 `Content.__add__` 都重建字符串、重并属性、重接 raw 列表，n 个片段就是 O(n^2)，每条聚合响应都在付这个税；现在每个 run 一次 join、一次属性合并<br>[#8773](https://github.com/microsoft/agent-framework/pull/8773) Python：OpenAI chat-completions 的 SDK 流在消费方提前停止（break、异常、取消）时从不关闭，provider 响应一直泄漏到 GC 才回收；改用 async with 绑定，退出即确定性关闭<br>[#7289](https://github.com/microsoft/agent-framework/pull/7289) turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次 |
 | [OpenClaw](https://github.com/openclaw/openclaw) (392.7k★) | **9** | 会话存储失败即关的清扫、鉴权失败可见性、代理对安全文本 | [#119127](https://github.com/openclaw/openclaw/pull/119127) 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fail-closed，全域 GC 永不误删用户原件（owner P0 评审后与项目作者共建）<br>[#166720](https://github.com/openclaw/openclaw/pull/166720) 工具禁用后的 settled-turn 总结把已完成 toolUse/toolResult 历史转为纯文本，Bedrock 不再因无 toolConfig 却携带工具块而拒绝总结请求 |
 | [opencode](https://github.com/anomalyco/opencode) (204.9k★) | **1** | MCP OAuth 回调绑定 IPv4 loopback |  |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | **6** | API 健壮性：无超时调用加边界、前置校验、原子窗口 |  |
@@ -1640,7 +1642,7 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 
 </details>
 <details>
-<summary>全部 35 个已合并的 Microsoft Agent Framework PR</summary>
+<summary>全部 37 个已合并的 Microsoft Agent Framework PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
@@ -1679,6 +1681,8 @@ AI Agent 研究员 & 工程师 | **曾任 [Moonshot AI](https://www.moonshot.ai/
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7130](https://github.com/microsoft/agent-framework/pull/7130) | Python：topic selection 的关键词提取支持非英文文本，中文、日文等非拉丁查询不再空手而归 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7124](https://github.com/microsoft/agent-framework/pull/7124) | Python：compaction 估 token 时用 `ensure_ascii=True` 序列化消息，tokenizer 数的是 `\uXXXX` 转义序列而不是真实字符（CJK 约虚高 1.6 倍）；改成按真实文本序列化 |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6037](https://github.com/microsoft/agent-framework/pull/6037) | 保留 Foundry citation `get_url` 元数据，让检索引用链接经过 response conversion 后仍能出现在 chat response 中 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9977](https://github.com/microsoft/agent-framework/pull/9977) | 调用方注入的 Redis history client 优先于冗余连接配置，自建客户端的校验保持不变，关闭 provider 时也不误关借用客户端 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9852](https://github.com/microsoft/agent-framework/pull/9852) | JSON Schema integer 参数接受 3.0 这类整值浮点数，布尔值和 3.5 这类非整值仍然拒绝 |
 
 </details>
 <details>
