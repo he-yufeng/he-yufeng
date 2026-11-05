@@ -65,7 +65,7 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 
 ### Open Source Contributions
 
-570+ merged or landed PRs across 67 upstream projects. Projects and PRs are ordered by display score; highlights link only to the global Top 150, with up to five PRs per project.
+570+ merged or landed PRs across 68 upstream projects. Projects and PRs are ordered by display score; highlights link only to the global Top 150, with up to five PRs per project.
 
 | Project | Merged / landed | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -134,6 +134,7 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | **1** | API-key hygiene: secrets out of websocket URLs |  |
 | [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | **1** | Equity-screener EPS field merge |  |
 | [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | Model download safety: tar extraction rejects unsafe paths |  |
+| [yalantinglibs](https://github.com/alibaba/yalantinglibs) (2.2k★) | **1** | Serialization correctness: preserve compatible fields across variadic RPC calls |  |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | **3** | Concurrency-safe LiteLLM params, git workspace validation, UTF-8 logs |  |
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | **1** | SciCode answer extraction from content blocks |  |
 
@@ -1168,6 +1169,14 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
+<summary>All 1 merged yalantinglibs PR</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [yalantinglibs](https://github.com/alibaba/yalantinglibs) (2.2k★) | [#1236](https://github.com/alibaba/yalantinglibs/pull/1236) | Preserve compatible fields in variadic serialization: the metainfo check now covers the complete argument type instead of only the first argument, so release builds no longer deserialize present or explicitly empty compatible fields as absent |
+
+</details>
+<details>
 <summary>All 3 merged OpenHands SDK PRs</summary>
 
 | Project | PR | What I Fixed |
@@ -1245,7 +1254,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 ### 开源贡献
 
-上游 67 个项目共 570+ 个 PR 已合并或落地，项目与 PR 均按展示分排序。代表性修复只取全局前150名，每个项目最多5条。
+上游 68 个项目共 570+ 个 PR 已合并或落地，项目与 PR 均按展示分排序。代表性修复只取全局前150名，每个项目最多5条。
 
 | 项目 | 已合并 / 落地 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
@@ -1314,6 +1323,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | **1** | 密钥卫生：websocket URL 不再带 secret |  |
 | [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | **1** | 股票筛选器 EPS 字段粘连 |  |
 | [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | 模型下载安全：tar 解包拒绝不安全路径 |  |
+| [yalantinglibs](https://github.com/alibaba/yalantinglibs) (2.2k★) | **1** | 序列化正确性：变参 RPC 调用不再丢失 compatible 字段 |  |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | **3** | 并发安全的 LiteLLM 参数、git 工作区校验、UTF-8 日志 |  |
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | **1** | 从内容块提取 SciCode 答案 |  |
 
@@ -2346,6 +2356,14 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | [#647](https://github.com/qdrant/fastembed/pull/647) | 模型 tar 包解包拒绝不安全路径，构造过的压缩包不能再写出缓存目录之外 |
+
+</details>
+<details>
+<summary>全部 1 个已合并的 yalantinglibs PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [yalantinglibs](https://github.com/alibaba/yalantinglibs) (2.2k★) | [#1236](https://github.com/alibaba/yalantinglibs/pull/1236) | 变参序列化的 metainfo 检查改为覆盖完整参数类型，不再只看第一个参数；Release 构建下，已存在以及显式为空的 compatible 字段都不会再被反序列化成 absent |
 
 </details>
 <details>
