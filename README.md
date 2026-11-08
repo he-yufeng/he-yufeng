@@ -130,7 +130,7 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | **1** | Anthropic stop-sequence validation |  |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | **1** | Publisher metadata validation |  |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (5.0k★) | **2** | MCP protocol state: duplicate initialize rejection, description metadata |  |
-| [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | **4** | Founding PRs: tests/CI/templates, pluggable TaskStore, Gemini CLI support | [#1](https://github.com/HKUDS/ClawTeam/pull/1) First PR: 122 tests, CI, team templates, config bugfixes, task duration tracking<br>[#40](https://github.com/HKUDS/ClawTeam/pull/40) Pluggable TaskStore: extract task persistence into swappable backend abstraction |
+| [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | **4** | Founding PRs: tests/CI/templates, pluggable TaskStore, Gemini CLI support |  |
 | [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | **5** | GPU discovery without a CUDA context, benchmark top-k honoring |  |
 | [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | **1** | Sandbox execution opt-in |  |
 | [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | **1** | API-key hygiene: secrets out of websocket URLs |  |
@@ -1334,7 +1334,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | **1** | Anthropic stop 序列校验 |  |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | **1** | 发布者元数据校验 |  |
 | [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) (5.0k★) | **2** | MCP 协议状态：拒绝重复 initialize、description 元数据 |  |
-| [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | **4** | 奠基 PR：测试/CI/模板、可插拔 TaskStore、Gemini CLI 支持 | [#1](https://github.com/HKUDS/ClawTeam/pull/1) 首个 PR：122 个测试、CI、团队模板、config 修复、任务耗时追踪<br>[#40](https://github.com/HKUDS/ClawTeam/pull/40) 可插拔 TaskStore：将任务持久化抽取为可替换的后端抽象层 |
+| [ClawTeam](https://github.com/HKUDS/ClawTeam) (5.5k★) | **4** | 奠基 PR：测试/CI/模板、可插拔 TaskStore、Gemini CLI 支持 |  |
 | [Microsoft Recommenders](https://github.com/recommenders-team/recommenders) (21.8k★) | **5** | 无 CUDA 上下文下的 GPU 探测、基准脚本 top-k 生效 |  |
 | [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | **1** | 沙箱执行改为显式开启 |  |
 | [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | **1** | 密钥卫生：websocket URL 不再带 secret |  |
