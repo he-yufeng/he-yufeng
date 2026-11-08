@@ -33,7 +33,7 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | AI code reader for non-programmers: plain-language file guides, hover annotations, a terminology dictionary, Q&A, and natural-language edits. |
 
 <details>
-<summary>All projects (21)</summary>
+<summary>All projects (23)</summary>
 
 | Area | Project | Stars | Notes |
 |------|---------|:-----:|-------|
@@ -43,6 +43,8 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | Applied agents | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 150+ | AI agent that reviews contracts for red flags before you sign: unfair terms, missing protections, and plain-English explanations. |
 | Codebase maps | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI-powered contribution finder and repo radar: find matching issues, then check PR merge signals before spending a weekend. |
 | Code understanding | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | AI code reader for non-programmers: plain-language file guides, hover annotations, a terminology dictionary, Q&A, and natural-language edits. |
+| Readable inference | [core-deepinfer](https://github.com/he-yufeng/core-deepinfer) | new | A readable NumPy inference loop: prefill, prefix recovery, verification budgets and speculative KV rollback. Uses a random, untrained CPU model with no GPU or production-quality claim. |
+| AI infra notes | [ai-infra-notes](https://github.com/he-yufeng/ai-infra-notes) | new | Source-level notes on inference engines, KV caches, scheduling, serving protocols and agent runtimes, with runnable DeepInfer and Kimi K3.1 examples and explicit evidence boundaries. |
 | Coding agents / evals | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | new | Pytest plugin for regression-testing AI agents: snapshot baselines, semantic comparison, and mock LLMs. |
 | Coding agents / evals | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | new | AI coding agent CLI supporting 100+ LLMs via litellm, with dangerous command blocking, parallel tools, and session persistence. |
 | Coding agents / evals | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | new | CLI arena for AI coding agents: isolated `git worktree` runs, test/cost/diff/time scoring, and `pip install codejoust`. |
@@ -69,17 +71,17 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 
 | Project | Merged / landed | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | **83** | Portfolio analytics and monitor-verdict pipeline; fail-closed live-trading gates; backtest accounting correctness (shorts, corporate actions, T+1) | [#2079](https://github.com/HKUDS/Vibe-Trading/pull/2079) Add versioned research artifacts so a run's inputs, evidence, and result documents can be replayed against an explicit revision<br>[#2100](https://github.com/HKUDS/Vibe-Trading/pull/2100) Persist background task outcomes and reconcile interrupted work after restart, reporting uncertain crash windows instead of inventing results<br>[#2168](https://github.com/HKUDS/Vibe-Trading/pull/2168) Compare immutable research revisions across content, evidence and metadata, with stale comparisons invalidated when the selected research record changes<br>[#1631](https://github.com/HKUDS/Vibe-Trading/pull/1631) Split the context compaction helpers out of loop.py so the agent loop file stops carrying compaction bookkeeping inline<br>[#2098](https://github.com/HKUDS/Vibe-Trading/pull/2098) Reap owned background processes on cancellation and host shutdown, without touching another conversation's work |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | **64** | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#3806](https://github.com/kvcache-ai/Mooncake/pull/3806) Restore the standby index tolerantly: ambiguous overlapping replicas are discarded with durable repair instead of failing the whole promotion<br>[#3889](https://github.com/kvcache-ai/Mooncake/pull/3889) Self-heal dangling LOCAL_DISK replicas on the read path: a batch_get onto a key whose SSD backing file vanished probes the offload file, evicts the dead replica master-side through a conditional race-safe RPC, and retries once, completing the heal pair that #3711 started on the Put path<br>[#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) Batch reads with a duplicate key handed back the first occurrence's never-written buffer as success; each unique key now transfers once and its verified bytes fan out to every duplicate with device-aware copies<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) Self-heal dangling LOCAL_DISK replicas in `Client::Put`: a put onto a key left with only client-local disk replicas evicts them and retries cleanly; BatchPut probes the already-exists subset and bulk-evicts it in one pass before retrying, with local and batch twin tests<br>[#3943](https://github.com/kvcache-ai/Mooncake/pull/3943) Drain in-flight RPCs across client teardown: a read-side client torn down after consecutive RPC timeouts segfaulted in asio's epoll_reactor; a shared RpcDrainGuard stops admission and waits out in-flight calls before destruction |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | **83** | Portfolio analytics and monitor-verdict pipeline; fail-closed live-trading gates; backtest accounting correctness (shorts, corporate actions, T+1) | [#2162](https://github.com/HKUDS/Vibe-Trading/pull/2162) Preserve signed long/short exposure in backtest risk reports: gross shares affect concentration only, while generated JSON and Markdown are checked against actual positions<br>[#777](https://github.com/HKUDS/Vibe-Trading/pull/777) Portfolio Studio's risk x-ray: pure-computation concentration, volatility, drawdown, VaR/ES, diversification, and correlation analytics for weighted baskets, plus an agent tool that fetches closes through the loader fallback chain<br>[#1551](https://github.com/HKUDS/Vibe-Trading/pull/1551) Convert additive-caliber A-share qfq factors to the multiplicative caliber the backtest books in whenever the offset chain validates, so adjusted prices stop drifting away from corporate-action accounting<br>[#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) Scheduled monitors now persist each run's parsed verdict on the job and the list endpoint carries it inline, so Market Watch renders the latest call and its delta in one query<br>[#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) Cash-dividend journal rows were never parsed, so dividends paid into the shadow account read as flat real PnL; they are booked properly now |
-| [vLLM](https://github.com/vllm-project/vllm) (95.0k★) | **17** | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing | [#59986](https://github.com/vllm-project/vllm/pull/59986) Keep DSV4.1 sparse prefill and mixed batches out of unsafe FULL cudagraphs: five sparse metadata builders now use UNIFORM_BATCH, while uniform varlen decode batches stay graph-eligible up to the speculative width<br>[#59859](https://github.com/vllm-project/vllm/pull/59859) Reuse the item ids already streamed in `output_item.*` events when rebuilding the final harmony response, so strict clients stop dropping the stream when `response.completed` arrives with freshly minted ids<br>[#45807](https://github.com/vllm-project/vllm/pull/45807) Anthropic-compatible streaming now reports the stop_reason when a stop sequence actually fired, instead of leaving clients guessing<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa's in-place `position_ids` accumulation bled into CUDA-graph padding, crashing BGE-M3 after ~4k requests.<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call params now parse as JSON first, so `null`/`false` survive streaming instead of being rejected as Python literals. |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | **62** | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`.<br>[#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories.<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank<br>[#4829](https://github.com/QwenLM/qwen-code/pull/4829) Added a timeout to Qwen OAuth refresh so a stalled refresh endpoint can't hang the CLI on auth recovery.<br>[#5071](https://github.com/QwenLM/qwen-code/pull/5071) Submit fast tool results after stream end, so a race at the tail of streaming can't strand completed calls. |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | **37** | Release asset freshness, reasoning-turn 400s on strict providers, scheduler and provider failure propagation, retired embedding defaults | [#10437](https://github.com/AstrBotDevs/AstrBot/pull/10437) Merge list-valued custom tools from `custom_extra_body` into Anthropic requests instead of letting `extra_body` replace the registered function tools, so a custom server-tool entry stops silently wiping the tool list<br>[#10591](https://github.com/AstrBotDevs/AstrBot/pull/10591) Keep one unreadable skill directory from failing the whole request: skip it and load the rest<br>[#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) Prefer bundled dashboard assets over a stale data dist, so a release stops serving an outdated WebUI. |
-| [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | **25** | Concurrency and checkpoint correctness: thread-creation races, session-pool lifecycle, channel protocol limits, batch pause semantics | [#6208](https://github.com/bytedance/deer-flow/pull/6208) MindIE structured tool results were dropped between the tool and the model turn; they are now preserved and counted against the token budget so long structured payloads cannot blow the context silently<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) Cap WeCom outbound content at the 20480-byte protocol limit: proactive pushes split into ordered chunks with a refcounted per-chat send lock, so long pushes stop being rejected and concurrent sends stop interleaving<br>[#3800](https://github.com/bytedance/deer-flow/pull/3800) Keep `create_thread` idempotent when a concurrent insert loses the race, so a chat cannot end up with duplicate threads.<br>[#6621](https://github.com/bytedance/deer-flow/pull/6621) Embedded uploads snapshotted a convertible source into a private temp dir so the saved upload and its Markdown companion always convert the same version: a save landing between the two reads used to leave the pair silently skewed on a success response<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) Fork-restored checkpoints deliver the sandbox channel still wrapped in langgraph `Overwrite`; unified one unwrap helper across the sync/async init paths and the sibling readers |
-| [PyTorch](https://github.com/pytorch/pytorch) (105.0k★) | **16** | Inductor correctness, CUDA indexing, autograd and native operator safety | [#196943](https://github.com/pytorch/pytorch/pull/196943) Accept equivalent negative dimensions in the cat/split-with-sizes patterns |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | **38** | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools | [#8953](https://github.com/microsoft/agent-framework/pull/8953) Fold streamed text runs in one pass instead of repeated `+=`: every `Content.__add__` rebuilt the text string, re-merged properties and re-concatenated raw representations, so n chunks cost O(n^2) on every aggregated response; now one join per run with a single props merge<br>[#8773](https://github.com/microsoft/agent-framework/pull/8773) Python: the OpenAI chat-completions SDK stream was never closed when the consumer stopped early (break, exception, cancellation), leaking the provider response until GC; bind it with async with so exit closes it deterministically<br>[#7289](https://github.com/microsoft/agent-framework/pull/7289) Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration |
-| [OpenClaw](https://github.com/openclaw/openclaw) (392.7k★) | **9** | Session-store fail-closed sweeps, auth-failure visibility, surrogate-safe text | [#119127](https://github.com/openclaw/openclaw/pull/119127) Keep the mtime media sweep out of the managed-outgoing tree and fail closed when the session store is unreadable, so global GC can never delete live user originals (co-built with the project owner after their P0 review)<br>[#166720](https://github.com/openclaw/openclaw/pull/166720) Preserve completed tool history as plain text when settled-turn finalization disables tools, so Bedrock no longer rejects the summary request for carrying toolUse/toolResult blocks without toolConfig |
-| [opencode](https://github.com/anomalyco/opencode) (204.9k★) | **1** | MCP OAuth callback bound to IPv4 loopback |  |
+| [vLLM](https://github.com/vllm-project/vllm) (95.0k★) | **17** | Serving correctness: cross-turn API state leaks, CUDA-graph crashes, tool-call parsing |  |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | **62** | Agent runtime hardening: tool-call adjacency, cancellation, permissions, TUI states | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`.<br>[#4622](https://github.com/QwenLM/qwen-code/pull/4622) Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories.<br>[#14022](https://github.com/QwenLM/qwen-code/pull/14022) Persist CDP reconnect backoff across MV3 service-worker restarts, apply one ladder to live timers and cold starts, and reset it after a quiet window or 30 seconds of healthy connection<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank<br>[#11684](https://github.com/QwenLM/qwen-code/pull/11684) Keep reasoning and function_call items adjacent through Responses cleanup |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | **37** | Release asset freshness, reasoning-turn 400s on strict providers, scheduler and provider failure propagation, retired embedding defaults |  |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | **38** | Agent-loop boundaries: message-role mutation leaks, per-turn hooks, blocking tools |  |
+| [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | **25** | Concurrency and checkpoint correctness: thread-creation races, session-pool lifecycle, channel protocol limits, batch pause semantics | [#6208](https://github.com/bytedance/deer-flow/pull/6208) MindIE structured tool results were dropped between the tool and the model turn; they are now preserved and counted against the token budget so long structured payloads cannot blow the context silently<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) Cap WeCom outbound content at the 20480-byte protocol limit: proactive pushes split into ordered chunks with a refcounted per-chat send lock, so long pushes stop being rejected and concurrent sends stop interleaving |
+| [PyTorch](https://github.com/pytorch/pytorch) (105.0k★) | **16** | Inductor correctness, CUDA indexing, autograd and native operator safety |  |
+| [OpenClaw](https://github.com/openclaw/openclaw) (392.7k★) | **9** | Session-store fail-closed sweeps, auth-failure visibility, surrogate-safe text | [#119127](https://github.com/openclaw/openclaw/pull/119127) Keep the mtime media sweep out of the managed-outgoing tree and fail closed when the session store is unreadable, so global GC can never delete live user originals (co-built with the project owner after his P0 review) |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | **8** | API robustness: unbounded calls get timeouts, up-front validation, atomic windows |  |
+| [opencode](https://github.com/anomalyco/opencode) (204.9k★) | **1** | MCP OAuth callback bound to IPv4 loopback |  |
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | **1** | AutoProcessor hub-kwarg passthrough |  |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | **27** | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#9872](https://github.com/promptfoo/promptfoo/pull/9872) Harden malformed completion responses in OpenRouter and Snowflake: a missing, empty or unusable first choice now returns a structured provider error instead of throwing or grading a malformed success, and failed partial output is neither graded nor written to conversation history<br>[#11445](https://github.com/promptfoo/promptfoo/pull/11445) Report redteam targets that omit output or return null/undefined as integration errors instead of scoring them successful; literal "null"/"undefined" strings and genuine refusals stay gradable |
 | [Google ADK](https://github.com/google/adk-python) (22.0k★) | **17** | Agent runtime correctness: eval metadata, live streaming, context caching, MCP header auth |  |
@@ -90,24 +92,24 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | [Triton](https://github.com/triton-lang/triton) (20.4k★) | **8** | Compiler semantics: fp8 arithmetic promotion, top_k edge cases, AxisInfo correctness, call-graph cycle safety, Gluon async-copy type checking |  |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | Monitor wiring: eigenvalue records never landed in logs |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | Team-run permission inheritance, Windows subprocess windows, skill sourcing |  |
-| [Cline](https://github.com/cline/cline) (66.7k★) | **1** | File search survives the open-tabs host RPC being down |  |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (3.1k★) | **30** | Provider parsing and eval integrity: reasoning blocks, perplexity sample loss, streaming writer crash |  |
+| [Cline](https://github.com/cline/cline) (66.7k★) | **1** | File search survives the open-tabs host RPC being down |  |
 | [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | **1** | Proxy logging: verbose logger sources missing from INFO output |  |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (52.3k★) | **8** | Renderer correctness: tree-shaken markdown styles, streamed translate rendering, surrogate-safe truncation |  |
 | [goose](https://github.com/aaif-goose/goose) (53.3k★) | **3** | Telemetry export reliability, skill path display, desktop shortcuts |  |
 | [MCP Servers](https://github.com/modelcontextprotocol/servers) (90.1k★) | **1** | Dependency hygiene: zod declared where servers import it |  |
 | [GitHub MCP Server](https://github.com/github/github-mcp-server) (32.4k★) | **2** | Team-reviewer resolution and read-only surface hygiene |  |
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | **1** | Report effective Blaxel timeouts instead of defaults |  |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | **6** | Training-prep and sampling robustness: DPO crashes, 0-fps video, CI repair |  |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (15.5k★) | **10** | ADK session caching and message-to-tool-call transition ordering |  |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | **6** | Training-prep and sampling robustness: DPO crashes, 0-fps video, CI repair |  |
 | [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | **2** | File-format conversion correctness: DOCX underline preservation, legacy XLSX tolerance |  |
 | [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | **3** | Memory-store backends: S3 Vectors index naming, Qdrant https option |  |
 | [verl](https://github.com/verl-project/verl) (23.1k★) | **1** | Colocated weight-sync rank derivation across DP/TP |  |
 | [TRL](https://github.com/huggingface/trl) (19.1k★) | **2** | Dataset-prep fail-fast and vLLM special-token preservation |  |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | **8** | Realtime voice plumbing: stream-retry recreation, provider status parsing, STT errors |  |
 | [DSPy](https://github.com/stanfordnlp/dspy) (37.8k★) | **1** | Streaming error propagation: sync iterator failures no longer vanish |  |
-| [Agno](https://github.com/agno-agi/agno) (41.8k★) | **1** | Tool-argument whitespace preservation with sentinel normalization |  |
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | **5** | Duplex Realtime scaling, sleep admission, diffusion runtime and engine configuration |  |
+| [Agno](https://github.com/agno-agi/agno) (41.8k★) | **1** | Tool-argument whitespace preservation with sentinel normalization |  |
 | [milvus](https://github.com/milvus-io/milvus) (45.8k★) | **1** | Scheduler shutdown safety: in-flight broadcast tasks no longer panic a closing scheduler |  |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | **3** | Agent-flow guards, Docling fallback, GraphRAG edge ranking |  |
 | [OpenAI Python SDK](https://github.com/openai/openai-python) (31.6k★) | **1** | Bounded vector-store polling and client lifecycle edges |  |
@@ -115,15 +117,15 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | **2** | Cross-process KV transfer: CUDA IPC event lifetimes, HND layout handling |  |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.9k★) | **9** | Non-streaming OpenAI support, Gemini safety metadata, vLLM reasoning chunks |  |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | **2** | Autotuner None-input crash and CUTLASS header compile fix |  |
-| [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.8k★) | **1** | Schema building keeps required union discriminator tags |  |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | **3** | Vercel AI dynamic-tool part acceptance, completions penalties forwarding |  |
+| [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.8k★) | **1** | Schema building keeps required union discriminator tags |  |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | **11** | Observability UI state: prompt-diff expiry, cursor monotonicity, startup races |  |
 | [Pipecat](https://github.com/pipecat-ai/pipecat) (14.6k★) | **2** | Realtime voice: DTMF cache keying, interruption frame serialization |  |
 | [langfuse](https://github.com/langfuse/langfuse) (35.2k★) | **1** | OTel trace export: int64 fields serialized as strings per protobuf JSON |  |
+| [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) (17.5k★) | **1** | Registry entry for the dsh-tool-reading-map and dsh-tool-radar plugins |  |
 | [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | **1** | TUI footer status-line customization |  |
 | [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | **2** | FalkorDB bulk-write crash on NUL bytes, MCP server keeps the URI username |  |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | **4** | Docling response unpacking, docs dark theme, PostgreSQL search_path detection |  |
-| [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) (17.5k★) | **1** | Registry entry for the dsh-tool-reading-map and dsh-tool-radar plugins |  |
 | [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | **1** | TUI tab-completion fixes |  |
 | [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | **1** | Anthropic stop-sequence validation |  |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | **1** | Publisher metadata validation |  |
@@ -133,11 +135,101 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | **1** | Sandbox execution opt-in |  |
 | [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | **1** | API-key hygiene: secrets out of websocket URLs |  |
 | [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | **1** | Equity-screener EPS field merge |  |
-| [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | Model download safety: tar extraction rejects unsafe paths |  |
 | [yalantinglibs](https://github.com/alibaba/yalantinglibs) (2.2k★) | **1** | Serialization correctness: preserve compatible fields across variadic RPC calls |  |
+| [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | Model download safety: tar extraction rejects unsafe paths |  |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | **3** | Concurrency-safe LiteLLM params, git workspace validation, UTF-8 logs |  |
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | **1** | SciCode answer extraction from content blocks |  |
 
+<details>
+<summary>All 83 merged or landed Vibe-Trading PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2079](https://github.com/HKUDS/Vibe-Trading/pull/2079) | Add versioned research artifacts so a run's inputs, evidence, and result documents can be replayed against an explicit revision |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2100](https://github.com/HKUDS/Vibe-Trading/pull/2100) | Persist background task outcomes and reconcile interrupted work after restart, reporting uncertain crash windows instead of inventing results |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2168](https://github.com/HKUDS/Vibe-Trading/pull/2168) | Compare immutable research revisions across content, evidence and metadata, with stale comparisons invalidated when the selected research record changes |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1631](https://github.com/HKUDS/Vibe-Trading/pull/1631) | Split the context compaction helpers out of loop.py so the agent loop file stops carrying compaction bookkeeping inline |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2098](https://github.com/HKUDS/Vibe-Trading/pull/2098) | Reap owned background processes on cancellation and host shutdown, without touching another conversation's work |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio's risk x-ray: pure-computation concentration, volatility, drawdown, VaR/ES, diversification, and correlation analytics for weighted baskets, plus an agent tool that fetches closes through the loader fallback chain |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1551](https://github.com/HKUDS/Vibe-Trading/pull/1551) | Convert additive-caliber A-share qfq factors to the multiplicative caliber the backtest books in whenever the offset chain validates, so adjusted prices stop drifting away from corporate-action accounting |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2170](https://github.com/HKUDS/Vibe-Trading/pull/2170) | Export complete research-artifact series as JSON or Markdown across Web, CLI, API and agent tools, preserving fenced content and revision metadata |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2087](https://github.com/HKUDS/Vibe-Trading/pull/2087) | Apply the same tool policy across provider adapters instead of letting one provider bypass the configured allow/deny rules |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) | Scheduled monitors now persist each run's parsed verdict on the job and the list endpoint carries it inline, so Market Watch renders the latest call and its delta in one query |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2092](https://github.com/HKUDS/Vibe-Trading/pull/2092) | Scope background tasks and completion notifications to their owning conversation, stopping another session from draining or cancelling them |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) | Cash-dividend journal rows were never parsed, so dividends paid into the shadow account read as flat real PnL; they are booked properly now |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2099](https://github.com/HKUDS/Vibe-Trading/pull/2099) | Interrupt silent provider streams at the caller boundary instead of waiting indefinitely for the socket to fail |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1317](https://github.com/HKUDS/Vibe-Trading/pull/1317) | Stamp every served frame with its price-adjustment caliber and warn when a basket mixes calibers, closing the silent mixed-caliber backtest gap from #1301 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1615](https://github.com/HKUDS/Vibe-Trading/pull/1615) | Bound baostock socket IO with a per-read deadline: a silent server no longer hangs the loader forever and a closed connection no longer spins at 100% CPU |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio step 2: composable weight constraints that plug into any optimizer, with waterfill redistribution that only feeds positions still under their cap |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1661](https://github.com/HKUDS/Vibe-Trading/pull/1661) | The grounding validation artifact now records which checks fired on each attempt, so a rejected claim says exactly what it tripped |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2062](https://github.com/HKUDS/Vibe-Trading/pull/2062) | Restore Qlib Alpha158 BETA/RESI semantics: all five windows now use vectorized trailing OLS slope and latest-point residual instead of endpoint differences and mean deviations, preserving full-window NaNs and checked against an independent polyfit oracle |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1311](https://github.com/HKUDS/Vibe-Trading/pull/1311) | Model short lots in FIFO pairing and restate legs to one caliber across splits and dividends, so short-side PnL stops double-counting borrowed exposure |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1823](https://github.com/HKUDS/Vibe-Trading/pull/1823) | Read percent-named evidence fields as points, not fractions, in derived-figure checks |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#900](https://github.com/HKUDS/Vibe-Trading/pull/900) | Every backtest run now emits a risk x-ray artifact (JSON + Markdown) over the strategy's average basket, with concentration, volatility, drawdown, and tail-risk metrics folded into run metrics |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2172](https://github.com/HKUDS/Vibe-Trading/pull/2172) | Build deterministic implied-volatility surfaces: linear IV across log-moneyness and total variance across expiries, with bounded grids, no extrapolation, and per-point provenance |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#966](https://github.com/HKUDS/Vibe-Trading/pull/966) | Surface Portfolio Studio artifacts in run detail, so risk x-ray and rebalance outputs show up where a run is inspected |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1309](https://github.com/HKUDS/Vibe-Trading/pull/1309) | Enforce A-share T+1, India T+1, and price-limit bands through composite state instead of the stateless sub-engine rule books that silently let same-day sells and locked-limit fills through |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) | Persist the flatten latch across runner restarts, bound to the halt episode, so a reboot with closing orders still working cannot replay the whole kill-switch sweep and flip the account |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1844](https://github.com/HKUDS/Vibe-Trading/pull/1844) | Seed per-bar returns with initial cash so risk ratios see the first bar instead of dividing on an empty base |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | Wired the strict alpha-bench gate into the CLI: `alpha bench --strict` now fails the run when a strategy misses the bar |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1306](https://github.com/HKUDS/Vibe-Trading/pull/1306) | Hold margin on short option legs and gate opens on buying power, so option shorts stop reading as free premium in backtests |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2162](https://github.com/HKUDS/Vibe-Trading/pull/2162) | Keep signed long/short exposure scale in backtest risk x-rays, using gross shares only for concentration and verifying generated reports against actual positions |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#795](https://github.com/HKUDS/Vibe-Trading/pull/795) | Portfolio Studio's rebalance notes: the backtester now writes a notes artifact with metrics for each rebalance, so agent-driven moves stay auditable |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1287](https://github.com/HKUDS/Vibe-Trading/pull/1287) | Serve split and dividend adjusted prices on both Yahoo loader paths, so corporate actions no longer book as crashes and ex-dividend gaps as losses in backtests |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1935](https://github.com/HKUDS/Vibe-Trading/pull/1935) | Warn on backtest config keys nothing on the path reads: an agent-written config with initial_capital/commission_rate passed validation and was silently dropped, so the run went ahead at 10x the intended capital and default fees |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1310](https://github.com/HKUDS/Vibe-Trading/pull/1310) | Scope shadow-account attribution to the pool currency and make the buckets mutually exclusive, so cross-currency deltas stop landing in the wrong bucket twice |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1349](https://github.com/HKUDS/Vibe-Trading/pull/1349) | Release tool calls left permanently blocked after microcompact cleared their results, marking the missing result explicitly instead |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1628](https://github.com/HKUDS/Vibe-Trading/pull/1628) | Grounding checks stop being scattered per-rule patches: a declared registry owns them, so a new check is one entry instead of edits across the gate |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1225](https://github.com/HKUDS/Vibe-Trading/pull/1225) | Streamed LLM calls now ask the endpoint for usage, so swarm runs record real token counts instead of character-count estimates (output tokens were under-reported 18-36x); endpoints that reject stream_options self-heal with one stateless retry |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1217](https://github.com/HKUDS/Vibe-Trading/pull/1217) | Shadow Account derived PnL from metrics keys the runner never emits, so successful backtests reported Shadow PnL = 0 and the Delta came out inverted; PnL now resolves from final_value/total_return and unknown states fail closed instead of rendering as 0.00 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1388](https://github.com/HKUDS/Vibe-Trading/pull/1388) | Close four connector gaps: MT5 silently clamped oversize orders to the symbol cap, eToro sent price-less limit orders as never-triggering MITs, futu served K-lines without declaring the adjustment caliber, and bare BTCUSDT-style pairs picked up A-share T+1 rules |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2069](https://github.com/HKUDS/Vibe-Trading/pull/2069) | Restore Qlib ROC and CORD semantics across ten modules, correcting reciprocal and offset handling plus CORD's one-based recency alignment against independent numerical oracles |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1332](https://github.com/HKUDS/Vibe-Trading/pull/1332) | Mark halted positions at the last traded close instead of entry cost once the bounded ffill expires, ending the phantom mid-halt drawdown in equity curves and rebalance sizing |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1824](https://github.com/HKUDS/Vibe-Trading/pull/1824) | Reject non-finite schedule and Sharpe-summary inputs with the offending field named |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1691](https://github.com/HKUDS/Vibe-Trading/pull/1691) | Declare the identity and figure gate checks in the grounding registry, so a new evidence gate stops needing hand-wired call sites |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1212](https://github.com/HKUDS/Vibe-Trading/pull/1212) | Fail closed when broker position reads return an API error: futu/okx connectors now raise instead of treating an unreadable position book as empty, so live orders stop sailing through the mandate gate blind |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1629](https://github.com/HKUDS/Vibe-Trading/pull/1629) | Broker capability matrix generated from the profile registry into the README, with a drift test that fails CI the moment a profile changes without a regenerate |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1156](https://github.com/HKUDS/Vibe-Trading/pull/1156) | Complete the Scheduled Research verdict flow in Market Watch: render each monitor's latest symbols, change since the previous run, and recorded time; show explicit empty or unreadable states without adding another API query |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1627](https://github.com/HKUDS/Vibe-Trading/pull/1627) | Weekly live-source health canary: every no-auth loader fetches a known-liquid symbol and the frame is checked for shape and freshness, so a dead or drifted endpoint fails CI before a user files it |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1663](https://github.com/HKUDS/Vibe-Trading/pull/1663) | Parenthesized accounting values in financial reports were extracted as positive, so a loss row could be certified against a profit figure; they now read as negatives |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1232](https://github.com/HKUDS/Vibe-Trading/pull/1232) | Fail closed on broker error envelopes during the halt sweep: a `{"status": "error"}` reply is recorded as an error instead of a compliant-looking cancel/flatten success |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2048](https://github.com/HKUDS/Vibe-Trading/pull/2048) | Recover native claude-cli tool attempts through the existing bounded host-protocol retry loop: refused native calls no longer become successful final answers without executing the requested host tools, and valid structured tool calls still avoid an extra CLI invocation |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1730](https://github.com/HKUDS/Vibe-Trading/pull/1730) | The TDX quote servers stopped answering the mootdx protocol in 2026-07, yet mootdx still sat second in the A-share fallback chain, taxing every auto-mode fetch ~9.5s before eastmoney; retired from the default chain and the health canary, kept registered for explicit source="mootdx" calls |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1518](https://github.com/HKUDS/Vibe-Trading/pull/1518) | Serve shareholder-count history from the per-period detail report instead of the latest-only snapshot, so max_periods stops being a dead parameter and each period states its measurement interval |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1288](https://github.com/HKUDS/Vibe-Trading/pull/1288) | Retry symbols the first market-data source could not serve down the fallback chain per symbol, so one 404 no longer strands the rest of a batch in unresolved |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2109](https://github.com/HKUDS/Vibe-Trading/pull/2109) | Preserve provider-reported cache and reasoning tokens in llm_usage so per-run accounting no longer drops those categories |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1444](https://github.com/HKUDS/Vibe-Trading/pull/1444) | Keep the tail-risk measure and confidence through the grounding gate: the declaration ref can name the exact evidence field (or call_id::field to disambiguate), so VaR/ES claims stop passing on a shared var_95 row |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1702](https://github.com/HKUDS/Vibe-Trading/pull/1702) | The correction prompt only told the model what to fix, so clean figures got re-written and rejected on the next pass; it now also lists the figures the gate already vouched for, so the next draft keeps them verbatim |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1732](https://github.com/HKUDS/Vibe-Trading/pull/1732) | american_waterfall silently dropped a bare-date as_of (which sibling european_waterfall accepts under the same name) and accrued the preferred return to each deal's own latest flow date, returning a plausible wrong number; it now raises TypeError like _validate_deals does one argument earlier |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2157](https://github.com/HKUDS/Vibe-Trading/pull/2157) | Recover pending background notifications after restart and quarantine malformed records so one bad row cannot block healthy task recovery |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1630](https://github.com/HKUDS/Vibe-Trading/pull/1630) | Channel authoring stops being folklore: the contract a channel must honor is pinned in one place with the recipe documented, so a new channel is written against an explicit surface |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1253](https://github.com/HKUDS/Vibe-Trading/pull/1253) | Skip market-triggered ticks while the market is closed, so weekend watches no longer queue orders into the Monday open |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1825](https://github.com/HKUDS/Vibe-Trading/pull/1825) | Let indexed Parquet bars load under a configured date_format instead of failing the parse |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1314](https://github.com/HKUDS/Vibe-Trading/pull/1314) | Key the shadow result cache by window and journal hash, so a re-render with a different window stops reusing the previous run |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1750](https://github.com/HKUDS/Vibe-Trading/pull/1750) | The options engine built its drawdown peak from recorded equity only, so the drop into the first bar (commission plus mark move) stayed invisible to max_drawdown: a 10% first-bar loss read as 0.0%; the peak is now seeded with initial cash, matching the shared calc_metrics |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1342](https://github.com/HKUDS/Vibe-Trading/pull/1342) | Detect the stooq anti-bot challenge page and flag the source unavailable with operator guidance, instead of parsing HTML as no data and silently sliding down the chain |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1312](https://github.com/HKUDS/Vibe-Trading/pull/1312) | Size buy-limit orders at the worse of quote and limit, so a limit above the book no longer oversizes the fill |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1706](https://github.com/HKUDS/Vibe-Trading/pull/1706) | US equity sessions now close at the early bell on half-days instead of running the live loop against a shut market |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#970](https://github.com/HKUDS/Vibe-Trading/pull/970) | Route `source: yfinance` crypto backtests to CryptoEngine instead of the stock path, so BTC/ETH runs stop erroring out |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1396](https://github.com/HKUDS/Vibe-Trading/pull/1396) | Classify Tushare-spelled CN futures suffixes (SHF/DCE/CFX/CZC/GFE) as futures instead of A-shares, so those contracts stop settling under T+1, no-short, no-margin equity rules |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2155](https://github.com/HKUDS/Vibe-Trading/pull/2155) | Keep Unicode line separators in heartbeat timestamps from defeating the swarm reaper's liveness check |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1598](https://github.com/HKUDS/Vibe-Trading/pull/1598) | Let backtests attach to the already-running MT5 terminal instead of demanding fresh credentials, unbreaking the sandbox flow for broker-managed terminals |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2064](https://github.com/HKUDS/Vibe-Trading/pull/2064) | Accept ordinary two-turn structured finals in the Claude CLI host: a tool-use turn followed by a normal structured answer no longer gets rejected or triggers a redundant extra invocation |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1307](https://github.com/HKUDS/Vibe-Trading/pull/1307) | Settle perpetual funding by bar span on 8h+ intervals instead of once a day on daily bars, restoring the intended carry cost in non-strict runs |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1209](https://github.com/HKUDS/Vibe-Trading/pull/1209) | Sign Alpaca position quantity by side before the mandate gate, so short positions are validated in the right direction instead of passing as bare positive numbers |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1462](https://github.com/HKUDS/Vibe-Trading/pull/1462) | Fetch full close history in the portfolio risk x-ray instead of sampled rows past the 250-row cap, so long-window baskets stop computing concentration and tail metrics on truncated series |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2120](https://github.com/HKUDS/Vibe-Trading/pull/2120) | Send empty-reply retry nudges as Anthropic-compatible user messages instead of non-consecutive system messages |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1313](https://github.com/HKUDS/Vibe-Trading/pull/1313) | Cap fastmcp below 4.0.0 to unbreak the repo-wide red CI from its MCPError constructor change, pending the real adaptation |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2159](https://github.com/HKUDS/Vibe-Trading/pull/2159) | Index research revision fingerprints so repeated artifact lookups no longer rescan every historical revision |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#984](https://github.com/HKUDS/Vibe-Trading/pull/984) | Write hierarchy-routed memory entries with the .md extension so discovery actually sees them (bare-slug files were invisible to list/recall) |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1740](https://github.com/HKUDS/Vibe-Trading/pull/1740) | Main CI went red before pytest even started: a readiness probe read TUSHARE_TOKEN via os.getenv and tripped the env gate, infer_market let the FX classifier claim ETH/USD before the crypto check, and the bench requirement check followed a preexisting report symlink |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1689](https://github.com/HKUDS/Vibe-Trading/pull/1689) | Pin the price-adjustment stamp on served FMP and Tiingo frames in loader tests, so a silent mixed-caliber regression fails loudly instead of blending raw and adjusted prices |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1220](https://github.com/HKUDS/Vibe-Trading/pull/1220) | Pin that rows between combinatorial CV test blocks stay trainable, the regression coverage the multi-segment purge fix shipped without |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1809](https://github.com/HKUDS/Vibe-Trading/pull/1809) | Make the IBKR pool thread-local reset order-independent so test isolation stops depending on teardown order |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1671](https://github.com/HKUDS/Vibe-Trading/pull/1671) | README_id inventory had missed get_southbound_flow and the tool counts drifted, leaving test_readme_counts red on every open PR; refreshed and green again |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1831](https://github.com/HKUDS/Vibe-Trading/pull/1831) | Wait out the model-list fetch before narrowing effort levels, removing a frontend test flake |
+
+</details>
 <details>
 <summary>All 64 merged Mooncake PRs</summary>
 
@@ -158,13 +250,16 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang: skip redundant handshake for fabric-connected nodes |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) | Arm the etcd view-change watch once per wait instead of per iteration, stopping the steady-state watch goroutine leak in HA mode |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4553](https://github.com/kvcache-ai/Mooncake/pull/4553) | Standby restore survives a replica on an unloaded segment: a client that unmounted shortly before the handoff no longer kills the whole promotion with INVALID_PARAMS; the stale replica is dropped with a warning and an object left with none is skipped, while every other validation stays strict |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5269](https://github.com/kvcache-ai/Mooncake/pull/5269) | Preserve compatible fields in later variadic RPC arguments under NDEBUG, fixing silent residency-affinity loss with real client-master and explicit-NDEBUG regressions |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4643](https://github.com/kvcache-ai/Mooncake/pull/4643) | CudaPlatform::copy() pinned the buffer's device and restored only the ordinal, and only on success: a caller's custom CUcontext was replaced by the primary one, a context-less caller gained one, and early returns leaked the switch; the exact CUcontext (NULL included) is now saved and restored on every exit |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | Duplicate `rpc_meta` re-publishes are idempotent when the HTTP body is unchanged, and still rejected when a value actually changes. |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5038](https://github.com/kvcache-ai/Mooncake/pull/5038) | Reject on-CUDA NVLink transfers before registering a CUDA host callback, avoiding process termination from CUDA calls on the driver's callback thread |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4463](https://github.com/kvcache-ai/Mooncake/pull/4463) | Handshake daemon no longer dies on SIGPIPE when an unvetted peer resets mid-reply: replies go out via `send(MSG_NOSIGNAL)` (or `SO_NOSIGPIPE` on macOS) and a reset peer comes back as a plain EPIPE error |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#1831](https://github.com/kvcache-ai/Mooncake/pull/1831) | TENT NVLink IPC fix: use base pointer for sub-allocated GPU tensors, porting #1622 fix to TENT path |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4451](https://github.com/kvcache-ai/Mooncake/pull/4451) | Keep a stalled peer from wedging the handshake daemon: the accepted socket now gets a send timeout symmetric with its receive one, so a reader that stalls mid-reply fails instead of freezing the control plane |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#3054](https://github.com/kvcache-ai/Mooncake/pull/3054) | Restore zero-copy puts for multi-buffer payloads in the wheel, which a just-merged refactor had silently regressed into copies |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#3278](https://github.com/kvcache-ai/Mooncake/pull/3278) | Block SIGTERM/SIGINT for the graceful-shutdown watcher thread: a process-directed signal landing on the watcher suspended the only pipe reader and hung shutdown forever |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5113](https://github.com/kvcache-ai/Mooncake/pull/5113) | Warn when a DMA-BUF registration's alignment and length can wrap RDMA offsets, naming the 4 GiB MR cap and nvidia-peermem workarounds instead of leaving silent data corruption unreported |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2570](https://github.com/kvcache-ai/Mooncake/pull/2570) | Integer overflow in `BatchOffload` for >4 GiB objects: sum slice sizes in `uint64_t` and reject objects exceeding the `uint32_t` record `value_len`, instead of silently truncating |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#3146](https://github.com/kvcache-ai/Mooncake/pull/3146) | Fix double free of UB/Barex slices on device-selection failure: queued slices were deallocated into the cache while `TransferTask` still owned them (sibling of the RDMA fix #3125) |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2617](https://github.com/kvcache-ai/Mooncake/pull/2617) | Associate task.request in EFA/Kunpeng submitTransfer |
@@ -175,6 +270,7 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4453](https://github.com/kvcache-ai/Mooncake/pull/4453) | Bound the handshake daemon's pending-notify queue so a stalled peer stops growing memory without bound |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2404](https://github.com/kvcache-ai/Mooncake/pull/2404) | Fail Python initialization loudly when the chosen memory allocator's support is unavailable, instead of starting with a broken allocator and failing later |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2610](https://github.com/kvcache-ai/Mooncake/pull/2610) | A refactor had dropped the per-task `request` pointer in `RdmaTransport::submitTransfer`, leaving every downstream task null and breaking status, retry, and accounting reads. Traced it back and restored the association. |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5079](https://github.com/kvcache-ai/Mooncake/pull/5079) | Reject nonzero ASCEND_BUFFER_POOL in Client-Server mode before HIXL initialization, with an actionable configuration error instead of an opaque engine failure |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2619](https://github.com/kvcache-ai/Mooncake/pull/2619) | Fix signed-char isxdigit UB in EFA smaps page-size parsing (follow-up to #2504) |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2602](https://github.com/kvcache-ai/Mooncake/pull/2602) | Return HTTP 500 when is_exist reports an error in handle_exist |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2506](https://github.com/kvcache-ai/Mooncake/pull/2506) | Parse string booleans for enable_ssd_offload in from_file |
@@ -184,11 +280,6 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4552](https://github.com/kvcache-ai/Mooncake/pull/4552) | Keep startup skew out of the queued-send progress timeout window so slow-starting ranks stop tripping the watchdog |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2628](https://github.com/kvcache-ai/Mooncake/pull/2628) | Fix source refcnt leak in CopyEnd/MoveEnd on invalid source |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4610](https://github.com/kvcache-ai/Mooncake/pull/4610) | Fix the conductor pybind client after the npu-to-device rename: the missed member rename broke the _conductor build and redded main CI plus every PR |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5038](https://github.com/kvcache-ai/Mooncake/pull/5038) | Reject on-CUDA NVLink transfers before registering a CUDA host callback, avoiding process termination from CUDA calls on the driver's callback thread |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5113](https://github.com/kvcache-ai/Mooncake/pull/5113) | Warn when a DMA-BUF registration's alignment and length can wrap RDMA offsets, naming the 4 GiB MR cap and nvidia-peermem workarounds instead of leaving silent data corruption unreported |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5144](https://github.com/kvcache-ai/Mooncake/pull/5144) | Give the on-CUDA guard test the generated Transfer Engine include path, restoring standalone CTest builds after the new public build-config header |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5269](https://github.com/kvcache-ai/Mooncake/pull/5269) | Preserve compatible fields in later variadic RPC arguments under NDEBUG, fixing silent residency-affinity loss with real client-master and explicit-NDEBUG regressions |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5079](https://github.com/kvcache-ai/Mooncake/pull/5079) | Reject nonzero ASCEND_BUFFER_POOL in Client-Server mode before HIXL initialization, with an actionable configuration error instead of an opaque engine failure |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2606](https://github.com/kvcache-ai/Mooncake/pull/2606) | Map cudaStreamQuery for the intra-node NVLink build |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#1626](https://github.com/kvcache-ai/Mooncake/pull/1626) | Silenced error log spam for non-memory replicas in metadata store |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | Clean up a failed io_uring sub-batch init so a half-prepared transfer batch can't carry broken state into later setup. |
@@ -207,96 +298,7 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#3064](https://github.com/kvcache-ai/Mooncake/pull/3064) | Drop the no-op `enable_mooncake_nof_pool` key from the NVMe-oF docs so users stop copying a setting that does nothing |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4946](https://github.com/kvcache-ai/Mooncake/pull/4946) | Disable cmake-format markup so explanatory comments keep their intentional line breaks instead of being reflowed |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4875](https://github.com/kvcache-ai/Mooncake/pull/4875) | docs: corrected the `MC_GID_INDEX` default: the guide pinned a fixed device index while the code default is -1, auto-selection through the GID network-state ranking fallback chain |
-
-</details>
-<details>
-<summary>All 83 merged or landed Vibe-Trading PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2168](https://github.com/HKUDS/Vibe-Trading/pull/2168) | Compare immutable research revisions across content, evidence and metadata, with stale comparisons invalidated when the selected research record changes |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2170](https://github.com/HKUDS/Vibe-Trading/pull/2170) | Export complete research-artifact series as JSON or Markdown across Web, CLI, API and agent tools, preserving fenced content and revision metadata |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2172](https://github.com/HKUDS/Vibe-Trading/pull/2172) | Build deterministic implied-volatility surfaces: linear IV across log-moneyness and total variance across expiries, with bounded grids, no extrapolation, and per-point provenance |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1631](https://github.com/HKUDS/Vibe-Trading/pull/1631) | Split the context compaction helpers out of loop.py so the agent loop file stops carrying compaction bookkeeping inline |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio's risk x-ray: pure-computation concentration, volatility, drawdown, VaR/ES, diversification, and correlation analytics for weighted baskets, plus an agent tool that fetches closes through the loader fallback chain |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1551](https://github.com/HKUDS/Vibe-Trading/pull/1551) | Convert additive-caliber A-share qfq factors to the multiplicative caliber the backtest books in whenever the offset chain validates, so adjusted prices stop drifting away from corporate-action accounting |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) | Scheduled monitors now persist each run's parsed verdict on the job and the list endpoint carries it inline, so Market Watch renders the latest call and its delta in one query |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) | Cash-dividend journal rows were never parsed, so dividends paid into the shadow account read as flat real PnL; they are booked properly now |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1317](https://github.com/HKUDS/Vibe-Trading/pull/1317) | Stamp every served frame with its price-adjustment caliber and warn when a basket mixes calibers, closing the silent mixed-caliber backtest gap from #1301 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1615](https://github.com/HKUDS/Vibe-Trading/pull/1615) | Bound baostock socket IO with a per-read deadline: a silent server no longer hangs the loader forever and a closed connection no longer spins at 100% CPU |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio step 2: composable weight constraints that plug into any optimizer, with waterfill redistribution that only feeds positions still under their cap |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1661](https://github.com/HKUDS/Vibe-Trading/pull/1661) | The grounding validation artifact now records which checks fired on each attempt, so a rejected claim says exactly what it tripped |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2062](https://github.com/HKUDS/Vibe-Trading/pull/2062) | Restore Qlib Alpha158 BETA/RESI semantics: all five windows now use vectorized trailing OLS slope and latest-point residual instead of endpoint differences and mean deviations, preserving full-window NaNs and checked against an independent polyfit oracle |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1311](https://github.com/HKUDS/Vibe-Trading/pull/1311) | Model short lots in FIFO pairing and restate legs to one caliber across splits and dividends, so short-side PnL stops double-counting borrowed exposure |
-| | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1823](https://github.com/HKUDS/Vibe-Trading/pull/1823) | Read percent-named evidence fields as points, not fractions, in derived-figure checks |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#900](https://github.com/HKUDS/Vibe-Trading/pull/900) | Every backtest run now emits a risk x-ray artifact (JSON + Markdown) over the strategy's average basket, with concentration, volatility, drawdown, and tail-risk metrics folded into run metrics |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#966](https://github.com/HKUDS/Vibe-Trading/pull/966) | Surface Portfolio Studio artifacts in run detail, so risk x-ray and rebalance outputs show up where a run is inspected |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1309](https://github.com/HKUDS/Vibe-Trading/pull/1309) | Enforce A-share T+1, India T+1, and price-limit bands through composite state instead of the stateless sub-engine rule books that silently let same-day sells and locked-limit fills through |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) | Persist the flatten latch across runner restarts, bound to the halt episode, so a reboot with closing orders still working cannot replay the whole kill-switch sweep and flip the account |
-| | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1844](https://github.com/HKUDS/Vibe-Trading/pull/1844) | Seed per-bar returns with initial cash so risk ratios see the first bar instead of dividing on an empty base |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | Wired the strict alpha-bench gate into the CLI: `alpha bench --strict` now fails the run when a strategy misses the bar |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1306](https://github.com/HKUDS/Vibe-Trading/pull/1306) | Hold margin on short option legs and gate opens on buying power, so option shorts stop reading as free premium in backtests |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#795](https://github.com/HKUDS/Vibe-Trading/pull/795) | Portfolio Studio's rebalance notes: the backtester now writes a notes artifact with metrics for each rebalance, so agent-driven moves stay auditable |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1287](https://github.com/HKUDS/Vibe-Trading/pull/1287) | Serve split and dividend adjusted prices on both Yahoo loader paths, so corporate actions no longer book as crashes and ex-dividend gaps as losses in backtests |
-| | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1935](https://github.com/HKUDS/Vibe-Trading/pull/1935) | Warn on backtest config keys nothing on the path reads: an agent-written config with initial_capital/commission_rate passed validation and was silently dropped, so the run went ahead at 10x the intended capital and default fees |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1310](https://github.com/HKUDS/Vibe-Trading/pull/1310) | Scope shadow-account attribution to the pool currency and make the buckets mutually exclusive, so cross-currency deltas stop landing in the wrong bucket twice |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1349](https://github.com/HKUDS/Vibe-Trading/pull/1349) | Release tool calls left permanently blocked after microcompact cleared their results, marking the missing result explicitly instead |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1628](https://github.com/HKUDS/Vibe-Trading/pull/1628) | Grounding checks stop being scattered per-rule patches: a declared registry owns them, so a new check is one entry instead of edits across the gate |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1225](https://github.com/HKUDS/Vibe-Trading/pull/1225) | Streamed LLM calls now ask the endpoint for usage, so swarm runs record real token counts instead of character-count estimates (output tokens were under-reported 18-36x); endpoints that reject stream_options self-heal with one stateless retry |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1217](https://github.com/HKUDS/Vibe-Trading/pull/1217) | Shadow Account derived PnL from metrics keys the runner never emits, so successful backtests reported Shadow PnL = 0 and the Delta came out inverted; PnL now resolves from final_value/total_return and unknown states fail closed instead of rendering as 0.00 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1388](https://github.com/HKUDS/Vibe-Trading/pull/1388) | Close four connector gaps: MT5 silently clamped oversize orders to the symbol cap, eToro sent price-less limit orders as never-triggering MITs, futu served K-lines without declaring the adjustment caliber, and bare BTCUSDT-style pairs picked up A-share T+1 rules |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2069](https://github.com/HKUDS/Vibe-Trading/pull/2069) | Restore Qlib ROC and CORD semantics across ten modules, correcting reciprocal and offset handling plus CORD's one-based recency alignment against independent numerical oracles |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1332](https://github.com/HKUDS/Vibe-Trading/pull/1332) | Mark halted positions at the last traded close instead of entry cost once the bounded ffill expires, ending the phantom mid-halt drawdown in equity curves and rebalance sizing |
-| | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1824](https://github.com/HKUDS/Vibe-Trading/pull/1824) | Reject non-finite schedule and Sharpe-summary inputs with the offending field named |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1691](https://github.com/HKUDS/Vibe-Trading/pull/1691) | Declare the identity and figure gate checks in the grounding registry, so a new evidence gate stops needing hand-wired call sites |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1212](https://github.com/HKUDS/Vibe-Trading/pull/1212) | Fail closed when broker position reads return an API error: futu/okx connectors now raise instead of treating an unreadable position book as empty, so live orders stop sailing through the mandate gate blind |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1629](https://github.com/HKUDS/Vibe-Trading/pull/1629) | Broker capability matrix generated from the profile registry into the README, with a drift test that fails CI the moment a profile changes without a regenerate |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1156](https://github.com/HKUDS/Vibe-Trading/pull/1156) | Complete the Scheduled Research verdict flow in Market Watch: render each monitor's latest symbols, change since the previous run, and recorded time; show explicit empty or unreadable states without adding another API query |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1627](https://github.com/HKUDS/Vibe-Trading/pull/1627) | Weekly live-source health canary: every no-auth loader fetches a known-liquid symbol and the frame is checked for shape and freshness, so a dead or drifted endpoint fails CI before a user files it |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1663](https://github.com/HKUDS/Vibe-Trading/pull/1663) | Parenthesized accounting values in financial reports were extracted as positive, so a loss row could be certified against a profit figure; they now read as negatives |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1232](https://github.com/HKUDS/Vibe-Trading/pull/1232) | Fail closed on broker error envelopes during the halt sweep: a `{"status": "error"}` reply is recorded as an error instead of a compliant-looking cancel/flatten success |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2048](https://github.com/HKUDS/Vibe-Trading/pull/2048) | Recover native claude-cli tool attempts through the existing bounded host-protocol retry loop: refused native calls no longer become successful final answers without executing the requested host tools, and valid structured tool calls still avoid an extra CLI invocation |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1730](https://github.com/HKUDS/Vibe-Trading/pull/1730) | The TDX quote servers stopped answering the mootdx protocol in 2026-07, yet mootdx still sat second in the A-share fallback chain, taxing every auto-mode fetch ~9.5s before eastmoney; retired from the default chain and the health canary, kept registered for explicit source="mootdx" calls |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1518](https://github.com/HKUDS/Vibe-Trading/pull/1518) | Serve shareholder-count history from the per-period detail report instead of the latest-only snapshot, so max_periods stops being a dead parameter and each period states its measurement interval |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1288](https://github.com/HKUDS/Vibe-Trading/pull/1288) | Retry symbols the first market-data source could not serve down the fallback chain per symbol, so one 404 no longer strands the rest of a batch in unresolved |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1444](https://github.com/HKUDS/Vibe-Trading/pull/1444) | Keep the tail-risk measure and confidence through the grounding gate: the declaration ref can name the exact evidence field (or call_id::field to disambiguate), so VaR/ES claims stop passing on a shared var_95 row |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1702](https://github.com/HKUDS/Vibe-Trading/pull/1702) | The correction prompt only told the model what to fix, so clean figures got re-written and rejected on the next pass; it now also lists the figures the gate already vouched for, so the next draft keeps them verbatim |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1732](https://github.com/HKUDS/Vibe-Trading/pull/1732) | american_waterfall silently dropped a bare-date as_of (which sibling european_waterfall accepts under the same name) and accrued the preferred return to each deal's own latest flow date, returning a plausible wrong number; it now raises TypeError like _validate_deals does one argument earlier |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1630](https://github.com/HKUDS/Vibe-Trading/pull/1630) | Channel authoring stops being folklore: the contract a channel must honor is pinned in one place with the recipe documented, so a new channel is written against an explicit surface |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1253](https://github.com/HKUDS/Vibe-Trading/pull/1253) | Skip market-triggered ticks while the market is closed, so weekend watches no longer queue orders into the Monday open |
-| | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1825](https://github.com/HKUDS/Vibe-Trading/pull/1825) | Let indexed Parquet bars load under a configured date_format instead of failing the parse |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1314](https://github.com/HKUDS/Vibe-Trading/pull/1314) | Key the shadow result cache by window and journal hash, so a re-render with a different window stops reusing the previous run |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1750](https://github.com/HKUDS/Vibe-Trading/pull/1750) | The options engine built its drawdown peak from recorded equity only, so the drop into the first bar (commission plus mark move) stayed invisible to max_drawdown: a 10% first-bar loss read as 0.0%; the peak is now seeded with initial cash, matching the shared calc_metrics |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1342](https://github.com/HKUDS/Vibe-Trading/pull/1342) | Detect the stooq anti-bot challenge page and flag the source unavailable with operator guidance, instead of parsing HTML as no data and silently sliding down the chain |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1312](https://github.com/HKUDS/Vibe-Trading/pull/1312) | Size buy-limit orders at the worse of quote and limit, so a limit above the book no longer oversizes the fill |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1706](https://github.com/HKUDS/Vibe-Trading/pull/1706) | US equity sessions now close at the early bell on half-days instead of running the live loop against a shut market |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#970](https://github.com/HKUDS/Vibe-Trading/pull/970) | Route `source: yfinance` crypto backtests to CryptoEngine instead of the stock path, so BTC/ETH runs stop erroring out |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1396](https://github.com/HKUDS/Vibe-Trading/pull/1396) | Classify Tushare-spelled CN futures suffixes (SHF/DCE/CFX/CZC/GFE) as futures instead of A-shares, so those contracts stop settling under T+1, no-short, no-margin equity rules |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1598](https://github.com/HKUDS/Vibe-Trading/pull/1598) | Let backtests attach to the already-running MT5 terminal instead of demanding fresh credentials, unbreaking the sandbox flow for broker-managed terminals |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2064](https://github.com/HKUDS/Vibe-Trading/pull/2064) | Accept ordinary two-turn structured finals in the Claude CLI host: a tool-use turn followed by a normal structured answer no longer gets rejected or triggers a redundant extra invocation |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1307](https://github.com/HKUDS/Vibe-Trading/pull/1307) | Settle perpetual funding by bar span on 8h+ intervals instead of once a day on daily bars, restoring the intended carry cost in non-strict runs |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1209](https://github.com/HKUDS/Vibe-Trading/pull/1209) | Sign Alpaca position quantity by side before the mandate gate, so short positions are validated in the right direction instead of passing as bare positive numbers |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1462](https://github.com/HKUDS/Vibe-Trading/pull/1462) | Fetch full close history in the portfolio risk x-ray instead of sampled rows past the 250-row cap, so long-window baskets stop computing concentration and tail metrics on truncated series |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1313](https://github.com/HKUDS/Vibe-Trading/pull/1313) | Cap fastmcp below 4.0.0 to unbreak the repo-wide red CI from its MCPError constructor change, pending the real adaptation |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#984](https://github.com/HKUDS/Vibe-Trading/pull/984) | Write hierarchy-routed memory entries with the .md extension so discovery actually sees them (bare-slug files were invisible to list/recall) |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1740](https://github.com/HKUDS/Vibe-Trading/pull/1740) | Main CI went red before pytest even started: a readiness probe read TUSHARE_TOKEN via os.getenv and tripped the env gate, infer_market let the FX classifier claim ETH/USD before the crypto check, and the bench requirement check followed a preexisting report symlink |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1689](https://github.com/HKUDS/Vibe-Trading/pull/1689) | Pin the price-adjustment stamp on served FMP and Tiingo frames in loader tests, so a silent mixed-caliber regression fails loudly instead of blending raw and adjusted prices |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1220](https://github.com/HKUDS/Vibe-Trading/pull/1220) | Pin that rows between combinatorial CV test blocks stay trainable, the regression coverage the multi-segment purge fix shipped without |
-| | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1809](https://github.com/HKUDS/Vibe-Trading/pull/1809) | Make the IBKR pool thread-local reset order-independent so test isolation stops depending on teardown order |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1671](https://github.com/HKUDS/Vibe-Trading/pull/1671) | README_id inventory had missed get_southbound_flow and the tool counts drifted, leaving test_readme_counts red on every open PR; refreshed and green again |
-| | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1831](https://github.com/HKUDS/Vibe-Trading/pull/1831) | Wait out the model-list fetch before narrowing effort levels, removing a frontend test flake |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2079](https://github.com/HKUDS/Vibe-Trading/pull/2079) | Add versioned research artifacts so a run's inputs, evidence, and result documents can be replayed against an explicit revision |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2087](https://github.com/HKUDS/Vibe-Trading/pull/2087) | Apply the same tool policy across provider adapters instead of letting one provider bypass the configured allow/deny rules |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2092](https://github.com/HKUDS/Vibe-Trading/pull/2092) | Scope background tasks and completion notifications to their owning conversation, stopping another session from draining or cancelling them |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2098](https://github.com/HKUDS/Vibe-Trading/pull/2098) | Reap owned background processes on cancellation and host shutdown, without touching another conversation's work |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2099](https://github.com/HKUDS/Vibe-Trading/pull/2099) | Interrupt silent provider streams at the caller boundary instead of waiting indefinitely for the socket to fail |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2100](https://github.com/HKUDS/Vibe-Trading/pull/2100) | Persist background task outcomes and reconcile interrupted work after restart, reporting uncertain crash windows instead of inventing results |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2109](https://github.com/HKUDS/Vibe-Trading/pull/2109) | Preserve provider-reported cache and reasoning tokens in llm_usage so per-run accounting no longer drops those categories |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2155](https://github.com/HKUDS/Vibe-Trading/pull/2155) | Keep Unicode line separators in heartbeat timestamps from defeating the swarm reaper's liveness check |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2159](https://github.com/HKUDS/Vibe-Trading/pull/2159) | Index research revision fingerprints so repeated artifact lookups no longer rescan every historical revision |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2162](https://github.com/HKUDS/Vibe-Trading/pull/2162) | Keep signed long/short exposure scale in backtest risk x-rays, using gross shares only for concentration and verifying generated reports against actual positions |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2157](https://github.com/HKUDS/Vibe-Trading/pull/2157) | Recover pending background notifications after restart and quarantine malformed records so one bad row cannot block healthy task recovery |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2120](https://github.com/HKUDS/Vibe-Trading/pull/2120) | Send empty-reply retry nudges as Anthropic-compatible user messages instead of non-consecutive system messages |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5144](https://github.com/kvcache-ai/Mooncake/pull/5144) | Give the on-CUDA guard test the generated Transfer Engine include path, restoring standalone CTest builds after the new public build-config header |
 
 </details>
 <details>
@@ -328,18 +330,17 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#14022](https://github.com/QwenLM/qwen-code/pull/14022) | Persist CDP reconnect backoff across MV3 service-worker restarts, apply one ladder to live timers and cold starts, and reset it after a quiet window or 30 seconds of healthy connection |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#11684](https://github.com/QwenLM/qwen-code/pull/11684) | Keep reasoning and function_call items adjacent through Responses cleanup |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#13814](https://github.com/QwenLM/qwen-code/pull/13814) | Carry branch points through session-load replay |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#14778](https://github.com/QwenLM/qwen-code/pull/14778) | Stop the session LSP client on Config shutdown |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#11753](https://github.com/QwenLM/qwen-code/pull/11753) | Probe ICU before importing the UI so ICU-less Node fails with a clear diagnostic |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | Routed `/bug`, `/docs`, and `/insight` browser launches through the secure opener so headless environments stop crashing on raw `open`. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | Kept assistant tool calls adjacent to their results, so OpenAI-compatible providers stop rejecting repaired histories. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#14022](https://github.com/QwenLM/qwen-code/pull/14022) | Persist CDP reconnect backoff across MV3 service-worker restarts, apply one ladder to live timers and cold starts, and reset it after a quiet window or 30 seconds of healthy connection |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#7535](https://github.com/QwenLM/qwen-code/pull/7535) | Retry model calls with backoff and a circuit breaker in release-notes generation, and surface degraded output instead of a silent blank |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#11684](https://github.com/QwenLM/qwen-code/pull/11684) | Keep reasoning and function_call items adjacent through Responses cleanup |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#11753](https://github.com/QwenLM/qwen-code/pull/11753) | Probe ICU before importing the UI so ICU-less Node fails with a clear diagnostic |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | Added a timeout to Qwen OAuth refresh so a stalled refresh endpoint can't hang the CLI on auth recovery. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#5071](https://github.com/QwenLM/qwen-code/pull/5071) | Submit fast tool results after stream end, so a race at the tail of streaming can't strand completed calls. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#5070](https://github.com/QwenLM/qwen-code/pull/5070) | Skip expired live agents in focus navigation so stale background-agent rows can't grab keyboard focus. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | Stopped stale tool-schema recall from slipping outdated tool names back into later planning turns. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#13814](https://github.com/QwenLM/qwen-code/pull/13814) | Carry branch points through session-load replay |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | Isolate Anthropic SDK abort listener leak with per-request child controllers |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#5043](https://github.com/QwenLM/qwen-code/pull/5043) | Let grep results satisfy the prior-read check, so an edit can proceed on verified search context instead of a redundant re-read. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | Dropped the discontinued Qwen OAuth path from ACP login so nobody gets routed into a dead auth method. |
@@ -351,6 +352,7 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | Recurse into tracked Git submodules when crawling a repo, so the agent's context picks up files inside them. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#5020](https://github.com/QwenLM/qwen-code/pull/5020) | Drop tool calls after a cancellation so an aborted turn can't leak stale requests into the next payload. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | Harden context-error text extraction so a nested or non-string payload surfaces a useful message instead of vanishing. |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#14778](https://github.com/QwenLM/qwen-code/pull/14778) | Stop the session LSP client on Config shutdown |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#4715](https://github.com/QwenLM/qwen-code/pull/4715) | Managed auto-memory now honors the runtime output dir, while an explicit memory-dir override still wins. |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#5945](https://github.com/QwenLM/qwen-code/pull/5945) | Reject non-positive sessionRecapAwayThresholdMinutes values |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#5062](https://github.com/QwenLM/qwen-code/pull/5062) | Carry token-escalation context across agent rounds so a delegated run stops restarting from an under-provisioned model each time. |
@@ -398,7 +400,7 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#10437](https://github.com/AstrBotDevs/AstrBot/pull/10437) | Merge list-valued custom tools from `custom_extra_body` into Anthropic requests instead of letting `extra_body` replace the registered function tools, so a custom server-tool entry stops silently wiping the tool list |
-| | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#10591](https://github.com/AstrBotDevs/AstrBot/pull/10591) | Keep one unreadable skill directory from failing the whole request: skip it and load the rest |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#10591](https://github.com/AstrBotDevs/AstrBot/pull/10591) | Keep one unreadable skill directory from failing the whole request: skip it and load the rest |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) | Prefer bundled dashboard assets over a stale data dist, so a release stops serving an outdated WebUI. |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) | Apply empty-assistant message filter to streaming OpenAI path: strict providers no longer 400 on reasoning-only turns |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#9987](https://github.com/AstrBotDevs/AstrBot/pull/9987) | Propagate the cron agent runner's ERROR terminal state so a failed scheduled run is recorded failed with its error instead of completed-with-null |
@@ -434,6 +436,51 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#8768](https://github.com/AstrBotDevs/AstrBot/pull/8768) | Sanitize Lark platform id suffixes so invisible whitespace in configured ids does not break platform matching |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#6527](https://github.com/AstrBotDevs/AstrBot/pull/6527) | Fix LLM tool selection: rewrote ambiguous Upload/Download descriptions |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#10393](https://github.com/AstrBotDevs/AstrBot/pull/10393) | Replace the retired gemini-embedding-exp-03-07 default with gemini-embedding-001, so a fresh deployment that enables the Gemini embedding provider stops 404ing out of the box |
+
+</details>
+<details>
+<summary>All 38 merged Microsoft Agent Framework PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#8953](https://github.com/microsoft/agent-framework/pull/8953) | Fold streamed text runs in one pass instead of repeated `+=`: every `Content.__add__` rebuilt the text string, re-merged properties and re-concatenated raw representations, so n chunks cost O(n^2) on every aggregated response; now one join per run with a single props merge |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#8773](https://github.com/microsoft/agent-framework/pull/8773) | Python: the OpenAI chat-completions SDK stream was never closed when the consumer stopped early (break, exception, cancellation), leaking the provider response until GC; bind it with async with so exit closes it deterministically |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7289](https://github.com/microsoft/agent-framework/pull/7289) | Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7239](https://github.com/microsoft/agent-framework/pull/7239) | Python: AG-UI MESSAGES_SNAPSHOT emitted messages out of the model's original order; preserve emission order |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9029](https://github.com/microsoft/agent-framework/pull/9029) | Python: an output guard on a streamed run failed open with stream_buffer_updates at its default False, because the result gate ran only at stream finalization, after every update had already reached the consumer; both middleware pipelines now warn when a streamed run registers result gates without buffering |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7704](https://github.com/microsoft/agent-framework/pull/7704) | Python: name the real MCP initialization error (e.g. HTTP 401) instead of the bare `Cancelled via cancel scope` that masks it |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9547](https://github.com/microsoft/agent-framework/pull/9547) | Quarantine corrupt or non-UTF-8 memory state files instead of failing every later turn; preserve the original bytes and recover cleanly on the next write |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5808](https://github.com/microsoft/agent-framework/pull/5808) | Handoff was mutating message roles in place, so a retry leaked the change; reuse sanitized copies instead. |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9852](https://github.com/microsoft/agent-framework/pull/9852) | Accept whole-number floats for JSON Schema integer arguments while still rejecting booleans and fractional values |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6132](https://github.com/microsoft/agent-framework/pull/6132) | Filter filesystem checkpoint indexes by session id, so reopening a store stops returning another session's checkpoints. |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5801](https://github.com/microsoft/agent-framework/pull/5801) | Coalesce streamed code-interpreter history by call id, so stored history keeps the full code and results without duplicated deltas. |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7162](https://github.com/microsoft/agent-framework/pull/7162) | Python: Anthropic streaming counted token usage twice by accumulating final-message usage on top of streamed deltas |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | Drop hosted MCP tool-call history when reasoning payloads are stripped, so stateless OpenAI replay stops sending orphan MCP calls. |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5773](https://github.com/microsoft/agent-framework/pull/5773) | Run synchronous Python tools off the event loop so a blocking call stops freezing concurrent agent work. |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5860](https://github.com/microsoft/agent-framework/pull/5860) | .NET: the Responses `logprobs` field was dropped in response serialization both ways; preserve it end to end |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5904](https://github.com/microsoft/agent-framework/pull/5904) | Keep ChatClientAgent's local history provider on for AG-UI thread ids, so session history isn't mistaken for service-managed model history. |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9977](https://github.com/microsoft/agent-framework/pull/9977) | Prefer a caller-injected Redis history client over redundant connection settings, while preserving owned-client validation and leaving borrowed clients open on close |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#8435](https://github.com/microsoft/agent-framework/pull/8435) | Declarative workflows splatted the whole workflow kwargs bag into Agent.run, so internal underscore keys like `_raw_function_invocation_kwargs` raised TypeError on the first agent step under AG-UI; the splat now forwards public parameters only, with the full bag kept on additional_function_arguments for nested routing |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7108](https://github.com/microsoft/agent-framework/pull/7108) | Python: `FunctionTool.invoke` dumped arguments with `exclude_none=True`, dropping deliberate `null` values for required nullable parameters; use `exclude_unset` so explicit nulls survive |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5784](https://github.com/microsoft/agent-framework/pull/5784) | Skip orphan Anthropic thinking signatures when converting history, so a replay doesn't carry an invalid standalone signature. |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6491](https://github.com/microsoft/agent-framework/pull/6491) | .NET: fix fan-in barrier checkpoint state |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5799](https://github.com/microsoft/agent-framework/pull/5799) | Add handoff workflow naming metadata so names and descriptions flow through builder and hosting registration |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#8095](https://github.com/microsoft/agent-framework/pull/8095) | A2AAgent(url=..., http_client=mine) left _close_http_client unset, so exiting the async context raised AttributeError; default the flag to False, the two self-created paths still flip it to True. |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6640](https://github.com/microsoft/agent-framework/pull/6640) | Python: surface cache and reasoning token counts for the Bedrock and Gemini connectors |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5815](https://github.com/microsoft/agent-framework/pull/5815) | Forward MCP `tools/list` metadata into `call_tool` instrumentation so traces keep their tool annotations. |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5800](https://github.com/microsoft/agent-framework/pull/5800) | Avoid AG-UI tool result message id collisions when providers omit update ids |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7256](https://github.com/microsoft/agent-framework/pull/7256) | Python: `from_dict` validated a payload's self-declared `type` against itself, so the check could never fail; resolve the expected type from the class instead |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5861](https://github.com/microsoft/agent-framework/pull/5861) | Foundry handoff arguments were losing their structure in response conversion, breaking delegated agent calls; preserved them. |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5778](https://github.com/microsoft/agent-framework/pull/5778) | Declare the Magentic protocol messages so orchestrator chat/reset signals deserialize instead of blowing up on an unknown type. |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5976](https://github.com/microsoft/agent-framework/pull/5976) | Fix sequential workflow sample output so all participant responses are shown from non-streaming results |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | Fix `background=True` + tools infinite-retrieve loop: clear completed continuation state so tool results get posted |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6040](https://github.com/microsoft/agent-framework/pull/6040) | Forward a Foundry agent's `default_headers` into OpenAI client creation, so custom auth and routing headers survive setup. |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5974](https://github.com/microsoft/agent-framework/pull/5974) | Include Foundry agent tool definitions in eval mappings so evaluator runs can call code-defined tools |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7777](https://github.com/microsoft/agent-framework/pull/7777) | Python: replace the stale "Learn docs are coming soon" placeholder in the README with the live Learn links |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6208](https://github.com/microsoft/agent-framework/pull/6208) | Declarative `Foreach` was collapsing multi-field PowerFx table rows; preserve the full record value through iteration. |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7130](https://github.com/microsoft/agent-framework/pull/7130) | Python: extract keywords from non-English text for topic selection, so CJK and other non-latin queries stop coming back empty |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7124](https://github.com/microsoft/agent-framework/pull/7124) | Python: compaction token counting serialized messages with `ensure_ascii=True`, so the tokenizer counted `\uXXXX` escapes instead of real characters (~1.6x inflation on CJK); serialize the real text |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6037](https://github.com/microsoft/agent-framework/pull/6037) | Keep Foundry citation `get_url` metadata through response conversion so source links survive in chat responses |
 
 </details>
 <details>
@@ -494,51 +541,6 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 38 merged Microsoft Agent Framework PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9547](https://github.com/microsoft/agent-framework/pull/9547) | Quarantine corrupt or non-UTF-8 memory state files instead of failing every later turn; preserve the original bytes and recover cleanly on the next write |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#8953](https://github.com/microsoft/agent-framework/pull/8953) | Fold streamed text runs in one pass instead of repeated `+=`: every `Content.__add__` rebuilt the text string, re-merged properties and re-concatenated raw representations, so n chunks cost O(n^2) on every aggregated response; now one join per run with a single props merge |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#8773](https://github.com/microsoft/agent-framework/pull/8773) | Python: the OpenAI chat-completions SDK stream was never closed when the consumer stopped early (break, exception, cancellation), leaking the provider response until GC; bind it with async with so exit closes it deterministically |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7289](https://github.com/microsoft/agent-framework/pull/7289) | Defer turn-scoped after_run providers to the agent loop boundary, so per-turn hooks fire once per turn instead of once per iteration |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7239](https://github.com/microsoft/agent-framework/pull/7239) | Python: AG-UI MESSAGES_SNAPSHOT emitted messages out of the model's original order; preserve emission order |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9029](https://github.com/microsoft/agent-framework/pull/9029) | Python: an output guard on a streamed run failed open with stream_buffer_updates at its default False, because the result gate ran only at stream finalization, after every update had already reached the consumer; both middleware pipelines now warn when a streamed run registers result gates without buffering |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7704](https://github.com/microsoft/agent-framework/pull/7704) | Python: name the real MCP initialization error (e.g. HTTP 401) instead of the bare `Cancelled via cancel scope` that masks it |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5808](https://github.com/microsoft/agent-framework/pull/5808) | Handoff was mutating message roles in place, so a retry leaked the change; reuse sanitized copies instead. |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6132](https://github.com/microsoft/agent-framework/pull/6132) | Filter filesystem checkpoint indexes by session id, so reopening a store stops returning another session's checkpoints. |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5801](https://github.com/microsoft/agent-framework/pull/5801) | Coalesce streamed code-interpreter history by call id, so stored history keeps the full code and results without duplicated deltas. |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7162](https://github.com/microsoft/agent-framework/pull/7162) | Python: Anthropic streaming counted token usage twice by accumulating final-message usage on top of streamed deltas |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | Drop hosted MCP tool-call history when reasoning payloads are stripped, so stateless OpenAI replay stops sending orphan MCP calls. |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5773](https://github.com/microsoft/agent-framework/pull/5773) | Run synchronous Python tools off the event loop so a blocking call stops freezing concurrent agent work. |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5860](https://github.com/microsoft/agent-framework/pull/5860) | .NET: the Responses `logprobs` field was dropped in response serialization both ways; preserve it end to end |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5904](https://github.com/microsoft/agent-framework/pull/5904) | Keep ChatClientAgent's local history provider on for AG-UI thread ids, so session history isn't mistaken for service-managed model history. |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#8435](https://github.com/microsoft/agent-framework/pull/8435) | Declarative workflows splatted the whole workflow kwargs bag into Agent.run, so internal underscore keys like `_raw_function_invocation_kwargs` raised TypeError on the first agent step under AG-UI; the splat now forwards public parameters only, with the full bag kept on additional_function_arguments for nested routing |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7108](https://github.com/microsoft/agent-framework/pull/7108) | Python: `FunctionTool.invoke` dumped arguments with `exclude_none=True`, dropping deliberate `null` values for required nullable parameters; use `exclude_unset` so explicit nulls survive |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5784](https://github.com/microsoft/agent-framework/pull/5784) | Skip orphan Anthropic thinking signatures when converting history, so a replay doesn't carry an invalid standalone signature. |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6491](https://github.com/microsoft/agent-framework/pull/6491) | .NET: fix fan-in barrier checkpoint state |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5799](https://github.com/microsoft/agent-framework/pull/5799) | Add handoff workflow naming metadata so names and descriptions flow through builder and hosting registration |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#8095](https://github.com/microsoft/agent-framework/pull/8095) | A2AAgent(url=..., http_client=mine) left _close_http_client unset, so exiting the async context raised AttributeError; default the flag to False, the two self-created paths still flip it to True. |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6640](https://github.com/microsoft/agent-framework/pull/6640) | Python: surface cache and reasoning token counts for the Bedrock and Gemini connectors |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5815](https://github.com/microsoft/agent-framework/pull/5815) | Forward MCP `tools/list` metadata into `call_tool` instrumentation so traces keep their tool annotations. |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5800](https://github.com/microsoft/agent-framework/pull/5800) | Avoid AG-UI tool result message id collisions when providers omit update ids |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7256](https://github.com/microsoft/agent-framework/pull/7256) | Python: `from_dict` validated a payload's self-declared `type` against itself, so the check could never fail; resolve the expected type from the class instead |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5861](https://github.com/microsoft/agent-framework/pull/5861) | Foundry handoff arguments were losing their structure in response conversion, breaking delegated agent calls; preserved them. |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5778](https://github.com/microsoft/agent-framework/pull/5778) | Declare the Magentic protocol messages so orchestrator chat/reset signals deserialize instead of blowing up on an unknown type. |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5976](https://github.com/microsoft/agent-framework/pull/5976) | Fix sequential workflow sample output so all participant responses are shown from non-streaming results |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | Fix `background=True` + tools infinite-retrieve loop: clear completed continuation state so tool results get posted |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6040](https://github.com/microsoft/agent-framework/pull/6040) | Forward a Foundry agent's `default_headers` into OpenAI client creation, so custom auth and routing headers survive setup. |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5974](https://github.com/microsoft/agent-framework/pull/5974) | Include Foundry agent tool definitions in eval mappings so evaluator runs can call code-defined tools |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7777](https://github.com/microsoft/agent-framework/pull/7777) | Python: replace the stale "Learn docs are coming soon" placeholder in the README with the live Learn links |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6208](https://github.com/microsoft/agent-framework/pull/6208) | Declarative `Foreach` was collapsing multi-field PowerFx table rows; preserve the full record value through iteration. |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7130](https://github.com/microsoft/agent-framework/pull/7130) | Python: extract keywords from non-English text for topic selection, so CJK and other non-latin queries stop coming back empty |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7124](https://github.com/microsoft/agent-framework/pull/7124) | Python: compaction token counting serialized messages with `ensure_ascii=True`, so the tokenizer counted `\uXXXX` escapes instead of real characters (~1.6x inflation on CJK); serialize the real text |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6037](https://github.com/microsoft/agent-framework/pull/6037) | Keep Foundry citation `get_url` metadata through response conversion so source links survive in chat responses |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9977](https://github.com/microsoft/agent-framework/pull/9977) | Prefer a caller-injected Redis history client over redundant connection settings, while preserving owned-client validation and leaving borrowed clients open on close |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9852](https://github.com/microsoft/agent-framework/pull/9852) | Accept whole-number floats for JSON Schema integer arguments while still rejecting booleans and fractional values |
-
-</details>
-<details>
 <summary>All 9 merged OpenClaw PRs</summary>
 
 | Project | PR | What I Fixed |
@@ -555,14 +557,6 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged opencode PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [opencode](https://github.com/anomalyco/opencode) (204.9k★) | [#30022](https://github.com/anomalyco/opencode/pull/30022) | Bind the MCP OAuth callback server to the IPv4 loopback so the browser redirect connects reliably instead of racing IPv6 |
-
-</details>
-<details>
 <summary>All 8 merged dify PRs</summary>
 
 | Project | PR | What I Fixed |
@@ -570,15 +564,23 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 | [dify](https://github.com/langgenius/dify) (153.3k★) | [#39479](https://github.com/langgenius/dify/pull/39479) | Make the 10-minute email IP first-strike window actually take effect: claim the slot atomically with SET NX instead of a racy GET-then-SETEX |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | Validate the conversation up front on the service-api and explore endpoints, so a bad `conversation_id` returns 404 instead of streaming into a late failure. |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | [#39953](https://github.com/langgenius/dify/pull/39953) | Bound the TiDB Cloud API calls that had no timeout, so a hanging cluster endpoint can't stall vdb operations forever |
+| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37775](https://github.com/langgenius/dify/pull/37775) | Skip empty tool entries during agent_chat config validation instead of accepting malformed tool definitions |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | [#37425](https://github.com/langgenius/dify/pull/37425) | Bound OperationService billing requests so a slow billing endpoint can't hang the request. |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | Keep watercrawl request timeouts bounded instead of disabling them with `timeout=None` |
-| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | Skip empty tool entries in legacy dataset config extraction |
-| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37775](https://github.com/langgenius/dify/pull/37775) | Skip empty tool entries during agent_chat config validation instead of accepting malformed tool definitions |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | [#37671](https://github.com/langgenius/dify/pull/37671) | Reject empty user_input_form entries during validation instead of failing later with an IndexError |
+| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | Skip empty tool entries in legacy dataset config extraction |
 
 </details>
 <details>
-<summary>All 1 merged Transformers PRs</summary>
+<summary>All 1 merged opencode PR</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [opencode](https://github.com/anomalyco/opencode) (204.9k★) | [#30022](https://github.com/anomalyco/opencode/pull/30022) | Bind the MCP OAuth callback server to the IPv4 loopback so the browser redirect connects reliably instead of racing IPv6 |
+
+</details>
+<details>
+<summary>All 1 merged Transformers PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -599,7 +601,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) | Reject out-of-range trace-span-duration percentiles instead of silently computing garbage |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#11320](https://github.com/promptfoo/promptfoo/pull/11320) | Support comma-separated OR values in `--filter-metadata`, so one flag can match any of several values for the same metadata key |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#11004](https://github.com/promptfoo/promptfoo/pull/11004) | Honor an explicitly configured redteamProvider in the iterative, crescendo and iterative:tree attack strategies instead of silently falling back to the default provider |
-| | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#11739](https://github.com/promptfoo/promptfoo/pull/11739) | Make jks-js an optional peer dependency so installs without JKS needs stop pulling it in |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#11739](https://github.com/promptfoo/promptfoo/pull/11739) | Make jks-js an optional peer dependency so installs without JKS needs stop pulling it in |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#10793](https://github.com/promptfoo/promptfoo/pull/10793) | Honor disabled caching across separate ESM/CJS package copies: providers and graders loaded through a second package instance now see the cache-off policy, so a disabled run neither reads nor overwrites warmed cached responses |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#9867](https://github.com/promptfoo/promptfoo/pull/9867) | Avoid crashing on an empty `choices` array when reading Azure logprobs |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#10076](https://github.com/promptfoo/promptfoo/pull/10076) | A tool-call assertion crashed with a TypeError when the tool call was missing its `function` object; return `pass:false` instead. |
@@ -609,7 +611,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#9815](https://github.com/promptfoo/promptfoo/pull/9815) | Reject a malformed `__expected0` CSV header instead of silently dropping its assertion |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#9824](https://github.com/promptfoo/promptfoo/pull/9824) | Correct the inverse-JSON assertion failure messages so they no longer read backwards |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#10917](https://github.com/promptfoo/promptfoo/pull/10917) | Honor per-call cache overrides in the AI21, Cohere and LocalAI chat/completion providers: `bustCache` now takes precedence over the legacy `debug` fallback, including an explicit `bustCache: false` |
-| | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#11543](https://github.com/promptfoo/promptfoo/pull/11543) | Explain empty code-scan results instead of printing a bare "No files to scan" |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#11543](https://github.com/promptfoo/promptfoo/pull/11543) | Explain empty code-scan results instead of printing a bare "No files to scan" |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#10978](https://github.com/promptfoo/promptfoo/pull/10978) | Honor an explicitly configured redteamProvider in the custom attack strategy instead of silently falling back to the default provider |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#10665](https://github.com/promptfoo/promptfoo/pull/10665) | Recognize OpenAI Responses-API function_call items in the tool-call F1 scorer, so those payloads stop scoring as zero tool calls |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#9841](https://github.com/promptfoo/promptfoo/pull/9841) | Return pass:false for empty output instead of throwing |
@@ -644,7 +646,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged OpenHands PRs</summary>
+<summary>All 1 merged OpenHands PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -652,7 +654,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged llama.cpp PRs</summary>
+<summary>All 1 merged llama.cpp PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -695,7 +697,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged DeepSpeed PRs</summary>
+<summary>All 1 merged DeepSpeed PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -717,14 +719,6 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | [#1774](https://github.com/agentscope-ai/agentscope/pull/1774) | Forward explicitly configured Qwen `thinking_enable` into OpenAI-compatible `extra_body` without polluting normal OpenAI requests |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | [#1786](https://github.com/agentscope-ai/agentscope/pull/1786) | Keep a caller-provided Redis session id on create, so later get/update/list hit the same session instead of a fresh UUID. |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | [#1717](https://github.com/agentscope-ai/agentscope/pull/1717) | Hide Bash tool subprocess windows on Windows with `CREATE_NO_WINDOW`, while leaving non-Windows process creation unchanged |
-
-</details>
-<details>
-<summary>All 1 merged Cline PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [Cline](https://github.com/cline/cline) (66.7k★) | [#11166](https://github.com/cline/cline/pull/11166) | Keep file search working when the open-tabs host RPC is down by falling back to system `rg`. |
 
 </details>
 <details>
@@ -765,7 +759,15 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged LiteLLM PRs</summary>
+<summary>All 1 merged Cline PR</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [Cline](https://github.com/cline/cline) (66.7k★) | [#11166](https://github.com/cline/cline/pull/11166) | Keep file search working when the open-tabs host RPC is down by falling back to system `rg`. |
+
+</details>
+<details>
+<summary>All 1 merged LiteLLM PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -798,7 +800,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged MCP Servers PRs</summary>
+<summary>All 1 merged MCP Servers PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -815,24 +817,11 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged OpenAI Agents SDK PRs</summary>
+<summary>All 1 merged OpenAI Agents SDK PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | [#3643](https://github.com/openai/openai-agents-python/pull/3643) | Report the effective Blaxel timeouts instead of the unconfigured defaults |
-
-</details>
-<details>
-<summary>All 6 merged ms-swift PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9816](https://github.com/modelscope/ms-swift/pull/9816) | `swift sample` crashed engine construction when `engine_kwargs` carried `torch_dtype` (the workaround while the flag was ignored); pop it before the splat so the flag always wins |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | Empty `rejected_messages` now fail fast in dataset prep instead of crashing DPO mid-training. |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9750](https://github.com/modelscope/ms-swift/pull/9750) | A 0-fps `get_avg_fps()` on broken video metadata made `range(0, len(vr), 0)` raise before any frame was read in MiniCPM-V / mPLUG-Owl3 sampling; guard the sample step |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | Different-format images collided in the temp image cache; folded mode and size into the key. |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | `_replace_system` was flattening non-string prefix elements, stripping the structured content out of templated system prompts. |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9789](https://github.com/modelscope/ms-swift/pull/9789) | Refresh wandb in the CUDA test container setup, unbreaking the repo-wide CI an old baked wandb had poisoned against protobuf 7.x |
 
 </details>
 <details>
@@ -850,6 +839,19 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (15.5k★) | [#1832](https://github.com/ag-ui-protocol/ag-ui/pull/1832) | Preserve AG-UI input metadata when LangGraph converts text and media blocks into LangChain multimodal content |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (15.5k★) | [#1769](https://github.com/ag-ui-protocol/ag-ui/pull/1769) | Make proto generation cross-platform: replace Unix-only `mkdir -p` with a Node script and Windows `.CMD` plugin shim |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (15.5k★) | [#1730](https://github.com/ag-ui-protocol/ag-ui/pull/1730) | Allow CopilotKit 1.x runtime peer |
+
+</details>
+<details>
+<summary>All 6 merged ms-swift PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9816](https://github.com/modelscope/ms-swift/pull/9816) | `swift sample` crashed engine construction when `engine_kwargs` carried `torch_dtype` (the workaround while the flag was ignored); pop it before the splat so the flag always wins |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | Empty `rejected_messages` now fail fast in dataset prep instead of crashing DPO mid-training. |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9750](https://github.com/modelscope/ms-swift/pull/9750) | A 0-fps `get_avg_fps()` on broken video metadata made `range(0, len(vr), 0)` raise before any frame was read in MiniCPM-V / mPLUG-Owl3 sampling; guard the sample step |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | Different-format images collided in the temp image cache; folded mode and size into the key. |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | `_replace_system` was flattening non-string prefix elements, stripping the structured content out of templated system prompts. |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9789](https://github.com/modelscope/ms-swift/pull/9789) | Refresh wandb in the CUDA test container setup, unbreaking the repo-wide CI an old baked wandb had poisoned against protobuf 7.x |
 
 </details>
 <details>
@@ -872,7 +874,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged verl PRs</summary>
+<summary>All 1 merged verl PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -904,19 +906,11 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged DSPy PRs</summary>
+<summary>All 1 merged DSPy PR</summary>
 
 | Project | PR | What it fixed |
 | --- | --- | --- |
 | [DSPy](https://github.com/stanfordnlp/dspy) (37.8k★) | [#9864](https://github.com/stanfordnlp/dspy/pull/9864) | Propagate sync streaming errors: exceptions raised inside a synchronous streaming iterator were swallowed instead of surfacing to the caller. |
-
-</details>
-<details>
-<summary>All 1 merged Agno PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [Agno](https://github.com/agno-agi/agno) (41.8k★) | [#8131](https://github.com/agno-agi/agno/pull/8131) | Preserve non-sentinel tool argument whitespace while keeping string-to-None/True/False normalization for exact sentinels |
 
 </details>
 <details>
@@ -932,7 +926,15 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged milvus PRs</summary>
+<summary>All 1 merged Agno PR</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [Agno](https://github.com/agno-agi/agno) (41.8k★) | [#8131](https://github.com/agno-agi/agno/pull/8131) | Preserve non-sentinel tool argument whitespace while keeping string-to-None/True/False normalization for exact sentinels |
+
+</details>
+<details>
+<summary>All 1 merged milvus PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -950,7 +952,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged OpenAI Python SDK PRs</summary>
+<summary>All 1 merged OpenAI Python SDK PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -1005,14 +1007,6 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged FastMCP PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.8k★) | [#4297](https://github.com/PrefectHQ/fastmcp/pull/4297) | Keep required discriminator tags when building tool schemas, so union arguments stay valid. |
-
-</details>
-<details>
 <summary>All 3 merged Pydantic AI PRs</summary>
 
 | Project | PR | What I Fixed |
@@ -1020,6 +1014,14 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) | Accept `providerExecuted` and `title` on Vercel AI dynamic-tool parts, so strict validation keeps the provider metadata. |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | [#5694](https://github.com/pydantic/pydantic-ai/pull/5694) | Fix `MCPToolset(http_client=...)` with FastMCP by keeping `follow_redirects` out of caller-provided HTTP client factories |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | [#5695](https://github.com/pydantic/pydantic-ai/pull/5695) | Forward penalties in completions |
+
+</details>
+<details>
+<summary>All 1 merged FastMCP PR</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.8k★) | [#4297](https://github.com/PrefectHQ/fastmcp/pull/4297) | Keep required discriminator tags when building tool schemas, so union arguments stay valid. |
 
 </details>
 <details>
@@ -1050,7 +1052,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged langfuse PRs</summary>
+<summary>All 1 merged langfuse PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -1058,7 +1060,15 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged Kimi Code PRs</summary>
+<summary>All 1 merged awesome-dsh-plugin PR</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) (17.5k★) | [#5109](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/5109) | Add dsh-tool-reading-map and dsh-tool-radar to the DeepSeek Harness plugin index |
+
+</details>
+<details>
+<summary>All 1 merged Kimi Code PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -1086,15 +1096,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged awesome-dsh-plugin PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) (17.5k★) | [#5109](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/5109) | Add dsh-tool-reading-map and dsh-tool-radar to the DeepSeek Harness plugin index |
-
-</details>
-<details>
-<summary>All 1 merged OpenHarness PRs</summary>
+<summary>All 1 merged OpenHarness PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -1102,7 +1104,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged LM Evaluation Harness PRs</summary>
+<summary>All 1 merged LM Evaluation Harness PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -1110,7 +1112,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged MCP Registry PRs</summary>
+<summary>All 1 merged MCP Registry PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -1150,7 +1152,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged DB-GPT PRs</summary>
+<summary>All 1 merged DB-GPT PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -1158,7 +1160,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged Google Gen AI SDK PRs</summary>
+<summary>All 1 merged Google Gen AI SDK PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -1166,19 +1168,11 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged yfinance PRs</summary>
+<summary>All 1 merged yfinance PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | [#2867](https://github.com/ranaroussi/yfinance/pull/2867) | Add a missing comma that was merging two equity-screener EPS fields into one |
-
-</details>
-<details>
-<summary>All 1 merged FastEmbed PRs</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | [#647](https://github.com/qdrant/fastembed/pull/647) | Block unsafe paths in model tar extraction, so a crafted archive can't write outside the cache directory |
 
 </details>
 <details>
@@ -1187,6 +1181,14 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [yalantinglibs](https://github.com/alibaba/yalantinglibs) (2.2k★) | [#1236](https://github.com/alibaba/yalantinglibs/pull/1236) | Preserve compatible fields in variadic serialization: the metainfo check now covers the complete argument type instead of only the first argument, so release builds no longer deserialize present or explicitly empty compatible fields as absent |
+
+</details>
+<details>
+<summary>All 1 merged FastEmbed PR</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | [#647](https://github.com/qdrant/fastembed/pull/647) | Block unsafe paths in model tar extraction, so a crafted archive can't write outside the cache directory |
 
 </details>
 <details>
@@ -1200,7 +1202,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged EvalScope PRs</summary>
+<summary>All 1 merged EvalScope PR</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -1237,7 +1239,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | 给非程序员看的 AI 代码阅读器：大白话文件导读、悬停注解、术语词典、问答、自然语言改代码。 |
 
 <details>
-<summary>全部项目（21 个）</summary>
+<summary>全部项目（23 个）</summary>
 
 | 方向 | 项目 | Stars | 简介 |
 |------|------|:-----:|------|
@@ -1247,6 +1249,8 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | 应用型 Agent | [ContractGuard](https://github.com/he-yufeng/ContractGuard) | 150+ | AI 合同审查 Agent，签字前帮你找红旗条款、不公平约定和缺失保护。 |
 | 代码库地图 | [GitSense](https://github.com/he-yufeng/GitSense) | 50+ | AI 开源贡献发现器 + 仓库雷达：找匹配 issue，也评估 PR 合入友好度。 |
 | 代码理解 | [CodeABC](https://github.com/he-yufeng/CodeABC) | new | 面向非程序员的 AI 代码阅读器：大白话文件导读、悬浮批注、术语词典、问答、自然语言改写。 |
+| 可读的推理引擎 | [core-deepinfer](https://github.com/he-yufeng/core-deepinfer) | new | 可读的 NumPy 推理循环：prefill、前缀恢复、验证预算与投机 KV 回滚。使用随机未训练 CPU 模型，不宣称 GPU 性能或生产级生成质量。 |
+| AI Infra 笔记 | [ai-infra-notes](https://github.com/he-yufeng/ai-infra-notes) | new | 推理系统源码笔记：覆盖推理引擎、KV Cache、调度、serving 协议与 Agent 运行时，附可运行的 DeepInfer、Kimi K3.1 示例，明确区分实现检查与性能证据。 |
 | Coding agents / 评测 | [AgentProbe](https://github.com/he-yufeng/AgentProbe) | new | AI Agent 回归测试 pytest 插件：快照基线、语义比较、Mock LLM。 |
 | Coding agents / 评测 | [AnyCoder](https://github.com/he-yufeng/AnyCoder) | new | 终端 AI 编程 Agent，通过 litellm 支持 100+ 大模型，危险命令拦截、并行执行、会话持久化。 |
 | Coding agents / 评测 | [CodeJoust](https://github.com/he-yufeng/CodeJoust) | new | AI 编程 Agent 擂台：独立 `git worktree` 运行，按测试通过率、成本、diff 大小、耗时打分。 |
@@ -1271,17 +1275,17 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 | 项目 | 已合并 / 落地 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | **83** | 组合分析与监视器判定流水线；实盘 fail-closed 门禁；回测账务正确性（空头、公司行动、T+1） | [#2079](https://github.com/HKUDS/Vibe-Trading/pull/2079) 新增带版本的研究 artifact，让一次运行的输入、证据与结果文档可按明确 revision 回放<br>[#2100](https://github.com/HKUDS/Vibe-Trading/pull/2100) 持久化后台任务结果并在重启后 reconciling，崩溃窗口无法确定的结果如实标未知而不是编造结局<br>[#2168](https://github.com/HKUDS/Vibe-Trading/pull/2168) 支持不可变研究修订的内容、证据和元数据对比，切换研究记录时使过期比较结果失效<br>[#1631](https://github.com/HKUDS/Vibe-Trading/pull/1631) 把上下文压缩辅助函数拆出 loop.py，agent 主循环不再内联背着压缩簿记<br>[#2098](https://github.com/HKUDS/Vibe-Trading/pull/2098) 取消任务和宿主退出时回收属于自己的后台进程，不碰其他会话的工作 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | **64** | KV cache 存储与传输引擎正确性：挂起、goroutine 泄漏、竞态、整数溢出 | [#3806](https://github.com/kvcache-ai/Mooncake/pull/3806) standby 索引容错恢复：歧义重叠副本丢弃并留可持久修复记录，不再让整个 promotion 失败<br>[#3889](https://github.com/kvcache-ai/Mooncake/pull/3889) 读路径自愈悬挂 LOCAL_DISK 副本：batch_get 命中 SSD 底文件已消失的 key 时探测 offload 文件、经条件式防竞态 RPC 在主侧逐出死副本并重试一次，与 #3711 的 Put 侧补成完整自愈对<br>[#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) 批量读里出现重复 key 时，第一次出现的位置原本拿着从未写入的缓冲区返回成功；现在每个唯一 key 只传输一次，验证过的字节经设备感知拷贝扇出到每个重复目标<br>[#3711](https://github.com/kvcache-ai/Mooncake/pull/3711) `Client::Put` 自愈悬挂 LOCAL_DISK 副本：目标 key 只剩客户端本地磁盘副本时自动逐出并干净重试；BatchPut 对已存在子集一次探测加一次批量逐出后重试，逐条与批量孪生测试齐<br>[#3943](https://github.com/kvcache-ai/Mooncake/pull/3943) 客户端析构前排干在途 RPC：读侧客户端连续 RPC 超时后析构曾在 asio epoll_reactor 里段错误；共享 RpcDrainGuard 先停止接纳、等所有在途调用返回后再析构 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | **83** | 组合分析与监视器判定流水线；实盘 fail-closed 门禁；回测账务正确性（空头、公司行动、T+1） | [#2162](https://github.com/HKUDS/Vibe-Trading/pull/2162) 回测风险报告保留多空仓位的带符号真实敞口，只有集中度按 gross share 归一；生成的 JSON 和 Markdown 直接对照实际持仓验证<br>[#777](https://github.com/HKUDS/Vibe-Trading/pull/777) Portfolio Studio 首刀「组合风险透视」：纯计算核心（集中度/波动/回撤/VaR/分散度/相关性）加走 loader fallback 链取数的 agent 工具<br>[#1551](https://github.com/HKUDS/Vibe-Trading/pull/1551) A 股前复权因子若是可加口径，偏移链校验通过时换算成回测入账的乘法口径，调整后价格与公司行动账务不再错位<br>[#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) 定时监视器的每轮 verdict 以结构化记录持久化在 job 上并随列表接口内联下发，Market Watch 一次查询就能渲染最新判定和环比<br>[#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) 现金股息的 journal 行一直没被解析，派息进 shadow 账户后实盘 PnL 读成平的；现在正确入账 |
-| [vLLM](https://github.com/vllm-project/vllm) (95.0k★) | **17** | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 | [#59986](https://github.com/vllm-project/vllm/pull/59986) DSV4.1 sparse prefill 与 mixed batch 不再进入不安全的 FULL cudagraph：五个 sparse metadata builder 改用 UNIFORM_BATCH，uniform varlen decode 在投机宽度内仍保留图捕获<br>[#59859](https://github.com/vllm-project/vllm/pull/59859) Responses API 流式重建最终 harmony 响应时复用 `output_item.*` 事件里已流出的 item id：此前新铸 id 与流事件对不上，严格客户端直接断流<br>[#45807](https://github.com/vllm-project/vllm/pull/45807) Anthropic 兼容流式在 stop_sequence 真正命中时回填 stop_reason，客户端不再靠猜<br>[#37884](https://github.com/vllm-project/vllm/pull/37884) RoBERTa 的 `position_ids` 原地累积串进了 CUDA graph 的 padding，BGE-M3 跑到约 4000 请求就崩。<br>[#43243](https://github.com/vllm-project/vllm/pull/43243) Qwen3 XML tool-call 参数先按 JSON 解析，`null`/`false` 这类 literal 在流式解析里不再被当成 Python 字面量拒掉。 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | **62** | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。<br>[#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗<br>[#4829](https://github.com/QwenLM/qwen-code/pull/4829) 给 Qwen OAuth refresh 加超时，刷新端点卡住时不会把整个 CLI 挂在认证恢复上。<br>[#5071](https://github.com/QwenLM/qwen-code/pull/5071) 流式结束后再提交已完成的快速 tool result，别让流尾的竞态把它们卡在本地队列。 |
-| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | **37** | 发版资源新鲜度、严格 provider 的 reasoning 回合 400、定时任务与 provider 失败如实上抛、退役 embedding 默认值 | [#10437](https://github.com/AstrBotDevs/AstrBot/pull/10437) Anthropic 请求把 custom_extra_body 里列表形的自定义 tools 合并进已注册 function tools，不再被 extra_body 顶层替换静默清空（DeepSeek 兼容端点的服务端联网搜索就是这种情况）<br>[#10591](https://github.com/AstrBotDevs/AstrBot/pull/10591) 单个不可读的 skill 目录不再拖垮整个请求：跳过它、其余照常加载<br>[#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) 优先用打包进去的 dashboard 资产，而不是过期的 data dist，发版后不再展示旧前端。 |
-| [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | **25** | 并发与 checkpoint 正确性：建线程竞态、会话池生命周期、fork 恢复、渠道协议上限、批次暂停语义 | [#6208](https://github.com/bytedance/deer-flow/pull/6208) MindIE 的结构化工具结果此前在工具和模型轮次之间丢失；现在保留并计入 token 预算，超长结构化负载不会再悄悄撑爆上下文<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) WeCom 出站内容封顶在 20480 字节协议上限：主动推送按序分块并给每个聊天配 refcount 发送锁，长推送不再被协议拒绝、并发发送不再交错<br>[#3800](https://github.com/bytedance/deer-flow/pull/3800) 让 `create_thread` 在并发 insert 输掉竞争时保持幂等，避免一个聊天产生重复 thread。<br>[#6621](https://github.com/bytedance/deer-flow/pull/6621) 嵌入式上传先把可转换源快照进私有临时目录，落盘副本和 Markdown companion 始终出自同一次读取：此前两次读取之间的一次保存会让两者版本错位，而响应仍报成功<br>[#4429](https://github.com/bytedance/deer-flow/pull/4429) fork 恢复的检查点把 sandbox channel 以 langgraph `Overwrite` 包装态送达，sync/async 初始化路径和 sibling readers 统一走一个解包 helper |
-| [PyTorch](https://github.com/pytorch/pytorch) (105.0k★) | **16** | Inductor 正确性、CUDA 索引、autograd 与原生算子安全 | [#196943](https://github.com/pytorch/pytorch/pull/196943) cat/split-with-sizes pattern 匹配接受等价的负维度 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | **38** | agent 循环边界：消息 role 原地改泄漏、每轮钩子、阻塞工具 | [#8953](https://github.com/microsoft/agent-framework/pull/8953) 流式文本片段聚合从反复 `+=` 改成一遍折叠：此前每个 `Content.__add__` 都重建字符串、重并属性、重接 raw 列表，n 个片段就是 O(n^2)，每条聚合响应都在付这个税；现在每个 run 一次 join、一次属性合并<br>[#8773](https://github.com/microsoft/agent-framework/pull/8773) Python：OpenAI chat-completions 的 SDK 流在消费方提前停止（break、异常、取消）时从不关闭，provider 响应一直泄漏到 GC 才回收；改用 async with 绑定，退出即确定性关闭<br>[#7289](https://github.com/microsoft/agent-framework/pull/7289) turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次 |
-| [OpenClaw](https://github.com/openclaw/openclaw) (392.7k★) | **9** | 会话存储失败即关的清扫、鉴权失败可见性、代理对安全文本 | [#119127](https://github.com/openclaw/openclaw/pull/119127) 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fail-closed，全域 GC 永不误删用户原件（owner P0 评审后与项目作者共建）<br>[#166720](https://github.com/openclaw/openclaw/pull/166720) 工具禁用后的 settled-turn 总结把已完成 toolUse/toolResult 历史转为纯文本，Bedrock 不再因无 toolConfig 却携带工具块而拒绝总结请求 |
-| [opencode](https://github.com/anomalyco/opencode) (204.9k★) | **1** | MCP OAuth 回调绑定 IPv4 loopback |  |
+| [vLLM](https://github.com/vllm-project/vllm) (95.0k★) | **17** | 在线 serving 正确性：跨轮 API 状态泄漏、CUDA graph 崩溃、工具调用解析 |  |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | **62** | agent 运行时加固：工具调用与结果相邻、取消语义、权限、TUI 状态 | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。<br>[#4622](https://github.com/QwenLM/qwen-code/pull/4622) 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。<br>[#14022](https://github.com/QwenLM/qwen-code/pull/14022) 将 CDP reconnect backoff 持久化到 MV3 service worker 重启之后，live timer 与冷启动共用同一阶梯，并在静默窗口或连接健康 30 秒后复位<br>[#7535](https://github.com/QwenLM/qwen-code/pull/7535) release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗<br>[#11684](https://github.com/QwenLM/qwen-code/pull/11684) Responses 清理后仍保持 reasoning 与 function_call 相邻 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | **37** | 发版资源新鲜度、严格 provider 的 reasoning 回合 400、定时任务与 provider 失败如实上抛、退役 embedding 默认值 |  |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | **38** | agent 循环边界：消息 role 原地改泄漏、每轮钩子、阻塞工具 |  |
+| [deer-flow](https://github.com/bytedance/deer-flow) (84.3k★) | **25** | 并发与 checkpoint 正确性：建线程竞态、会话池生命周期、fork 恢复、渠道协议上限、批次暂停语义 | [#6208](https://github.com/bytedance/deer-flow/pull/6208) MindIE 的结构化工具结果此前在工具和模型轮次之间丢失；现在保留并计入 token 预算，超长结构化负载不会再悄悄撑爆上下文<br>[#5148](https://github.com/bytedance/deer-flow/pull/5148) WeCom 出站内容封顶在 20480 字节协议上限：主动推送按序分块并给每个聊天配 refcount 发送锁，长推送不再被协议拒绝、并发发送不再交错 |
+| [PyTorch](https://github.com/pytorch/pytorch) (105.0k★) | **16** | Inductor 正确性、CUDA 索引、autograd 与原生算子安全 |  |
+| [OpenClaw](https://github.com/openclaw/openclaw) (392.7k★) | **9** | 会话存储失败即关的清扫、鉴权失败可见性、代理对安全文本 | [#119127](https://github.com/openclaw/openclaw/pull/119127) 通用 mtime 媒体清扫让出 SQLite managed 的 outgoing 子树，并在会话库不可读时 fail-closed，全域 GC 永不误删用户原件（owner P0 评审后与项目作者共建） |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | **8** | API 健壮性：无超时调用加边界、前置校验、原子窗口 |  |
+| [opencode](https://github.com/anomalyco/opencode) (204.9k★) | **1** | MCP OAuth 回调绑定 IPv4 loopback |  |
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | **1** | AutoProcessor 丢失 hub 参数透传 |  |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | **27** | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#9872](https://github.com/promptfoo/promptfoo/pull/9872) OpenRouter 与 Snowflake 的畸形补全响应加固：首个 choice 缺失、为空或不可用时返回结构化 provider 错误，不再抛异常或把畸形结果当成功评分；失败的部分输出既不评分也不写入对话历史<br>[#11445](https://github.com/promptfoo/promptfoo/pull/11445) redteam 目标缺 output 或返回 null/undefined 时记为集成错误，不再判成功；字面 "null"/"undefined" 字符串与真实拒答仍正常评分 |
 | [Google ADK](https://github.com/google/adk-python) (22.0k★) | **17** | Agent 运行时正确性：eval 元数据、live 流式、上下文缓存、MCP header 鉴权 |  |
@@ -1292,24 +1296,24 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Triton](https://github.com/triton-lang/triton) (20.4k★) | **8** | 编译器语义：fp8 算术提升、top_k 边界、AxisInfo 正确性、调用图环安全、Gluon 异步拷贝类型检查 |  |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | 监控接线：特征值记录从未落日志 |  |
 | [AgentScope](https://github.com/agentscope-ai/agentscope) (29.4k★) | **10** | 团队运行权限继承、Windows 子进程窗口、skill 来源 |  |
-| [Cline](https://github.com/cline/cline) (66.7k★) | **1** | open-tabs 宿主 RPC 挂掉时文件搜索仍可用 |  |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (3.1k★) | **30** | provider 解析与评测完整性：reasoning 块、perplexity 丢样本、流式写盘崩溃 |  |
+| [Cline](https://github.com/cline/cline) (66.7k★) | **1** | open-tabs 宿主 RPC 挂掉时文件搜索仍可用 |  |
 | [LiteLLM](https://github.com/BerriAI/litellm) (57.1k★) | **1** | 代理日志：INFO 输出丢失 verbose logger 来源 |  |
 | [cherry-studio](https://github.com/CherryHQ/cherry-studio) (52.3k★) | **8** | 渲染正确性：markdown 样式被 tree-shake、流式翻译渲染、代理对安全截断 |  |
 | [goose](https://github.com/aaif-goose/goose) (53.3k★) | **3** | 遥测导出可靠性、skill 路径展示、桌面快捷键 |  |
 | [MCP Servers](https://github.com/modelcontextprotocol/servers) (90.1k★) | **1** | 依赖声明卫生：直接 import zod 的服务补上运行时依赖声明 |  |
 | [GitHub MCP Server](https://github.com/github/github-mcp-server) (32.4k★) | **2** | team reviewer 解析与只读面卫生 |  |
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | **1** | 上报生效中的 Blaxel 超时而非默认值 |  |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | **6** | 训练准备与采样健壮性：DPO 崩溃、0 fps 视频、CI 修复 |  |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (15.5k★) | **10** | ADK 会话缓存与文本到工具调用的过渡顺序 |  |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | **6** | 训练准备与采样健壮性：DPO 崩溃、0 fps 视频、CI 修复 |  |
 | [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | **2** | 文件格式转换正确性：DOCX 下划线保留、老旧 XLSX 兼容 |  |
 | [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | **3** | 记忆存储后端：S3 Vectors 索引命名、Qdrant https 选项 |  |
 | [verl](https://github.com/verl-project/verl) (23.1k★) | **1** | colocated 权重同步的 DP/TP rank 推导 |  |
 | [TRL](https://github.com/huggingface/trl) (19.1k★) | **2** | 数据准备快速失败与 vLLM 特殊 token 保留 |  |
 | [LiveKit Agents](https://github.com/livekit/agents) (13.1k★) | **8** | 实时语音链路：流式重试重建、provider 状态解析、STT 错误透出 |  |
 | [DSPy](https://github.com/stanfordnlp/dspy) (37.8k★) | **1** | 流式错误传播：同步迭代器失败不再静默消失 |  |
-| [Agno](https://github.com/agno-agi/agno) (41.8k★) | **1** | 工具参数空白保留与哨兵值归一化 |  |
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | **5** | duplex Realtime 扩展性、sleep 准入、diffusion 运行时与引擎配置 |  |
+| [Agno](https://github.com/agno-agi/agno) (41.8k★) | **1** | 工具参数空白保留与哨兵值归一化 |  |
 | [milvus](https://github.com/milvus-io/milvus) (45.8k★) | **1** | 调度器关停安全：在途广播任务不再把正在关闭的调度器打崩 |  |
 | [RAGFlow](https://github.com/infiniflow/ragflow) (89.1k★) | **3** | agent 流守卫、Docling 回退、GraphRAG 边排序 |  |
 | [OpenAI Python SDK](https://github.com/openai/openai-python) (31.6k★) | **1** | 有界的 vector-store 轮询与客户端生命周期边界 |  |
@@ -1317,15 +1321,15 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [LMCache](https://github.com/LMCache/LMCache) (11.3k★) | **2** | 跨进程 KV 传输：CUDA IPC 事件生命周期、HND 布局处理 |  |
 | [Strands Agents SDK](https://github.com/strands-agents/harness-sdk) (6.9k★) | **9** | OpenAI 非流式支持、Gemini 安全元数据、vLLM reasoning 块 |  |
 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) (6.2k★) | **2** | autotuner 空输入崩溃与 CUTLASS 头文件编译修复 |  |
-| [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.8k★) | **1** | schema 构建保留必需的 union 判别标签 |  |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | **3** | Vercel AI 动态工具部件接纳、completions penalty 透传 |  |
+| [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.8k★) | **1** | schema 构建保留必需的 union 判别标签 |  |
 | [Phoenix](https://github.com/Arize-ai/phoenix) (11.1k★) | **11** | 可观测 UI 状态：prompt diff 过期、游标单调性、启动竞态 |  |
 | [Pipecat](https://github.com/pipecat-ai/pipecat) (14.6k★) | **2** | 实时语音：DTMF 缓存键、打断帧序列化 |  |
 | [langfuse](https://github.com/langfuse/langfuse) (35.2k★) | **1** | OTel trace 导出：int64 字段按字符串序列化，符合 protobuf JSON 约定 |  |
+| [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) (17.5k★) | **1** | 插件索引收录：dsh-tool-reading-map 与 dsh-tool-radar |  |
 | [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | **1** | TUI 底部状态栏自定义 |  |
 | [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | **2** | FalkorDB 批量写入遇 NUL 字节崩溃，MCP server 保住 URI 用户名 |  |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | **4** | Docling 响应解包、文档站深色主题、PostgreSQL search_path 探测 |  |
-| [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) (17.5k★) | **1** | 插件索引收录：dsh-tool-reading-map 与 dsh-tool-radar |  |
 | [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | **1** | TUI tab 补全修复 |  |
 | [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | **1** | Anthropic stop 序列校验 |  |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | **1** | 发布者元数据校验 |  |
@@ -1335,11 +1339,101 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) (19.7k★) | **1** | 沙箱执行改为显式开启 |  |
 | [Google Gen AI SDK](https://github.com/googleapis/python-genai) (3.9k★) | **1** | 密钥卫生：websocket URL 不再带 secret |  |
 | [yfinance](https://github.com/ranaroussi/yfinance) (25.0k★) | **1** | 股票筛选器 EPS 字段粘连 |  |
-| [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | 模型下载安全：tar 解包拒绝不安全路径 |  |
 | [yalantinglibs](https://github.com/alibaba/yalantinglibs) (2.2k★) | **1** | 序列化正确性：变参 RPC 调用不再丢失 compatible 字段 |  |
+| [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | 模型下载安全：tar 解包拒绝不安全路径 |  |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | **3** | 并发安全的 LiteLLM 参数、git 工作区校验、UTF-8 日志 |  |
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | **1** | 从内容块提取 SciCode 答案 |  |
 
+<details>
+<summary>全部 83 个已合并或落地的 Vibe-Trading PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2079](https://github.com/HKUDS/Vibe-Trading/pull/2079) | 新增带版本的研究 artifact，让一次运行的输入、证据与结果文档可按明确 revision 回放 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2100](https://github.com/HKUDS/Vibe-Trading/pull/2100) | 持久化后台任务结果并在重启后 reconciling，崩溃窗口无法确定的结果如实标未知而不是编造结局 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2168](https://github.com/HKUDS/Vibe-Trading/pull/2168) | 支持不可变研究修订的内容、证据和元数据对比，切换研究记录时使过期比较结果失效 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1631](https://github.com/HKUDS/Vibe-Trading/pull/1631) | 把上下文压缩辅助函数拆出 loop.py，agent 主循环不再内联背着压缩簿记 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2098](https://github.com/HKUDS/Vibe-Trading/pull/2098) | 取消任务和宿主退出时回收属于自己的后台进程，不碰其他会话的工作 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio 首刀「组合风险透视」：纯计算核心（集中度/波动/回撤/VaR/分散度/相关性）加走 loader fallback 链取数的 agent 工具 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1551](https://github.com/HKUDS/Vibe-Trading/pull/1551) | A 股前复权因子若是可加口径，偏移链校验通过时换算成回测入账的乘法口径，调整后价格与公司行动账务不再错位 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2170](https://github.com/HKUDS/Vibe-Trading/pull/2170) | 将完整研究记录系列导出为 JSON 或 Markdown，贯通 Web、CLI、API 和 agent 工具，并保留代码围栏内容与修订元数据 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2087](https://github.com/HKUDS/Vibe-Trading/pull/2087) | 各 provider 适配器统一执行同一套 tool policy，不再让某条 provider 路径绕过 allow/deny 配置 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) | 定时监视器的每轮 verdict 以结构化记录持久化在 job 上并随列表接口内联下发，Market Watch 一次查询就能渲染最新判定和环比 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2092](https://github.com/HKUDS/Vibe-Trading/pull/2092) | 后台任务与完成通知按所属会话隔离，其他会话不再能误取消任务或取走通知 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) | 现金股息的 journal 行一直没被解析，派息进 shadow 账户后实盘 PnL 读成平的；现在正确入账 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2099](https://github.com/HKUDS/Vibe-Trading/pull/2099) | provider 流长期无输出时在调用方边界及时中断，不再无限等 socket 自己失败 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1317](https://github.com/HKUDS/Vibe-Trading/pull/1317) | 给每个下发的行情帧打上复权口径戳，篮子混口径时显式告警，堵上 #1301 暴露的静默混口径回测缺口 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1615](https://github.com/HKUDS/Vibe-Trading/pull/1615) | baostock 的 socket IO 加上单次读超时：服务器静默不再让 loader 永挂，连接被关闭后不再空转满 CPU |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio 第二步：可组合的组合权重约束，能挂到任意优化器上，waterfill 再分配只喂给还没到上限的仓位 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1661](https://github.com/HKUDS/Vibe-Trading/pull/1661) | grounding 验证工件现在记录每次触发的是哪些检查，被驳回的声明能查出具体踩了哪一条 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2062](https://github.com/HKUDS/Vibe-Trading/pull/2062) | 恢复 Qlib Alpha158 的 BETA/RESI 原义：五个窗口统一改用向量化滚动 OLS 斜率和最新点残差，不再拿端点差与均值偏离冒充；保留完整窗口 NaN 契约，并用独立 polyfit 对照验证 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1311](https://github.com/HKUDS/Vibe-Trading/pull/1311) | FIFO 配对里显式建模空头批次，拆股/分红时把多空腿重述到同一口径，空头侧 PnL 不再重复计借入敞口 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1823](https://github.com/HKUDS/Vibe-Trading/pull/1823) | 派生指标核对把百分号命名的证据字段按「点」读，不再当小数放大一百倍 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#900](https://github.com/HKUDS/Vibe-Trading/pull/900) | 每次回测都会产出 risk x-ray 工件（JSON + Markdown），基于策略的平均持仓计算集中度、波动、回撤和尾部风险，并汇入 run 指标 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2172](https://github.com/HKUDS/Vibe-Trading/pull/2172) | 新增确定性隐含波动率曲面：strike 方向按 log-moneyness 插值 IV，expiry 方向插值 total variance；网格有界、拒绝外推，并逐点保留观测/插值来源 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#966](https://github.com/HKUDS/Vibe-Trading/pull/966) | 在 run 详情页直接展示 Portfolio Studio 产物（risk x-ray、调仓 notes），跑完即看不用翻文件 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1309](https://github.com/HKUDS/Vibe-Trading/pull/1309) | A 股/印度 T+1 和涨跌停带改由 composite state 强制校验，不再靠无状态子引擎的规则书静默放行当日卖出与锁板成交 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) | flatten latch 持久化并绑定 halt episode：重启后平仓单仍在途时不再整轮重放扫仓，账户不会被多翻空 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1844](https://github.com/HKUDS/Vibe-Trading/pull/1844) | 逐 bar 收益序列以初始现金作基，风险比率第一根 bar 不再除空基 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | 把 strict bench 门禁接进 CLI：`alpha bench --strict` 在策略不达标时直接判失败 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1306](https://github.com/HKUDS/Vibe-Trading/pull/1306) | 空头期权腿占用保证金、开仓过购买力门禁，期权空头在回测里不再像白拿权利金 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2162](https://github.com/HKUDS/Vibe-Trading/pull/2162) | 回测 risk x-ray 保留多空仓位带符号的真实敞口，只有集中度按 gross share 归一；生成的报告直接对照实际持仓验证 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#795](https://github.com/HKUDS/Vibe-Trading/pull/795) | Portfolio Studio 的 rebalance notes：回测器每次调仓产出带指标的 notes 工件，agent 驱动的调仓可审计回看 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1287](https://github.com/HKUDS/Vibe-Trading/pull/1287) | 两条 Yahoo loader 路径统一提供拆股/分红复权价，公司行动在回测里不再被记成假崩盘、除息缺口不再被记成假亏损 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1935](https://github.com/HKUDS/Vibe-Trading/pull/1935) | 回测配置里没人读的键现在告警：agent 写的 initial_capital/commission_rate 此前通过校验后被静默丢弃，回测按 10 倍本金与默认费率跑完且指标照常输出 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1310](https://github.com/HKUDS/Vibe-Trading/pull/1310) | shadow 账户归因限定在资金池币种且各桶互斥，跨币种 delta 不再落错桶、重复计 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1349](https://github.com/HKUDS/Vibe-Trading/pull/1349) | microcompact 清掉工具结果后对应工具调用被永久卡住，改为结果缺失时解除阻塞并如实标记 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1628](https://github.com/HKUDS/Vibe-Trading/pull/1628) | grounding 检查从散落的逐条补丁收拢为声明式 registry：新增检查只登记一条，不用改门禁各处的代码 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (32.7k★ · 维护者) | [#1225](https://github.com/HKUDS/Vibe-Trading/pull/1225) | 流式 LLM 调用现在会主动向端点请求 usage，swarm run 记录真实 token 数而不是字符数估算（output tokens 曾少报 18-36 倍）；拒绝 stream_options 的端点自动降级一次重试并记忆 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (32.7k★ · 维护者) | [#1217](https://github.com/HKUDS/Vibe-Trading/pull/1217) | Shadow Account 从 runner 从不产生的键提取 PnL，成功回测被记成 Shadow PnL=0、Delta 结论反向；改为按 final_value/total_return 推导，未知状态 fail closed 不再渲染成 0.00 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1388](https://github.com/HKUDS/Vibe-Trading/pull/1388) | 收口四个连接器缺口：MT5 超量订单被静默钳到符号上限、eToro 无价位限单发成永不触发的 MIT、futu K 线复权口径不声明、裸 BTCUSDT 类连体对被错套 A 股 T+1 规则 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2069](https://github.com/HKUDS/Vibe-Trading/pull/2069) | 修复 Qlib ROC/CORD 在 10 个模块中的语义：校正倒数与偏移处理及 CORD 从 1 开始的时序对齐，并用独立数值 oracle 做前后对照 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1332](https://github.com/HKUDS/Vibe-Trading/pull/1332) | 停牌持仓在有界 ffill 失效后改按最后成交价估值而不是成本价：权益曲线的幻影回撤和 rebalance 定价失真消除 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1824](https://github.com/HKUDS/Vibe-Trading/pull/1824) | quantlib 调度与 Sharpe 汇总收到非有限输入时按字段名拒绝，不再静默传播 NaN |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1691](https://github.com/HKUDS/Vibe-Trading/pull/1691) | 把身份与图形门检查迁进 grounding registry 声明，新证据门不再需要手写接线点 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1212](https://github.com/HKUDS/Vibe-Trading/pull/1212) | 券商持仓读取返回 API 错误时改为 fail closed：futu/okx connector 显式上抛，不再把读不到的持仓簿当成空仓，实盘委托不再盲过 mandate gate |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1629](https://github.com/HKUDS/Vibe-Trading/pull/1629) | 券商能力矩阵从 profile registry 生成进 README，附漂移测试：profile 一改没重新生成，CI 立即红 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1156](https://github.com/HKUDS/Vibe-Trading/pull/1156) | 补齐 Market Watch 的定时监视器 verdict 展示：一次列表查询直接显示最新标的状态、相对上轮变化和记录时间，并为尚无结果或记录损坏提供明确状态 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1627](https://github.com/HKUDS/Vibe-Trading/pull/1627) | 每周实盘源健康金丝雀：每个免登录 loader 拉一只已知高流动标的并校验帧结构与新鲜度，数据源死掉或漂移先在 CI 红，不用等用户上报 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1663](https://github.com/HKUDS/Vibe-Trading/pull/1663) | 财报里会计括号记负的数值此前被提取为正数，亏损行可能对上盈利数字仍判一致；现在正确读负 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1232](https://github.com/HKUDS/Vibe-Trading/pull/1232) | halt 清扫对券商错误信封 fail closed：`{"status": "error"}` 响应记为失败，不再被当成合规的撤单/平仓成功 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2048](https://github.com/HKUDS/Vibe-Trading/pull/2048) | claude-cli 拒绝原生工具调用后，现在把 native-attempt 元数据送回既有有界 host-protocol 重试，不再把未执行宿主工具的结果当成成功终答；合法结构化 tool_calls 仍不额外调用 CLI |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1730](https://github.com/HKUDS/Vibe-Trading/pull/1730) | TDX 行情服务器 2026-07 起不再应答 mootdx 协议，但 mootdx 仍排在 A 股 fallback 链第二位，每次 auto 取数白付约 9.5s 才落到 eastmoney；从默认链与健康巡检退役，保留注册让显式 source="mootdx" 调用照常 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1518](https://github.com/HKUDS/Vibe-Trading/pull/1518) | 股东户数历史改读分期明细报表（此前读的“最新快照”报表永远只回一行，max_periods 是死参数），每个返回期标注其变动测量区间 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1288](https://github.com/HKUDS/Vibe-Trading/pull/1288) | 首个行情源没给到的 symbol 沿 fallback 链逐个重试，一个 404 不再把整批 symbol 拖进 unresolved |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2109](https://github.com/HKUDS/Vibe-Trading/pull/2109) | llm_usage 保留 provider 回报的 cache 与 reasoning token，运行账目不再漏掉这些类别 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1444](https://github.com/HKUDS/Vibe-Trading/pull/1444) | 尾风险声明的度量与置信度经声明 ref 坐实进 grounding：ref 可指名证据字段、多调用时需 call_id::field 消歧，VaR/ES 不再凭一行共享 var_95 全放行 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1702](https://github.com/HKUDS/Vibe-Trading/pull/1702) | correction prompt 之前只说修什么，干净的数字也会被重写、下一轮再被门禁打掉；现在同时列出已通过检查的数字，让下一稿原样保留 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1732](https://github.com/HKUDS/Vibe-Trading/pull/1732) | american_waterfall 静默吞掉裸日期 as_of（同参数名在兄弟 european_waterfall 里合法），优先回报改按各 deal 自身最新流水日期计提，返回一个看着合理的错数；现与 _validate_deals 一样直接 TypeError 拒绝 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2157](https://github.com/HKUDS/Vibe-Trading/pull/2157) | 重启后恢复待处理后台通知，隔离畸形记录，避免一条坏数据阻断健康任务恢复 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1630](https://github.com/HKUDS/Vibe-Trading/pull/1630) | 频道编写不再是口口相传：频道必须遵守的契约钉在一处并写清 recipe，新频道对着显式接口来写 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1253](https://github.com/HKUDS/Vibe-Trading/pull/1253) | 闭市时段跳过 market 触发器的 tick：周末的监视循环不再把委托排进周一开盘 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1825](https://github.com/HKUDS/Vibe-Trading/pull/1825) | 带索引的 Parquet bars 尊重配置的 date_format 加载，不再硬性解析失败 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1314](https://github.com/HKUDS/Vibe-Trading/pull/1314) | shadow 结果缓存按窗口和 journal 哈希做键，换窗口重渲染不再复用上一轮的结果 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1750](https://github.com/HKUDS/Vibe-Trading/pull/1750) | 期权引擎只用已记录权益构建回撤峰值，首根 bar 的跌幅（佣金加成交价偏移）对 max_drawdown 完全不可见：首 bar 亏 10% 读成 0.0%；现峰值以初始资金播种，与共享 calc_metrics 一致 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1342](https://github.com/HKUDS/Vibe-Trading/pull/1342) | 识别 stooq 的反爬 challenge 页并把源标记为不可用、给操作指引，不再把 HTML 当无数据静默滑过整条 fallback 链 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1312](https://github.com/HKUDS/Vibe-Trading/pull/1312) | 限价买单按报价与限价中更差的一档定量，限价高于盘口时不再放大成交规模 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1706](https://github.com/HKUDS/Vibe-Trading/pull/1706) | 美股半日交易时 session 现在在提早收盘时关闭，不再对着已休市的市场空跑 live 循环 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#970](https://github.com/HKUDS/Vibe-Trading/pull/970) | yfinance 数据源的加密货币回测改走 CryptoEngine，BTC/ETH 这类标的不再报错 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1396](https://github.com/HKUDS/Vibe-Trading/pull/1396) | 把 Tushare 拼写的国内期货后缀（SHF/DCE/CFX/CZC/GFE）正确归类为期货而不是 A 股，这些合约不再被套用 T+1、禁空、无保证金的股票规则结算 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2155](https://github.com/HKUDS/Vibe-Trading/pull/2155) | 心跳时间戳里的 Unicode 行分隔符不再骗过 swarm reaper 的存活判断 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1598](https://github.com/HKUDS/Vibe-Trading/pull/1598) | 回测改为可附着到已在运行的 MT5 终端，不再每次索要新凭证；券商托管终端的 sandbox 流程恢复可用 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2064](https://github.com/HKUDS/Vibe-Trading/pull/2064) | 兼容 Claude CLI 常见的两段式 structured final：工具调用后接普通结构化回答也能完成，不再误拒或触发额外重试 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1307](https://github.com/HKUDS/Vibe-Trading/pull/1307) | 永续资金费在 8 小时以上周期按 bar 跨度结算，不再日线一天一次，非 strict 模式恢复应有的资金成本 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1209](https://github.com/HKUDS/Vibe-Trading/pull/1209) | Alpaca 持仓数量按方向带上符号再进 mandate gate，空头持仓按正确方向校验，不再以正数蒙混 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1462](https://github.com/HKUDS/Vibe-Trading/pull/1462) | 组合 risk x-ray 拉取历史收盘在 250 行上限外被采样截断，长窗口篮子的集中度与尾部指标建立在断裂序列上；改为拉全量历史 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2120](https://github.com/HKUDS/Vibe-Trading/pull/2120) | 空回复重试提示改用 Anthropic 兼容的 user 消息，不再发送非连续 system 消息 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1313](https://github.com/HKUDS/Vibe-Trading/pull/1313) | fastmcp 钉在 4.0.0 以下，先解掉它 MCPError 构造器变更搞红的全仓 CI，真正的适配后续再做 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2159](https://github.com/HKUDS/Vibe-Trading/pull/2159) | 为研究 revision 指纹建索引，重复 artifact 查询不再每次扫描全部历史 revision |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#984](https://github.com/HKUDS/Vibe-Trading/pull/984) | 层级路由写入的记忆条目补上 .md 扩展名，修复写入即隐形（裸 slug 文件对所有发现路径不可见） |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1740](https://github.com/HKUDS/Vibe-Trading/pull/1740) | main CI 一个提交三处红、pytest 还没跑就失败：readiness 探针直接 os.getenv 读 TUSHARE_TOKEN 触发 env 门禁，infer_market 让 FX 分类器在 crypto 检查之前认领 ETH/USD，bench 需求校验跟随了已有报告符号链接 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1689](https://github.com/HKUDS/Vibe-Trading/pull/1689) | 用 loader 测试钉住 FMP/Tiingo 服务帧的复权戳，静默的混合口径回归会直接红而不是悄悄混入原始价与复权价 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (32.7k★ · 维护者) | [#1220](https://github.com/HKUDS/Vibe-Trading/pull/1220) | 补上组合式 CV 多段测试块间隙行保持可训练的回归钉，这是多段 purge 修复合入时缺的那条回归 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1809](https://github.com/HKUDS/Vibe-Trading/pull/1809) | IBKR 连接池的 thread-local 复位改成与顺序无关，测试隔离不再依赖拆除次序 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1671](https://github.com/HKUDS/Vibe-Trading/pull/1671) | README_id 工具清单漏了 get_southbound_flow、计数漂移，所有 open PR 的 test_readme_counts 全红；补齐并刷新后转绿 |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1831](https://github.com/HKUDS/Vibe-Trading/pull/1831) | 前端测试先等模型列表取回再收窄 effort 档位，消除时序抖动 |
+
+</details>
 <details>
 <summary>全部 64 个已合并的 Mooncake PR</summary>
 
@@ -1360,14 +1454,17 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#1644](https://github.com/kvcache-ai/Mooncake/pull/1644) | MNNVL warmup hang：跳过 fabric 连接节点的冗余握手 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#3062](https://github.com/kvcache-ai/Mooncake/pull/3062) | HA 模式下 WaitForViewChange 每次迭代都新建一个 etcd watch，改成每轮等待只建一次，堵住稳态 watch goroutine 泄漏 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4553](https://github.com/kvcache-ai/Mooncake/pull/4553) | standby 恢复容忍已卸载 segment 上的副本：交接前刚卸载的客户端不再让整轮 promotion 以 INVALID_PARAMS 夭折；陈旧副本带告警丢弃，丢光副本的对象整体跳过，其余校验保持严格 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5269](https://github.com/kvcache-ai/Mooncake/pull/5269) | 修复 NDEBUG 下后续 variadic RPC 参数的兼容字段丢失，用真实 client-master 与显式 NDEBUG 回归保住 residency affinity 语义 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4643](https://github.com/kvcache-ai/Mooncake/pull/4643) | CudaPlatform::copy() 此前只恢复设备序号且只在成功路径恢复：调用方的自定义 CUcontext 被换成主上下文、无上下文调用方平白多出一个、提前返回还会泄漏设备切换；现在保存并在每条出口恢复精确 CUcontext（含空） |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2311](https://github.com/kvcache-ai/Mooncake/pull/2311) | `rpc_meta` 内容没变时重复发布保持幂等，真正改了值才拒绝。 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4463](https://github.com/kvcache-ai/Mooncake/pull/4463) | 握手 daemon 给未授信对端写回复时，对端中途 reset 不再让 SIGPIPE 杀掉宿主进程：回复改走 `send(MSG_NOSIGNAL)`（macOS 用 `SO_NOSIGPIPE`），reset 只回一个普通的 EPIPE 错误 |
 
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5038](https://github.com/kvcache-ai/Mooncake/pull/5038) | 在注册 CUDA host callback 前拒绝 on-CUDA NVLink 传输，避免驱动回调线程调用 CUDA API 后终止整个进程 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4463](https://github.com/kvcache-ai/Mooncake/pull/4463) | 握手 daemon 给未授信对端写回复时，对端中途 reset 不再让 SIGPIPE 杀掉宿主进程：回复改走 `send(MSG_NOSIGNAL)`（macOS 用 `SO_NOSIGPIPE`），reset 只回一个普通的 EPIPE 错误 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#1831](https://github.com/kvcache-ai/Mooncake/pull/1831) | TENT NVLink IPC 修复：sub-allocated GPU tensor 使用 base pointer，将 #1622 修复移植到 TENT 路径 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4451](https://github.com/kvcache-ai/Mooncake/pull/4451) | 卡住不读响应的对端不再堵死 handshake daemon：已接受套接字加上与接收侧对称的发送超时，读到一半停滞的对端报错收场，控制面不再整体冻结 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#3054](https://github.com/kvcache-ai/Mooncake/pull/3054) | 恢复 wheel 多 buffer payload 的 zero-copy put，刚合入的重构把它退化成了拷贝，双提交复现后修复 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#3278](https://github.com/kvcache-ai/Mooncake/pull/3278) | 优雅关闭 watcher 线程屏蔽 SIGTERM/SIGINT：进程级信号落在 watcher 上会挂起唯一的管道读者，关闭流程永久挂死 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5113](https://github.com/kvcache-ai/Mooncake/pull/5113) | 对对齐地址和长度可能让 RDMA 偏移回绕的 DMA-BUF 注册发出警告，给出 4 GiB MR 上限与 nvidia-peermem 两种规避路径，不再让数据损坏静默发生 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2570](https://github.com/kvcache-ai/Mooncake/pull/2570) | 修复 `BatchOffload` 处理 >4 GiB 对象时的整数溢出：用 `uint64_t` 累加各 slice 大小，并拒绝超过 `uint32_t` 记录 `value_len` 的对象，而不是静默截断 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#3146](https://github.com/kvcache-ai/Mooncake/pull/3146) | 修设备选择失败路径上 UB/Barex slice 的双重释放：已入队的 slice 被塞回缓存，而所有权还在 TransferTask 手里（#3125 RDMA 修复的 sibling） |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2617](https://github.com/kvcache-ai/Mooncake/pull/2617) | 在 EFA/鲲鹏 `submitTransfer` 里补回 `task.request` 关联（与 RDMA 路径同类漏赋值） |
@@ -1378,6 +1475,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4453](https://github.com/kvcache-ai/Mooncake/pull/4453) | 给 handshake daemon 的 pending-notify 队列设上限，卡死的对端不再让内存无界增长 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2404](https://github.com/kvcache-ai/Mooncake/pull/2404) | 所选内存分配器支持不可用时让 Python 初始化直接报错，不再带着坏分配器起到后面才崩 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2610](https://github.com/kvcache-ai/Mooncake/pull/2610) | 重构时漏掉了 `RdmaTransport::submitTransfer` 里每个 task 的 `request` 指针赋值，下游全拿到 null，status、重试、计费回读全废。追回来补上了这个关联。 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5079](https://github.com/kvcache-ai/Mooncake/pull/5079) | 在 HIXL 初始化前拒绝 Client-Server 模式的非零 ASCEND_BUFFER_POOL，用可操作的配置错误替代难以定位的引擎初始化失败 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2619](https://github.com/kvcache-ai/Mooncake/pull/2619) | 修复 EFA smaps page-size 解析里 signed char 传 `isxdigit` 的 UB（#2504 的后续） |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2602](https://github.com/kvcache-ai/Mooncake/pull/2602) | `handle_exist` 里 `is_exist` 报错时返回 HTTP 500，而不是当成“不存在” |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2506](https://github.com/kvcache-ai/Mooncake/pull/2506) | `from_file` 里把 `enable_ssd_offload` 的字符串布尔值正确解析 |
@@ -1387,11 +1485,6 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4552](https://github.com/kvcache-ai/Mooncake/pull/4552) | 启动偏差不计入 queued-send 进度超时窗口，慢启动的 rank 不再误触 watchdog |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2628](https://github.com/kvcache-ai/Mooncake/pull/2628) | 修复 `CopyEnd`/`MoveEnd` 在 source 非法时的 source 引用计数泄漏 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4610](https://github.com/kvcache-ai/Mooncake/pull/4610) | 修复 npu-to-device 重命名漏掉的 conductor pybind 客户端：_conductor 模块编译失败，main CI 和所有带上该提交的 PR 全红 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5038](https://github.com/kvcache-ai/Mooncake/pull/5038) | 在注册 CUDA host callback 前拒绝 on-CUDA NVLink 传输，避免驱动回调线程调用 CUDA API 后终止整个进程 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5113](https://github.com/kvcache-ai/Mooncake/pull/5113) | 对对齐地址和长度可能让 RDMA 偏移回绕的 DMA-BUF 注册发出警告，给出 4 GiB MR 上限与 nvidia-peermem 两种规避路径，不再让数据损坏静默发生 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5144](https://github.com/kvcache-ai/Mooncake/pull/5144) | 给 on-CUDA guard 测试补上 Transfer Engine 生成头文件的 include 路径，恢复新增公共 build-config 头后的独立 CTest 构建 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5269](https://github.com/kvcache-ai/Mooncake/pull/5269) | 修复 NDEBUG 下后续 variadic RPC 参数的兼容字段丢失，用真实 client-master 与显式 NDEBUG 回归保住 residency affinity 语义 |
-| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5079](https://github.com/kvcache-ai/Mooncake/pull/5079) | 在 HIXL 初始化前拒绝 Client-Server 模式的非零 ASCEND_BUFFER_POOL，用可操作的配置错误替代难以定位的引擎初始化失败 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2606](https://github.com/kvcache-ai/Mooncake/pull/2606) | 为节点内 NVLink 构建补上 `cudaStreamQuery` 映射 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#1626](https://github.com/kvcache-ai/Mooncake/pull/1626) | 修复非内存副本的错误日志刷屏 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#2403](https://github.com/kvcache-ai/Mooncake/pull/2403) | 清掉失败的 io_uring sub-batch 初始化状态，别让半成品 transfer batch 把坏状态带进后续 setup。 |
@@ -1410,96 +1503,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#3064](https://github.com/kvcache-ai/Mooncake/pull/3064) | 删掉 NVMe-oF 文档示例里没有任何实际作用的 `enable_mooncake_nof_pool` 配置项，别让用户照抄一个假开关 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4946](https://github.com/kvcache-ai/Mooncake/pull/4946) | 关闭 cmake-format markup，让说明性注释保留有意组织的换行，不再被自动重排 |
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#4875](https://github.com/kvcache-ai/Mooncake/pull/4875) | docs：更正 `MC_GID_INDEX` 默认值——文档写死固定设备序号，代码默认实为 -1（经 GID 网络状态排序回退链自动选择） |
-
-</details>
-<details>
-<summary>全部 83 个已合并或落地的 Vibe-Trading PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2168](https://github.com/HKUDS/Vibe-Trading/pull/2168) | 支持不可变研究修订的内容、证据和元数据对比，切换研究记录时使过期比较结果失效 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2170](https://github.com/HKUDS/Vibe-Trading/pull/2170) | 将完整研究记录系列导出为 JSON 或 Markdown，贯通 Web、CLI、API 和 agent 工具，并保留代码围栏内容与修订元数据 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2172](https://github.com/HKUDS/Vibe-Trading/pull/2172) | 新增确定性隐含波动率曲面：strike 方向按 log-moneyness 插值 IV，expiry 方向插值 total variance；网格有界、拒绝外推，并逐点保留观测/插值来源 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1631](https://github.com/HKUDS/Vibe-Trading/pull/1631) | 把上下文压缩辅助函数拆出 loop.py，agent 主循环不再内联背着压缩簿记 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#777](https://github.com/HKUDS/Vibe-Trading/pull/777) | Portfolio Studio 首刀「组合风险透视」：纯计算核心（集中度/波动/回撤/VaR/分散度/相关性）加走 loader fallback 链取数的 agent 工具 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1551](https://github.com/HKUDS/Vibe-Trading/pull/1551) | A 股前复权因子若是可加口径，偏移链校验通过时换算成回测入账的乘法口径，调整后价格与公司行动账务不再错位 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1152](https://github.com/HKUDS/Vibe-Trading/pull/1152) | 定时监视器的每轮 verdict 以结构化记录持久化在 job 上并随列表接口内联下发，Market Watch 一次查询就能渲染最新判定和环比 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1356](https://github.com/HKUDS/Vibe-Trading/pull/1356) | 现金股息的 journal 行一直没被解析，派息进 shadow 账户后实盘 PnL 读成平的；现在正确入账 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1317](https://github.com/HKUDS/Vibe-Trading/pull/1317) | 给每个下发的行情帧打上复权口径戳，篮子混口径时显式告警，堵上 #1301 暴露的静默混口径回测缺口 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1615](https://github.com/HKUDS/Vibe-Trading/pull/1615) | baostock 的 socket IO 加上单次读超时：服务器静默不再让 loader 永挂，连接被关闭后不再空转满 CPU |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#818](https://github.com/HKUDS/Vibe-Trading/pull/818) | Portfolio Studio 第二步：可组合的组合权重约束，能挂到任意优化器上，waterfill 再分配只喂给还没到上限的仓位 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1661](https://github.com/HKUDS/Vibe-Trading/pull/1661) | grounding 验证工件现在记录每次触发的是哪些检查，被驳回的声明能查出具体踩了哪一条 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2062](https://github.com/HKUDS/Vibe-Trading/pull/2062) | 恢复 Qlib Alpha158 的 BETA/RESI 原义：五个窗口统一改用向量化滚动 OLS 斜率和最新点残差，不再拿端点差与均值偏离冒充；保留完整窗口 NaN 契约，并用独立 polyfit 对照验证 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1311](https://github.com/HKUDS/Vibe-Trading/pull/1311) | FIFO 配对里显式建模空头批次，拆股/分红时把多空腿重述到同一口径，空头侧 PnL 不再重复计借入敞口 |
-| | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1823](https://github.com/HKUDS/Vibe-Trading/pull/1823) | 派生指标核对把百分号命名的证据字段按「点」读，不再当小数放大一百倍 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#900](https://github.com/HKUDS/Vibe-Trading/pull/900) | 每次回测都会产出 risk x-ray 工件（JSON + Markdown），基于策略的平均持仓计算集中度、波动、回撤和尾部风险，并汇入 run 指标 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#966](https://github.com/HKUDS/Vibe-Trading/pull/966) | 在 run 详情页直接展示 Portfolio Studio 产物（risk x-ray、调仓 notes），跑完即看不用翻文件 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1309](https://github.com/HKUDS/Vibe-Trading/pull/1309) | A 股/印度 T+1 和涨跌停带改由 composite state 强制校验，不再靠无状态子引擎的规则书静默放行当日卖出与锁板成交 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1233](https://github.com/HKUDS/Vibe-Trading/pull/1233) | flatten latch 持久化并绑定 halt episode：重启后平仓单仍在途时不再整轮重放扫仓，账户不会被多翻空 |
-| | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1844](https://github.com/HKUDS/Vibe-Trading/pull/1844) | 逐 bar 收益序列以初始现金作基，风险比率第一根 bar 不再除空基 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#796](https://github.com/HKUDS/Vibe-Trading/pull/796) | 把 strict bench 门禁接进 CLI：`alpha bench --strict` 在策略不达标时直接判失败 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1306](https://github.com/HKUDS/Vibe-Trading/pull/1306) | 空头期权腿占用保证金、开仓过购买力门禁，期权空头在回测里不再像白拿权利金 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#795](https://github.com/HKUDS/Vibe-Trading/pull/795) | Portfolio Studio 的 rebalance notes：回测器每次调仓产出带指标的 notes 工件，agent 驱动的调仓可审计回看 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1287](https://github.com/HKUDS/Vibe-Trading/pull/1287) | 两条 Yahoo loader 路径统一提供拆股/分红复权价，公司行动在回测里不再被记成假崩盘、除息缺口不再被记成假亏损 |
-| | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1935](https://github.com/HKUDS/Vibe-Trading/pull/1935) | 回测配置里没人读的键现在告警：agent 写的 initial_capital/commission_rate 此前通过校验后被静默丢弃，回测按 10 倍本金与默认费率跑完且指标照常输出 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1310](https://github.com/HKUDS/Vibe-Trading/pull/1310) | shadow 账户归因限定在资金池币种且各桶互斥，跨币种 delta 不再落错桶、重复计 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1349](https://github.com/HKUDS/Vibe-Trading/pull/1349) | microcompact 清掉工具结果后对应工具调用被永久卡住，改为结果缺失时解除阻塞并如实标记 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1628](https://github.com/HKUDS/Vibe-Trading/pull/1628) | grounding 检查从散落的逐条补丁收拢为声明式 registry：新增检查只登记一条，不用改门禁各处的代码 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (32.7k★ · 维护者) | [#1225](https://github.com/HKUDS/Vibe-Trading/pull/1225) | 流式 LLM 调用现在会主动向端点请求 usage，swarm run 记录真实 token 数而不是字符数估算（output tokens 曾少报 18-36 倍）；拒绝 stream_options 的端点自动降级一次重试并记忆 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (32.7k★ · 维护者) | [#1217](https://github.com/HKUDS/Vibe-Trading/pull/1217) | Shadow Account 从 runner 从不产生的键提取 PnL，成功回测被记成 Shadow PnL=0、Delta 结论反向；改为按 final_value/total_return 推导，未知状态 fail closed 不再渲染成 0.00 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1388](https://github.com/HKUDS/Vibe-Trading/pull/1388) | 收口四个连接器缺口：MT5 超量订单被静默钳到符号上限、eToro 无价位限单发成永不触发的 MIT、futu K 线复权口径不声明、裸 BTCUSDT 类连体对被错套 A 股 T+1 规则 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2069](https://github.com/HKUDS/Vibe-Trading/pull/2069) | 修复 Qlib ROC/CORD 在 10 个模块中的语义：校正倒数与偏移处理及 CORD 从 1 开始的时序对齐，并用独立数值 oracle 做前后对照 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1332](https://github.com/HKUDS/Vibe-Trading/pull/1332) | 停牌持仓在有界 ffill 失效后改按最后成交价估值而不是成本价：权益曲线的幻影回撤和 rebalance 定价失真消除 |
-| | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1824](https://github.com/HKUDS/Vibe-Trading/pull/1824) | quantlib 调度与 Sharpe 汇总收到非有限输入时按字段名拒绝，不再静默传播 NaN |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1691](https://github.com/HKUDS/Vibe-Trading/pull/1691) | 把身份与图形门检查迁进 grounding registry 声明，新证据门不再需要手写接线点 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1212](https://github.com/HKUDS/Vibe-Trading/pull/1212) | 券商持仓读取返回 API 错误时改为 fail closed：futu/okx connector 显式上抛，不再把读不到的持仓簿当成空仓，实盘委托不再盲过 mandate gate |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1629](https://github.com/HKUDS/Vibe-Trading/pull/1629) | 券商能力矩阵从 profile registry 生成进 README，附漂移测试：profile 一改没重新生成，CI 立即红 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1156](https://github.com/HKUDS/Vibe-Trading/pull/1156) | 补齐 Market Watch 的定时监视器 verdict 展示：一次列表查询直接显示最新标的状态、相对上轮变化和记录时间，并为尚无结果或记录损坏提供明确状态 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1627](https://github.com/HKUDS/Vibe-Trading/pull/1627) | 每周实盘源健康金丝雀：每个免登录 loader 拉一只已知高流动标的并校验帧结构与新鲜度，数据源死掉或漂移先在 CI 红，不用等用户上报 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1663](https://github.com/HKUDS/Vibe-Trading/pull/1663) | 财报里会计括号记负的数值此前被提取为正数，亏损行可能对上盈利数字仍判一致；现在正确读负 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1232](https://github.com/HKUDS/Vibe-Trading/pull/1232) | halt 清扫对券商错误信封 fail closed：`{"status": "error"}` 响应记为失败，不再被当成合规的撤单/平仓成功 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2048](https://github.com/HKUDS/Vibe-Trading/pull/2048) | claude-cli 拒绝原生工具调用后，现在把 native-attempt 元数据送回既有有界 host-protocol 重试，不再把未执行宿主工具的结果当成成功终答；合法结构化 tool_calls 仍不额外调用 CLI |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1730](https://github.com/HKUDS/Vibe-Trading/pull/1730) | TDX 行情服务器 2026-07 起不再应答 mootdx 协议，但 mootdx 仍排在 A 股 fallback 链第二位，每次 auto 取数白付约 9.5s 才落到 eastmoney；从默认链与健康巡检退役，保留注册让显式 source="mootdx" 调用照常 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1518](https://github.com/HKUDS/Vibe-Trading/pull/1518) | 股东户数历史改读分期明细报表（此前读的“最新快照”报表永远只回一行，max_periods 是死参数），每个返回期标注其变动测量区间 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1288](https://github.com/HKUDS/Vibe-Trading/pull/1288) | 首个行情源没给到的 symbol 沿 fallback 链逐个重试，一个 404 不再把整批 symbol 拖进 unresolved |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1444](https://github.com/HKUDS/Vibe-Trading/pull/1444) | 尾风险声明的度量与置信度经声明 ref 坐实进 grounding：ref 可指名证据字段、多调用时需 call_id::field 消歧，VaR/ES 不再凭一行共享 var_95 全放行 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1702](https://github.com/HKUDS/Vibe-Trading/pull/1702) | correction prompt 之前只说修什么，干净的数字也会被重写、下一轮再被门禁打掉；现在同时列出已通过检查的数字，让下一稿原样保留 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1732](https://github.com/HKUDS/Vibe-Trading/pull/1732) | american_waterfall 静默吞掉裸日期 as_of（同参数名在兄弟 european_waterfall 里合法），优先回报改按各 deal 自身最新流水日期计提，返回一个看着合理的错数；现与 _validate_deals 一样直接 TypeError 拒绝 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1630](https://github.com/HKUDS/Vibe-Trading/pull/1630) | 频道编写不再是口口相传：频道必须遵守的契约钉在一处并写清 recipe，新频道对着显式接口来写 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1253](https://github.com/HKUDS/Vibe-Trading/pull/1253) | 闭市时段跳过 market 触发器的 tick：周末的监视循环不再把委托排进周一开盘 |
-| | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1825](https://github.com/HKUDS/Vibe-Trading/pull/1825) | 带索引的 Parquet bars 尊重配置的 date_format 加载，不再硬性解析失败 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1314](https://github.com/HKUDS/Vibe-Trading/pull/1314) | shadow 结果缓存按窗口和 journal 哈希做键，换窗口重渲染不再复用上一轮的结果 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1750](https://github.com/HKUDS/Vibe-Trading/pull/1750) | 期权引擎只用已记录权益构建回撤峰值，首根 bar 的跌幅（佣金加成交价偏移）对 max_drawdown 完全不可见：首 bar 亏 10% 读成 0.0%；现峰值以初始资金播种，与共享 calc_metrics 一致 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1342](https://github.com/HKUDS/Vibe-Trading/pull/1342) | 识别 stooq 的反爬 challenge 页并把源标记为不可用、给操作指引，不再把 HTML 当无数据静默滑过整条 fallback 链 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1312](https://github.com/HKUDS/Vibe-Trading/pull/1312) | 限价买单按报价与限价中更差的一档定量，限价高于盘口时不再放大成交规模 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1706](https://github.com/HKUDS/Vibe-Trading/pull/1706) | 美股半日交易时 session 现在在提早收盘时关闭，不再对着已休市的市场空跑 live 循环 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#970](https://github.com/HKUDS/Vibe-Trading/pull/970) | yfinance 数据源的加密货币回测改走 CryptoEngine，BTC/ETH 这类标的不再报错 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1396](https://github.com/HKUDS/Vibe-Trading/pull/1396) | 把 Tushare 拼写的国内期货后缀（SHF/DCE/CFX/CZC/GFE）正确归类为期货而不是 A 股，这些合约不再被套用 T+1、禁空、无保证金的股票规则结算 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1598](https://github.com/HKUDS/Vibe-Trading/pull/1598) | 回测改为可附着到已在运行的 MT5 终端，不再每次索要新凭证；券商托管终端的 sandbox 流程恢复可用 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2064](https://github.com/HKUDS/Vibe-Trading/pull/2064) | 兼容 Claude CLI 常见的两段式 structured final：工具调用后接普通结构化回答也能完成，不再误拒或触发额外重试 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1307](https://github.com/HKUDS/Vibe-Trading/pull/1307) | 永续资金费在 8 小时以上周期按 bar 跨度结算，不再日线一天一次，非 strict 模式恢复应有的资金成本 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1209](https://github.com/HKUDS/Vibe-Trading/pull/1209) | Alpaca 持仓数量按方向带上符号再进 mandate gate，空头持仓按正确方向校验，不再以正数蒙混 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1462](https://github.com/HKUDS/Vibe-Trading/pull/1462) | 组合 risk x-ray 拉取历史收盘在 250 行上限外被采样截断，长窗口篮子的集中度与尾部指标建立在断裂序列上；改为拉全量历史 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1313](https://github.com/HKUDS/Vibe-Trading/pull/1313) | fastmcp 钉在 4.0.0 以下，先解掉它 MCPError 构造器变更搞红的全仓 CI，真正的适配后续再做 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#984](https://github.com/HKUDS/Vibe-Trading/pull/984) | 层级路由写入的记忆条目补上 .md 扩展名，修复写入即隐形（裸 slug 文件对所有发现路径不可见） |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1740](https://github.com/HKUDS/Vibe-Trading/pull/1740) | main CI 一个提交三处红、pytest 还没跑就失败：readiness 探针直接 os.getenv 读 TUSHARE_TOKEN 触发 env 门禁，infer_market 让 FX 分类器在 crypto 检查之前认领 ETH/USD，bench 需求校验跟随了已有报告符号链接 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1689](https://github.com/HKUDS/Vibe-Trading/pull/1689) | 用 loader 测试钉住 FMP/Tiingo 服务帧的复权戳，静默的混合口径回归会直接红而不是悄悄混入原始价与复权价 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (32.7k★ · 维护者) | [#1220](https://github.com/HKUDS/Vibe-Trading/pull/1220) | 补上组合式 CV 多段测试块间隙行保持可训练的回归钉，这是多段 purge 修复合入时缺的那条回归 |
-| | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1809](https://github.com/HKUDS/Vibe-Trading/pull/1809) | IBKR 连接池的 thread-local 复位改成与顺序无关，测试隔离不再依赖拆除次序 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1671](https://github.com/HKUDS/Vibe-Trading/pull/1671) | README_id 工具清单漏了 get_southbound_flow、计数漂移，所有 open PR 的 test_readme_counts 全红；补齐并刷新后转绿 |
-| | [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#1831](https://github.com/HKUDS/Vibe-Trading/pull/1831) | 前端测试先等模型列表取回再收窄 effort 档位，消除时序抖动 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2079](https://github.com/HKUDS/Vibe-Trading/pull/2079) | 新增带版本的研究 artifact，让一次运行的输入、证据与结果文档可按明确 revision 回放 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2087](https://github.com/HKUDS/Vibe-Trading/pull/2087) | 各 provider 适配器统一执行同一套 tool policy，不再让某条 provider 路径绕过 allow/deny 配置 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2092](https://github.com/HKUDS/Vibe-Trading/pull/2092) | 后台任务与完成通知按所属会话隔离，其他会话不再能误取消任务或取走通知 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2098](https://github.com/HKUDS/Vibe-Trading/pull/2098) | 取消任务和宿主退出时回收属于自己的后台进程，不碰其他会话的工作 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2099](https://github.com/HKUDS/Vibe-Trading/pull/2099) | provider 流长期无输出时在调用方边界及时中断，不再无限等 socket 自己失败 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2100](https://github.com/HKUDS/Vibe-Trading/pull/2100) | 持久化后台任务结果并在重启后 reconciling，崩溃窗口无法确定的结果如实标未知而不是编造结局 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2109](https://github.com/HKUDS/Vibe-Trading/pull/2109) | llm_usage 保留 provider 回报的 cache 与 reasoning token，运行账目不再漏掉这些类别 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2155](https://github.com/HKUDS/Vibe-Trading/pull/2155) | 心跳时间戳里的 Unicode 行分隔符不再骗过 swarm reaper 的存活判断 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2159](https://github.com/HKUDS/Vibe-Trading/pull/2159) | 为研究 revision 指纹建索引，重复 artifact 查询不再每次扫描全部历史 revision |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2162](https://github.com/HKUDS/Vibe-Trading/pull/2162) | 回测 risk x-ray 保留多空仓位带符号的真实敞口，只有集中度按 gross share 归一；生成的报告直接对照实际持仓验证 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2157](https://github.com/HKUDS/Vibe-Trading/pull/2157) | 重启后恢复待处理后台通知，隔离畸形记录，避免一条坏数据阻断健康任务恢复 |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (36.2k★ · maintainer) | [#2120](https://github.com/HKUDS/Vibe-Trading/pull/2120) | 空回复重试提示改用 Anthropic 兼容的 user 消息，不再发送非连续 system 消息 |
+| [Mooncake](https://github.com/kvcache-ai/Mooncake) (6.9k★ · maintainer) | [#5144](https://github.com/kvcache-ai/Mooncake/pull/5144) | 给 on-CUDA guard 测试补上 Transfer Engine 生成头文件的 include 路径，恢复新增公共 build-config 头后的独立 CTest 构建 |
 
 </details>
 <details>
@@ -1531,18 +1535,17 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#14022](https://github.com/QwenLM/qwen-code/pull/14022) | 将 CDP reconnect backoff 持久化到 MV3 service worker 重启之后，live timer 与冷启动共用同一阶梯，并在静默窗口或连接健康 30 秒后复位 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#11684](https://github.com/QwenLM/qwen-code/pull/11684) | Responses 清理后仍保持 reasoning 与 function_call 相邻 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#13814](https://github.com/QwenLM/qwen-code/pull/13814) | 会话加载回放保留分支点 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#14778](https://github.com/QwenLM/qwen-code/pull/14778) | Config 关闭时停止会话 LSP 客户端 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#11753](https://github.com/QwenLM/qwen-code/pull/11753) | 导入 UI 前检查 ICU，缺少 ICU 的 Node 给出明确诊断 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#4716](https://github.com/QwenLM/qwen-code/pull/4716) | 让 `/bug`、`/docs`、`/insight` 的浏览器打开走安全 launcher，headless 环境不再因为直接 `open` 崩。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#4622](https://github.com/QwenLM/qwen-code/pull/4622) | 让 assistant 的 tool call 和它的 result 挨着，修复过的历史不再被 OpenAI 兼容 provider 拒。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#14022](https://github.com/QwenLM/qwen-code/pull/14022) | 将 CDP reconnect backoff 持久化到 MV3 service worker 重启之后，live timer 与冷启动共用同一阶梯，并在静默窗口或连接健康 30 秒后复位 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#7535](https://github.com/QwenLM/qwen-code/pull/7535) | release-notes 生成的模型调用加退避重试和熔断，降级产出可见化，不再静默空窗 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#11684](https://github.com/QwenLM/qwen-code/pull/11684) | Responses 清理后仍保持 reasoning 与 function_call 相邻 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#11753](https://github.com/QwenLM/qwen-code/pull/11753) | 导入 UI 前检查 ICU，缺少 ICU 的 Node 给出明确诊断 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#4829](https://github.com/QwenLM/qwen-code/pull/4829) | 给 Qwen OAuth refresh 加超时，刷新端点卡住时不会把整个 CLI 挂在认证恢复上。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#5071](https://github.com/QwenLM/qwen-code/pull/5071) | 流式结束后再提交已完成的快速 tool result，别让流尾的竞态把它们卡在本地队列。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#5070](https://github.com/QwenLM/qwen-code/pull/5070) | 焦点导航跳过已过期的 live agent，别让 stale 的后台 agent 行抢走键盘焦点。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#5058](https://github.com/QwenLM/qwen-code/pull/5058) | 掐掉 stale 的 tool schema recall，别让 memory warning 把过期工具名带回后面的规划轮次。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#13814](https://github.com/QwenLM/qwen-code/pull/13814) | 会话加载回放保留分支点 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#5946](https://github.com/QwenLM/qwen-code/pull/5946) | 用 per-request 子 controller 隔离 Anthropic SDK 的 abort listener 泄漏，避免跨请求累积死监听器 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#5043](https://github.com/QwenLM/qwen-code/pull/5043) | 让 grep 结果也算通过 prior-read 检查，已经搜过的上下文不用再逼着重读一遍文件。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#4639](https://github.com/QwenLM/qwen-code/pull/4639) | 把已停用的 Qwen OAuth ACP 登录路径去掉，别再把用户导向失效的认证方式。 |
@@ -1554,6 +1557,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#4596](https://github.com/QwenLM/qwen-code/pull/4596) | 爬仓库时递归进已跟踪的 Git submodule，agent 上下文才带得上子模块里的文件。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#5020](https://github.com/QwenLM/qwen-code/pull/5020) | 取消后丢掉残留的 tool call，中止的轮次别把过期调用漏进下一次 payload。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#4632](https://github.com/QwenLM/qwen-code/pull/4632) | 强化 context error 的文本抽取，嵌套的、非字符串的 payload 也能给出有用信息，而不是直接消失。 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#14778](https://github.com/QwenLM/qwen-code/pull/14778) | Config 关闭时停止会话 LSP 客户端 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#4715](https://github.com/QwenLM/qwen-code/pull/4715) | managed auto-memory 听运行时输出目录的，同时显式的 memory 目录覆盖仍然优先。 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#5945](https://github.com/QwenLM/qwen-code/pull/5945) | 拒绝非正的 `sessionRecapAwayThresholdMinutes` 值 |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) (28.6k★) | [#5062](https://github.com/QwenLM/qwen-code/pull/5062) | 跨 agent 轮次带上 token escalation 上下文，delegated run 不用每轮都从容量不够的模型重来。 |
@@ -1601,7 +1605,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#10437](https://github.com/AstrBotDevs/AstrBot/pull/10437) | Anthropic 请求把 custom_extra_body 里列表形的自定义 tools 合并进已注册 function tools，不再被 extra_body 顶层替换静默清空（DeepSeek 兼容端点的服务端联网搜索就是这种情况） |
-| | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#10591](https://github.com/AstrBotDevs/AstrBot/pull/10591) | 单个不可读的 skill 目录不再拖垮整个请求：跳过它、其余照常加载 |
+| [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#10591](https://github.com/AstrBotDevs/AstrBot/pull/10591) | 单个不可读的 skill 目录不再拖垮整个请求：跳过它、其余照常加载 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#8172](https://github.com/AstrBotDevs/AstrBot/pull/8172) | 优先用打包进去的 dashboard 资产，而不是过期的 data dist，发版后不再展示旧前端。 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#7758](https://github.com/AstrBotDevs/AstrBot/pull/7758) | 修复 OpenAI streaming 路径复用 empty-assistant 过滤：reasoning-only 历史不再让严格 provider 返回 400 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#9987](https://github.com/AstrBotDevs/AstrBot/pull/9987) | 把 cron agent runner 的 ERROR 终态传上去：定时任务失败如实记 failed 带错误信息，不再记成 completed 且 last_error 为空 |
@@ -1637,6 +1641,51 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#8768](https://github.com/AstrBotDevs/AstrBot/pull/8768) | 清理 Lark platform id 后缀中的不可见空白，避免配置里的尾部空格破坏平台匹配 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#6527](https://github.com/AstrBotDevs/AstrBot/pull/6527) | 修复 LLM 工具选择：重写模糊的 Upload/Download 描述 |
 | [AstrBot](https://github.com/AstrBotDevs/AstrBot) (42.7k★) | [#10393](https://github.com/AstrBotDevs/AstrBot/pull/10393) | 把默认的 gemini-embedding-exp-03-07（已被 Google 下线）换成 gemini-embedding-001，新部署开箱启用 Gemini embedding 不再直接 404 |
+
+</details>
+<details>
+<summary>全部 38 个已合并的 Microsoft Agent Framework PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#8953](https://github.com/microsoft/agent-framework/pull/8953) | 流式文本片段聚合从反复 `+=` 改成一遍折叠：此前每个 `Content.__add__` 都重建字符串、重并属性、重接 raw 列表，n 个片段就是 O(n^2)，每条聚合响应都在付这个税；现在每个 run 一次 join、一次属性合并 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#8773](https://github.com/microsoft/agent-framework/pull/8773) | Python：OpenAI chat-completions 的 SDK 流在消费方提前停止（break、异常、取消）时从不关闭，provider 响应一直泄漏到 GC 才回收；改用 async with 绑定，退出即确定性关闭 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7289](https://github.com/microsoft/agent-framework/pull/7289) | turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7239](https://github.com/microsoft/agent-framework/pull/7239) | Python：AG-UI MESSAGES_SNAPSHOT 的消息顺序与模型原始产出顺序不一致，改为保持发射顺序 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9029](https://github.com/microsoft/agent-framework/pull/9029) | Python：流式运行上的 output guard 在 stream_buffer_updates 默认 False 时形同虚设，result gate 到流收尾才执行，所有 update 早已送达消费方；两条 middleware 管线现在在流式运行注册了 result gate 却未开缓冲时打出告警 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7704](https://github.com/microsoft/agent-framework/pull/7704) | Python：MCP 初始化的真实报错（比如 HTTP 401）被 cancel scope 吞成一句 `Cancelled via cancel scope`，沿异常链把真正的错误名字报出来 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9547](https://github.com/microsoft/agent-framework/pull/9547) | memory state 文件损坏或含非 UTF-8 字节时隔离保留原文件，不再让之后每轮都失败；下一次写入即可恢复干净状态 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5808](https://github.com/microsoft/agent-framework/pull/5808) | handoff 原地改了 message 的 role，重试复用时把改动泄漏出去了，改成复用消毒过的副本。 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9852](https://github.com/microsoft/agent-framework/pull/9852) | JSON Schema integer 参数接受 3.0 这类整值浮点数，布尔值和 3.5 这类非整值仍然拒绝 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6132](https://github.com/microsoft/agent-framework/pull/6132) | 按 session id 过滤 filesystem checkpoint index，重开 store 不再返回别的 workflow session 的 checkpoint。 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5801](https://github.com/microsoft/agent-framework/pull/5801) | 按 call id 合并 code interpreter 的流式历史片段，存下来的代码和结果完整，也不会重复记 delta。 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7162](https://github.com/microsoft/agent-framework/pull/7162) | Python：Anthropic 流式把 token 用量数了两遍，流式增量之上又累加了最终消息用量 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | reasoning payload 被剥掉时一并丢掉 hosted MCP 的 tool-call 历史，stateless 的 OpenAI replay 不再发孤立的 MCP 调用。 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5773](https://github.com/microsoft/agent-framework/pull/5773) | 把同步的 Python 工具挪出事件循环跑，阻塞型调用不再冻住并发的 agent 任务。 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5860](https://github.com/microsoft/agent-framework/pull/5860) | .NET：Responses 的 logprobs 字段在序列化双向链路里会丢，修复为全程保留 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5904](https://github.com/microsoft/agent-framework/pull/5904) | AG-UI thread id 下继续用 ChatClientAgent 的本地历史 provider，别把 session 历史当成服务端托管的模型历史。 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9977](https://github.com/microsoft/agent-framework/pull/9977) | 调用方注入的 Redis history client 优先于冗余连接配置，自建客户端的校验保持不变，关闭 provider 时也不误关借用客户端 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#8435](https://github.com/microsoft/agent-framework/pull/8435) | declarative 工作流把整袋 workflow kwargs 泼进 Agent.run，内部下划线键（如 `_raw_function_invocation_kwargs`）在 AG-UI 下首步即 TypeError；splat 改为只转发公开参数，整袋仍留在 additional_function_arguments 供嵌套路由 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7108](https://github.com/microsoft/agent-framework/pull/7108) | Python：`FunctionTool.invoke` 用 `exclude_none=True` 导出参数，模型有意给必需可空参数传的 `null` 被丢掉，调用直接缺参失败；改用 `exclude_unset` 保留显式 null |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5784](https://github.com/microsoft/agent-framework/pull/5784) | 转换历史时跳过孤立的 Anthropic thinking signature，replay 不再带上无效的独立签名。 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6491](https://github.com/microsoft/agent-framework/pull/6491) | .NET：修复 fan-in barrier 的 checkpoint 状态 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5799](https://github.com/microsoft/agent-framework/pull/5799) | 补齐 Handoff workflow 的 name/description 元数据传递，让 builder 和 hosting 注册都能命名工作流 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#8095](https://github.com/microsoft/agent-framework/pull/8095) | A2AAgent(url=..., http_client=mine) 这条构造路径从没设过 _close_http_client，async with 退出即 AttributeError；默认 False，两条自建路径仍置 True。 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6640](https://github.com/microsoft/agent-framework/pull/6640) | Python：为 Bedrock 和 Gemini connector 暴露 cache 与 reasoning token 计数 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5815](https://github.com/microsoft/agent-framework/pull/5815) | 把 MCP `tools/list` 的元数据转发到 `call_tool` instrumentation，trace 里的工具注解不丢。 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5800](https://github.com/microsoft/agent-framework/pull/5800) | 修复 AG-UI tool result message id 冲突：provider 省略 update id 时仍能生成独立 fallback id |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7256](https://github.com/microsoft/agent-framework/pull/7256) | Python：`from_dict` 拿 payload 自己声明的 type 校验它自己，恒真等于没校验；改成从类解析应有类型 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5861](https://github.com/microsoft/agent-framework/pull/5861) | Foundry handoff 的结构化参数在 response 转换里丢了，delegated agent 调用跟着废，改成保留原结构。 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5778](https://github.com/microsoft/agent-framework/pull/5778) | 补上 Magentic protocol 的消息声明，orchestrator 的 chat/reset 信号能反序列化，不再卡在未知类型上。 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5976](https://github.com/microsoft/agent-framework/pull/5976) | 修复 sequential workflow 示例输出，让非 streaming 结果展示所有参与 agent 的回复 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | 修复 `background=True` + tools 无限 retrieve loop：清掉已完成的 continuation 状态，让 tool results 正常提交 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6040](https://github.com/microsoft/agent-framework/pull/6040) | 把 Foundry agent 的 `default_headers` 透传到 OpenAI client 创建，自定义的认证、路由 header 在初始化后还在。 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5974](https://github.com/microsoft/agent-framework/pull/5974) | 让 Foundry agent eval 映射保留工具定义，评测运行能正常调用代码定义的 tools |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7777](https://github.com/microsoft/agent-framework/pull/7777) | Python：README 里"Learn 文档即将上线"的过期占位符换成三个已上线的 Learn 链接（当天逐一验证 200） |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6208](https://github.com/microsoft/agent-framework/pull/6208) | 声明式 `Foreach` 把多字段的 PowerFx table row 折叠了，改成整行 record 值原样带过每次迭代。 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7130](https://github.com/microsoft/agent-framework/pull/7130) | Python：topic selection 的关键词提取支持非英文文本，中文、日文等非拉丁查询不再空手而归 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7124](https://github.com/microsoft/agent-framework/pull/7124) | Python：compaction 估 token 时用 `ensure_ascii=True` 序列化消息，tokenizer 数的是 `\uXXXX` 转义序列而不是真实字符（CJK 约虚高 1.6 倍）；改成按真实文本序列化 |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6037](https://github.com/microsoft/agent-framework/pull/6037) | 保留 Foundry citation `get_url` 元数据，让检索引用链接经过 response conversion 后仍能出现在 chat response 中 |
 
 </details>
 <details>
@@ -1697,51 +1746,6 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
-<summary>全部 38 个已合并的 Microsoft Agent Framework PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9547](https://github.com/microsoft/agent-framework/pull/9547) | memory state 文件损坏或含非 UTF-8 字节时隔离保留原文件，不再让之后每轮都失败；下一次写入即可恢复干净状态 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#8953](https://github.com/microsoft/agent-framework/pull/8953) | 流式文本片段聚合从反复 `+=` 改成一遍折叠：此前每个 `Content.__add__` 都重建字符串、重并属性、重接 raw 列表，n 个片段就是 O(n^2)，每条聚合响应都在付这个税；现在每个 run 一次 join、一次属性合并 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#8773](https://github.com/microsoft/agent-framework/pull/8773) | Python：OpenAI chat-completions 的 SDK 流在消费方提前停止（break、异常、取消）时从不关闭，provider 响应一直泄漏到 GC 才回收；改用 async with 绑定，退出即确定性关闭 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7289](https://github.com/microsoft/agent-framework/pull/7289) | turn 级 after_run provider 延后到 agent 循环边界触发，每轮一次而不是每次迭代一次 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7239](https://github.com/microsoft/agent-framework/pull/7239) | Python：AG-UI MESSAGES_SNAPSHOT 的消息顺序与模型原始产出顺序不一致，改为保持发射顺序 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9029](https://github.com/microsoft/agent-framework/pull/9029) | Python：流式运行上的 output guard 在 stream_buffer_updates 默认 False 时形同虚设，result gate 到流收尾才执行，所有 update 早已送达消费方；两条 middleware 管线现在在流式运行注册了 result gate 却未开缓冲时打出告警 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7704](https://github.com/microsoft/agent-framework/pull/7704) | Python：MCP 初始化的真实报错（比如 HTTP 401）被 cancel scope 吞成一句 `Cancelled via cancel scope`，沿异常链把真正的错误名字报出来 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5808](https://github.com/microsoft/agent-framework/pull/5808) | handoff 原地改了 message 的 role，重试复用时把改动泄漏出去了，改成复用消毒过的副本。 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6132](https://github.com/microsoft/agent-framework/pull/6132) | 按 session id 过滤 filesystem checkpoint index，重开 store 不再返回别的 workflow session 的 checkpoint。 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5801](https://github.com/microsoft/agent-framework/pull/5801) | 按 call id 合并 code interpreter 的流式历史片段，存下来的代码和结果完整，也不会重复记 delta。 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7162](https://github.com/microsoft/agent-framework/pull/7162) | Python：Anthropic 流式把 token 用量数了两遍，流式增量之上又累加了最终消息用量 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6210](https://github.com/microsoft/agent-framework/pull/6210) | reasoning payload 被剥掉时一并丢掉 hosted MCP 的 tool-call 历史，stateless 的 OpenAI replay 不再发孤立的 MCP 调用。 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5773](https://github.com/microsoft/agent-framework/pull/5773) | 把同步的 Python 工具挪出事件循环跑，阻塞型调用不再冻住并发的 agent 任务。 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5860](https://github.com/microsoft/agent-framework/pull/5860) | .NET：Responses 的 logprobs 字段在序列化双向链路里会丢，修复为全程保留 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5904](https://github.com/microsoft/agent-framework/pull/5904) | AG-UI thread id 下继续用 ChatClientAgent 的本地历史 provider，别把 session 历史当成服务端托管的模型历史。 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#8435](https://github.com/microsoft/agent-framework/pull/8435) | declarative 工作流把整袋 workflow kwargs 泼进 Agent.run，内部下划线键（如 `_raw_function_invocation_kwargs`）在 AG-UI 下首步即 TypeError；splat 改为只转发公开参数，整袋仍留在 additional_function_arguments 供嵌套路由 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7108](https://github.com/microsoft/agent-framework/pull/7108) | Python：`FunctionTool.invoke` 用 `exclude_none=True` 导出参数，模型有意给必需可空参数传的 `null` 被丢掉，调用直接缺参失败；改用 `exclude_unset` 保留显式 null |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5784](https://github.com/microsoft/agent-framework/pull/5784) | 转换历史时跳过孤立的 Anthropic thinking signature，replay 不再带上无效的独立签名。 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6491](https://github.com/microsoft/agent-framework/pull/6491) | .NET：修复 fan-in barrier 的 checkpoint 状态 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5799](https://github.com/microsoft/agent-framework/pull/5799) | 补齐 Handoff workflow 的 name/description 元数据传递，让 builder 和 hosting 注册都能命名工作流 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#8095](https://github.com/microsoft/agent-framework/pull/8095) | A2AAgent(url=..., http_client=mine) 这条构造路径从没设过 _close_http_client，async with 退出即 AttributeError；默认 False，两条自建路径仍置 True。 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6640](https://github.com/microsoft/agent-framework/pull/6640) | Python：为 Bedrock 和 Gemini connector 暴露 cache 与 reasoning token 计数 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5815](https://github.com/microsoft/agent-framework/pull/5815) | 把 MCP `tools/list` 的元数据转发到 `call_tool` instrumentation，trace 里的工具注解不丢。 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5800](https://github.com/microsoft/agent-framework/pull/5800) | 修复 AG-UI tool result message id 冲突：provider 省略 update id 时仍能生成独立 fallback id |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7256](https://github.com/microsoft/agent-framework/pull/7256) | Python：`from_dict` 拿 payload 自己声明的 type 校验它自己，恒真等于没校验；改成从类解析应有类型 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5861](https://github.com/microsoft/agent-framework/pull/5861) | Foundry handoff 的结构化参数在 response 转换里丢了，delegated agent 调用跟着废，改成保留原结构。 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5778](https://github.com/microsoft/agent-framework/pull/5778) | 补上 Magentic protocol 的消息声明，orchestrator 的 chat/reset 信号能反序列化，不再卡在未知类型上。 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5976](https://github.com/microsoft/agent-framework/pull/5976) | 修复 sequential workflow 示例输出，让非 streaming 结果展示所有参与 agent 的回复 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5462](https://github.com/microsoft/agent-framework/pull/5462) | 修复 `background=True` + tools 无限 retrieve loop：清掉已完成的 continuation 状态，让 tool results 正常提交 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6040](https://github.com/microsoft/agent-framework/pull/6040) | 把 Foundry agent 的 `default_headers` 透传到 OpenAI client 创建，自定义的认证、路由 header 在初始化后还在。 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#5974](https://github.com/microsoft/agent-framework/pull/5974) | 让 Foundry agent eval 映射保留工具定义，评测运行能正常调用代码定义的 tools |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7777](https://github.com/microsoft/agent-framework/pull/7777) | Python：README 里"Learn 文档即将上线"的过期占位符换成三个已上线的 Learn 链接（当天逐一验证 200） |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6208](https://github.com/microsoft/agent-framework/pull/6208) | 声明式 `Foreach` 把多字段的 PowerFx table row 折叠了，改成整行 record 值原样带过每次迭代。 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7130](https://github.com/microsoft/agent-framework/pull/7130) | Python：topic selection 的关键词提取支持非英文文本，中文、日文等非拉丁查询不再空手而归 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#7124](https://github.com/microsoft/agent-framework/pull/7124) | Python：compaction 估 token 时用 `ensure_ascii=True` 序列化消息，tokenizer 数的是 `\uXXXX` 转义序列而不是真实字符（CJK 约虚高 1.6 倍）；改成按真实文本序列化 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#6037](https://github.com/microsoft/agent-framework/pull/6037) | 保留 Foundry citation `get_url` 元数据，让检索引用链接经过 response conversion 后仍能出现在 chat response 中 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9977](https://github.com/microsoft/agent-framework/pull/9977) | 调用方注入的 Redis history client 优先于冗余连接配置，自建客户端的校验保持不变，关闭 provider 时也不误关借用客户端 |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (14.3k★) | [#9852](https://github.com/microsoft/agent-framework/pull/9852) | JSON Schema integer 参数接受 3.0 这类整值浮点数，布尔值和 3.5 这类非整值仍然拒绝 |
-
-</details>
-<details>
 <summary>全部 9 个已合并的 OpenClaw PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -1758,14 +1762,6 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
-<summary>全部 1 个已合并的 opencode PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [opencode](https://github.com/anomalyco/opencode) (204.9k★) | [#30022](https://github.com/anomalyco/opencode/pull/30022) | 把 MCP OAuth 回调服务绑到 IPv4 loopback，让浏览器回跳稳定连上、不再和 IPv6 抢地址 |
-
-</details>
-<details>
 <summary>全部 8 个已合并的 dify PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -1773,11 +1769,19 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [dify](https://github.com/langgenius/dify) (153.3k★) | [#39479](https://github.com/langgenius/dify/pull/39479) | 邮件限流的 IP 首击窗口真正生效：GET 判空再 SETEX 的竞态改为 SET NX 原子认领 |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | [#38801](https://github.com/langgenius/dify/pull/38801) | 在 service-api 和 explore 端点提前校验 conversation，坏的 `conversation_id` 直接 404，而不是流式跑到后期才失败。 |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | [#39953](https://github.com/langgenius/dify/pull/39953) | 给没有超时的 TiDB Cloud API 调用补上有界超时，集群端点挂起不再无限拖住 vdb 操作 |
+| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37775](https://github.com/langgenius/dify/pull/37775) | agent_chat 配置校验时跳过空 tool entry，不再接受畸形的工具定义 |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | [#37425](https://github.com/langgenius/dify/pull/37425) | 给 OperationService 计费请求加超时，慢计费端点挂不住请求。 |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | [#37685](https://github.com/langgenius/dify/pull/37685) | watercrawl 请求超时保持有界,而不是用 `timeout=None` 禁用 |
-| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | legacy dataset 配置提取时跳过空的 tool entry |
-| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37775](https://github.com/langgenius/dify/pull/37775) | agent_chat 配置校验时跳过空 tool entry，不再接受畸形的工具定义 |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | [#37671](https://github.com/langgenius/dify/pull/37671) | 校验阶段直接拒绝空的 user_input_form 项，不再拖到后面抛 IndexError |
+| [dify](https://github.com/langgenius/dify) (153.3k★) | [#37669](https://github.com/langgenius/dify/pull/37669) | legacy dataset 配置提取时跳过空的 tool entry |
+
+</details>
+<details>
+<summary>全部 1 个已合并的 opencode PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [opencode](https://github.com/anomalyco/opencode) (204.9k★) | [#30022](https://github.com/anomalyco/opencode/pull/30022) | 把 MCP OAuth 回调服务绑到 IPv4 loopback，让浏览器回跳稳定连上、不再和 IPv6 抢地址 |
 
 </details>
 <details>
@@ -1802,7 +1806,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#10089](https://github.com/promptfoo/promptfoo/pull/10089) | trace-span-duration 越界百分位直接拒绝，不再静默算出无意义结果 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#11320](https://github.com/promptfoo/promptfoo/pull/11320) | `--filter-metadata` 支持逗号分隔的 OR 取值，一个 flag 可匹配同一 metadata key 的多个值中的任意一个 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#11004](https://github.com/promptfoo/promptfoo/pull/11004) | 显式配置的 redteamProvider 在 iterative、crescendo、iterative:tree 三条攻击策略中生效，不再静默回退到默认 provider |
-| | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#11739](https://github.com/promptfoo/promptfoo/pull/11739) | jks-js 改为可选 peer 依赖，无 JKS 需求的安装不再被强制拖入 |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#11739](https://github.com/promptfoo/promptfoo/pull/11739) | jks-js 改为可选 peer 依赖，无 JKS 需求的安装不再被强制拖入 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#10793](https://github.com/promptfoo/promptfoo/pull/10793) | 禁用缓存的策略现在能跨 ESM/CJS 包副本生效：经另一份包实例加载的 provider 和 grader 同样遵守关缓存，关缓存的运行不再读取或改写已预热的缓存响应 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#9867](https://github.com/promptfoo/promptfoo/pull/9867) | 读取 Azure logprobs 时空 `choices` 数组不再崩溃 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#10076](https://github.com/promptfoo/promptfoo/pull/10076) | 工具调用缺 `function` 对象时 tool-call 断言抛 TypeError;改成返回 `pass:false`。 |
@@ -1812,7 +1816,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#9815](https://github.com/promptfoo/promptfoo/pull/9815) | 拒绝畸形的 `__expected0` CSV 表头,而不是静默丢弃它的断言 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#9824](https://github.com/promptfoo/promptfoo/pull/9824) | 修正 inverse JSON 断言的失败信息，不再把方向写反 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#10917](https://github.com/promptfoo/promptfoo/pull/10917) | AI21、Cohere、LocalAI 的 chat/completion provider 遵循每次调用的缓存覆盖：`bustCache` 优先于旧的 `debug` 回退，显式 `bustCache: false` 也不再被忽略 |
-| | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#11543](https://github.com/promptfoo/promptfoo/pull/11543) | 代码扫描零结果时给出解释，不再只打印一句干巴巴的 "No files to scan" |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#11543](https://github.com/promptfoo/promptfoo/pull/11543) | 代码扫描零结果时给出解释，不再只打印一句干巴巴的 "No files to scan" |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#10978](https://github.com/promptfoo/promptfoo/pull/10978) | 显式配置的 redteamProvider 在 custom 攻击策略中同样生效，不再静默回退到默认 provider |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#10665](https://github.com/promptfoo/promptfoo/pull/10665) | tool-call-f1 评分器认出 OpenAI Responses API 的 function_call 条目，这类载荷不再被算成零次工具调用 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#9841](https://github.com/promptfoo/promptfoo/pull/9841) | 空输出返回 `pass:false` 而不是抛异常 |
@@ -1923,14 +1927,6 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
-<summary>全部 1 个已合并的 Cline PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [Cline](https://github.com/cline/cline) (66.7k★) | [#11166](https://github.com/cline/cline/pull/11166) | open-tabs 的 host RPC 挂了也能搜文件，回退到系统 `rg`，不让搜索整个失效。 |
-
-</details>
-<details>
 <summary>全部 30 个已合并的 Inspect AI PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -1965,6 +1961,14 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (3.1k★) | [#4300](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4300) | `FileSystem.is_writeable` 去掉路径末尾分隔符 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (3.1k★) | [#4282](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4282) | 空 scores 时 `accuracy()` 返回 0 |
 | [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) (3.1k★) | [#4090](https://github.com/UKGovernmentBEIS/inspect_ai/pull/4090) | 澄清 model-graded history prompt：`include_history=True` 和最终答案字段的位置与实际 scorer 行为保持一致 |
+
+</details>
+<details>
+<summary>全部 1 个已合并的 Cline PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [Cline](https://github.com/cline/cline) (66.7k★) | [#11166](https://github.com/cline/cline/pull/11166) | open-tabs 的 host RPC 挂了也能搜文件，回退到系统 `rg`，不让搜索整个失效。 |
 
 </details>
 <details>
@@ -2026,19 +2030,6 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
-<summary>全部 6 个已合并的 ms-swift PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9816](https://github.com/modelscope/ms-swift/pull/9816) | `--torch_dtype` 失效期间用户只能靠 engine_kwargs 传 dtype，flag 修好后两边撞参数直接 TypeError；splat 前 pop 掉并让 flag 恒赢 |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | DPO 数据准备阶段遇到空 `rejected_messages` 直接快速失败，不用等训练跑到一半才崩。 |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9750](https://github.com/modelscope/ms-swift/pull/9750) | 视频元数据损坏时 `get_avg_fps()` 返回 0，`range(0, len(vr), 0)` 在读到第一帧前就抛 ValueError；给 MiniCPM-V / mPLUG-Owl3 的采样步长加守卫 |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | 不同格式的图片在临时缓存里撞了键，把 mode 和 size 也纳入 key 才分开。 |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | `_replace_system` 把非字符串的 prefix 元素压平了，模板化 system prompt 的结构化内容被抹掉。 |
-| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9789](https://github.com/modelscope/ms-swift/pull/9789) | CUDA 测试容器里升级老 wandb，其旧 pb2 与 protobuf 7.x 相冲曾致全仓 CI 红 |
-
-</details>
-<details>
 <summary>全部 10 个已合并的 AG-UI PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -2053,6 +2044,19 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (15.5k★) | [#1832](https://github.com/ag-ui-protocol/ag-ui/pull/1832) | LangGraph 转换文本和媒体 block 时保留 AG-UI `InputContent.metadata` |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (15.5k★) | [#1769](https://github.com/ag-ui-protocol/ag-ui/pull/1769) | 将 proto generation 从 Unix-only `mkdir -p` 改为跨平台 Node 脚本，兼容 Windows `.CMD` plugin shim |
 | [AG-UI](https://github.com/ag-ui-protocol/ag-ui) (15.5k★) | [#1730](https://github.com/ag-ui-protocol/ag-ui/pull/1730) | 允许 CopilotKit 1.x 的 runtime peer 依赖 |
+
+</details>
+<details>
+<summary>全部 6 个已合并的 ms-swift PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9816](https://github.com/modelscope/ms-swift/pull/9816) | `--torch_dtype` 失效期间用户只能靠 engine_kwargs 传 dtype，flag 修好后两边撞参数直接 TypeError；splat 前 pop 掉并让 flag 恒赢 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9642](https://github.com/modelscope/ms-swift/pull/9642) | DPO 数据准备阶段遇到空 `rejected_messages` 直接快速失败，不用等训练跑到一半才崩。 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9750](https://github.com/modelscope/ms-swift/pull/9750) | 视频元数据损坏时 `get_avg_fps()` 返回 0，`range(0, len(vr), 0)` 在读到第一帧前就抛 ValueError；给 MiniCPM-V / mPLUG-Owl3 的采样步长加守卫 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9605](https://github.com/modelscope/ms-swift/pull/9605) | 不同格式的图片在临时缓存里撞了键，把 mode 和 size 也纳入 key 才分开。 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9612](https://github.com/modelscope/ms-swift/pull/9612) | `_replace_system` 把非字符串的 prefix 元素压平了，模板化 system prompt 的结构化内容被抹掉。 |
+| [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | [#9789](https://github.com/modelscope/ms-swift/pull/9789) | CUDA 测试容器里升级老 wandb，其旧 pb2 与 protobuf 7.x 相冲曾致全仓 CI 红 |
 
 </details>
 <details>
@@ -2115,14 +2119,6 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
-<summary>全部 1 个已合并的 Agno PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [Agno](https://github.com/agno-agi/agno) (41.8k★) | [#8131](https://github.com/agno-agi/agno/pull/8131) | 保留非哨兵工具参数字符串里的空白，同时继续只对精确的 None / True / False 哨兵做归一化 |
-
-</details>
-<details>
 <summary>全部 5 个已合并的 vllm-omni PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -2132,6 +2128,14 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8846](https://github.com/vllm-project/vllm-omni/pull/8846) | Qwen3-Omni Thinker PP capture 张量改绕开 dict.update 构造：vLLM cudagraph 门禁按名字拒绝 update，PP>1 capture 编译期就失败 |
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8501](https://github.com/vllm-project/vllm-omni/pull/8501) | sleep 在阻塞准入前先校验 stage_ids，非法唤醒请求快速失败，不再把调度闸门永久卡死且无法恢复 |
 | [vllm-omni](https://github.com/vllm-project/vllm-omni) (7.1k★) | [#8874](https://github.com/vllm-project/vllm-omni/pull/8874) | 所有 offload 策略都把 diffusion LoRA sidecar buffer 固定到计算设备，rank 增长重建也走同一设备；基础权重休眠 offload 时注册的 adapter 不再把 host buffer 留到唤醒后与 device activation 做 matmul |
+
+</details>
+<details>
+<summary>全部 1 个已合并的 Agno PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [Agno](https://github.com/agno-agi/agno) (41.8k★) | [#8131](https://github.com/agno-agi/agno/pull/8131) | 保留非哨兵工具参数字符串里的空白，同时继续只对精确的 None / True / False 哨兵做归一化 |
 
 </details>
 <details>
@@ -2208,14 +2212,6 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
-<summary>全部 1 个已合并的 FastMCP PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.8k★) | [#4297](https://github.com/PrefectHQ/fastmcp/pull/4297) | 构建工具 schema 时保留必需的 discriminator tag，union 参数才还有效。 |
-
-</details>
-<details>
 <summary>全部 3 个已合并的 Pydantic AI PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -2223,6 +2219,14 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | [#5474](https://github.com/pydantic/pydantic-ai/pull/5474) | 接受 Vercel AI dynamic-tool 消息里的 `providerExecuted` 和 `title`，严格校验下也留住 provider 元数据。 |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | [#5694](https://github.com/pydantic/pydantic-ai/pull/5694) | 修复 `MCPToolset(http_client=...)` 与 FastMCP 的兼容问题，避免把 `follow_redirects` 泄漏给调用方提供的 HTTP client factory |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) (19.4k★) | [#5695](https://github.com/pydantic/pydantic-ai/pull/5695) | 在 completions 里转发 penalties 参数 |
+
+</details>
+<details>
+<summary>全部 1 个已合并的 FastMCP PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [FastMCP](https://github.com/PrefectHQ/fastmcp) (27.8k★) | [#4297](https://github.com/PrefectHQ/fastmcp/pull/4297) | 构建工具 schema 时保留必需的 discriminator tag，union 参数才还有效。 |
 
 </details>
 <details>
@@ -2261,6 +2265,14 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
+<summary>全部 1 个已合并的 awesome-dsh-plugin PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) (17.5k★) | [#5109](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/5109) | 把 dsh-tool-reading-map 和 dsh-tool-radar 收录进 DeepSeek Harness 插件索引 |
+
+</details>
+<details>
 <summary>全部 1 个已合并的 Kimi Code PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -2286,14 +2298,6 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#3123](https://github.com/HKUDS/LightRAG/pull/3123) | 把 API 文档配色和暗色主题同步，endpoint 示例在 dark mode 下也读得清。 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#3206](https://github.com/HKUDS/LightRAG/pull/3206) | PostgreSQL 表存在性检查尊重 `search_path`，非 public schema 在迁移、建表前就能识别对。 |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | [#2796](https://github.com/HKUDS/LightRAG/pull/2796) | 修复 `None` file_path 传播为 `unknown_source`：补 #2793 遗漏的处理层 |
-
-</details>
-<details>
-<summary>全部 1 个已合并的 awesome-dsh-plugin PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) (17.5k★) | [#5109](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/5109) | 把 dsh-tool-reading-map 和 dsh-tool-radar 收录进 DeepSeek Harness 插件索引 |
 
 </details>
 <details>
@@ -2377,19 +2381,19 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
-<summary>全部 1 个已合并的 FastEmbed PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | [#647](https://github.com/qdrant/fastembed/pull/647) | 模型 tar 包解包拒绝不安全路径，构造过的压缩包不能再写出缓存目录之外 |
-
-</details>
-<details>
 <summary>全部 1 个已合并的 yalantinglibs PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [yalantinglibs](https://github.com/alibaba/yalantinglibs) (2.2k★) | [#1236](https://github.com/alibaba/yalantinglibs/pull/1236) | 变参序列化的 metainfo 检查改为覆盖完整参数类型，不再只看第一个参数；Release 构建下，已存在以及显式为空的 compatible 字段都不会再被反序列化成 absent |
+
+</details>
+<details>
+<summary>全部 1 个已合并的 FastEmbed PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | [#647](https://github.com/qdrant/fastembed/pull/647) | 模型 tar 包解包拒绝不安全路径，构造过的压缩包不能再写出缓存目录之外 |
 
 </details>
 <details>
