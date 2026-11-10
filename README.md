@@ -127,7 +127,7 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 
 <details>
 <!-- profile-main-overflow -->
-<summary>Show 15 more projects below Kimi Code</summary>
+<summary>Show 15 more projects</summary>
 
 | Project | Merged / landed | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -1344,7 +1344,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 <details>
 <!-- profile-main-overflow -->
-<summary>展开其余 15 个展示分低于 Kimi Code 的项目</summary>
+<summary>展开其余 15 个项目</summary>
 
 | 项目 | 已合并 / 落地 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
