@@ -67,7 +67,7 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 
 ### Open Source Contributions
 
-590+ merged or landed PRs across 68 upstream projects. Projects and PRs are ordered by display score; highlights link only to the global Top 100, with up to five PRs per project.
+590+ merged or landed PRs across 68 upstream projects. The main table shows 53 projects at or above Kimi Code (6.397), with 15 lower-scoring projects collapsed. Highlights link only to the global Top 100, with up to five PRs per project.
 
 | Project | Merged / landed | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -124,6 +124,13 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | [langfuse](https://github.com/langfuse/langfuse) (35.2k★) | **1** | OTel trace export: int64 fields serialized as strings per protobuf JSON |  |
 | [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) (17.5k★) | **1** | Registry entry for the dsh-tool-reading-map and dsh-tool-radar plugins |  |
 | [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | **1** | TUI footer status-line customization | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) Customize the TUI footer status line via `status_line` config, codex / claude code style |
+
+<details>
+<!-- profile-main-overflow -->
+<summary>Show 15 more projects below Kimi Code</summary>
+
+| Project | Merged / landed | What the PRs cover | Highlight fixes |
+|---------|:------:|--------------------|-----------------|
 | [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | **2** | FalkorDB bulk-write crash on NUL bytes, MCP server keeps the URI username |  |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | **4** | Docling response unpacking, docs dark theme, PostgreSQL search_path detection |  |
 | [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | **1** | TUI tab-completion fixes |  |
@@ -139,6 +146,7 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | Model download safety: tar extraction rejects unsafe paths |  |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | **3** | Concurrency-safe LiteLLM params, git workspace validation, UTF-8 logs |  |
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | **1** | SciCode answer extraction from content blocks |  |
+</details>
 
 <details>
 <summary>All 65 merged Mooncake PRs</summary>
@@ -1276,7 +1284,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 ### 开源贡献
 
-上游 68 个项目共 590+ 个 PR 已合并或落地，项目与 PR 均按展示分排序。代表性修复只取全局前100名，每个项目最多5条。
+上游 68 个项目共 590+ 个 PR 已合并或落地。非折叠区展示 53 个展示分不低于 Kimi Code（6.397）的项目，其余 15 个项目折叠；代表性修复只取全局前100名，每个项目最多5条。
 
 | 项目 | 已合并 / 落地 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
@@ -1333,6 +1341,13 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [langfuse](https://github.com/langfuse/langfuse) (35.2k★) | **1** | OTel trace 导出：int64 字段按字符串序列化，符合 protobuf JSON 约定 |  |
 | [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) (17.5k★) | **1** | 插件索引收录：dsh-tool-reading-map 与 dsh-tool-radar |  |
 | [Kimi Code](https://github.com/MoonshotAI/kimi-code) (7.0k★) | **1** | TUI 底部状态栏自定义 | [#2255](https://github.com/MoonshotAI/kimi-code/pull/2255) 通过 status_line 配置自定义 TUI 底部状态栏（仿 codex / claude code 的 footer 形态） |
+
+<details>
+<!-- profile-main-overflow -->
+<summary>展开其余 15 个展示分低于 Kimi Code 的项目</summary>
+
+| 项目 | 已合并 / 落地 | 这些 PR 大概修了什么 | 代表性修复 |
+|------|:-----:|------------------|-----------------|
 | [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | **2** | FalkorDB 批量写入遇 NUL 字节崩溃，MCP server 保住 URI 用户名 |  |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | **4** | Docling 响应解包、文档站深色主题、PostgreSQL search_path 探测 |  |
 | [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | **1** | TUI tab 补全修复 |  |
@@ -1348,6 +1363,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | 模型下载安全：tar 解包拒绝不安全路径 |  |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | **3** | 并发安全的 LiteLLM 参数、git 工作区校验、UTF-8 日志 |  |
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | **1** | 从内容块提取 SciCode 答案 |  |
+</details>
 
 <details>
 <summary>全部 65 个已合并的 Mooncake PR</summary>
