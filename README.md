@@ -67,7 +67,7 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 
 ### Open Source Contributions
 
-590+ merged or landed PRs across 68 upstream projects. The main table shows 53 projects at or above Kimi Code (6.397), with 15 lower-scoring projects collapsed. Highlights link only to the global Top 100, with up to five PRs per project.
+600+ merged or landed PRs across 68 upstream projects. The main table shows 53 projects at or above Kimi Code (6.397), with 15 lower-scoring projects collapsed. Highlights link only to the global Top 100, with up to five PRs per project.
 
 | Project | Merged / landed | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -1286,7 +1286,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 ### 开源贡献
 
-上游 68 个项目共 590+ 个 PR 已合并或落地。非折叠区展示 53 个展示分不低于 Kimi Code（6.397）的项目，其余 15 个项目折叠；代表性修复只取全局前100名，每个项目最多5条。
+上游 68 个项目共 600+ 个 PR 已合并或落地。非折叠区展示 53 个展示分不低于 Kimi Code（6.397）的项目，其余 15 个项目折叠；代表性修复只取全局前100名，每个项目最多5条。
 
 | 项目 | 已合并 / 落地 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
