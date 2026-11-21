@@ -13,7 +13,7 @@
 
 AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU | Champion, Shanghai AI Global Contest | 3x ACM ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
 
-- 620+ merged or landed upstream PRs, with fixes in [Mooncake](https://github.com/kvcache-ai/Mooncake) (68 merged · maintainer), [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (108 merged or landed · maintainer), [vLLM](https://github.com/vllm-project/vllm) (17 merged), [Qwen Code](https://github.com/QwenLM/qwen-code) (62 merged), [deer-flow](https://github.com/bytedance/deer-flow) (25 merged), [Microsoft Agent Framework](https://learn.microsoft.com/en-us/agent-framework/overview/) (40 merged), [PyTorch](https://github.com/pytorch/pytorch) (16 landed), [AstrBot](https://github.com/AstrBotDevs/AstrBot) (37 merged), [openclaw](https://github.com/openclaw/openclaw) (9 merged), [Google ADK](https://github.com/google/adk-python) (17 landed), [promptfoo](https://github.com/promptfoo/promptfoo) (27 merged), and [Triton](https://github.com/triton-lang/triton) (8 merged).
+- 620+ merged or landed upstream PRs, with fixes in [Mooncake](https://github.com/kvcache-ai/Mooncake) (68 merged · maintainer), [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (108 merged or landed · maintainer), [vLLM](https://github.com/vllm-project/vllm) (17 merged), [Qwen Code](https://github.com/QwenLM/qwen-code) (62 merged), [deer-flow](https://github.com/bytedance/deer-flow) (25 merged), [Microsoft Agent Framework](https://learn.microsoft.com/en-us/agent-framework/overview/) (40 merged), [PyTorch](https://github.com/pytorch/pytorch) (16 landed), [AstrBot](https://github.com/AstrBotDevs/AstrBot) (37 merged), [openclaw](https://github.com/openclaw/openclaw) (9 merged), [Google ADK](https://github.com/google/adk-python) (17 landed), [promptfoo](https://github.com/promptfoo/promptfoo) (28 merged), and [Triton](https://github.com/triton-lang/triton) (8 merged).
 - Selected public projects led by [CoreCoder](https://github.com/he-yufeng/CoreCoder) and [RepoWiki](https://github.com/he-yufeng/RepoWiki).
 
 <p align="center">
@@ -83,7 +83,7 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | [dify](https://github.com/langgenius/dify) (153.3k★) | **8** | API robustness: unbounded calls get timeouts, up-front validation, atomic windows |  |
 | [opencode](https://github.com/anomalyco/opencode) (204.9k★) | **1** | MCP OAuth callback bound to IPv4 loopback |  |
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | **1** | AutoProcessor hub-kwarg passthrough |  |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | **27** | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#9872](https://github.com/promptfoo/promptfoo/pull/9872) Harden malformed completion responses in OpenRouter and Snowflake: a missing, empty or unusable first choice now returns a structured provider error instead of throwing or grading a malformed success, and failed partial output is neither graded nor written to conversation history<br>[#11445](https://github.com/promptfoo/promptfoo/pull/11445) Report redteam targets that omit output or return null/undefined as integration errors instead of scoring them successful; literal "null"/"undefined" strings and genuine refusals stay gradable |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | **28** | Eval scoring correctness: percentile validation, tokenless GLEU, provider edge cases | [#9872](https://github.com/promptfoo/promptfoo/pull/9872) Harden malformed completion responses in OpenRouter and Snowflake: a missing, empty or unusable first choice now returns a structured provider error instead of throwing or grading a malformed success, and failed partial output is neither graded nor written to conversation history<br>[#11445](https://github.com/promptfoo/promptfoo/pull/11445) Report redteam targets that omit output or return null/undefined as integration errors instead of scoring them successful; literal "null"/"undefined" strings and genuine refusals stay gradable |
 | [Google ADK](https://github.com/google/adk-python) (22.0k★) | **17** | Agent runtime correctness: eval metadata, live streaming, context caching, MCP header auth |  |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | **1** | Settings persistence: keep custom LLM base URLs |  |
 | [llama.cpp](https://github.com/ggml-org/llama.cpp) (130.4k★) | **1** | Server multimodal ingestion safety |  |
@@ -629,7 +629,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 27 merged promptfoo PRs</summary>
+<summary>All 28 merged promptfoo PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
@@ -655,6 +655,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#11543](https://github.com/promptfoo/promptfoo/pull/11543) | Explain empty code-scan results instead of printing a bare "No files to scan" |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#10978](https://github.com/promptfoo/promptfoo/pull/10978) | Honor an explicitly configured redteamProvider in the custom attack strategy instead of silently falling back to the default provider |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#10665](https://github.com/promptfoo/promptfoo/pull/10665) | Recognize OpenAI Responses-API function_call items in the tool-call F1 scorer, so those payloads stop scoring as zero tool calls |
+| [promptfoo](https://github.com/promptfoo/promptfoo) | [#12486](https://github.com/promptfoo/promptfoo/pull/12486) | Preserve custom Nunjucks filters when rendering JSON prompt objects, so the JSON engine escapes structured arguments correctly instead of falling back to plain text. |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#9841](https://github.com/promptfoo/promptfoo/pull/9841) | Return pass:false for empty output instead of throwing |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#9757](https://github.com/promptfoo/promptfoo/pull/9757) | Unescape all escaped commas in array metadata values |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#9840](https://github.com/promptfoo/promptfoo/pull/9840) | Preserve JSONL row description instead of overwriting |
@@ -1265,7 +1266,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) (Kimi) | 港大计算机硕士 | 上海AI全球大赛冠军 | 三次获ACM ICPC银牌 | 曾在百度、脉脉、快手的AI 研发岗实习
 
-- 620+ 个上游 PR 已合并或落地，其中 [Mooncake](https://github.com/kvcache-ai/Mooncake)（68 个 · maintainer）、[Vibe-Trading](https://github.com/HKUDS/Vibe-Trading)（108 个已合并或落地 · maintainer）、[vLLM](https://github.com/vllm-project/vllm)（17 个）、[Qwen Code](https://github.com/QwenLM/qwen-code)（62 个）、[deer-flow](https://github.com/bytedance/deer-flow)（25 个）、[Microsoft Agent Framework](https://learn.microsoft.com/zh-cn/agent-framework/overview/)（40 个）、[PyTorch](https://github.com/pytorch/pytorch)（16 个）、[AstrBot](https://github.com/AstrBotDevs/AstrBot)（37 个）、[openclaw](https://github.com/openclaw/openclaw)（9 个）、[Google ADK](https://github.com/google/adk-python)（17 个）、[promptfoo](https://github.com/promptfoo/promptfoo)（27 个）、[Triton](https://github.com/triton-lang/triton)（8 个）。
+- 620+ 个上游 PR 已合并或落地，其中 [Mooncake](https://github.com/kvcache-ai/Mooncake)（68 个 · maintainer）、[Vibe-Trading](https://github.com/HKUDS/Vibe-Trading)（108 个已合并或落地 · maintainer）、[vLLM](https://github.com/vllm-project/vllm)（17 个）、[Qwen Code](https://github.com/QwenLM/qwen-code)（62 个）、[deer-flow](https://github.com/bytedance/deer-flow)（25 个）、[Microsoft Agent Framework](https://learn.microsoft.com/zh-cn/agent-framework/overview/)（40 个）、[PyTorch](https://github.com/pytorch/pytorch)（16 个）、[AstrBot](https://github.com/AstrBotDevs/AstrBot)（37 个）、[openclaw](https://github.com/openclaw/openclaw)（9 个）、[Google ADK](https://github.com/google/adk-python)（17 个）、[promptfoo](https://github.com/promptfoo/promptfoo)（28 个）、[Triton](https://github.com/triton-lang/triton)（8 个）。
 - 代表性公开项目：[CoreCoder](https://github.com/he-yufeng/CoreCoder)、[RepoWiki](https://github.com/he-yufeng/RepoWiki)。
 
 ### 项目
@@ -1328,7 +1329,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [dify](https://github.com/langgenius/dify) (153.3k★) | **8** | API 健壮性：无超时调用加边界、前置校验、原子窗口 |  |
 | [opencode](https://github.com/anomalyco/opencode) (204.9k★) | **1** | MCP OAuth 回调绑定 IPv4 loopback |  |
 | [Transformers](https://github.com/huggingface/transformers) (164.3k★) | **1** | AutoProcessor 丢失 hub 参数透传 |  |
-| [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | **27** | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#9872](https://github.com/promptfoo/promptfoo/pull/9872) OpenRouter 与 Snowflake 的畸形补全响应加固：首个 choice 缺失、为空或不可用时返回结构化 provider 错误，不再抛异常或把畸形结果当成功评分；失败的部分输出既不评分也不写入对话历史<br>[#11445](https://github.com/promptfoo/promptfoo/pull/11445) redteam 目标缺 output 或返回 null/undefined 时记为集成错误，不再判成功；字面 "null"/"undefined" 字符串与真实拒答仍正常评分 |
+| [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | **28** | 评测打分正确性：百分位校验、无 token GLEU、provider 边界 | [#9872](https://github.com/promptfoo/promptfoo/pull/9872) OpenRouter 与 Snowflake 的畸形补全响应加固：首个 choice 缺失、为空或不可用时返回结构化 provider 错误，不再抛异常或把畸形结果当成功评分；失败的部分输出既不评分也不写入对话历史<br>[#11445](https://github.com/promptfoo/promptfoo/pull/11445) redteam 目标缺 output 或返回 null/undefined 时记为集成错误，不再判成功；字面 "null"/"undefined" 字符串与真实拒答仍正常评分 |
 | [Google ADK](https://github.com/google/adk-python) (22.0k★) | **17** | Agent 运行时正确性：eval 元数据、live 流式、上下文缓存、MCP header 鉴权 |  |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | **1** | 设置持久化：保留自定义 LLM base URL |  |
 | [llama.cpp](https://github.com/ggml-org/llama.cpp) (130.4k★) | **1** | server 多模态摄入安全 |  |
@@ -1874,7 +1875,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
-<summary>全部 27 个已合并的 promptfoo PR</summary>
+<summary>全部 28 个已合并的 promptfoo PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
@@ -1900,6 +1901,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#11543](https://github.com/promptfoo/promptfoo/pull/11543) | 代码扫描零结果时给出解释，不再只打印一句干巴巴的 "No files to scan" |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#10978](https://github.com/promptfoo/promptfoo/pull/10978) | 显式配置的 redteamProvider 在 custom 攻击策略中同样生效，不再静默回退到默认 provider |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#10665](https://github.com/promptfoo/promptfoo/pull/10665) | tool-call-f1 评分器认出 OpenAI Responses API 的 function_call 条目，这类载荷不再被算成零次工具调用 |
+| [promptfoo](https://github.com/promptfoo/promptfoo) | [#12486](https://github.com/promptfoo/promptfoo/pull/12486) | JSON 提示对象保留自定义 Nunjucks 过滤器，由 JSON 渲染器正确转义结构化参数，不再退回纯文本模板。 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#9841](https://github.com/promptfoo/promptfoo/pull/9841) | 空输出返回 `pass:false` 而不是抛异常 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#9757](https://github.com/promptfoo/promptfoo/pull/9757) | array metadata 值里所有转义逗号都还原 |
 | [promptfoo](https://github.com/promptfoo/promptfoo) (26.3k★) | [#9840](https://github.com/promptfoo/promptfoo/pull/9840) | 保留 JSONL 行的 description 而不是覆盖 |
