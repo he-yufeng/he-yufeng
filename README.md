@@ -67,7 +67,7 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 
 ### Open Source Contributions
 
-630+ merged or landed PRs across 69 upstream projects. The main table shows 53 projects at or above Kimi Code (6.397), with 16 lower-scoring projects collapsed. Highlights link only to the global Top 100, with up to five PRs per project.
+630+ merged or landed PRs across 70 upstream projects. The main table shows 53 projects at or above Kimi Code (6.397), with 17 lower-scoring projects collapsed. Highlights link only to the global Top 100, with up to five PRs per project.
 
 | Project | Merged / landed | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -127,7 +127,7 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 
 <details>
 <!-- profile-main-overflow -->
-<summary>Show 16 more projects</summary>
+<summary>Show 17 more projects</summary>
 
 | Project | Merged / landed | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -147,6 +147,7 @@ AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU |
 | [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | Model download safety: tar extraction rejects unsafe paths |  |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | **3** | Concurrency-safe LiteLLM params, git workspace validation, UTF-8 logs |  |
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | **1** | SciCode answer extraction from content blocks |  |
+| [RecBole](https://github.com/RUCAIBox/RecBole) (4.6k★) | **1** | Negative sampling: no infinite loop when a user history covers every item |  |
 </details>
 
 <details>
@@ -1266,6 +1267,14 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | [#1381](https://github.com/modelscope/evalscope/pull/1381) | Read SciCode assistant answers from OpenAI-style text content blocks, so the scorer prompt gets the real answer instead of an empty field. |
 
 </details>
+<details>
+<summary>All 1 merged RecBole PR</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [RecBole](https://github.com/RUCAIBox/RecBole) (4.6k★) | [#2210](https://github.com/RUCAIBox/RecBole/pull/2210) | Prevent `_neg_sample` from looping forever when a user's history already covers every valid item. The sampler now returns padding index 0 when no negative exists and uses a `set` for O(1) membership checks. |
+
+</details>
 
 ---
 
@@ -1328,7 +1337,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 ### 开源贡献
 
-上游 69 个项目共 630+ 个 PR 已合并或落地。非折叠区展示 53 个展示分不低于 Kimi Code（6.397）的项目，其余 16 个项目折叠；代表性修复只取全局前100名，每个项目最多5条。
+上游 70 个项目共 630+ 个 PR 已合并或落地。非折叠区展示 53 个展示分不低于 Kimi Code（6.397）的项目，其余 17 个项目折叠；代表性修复只取全局前100名，每个项目最多5条。
 
 | 项目 | 已合并 / 落地 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
@@ -1388,7 +1397,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 <details>
 <!-- profile-main-overflow -->
-<summary>展开其余 16 个项目</summary>
+<summary>展开其余 17 个项目</summary>
 
 | 项目 | 已合并 / 落地 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
@@ -1408,6 +1417,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [FastEmbed](https://github.com/qdrant/fastembed) (3.2k★) | **1** | 模型下载安全：tar 解包拒绝不安全路径 |  |
 | [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk) (1.0k★) | **3** | 并发安全的 LiteLLM 参数、git 工作区校验、UTF-8 日志 |  |
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | **1** | 从内容块提取 SciCode 答案 |  |
+| [RecBole](https://github.com/RUCAIBox/RecBole) (4.6k★) | **1** | 负采样：用户历史覆盖全部物品时不再无限循环 |  |
 </details>
 
 <details>
@@ -2525,5 +2535,13 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | [#1381](https://github.com/modelscope/evalscope/pull/1381) | 从 OpenAI 风格的 text content block 里读 SciCode 的 assistant 答案，scorer prompt 拿到真答案而不是空字段。 |
+
+</details>
+<details>
+<summary>全部 1 个已合并的 RecBole PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [RecBole](https://github.com/RUCAIBox/RecBole) (4.6k★) | [#2210](https://github.com/RUCAIBox/RecBole/pull/2210) | 用户历史覆盖全部合法物品时，`_neg_sample` 不再无限循环；没有合法负例时返回 padding 0，并用 `set` 做 O(1) 成员判断。 |
 
 </details>
