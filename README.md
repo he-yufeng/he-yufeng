@@ -67,8 +67,6 @@ AI Researcher @ DeepSeek AI | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU | Cham
 
 ### Open Source Contributions
 
-630+ merged or landed PRs across 71 upstream projects. The main table shows 54 projects at or above Kimi Code (6.402), with 17 lower-scoring projects collapsed. Highlights link only to the global Top 100, with up to five PRs per project.
-
 | Project | Merged / landed | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
 | [Mooncake](https://github.com/kvcache-ai/Mooncake) (7.0k★ · maintainer) | **68** | KV-cache store and transfer-engine correctness: hangs, goroutine leaks, races, overflow | [#5214](https://github.com/kvcache-ai/Mooncake/pull/5214) Add a unified Master/Store/Classic TE Grafana dashboard with 43 data panels, preserving completed-transfer byte and latency metrics, terminal outcomes, and missing-heartbeat semantics<br>[#3806](https://github.com/kvcache-ai/Mooncake/pull/3806) Restore the standby index tolerantly: ambiguous overlapping replicas are discarded with durable repair instead of failing the whole promotion<br>[#3889](https://github.com/kvcache-ai/Mooncake/pull/3889) Self-heal dangling LOCAL_DISK replicas on the read path: a batch_get onto a key whose SSD backing file vanished probes the offload file, evicts the dead replica master-side through a conditional race-safe RPC, and retries once, completing the heal pair that #3711 started on the Put path<br>[#3929](https://github.com/kvcache-ai/Mooncake/pull/3929) Batch reads with a duplicate key handed back the first occurrence's never-written buffer as success; each unique key now transfers once and its verified bytes fan out to every duplicate with device-aware copies<br>[#5409](https://github.com/kvcache-ai/Mooncake/pull/5409) Retry transient JIT process, version-probe, and cubin I/O failures without poisoning the persistent compile cache; retain caching for normal compiler errors and retry ambiguous legacy markers once |
@@ -1348,8 +1346,6 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 </details>
 
 ### 开源贡献
-
-上游 71 个项目共 630+ 个 PR 已合并或落地。非折叠区展示 54 个展示分不低于 Kimi Code（6.402）的项目，其余 17 个项目折叠；代表性修复只取全局前100名，每个项目最多5条。
 
 | 项目 | 已合并 / 落地 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
