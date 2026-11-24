@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=soft&color=0:0b2027,55:16323b,100:1f4550&height=110&text=Yufeng%20He%20%E4%BD%95%E5%AE%87%E5%B3%B0&fontSize=34&fontColor=e6edf3&desc=AI%20Agents%20%26amp%3B%20LLM%20Systems%20Engineer&descSize=16&descColor=9fb3bd&descAlignY=75" alt="Yufeng He" width="100%"/>
+  <img src="https://capsule-render.vercel.app/api?type=soft&color=0:0b2027,55:16323b,100:1f4550&height=110&text=Yufeng%20He%20%E4%BD%95%E5%AE%87%E5%B3%B0&fontSize=34&fontColor=e6edf3&desc=AI%20Researcher%20%40%20DeepSeek%20AI&descSize=16&descColor=9fb3bd&descAlignY=75" alt="Yufeng He" width="100%"/>
 </p>
 
 <p align="center">
@@ -11,7 +11,7 @@
 <a id="en"></a>
 ## Hey, I'm Yufeng He 👋
 
-AI Agents & LLM Systems Engineer | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU | Champion, Shanghai AI Global Contest | 3x ACM ICPC Silver Medalist | Former Intern @ Baidu, Maimai, Kuaishou
+AI Researcher @ DeepSeek AI | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU | Champion, Shanghai AI Global Contest | 3x ACM ICPC Silver Medalist | Former Intern @ Baidu, Kuaishou
 
 - 630+ merged or landed upstream PRs, with fixes in [Mooncake](https://github.com/kvcache-ai/Mooncake) (68 merged · maintainer), [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) (114 merged or landed · maintainer), [vLLM](https://github.com/vllm-project/vllm) (17 merged), [Qwen Code](https://github.com/QwenLM/qwen-code) (62 merged), [deer-flow](https://github.com/bytedance/deer-flow) (25 merged), [PyTorch](https://github.com/pytorch/pytorch) (16 landed), [AstrBot](https://github.com/AstrBotDevs/AstrBot) (37 merged), [openclaw](https://github.com/openclaw/openclaw) (9 merged), [Google ADK](https://github.com/google/adk-python) (17 landed), [promptfoo](https://github.com/promptfoo/promptfoo) (28 merged), and [Triton](https://github.com/triton-lang/triton) (8 merged).
 - Selected public projects led by [CoreCoder](https://github.com/he-yufeng/CoreCoder) and [RepoWiki](https://github.com/he-yufeng/RepoWiki).
