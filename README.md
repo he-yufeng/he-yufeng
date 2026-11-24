@@ -67,7 +67,7 @@ AI Researcher @ DeepSeek AI | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU | Cham
 
 ### Open Source Contributions
 
-630+ merged or landed PRs across 70 upstream projects. The main table shows 53 projects at or above Kimi Code (6.402), with 17 lower-scoring projects collapsed. Highlights link only to the global Top 100, with up to five PRs per project.
+630+ merged or landed PRs across 71 upstream projects. The main table shows 54 projects at or above Kimi Code (6.402), with 17 lower-scoring projects collapsed. Highlights link only to the global Top 100, with up to five PRs per project.
 
 | Project | Merged / landed | What the PRs cover | Highlight fixes |
 |---------|:------:|--------------------|-----------------|
@@ -103,6 +103,7 @@ AI Researcher @ DeepSeek AI | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU | Cham
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | **1** | Report effective Blaxel timeouts instead of defaults |  |
 | [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | **6** | Training-prep and sampling robustness: DPO crashes, 0-fps video, CI repair |  |
 | [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | **2** | File-format conversion correctness: DOCX underline preservation, legacy XLSX tolerance |  |
+| [KTransformers](https://github.com/kvcache-ai/ktransformers) (19.7k★) | **1** | Heterogeneous LLM inference and MoE weight loading; checkpoint-scoped Safetensor cache ownership | [#2280](https://github.com/kvcache-ai/ktransformers/pull/2280) Scope shared legacy Safetensor loader indexes by resolved checkpoint path, so AMX and general MoE wrappers reuse an index only for the same checkpoint; weak references preserve lifetime and serialized publication prevents duplicate indexes |
 | [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | **3** | Memory-store backends: S3 Vectors index naming, Qdrant https option |  |
 | [verl](https://github.com/verl-project/verl) (23.1k★) | **1** | Colocated weight-sync rank derivation across DP/TP |  |
 | [TRL](https://github.com/huggingface/trl) (19.1k★) | **2** | Dataset-prep fail-fast and vLLM special-token preservation |  |
@@ -915,6 +916,14 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
+<summary>All 1 merged KTransformers PR</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [KTransformers](https://github.com/kvcache-ai/ktransformers) (19.7k★) | [#2280](https://github.com/kvcache-ai/ktransformers/pull/2280) | Scope shared legacy Safetensor loader indexes by resolved checkpoint path, so AMX and general MoE wrappers reuse an index only for the same checkpoint; weak references preserve lifetime and serialized publication prevents duplicate indexes |
+
+</details>
+<details>
 <summary>All 3 merged Mem0 PRs</summary>
 
 | Project | PR | What I Fixed |
@@ -1268,6 +1277,7 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | [#1381](https://github.com/modelscope/evalscope/pull/1381) | Read SciCode assistant answers from OpenAI-style text content blocks, so the scorer prompt gets the real answer instead of an empty field. |
 
 </details>
+
 <details>
 <summary>All 1 merged RecBole PR</summary>
 
@@ -1338,7 +1348,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 ### 开源贡献
 
-上游 70 个项目共 630+ 个 PR 已合并或落地。非折叠区展示 53 个展示分不低于 Kimi Code（6.402）的项目，其余 17 个项目折叠；代表性修复只取全局前100名，每个项目最多5条。
+上游 71 个项目共 630+ 个 PR 已合并或落地。非折叠区展示 54 个展示分不低于 Kimi Code（6.402）的项目，其余 17 个项目折叠；代表性修复只取全局前100名，每个项目最多5条。
 
 | 项目 | 已合并 / 落地 | 这些 PR 大概修了什么 | 代表性修复 |
 |------|:-----:|------------------|-----------------|
@@ -1374,6 +1384,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | **1** | 上报生效中的 Blaxel 超时而非默认值 |  |
 | [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | **6** | 训练准备与采样健壮性：DPO 崩溃、0 fps 视频、CI 修复 |  |
 | [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | **2** | 文件格式转换正确性：DOCX 下划线保留、老旧 XLSX 兼容 |  |
+| [KTransformers](https://github.com/kvcache-ai/ktransformers) (19.7k★) | **1** | 异构 LLM 推理与 MoE 权重加载；按 checkpoint 隔离 Safetensor 缓存 | [#2280](https://github.com/kvcache-ai/ktransformers/pull/2280) 按解析后的 checkpoint 路径共享旧版 Safetensor loader 索引，AMX 与通用 MoE wrapper 只在同一 checkpoint 内复用；弱引用保留生命周期，串行发布避免重复索引 |
 | [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | **3** | 记忆存储后端：S3 Vectors 索引命名、Qdrant https 选项 |  |
 | [verl](https://github.com/verl-project/verl) (23.1k★) | **1** | colocated 权重同步的 DP/TP rank 推导 |  |
 | [TRL](https://github.com/huggingface/trl) (19.1k★) | **2** | 数据准备快速失败与 vLLM 特殊 token 保留 |  |
@@ -2186,6 +2197,14 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
+<summary>全部 1 个已合并的 KTransformers PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [KTransformers](https://github.com/kvcache-ai/ktransformers) (19.7k★) | [#2280](https://github.com/kvcache-ai/ktransformers/pull/2280) | 按解析后的 checkpoint 路径共享旧版 Safetensor loader 索引，AMX 与通用 MoE wrapper 只在同一 checkpoint 内复用；弱引用保留生命周期，串行发布避免重复索引 |
+
+</details>
+<details>
 <summary>全部 3 个已合并的 Mem0 PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -2539,6 +2558,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [EvalScope](https://github.com/modelscope/evalscope) (3.2k★) | [#1381](https://github.com/modelscope/evalscope/pull/1381) | 从 OpenAI 风格的 text content block 里读 SciCode 的 assistant 答案，scorer prompt 拿到真答案而不是空字段。 |
 
 </details>
+
 <details>
 <summary>全部 1 个已合并的 RecBole PR</summary>
 
