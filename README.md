@@ -101,9 +101,9 @@ AI Researcher @ DeepSeek AI | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU | Cham
 | [MCP Servers](https://github.com/modelcontextprotocol/servers) (90.1k★) | **1** | Dependency hygiene: zod declared where servers import it |  |
 | [GitHub MCP Server](https://github.com/github/github-mcp-server) (32.4k★) | **2** | Team-reviewer resolution and read-only surface hygiene |  |
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | **1** | Report effective Blaxel timeouts instead of defaults |  |
+| [KTransformers](https://github.com/kvcache-ai/ktransformers) (19.7k★) | **2** | Heterogeneous LLM inference, checkpoint-scoped weight loading and standalone wheel ownership | [#2280](https://github.com/kvcache-ai/ktransformers/pull/2280) Scope shared legacy Safetensor loader indexes by resolved checkpoint path, so AMX and general MoE wrappers reuse an index only for the same checkpoint; weak references preserve lifetime and serialized publication prevents duplicate indexes<br>[#2282](https://github.com/kvcache-ai/ktransformers/pull/2282) Keep standalone `kt-kernel` from installing SGLang runtime files; move coordinated runtime payloads to `sglang-kt` and validate installed ownership across package roots and wheel `.data` schemes |
 | [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | **6** | Training-prep and sampling robustness: DPO crashes, 0-fps video, CI repair |  |
 | [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | **2** | File-format conversion correctness: DOCX underline preservation, legacy XLSX tolerance |  |
-| [KTransformers](https://github.com/kvcache-ai/ktransformers) (19.7k★) | **1** | Heterogeneous LLM inference and MoE weight loading; checkpoint-scoped Safetensor cache ownership | [#2280](https://github.com/kvcache-ai/ktransformers/pull/2280) Scope shared legacy Safetensor loader indexes by resolved checkpoint path, so AMX and general MoE wrappers reuse an index only for the same checkpoint; weak references preserve lifetime and serialized publication prevents duplicate indexes |
 | [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | **3** | Memory-store backends: S3 Vectors index naming, Qdrant https option |  |
 | [verl](https://github.com/verl-project/verl) (23.1k★) | **1** | Colocated weight-sync rank derivation across DP/TP |  |
 | [TRL](https://github.com/huggingface/trl) (19.1k★) | **2** | Dataset-prep fail-fast and vLLM special-token preservation |  |
@@ -894,6 +894,15 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
+<summary>All 2 merged KTransformers PRs</summary>
+
+| Project | PR | What I Fixed |
+|---------|:--:|-------------|
+| [KTransformers](https://github.com/kvcache-ai/ktransformers) (19.7k★) | [#2280](https://github.com/kvcache-ai/ktransformers/pull/2280) | Scope shared legacy Safetensor loader indexes by resolved checkpoint path, so AMX and general MoE wrappers reuse an index only for the same checkpoint; weak references preserve lifetime and serialized publication prevents duplicate indexes |
+| [KTransformers](https://github.com/kvcache-ai/ktransformers) (19.7k★) | [#2282](https://github.com/kvcache-ai/ktransformers/pull/2282) | Keep standalone `kt-kernel` from installing SGLang runtime files; move coordinated runtime payloads to `sglang-kt` and validate installed ownership across package roots and wheel `.data` schemes |
+
+</details>
+<details>
 <summary>All 6 merged ms-swift PRs</summary>
 
 | Project | PR | What I Fixed |
@@ -913,14 +922,6 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 |---------|:--:|-------------|
 | [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | [#2017](https://github.com/microsoft/markitdown/pull/2017) | Preserve underlined runs in DOCX conversion: add the default `u` style-map entry and keep underline markup in the Markdown output |
 | [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | [#2064](https://github.com/microsoft/markitdown/pull/2064) | Tolerate the legacy `showZeroes` sheet-view attribute that openpyxl 3.1+ rejects, so older XLSX files still convert instead of raising TypeError |
-
-</details>
-<details>
-<summary>All 1 merged KTransformers PR</summary>
-
-| Project | PR | What I Fixed |
-|---------|:--:|-------------|
-| [KTransformers](https://github.com/kvcache-ai/ktransformers) (19.7k★) | [#2280](https://github.com/kvcache-ai/ktransformers/pull/2280) | Scope shared legacy Safetensor loader indexes by resolved checkpoint path, so AMX and general MoE wrappers reuse an index only for the same checkpoint; weak references preserve lifetime and serialized publication prevents duplicate indexes |
 
 </details>
 <details>
@@ -1382,9 +1383,9 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [MCP Servers](https://github.com/modelcontextprotocol/servers) (90.1k★) | **1** | 依赖声明卫生：直接 import zod 的服务补上运行时依赖声明 |  |
 | [GitHub MCP Server](https://github.com/github/github-mcp-server) (32.4k★) | **2** | team reviewer 解析与只读面卫生 |  |
 | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) (28.9k★) | **1** | 上报生效中的 Blaxel 超时而非默认值 |  |
+| [KTransformers](https://github.com/kvcache-ai/ktransformers) (19.7k★) | **2** | 异构 LLM 推理、checkpoint 权重加载与独立 wheel 包所有权 | [#2280](https://github.com/kvcache-ai/ktransformers/pull/2280) 按解析后的 checkpoint 路径共享旧版 Safetensor loader 索引，AMX 与通用 MoE wrapper 只在同一 checkpoint 内复用；弱引用保留生命周期，串行发布避免重复索引<br>[#2282](https://github.com/kvcache-ai/ktransformers/pull/2282) 独立 `kt-kernel` 不再安装或覆盖 SGLang runtime 文件；协调栈 runtime 改由 `sglang-kt` 携带，并覆盖包根目录与 wheel `.data` 方案的安装后所有权检查 |
 | [ms-swift](https://github.com/modelscope/ms-swift) (15.3k★) | **6** | 训练准备与采样健壮性：DPO 崩溃、0 fps 视频、CI 修复 |  |
 | [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | **2** | 文件格式转换正确性：DOCX 下划线保留、老旧 XLSX 兼容 |  |
-| [KTransformers](https://github.com/kvcache-ai/ktransformers) (19.7k★) | **1** | 异构 LLM 推理与 MoE 权重加载；按 checkpoint 隔离 Safetensor 缓存 | [#2280](https://github.com/kvcache-ai/ktransformers/pull/2280) 按解析后的 checkpoint 路径共享旧版 Safetensor loader 索引，AMX 与通用 MoE wrapper 只在同一 checkpoint 内复用；弱引用保留生命周期，串行发布避免重复索引 |
 | [Mem0](https://github.com/mem0ai/mem0) (63.9k★) | **3** | 记忆存储后端：S3 Vectors 索引命名、Qdrant https 选项 |  |
 | [verl](https://github.com/verl-project/verl) (23.1k★) | **1** | colocated 权重同步的 DP/TP rank 推导 |  |
 | [TRL](https://github.com/huggingface/trl) (19.1k★) | **2** | 数据准备快速失败与 vLLM 特殊 token 保留 |  |
@@ -2175,6 +2176,15 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
+<summary>全部 2 个已合并的 KTransformers PR</summary>
+
+| 项目 | PR | 修了啥 |
+|------|:--:|--------|
+| [KTransformers](https://github.com/kvcache-ai/ktransformers) (19.7k★) | [#2280](https://github.com/kvcache-ai/ktransformers/pull/2280) | 按解析后的 checkpoint 路径共享旧版 Safetensor loader 索引，AMX 与通用 MoE wrapper 只在同一 checkpoint 内复用；弱引用保留生命周期，串行发布避免重复索引 |
+| [KTransformers](https://github.com/kvcache-ai/ktransformers) (19.7k★) | [#2282](https://github.com/kvcache-ai/ktransformers/pull/2282) | 独立 `kt-kernel` 不再安装或覆盖 SGLang runtime 文件；协调栈 runtime 改由 `sglang-kt` 携带，并覆盖包根目录与 wheel `.data` 方案的安装后所有权检查 |
+
+</details>
+<details>
 <summary>全部 6 个已合并的 ms-swift PR</summary>
 
 | 项目 | PR | 修了啥 |
@@ -2194,14 +2204,6 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 |------|:--:|--------|
 | [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | [#2017](https://github.com/microsoft/markitdown/pull/2017) | DOCX 转换保留下划线文本：补默认 `u` 样式映射，并让下划线标记保留进 Markdown 输出 |
 | [MarkItDown](https://github.com/microsoft/markitdown) (178.1k★) | [#2064](https://github.com/microsoft/markitdown/pull/2064) | 兼容老旧 XLSX 里的 `showZeroes` 视图属性（openpyxl 3.1+ 只认 `showZeros`），老文件不再 TypeError 拒读 |
-
-</details>
-<details>
-<summary>全部 1 个已合并的 KTransformers PR</summary>
-
-| 项目 | PR | 修了啥 |
-|------|:--:|--------|
-| [KTransformers](https://github.com/kvcache-ai/ktransformers) (19.7k★) | [#2280](https://github.com/kvcache-ai/ktransformers/pull/2280) | 按解析后的 checkpoint 路径共享旧版 Safetensor loader 索引，AMX 与通用 MoE wrapper 只在同一 checkpoint 内复用；弱引用保留生命周期，串行发布避免重复索引 |
 
 </details>
 <details>
