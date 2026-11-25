@@ -85,7 +85,7 @@ AI Researcher @ DeepSeek AI | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU | Cham
 | [Google ADK](https://github.com/google/adk-python) (22.0k★) | **17** | Agent runtime correctness: eval metadata, live streaming, context caching, MCP header auth |  |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | **1** | Settings persistence: keep custom LLM base URLs |  |
 | [llama.cpp](https://github.com/ggml-org/llama.cpp) (130.4k★) | **1** | Server multimodal ingestion safety |  |
-| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **3** | Backend crashes: hybrid attention with speculative decoding, diffusers pickling, scheduler full-batch latch |  |
+| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **4** | Streaming tool-call ordering, hybrid attention with speculative decoding, diffusers pickling, scheduler full-batch latch |  |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | **3** | Self-host scrape paths: interact errors, auth chunk retention, batch dict responses |  |
 | [Triton](https://github.com/triton-lang/triton) (20.4k★) | **8** | Compiler semantics: fp8 arithmetic promotion, top_k edge cases, AxisInfo correctness, call-graph cycle safety, Gluon async-copy type checking |  |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | Monitor wiring: eigenvalue records never landed in logs |  |
@@ -712,11 +712,12 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 3 merged SGLang PRs</summary>
+<summary>All 4 merged SGLang PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#21472](https://github.com/sgl-project/sglang/pull/21472) | Fix PicklingError with --backend diffusers on non-T2I models |
+| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#43544](https://github.com/sgl-project/sglang/pull/43544) | Match the first buffered tool call in DeepSeek V3/V3.1 streaming, so two complete calls in one chunk are emitted in order instead of dropping the first or merging their names |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#41872](https://github.com/sgl-project/sglang/pull/41872) | Stop latching `batch_is_full` when the running batch is empty and nothing can be scheduled, so a momentarily dry memory pool no longer wedges every later prefill on an idle engine |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | Fix hybrid_linear_attn_backend crash when used with ngram speculative decoding |
 
@@ -1365,7 +1366,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 | [Google ADK](https://github.com/google/adk-python) (22.0k★) | **17** | Agent 运行时正确性：eval 元数据、live 流式、上下文缓存、MCP header 鉴权 |  |
 | [OpenHands](https://github.com/OpenHands/OpenHands) (84.9k★) | **1** | 设置持久化：保留自定义 LLM base URL |  |
 | [llama.cpp](https://github.com/ggml-org/llama.cpp) (130.4k★) | **1** | server 多模态摄入安全 |  |
-| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **3** | 后端崩溃修复：混合注意力撞投机解码、diffusers 序列化、调度器满载锁存 |  |
+| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | **4** | 流式 tool call 顺序、混合注意力撞投机解码、diffusers 序列化、调度器满载锁存 |  |
 | [Firecrawl](https://github.com/firecrawl/firecrawl) (171.6k★) | **3** | 自托管抓取链路：interact 报错、auth 块保留、批量 dict 响应 |  |
 | [Triton](https://github.com/triton-lang/triton) (20.4k★) | **8** | 编译器语义：fp8 算术提升、top_k 边界、AxisInfo 正确性、调用图环安全、Gluon 异步拷贝类型检查 |  |
 | [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) (42.9k★) | **1** | 监控接线：特征值记录从未落日志 |  |
@@ -1992,11 +1993,12 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
-<summary>全部 3 个已合并的 SGLang PR</summary>
+<summary>全部 4 个已合并的 SGLang PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#21472](https://github.com/sgl-project/sglang/pull/21472) | 修复 `--backend diffusers` 在非 T2I 模型上的 `PicklingError` |
+| [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#43544](https://github.com/sgl-project/sglang/pull/43544) | DeepSeek V3/V3.1 流式解析优先匹配缓冲区中的首个 tool call，同一 chunk 含两个完整调用时按顺序发出，不再丢掉第一个或合并名称 |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#41872](https://github.com/sgl-project/sglang/pull/41872) | 运行批次为空且无可调度请求时不再锁存 `batch_is_full`：内存池短暂见底后，空闲引擎的后续 prefill 不再被全部卡死 |
 | [SGLang](https://github.com/sgl-project/sglang) (32.3k★) | [#20739](https://github.com/sgl-project/sglang/pull/20739) | 修复 hybrid_linear_attn_backend 与 ngram 投机采样同时使用时崩溃 |
 
