@@ -132,7 +132,7 @@ AI Researcher @ DeepSeek AI | Formerly @ Moonshot AI (Kimi) | MS CS @ HKU | Cham
 |---------|:------:|--------------------|-----------------|
 | [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | **2** | FalkorDB bulk-write crash on NUL bytes, MCP server keeps the URI username |  |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | **4** | Docling response unpacking, docs dark theme, PostgreSQL search_path detection |  |
-| [AgentENV](https://github.com/kvcache-ai/AgentENV) (3.8k★) | **1** | Scheduler recovery cancellation: bounded workers stop queued snapshot pulls and discard late results without interrupting active ingestion |  |
+| [AgentENV](https://github.com/kvcache-ai/AgentENV) (3.8k★) | **2** | Scheduler recovery cancellation and leader-lease safety: stop queued snapshot pulls, discard late results, and avoid releasing leases while forced-stop handlers may still run |  |
 | [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | **1** | TUI tab-completion fixes |  |
 | [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | **1** | Anthropic stop-sequence validation |  |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | **1** | Publisher metadata validation |  |
@@ -1156,10 +1156,11 @@ Landed through pytorchmergebot; GitHub displays these PRs as Closed.
 
 </details>
 <details>
-<summary>All 1 merged AgentENV PR</summary>
+<summary>All 2 merged AgentENV PRs</summary>
 
 | Project | PR | What I Fixed |
 |---------|:--:|-------------|
+| [AgentENV](https://github.com/kvcache-ai/AgentENV) (3.8k★) | [#535](https://github.com/kvcache-ai/AgentENV/pull/535) | Release a drained leader lease during graceful handoff, but leave it to expire on forced stop so in-flight RPC handlers cannot observe an early lease transfer. |
 | [AgentENV](https://github.com/kvcache-ai/AgentENV) (3.8k★) | [#531](https://github.com/kvcache-ai/AgentENV/pull/531) | Stop queued node-snapshot pulls when election recovery is cancelled, without publishing late observations or interrupting callbacks already ingesting. |
 
 </details>
@@ -1413,7 +1414,7 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 |------|:-----:|------------------|-----------------|
 | [Graphiti](https://github.com/getzep/graphiti) (30.2k★) | **2** | FalkorDB 批量写入遇 NUL 字节崩溃，MCP server 保住 URI 用户名 |  |
 | [LightRAG](https://github.com/HKUDS/LightRAG) (39.1k★) | **4** | Docling 响应解包、文档站深色主题、PostgreSQL search_path 探测 |  |
-| [AgentENV](https://github.com/kvcache-ai/AgentENV) (3.8k★) | **1** | 调度恢复取消：有界 worker 停发排队快照拉取并丢弃迟到结果，不中断已开始的数据摄取 |  |
+| [AgentENV](https://github.com/kvcache-ai/AgentENV) (3.8k★) | **2** | 调度恢复取消与 leader 租约安全：停发排队快照拉取并丢弃迟到结果，forced-stop 处理器仍可能运行时不过早释放租约 |  |
 | [OpenHarness](https://github.com/HKUDS/OpenHarness) (15.5k★) | **1** | TUI tab 补全修复 |  |
 | [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) (13.7k★) | **1** | Anthropic stop 序列校验 |  |
 | [MCP Registry](https://github.com/modelcontextprotocol/registry) (7.1k★) | **1** | 发布者元数据校验 |  |
@@ -2437,10 +2438,11 @@ AI Agent 研究员 & 工程师 | 曾任 [Moonshot AI](https://www.moonshot.ai/) 
 
 </details>
 <details>
-<summary>全部 1 个已合并的 AgentENV PR</summary>
+<summary>全部 2 个已合并的 AgentENV PR</summary>
 
 | 项目 | PR | 修了啥 |
 |------|:--:|--------|
+| [AgentENV](https://github.com/kvcache-ai/AgentENV) (3.8k★) | [#535](https://github.com/kvcache-ai/AgentENV/pull/535) | 优雅交接在 RPC 排干后释放 leader 租约；forced-stop 不证明处理器已返回时改为等待租约过期，避免在途 RPC 观察到提前让渡。 |
 | [AgentENV](https://github.com/kvcache-ai/AgentENV) (3.8k★) | [#531](https://github.com/kvcache-ai/AgentENV/pull/531) | 选举恢复上下文取消时停止派发排队的节点快照拉取，不发布旧任期的迟到观测，也不中断已进入摄取回调的工作。 |
 
 </details>
